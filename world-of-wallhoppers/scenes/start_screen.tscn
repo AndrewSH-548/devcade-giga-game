@@ -11,7 +11,7 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1, 0.998773)
 script = ExtResource("1_kxo13")
-level_select_button = NodePath("CenterContainer/VBoxContainer/LevelSelectButton")
+level_select_button = NodePath("CenterContainer/VBoxContainer/SinglePlayer")
 quit_button = NodePath("CenterContainer/VBoxContainer/QuitButton")
 settings_button = NodePath("CenterContainer/VBoxContainer/SettingsButton")
 tutorial_button = NodePath("CenterContainer/VBoxContainer/TutorialButton")
@@ -30,9 +30,14 @@ grow_vertical = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
 layout_mode = 2
 
-[node name="LevelSelectButton" type="Button" parent="CenterContainer/VBoxContainer"]
+[node name="SinglePlayer" type="Button" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
-text = "Level Select"
+text = "Single Player"
+
+[node name="Mutiplayer" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Mutiplayer
+"
 
 [node name="SettingsButton" type="Button" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2

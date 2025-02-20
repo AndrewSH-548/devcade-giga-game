@@ -4,6 +4,7 @@ extends Control
 
 @onready var grid_container: GridContainer = $"CenterContainer/GridContainer"
 
+var split_screen_scene: PackedScene = preload("res://scenes/splitscreen.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -43,9 +44,11 @@ func _ready() -> void:
 
 		grid_container.add_child(new_button)
 
+# load the new level with the proper scene type (mutiplayer or not)
 func load_level(level: SceneDesriptors) -> void:
+	get_tree().change_scene_to_packed(split_screen_scene)
 	print("loading level: " + level.name)
-	get_tree().change_scene_to_packed(level.scene)
+	# this works, but depending on how levels are designed, is might be required that the node2d, in this case named level, would have to be changed instead
 
 
 func add_edge(image: Image, color: Color, border_width: int):
