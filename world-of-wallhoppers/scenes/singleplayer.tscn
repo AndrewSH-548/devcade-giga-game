@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=3 uid="uid://c3bkjibfhfofl"]
+
+[ext_resource type="Script" path="res://assets/scripts/camera.gd" id="2_cbso6"]
+[ext_resource type="PackedScene" uid="uid://byc3ni7sdfw6m" path="res://scenes/main.tscn" id="3_pwt4l"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="ViewportContainerP1" type="SubViewportContainer" parent="."]
+offset_left = 135.0
+offset_right = 405.0
+offset_bottom = 960.0
+size_flags_horizontal = 3
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="ViewportContainerP1"]
+handle_input_locally = false
+size = Vector2i(270, 960)
+render_target_update_mode = 4
+
+[node name="Camera2D" type="Camera2D" parent="ViewportContainerP1/SubViewport" node_paths=PackedStringArray("target")]
+offset = Vector2(135, 240)
+script = ExtResource("2_cbso6")
+target = NodePath("../level/Player1Body")
+
+[node name="level" parent="ViewportContainerP1/SubViewport" instance=ExtResource("3_pwt4l")]
+position = Vector2(131, 297)
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+offset_left = 404.0
+offset_right = 540.0
+offset_bottom = 960.0
+color = Color(0.662745, 0, 0, 1)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 135.0
+offset_bottom = 960.0
+color = Color(0.611765, 0, 0, 1)
+
+[editable path="ViewportContainerP1/SubViewport/level"]
