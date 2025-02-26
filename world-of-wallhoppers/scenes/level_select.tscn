@@ -2,12 +2,12 @@
 
 [ext_resource type="Script" path="res://assets/scripts/StartScreen/level_select.gd" id="1_ouddy"]
 [ext_resource type="Script" path="res://assets/scripts/StartScreen/scene_descriptors.gd" id="2_l5tlp"]
-[ext_resource type="PackedScene" uid="uid://byc3ni7sdfw6m" path="res://scenes/main.tscn" id="3_nccnq"]
+[ext_resource type="PackedScene" uid="uid://xm58tgl8rye0" path="res://scenes/test_level.tscn" id="3_c8s7y"]
 [ext_resource type="Texture2D" uid="uid://dlhw68isl1ja2" path="res://assets/sprites/temporary_texture.png" id="4_kjukt"]
 
 [sub_resource type="Resource" id="Resource_1h458"]
 script = ExtResource("2_l5tlp")
-scene = ExtResource("3_nccnq")
+scene = ExtResource("3_c8s7y")
 name = "Level 1"
 texture = ExtResource("4_kjukt")
 
