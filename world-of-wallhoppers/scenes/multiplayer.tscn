@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://ch4mextx4xjgt"]
 
 [ext_resource type="Script" path="res://assets/scripts/splitscreen.gd" id="1_62qbm"]
-[ext_resource type="PackedScene" uid="uid://byc3ni7sdfw6m" path="res://scenes/main.tscn" id="1_g12dm"]
+[ext_resource type="PackedScene" uid="uid://byc3ni7sdfw6m" path="res://scenes/testLevel.tscn" id="1_g12dm"]
 [ext_resource type="Script" path="res://assets/scripts/camera.gd" id="2_rnmh1"]
 [ext_resource type="Script" path="res://assets/scripts/player.gd" id="4_qh7no"]
 
@@ -35,10 +35,11 @@ render_target_update_mode = 4
 
 [node name="Camera2D" type="Camera2D" parent="HBoxContainer/ViewportContainerP1/SubViewport" node_paths=PackedStringArray("target")]
 offset = Vector2(135, 240)
-script = ExtResource("2_rnmh1")
-target = NodePath("../Player1Body")
 
-[node name="level" parent="HBoxContainer/ViewportContainerP1/SubViewport" instance=ExtResource("1_g12dm")]
+script = ExtResource("2_ncl7y")
+target = NodePath("../testLevel/Player1Body")
+
+[node name="testLevel" parent="HBoxContainer/ViewportContainerP1/SubViewport" instance=ExtResource("3_0dnxp")]
 position = Vector2(131, 297)
 
 [node name="Player1Body" type="CharacterBody2D" parent="HBoxContainer/ViewportContainerP1/SubViewport"]
@@ -112,7 +113,7 @@ render_target_update_mode = 4
 
 [node name="Camera2D" type="Camera2D" parent="HBoxContainer/ViewportContainerP2/SubViewport" node_paths=PackedStringArray("target")]
 offset = Vector2(135, 240)
-script = ExtResource("2_rnmh1")
-target = NodePath("../../../ViewportContainerP1/SubViewport/Player2Body")
+script = ExtResource("2_ncl7y")
+target = NodePath("../../../ViewportContainerP1/SubViewport/testLevel/Player2Body")
 
-[editable path="HBoxContainer/ViewportContainerP1/SubViewport/level"]
+[editable path="HBoxContainer/ViewportContainerP1/SubViewport/testLevel"]
