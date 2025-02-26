@@ -4,10 +4,10 @@ extends Control
 
 @onready var grid_container: GridContainer = $"CenterContainer/GridContainer"
 
-var multiplayer_scene: PackedScene = preload("res://scenes/multiplayer.tscn")
-var singleplayer_scene: PackedScene = preload("res://scenes/singleplayer.tscn")
+var isMultiplayer: bool = false;
 
-var singleOrMultiplayer: bool = false;
+signal load_multiplayer_level
+signal load_singleplayer_level
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -50,10 +50,11 @@ func _ready() -> void:
 
 # load the new level with the proper scene type (mutiplayer or not)
 func load_level(level: SceneDesriptors) -> void:
-	if singleOrMultiplayer:
-		get_tree().change_scene_to_packed(multiplayer_scene)
+	if isMultiplayer:
+		load_multiplayer_level.emit(level)
 	else:
-		get_tree().change_scene_to_packed(singleplayer_scene)
+		load_singleplayer_level.emit(level)
+
 	print("loading level: " + level.name)
 	# this works, but depending on how levels are designed, is might be required that the node2d, in this case named level, would have to be changed instead
 

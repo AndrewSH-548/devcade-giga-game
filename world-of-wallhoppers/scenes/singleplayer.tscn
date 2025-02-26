@@ -1,7 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://c3bkjibfhfofl"]
+[gd_scene load_steps=6 format=3 uid="uid://c3bkjibfhfofl"]
 
 [ext_resource type="Script" path="res://assets/scripts/camera.gd" id="2_cbso6"]
+[ext_resource type="Script" path="res://assets/scripts/player.gd" id="3_lihix"]
 [ext_resource type="PackedScene" uid="uid://byc3ni7sdfw6m" path="res://scenes/main.tscn" id="3_pwt4l"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m2vjh"]
+size = Vector2(32, 32)
+
+[sub_resource type="QuadMesh" id="QuadMesh_e3ke7"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -20,10 +26,40 @@ render_target_update_mode = 4
 [node name="Camera2D" type="Camera2D" parent="ViewportContainerP1/SubViewport" node_paths=PackedStringArray("target")]
 offset = Vector2(135, 240)
 script = ExtResource("2_cbso6")
-target = NodePath("../level/Player1Body")
+target = NodePath("../Player1Body")
 
 [node name="level" parent="ViewportContainerP1/SubViewport" instance=ExtResource("3_pwt4l")]
 position = Vector2(131, 297)
+
+[node name="Player1Body" type="CharacterBody2D" parent="ViewportContainerP1/SubViewport"]
+position = Vector2(45, 541.59)
+collision_layer = 4
+script = ExtResource("3_lihix")
+walk_speed = 180
+run_speed = 260
+air_accel = 8
+jump_height = 200
+wall_jump_height = 200
+fall_speed = 900
+gravity = 550
+jump_action = "p1_jump"
+move_left_action = "p1_left"
+move_right_action = "p1_right"
+run_modifier_action = " p1_run"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ViewportContainerP1/SubViewport/Player1Body"]
+shape = SubResource("RectangleShape2D_m2vjh")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="ViewportContainerP1/SubViewport/Player1Body"]
+modulate = Color(1, 0, 1, 1)
+position = Vector2(5.96046e-08, 1.90735e-06)
+scale = Vector2(32, 32)
+mesh = SubResource("QuadMesh_e3ke7")
+
+[node name="Player1Hitbox" type="Area2D" parent="ViewportContainerP1/SubViewport/Player1Body"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ViewportContainerP1/SubViewport/Player1Body/Player1Hitbox"]
+shape = SubResource("RectangleShape2D_m2vjh")
 
 [node name="ColorRect2" type="ColorRect" parent="."]
 offset_left = 404.0
