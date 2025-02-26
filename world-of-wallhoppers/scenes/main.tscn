@@ -169,8 +169,10 @@ input_pickable = false
 position = Vector2(231, 482)
 shape = SubResource("RectangleShape2D_5xfay")
 
-[node name="GoalManager" type="Node" parent="." node_paths=PackedStringArray("player_1_hitbox", "player_2_hitbox", "goals")]
+[node name="GoalManager" type="Node" parent="." node_paths=PackedStringArray("goals")]
 script = ExtResource("3_7unmi")
+
 player_1_hitbox = NodePath("")
 player_2_hitbox = NodePath("")
+
 goals = [NodePath("../Goal1")]

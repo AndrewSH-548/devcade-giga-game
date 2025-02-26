@@ -1,8 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://ch4mextx4xjgt"]
+
+[gd_scene load_steps=8 format=3 uid="uid://ch4mextx4xjgt"]
+
 
 [ext_resource type="Script" path="res://assets/scripts/splitscreen.gd" id="1_62qbm"]
 [ext_resource type="PackedScene" uid="uid://byc3ni7sdfw6m" path="res://scenes/testLevel.tscn" id="1_g12dm"]
 [ext_resource type="Script" path="res://assets/scripts/camera.gd" id="2_rnmh1"]
+
+[ext_resource type="PackedScene" path="res://scenes/testLevel.tscn" id="3_26gx4"]
+
 [ext_resource type="Script" path="res://assets/scripts/player.gd" id="4_qh7no"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6ci1u"]
@@ -12,6 +17,9 @@ size = Vector2(32, 32)
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_62qbm")
+
+[node name="testLevel" parent="." instance=ExtResource("1_g12dm")]
+position = Vector2(131, 297)
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_direction = 2
@@ -33,14 +41,73 @@ handle_input_locally = false
 size = Vector2i(268, 960)
 render_target_update_mode = 4
 
+[node name="testLevel2" parent="HBoxContainer/ViewportContainerP1/SubViewport" instance=ExtResource("3_26gx4")]
+position = Vector2(131, 297)
+
 [node name="Camera2D" type="Camera2D" parent="HBoxContainer/ViewportContainerP1/SubViewport" node_paths=PackedStringArray("target")]
 offset = Vector2(135, 240)
 
-script = ExtResource("2_ncl7y")
-target = NodePath("../testLevel/Player1Body")
+script = ExtResource("2_rnmh1")
+target = NodePath("../Player1Body")
 
-[node name="testLevel" parent="HBoxContainer/ViewportContainerP1/SubViewport" instance=ExtResource("3_0dnxp")]
-position = Vector2(131, 297)
+[node name="Player1Body" type="CharacterBody2D" parent="HBoxContainer/ViewportContainerP1/SubViewport"]
+position = Vector2(48.255, 500)
+collision_layer = 4
+script = ExtResource("4_qh7no")
+walk_speed = 180
+run_speed = 260
+air_accel = 8
+jump_height = 200
+wall_jump_height = 200
+fall_speed = 900
+gravity = 550
+jump_action = "p1_jump"
+move_left_action = "p1_left"
+move_right_action = "p1_right"
+run_modifier_action = " p1_run"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HBoxContainer/ViewportContainerP1/SubViewport/Player1Body"]
+shape = SubResource("RectangleShape2D_6ci1u")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="HBoxContainer/ViewportContainerP1/SubViewport/Player1Body"]
+modulate = Color(1, 0, 1, 1)
+position = Vector2(5.96046e-08, 1.90735e-06)
+scale = Vector2(32, 32)
+mesh = SubResource("QuadMesh_7w8lk")
+
+[node name="Player1Hitbox" type="Area2D" parent="HBoxContainer/ViewportContainerP1/SubViewport/Player1Body"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HBoxContainer/ViewportContainerP1/SubViewport/Player1Body/Player1Hitbox"]
+shape = SubResource("RectangleShape2D_6ci1u")
+
+[node name="Player2Body" type="CharacterBody2D" parent="HBoxContainer/ViewportContainerP1/SubViewport"]
+position = Vector2(153.805, 500)
+collision_layer = 2
+script = ExtResource("4_qh7no")
+walk_speed = 160
+run_speed = 240
+air_accel = 7
+jump_height = 240
+wall_jump_height = 240
+fall_speed = 1000
+gravity = 600
+jump_action = "p2_jump"
+move_left_action = "p2_left"
+move_right_action = "p2_right"
+run_modifier_action = " p2_run"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HBoxContainer/ViewportContainerP1/SubViewport/Player2Body"]
+shape = SubResource("RectangleShape2D_6ci1u")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="HBoxContainer/ViewportContainerP1/SubViewport/Player2Body"]
+modulate = Color(6.73831e-07, 0.693452, 0.828653, 1)
+scale = Vector2(32, 32)
+mesh = SubResource("QuadMesh_7w8lk")
+
+[node name="Player2Hitbox" type="Area2D" parent="HBoxContainer/ViewportContainerP1/SubViewport/Player2Body"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HBoxContainer/ViewportContainerP1/SubViewport/Player2Body/Player2Hitbox"]
+shape = SubResource("RectangleShape2D_6ci1u")
 
 [node name="Player1Body" type="CharacterBody2D" parent="HBoxContainer/ViewportContainerP1/SubViewport"]
 position = Vector2(48.255, 500)
@@ -113,7 +180,8 @@ render_target_update_mode = 4
 
 [node name="Camera2D" type="Camera2D" parent="HBoxContainer/ViewportContainerP2/SubViewport" node_paths=PackedStringArray("target")]
 offset = Vector2(135, 240)
-script = ExtResource("2_ncl7y")
-target = NodePath("../../../ViewportContainerP1/SubViewport/testLevel/Player2Body")
 
-[editable path="HBoxContainer/ViewportContainerP1/SubViewport/testLevel"]
+script = ExtResource("2_rnmh1")
+target = NodePath("../../../ViewportContainerP1/SubViewport/Player2Body")
+
+[editable path="testLevel"]
