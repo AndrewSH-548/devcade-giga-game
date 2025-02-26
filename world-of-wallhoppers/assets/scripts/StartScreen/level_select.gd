@@ -4,7 +4,10 @@ extends Control
 
 @onready var grid_container: GridContainer = $"CenterContainer/GridContainer"
 
-var split_screen_scene: PackedScene = preload("res://scenes/splitscreen.tscn")
+var multiplayer_scene: PackedScene = preload("res://scenes/multiplayer.tscn")
+var singleplayer_scene: PackedScene = preload("res://scenes/singleplayer.tscn")
+
+var singleOrMultiplayer: bool = false;
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -39,18 +42,23 @@ func _ready() -> void:
 		new_button.texture_disabled = ImageTexture.create_from_image(disabled_texture)
 		new_button.texture_focused  = ImageTexture.create_from_image(focused_texture)
 
-		var function = load_level.bind(level)
+		var function: Callable = load_level.bind(level)
 		new_button.pressed.connect(function)
-
+			
 		grid_container.add_child(new_button)
+
 
 # load the new level with the proper scene type (mutiplayer or not)
 func load_level(level: SceneDesriptors) -> void:
-	get_tree().change_scene_to_packed(split_screen_scene)
+	if singleOrMultiplayer:
+		get_tree().change_scene_to_packed(multiplayer_scene)
+	else:
+		get_tree().change_scene_to_packed(singleplayer_scene)
 	print("loading level: " + level.name)
 	# this works, but depending on how levels are designed, is might be required that the node2d, in this case named level, would have to be changed instead
 
 
+# adds an edge of color, color, with width, border_width, to an image
 func add_edge(image: Image, color: Color, border_width: int):
 	var width: int = image.get_width()
 	var height: int = image.get_height()
@@ -61,6 +69,7 @@ func add_edge(image: Image, color: Color, border_width: int):
 				image.set_pixel(x, y, color)
 
 
+# chnages the transparency of an image
 func change_alpha(image: Image, new_alpha: float):
 	if new_alpha < 0:
 		new_alpha = 0
@@ -78,6 +87,7 @@ func change_alpha(image: Image, new_alpha: float):
 				image.set_pixel(x, y, color)
 
 
+# darkens an entire image
 func darken_image(image: Image, amt: float):
 	if amt < 0:
 		return
@@ -99,6 +109,7 @@ func darken_image(image: Image, amt: float):
 			image.set_pixel(x, y, color)
 
 
+# brightens an entire image
 func brighten_image(image: Image, amt: float):
 	if amt < 0:
 		return
