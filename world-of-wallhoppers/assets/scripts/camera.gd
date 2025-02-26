@@ -6,4 +6,3 @@ extends Camera2D
 func _process(delta: float) -> void:
 	if target.position.y < 50:
 		position = Vector2(position.x, target.position.y);
-	pass

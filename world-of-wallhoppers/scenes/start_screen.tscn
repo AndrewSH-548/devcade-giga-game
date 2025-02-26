@@ -1,0 +1,57 @@
+[gd_scene load_steps=3 format=3 uid="uid://b2wwcwwsq0ao7"]
+
+[ext_resource type="Script" path="res://assets/scripts/StartScreen/start_screen.gd" id="1_kxo13"]
+[ext_resource type="Script" path="res://scenes/gui_manager.gd" id="1_pknda"]
+
+[node name="Node" type="Node"]
+script = ExtResource("1_pknda")
+
+[node name="Control" type="Control" parent="." node_paths=PackedStringArray("mutiplayer_button", "singleplayer_button", "quit_button", "settings_button", "tutorial_button")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1, 0.998773)
+script = ExtResource("1_kxo13")
+mutiplayer_button = NodePath("CenterContainer/VBoxContainer/Mutiplayer")
+singleplayer_button = NodePath("CenterContainer/VBoxContainer/SinglePlayer")
+quit_button = NodePath("CenterContainer/VBoxContainer/QuitButton")
+settings_button = NodePath("CenterContainer/VBoxContainer/SettingsButton")
+tutorial_button = NodePath("CenterContainer/VBoxContainer/TutorialButton")
+
+[node name="CenterContainer" type="CenterContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -49.5
+offset_right = 49.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/CenterContainer"]
+layout_mode = 2
+
+[node name="Mutiplayer" type="Button" parent="Control/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Mutiplayer
+"
+
+[node name="SinglePlayer" type="Button" parent="Control/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Single Player"
+
+[node name="SettingsButton" type="Button" parent="Control/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Settings (not implmented)"
+
+[node name="TutorialButton" type="Button" parent="Control/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Tutorial (not implmented)"
+
+[node name="QuitButton" type="Button" parent="Control/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Quit"
