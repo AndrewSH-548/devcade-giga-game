@@ -1,66 +1,7 @@
-[gd_scene load_steps=8 format=4 uid="uid://xm58tgl8rye0"]
+[gd_scene load_steps=6 format=4 uid="uid://xm58tgl8rye0"]
 
-[ext_resource type="Texture2D" uid="uid://bepq2g7ojyt6s" path="res://assets/sprites/volcano-tiles.png" id="1_xdqql"]
 [ext_resource type="Texture2D" uid="uid://ulefhw2axopx" path="res://assets/tilesets/volcano.png" id="2_mvqdf"]
 [ext_resource type="Script" path="res://assets/scripts/goal.gd" id="3_iur71"]
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_biy37"]
-texture = ExtResource("1_xdqql")
-0:0/0 = 0
-0:0/0/terrain_set = 0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-6.99785, -8, 8, -8, 8, 8, -5.125, 8, -4.99846, -5.89293, -6.96277, -5.928)
-1:0/0 = 0
-1:0/0/terrain_set = 0
-1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-2:0/0 = 0
-2:0/0/terrain_set = 0
-2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 4.96339, -8, 5.03504, 8, -8, 8)
-0:1/0 = 0
-0:1/0/terrain_set = 0
-0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-5, -8, 8, -8, 8, 8, -5.125, 8)
-1:1/0 = 0
-1:1/0/terrain_set = 0
-1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-2:1/0 = 0
-2:1/0/terrain_set = 0
-2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 4.96339, -8, 5.03504, 8, -8, 8)
-0:2/0 = 0
-0:2/0/terrain_set = 0
-0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4.875, -8, 8, -8, 8, 4.875, -4.875, 5)
-1:2/0 = 0
-1:2/0/terrain_set = 0
-1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 4.875, -8, 5.125)
-2:2/0 = 0
-2:2/0/terrain_set = 0
-2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 4.96339, -8, 5.04231, 5.03354, -8, 4.98093)
-0:3/0 = 0
-0:3/0/terrain_set = 0
-0:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, -8, 8, 8, -8, 8, -8, -8)
-1:3/0 = 0
-2:3/0 = 0
-2:3/0/terrain_set = 0
-2:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, -8, 8, 8, -8, 8, -8, -8)
-0:4/0 = 0
-2:4/0 = 0
-0:5/0 = 0
-0:5/0/terrain_set = 0
-0:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, -8, 8, 8, -8, 8, -8, -8)
-1:5/0 = 0
-2:5/0 = 0
-2:5/0/terrain_set = 0
-2:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, -8, 8, 8, -8, 8, -8, -8)
-0:6/0 = 0
-1:6/0 = 0
-2:6/0 = 0
-0:7/0 = 0
-0:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-6.97407, -8, 4.96339, -8, 7.05759, -8, 7.02975, -6.04141, 4.99739, -5.98573, 5.03504, 8, -5.02523, 8, -4.9417, -5.93005, -7.00191, -5.93005)
-1:7/0 = 0
-1:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-6.97407, -8, 4.96339, -8, 7.05759, -8, 7.02975, -6.04141, 4.99739, -5.98573, 5.03504, 8, -5.02523, 8, -4.9417, -5.93005, -7.00191, -5.93005)
-2:7/0 = 0
-2:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(4.96339, -8, 5.02523, 4.03689, -4.99739, 4.31529, -4.9417, -8)
-0:8/0 = 0
-1:8/0 = 0
-2:8/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yaa17"]
 texture = ExtResource("2_mvqdf")
@@ -2033,7 +1974,6 @@ physics_layer_0/collision_layer = 1
 terrain_set_0/mode = 0
 terrain_set_0/terrain_0/name = "volcano"
 terrain_set_0/terrain_0/color = Color(1, 1, 1, 1)
-sources/0 = SubResource("TileSetAtlasSource_biy37")
 sources/1 = SubResource("TileSetAtlasSource_yaa17")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5xfay"]
