@@ -16,6 +16,7 @@ extends CharacterBody2D
 @export var run_modifier_action: String = " "
 
 var acceleration: float = 0;
+var hitstun: bool = false
 
 
 func _physics_process(delta: float) -> void:
@@ -29,18 +30,18 @@ func _physics_process(delta: float) -> void:
 		velocity.y = -jump_height;
 
 	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction := Input.get_axis(move_left_action, move_right_action)
+	# Move, and check whether the player in in hitstun
 	if direction:
 		# Push the player away from a wall when they jump off it.
-		if Input.is_action_just_pressed(jump_action) and is_on_wall() and !is_on_floor():
+		if Input.is_action_just_pressed(jump_action) and is_on_wall() and !is_on_floor() and not hitstun:
 			velocity.x = -direction * wall_jump_height / 1.8;
 			velocity.y = -wall_jump_height;
-		elif !is_on_floor():
+		elif !is_on_floor() and not hitstun:
 			velocity.x += direction * air_accel;
-		elif Input.is_action_pressed("p1_run"):
+		elif Input.is_action_pressed("p1_run") and not hitstun:
 			velocity.x = direction * run_speed;
-		else:
+		elif not hitstun:
 			velocity.x = direction * walk_speed;
 	else:
 		velocity.x = move_toward(velocity.x, 0, 50)

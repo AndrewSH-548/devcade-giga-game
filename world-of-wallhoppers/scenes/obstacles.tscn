@@ -1,11 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://hpg1ao5qoppx"]
+[gd_scene load_steps=9 format=3 uid="uid://hpg1ao5qoppx"]
 
 [ext_resource type="Texture2D" uid="uid://3ekv2i16hkw0" path="res://assets/sprites/16-bit-spike-Sheet.png" id="1_hclc4"]
 [ext_resource type="Script" path="res://assets/scripts/obstacles.gd" id="1_j5peo"]
-
-[sub_resource type="GDScript" id="GDScript_fcn3o"]
-script/source = "extends Node2D
-"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qcw7f"]
 atlas = ExtResource("1_hclc4")
@@ -68,7 +64,6 @@ script = ExtResource("1_j5peo")
 
 [node name="Static-square1" type="Node2D" parent="Static-squares"]
 position = Vector2(38, 17)
-script = SubResource("GDScript_fcn3o")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Static-squares/Static-square1"]
 sprite_frames = SubResource("SpriteFrames_6qele")
