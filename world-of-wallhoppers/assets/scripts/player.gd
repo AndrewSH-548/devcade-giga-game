@@ -26,7 +26,7 @@ func _physics_process(delta: float) -> void:
 		velocity.y = clamp(velocity.y, -jump_height, fall_speed);
 
 	# Handle jump.
-	if Input.is_action_just_pressed(jump_action) and is_on_floor():
+	if Input.is_action_just_pressed(jump_action) and is_on_floor() and not hitstun:
 		velocity.y = -jump_height;
 
 	# Get the input direction and handle the movement/deceleration.
