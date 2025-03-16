@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=4 uid="uid://xm58tgl8rye0"]
+[gd_scene load_steps=14 format=4 uid="uid://xm58tgl8rye0"]
 
 [ext_resource type="Texture2D" uid="uid://ulefhw2axopx" path="res://assets/tilesets/volcano.png" id="2_mvqdf"]
 [ext_resource type="Script" path="res://assets/scripts/goal.gd" id="3_iur71"]
+[ext_resource type="Texture2D" uid="uid://3ekv2i16hkw0" path="res://assets/sprites/16-bit-spike-Sheet.png" id="3_uho3o"]
+[ext_resource type="Script" path="res://assets/scripts/obstacles.gd" id="3_wbyeu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yaa17"]
 texture = ExtResource("2_mvqdf")
@@ -1979,6 +1981,60 @@ sources/1 = SubResource("TileSetAtlasSource_yaa17")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5xfay"]
 size = Vector2(73, 873)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_qcw7f"]
+atlas = ExtResource("3_uho3o")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dnlqm"]
+atlas = ExtResource("3_uho3o")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ya0ya"]
+atlas = ExtResource("3_uho3o")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gdeqv"]
+atlas = ExtResource("3_uho3o")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qw3l4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qcw7f")
+}],
+"loop": true,
+"name": &"spikedown",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dnlqm")
+}],
+"loop": true,
+"name": &"spikeleft",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ya0ya")
+}],
+"loop": true,
+"name": &"spikeright",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gdeqv")
+}],
+"loop": true,
+"name": &"spikeup",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_16rsp"]
+size = Vector2(16.5, 16)
+
 [node name="testLevel" type="Node2D"]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
@@ -1999,3 +2055,37 @@ shape = SubResource("RectangleShape2D_5xfay")
 [node name="GoalManager" type="Node" parent="." node_paths=PackedStringArray("goals")]
 script = ExtResource("3_iur71")
 goals = [NodePath("../Goal1")]
+
+[node name="Static-squares" type="Node2D" parent="."]
+script = ExtResource("3_wbyeu")
+
+[node name="Static-square1" type="Node2D" parent="Static-squares"]
+position = Vector2(22, -12)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Static-squares/Static-square1"]
+sprite_frames = SubResource("SpriteFrames_qw3l4")
+animation = &"spikeup"
+
+[node name="Area2D" type="Area2D" parent="Static-squares/Static-square1"]
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Static-squares/Static-square1/Area2D"]
+position = Vector2(0.25, 0)
+shape = SubResource("RectangleShape2D_16rsp")
+
+[node name="Static-square2" type="Node2D" parent="Static-squares"]
+position = Vector2(-63, 104)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Static-squares/Static-square2"]
+sprite_frames = SubResource("SpriteFrames_qw3l4")
+animation = &"spikeleft"
+
+[node name="Area2D" type="Area2D" parent="Static-squares/Static-square2"]
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Static-squares/Static-square2/Area2D"]
+position = Vector2(0.25, 0)
+shape = SubResource("RectangleShape2D_16rsp")
+
+[connection signal="body_entered" from="Static-squares/Static-square1/Area2D" to="Static-squares" method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="Static-squares/Static-square2/Area2D" to="Static-squares" method="_on_area_2d_body_entered"]

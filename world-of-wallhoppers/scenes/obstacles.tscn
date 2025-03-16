@@ -1,0 +1,77 @@
+[gd_scene load_steps=9 format=3 uid="uid://hpg1ao5qoppx"]
+
+[ext_resource type="Texture2D" uid="uid://3ekv2i16hkw0" path="res://assets/sprites/16-bit-spike-Sheet.png" id="1_hclc4"]
+[ext_resource type="Script" path="res://assets/scripts/obstacles.gd" id="1_j5peo"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qcw7f"]
+atlas = ExtResource("1_hclc4")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dnlqm"]
+atlas = ExtResource("1_hclc4")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ya0ya"]
+atlas = ExtResource("1_hclc4")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gdeqv"]
+atlas = ExtResource("1_hclc4")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6qele"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qcw7f")
+}],
+"loop": true,
+"name": &"spikedown",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dnlqm")
+}],
+"loop": true,
+"name": &"spikeleft",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ya0ya")
+}],
+"loop": true,
+"name": &"spikeright",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gdeqv")
+}],
+"loop": true,
+"name": &"spikeup",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_237de"]
+size = Vector2(16.5, 16)
+
+[node name="Obstacles" type="Node2D"]
+
+[node name="Static-squares" type="Node2D" parent="."]
+script = ExtResource("1_j5peo")
+
+[node name="Static-square1" type="Node2D" parent="Static-squares"]
+position = Vector2(38, 17)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Static-squares/Static-square1"]
+sprite_frames = SubResource("SpriteFrames_6qele")
+animation = &"spikeup"
+
+[node name="Area2D" type="Area2D" parent="Static-squares/Static-square1"]
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Static-squares/Static-square1/Area2D"]
+position = Vector2(0.25, 0)
+shape = SubResource("RectangleShape2D_237de")
