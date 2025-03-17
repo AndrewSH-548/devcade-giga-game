@@ -16,8 +16,14 @@ extends CharacterBody2D
 @export var run_modifier_action: String = " "
 
 var acceleration: float = 0;
-var hitstun: bool = false
+var hitstun: bool = false;
 
+var sprite: AnimatedSprite2D;
+var isFacingRight: bool = true;
+
+func _ready() -> void:
+	sprite = get_node("AnimatedSprite2D");
+	sprite.play();
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -31,6 +37,7 @@ func _physics_process(delta: float) -> void:
 
 	# Get the input direction and handle the movement/deceleration.
 	var direction := Input.get_axis(move_left_action, move_right_action)
+	animate(direction);
 	# Move, and check whether the player in in hitstun
 	if direction:
 		# Push the player away from a wall when they jump off it.
@@ -39,7 +46,7 @@ func _physics_process(delta: float) -> void:
 			velocity.y = -wall_jump_height;
 		elif !is_on_floor() and not hitstun:
 			velocity.x += direction * air_accel;
-		elif Input.is_action_pressed("p1_run") and not hitstun:
+		elif Input.is_action_pressed(run_modifier_action) and not hitstun:
 			velocity.x = direction * run_speed;
 		elif not hitstun:
 			velocity.x = direction * walk_speed;
@@ -47,3 +54,21 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, 50)
 
 	move_and_slide()
+
+func animate(direction: float) -> void:
+	isFacingRight = direction > 0;
+	
+	
+	
+	if hitstun:
+		sprite.animation = "hurt";
+	elif is_on_wall() and not is_on_floor():
+		sprite.animation = "wall-cling";
+		isFacingRight = !isFacingRight;
+	elif not is_on_floor():
+		sprite.animation = "jump" if velocity.y < 0 else "fall";
+	elif direction != 0:
+		sprite.animation = "run" if Input.is_action_pressed(run_modifier_action) else "walk";
+	else: sprite.animation = "idle";
+	
+	sprite.flip_h = !isFacingRight;
