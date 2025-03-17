@@ -194,7 +194,7 @@ weight = 10
 jump_action = "p1_jump"
 move_left_action = "p1_left"
 move_right_action = "p1_right"
-run_modifier_action = " p1_run"
+run_modifier_action = "p1_run"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HBoxContainer/ViewportContainerP1/SubViewport/Player1Body"]
 shape = SubResource("RectangleShape2D_6ci1u")
@@ -202,7 +202,7 @@ shape = SubResource("RectangleShape2D_6ci1u")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="HBoxContainer/ViewportContainerP1/SubViewport/Player1Body"]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_eose0")
-animation = &"idle"
+animation = &"walk"
 
 [node name="Player1Hitbox" type="Area2D" parent="HBoxContainer/ViewportContainerP1/SubViewport/Player1Body"]
 
@@ -224,7 +224,7 @@ weight = 10
 jump_action = "p2_jump"
 move_left_action = "p2_left"
 move_right_action = "p2_right"
-run_modifier_action = " p2_run"
+run_modifier_action = "p2_run"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HBoxContainer/ViewportContainerP1/SubViewport/Player2Body"]
 shape = SubResource("RectangleShape2D_6ci1u")
