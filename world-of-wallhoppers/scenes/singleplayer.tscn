@@ -1,8 +1,8 @@
 [gd_scene load_steps=21 format=3 uid="uid://c3bkjibfhfofl"]
 
 [ext_resource type="PackedScene" uid="uid://xm58tgl8rye0" path="res://scenes/test_level.tscn" id="1_ed7t0"]
-[ext_resource type="Script" path="res://assets/scripts/camera.gd" id="2_cbso6"]
-[ext_resource type="Script" path="res://assets/scripts/player.gd" id="3_lihix"]
+[ext_resource type="Script" uid="uid://d3p48lwnrft2t" path="res://assets/scripts/camera.gd" id="2_cbso6"]
+[ext_resource type="Script" uid="uid://xkik1qkpgt12" path="res://assets/scripts/player.gd" id="3_lihix"]
 [ext_resource type="Texture2D" uid="uid://cbpfskf2jthji" path="res://assets/sprites/base_player.png" id="4_hy7x1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_boyv1"]
