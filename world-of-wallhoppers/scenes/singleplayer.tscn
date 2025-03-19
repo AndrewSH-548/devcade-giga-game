@@ -185,10 +185,11 @@ jump_height = 200
 wall_jump_height = 200
 fall_speed = 900
 gravity = 550
+weight = 10
 jump_action = "p1_jump"
 move_left_action = "p1_left"
 move_right_action = "p1_right"
-run_modifier_action = " p1_run"
+run_modifier_action = "p1_run"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ViewportContainerP1/SubViewport/Player1Body"]
 texture_filter = 1
