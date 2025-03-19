@@ -185,6 +185,7 @@ jump_height = 200
 wall_jump_height = 200
 fall_speed = 900
 gravity = 550
+weight = 10
 jump_action = "p1_jump"
 move_left_action = "p1_left"
 move_right_action = "p1_right"
