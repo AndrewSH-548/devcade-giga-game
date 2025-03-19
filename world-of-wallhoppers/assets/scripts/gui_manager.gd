@@ -32,7 +32,7 @@ func load_multiplayer_level(level: SceneDesriptors):
 
 	var scene = multiplayer_scene.instantiate()
 	add_child(scene)
-	var level_node = scene.get_node("HBoxContainer/ViewportContainerP1/SubViewport/level")
+	var level_node = scene.get_node("HBoxContainer/ViewportContainerP1/SubViewport/testLevel2")
 	var parent_node = level_node.get_parent()
 	
 	parent_node.remove_child(level_node)
@@ -51,7 +51,7 @@ func load_singleplayer_level(level: SceneDesriptors):
 	var scene = singleplayer_scene.instantiate()
 	add_child(scene)
 
-	var level_node = scene.get_node("ViewportContainerP1/SubViewport/level")
+	var level_node = scene.get_node("ViewportContainerP1/SubViewport/testLevel")
 	var parent_node = level_node.get_parent()
 
 	parent_node.remove_child(level_node)
