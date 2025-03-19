@@ -62,15 +62,17 @@ func _physics_process(delta: float) -> void:
 func animate(direction: float) -> void:
 	isFacingRight = direction > 0;
 	
-	
-	
 	if hitstun:
 		sprite.animation = "hurt";
+	elif velocity.y < 0:
+		sprite.animation = "jump";
 	elif is_on_wall() and not is_on_floor():
 		sprite.animation = "wall-cling";
 		isFacingRight = !isFacingRight;
 	elif not is_on_floor():
-		sprite.animation = "jump" if velocity.y < 0 else "fall";
+		sprite.animation = "fall";
+	elif is_on_wall() && direction != 0:
+		sprite.animation = "wall-push";
 	elif direction != 0:
 		sprite.animation = "run" if Input.is_action_pressed(run_modifier_action) else "walk";
 	else: sprite.animation = "idle";
