@@ -1,157 +1,9 @@
-[gd_scene load_steps=22 format=3 uid="uid://ch4mextx4xjgt"]
+[gd_scene load_steps=5 format=3 uid="uid://ch4mextx4xjgt"]
 
 [ext_resource type="Script" uid="uid://c0egamewutafp" path="res://assets/scripts/splitscreen.gd" id="1_62qbm"]
 [ext_resource type="Script" uid="uid://d3p48lwnrft2t" path="res://assets/scripts/camera.gd" id="2_rnmh1"]
 [ext_resource type="PackedScene" uid="uid://xm58tgl8rye0" path="res://scenes/test_level.tscn" id="3_26gx4"]
-[ext_resource type="Script" uid="uid://xkik1qkpgt12" path="res://assets/scripts/player.gd" id="4_qh7no"]
-[ext_resource type="Texture2D" uid="uid://cbpfskf2jthji" path="res://assets/sprites/base_player.png" id="4_sb7rn"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_6ci1u"]
-size = Vector2(32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_boyv1"]
-atlas = ExtResource("4_sb7rn")
-region = Rect2(128, 32, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3sihq"]
-atlas = ExtResource("4_sb7rn")
-region = Rect2(96, 64, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6sdvj"]
-atlas = ExtResource("4_sb7rn")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_srqw6"]
-atlas = ExtResource("4_sb7rn")
-region = Rect2(96, 32, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_la7d2"]
-atlas = ExtResource("4_sb7rn")
-region = Rect2(0, 32, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rtuso"]
-atlas = ExtResource("4_sb7rn")
-region = Rect2(32, 32, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_i6t0y"]
-atlas = ExtResource("4_sb7rn")
-region = Rect2(64, 32, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_tmc4t"]
-atlas = ExtResource("4_sb7rn")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nfarx"]
-atlas = ExtResource("4_sb7rn")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_cffpk"]
-atlas = ExtResource("4_sb7rn")
-region = Rect2(96, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nfmxt"]
-atlas = ExtResource("4_sb7rn")
-region = Rect2(128, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_k1780"]
-atlas = ExtResource("4_sb7rn")
-region = Rect2(32, 64, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_q26fd"]
-atlas = ExtResource("4_sb7rn")
-region = Rect2(64, 64, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ay8ux"]
-atlas = ExtResource("4_sb7rn")
-region = Rect2(0, 64, 32, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_eose0"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_boyv1")
-}],
-"loop": true,
-"name": &"fall",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3sihq")
-}],
-"loop": true,
-"name": &"hurt",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6sdvj")
-}],
-"loop": true,
-"name": &"idle",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_srqw6")
-}],
-"loop": true,
-"name": &"jump",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_la7d2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rtuso")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_i6t0y")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rtuso")
-}],
-"loop": true,
-"name": &"run",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_tmc4t")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_nfarx")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_cffpk")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_nfmxt")
-}],
-"loop": true,
-"name": &"walk",
-"speed": 6.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_k1780")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_q26fd")
-}],
-"loop": true,
-"name": &"wall-climb",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ay8ux")
-}],
-"loop": true,
-"name": &"wall-cling",
-"speed": 5.0
-}]
+[ext_resource type="PackedScene" uid="uid://dtu1k6tt7cxej" path="res://scenes/player.tscn" id="3_cpmg1"]
 
 [node name="Node2D2" type="Node2D"]
 script = ExtResource("1_62qbm")
@@ -179,68 +31,16 @@ render_target_update_mode = 4
 [node name="testLevel2" parent="HBoxContainer/ViewportContainerP1/SubViewport" instance=ExtResource("3_26gx4")]
 position = Vector2(131, 297)
 
-[node name="Player1Body" type="CharacterBody2D" parent="HBoxContainer/ViewportContainerP1/SubViewport"]
-position = Vector2(48.255, 500)
-collision_layer = 4
-script = ExtResource("4_qh7no")
-walk_speed = 180
-run_speed = 260
-air_speed = 200
-air_accel = 10
-jump_height = 200
-wall_jump_height = 200
-fall_speed = 900
-gravity = 550
-weight = 10
-jump_action = "p1_jump"
-move_left_action = "p1_left"
-move_right_action = "p1_right"
-run_modifier_action = "p1_run"
+[node name="Player1Body" parent="HBoxContainer/ViewportContainerP1/SubViewport" instance=ExtResource("3_cpmg1")]
+position = Vector2(43, 490)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HBoxContainer/ViewportContainerP1/SubViewport/Player1Body"]
-shape = SubResource("RectangleShape2D_6ci1u")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="HBoxContainer/ViewportContainerP1/SubViewport/Player1Body"]
-texture_filter = 1
-sprite_frames = SubResource("SpriteFrames_eose0")
-animation = &"walk"
-
-[node name="Player1Hitbox" type="Area2D" parent="HBoxContainer/ViewportContainerP1/SubViewport/Player1Body"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HBoxContainer/ViewportContainerP1/SubViewport/Player1Body/Player1Hitbox"]
-shape = SubResource("RectangleShape2D_6ci1u")
-
-[node name="Player2Body" type="CharacterBody2D" parent="HBoxContainer/ViewportContainerP1/SubViewport"]
-position = Vector2(190, 500)
-collision_layer = 2
-script = ExtResource("4_qh7no")
-walk_speed = 160
-run_speed = 240
-air_speed = 200
-air_accel = 15
-jump_height = 240
-wall_jump_height = 240
-fall_speed = 1000
-gravity = 600
-weight = 10
+[node name="Player2Body" parent="HBoxContainer/ViewportContainerP1/SubViewport" instance=ExtResource("3_cpmg1")]
+modulate = Color(1, 0.0392157, 1, 1)
+position = Vector2(190, 494)
 jump_action = "p2_jump"
 move_left_action = "p2_left"
 move_right_action = "p2_right"
 run_modifier_action = "p2_run"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HBoxContainer/ViewportContainerP1/SubViewport/Player2Body"]
-shape = SubResource("RectangleShape2D_6ci1u")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="HBoxContainer/ViewportContainerP1/SubViewport/Player2Body"]
-modulate = Color(1, 0.376471, 1, 1)
-texture_filter = 1
-sprite_frames = SubResource("SpriteFrames_eose0")
-animation = &"idle"
-
-[node name="Player2Hitbox" type="Area2D" parent="HBoxContainer/ViewportContainerP1/SubViewport/Player2Body"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HBoxContainer/ViewportContainerP1/SubViewport/Player2Body/Player2Hitbox"]
-shape = SubResource("RectangleShape2D_6ci1u")
 
 [node name="Camera2D" type="Camera2D" parent="HBoxContainer/ViewportContainerP1/SubViewport" node_paths=PackedStringArray("target")]
 offset = Vector2(135, 240)
