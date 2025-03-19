@@ -1,9 +1,9 @@
 [gd_scene load_steps=22 format=3 uid="uid://ch4mextx4xjgt"]
 
-[ext_resource type="Script" path="res://assets/scripts/splitscreen.gd" id="1_62qbm"]
-[ext_resource type="Script" path="res://assets/scripts/camera.gd" id="2_rnmh1"]
+[ext_resource type="Script" uid="uid://c0egamewutafp" path="res://assets/scripts/splitscreen.gd" id="1_62qbm"]
+[ext_resource type="Script" uid="uid://d3p48lwnrft2t" path="res://assets/scripts/camera.gd" id="2_rnmh1"]
 [ext_resource type="PackedScene" uid="uid://xm58tgl8rye0" path="res://scenes/test_level.tscn" id="3_26gx4"]
-[ext_resource type="Script" path="res://assets/scripts/player.gd" id="4_qh7no"]
+[ext_resource type="Script" uid="uid://xkik1qkpgt12" path="res://assets/scripts/player.gd" id="4_qh7no"]
 [ext_resource type="Texture2D" uid="uid://cbpfskf2jthji" path="res://assets/sprites/base_player.png" id="4_sb7rn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6ci1u"]
@@ -173,7 +173,7 @@ stretch = true
 
 [node name="SubViewport" type="SubViewport" parent="HBoxContainer/ViewportContainerP1"]
 handle_input_locally = false
-size = Vector2i(268, 960)
+size = Vector2i(2, 2)
 render_target_update_mode = 4
 
 [node name="testLevel2" parent="HBoxContainer/ViewportContainerP1/SubViewport" instance=ExtResource("3_26gx4")]
@@ -185,7 +185,8 @@ collision_layer = 4
 script = ExtResource("4_qh7no")
 walk_speed = 180
 run_speed = 260
-air_accel = 8
+air_speed = 200
+air_accel = 10
 jump_height = 200
 wall_jump_height = 200
 fall_speed = 900
@@ -215,7 +216,8 @@ collision_layer = 2
 script = ExtResource("4_qh7no")
 walk_speed = 160
 run_speed = 240
-air_accel = 7
+air_speed = 200
+air_accel = 15
 jump_height = 240
 wall_jump_height = 240
 fall_speed = 1000
@@ -252,7 +254,7 @@ stretch = true
 
 [node name="SubViewport" type="SubViewport" parent="HBoxContainer/ViewportContainerP2"]
 handle_input_locally = false
-size = Vector2i(268, 960)
+size = Vector2i(2, 2)
 render_target_update_mode = 4
 
 [node name="Camera2D" type="Camera2D" parent="HBoxContainer/ViewportContainerP2/SubViewport" node_paths=PackedStringArray("target")]

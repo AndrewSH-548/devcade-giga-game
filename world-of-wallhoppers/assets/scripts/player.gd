@@ -3,6 +3,7 @@ extends CharacterBody2D
 # Export stats
 @export var walk_speed: int;
 @export var run_speed: int;
+@export var air_speed: int;
 @export var air_accel: int;
 @export var jump_height: int;
 @export var wall_jump_height: int;
@@ -45,13 +46,16 @@ func _physics_process(delta: float) -> void:
 			velocity.x = -direction * wall_jump_height / 1.8;
 			velocity.y = -wall_jump_height;
 		elif !is_on_floor() and not hitstun:
-			velocity.x += direction * air_accel;
+			if abs(velocity.x) < air_speed:
+				velocity.x += direction * air_accel;
+			else:
+				velocity.x = move_toward(velocity.x, direction*air_speed, air_accel);
 		elif Input.is_action_pressed(run_modifier_action) and not hitstun:
 			velocity.x = direction * run_speed;
 		elif not hitstun:
 			velocity.x = direction * walk_speed;
 	else:
-		velocity.x = move_toward(velocity.x, 0, 50)
+		velocity.x = move_toward(velocity.x, 0, 50); # use air_accel? 
 
 	move_and_slide()
 

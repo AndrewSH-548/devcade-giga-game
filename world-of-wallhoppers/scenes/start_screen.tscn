@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://b2wwcwwsq0ao7"]
 
-[ext_resource type="Script" path="res://assets/scripts/StartScreen/start_screen.gd" id="1_kxo13"]
-[ext_resource type="Script" path="res://assets/scripts/gui_manager.gd" id="1_pknda"]
+[ext_resource type="Script" uid="uid://cue05xubnlc2c" path="res://assets/scripts/StartScreen/start_screen.gd" id="1_kxo13"]
+[ext_resource type="Script" uid="uid://cy6wsnfi2dklo" path="res://assets/scripts/gui_manager.gd" id="1_pknda"]
 
 [node name="Node" type="Node"]
 script = ExtResource("1_pknda")
