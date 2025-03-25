@@ -2,7 +2,8 @@ extends Control
 
 @export var levels: Array[SceneDesriptors]
 
-@onready var grid_container: GridContainer = $"CenterContainer/GridContainer"
+@export var grid_container: GridContainer
+var button_grab_focus: Script = preload("button_grab_focus.gd")
 
 var isMultiplayer: bool = false;
 
@@ -11,8 +12,24 @@ signal load_singleplayer_level
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	for level in levels:
+	for i in range(len(levels)):
+		var new_aspect_ratio_conatiner := AspectRatioContainer.new();
+
+		new_aspect_ratio_conatiner.texture_repeat = AspectRatioContainer.TEXTURE_REPEAT_DISABLED;
+		new_aspect_ratio_conatiner.alignment_horizontal = AspectRatioContainer.ALIGNMENT_CENTER;
+		new_aspect_ratio_conatiner.alignment_vertical = AspectRatioContainer.ALIGNMENT_CENTER;
+		new_aspect_ratio_conatiner.size_flags_vertical = AspectRatioContainer.SIZE_EXPAND_FILL;
+		new_aspect_ratio_conatiner.size_flags_horizontal = AspectRatioContainer.SIZE_EXPAND_FILL;
+
+		var level = levels[i]
 		var new_button := TextureButton.new()
+
+		new_button.size_flags_vertical = TextureButton.SIZE_EXPAND_FILL;
+		new_button.size_flags_horizontal = TextureButton.SIZE_EXPAND_FILL;
+		new_button.stretch_mode = TextureButton.STRETCH_KEEP_ASPECT;
+
+		if i == 0:
+			new_button.set_script(button_grab_focus);
 
 		new_button.name = level.name;
 
@@ -29,10 +46,12 @@ func _ready() -> void:
 		darken_image(disabled_texture, 1)
 
 		var edge_color: Color;
-		edge_color.r = 0.8;
-		edge_color.g = 0.8;
-		edge_color.b = 0.8;
+		edge_color.r = 1.0;
+		edge_color.g = 1.0;
+		edge_color.b = 1.0;
 		edge_color.a = 1.0;
+
+		darken_image(focused_texture, 0.3)
 
 		add_edge(focused_texture, edge_color, 1)
 
@@ -44,8 +63,9 @@ func _ready() -> void:
 
 		var function: Callable = load_level.bind(level)
 		new_button.pressed.connect(function)
-			
-		grid_container.add_child(new_button)
+		
+		new_aspect_ratio_conatiner.add_child(new_button);
+		grid_container.add_child(new_aspect_ratio_conatiner)
 
 
 # load the new level with the proper scene type (mutiplayer or not)
@@ -65,9 +85,15 @@ func add_edge(image: Image, color: Color, border_width: int):
 	var height: int = image.get_height()
 
 	for x in range(width):
-		for y in range(height):
-			if x < border_width or y < border_width or x > width - border_width or y == height - border_width:
-				image.set_pixel(x, y, color)
+		for o in range(border_width):
+			image.set_pixel(x, o, color)
+			image.set_pixel(x, height - 1 - o, color)
+
+	for y in range(height):
+		for o in range(border_width):
+			image.set_pixel(o, y, color)
+			image.set_pixel(width - o - 1, y, color)
+
 
 
 # chnages the transparency of an image
