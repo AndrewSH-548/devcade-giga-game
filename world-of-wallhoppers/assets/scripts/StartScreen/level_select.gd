@@ -13,6 +13,7 @@ signal load_singleplayer_level
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	for i in range(len(levels)):
+		# retains it's singular content's aspect ratio when scaling
 		var new_aspect_ratio_conatiner := AspectRatioContainer.new();
 
 		new_aspect_ratio_conatiner.texture_repeat = AspectRatioContainer.TEXTURE_REPEAT_DISABLED;
@@ -24,43 +25,54 @@ func _ready() -> void:
 		var level = levels[i]
 		var new_button := TextureButton.new()
 
+		# make the texture button fill the aspect ratio container 
 		new_button.size_flags_vertical = TextureButton.SIZE_EXPAND_FILL;
 		new_button.size_flags_horizontal = TextureButton.SIZE_EXPAND_FILL;
 		new_button.stretch_mode = TextureButton.STRETCH_KEEP_ASPECT;
 
+		# make the first button of the level buttons be selected/focused by default
 		if i == 0:
 			new_button.set_script(button_grab_focus);
 
 		new_button.name = level.name;
 
+		# .get_image() copys the texture as an Image object 
+		# that is easily modifiable 
 		var normal_texture:   Image = level.texture.get_image()
 		var pressed_texture:  Image = level.texture.get_image()
 		var hover_texture:    Image = level.texture.get_image()
 		var disabled_texture: Image = level.texture.get_image()
 		var focused_texture:  Image = level.texture.get_image()
 
+		# make non focused/hovered buttons darker
+		darken_image(normal_texture, 0.3)
+
+		# make pressed buttons even darker
 		darken_image(pressed_texture, 0.6)
-
-		darken_image(hover_texture, 0.3)
-
+		
+		# make disabled buttons black 
 		darken_image(disabled_texture, 1)
 
+		# edge_color: white 
 		var edge_color: Color;
 		edge_color.r = 1.0;
 		edge_color.g = 1.0;
 		edge_color.b = 1.0;
 		edge_color.a = 1.0;
 
-		darken_image(focused_texture, 0.3)
-
+		# add a white border to foucused buttons
 		add_edge(focused_texture, edge_color, 1)
 
+		# translate the modifyied images back to textures
 		new_button.texture_normal   = ImageTexture.create_from_image(normal_texture)
 		new_button.texture_pressed  = ImageTexture.create_from_image(pressed_texture)
 		new_button.texture_hover    = ImageTexture.create_from_image(hover_texture)
 		new_button.texture_disabled = ImageTexture.create_from_image(disabled_texture)
 		new_button.texture_focused  = ImageTexture.create_from_image(focused_texture)
 
+		# connect the new button to the load_level function defined below
+		# so that this script can handle the logic of a level button being pressed
+		# gui_manager.gd handles switching the scene
 		var function: Callable = load_level.bind(level)
 		new_button.pressed.connect(function)
 		
@@ -79,7 +91,7 @@ func load_level(level: SceneDesriptors) -> void:
 	# this works, but depending on how levels are designed, is might be required that the node2d, in this case named level, would have to be changed instead
 
 
-# adds an edge of color, color, with width, border_width, to an image
+## adds an edge of color {color} with width {border_width} to an image
 func add_edge(image: Image, color: Color, border_width: int):
 	var width: int = image.get_width()
 	var height: int = image.get_height()
@@ -96,7 +108,7 @@ func add_edge(image: Image, color: Color, border_width: int):
 
 
 
-# chnages the transparency of an image
+## chnages the transparency of an image to the given value
 func change_alpha(image: Image, new_alpha: float):
 	if new_alpha < 0:
 		new_alpha = 0
@@ -114,7 +126,7 @@ func change_alpha(image: Image, new_alpha: float):
 				image.set_pixel(x, y, color)
 
 
-# darkens an entire image
+## darkens an entire image by a linear amount
 func darken_image(image: Image, amt: float):
 	if amt < 0:
 		return
@@ -136,7 +148,7 @@ func darken_image(image: Image, amt: float):
 			image.set_pixel(x, y, color)
 
 
-# brightens an entire image
+## brightens an entire image linearly by an amount
 func brighten_image(image: Image, amt: float):
 	if amt < 0:
 		return
