@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://ch4mextx4xjgt"]
+[gd_scene load_steps=6 format=3 uid="uid://ch4mextx4xjgt"]
 
 [ext_resource type="Script" uid="uid://c0egamewutafp" path="res://assets/scripts/splitscreen.gd" id="1_62qbm"]
 [ext_resource type="Script" uid="uid://d3p48lwnrft2t" path="res://assets/scripts/camera.gd" id="2_rnmh1"]
 [ext_resource type="PackedScene" uid="uid://xm58tgl8rye0" path="res://scenes/test_level.tscn" id="3_26gx4"]
 [ext_resource type="PackedScene" uid="uid://dtu1k6tt7cxej" path="res://scenes/player.tscn" id="3_cpmg1"]
+[ext_resource type="PackedScene" uid="uid://dnpilee0jidao" path="res://scenes/pause_menu.tscn" id="5_36d77"]
 
 [node name="Node2D2" type="Node2D"]
 script = ExtResource("1_62qbm")
@@ -25,7 +26,7 @@ stretch = true
 
 [node name="SubViewport" type="SubViewport" parent="HBoxContainer/ViewportContainerP1"]
 handle_input_locally = false
-size = Vector2i(2, 2)
+size = Vector2i(268, 960)
 render_target_update_mode = 4
 
 [node name="testLevel2" parent="HBoxContainer/ViewportContainerP1/SubViewport" instance=ExtResource("3_26gx4")]
@@ -54,10 +55,13 @@ stretch = true
 
 [node name="SubViewport" type="SubViewport" parent="HBoxContainer/ViewportContainerP2"]
 handle_input_locally = false
-size = Vector2i(2, 2)
+size = Vector2i(268, 960)
 render_target_update_mode = 4
 
 [node name="Camera2D" type="Camera2D" parent="HBoxContainer/ViewportContainerP2/SubViewport" node_paths=PackedStringArray("target")]
 offset = Vector2(135, 240)
 script = ExtResource("2_rnmh1")
 target = NodePath("../../../ViewportContainerP1/SubViewport/Player2Body")
+
+[node name="PauseMenu" parent="." instance=ExtResource("5_36d77")]
+visible = false
