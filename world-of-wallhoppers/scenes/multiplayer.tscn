@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://d3p48lwnrft2t" path="res://assets/scripts/camera.gd" id="2_rnmh1"]
 [ext_resource type="PackedScene" uid="uid://xm58tgl8rye0" path="res://scenes/test_level.tscn" id="3_26gx4"]
 [ext_resource type="PackedScene" uid="uid://dtu1k6tt7cxej" path="res://scenes/player.tscn" id="3_cpmg1"]
+[ext_resource type="Script" uid="uid://5j8ae3g7esmp" path="res://assets/scripts/characters/hip.gd" id="4_36d77"]
 [ext_resource type="PackedScene" uid="uid://dnpilee0jidao" path="res://scenes/pause_menu.tscn" id="5_36d77"]
 
 [node name="Node2D2" type="Node2D"]
@@ -34,10 +35,14 @@ position = Vector2(131, 297)
 
 [node name="Player1Body" parent="HBoxContainer/ViewportContainerP1/SubViewport" instance=ExtResource("3_cpmg1")]
 position = Vector2(43, 490)
+script = ExtResource("4_36d77")
+crouch_action = "p1_crouch"
 
 [node name="Player2Body" parent="HBoxContainer/ViewportContainerP1/SubViewport" instance=ExtResource("3_cpmg1")]
 modulate = Color(1, 0.0392157, 1, 1)
 position = Vector2(190, 494)
+script = ExtResource("4_36d77")
+crouch_action = "p2_crouch"
 jump_action = "p2_jump"
 move_left_action = "p2_left"
 move_right_action = "p2_right"

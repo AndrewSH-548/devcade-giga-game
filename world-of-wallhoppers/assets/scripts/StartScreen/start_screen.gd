@@ -6,7 +6,6 @@ var level_select_scene = preload("res://scenes/level_select.tscn")
 @export var singleplayer_button: Button
 @export var quit_button: Button
 @export var settings_button: Button
-
 @export var tutorial_button: Button
 
 signal change_to_level_select;

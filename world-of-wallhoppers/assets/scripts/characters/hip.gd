@@ -1,53 +1,34 @@
-extends CharacterBody2D
+extends "res://assets/scripts/player.gd"
 
-# Export stats
-@export var walk_speed: int;
-@export var run_speed: int;
-@export var air_speed: int;
-@export var air_accel: int;
-@export var jump_height: int;
-@export var wall_jump_height: int;
-@export var fall_speed: int;
-@export var gravity: int;
-@export var weight: int;
+@export var crouch_action: String = " "
 
-@export var jump_action: String = " "
-@export var move_left_action: String = " "
-@export var move_right_action: String = " "
-@export var run_modifier_action: String = " "
-
-var acceleration: float = 0;
-var hitstun: bool = false;
-
-var sprite: AnimatedSprite2D;
-var isFacingRight: bool = true;
-
-# Grabs the main node's "paused" variable (doesn't work for singleplayer) 
-@onready var paused: bool = $"../../../../".paused; 
-
-func _ready() -> void:
-	sprite = get_node("AnimatedSprite2D");
-	sprite.play();
+var isWallClimbing: bool = false;
+var isJumping: bool = false;
 
 func _physics_process(delta: float) -> void:
+	if (velocity.y >= 0): isJumping = false;
+	isWallClimbing = false;
+	
+	if is_on_wall() and not is_on_floor() and Input.is_action_pressed(run_modifier_action) and !isJumping:
+		isWallClimbing = true;
+	
 	# Add the gravity.
-	if not is_on_floor():
+	if not is_on_floor() and not isWallClimbing:
 		velocity.y += gravity * delta;
 		velocity.y = clamp(velocity.y, -jump_height, fall_speed);
 
 	# Handle jump.
-	if Input.is_action_just_pressed(jump_action) and is_on_floor() and not hitstun and not paused:
+	if Input.is_action_just_pressed(jump_action) and is_on_floor() and not isWallClimbing and not hitstun:
 		velocity.y = -jump_height;
-
-	paused = $"../../../../".paused; 
+		isJumping = true;
 
 	# Get the input direction and handle the movement/deceleration.
 	var direction := Input.get_axis(move_left_action, move_right_action)
-	if not paused:	
+	if not paused:
 		flipCheck();
 		animate(direction);
 	# Move, and check whether the player in in hitstun
-	if direction and not paused:
+	if direction:
 		# Push the player away from a wall when they jump off it.
 		if Input.is_action_just_pressed(jump_action) and is_on_wall() and !is_on_floor() and not hitstun:
 			velocity.x = -direction * wall_jump_height / 1.8;
@@ -63,18 +44,21 @@ func _physics_process(delta: float) -> void:
 			velocity.x = direction * walk_speed;
 	else:
 		velocity.x = move_toward(velocity.x, 0, 50); # use air_accel? 
-
+	
+	if isWallClimbing:
+		var climbDirection = Input.get_axis(jump_action, crouch_action);
+		velocity.y = climbDirection * 100;
+	
 	move_and_slide()
 
 func animate(direction: float) -> void:
 	if hitstun:
 		sprite.animation = "hurt";
+	elif is_on_wall() and not is_on_floor():
+		sprite.animation = "wall-climb" if isWallClimbing else "wall-cling";
 	elif velocity.y < 0:
 		sprite.animation = "jump";
-	elif is_on_wall() and not is_on_floor():
-		sprite.animation = "wall-cling";
-		isFacingRight = !isFacingRight;
-	elif not is_on_floor():
+	elif not is_on_wall() and not is_on_floor():
 		sprite.animation = "fall";
 	elif is_on_wall() && direction != 0:
 		sprite.animation = "wall-push";
@@ -83,9 +67,3 @@ func animate(direction: float) -> void:
 	else: sprite.animation = "idle";
 	
 	sprite.flip_h = !isFacingRight;
-
-func flipCheck() -> void:
-	if Input.is_action_just_pressed(move_left_action) and isFacingRight:
-		isFacingRight = false;
-	elif Input.is_action_just_pressed(move_right_action) and not isFacingRight:
-		isFacingRight = true;
