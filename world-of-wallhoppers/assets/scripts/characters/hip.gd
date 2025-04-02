@@ -24,8 +24,9 @@ func _physics_process(delta: float) -> void:
 
 	# Get the input direction and handle the movement/deceleration.
 	var direction := Input.get_axis(move_left_action, move_right_action)
-	flipCheck();
-	animate(direction);
+	if not paused:
+		flipCheck();
+		animate(direction);
 	# Move, and check whether the player in in hitstun
 	if direction:
 		# Push the player away from a wall when they jump off it.
