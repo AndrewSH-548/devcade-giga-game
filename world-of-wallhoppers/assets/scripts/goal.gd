@@ -28,7 +28,7 @@ func end_game(player_number: int) -> void:
 	game_finish.emit(player_number)
 	print("player_number " + str(player_number) + " won");
 	# TODO: add implientation code so that the game ends and reports nessisary data in the future
-
+	get_tree().change_scene_to_file("res://scenes/win_scene.tscn"); 
 
 ## If one of the areas contained in {goal_areas} is entered by another area, [br]
 ## This function is called, with the area that caused the signal to be emited [br]
