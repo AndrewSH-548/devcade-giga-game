@@ -22,6 +22,9 @@ var hitstun: bool = false;
 var sprite: AnimatedSprite2D;
 var isFacingRight: bool = true;
 
+# Grabs the main node's "paused" variable (doesn't work for singleplayer) 
+@onready var paused: bool = $"../../../../".paused; 
+
 func _ready() -> void:
 	sprite = get_node("AnimatedSprite2D");
 	sprite.play();
@@ -33,15 +36,17 @@ func _physics_process(delta: float) -> void:
 		velocity.y = clamp(velocity.y, -jump_height, fall_speed);
 
 	# Handle jump.
-	if Input.is_action_just_pressed(jump_action) and is_on_floor() and not hitstun:
+	if Input.is_action_just_pressed(jump_action) and is_on_floor() and not hitstun and not paused:
 		velocity.y = -jump_height;
+
+	paused = $"../../../../".paused; 
 
 	# Get the input direction and handle the movement/deceleration.
 	var direction := Input.get_axis(move_left_action, move_right_action)
 	flipCheck();
 	animate(direction);
 	# Move, and check whether the player in in hitstun
-	if direction:
+	if direction and not paused:
 		# Push the player away from a wall when they jump off it.
 		if Input.is_action_just_pressed(jump_action) and is_on_wall() and !is_on_floor() and not hitstun:
 			velocity.x = -direction * wall_jump_height / 1.8;
