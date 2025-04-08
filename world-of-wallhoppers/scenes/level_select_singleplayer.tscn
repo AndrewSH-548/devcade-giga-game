@@ -1,0 +1,74 @@
+[gd_scene load_steps=8 format=3 uid="uid://wosbpa0o251c"]
+
+[ext_resource type="Script" uid="uid://cnhwoswmlkt0o" path="res://assets/scripts/StartScreen/level_select.gd" id="1_7h21m"]
+[ext_resource type="Script" uid="uid://cof7xyme2e66e" path="res://assets/scripts/StartScreen/scene_descriptors.gd" id="2_cjwwf"]
+[ext_resource type="PackedScene" uid="uid://xm58tgl8rye0" path="res://scenes/test_level.tscn" id="3_4sdm5"]
+[ext_resource type="Texture2D" uid="uid://dlhw68isl1ja2" path="res://assets/sprites/temporary_texture.png" id="4_rns43"]
+
+[sub_resource type="Resource" id="Resource_1h458"]
+script = ExtResource("2_cjwwf")
+scene = ExtResource("3_4sdm5")
+name = "Level 1"
+texture = ExtResource("4_rns43")
+
+[sub_resource type="Resource" id="Resource_rif6e"]
+script = ExtResource("2_cjwwf")
+scene = ExtResource("3_4sdm5")
+name = "level 2"
+texture = ExtResource("4_rns43")
+metadata/_custom_type_script = "uid://cof7xyme2e66e"
+
+[sub_resource type="Resource" id="Resource_7plkq"]
+script = ExtResource("2_cjwwf")
+scene = ExtResource("3_4sdm5")
+name = "level 3"
+texture = ExtResource("4_rns43")
+metadata/_custom_type_script = "uid://cof7xyme2e66e"
+
+[node name="Control" type="Control" node_paths=PackedStringArray("grid_container")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_7h21m")
+levels = Array[ExtResource("2_cjwwf")]([SubResource("Resource_1h458"), SubResource("Resource_rif6e"), SubResource("Resource_7plkq")])
+grid_container = NodePath("VBoxContainer/MarginContainer/PanelContainer/GridContainer")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 541.0
+offset_bottom = 958.0
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 0
+
+[node name="Back" type="Button" parent="VBoxContainer/MarginContainer2"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "Back"
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer/MarginContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 5
+theme_override_constants/v_separation = 5
+columns = 2
