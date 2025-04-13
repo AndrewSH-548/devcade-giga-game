@@ -1,7 +1,7 @@
 [gd_scene load_steps=22 format=3 uid="uid://dtu1k6tt7cxej"]
 
 [ext_resource type="Script" uid="uid://xkik1qkpgt12" path="res://assets/scripts/player.gd" id="1_1bmew"]
-[ext_resource type="Texture2D" uid="uid://cbpfskf2jthji" path="res://assets/sprites/base_player.png" id="2_u6wt6"]
+[ext_resource type="Texture2D" uid="uid://cbpfskf2jthji" path="res://assets/sprites/hip.png" id="2_u6wt6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6ci1u"]
 size = Vector2(32, 32)
@@ -199,8 +199,7 @@ shape = SubResource("RectangleShape2D_6ci1u")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_eose0")
-animation = &"idle"
-frame_progress = 0.892155
+animation = &"wall-climb"
 
 [node name="Player1Hitbox" type="Area2D" parent="."]
 

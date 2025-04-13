@@ -7,7 +7,6 @@ var level_select_scene_singleplayer_file = preload("res://scenes/level_select_si
 @export var singleplayer_button: Button
 @export var quit_button: Button
 @export var settings_button: Button
-
 @export var tutorial_button: Button
 
 
