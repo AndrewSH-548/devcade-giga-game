@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://ch4mextx4xjgt"]
+[gd_scene load_steps=6 format=3 uid="uid://ch4mextx4xjgt"]
 
 [ext_resource type="Script" uid="uid://c0egamewutafp" path="res://assets/scripts/splitscreen.gd" id="1_62qbm"]
 [ext_resource type="Script" uid="uid://d3p48lwnrft2t" path="res://assets/scripts/camera.gd" id="2_rnmh1"]
