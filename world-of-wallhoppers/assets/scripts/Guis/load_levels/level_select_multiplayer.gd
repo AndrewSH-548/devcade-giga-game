@@ -1,10 +1,8 @@
 extends Control
 
-@export var levels: Array[SceneDesriptors]
-
 @export var grid_container: GridContainer
 
-var isMultiplayer: bool = true;
+@export var multiplayer_scene: PackedScene
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -14,7 +12,11 @@ func _ready() -> void:
 
 # load the new level within the mutliplayer scene
 func load_level(level: SceneDesriptors) -> void:
-	print("loading level: " + level.name)
+	var level_root_node = level.scene.instantiate() as Node2D
+	level_root_node.position = Vector2(132.0, 297.0)
+
+	var mutliplayer_scene_instance = multiplayer_scene.instantiate()
+	var sub_veiwport = mutliplayer_scene_instance.get_child(0).get_child(0).get_child(0)
+	sub_veiwport.add_child(level_root_node)
 	
-	var level_root_node = level.scene.instantiate()
-	SceneSwitcher.switch_scene(level_root_node)
+	SceneSwitcher.switch_scene(mutliplayer_scene_instance)

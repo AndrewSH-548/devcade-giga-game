@@ -1,30 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://wosbpa0o251c"]
+[gd_scene load_steps=4 format=3 uid="uid://wosbpa0o251c"]
 
 [ext_resource type="Script" uid="uid://byebxy1oo1xbc" path="res://assets/scripts/Guis/load_levels/level_select_singleplayer.gd" id="1_cjwwf"]
-[ext_resource type="Script" uid="uid://cof7xyme2e66e" path="res://assets/scripts/Guis/scene_descriptors.gd" id="2_cjwwf"]
-[ext_resource type="PackedScene" uid="uid://xm58tgl8rye0" path="res://scenes/test_level.tscn" id="3_4sdm5"]
-[ext_resource type="Texture2D" uid="uid://dlhw68isl1ja2" path="res://assets/sprites/temporary_texture.png" id="4_rns43"]
+[ext_resource type="PackedScene" uid="uid://c3bkjibfhfofl" path="res://scenes/singleplayer.tscn" id="2_38ju1"]
 [ext_resource type="Script" uid="uid://lbffc4qynn1d" path="res://assets/scripts/back_button.gd" id="5_cjwwf"]
-
-[sub_resource type="Resource" id="Resource_1h458"]
-script = ExtResource("2_cjwwf")
-scene = ExtResource("3_4sdm5")
-name = "Level 1"
-texture = ExtResource("4_rns43")
-
-[sub_resource type="Resource" id="Resource_rif6e"]
-script = ExtResource("2_cjwwf")
-scene = ExtResource("3_4sdm5")
-name = "level 2"
-texture = ExtResource("4_rns43")
-metadata/_custom_type_script = "uid://cof7xyme2e66e"
-
-[sub_resource type="Resource" id="Resource_7plkq"]
-script = ExtResource("2_cjwwf")
-scene = ExtResource("3_4sdm5")
-name = "level 3"
-texture = ExtResource("4_rns43")
-metadata/_custom_type_script = "uid://cof7xyme2e66e"
 
 [node name="Control" type="Control" node_paths=PackedStringArray("grid_container")]
 layout_mode = 3
@@ -36,8 +14,8 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_cjwwf")
-levels = Array[ExtResource("2_cjwwf")]([SubResource("Resource_1h458"), SubResource("Resource_rif6e"), SubResource("Resource_7plkq")])
 grid_container = NodePath("VBoxContainer/MarginContainer/PanelContainer/GridContainer")
+singleplayer_scene = ExtResource("2_38ju1")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 0
