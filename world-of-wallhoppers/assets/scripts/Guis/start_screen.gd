@@ -1,6 +1,6 @@
 extends Control
 
-var level_select_scene_multiplayer_file = preload("res://scenes/level_select.tscn") 
+var level_select_scene_multiplayer_file = preload("res://scenes/level_select_multiplayer.tscn") 
 var level_select_scene_singleplayer_file = preload("res://scenes/level_select_singleplayer.tscn") 
 
 @export var mutiplayer_button: Button
