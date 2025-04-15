@@ -1,7 +1,6 @@
-[gd_scene load_steps=25 format=3 uid="uid://c42ynqlk3h4wp"]
+[gd_scene load_steps=24 format=3 uid="uid://c42ynqlk3h4wp"]
 
 [ext_resource type="Script" uid="uid://xkik1qkpgt12" path="res://assets/scripts/player.gd" id="1_hw104"]
-[ext_resource type="Texture2D" uid="uid://cbpfskf2jthji" path="res://assets/sprites/hip.png" id="2_hw104"]
 [ext_resource type="Texture2D" uid="uid://qeyg6x6t1ru4" path="res://assets/sprites/reign.png" id="2_iacc1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6ci1u"]
@@ -11,13 +10,13 @@ size = Vector2(40, 46)
 atlas = ExtResource("2_iacc1")
 region = Rect2(120, 48, 40, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_15p7o"]
-atlas = ExtResource("2_hw104")
-region = Rect2(128, 64, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_jrwk1"]
+atlas = ExtResource("2_iacc1")
+region = Rect2(160, 0, 40, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_3sihq"]
-atlas = ExtResource("2_hw104")
-region = Rect2(96, 64, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_hw104"]
+atlas = ExtResource("2_iacc1")
+region = Rect2(160, 48, 40, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3djwt"]
 atlas = ExtResource("2_iacc1")
@@ -95,10 +94,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_15p7o")
+"texture": SubResource("AtlasTexture_jrwk1")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_3sihq")
+"texture": SubResource("AtlasTexture_hw104")
 }],
 "loop": true,
 "name": &"hurt",
@@ -238,7 +237,7 @@ shape = SubResource("RectangleShape2D_6ci1u")
 texture_filter = 1
 position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_eose0")
-animation = &"idle"
+animation = &"jump"
 
 [node name="Player1Hitbox" type="Area2D" parent="."]
 
