@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://assets/scripts/singleplayer.gd" id="1_l25rm"]
 [ext_resource type="Script" uid="uid://d3p48lwnrft2t" path="res://assets/scripts/camera.gd" id="2_cbso6"]
-[ext_resource type="PackedScene" uid="uid://dtu1k6tt7cxej" path="res://scenes/player.tscn" id="3_bfebm"]
+[ext_resource type="PackedScene" uid="uid://dtu1k6tt7cxej" path="res://scenes/characters/hip.tscn" id="3_bfebm"]
 [ext_resource type="PackedScene" uid="uid://dnpilee0jidao" path="res://scenes/pause_menu.tscn" id="4_ni31h"]
 
 [node name="Node2D" type="Node2D"]

@@ -2059,20 +2059,6 @@ goals = [NodePath("../Goal1")]
 [node name="Static-squares" type="Node2D" parent="."]
 script = ExtResource("3_wbyeu")
 
-[node name="Static-square1" type="Node2D" parent="Static-squares"]
-position = Vector2(22, -12)
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Static-squares/Static-square1"]
-sprite_frames = SubResource("SpriteFrames_qw3l4")
-animation = &"spikeup"
-
-[node name="Area2D" type="Area2D" parent="Static-squares/Static-square1"]
-collision_mask = 6
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Static-squares/Static-square1/Area2D"]
-position = Vector2(0.25, 0)
-shape = SubResource("RectangleShape2D_16rsp")
-
 [node name="Static-square2" type="Node2D" parent="Static-squares"]
 position = Vector2(-63, 104)
 
@@ -2087,5 +2073,4 @@ collision_mask = 6
 position = Vector2(0.25, 0)
 shape = SubResource("RectangleShape2D_16rsp")
 
-[connection signal="body_entered" from="Static-squares/Static-square1/Area2D" to="Static-squares" method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="Static-squares/Static-square2/Area2D" to="Static-squares" method="_on_area_2d_body_entered"]
