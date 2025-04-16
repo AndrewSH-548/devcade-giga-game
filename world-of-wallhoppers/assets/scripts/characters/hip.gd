@@ -6,6 +6,9 @@ var isWallClimbing: bool = false;
 var isJumping: bool = false;
 
 func _physics_process(delta: float) -> void:
+	if $"../../../../".paused: # Doesn't work for singleplayer
+		return;
+	
 	if (velocity.y >= 0): isJumping = false;
 	isWallClimbing = false;
 	
@@ -24,9 +27,8 @@ func _physics_process(delta: float) -> void:
 
 	# Get the input direction and handle the movement/deceleration.
 	var direction := Input.get_axis(move_left_action, move_right_action)
-	if not paused:
-		flipCheck();
-		animate(direction);
+	flipCheck();
+	animate(direction);
 	# Move, and check whether the player in in hitstun
 	if direction:
 		# Push the player away from a wall when they jump off it.

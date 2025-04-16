@@ -1,0 +1,54 @@
+[gd_scene load_steps=4 format=3 uid="uid://wosbpa0o251c"]
+
+[ext_resource type="Script" uid="uid://byebxy1oo1xbc" path="res://assets/scripts/Guis/load_levels/level_select_singleplayer.gd" id="1_cjwwf"]
+[ext_resource type="PackedScene" uid="uid://c3bkjibfhfofl" path="res://scenes/singleplayer.tscn" id="2_38ju1"]
+[ext_resource type="Script" uid="uid://lbffc4qynn1d" path="res://assets/scripts/back_button.gd" id="5_cjwwf"]
+
+[node name="Control" type="Control" node_paths=PackedStringArray("grid_container")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_cjwwf")
+grid_container = NodePath("VBoxContainer/MarginContainer/PanelContainer/GridContainer")
+singleplayer_scene = ExtResource("2_38ju1")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 541.0
+offset_bottom = 958.0
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 0
+
+[node name="Back" type="Button" parent="VBoxContainer/MarginContainer2"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "Back"
+script = ExtResource("5_cjwwf")
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer/MarginContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 5
+theme_override_constants/v_separation = 5
+columns = 2
