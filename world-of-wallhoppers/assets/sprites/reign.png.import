@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bixals20gxij8"
-path="res://.godot/imported/jungle.png-125d76bbfc2ea460562a984452c16a1b.ctex"
+uid="uid://qeyg6x6t1ru4"
+path="res://.godot/imported/reign.png-0717d55d43e216897c5fad72df320b60.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tilesets/jungle.png"
-dest_files=["res://.godot/imported/jungle.png-125d76bbfc2ea460562a984452c16a1b.ctex"]
+source_file="res://assets/sprites/reign.png"
+dest_files=["res://.godot/imported/reign.png-0717d55d43e216897c5fad72df320b60.ctex"]
 
 [params]
 

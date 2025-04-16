@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bixals20gxij8"
-path="res://.godot/imported/jungle.png-125d76bbfc2ea460562a984452c16a1b.ctex"
+uid="uid://138opm7rd4bg"
+path="res://.godot/imported/test_level_1_gui_texture.png-7f52ec5e4567da95202be66e9fe9f10f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tilesets/jungle.png"
-dest_files=["res://.godot/imported/jungle.png-125d76bbfc2ea460562a984452c16a1b.ctex"]
+source_file="res://levels/level1/test_level_1_gui_texture.png"
+dest_files=["res://.godot/imported/test_level_1_gui_texture.png-7f52ec5e4567da95202be66e9fe9f10f.ctex"]
 
 [params]
 

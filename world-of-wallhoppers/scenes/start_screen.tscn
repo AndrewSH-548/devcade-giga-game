@@ -1,12 +1,9 @@
 [gd_scene load_steps=3 format=3 uid="uid://b2wwcwwsq0ao7"]
 
-[ext_resource type="Script" uid="uid://cue05xubnlc2c" path="res://assets/scripts/StartScreen/start_screen.gd" id="1_kxo13"]
-[ext_resource type="Script" uid="uid://cy6wsnfi2dklo" path="res://assets/scripts/gui_manager.gd" id="1_pknda"]
+[ext_resource type="Script" uid="uid://cue05xubnlc2c" path="res://assets/scripts/Guis/start_screen.gd" id="1_kxo13"]
+[ext_resource type="Script" uid="uid://cpsa7dev5vw2p" path="res://assets/scripts/Guis/button_grab_focus.gd" id="3_he1sj"]
 
-[node name="Node" type="Node"]
-script = ExtResource("1_pknda")
-
-[node name="Control" type="Control" parent="." node_paths=PackedStringArray("mutiplayer_button", "singleplayer_button", "quit_button", "settings_button", "tutorial_button")]
+[node name="Control" type="Control" node_paths=PackedStringArray("mutiplayer_button", "singleplayer_button", "quit_button", "settings_button", "tutorial_button")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -15,43 +12,53 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1, 0.998773)
 script = ExtResource("1_kxo13")
-mutiplayer_button = NodePath("CenterContainer/VBoxContainer/Mutiplayer")
-singleplayer_button = NodePath("CenterContainer/VBoxContainer/SinglePlayer")
-quit_button = NodePath("CenterContainer/VBoxContainer/QuitButton")
-settings_button = NodePath("CenterContainer/VBoxContainer/SettingsButton")
-tutorial_button = NodePath("CenterContainer/VBoxContainer/TutorialButton")
+mutiplayer_button = NodePath("CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Mutiplayer")
+singleplayer_button = NodePath("CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SinglePlayer")
+quit_button = NodePath("CenterContainer/PanelContainer/MarginContainer/VBoxContainer/QuitButton")
+settings_button = NodePath("CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SettingsButton")
+tutorial_button = NodePath("CenterContainer/PanelContainer/MarginContainer/VBoxContainer/TutorialButton")
 
-[node name="CenterContainer" type="CenterContainer" parent="Control"]
+[node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1
-anchors_preset = 13
-anchor_left = 0.5
-anchor_right = 0.5
+anchors_preset = 15
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -49.5
-offset_right = 49.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/CenterContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer"]
 layout_mode = 2
 
-[node name="Mutiplayer" type="Button" parent="Control/CenterContainer/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/PanelContainer"]
 layout_mode = 2
-text = "Mutiplayer
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 9
+
+[node name="Mutiplayer" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Multiplayer
 "
+script = ExtResource("3_he1sj")
 
-[node name="SinglePlayer" type="Button" parent="Control/CenterContainer/VBoxContainer"]
+[node name="SinglePlayer" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Single Player"
 
-[node name="SettingsButton" type="Button" parent="Control/CenterContainer/VBoxContainer"]
+[node name="SettingsButton" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
 text = "Settings (not implmented)"
 
-[node name="TutorialButton" type="Button" parent="Control/CenterContainer/VBoxContainer"]
+[node name="TutorialButton" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Tutorial (not implmented)"
 
-[node name="QuitButton" type="Button" parent="Control/CenterContainer/VBoxContainer"]
+[node name="QuitButton" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Quit"
