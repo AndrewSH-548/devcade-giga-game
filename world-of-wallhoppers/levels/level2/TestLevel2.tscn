@@ -1,13 +1,13 @@
 [gd_scene load_steps=14 format=4 uid="uid://ne30x5qgi5u"]
 
-[ext_resource type="Texture2D" uid="uid://bk3r31w4o6x8m" path="res://assets/tilesets/jungle.png" id="1_s88d3"]
-[ext_resource type="Script" uid="uid://brm4mbapwva4" path="res://assets/scripts/goal.gd" id="2_leifp"]
-[ext_resource type="Script" uid="uid://cphusaq70x4jg" path="res://assets/scripts/obstacles.gd" id="3_2mfes"]
-[ext_resource type="Texture2D" uid="uid://3ekv2i16hkw0" path="res://assets/sprites/16-bit-spike-Sheet.png" id="4_s88d3"]
+[ext_resource type="Texture2D" uid="uid://bixals20gxij8" path="res://assets/tilesets/jungle.png" id="1_vujue"]
+[ext_resource type="Script" uid="uid://brm4mbapwva4" path="res://assets/scripts/goal.gd" id="2_bxl2m"]
+[ext_resource type="Script" uid="uid://cphusaq70x4jg" path="res://assets/scripts/obstacles.gd" id="3_xjx7g"]
+[ext_resource type="Texture2D" uid="uid://3ekv2i16hkw0" path="res://assets/sprites/16-bit-spike-Sheet.png" id="4_cfdby"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_leifp"]
 resource_name = "Jungle"
-texture = ExtResource("1_s88d3")
+texture = ExtResource("1_vujue")
 0:0/0 = 0
 0:0/0/terrain_set = 0
 0:0/0/terrain = 0
@@ -400,19 +400,19 @@ sources/0 = SubResource("TileSetAtlasSource_leifp")
 size = Vector2(60.5, 873.5)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qcw7f"]
-atlas = ExtResource("4_s88d3")
+atlas = ExtResource("4_cfdby")
 region = Rect2(32, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dnlqm"]
-atlas = ExtResource("4_s88d3")
+atlas = ExtResource("4_cfdby")
 region = Rect2(48, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ya0ya"]
-atlas = ExtResource("4_s88d3")
+atlas = ExtResource("4_cfdby")
 region = Rect2(16, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gdeqv"]
-atlas = ExtResource("4_s88d3")
+atlas = ExtResource("4_cfdby")
 region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_s88d3"]
@@ -471,11 +471,11 @@ position = Vector2(-64, -595)
 shape = SubResource("RectangleShape2D_5xfay")
 
 [node name="GoalManager" type="Node" parent="." node_paths=PackedStringArray("goals")]
-script = ExtResource("2_leifp")
+script = ExtResource("2_bxl2m")
 goals = [NodePath("../Goal1")]
 
 [node name="Static-squares" type="Node2D" parent="."]
-script = ExtResource("3_2mfes")
+script = ExtResource("3_xjx7g")
 
 [node name="Static-square1" type="Node2D" parent="Static-squares"]
 position = Vector2(-35, -164)
