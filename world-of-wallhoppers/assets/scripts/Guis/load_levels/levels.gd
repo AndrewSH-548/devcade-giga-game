@@ -46,21 +46,13 @@ static func create_buttons(parent_container: Control, levels: Array[SceneDesript
 	for i in range(len(levels)):
 		var level : SceneDesriptors = levels[i]
 
-		# retains it's singular content's aspect ratio when scaling
-		var new_aspect_ratio_conatiner := AspectRatioContainer.new()
-
-		new_aspect_ratio_conatiner.texture_repeat = AspectRatioContainer.TEXTURE_REPEAT_DISABLED
-		new_aspect_ratio_conatiner.alignment_horizontal = AspectRatioContainer.ALIGNMENT_CENTER
-		new_aspect_ratio_conatiner.alignment_vertical = AspectRatioContainer.ALIGNMENT_CENTER
-		new_aspect_ratio_conatiner.size_flags_vertical = AspectRatioContainer.SIZE_EXPAND_FILL
-		new_aspect_ratio_conatiner.size_flags_horizontal = AspectRatioContainer.SIZE_EXPAND_FILL
-
 		var new_button := TextureButton.new()
 
 		# make the texture button fill the aspect ratio container 
 		new_button.size_flags_vertical = TextureButton.SIZE_EXPAND_FILL
 		new_button.size_flags_horizontal = TextureButton.SIZE_EXPAND_FILL
 		new_button.stretch_mode = TextureButton.STRETCH_KEEP_ASPECT
+		new_button.ignore_texture_size = true
 		# make the first button of the level buttons be selected/focused by default
 		if i == 0:
 			new_button.call_deferred("grab_focus")
@@ -99,8 +91,7 @@ static func create_buttons(parent_container: Control, levels: Array[SceneDesript
 		var function: Callable = button_function.bind(level)
 		new_button.pressed.connect(function)
 
-		new_aspect_ratio_conatiner.add_child(new_button)
-		parent_container.add_child(new_aspect_ratio_conatiner)
+		parent_container.add_child(new_button)
 
 
 ## adds an edge of color {color} with width {border_width} to an image
