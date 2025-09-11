@@ -12,4 +12,4 @@ offset_top = 953.0
 offset_right = 1475.0
 offset_bottom = 993.0
 rotation = -0.785398
-color = Color(1, 0.720167, 0.27, 0.372549)
+color = Color(1, 1, 1, 0.372549)
