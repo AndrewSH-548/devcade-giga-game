@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://bpos0rprc0elm"]
+
+[ext_resource type="Script" uid="uid://dkmbos3kyl0t6" path="res://assets/scripts/goalpost.gd" id="1_bhbof"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ksp5y"]
+size = Vector2(73, 873)
+
+[node name="Goalpost" type="Node2D"]
+script = ExtResource("1_bhbof")
+
+[node name="Goal1" type="Area2D" parent="."]
+collision_layer = 4294967295
+collision_mask = 7
+input_pickable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Goal1"]
+position = Vector2(0, -391)
+shape = SubResource("RectangleShape2D_ksp5y")
+
+[connection signal="body_entered" from="Goal1" to="." method="_on_goal_1_body_entered"]
