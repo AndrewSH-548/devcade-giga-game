@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://evscp1c4qyq"
-path="res://.godot/imported/jungle_leafs.png-9949e33ab82d15e6a4d5dd674fbbb111.ctex"
+uid="uid://dgkqxhds83xeo"
+path="res://.godot/imported/particle_jungle_leaf.png-48ea52ae50895e7c848d535d0787f142.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/backgrounds/jungle_leafs.png"
-dest_files=["res://.godot/imported/jungle_leafs.png-9949e33ab82d15e6a4d5dd674fbbb111.ctex"]
+source_file="res://assets/terrain/particle_jungle_leaf.png"
+dest_files=["res://.godot/imported/particle_jungle_leaf.png-48ea52ae50895e7c848d535d0787f142.ctex"]
 
 [params]
 

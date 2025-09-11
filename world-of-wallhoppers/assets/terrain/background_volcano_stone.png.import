@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dm2x01eg7v226"
-path="res://.godot/imported/jungle_background_trees_1.png-92132d491b47b1262945b606fe1d94e0.ctex"
+uid="uid://binr7f5lmii6q"
+path="res://.godot/imported/background_volcano_stone.png-b6f97af381ed755d4d336e85c546d9ec.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/backgrounds/jungle_background_trees_1.png"
-dest_files=["res://.godot/imported/jungle_background_trees_1.png-92132d491b47b1262945b606fe1d94e0.ctex"]
+source_file="res://assets/terrain/background_volcano_stone.png"
+dest_files=["res://.godot/imported/background_volcano_stone.png-b6f97af381ed755d4d336e85c546d9ec.ctex"]
 
 [params]
 

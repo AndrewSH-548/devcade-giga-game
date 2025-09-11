@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bnh82e2uan82h"
-path="res://.godot/imported/jungle_trees.png-dc10639e8421418d5be449bc20cdc1a3.ctex"
+uid="uid://bixals20gxij8"
+path="res://.godot/imported/jungle.png-f3f458de555dca8da8b1550a25122cba.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/backgrounds/jungle_trees.png"
-dest_files=["res://.godot/imported/jungle_trees.png-dc10639e8421418d5be449bc20cdc1a3.ctex"]
+source_file="res://assets/terrain/jungle.png"
+dest_files=["res://.godot/imported/jungle.png-f3f458de555dca8da8b1550a25122cba.ctex"]
 
 [params]
 

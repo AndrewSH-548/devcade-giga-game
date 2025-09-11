@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b8hobr3el6xj2"
-path="res://.godot/imported/jungle_plats.png-4bf8aa1838287f15b173fdf957f03d01.ctex"
+uid="uid://cthep0kultb3j"
+path="res://.godot/imported/background_volcano_smoke.png-94e3b9d0838f18bb557cad5e105523ba.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/backgrounds/jungle_plats.png"
-dest_files=["res://.godot/imported/jungle_plats.png-4bf8aa1838287f15b173fdf957f03d01.ctex"]
+source_file="res://assets/terrain/background_volcano_smoke.png"
+dest_files=["res://.godot/imported/background_volcano_smoke.png-94e3b9d0838f18bb557cad5e105523ba.ctex"]
 
 [params]
 
