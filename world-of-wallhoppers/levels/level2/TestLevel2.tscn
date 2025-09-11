@@ -1,17 +1,15 @@
-[gd_scene load_steps=27 format=4 uid="uid://ne30x5qgi5u"]
+[gd_scene load_steps=25 format=4 uid="uid://ne30x5qgi5u"]
 
 [ext_resource type="Texture2D" uid="uid://bixals20gxij8" path="res://assets/tilesets/jungle.png" id="1_vujue"]
 [ext_resource type="Script" uid="uid://brm4mbapwva4" path="res://assets/scripts/goal.gd" id="2_bxl2m"]
 [ext_resource type="Script" uid="uid://cphusaq70x4jg" path="res://assets/scripts/obstacles.gd" id="3_xjx7g"]
 [ext_resource type="Texture2D" uid="uid://3ekv2i16hkw0" path="res://assets/sprites/16-bit-spike-Sheet.png" id="4_cfdby"]
 [ext_resource type="Script" uid="uid://iembhyk5nlq" path="res://assets/scripts/visuals/backgrounds.gd" id="5_bxl2m"]
-[ext_resource type="Texture2D" uid="uid://dby4weev0edpr" path="res://assets/backgrounds/jungle_background_vegitation.png" id="6_bud5c"]
+[ext_resource type="Texture2D" uid="uid://cnfoa1y2m0f56" path="res://assets/backgrounds/jungle_vegitation.png" id="6_ohne2"]
 [ext_resource type="PackedScene" uid="uid://di3x7knkxawd3" path="res://scenes/visuals/light_beam.tscn" id="6_xjx7g"]
 [ext_resource type="Shader" uid="uid://vih4h60r5tp7" path="res://assets/shaders/wobble_warp.gdshader" id="8_05rs6"]
-[ext_resource type="Texture2D" uid="uid://bdojsut2xn75d" path="res://assets/backgrounds/jungle_background_trees.png" id="9_cccco"]
+[ext_resource type="Texture2D" uid="uid://bnh82e2uan82h" path="res://assets/backgrounds/jungle_trees.png" id="9_jtkmd"]
 [ext_resource type="Texture2D" uid="uid://dgkqxhds83xeo" path="res://assets/backgrounds/jungle_leaf.png" id="10_ohne2"]
-[ext_resource type="Texture2D" uid="uid://b8hobr3el6xj2" path="res://assets/backgrounds/jungle_plats.png" id="12_cccco"]
-[ext_resource type="Texture2D" uid="uid://evscp1c4qyq" path="res://assets/backgrounds/jungle_leafs.png" id="13_s0sqw"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_leifp"]
 resource_name = "Jungle"
@@ -601,7 +599,6 @@ rotation = 1.5708
 shape = SubResource("RectangleShape2D_leifp")
 
 [node name="Backgrounds" type="Node2D" parent="."]
-visible = false
 z_index = -1
 script = ExtResource("5_bxl2m")
 
@@ -618,7 +615,7 @@ offset_right = 1515.0
 offset_bottom = 528.0
 rotation = 0.307417
 scale = Vector2(0.670548, 0.670548)
-color = Color(0, 0, 0, 1)
+color = Color(0.612533, 0.712517, 0.157995, 1)
 
 [node name="Vegetation3" type="Parallax2D" parent="Backgrounds"]
 modulate = Color(0.135513, 0.173261, 4.81308e-08, 1)
@@ -634,7 +631,7 @@ offset_right = 1515.0
 offset_bottom = 528.0
 rotation = 0.307417
 scale = Vector2(0.670548, 0.670548)
-texture = ExtResource("6_bud5c")
+texture = ExtResource("6_ohne2")
 stretch_mode = 1
 
 [node name="Beams" type="Parallax2D" parent="Backgrounds"]
@@ -689,7 +686,7 @@ offset_right = 1042.0
 offset_bottom = 1141.0
 rotation = -0.629806
 scale = Vector2(0.993973, 0.993973)
-texture = ExtResource("6_bud5c")
+texture = ExtResource("6_ohne2")
 stretch_mode = 1
 
 [node name="Trees2" type="Parallax2D" parent="Backgrounds"]
@@ -702,7 +699,7 @@ repeat_times = 10
 [node name="Sprite2D" type="Sprite2D" parent="Backgrounds/Trees2"]
 use_parent_material = true
 position = Vector2(0, -283)
-texture = ExtResource("9_cccco")
+texture = ExtResource("9_jtkmd")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="Backgrounds/Trees2"]
 modulate = Color(0.169035, 0.250367, 0.0975577, 1)
@@ -716,193 +713,59 @@ fixed_fps = 6
 process_material = SubResource("ParticleProcessMaterial_cccco")
 
 [node name="Vegetation1" type="Parallax2D" parent="Backgrounds"]
-modulate = Color(0.195261, 0.239562, 0.0996253, 1)
+modulate = Color(0.147218, 0.183097, 0.0696766, 1)
 scroll_scale = Vector2(0.8, 0.8)
 repeat_size = Vector2(0, 960)
 repeat_times = 10
 
 [node name="Sprite2D" type="Sprite2D" parent="Backgrounds/Vegetation1"]
 modulate = Color(0.74978, 0.74978, 0.74978, 1)
-texture = ExtResource("6_bud5c")
+texture = ExtResource("6_ohne2")
+
+[node name="Filter" type="Parallax2D" parent="Backgrounds"]
+modulate = Color(0.154505, 0.140022, 0.0505801, 1)
+scroll_scale = Vector2(0.4, 0.4)
+
+[node name="Sprite2D2" type="ColorRect" parent="Backgrounds/Filter"]
+offset_left = -361.0
+offset_top = -1831.0
+offset_right = 435.0
+offset_bottom = 643.0
+color = Color(0.20625, 0.075, 0.3, 0.160784)
 
 [node name="Trees" type="Parallax2D" parent="Backgrounds"]
-modulate = Color(0.74804, 0.851124, 0.549867, 1)
+modulate = Color(0.395233, 0.47309, 0.229046, 1)
 material = SubResource("ShaderMaterial_jtkmd")
 repeat_size = Vector2(0, 960)
 repeat_times = 10
 
 [node name="Sprite2D" type="Sprite2D" parent="Backgrounds/Trees"]
 use_parent_material = true
-texture = ExtResource("9_cccco")
+texture = ExtResource("9_jtkmd")
 
 [node name="BeamsForeground" type="Parallax2D" parent="Backgrounds"]
-modulate = Color(0.476004, 0.629816, 0.207967, 0.290196)
+modulate = Color(0.47523, 0.63, 0.2079, 0.0509804)
 z_index = 1
-scroll_scale = Vector2(1.2, 1.2)
+scale = Vector2(6.21145, 4.15417)
+scroll_offset = Vector2(-94, -157)
 repeat_size = Vector2(0, 3000)
 repeat_times = 20
 
 [node name="Beam" parent="Backgrounds/BeamsForeground" instance=ExtResource("6_xjx7g")]
 position = Vector2(281, -212)
+wobble_speed = 0.2
 
 [node name="Beam2" parent="Backgrounds/BeamsForeground" instance=ExtResource("6_xjx7g")]
 position = Vector2(0, -688)
+wobble_speed = 0.2
 
 [node name="Beam3" parent="Backgrounds/BeamsForeground" instance=ExtResource("6_xjx7g")]
 position = Vector2(0, 284)
+wobble_speed = 0.2
 
 [node name="Beam4" parent="Backgrounds/BeamsForeground" instance=ExtResource("6_xjx7g")]
 position = Vector2(0, -1914)
-
-[node name="Backgrounds2" type="Node2D" parent="."]
-z_index = -1
-script = ExtResource("5_bxl2m")
-
-[node name="Back" type="Parallax2D" parent="Backgrounds2"]
-modulate = Color(0.154505, 0.140022, 0.0505801, 1)
-scroll_scale = Vector2(0.4, 0.4)
-repeat_size = Vector2(0, 671.825)
-repeat_times = 10
-
-[node name="Sprite2D2" type="ColorRect" parent="Backgrounds2/Back"]
-offset_left = -525.0
-offset_top = -432.0
-offset_right = 1515.0
-offset_bottom = 528.0
-rotation = 0.307417
-scale = Vector2(0.670548, 0.670548)
-color = Color(0, 0, 0, 1)
-
-[node name="Vegetation3" type="Parallax2D" parent="Backgrounds2"]
-modulate = Color(0.288134, 0.431195, 0.140982, 1)
-scroll_scale = Vector2(0.4, 0.4)
-repeat_size = Vector2(0, 671.825)
-repeat_times = 10
-
-[node name="Sprite2D2" type="TextureRect" parent="Backgrounds2/Vegetation3"]
-offset_left = -525.0
-offset_top = -432.0
-offset_right = 1515.0
-offset_bottom = 528.0
-rotation = 0.307417
-scale = Vector2(0.670548, 0.670548)
-texture = ExtResource("12_cccco")
-stretch_mode = 1
-
-[node name="Beams" type="Parallax2D" parent="Backgrounds2"]
-modulate = Color(0.313101, 0.468988, 0.133339, 1)
-scroll_scale = Vector2(0.5, 0.5)
-repeat_size = Vector2(0, 3000)
-repeat_times = 10
-
-[node name="BeamGroup" type="Node2D" parent="Backgrounds2/Beams"]
-position = Vector2(92, 0)
-scale = Vector2(0.506846, 0.506846)
-
-[node name="Beam" parent="Backgrounds2/Beams/BeamGroup" instance=ExtResource("6_xjx7g")]
-position = Vector2(281, -212)
-
-[node name="Beam2" parent="Backgrounds2/Beams/BeamGroup" instance=ExtResource("6_xjx7g")]
-position = Vector2(0, -688)
-
-[node name="Beam3" parent="Backgrounds2/Beams/BeamGroup" instance=ExtResource("6_xjx7g")]
-position = Vector2(0, 284)
-
-[node name="Beam4" parent="Backgrounds2/Beams/BeamGroup" instance=ExtResource("6_xjx7g")]
-position = Vector2(0, -1914)
-
-[node name="BeamGroup2" type="Node2D" parent="Backgrounds2/Beams"]
-position = Vector2(92, -337)
-scale = Vector2(0.506846, 0.506846)
-
-[node name="Beam" parent="Backgrounds2/Beams/BeamGroup2" instance=ExtResource("6_xjx7g")]
-position = Vector2(281, -212)
-
-[node name="Beam2" parent="Backgrounds2/Beams/BeamGroup2" instance=ExtResource("6_xjx7g")]
-position = Vector2(0, -688)
-
-[node name="Beam3" parent="Backgrounds2/Beams/BeamGroup2" instance=ExtResource("6_xjx7g")]
-position = Vector2(0, 284)
-
-[node name="Beam4" parent="Backgrounds2/Beams/BeamGroup2" instance=ExtResource("6_xjx7g")]
-position = Vector2(0, -1914)
-
-[node name="Vegetation2" type="Parallax2D" parent="Backgrounds2"]
-modulate = Color(0.345016, 0.575515, 0.309005, 1)
-scroll_scale = Vector2(0.7, 0.7)
-repeat_size = Vector2(0, 988.58)
-repeat_times = 10
-
-[node name="Sprite2D" type="TextureRect" parent="Backgrounds2/Vegetation2"]
-offset_left = -998.0
-offset_top = 181.0
-offset_right = 1042.0
-offset_bottom = 1141.0
-rotation = -0.629806
-scale = Vector2(0.993973, 0.993973)
-texture = ExtResource("12_cccco")
-stretch_mode = 1
-
-[node name="Trees2" type="Parallax2D" parent="Backgrounds2"]
-modulate = Color(0.536402, 0.521473, 0.18382, 1)
-material = SubResource("ShaderMaterial_ohne2")
-scroll_scale = Vector2(0.75, 0.75)
-repeat_size = Vector2(0, 960)
-repeat_times = 10
-
-[node name="Sprite2D" type="Sprite2D" parent="Backgrounds2/Trees2"]
-use_parent_material = true
-position = Vector2(0, -283)
-texture = ExtResource("13_s0sqw")
-
-[node name="GPUParticles2D" type="GPUParticles2D" parent="Backgrounds2/Trees2"]
-modulate = Color(0.169035, 0.250367, 0.0975577, 1)
-position = Vector2(7, -446)
-amount = 120
-texture = ExtResource("10_ohne2")
-lifetime = 10.0
-preprocess = 10.0
-randomness = 0.25
-fixed_fps = 6
-process_material = SubResource("ParticleProcessMaterial_cccco")
-
-[node name="Vegetation1" type="Parallax2D" parent="Backgrounds2"]
-modulate = Color(0.619121, 0.604879, 0.442496, 1)
-scroll_scale = Vector2(0.8, 0.8)
-repeat_size = Vector2(0, 960)
-repeat_times = 10
-
-[node name="Sprite2D" type="Sprite2D" parent="Backgrounds2/Vegetation1"]
-texture = ExtResource("12_cccco")
-
-[node name="Trees" type="Parallax2D" parent="Backgrounds2"]
-modulate = Color(0.45823, 0.367379, 0.354845, 1)
-material = SubResource("ShaderMaterial_jtkmd")
-repeat_size = Vector2(0, 960)
-repeat_times = 10
-
-[node name="Sprite2D" type="Sprite2D" parent="Backgrounds2/Trees"]
-use_parent_material = true
-texture = ExtResource("13_s0sqw")
-
-[node name="BeamsForeground" type="Parallax2D" parent="Backgrounds2"]
-modulate = Color(0.476004, 0.629816, 0.207967, 0.290196)
-z_index = 1
-scroll_scale = Vector2(1.2, 1.2)
-repeat_size = Vector2(0, 3000)
-repeat_times = 20
-
-[node name="Beam" parent="Backgrounds2/BeamsForeground" instance=ExtResource("6_xjx7g")]
-position = Vector2(281, -212)
-
-[node name="Beam2" parent="Backgrounds2/BeamsForeground" instance=ExtResource("6_xjx7g")]
-position = Vector2(0, -688)
-
-[node name="Beam3" parent="Backgrounds2/BeamsForeground" instance=ExtResource("6_xjx7g")]
-position = Vector2(0, 284)
-
-[node name="Beam4" parent="Backgrounds2/BeamsForeground" instance=ExtResource("6_xjx7g")]
-position = Vector2(0, -1914)
+wobble_speed = 0.2
 
 [connection signal="body_entered" from="Static-squares/Static-square1/Area2D" to="Static-squares" method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="Static-squares/Static-square2/Area2D" to="Static-squares" method="_on_area_2d_body_entered"]
