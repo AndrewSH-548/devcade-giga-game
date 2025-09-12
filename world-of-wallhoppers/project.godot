@@ -30,6 +30,11 @@ window/stretch/mode="viewport"
 
 project/assembly_name="House of Wallhoppers"
 
+[global_group]
+
+player1="The Player 1"
+player2="The Player 2"
+
 [input]
 
 ui_accept={
