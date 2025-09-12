@@ -237,7 +237,7 @@ shape = SubResource("RectangleShape2D_6ci1u")
 texture_filter = 1
 position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_eose0")
-animation = &"jump"
+animation = &"run"
 
 [node name="Player1Hitbox" type="Area2D" parent="."]
 
