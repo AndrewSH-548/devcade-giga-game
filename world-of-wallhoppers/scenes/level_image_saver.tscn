@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://c710tqy2aqiyt"]
+[gd_scene load_steps=2 format=3 uid="uid://bjly84ifcphob"]
 
 [ext_resource type="Script" uid="uid://dmwuro36jo2f0" path="res://assets/scripts/Guis/load_levels/level_image_saver.gd" id="1_bggol"]
 

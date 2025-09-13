@@ -1,12 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://ch4mextx4xjgt"]
+[gd_scene load_steps=7 format=3 uid="uid://ch4mextx4xjgt"]
 
 [ext_resource type="Script" uid="uid://c0egamewutafp" path="res://assets/scripts/splitscreen.gd" id="1_62qbm"]
 [ext_resource type="Script" uid="uid://d3p48lwnrft2t" path="res://assets/scripts/camera.gd" id="2_rnmh1"]
+[ext_resource type="PackedScene" uid="uid://xm58tgl8rye0" path="res://scenes/test_level.tscn" id="3_26gx4"]
 [ext_resource type="PackedScene" uid="uid://dtu1k6tt7cxej" path="res://scenes/characters/hip.tscn" id="3_cpmg1"]
 [ext_resource type="PackedScene" uid="uid://c42ynqlk3h4wp" path="res://scenes/characters/reign.tscn" id="4_uvo4r"]
 [ext_resource type="PackedScene" uid="uid://dnpilee0jidao" path="res://scenes/pause_menu.tscn" id="5_36d77"]
 
-[node name="Node2D2" type="Node2D"]
+[node name="Node2D2" type="Node2D" groups=["splitscreen"]]
 script = ExtResource("1_62qbm")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
@@ -45,6 +46,9 @@ run_modifier_action = "p2_run"
 offset = Vector2(135, 240)
 script = ExtResource("2_rnmh1")
 target = NodePath("../Player1Body")
+
+[node name="testLevel" parent="HBoxContainer/ViewportContainerP1/SubViewport" instance=ExtResource("3_26gx4")]
+position = Vector2(131, 297)
 
 [node name="ViewportContainerP2" type="SubViewportContainer" parent="HBoxContainer"]
 layout_mode = 2
