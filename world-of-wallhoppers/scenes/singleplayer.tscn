@@ -20,7 +20,7 @@ handle_input_locally = false
 size = Vector2i(270, 960)
 render_target_update_mode = 4
 
-[node name="Camera2D" type="Camera2D" parent="ViewportContainerP1/SubViewport" node_paths=PackedStringArray("target")]
+[node name="Camera2D" type="Camera2D" parent="ViewportContainerP1/SubViewport" node_paths=PackedStringArray("target") groups=["Player1Camera"]]
 offset = Vector2(135, 240)
 script = ExtResource("2_cbso6")
 target = NodePath("../Player1Body")
