@@ -27,7 +27,7 @@ func _ready() -> void:
 	sprite.play();
 
 func _physics_process(delta: float) -> void:
-	if $"../../../../".paused: # Doesn't work for singleplayer 
+	if get_tree().get_first_node_in_group("splitscreen").paused: # Doesn't work for singleplayer 
 		return;
 	
 	# Add the gravity.

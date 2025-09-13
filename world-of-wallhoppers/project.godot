@@ -34,6 +34,7 @@ project/assembly_name="House of Wallhoppers"
 
 player1="The Player 1"
 player2="The Player 2"
+splitscreen=""
 
 [input]
 

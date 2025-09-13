@@ -6,7 +6,7 @@ var isWallClimbing: bool = false;
 var isJumping: bool = false;
 
 func _physics_process(delta: float) -> void:
-	if $"../../../../".paused: # Doesn't work for singleplayer
+	if get_tree().get_first_node_in_group("splitscreen").paused: # Doesn't work for singleplayer
 		return;
 	
 	if (velocity.y >= 0): isJumping = false;
