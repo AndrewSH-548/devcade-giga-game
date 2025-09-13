@@ -29,15 +29,17 @@ target = NodePath("../Player1Body")
 position = Vector2(44, 542)
 
 [node name="ColorRect2" type="ColorRect" parent="."]
+editor_description = "Original Color: 9c0000"
 offset_left = 404.0
 offset_right = 540.0
 offset_bottom = 960.0
-color = Color(0.662745, 0, 0, 1)
+color = Color(0, 0, 0, 1)
 
 [node name="ColorRect" type="ColorRect" parent="."]
+editor_description = "Original Color: 9c0000"
 offset_right = 135.0
 offset_bottom = 960.0
-color = Color(0.611765, 0, 0, 1)
+color = Color(0, 0, 0, 1)
 
 [node name="PauseMenu" parent="." instance=ExtResource("4_ni31h")]
 visible = false
