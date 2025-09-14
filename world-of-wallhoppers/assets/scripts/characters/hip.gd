@@ -3,7 +3,7 @@ extends "res://assets/scripts/player.gd"
 @export var crouch_action: String = " "
 var is_wall_climbing: bool = false
 
-const CLIMB_SPEED = 100
+@export var climb_speed: float
 
 func _physics_process(delta: float) -> void:
 	if get_tree().get_first_node_in_group("splitscreen").paused: # Doesn't work for singleplayer
@@ -33,7 +33,7 @@ func get_climb_input():
 func process_wallclimb():
 	if is_wall_climbing:
 		var climbDirection: float = get_climb_input()
-		velocity.y = climbDirection * CLIMB_SPEED;
+		velocity.y = climbDirection * climb_speed;
 
 func process_walljump_hip(delta: float) -> void:
 	# Skip this if the player is not wallsliding

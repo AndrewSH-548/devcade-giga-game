@@ -59,7 +59,7 @@ func process_gravity(delta: float):
 	# Add the gravity.
 	if get_position_state() in [STATE_ON_WALL, STATE_IN_AIR, STATE_HITSTUN]:
 		velocity.y += gravity * delta;
-		velocity.y = clamp(velocity.y, -jump_height, fall_speed);
+		velocity.y = clamp(velocity.y, -INF, fall_speed);
 
 func process_jump(delta: float):
 	
