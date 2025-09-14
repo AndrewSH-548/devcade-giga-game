@@ -3,6 +3,8 @@ extends "res://assets/scripts/player.gd"
 @export var crouch_action: String = " "
 var is_wall_climbing: bool = false
 
+const CLIMB_SPEED = 100
+
 func _physics_process(delta: float) -> void:
 	if get_tree().get_first_node_in_group("splitscreen").paused: # Doesn't work for singleplayer
 		return
@@ -16,20 +18,32 @@ func _physics_process(delta: float) -> void:
 	if not is_wall_climbing: process_gravity(delta)
 	process_jump(delta)
 	
-	update_flipped()
+	if not is_wall_climbing: update_flipped()
 	
-	process_walkrun(delta, direction)
-	process_walljump(delta)
+	if not is_wall_climbing: process_walkrun(delta, direction)
+	process_walljump_hip(delta)
 	process_wallclimb()
 	
 	animate_hip(direction)
 	
 	move_and_slide()
 
+func get_climb_input():
+	return Input.get_axis(jump_action, crouch_action)
+
 func process_wallclimb():
 	if is_wall_climbing:
-		var climbDirection = Input.get_axis(jump_action, crouch_action);
-		velocity.y = climbDirection * 100;
+		var climbDirection: float = get_climb_input()
+		velocity.y = climbDirection * CLIMB_SPEED;
+
+func process_walljump_hip(delta: float) -> void:
+	# Skip this if the player is not wallsliding
+	# Look at get_position_state() and STATE_ON_WALL for wallsliding conditions
+	if get_position_state() != STATE_ON_WALL: return
+	
+	if Input.is_action_just_pressed(jump_action) and is_wall_climbing:
+		velocity.x = get_pushoff_wall_direction() * wall_pushoff_strength
+		velocity.y = -wall_jump_height
 
 func animate_hip(direction: float) -> void:
 	if hitstun:

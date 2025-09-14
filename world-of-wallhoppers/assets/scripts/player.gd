@@ -107,7 +107,6 @@ func process_walljump(delta: float) -> void:
 	if get_position_state() != STATE_ON_WALL: return
 	
 	if Input.is_action_just_pressed(jump_action):
-		print(get_pushoff_wall_direction())
 		velocity.x = get_pushoff_wall_direction() * wall_pushoff_strength
 		velocity.y = -wall_jump_height
 
