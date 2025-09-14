@@ -1,8 +1,12 @@
 extends "res://assets/scripts/player.gd"
 
+var is_hovering: bool = false;
+
 func _physics_process(delta: float) -> void:
 	if get_tree().get_first_node_in_group("splitscreen").paused:
 		return
+	
+	is_hovering = Input.is_action_pressed(run_modifier_action) and get_position_state() == STATE_IN_AIR;
 	
 	var direction := get_horizontal_movement()
 	
@@ -14,6 +18,16 @@ func _physics_process(delta: float) -> void:
 	animate_reign(direction)
 
 	move_and_slide()
+
+func process_gravity(delta: float) -> void:
+	# Add the gravity.
+	if not is_hovering: 
+		super.process_gravity(delta);
+		return;
+		
+	if get_position_state() in [STATE_ON_WALL, STATE_IN_AIR, STATE_HITSTUN]:
+		velocity.y += gravity * delta * 0.3;
+		velocity.y = clamp(velocity.y, -jump_height, fall_speed);
 
 func animate_reign(direction: float) -> void:
 	if hitstun:
