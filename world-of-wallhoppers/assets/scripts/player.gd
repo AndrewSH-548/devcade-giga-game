@@ -24,6 +24,13 @@ var hitstun: bool = false
 var sprite: AnimatedSprite2D
 var isFacingRight: bool = true
 
+const JUMP_BUFFER_TIME: float = 0.2
+const COYOTE_TIME: float = 0.07
+
+@onready var jump_buffer_timer: Timer = make_timer(JUMP_BUFFER_TIME)
+@onready var coyote_timer: Timer = make_timer(COYOTE_TIME)
+var has_done_coyote: bool = true
+
 enum {
 	STATE_ON_FLOOR,
 	STATE_ON_WALL,
@@ -34,6 +41,13 @@ enum {
 func _ready() -> void:
 	sprite = $Animations
 	sprite.play();
+
+func make_timer(time: float) -> Timer:
+	var timer: Timer = Timer.new()
+	timer.one_shot = true
+	timer.wait_time = time
+	add_child(timer)
+	return timer
 
 func get_position_state() -> int:
 	if hitstun: return STATE_HITSTUN
@@ -48,9 +62,20 @@ func process_gravity(delta: float):
 		velocity.y = clamp(velocity.y, -jump_height, fall_speed);
 
 func process_jump(delta: float):
-	# Handle jump.
-	if Input.is_action_just_pressed(jump_action) and get_position_state() == STATE_ON_FLOOR:
-		velocity.y = -jump_height;
+	if get_position_state() == STATE_ON_FLOOR:
+		coyote_timer.stop()
+		has_done_coyote = false
+	if get_position_state() == STATE_IN_AIR and coyote_timer.is_stopped() and not has_done_coyote:
+		coyote_timer.start()
+		has_done_coyote = true
+	# Handle jump
+	if Input.is_action_just_pressed(jump_action):
+		if get_position_state() == STATE_ON_FLOOR:
+			velocity.y = -jump_height
+		elif get_position_state() == STATE_IN_AIR and not coyote_timer.is_stopped():
+			velocity.y = -jump_height
+			has_done_coyote = true
+			coyote_timer.stop()
 
 func horizontal_movement_process_old(delta: float, direction: float):
 	# Move, and check whether the player in in hitstun
