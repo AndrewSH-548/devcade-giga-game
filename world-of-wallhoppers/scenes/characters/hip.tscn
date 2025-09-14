@@ -179,6 +179,7 @@ animations = [{
 [node name="PlayerHip" type="CharacterBody2D"]
 collision_layer = 4
 script = ExtResource("1_s6udp")
+crouch_action = " p1_crouch"
 walk_speed = 180
 run_speed = 260
 air_speed = 150
