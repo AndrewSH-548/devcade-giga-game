@@ -59,7 +59,7 @@ func update_flipped() -> void:
 func animate_hip(direction: float) -> void:
 	if hitstun:
 		sprite.animation = "hurt"
-	elif is_touching_wall():
+	elif is_touching_wall() and not is_on_floor():
 		sprite.animation = "wall-climb" if is_wall_climbing else "wall-cling"
 	elif velocity.y < 0:
 		sprite.animation = "jump"

@@ -31,7 +31,6 @@ render_target_update_mode = 4
 
 [node name="Player1Body" parent="HBoxContainer/ViewportContainerP1/SubViewport" instance=ExtResource("3_cpmg1")]
 position = Vector2(43, 490)
-crouch_action = "p1_crouch"
 
 [node name="Player2Body" parent="HBoxContainer/ViewportContainerP1/SubViewport" instance=ExtResource("4_uvo4r")]
 position = Vector2(193, 494)
