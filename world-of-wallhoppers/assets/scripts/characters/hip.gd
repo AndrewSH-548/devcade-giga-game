@@ -41,7 +41,7 @@ func process_walljump_hip(delta: float) -> void:
 	# Look at get_position_state() and STATE_ON_WALL for wallsliding conditions
 	if get_position_state() != STATE_ON_WALL: return
 	
-	if Input.is_action_just_pressed(jump_action) and is_wall_climbing:
+	if Input.is_action_just_pressed(jump_action) and not is_wall_climbing:
 		velocity.x = get_pushoff_wall_direction() * wall_pushoff_strength
 		velocity.y = -wall_jump_height
 
