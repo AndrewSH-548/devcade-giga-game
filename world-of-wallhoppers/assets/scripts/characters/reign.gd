@@ -18,13 +18,13 @@ func _physics_process(delta: float) -> void:
 func animate_reign(direction: float) -> void:
 	if hitstun:
 		sprite.animation = "hurt";
-	elif is_on_wall() and not is_on_floor():
+	elif get_position_state() == STATE_ON_WALL:
 		sprite.animation = "wall-cling";
 	elif velocity.y < 0:
 		sprite.animation = "jump";
-	elif not is_on_wall() and not is_on_floor():
+	elif get_position_state() == STATE_IN_AIR:
 		sprite.animation = "fall";
-	elif is_on_wall() && direction != 0:
+	elif is_touching_wall() && direction != 0:
 		sprite.animation = "wall-push";
 	elif direction != 0:
 		sprite.animation = "run" if Input.is_action_pressed(run_modifier_action) else "walk";

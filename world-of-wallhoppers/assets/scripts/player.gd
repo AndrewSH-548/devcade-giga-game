@@ -24,7 +24,7 @@ var hitstun: bool = false
 var sprite: AnimatedSprite2D
 var isFacingRight: bool = true
 
-const JUMP_BUFFER_TIME: float = 0.2
+const JUMP_BUFFER_TIME: float = 0.1
 const COYOTE_TIME: float = 0.07
 
 @onready var jump_buffer_timer: Timer = make_timer(JUMP_BUFFER_TIME)
@@ -52,7 +52,7 @@ func make_timer(time: float) -> Timer:
 func get_position_state() -> int:
 	if hitstun: return STATE_HITSTUN
 	if is_on_floor(): return STATE_ON_FLOOR
-	if is_on_wall(): return STATE_ON_WALL
+	if is_touching_wall(): return STATE_ON_WALL
 	return STATE_IN_AIR
 
 func process_gravity(delta: float):
@@ -62,46 +62,45 @@ func process_gravity(delta: float):
 		velocity.y = clamp(velocity.y, -jump_height, fall_speed);
 
 func process_jump(delta: float):
+	
+	# If there is a jump in the buffer, and the player is on the floor, JUMP!
+	if get_position_state() == STATE_ON_FLOOR and not jump_buffer_timer.is_stopped():
+		do_jump()
+		jump_buffer_timer.stop()
+	
+	# When on floor, stop the coyote timer and allow the player to coyote again
 	if get_position_state() == STATE_ON_FLOOR:
 		coyote_timer.stop()
 		has_done_coyote = false
+	# Start the coyote timer if the player just left the ground
 	if get_position_state() == STATE_IN_AIR and coyote_timer.is_stopped() and not has_done_coyote:
 		coyote_timer.start()
 		has_done_coyote = true
-	# Handle jump
+	# If the player presses jump...
 	if Input.is_action_just_pressed(jump_action):
+		# Normal Jump on floor
 		if get_position_state() == STATE_ON_FLOOR:
-			velocity.y = -jump_height
+			do_jump()
+		# If in the air, and the player only recently left the ground, allow a mid-air jump
 		elif get_position_state() == STATE_IN_AIR and not coyote_timer.is_stopped():
-			velocity.y = -jump_height
+			do_jump()
 			has_done_coyote = true
 			coyote_timer.stop()
+		# If the player couldn't jump, save a jump into buffer for JUMP_BUFFER_TIME
+		else:
+			jump_buffer_timer.start()
 
-func horizontal_movement_process_old(delta: float, direction: float):
-	# Move, and check whether the player in in hitstun
-	if direction:
-		
-		# ON WALL
-		if Input.is_action_just_pressed(jump_action) and is_on_wall() and !is_on_floor() and not hitstun:
-			velocity.x = -direction * wall_jump_height / 1.8
-			velocity.y = -wall_jump_height
-		
-		# IN AIR OR WALL
-		elif !is_on_floor() and not hitstun:
-			if abs(velocity.x) < air_speed:
-				velocity.x += direction * air_accel
-			else:
-				velocity.x = move_toward(velocity.x, direction*air_speed, air_accel);
-		
-		# ON FLOOR RUN
-		elif Input.is_action_pressed(run_modifier_action) and not hitstun:
-			velocity.x = direction * run_speed;
-		# ON FLOOR WALK
-		elif not hitstun:
-			velocity.x = direction * walk_speed;
-	
-	else:
-		velocity.x = move_toward(velocity.x, 0, deccel)
+func do_jump() -> void:
+	velocity.y = -jump_height
+
+func is_touching_wall():
+	return is_touching_left_wall() or is_touching_right_wall()
+
+func is_touching_left_wall():
+	return test_move(transform, Vector2(-0.1, 0))
+
+func is_touching_right_wall():
+	return test_move(transform, Vector2(0.1, 0))
 
 func process_walkrun(delta: float, direction: float) -> void:
 	# Deccelerate if there is no input
@@ -132,8 +131,11 @@ func process_walljump(delta: float) -> void:
 	if get_position_state() != STATE_ON_WALL: return
 	
 	if Input.is_action_just_pressed(jump_action):
-		velocity.x = get_pushoff_wall_direction() * wall_pushoff_strength
-		velocity.y = -wall_jump_height
+		do_walljump()
+
+func do_walljump() -> void:
+	velocity.x = get_pushoff_wall_direction() * wall_pushoff_strength
+	velocity.y = -wall_jump_height
 
 func get_pushoff_wall_direction() -> float:
 	# The Wall Normal is a Vector2 which points away from the wall
@@ -152,6 +154,6 @@ func get_horizontal_movement() -> float:
 
 func update_flipped() -> void:
 	if Input.is_action_just_pressed(move_left_action) and isFacingRight:
-		isFacingRight = false;
+		isFacingRight = false
 	elif Input.is_action_just_pressed(move_right_action) and not isFacingRight:
-		isFacingRight = true;
+		isFacingRight = true

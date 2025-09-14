@@ -18,13 +18,12 @@ func _physics_process(delta: float) -> void:
 	if not is_wall_climbing: process_gravity(delta)
 	process_jump(delta)
 	
-	if not is_wall_climbing: update_flipped()
+	update_flipped()
 	
 	if not is_wall_climbing: process_walkrun(delta, direction)
 	process_walljump_hip(delta)
-	process_wallclimb()
-	
 	animate_hip(direction)
+	process_wallclimb()
 	
 	move_and_slide()
 
@@ -45,19 +44,31 @@ func process_walljump_hip(delta: float) -> void:
 		velocity.x = get_pushoff_wall_direction() * wall_pushoff_strength
 		velocity.y = -wall_jump_height
 
+func update_flipped() -> void:
+	var left_wall: bool = is_touching_left_wall()
+	var right_wall: bool = is_touching_right_wall()
+	if (left_wall or right_wall) and not is_on_floor():
+		if left_wall: isFacingRight = false
+		if right_wall: isFacingRight = true
+	else:
+		if Input.is_action_just_pressed(move_left_action) and isFacingRight:
+			isFacingRight = false
+		elif Input.is_action_just_pressed(move_right_action) and not isFacingRight:
+			isFacingRight = true
+
 func animate_hip(direction: float) -> void:
 	if hitstun:
-		sprite.animation = "hurt";
-	elif is_on_wall() and not is_on_floor():
-		sprite.animation = "wall-climb" if is_wall_climbing else "wall-cling";
+		sprite.animation = "hurt"
+	elif is_touching_wall():
+		sprite.animation = "wall-climb" if is_wall_climbing else "wall-cling"
 	elif velocity.y < 0:
-		sprite.animation = "jump";
-	elif not is_on_wall() and not is_on_floor():
-		sprite.animation = "fall";
-	elif is_on_wall() && direction != 0:
-		sprite.animation = "wall-push";
+		sprite.animation = "jump"
+	elif get_position_state() == STATE_IN_AIR:
+		sprite.animation = "fall"
+	elif is_touching_wall() && direction != 0:
+		sprite.animation = "wall-push"
 	elif direction != 0:
-		sprite.animation = "run" if Input.is_action_pressed(run_modifier_action) else "walk";
-	else: sprite.animation = "idle";
+		sprite.animation = "run" if Input.is_action_pressed(run_modifier_action) else "walk"
+	else: sprite.animation = "idle"
 	
 	sprite.flip_h = !isFacingRight;
