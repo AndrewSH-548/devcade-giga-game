@@ -14,6 +14,22 @@ var is_multiplayer: bool = false
 var pages: Array[Page]
 var current_page_index: int = 0
 
+# ------------- HOW TO ADD A LEVEL --------------
+#
+# 1: Open level_select scene
+# 2: Click on the root node (LevelSelect)
+# 3: In the INSPECTOR, click on the Array[LevelInfo](size xx) thing, IF IT IS COLLAPSED
+# 4: Click "Add Element"
+# 5: In the new EMPTY element, click the down arrow, then "New LevelInfo"
+# 6: Click on the new LevelInfo, then add the SCENE and the NAME to the LevelInfo
+
+# ---------- HOW TO ADD A THUMBNAIL -------------
+#
+# 1: Add ThumbnailMarker scene as child of the LEVEL (found in scenes/editor)
+# 2: Align the "box" with where you want the thumbnail to START
+# 3: Add ThumbnailDestination scene add child of the LEVEL
+# 4: Align the "box" with where you want the thumnail movement to END
+
 # Gets either the singleplayer or multiplayer header, depending on mode
 func get_level_header() -> MainLevelHeader:
 	if is_multiplayer: return HEADER_MULTIPLAYER.instantiate()
