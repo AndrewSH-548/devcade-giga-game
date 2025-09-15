@@ -7,26 +7,49 @@ extends Control
 @onready var nav_right_button: Button = $VerticalContainer/ArrowContainer/NavBoxes/NavRight
 
 const LEVEL_THUMBNAIL = preload("res://scenes/gui/level_thumbnail.tscn")
+const HEADER_SINGLEPLAYER = preload("res://scenes/header_singleplayer.tscn")
+const HEADER_MULTIPLAYER = preload("res://scenes/header_multiplayer.tscn")
 
 var is_multiplayer: bool = false
 var pages: Array[Page]
 var current_page_index: int = 0
 
-func load_level(level_info: LevelInfo):
-	pass
+# Gets either the singleplayer or multiplayer header, depending on mode
+func get_level_header() -> MainLevelHeader:
+	if is_multiplayer: return HEADER_MULTIPLAYER.instantiate()
+	else: return HEADER_SINGLEPLAYER.instantiate()
 
+# Loads the level in level_info and switches scenes to it
+func load_level(level_info: LevelInfo):
+	# Load the specific level scene from the thumbnail
+	var level: Node2D = level_info.scene.instantiate()
+	# Put the level in the right location. I don't know why this
+	# exact location, but it was from the old one, and it works!
+	level.global_position = Vector2(132.0, 297.0)
+	# Load either the singleplayer or multiplayer header
+	var header: MainLevelHeader = get_level_header()
+	# Run the header's place runtion on level
+	header.place_level(level)
+	# Free the Level Select and switch to the HEADER scene (which has the level in it)
+	get_tree().root.add_child(header)
+	queue_free()
+
+# Holds the thumbnails for a single page,
+# as well as provides methods for constructing itself
 class Page:
 	
 	var thumbnails: Array[Array] = [[]]
 	static var count: int = 0
+	# Please change these if you change the thumbnails!!!
 	const COLUMN_AMOUNT = 3
 	const ROW_AMOUNT = 3
 	
 	var back_button_node: Button
 	
-	func _init(back_button: Button):
+	func _init(back_button: Button) -> void:
 		back_button_node = back_button
 	
+	# Adds a thumbnail to the page
 	func add(thumbnail: Control) -> void:
 		thumbnail.get_node("Margins/LevelName").text += str(count)
 		count += 1
@@ -42,23 +65,30 @@ class Page:
 		# Add thumbnail to the current row
 		current_row.append(thumbnail)
 	
+	# Returns true if the page cannot hold any mroe thumbnails
+	# This is dictated by ROW_AMOUNT and COLUMN_AMOUNT
 	func is_full() -> bool:
 		return (thumbnails.size() == ROW_AMOUNT and thumbnails.get(ROW_AMOUNT - 1).size() == COLUMN_AMOUNT)
 	
-	func set_visible(is_visible: bool):
+	# Makes buttons visible and active or invisible and inactive, depending on is_visible
+	func set_visible(is_visible: bool) -> void:
 		connect_back()
 		for row in thumbnails:
 			for thumbnail: Button in row:
 				thumbnail.visible = is_visible
 				thumbnail.disabled = not is_visible
 	
-	func connect_back():
+	# Connects this page to the "back" button, for controller navigation
+	# This should be called whenever the page changes, as the back_button's
+	# Connection should be to the current page
+	func connect_back() -> void:
 		# Connect back to the top thumbnail that is closest to the top
 		var top_row: Array = thumbnails.get(0)
 		back_button_node.focus_neighbor_bottom = top_row.get(int(top_row.size() / 2)).get_path()
 	
 	# Allows controllers to navigate through the thumbnails
-	func interconnect():
+	# This should be called AFTER the all of the thumbnails are added
+	func interconnect() -> void:
 		# Stop here if there are no thumbnails
 		if thumbnails.is_empty(): return
 		
@@ -76,14 +106,17 @@ class Page:
 				# Connect to the right and left thumbnails, and wrap around the sides
 				thumbnail.focus_neighbor_left = thumbnails.get(row).get(wrapi(col - 1, 0, thumbnails.get(row).size())).get_path()
 				thumbnail.focus_neighbor_right = thumbnails.get(row).get(wrapi(col + 1, 0, thumbnails.get(row).size())).get_path()
+	
+	func focus_middle() -> void:
+		var middle_row: Array = thumbnails.get(int(thumbnails.size() / 2))
+		var middle_thumbnail: Control = middle_row.get(int(middle_row.size() / 2))
+		middle_thumbnail.grab_focus()
 
 func _ready() -> void:
-	setup(false)
+	setup()
 
 # Makes the level thumbnails and connects their varaious functions
-func setup(is_multiplayer_mode: bool):
-	is_multiplayer = is_multiplayer_mode
-	
+func setup():
 	var current_page: Page = Page.new(back_button)
 	pages.append(current_page)
 	
@@ -98,6 +131,7 @@ func setup(is_multiplayer_mode: bool):
 		thumbnail_grid.add_child(thumbnail)
 		thumbnail.visible = false
 		thumbnail.disabled = true
+		thumbnail.pressed.connect(load_level.bind(level))
 		thumbnail.setup(level)
 		# Add thumbnail to page
 		current_page.add(thumbnail)
@@ -111,9 +145,11 @@ func setup(is_multiplayer_mode: bool):
 		nav_left_button.disabled = true
 		nav_right_button.disabled = true
 	
-	# Set current page to visible
+	# Set current page to visible and focus middle thumbnail
 	pages[0].set_visible(true)
+	pages[0].focus_middle()
 
+# Moves forward / backward pages by navigation_amount
 func navigate(navigation_amount: int):
 	# Hide the current page
 	pages[current_page_index].set_visible(false)
@@ -131,3 +167,8 @@ func nav_left():
 # Navigate 1 right (+1). Used by NavRight button
 func nav_right():
 	navigate(+1)
+
+# Used by back_button
+func load_start_screen() -> void:
+	get_tree().change_scene_to_file("res://scenes/start_screen.tscn")
+	queue_free()

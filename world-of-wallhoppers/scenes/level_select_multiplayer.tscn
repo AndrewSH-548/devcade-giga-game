@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cnhwoswmlkt0o" path="res://assets/scripts/Guis/load_levels/level_select_multiplayer.gd" id="1_e8bvb"]
 [ext_resource type="Script" uid="uid://lbffc4qynn1d" path="res://assets/scripts/back_button.gd" id="1_fekqs"]
-[ext_resource type="PackedScene" uid="uid://ch4mextx4xjgt" path="res://scenes/multiplayer.tscn" id="5_3tshp"]
+[ext_resource type="PackedScene" uid="uid://ch4mextx4xjgt" path="res://scenes/header_multiplayer.tscn" id="5_3tshp"]
 
 [node name="Control" type="Control" node_paths=PackedStringArray("grid_container")]
 layout_mode = 3

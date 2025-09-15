@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://wosbpa0o251c"]
 
 [ext_resource type="Script" uid="uid://byebxy1oo1xbc" path="res://assets/scripts/Guis/load_levels/level_select_singleplayer.gd" id="1_cjwwf"]
-[ext_resource type="PackedScene" uid="uid://c3bkjibfhfofl" path="res://scenes/singleplayer.tscn" id="2_38ju1"]
+[ext_resource type="PackedScene" uid="uid://c3bkjibfhfofl" path="res://scenes/header_singleplayer.tscn" id="2_38ju1"]
 [ext_resource type="Script" uid="uid://lbffc4qynn1d" path="res://assets/scripts/back_button.gd" id="5_cjwwf"]
 
 [node name="Control" type="Control" node_paths=PackedStringArray("grid_container")]

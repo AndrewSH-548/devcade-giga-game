@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://dfoemyveip84p"]
+[gd_scene load_steps=4 format=3 uid="uid://dfoemyveip84p"]
 
 [ext_resource type="Script" uid="uid://61es4akj8ph2" path="res://assets/scripts/Guis/level_thumbnail.gd" id="1_10eck"]
 [ext_resource type="Theme" uid="uid://ch10f1720xh7l" path="res://assets/themes/thumbnail_button.tres" id="1_fofor"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_fofor"]
+outline_size = 8
+outline_color = Color(0, 0, 0, 1)
 
 [node name="LevelThumbnail" type="Button"]
 custom_minimum_size = Vector2(170, 260)
@@ -40,6 +44,7 @@ custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
 size_flags_vertical = 8
 text = "LevelName, LongName"
+label_settings = SubResource("LabelSettings_fofor")
 horizontal_alignment = 1
 vertical_alignment = 2
 autowrap_mode = 3

@@ -23,7 +23,6 @@ SceneSwitcher="*res://assets/scripts/Guis/scene_switcher.gd"
 
 window/size/viewport_width=540
 window/size/viewport_height=960
-window/size/mode=3
 window/stretch/mode="viewport"
 
 [dotnet]
