@@ -10,8 +10,8 @@
 [ext_resource type="Shader" uid="uid://vih4h60r5tp7" path="res://assets/shaders/wobble_warp.gdshader" id="8_05rs6"]
 [ext_resource type="Texture2D" uid="uid://bnh82e2uan82h" path="res://assets/terrain/background_jungle_trees.png" id="9_jtkmd"]
 [ext_resource type="Texture2D" uid="uid://dgkqxhds83xeo" path="res://assets/terrain/particle_jungle_leaf.png" id="10_ohne2"]
-[ext_resource type="PackedScene" uid="uid://dhjkvej1d1nic" path="res://scenes/tumbnail_marker.tscn" id="11_jtkmd"]
-[ext_resource type="PackedScene" uid="uid://dw2fas0otmqd1" path="res://scenes/tumbnail_destination.tscn" id="12_bud5c"]
+[ext_resource type="PackedScene" uid="uid://dhjkvej1d1nic" path="res://scenes/editor/tumbnail_marker.tscn" id="11_jtkmd"]
+[ext_resource type="PackedScene" uid="uid://dw2fas0otmqd1" path="res://scenes/editor/tumbnail_destination.tscn" id="12_bud5c"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_leifp"]
 resource_name = "Jungle"

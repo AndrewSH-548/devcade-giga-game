@@ -12,10 +12,13 @@ var is_multiplayer: bool = false
 var pages: Array[Page]
 var current_page_index: int = 0
 
+func load_level(level_info: LevelInfo):
+	pass
+
 class Page:
 	
 	var thumbnails: Array[Array] = [[]]
-	
+	static var count: int = 0
 	const COLUMN_AMOUNT = 3
 	const ROW_AMOUNT = 3
 	
@@ -25,6 +28,8 @@ class Page:
 		back_button_node = back_button
 	
 	func add(thumbnail: Control) -> void:
+		thumbnail.get_node("Margins/LevelName").text += str(count)
+		count += 1
 		# Don't allow a null thumbnail to be added
 		assert(thumbnail != null, "Cannot add to null thumbnail to a page!")
 		# Don't let a thumbnail be added to a full page
@@ -41,17 +46,21 @@ class Page:
 		return (thumbnails.size() == ROW_AMOUNT and thumbnails.get(ROW_AMOUNT - 1).size() == COLUMN_AMOUNT)
 	
 	func set_visible(is_visible: bool):
+		connect_back()
 		for row in thumbnails:
-			for thumbnail: Control in row:
+			for thumbnail: Button in row:
 				thumbnail.visible = is_visible
+				thumbnail.disabled = not is_visible
+	
+	func connect_back():
+		# Connect back to the top thumbnail that is closest to the top
+		var top_row: Array = thumbnails.get(0)
+		back_button_node.focus_neighbor_bottom = top_row.get(int(top_row.size() / 2)).get_path()
 	
 	# Allows controllers to navigate through the thumbnails
 	func interconnect():
 		# Stop here if there are no thumbnails
 		if thumbnails.is_empty(): return
-		
-		# Connect back to the top thumbnail that is closest to the top
-		back_button_node.focus_neighbor_bottom = thumbnails.get(0).get(int(thumbnails.get(0).size() / 2)).get_path()
 		
 		# Connect all the thumbnails to eachother in a sensible way
 		for row: int in range(thumbnails.size()):
@@ -88,6 +97,7 @@ func setup(is_multiplayer_mode: bool):
 		var thumbnail: Button = LEVEL_THUMBNAIL.instantiate()
 		thumbnail_grid.add_child(thumbnail)
 		thumbnail.visible = false
+		thumbnail.disabled = true
 		thumbnail.setup(level)
 		# Add thumbnail to page
 		current_page.add(thumbnail)

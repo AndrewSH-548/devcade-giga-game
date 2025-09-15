@@ -1,10 +1,10 @@
 [gd_scene load_steps=4 format=3 uid="uid://dnpilee0jidao"]
 
-[ext_resource type="Script" uid="uid://cljrg4rf04yjk" path="res://assets/scripts/pause_menu.gd" id="1_n87rw"]
-[ext_resource type="Shader" uid="uid://b7nhx3gxibhef" path="res://assets/shaders/pause_menu.gdshader" id="2_myx47"]
+[ext_resource type="Script" uid="uid://cljrg4rf04yjk" path="res://assets/scripts/pause_menu.gd" id="1_1eo1i"]
+[ext_resource type="Shader" uid="uid://b7nhx3gxibhef" path="res://assets/shaders/pause_menu.gdshader" id="2_loim0"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kukqi"]
-shader = ExtResource("2_myx47")
+shader = ExtResource("2_loim0")
 shader_parameter/amount = 3.0
 
 [node name="PauseMenu" type="Control"]
@@ -14,7 +14,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_n87rw")
+script = ExtResource("1_1eo1i")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_kukqi")
