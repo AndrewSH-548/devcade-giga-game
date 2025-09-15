@@ -5,6 +5,7 @@ const PLAYER_2_VISIBILITY: int = 8 # Visibility Layer 4
 
 var player_1_camera: Camera2D
 var player_2_camera: Camera2D
+var thumbnail_mode: bool = false
 
 # Used to differentiate the backgrounds
 var player_1_backgrounds: Array[Parallax2D]
@@ -12,6 +13,7 @@ var player_1_backgrounds: Array[Parallax2D]
 ## This node should be setup with all parallax layers as direct children.
 
 func _ready() -> void:
+	add_to_group("BackgroundsManager")
 	player_1_camera = get_tree().get_first_node_in_group("Player1Camera")
 	player_2_camera = get_tree().get_first_node_in_group("Player2Camera")
 		
@@ -32,7 +34,12 @@ func _ready() -> void:
 		#secondary_background.follow_viewport = false
 		secondary_background.ignore_camera_scroll = true
 
+func manual_set_camera_position(camera_position: Vector2):
+	for background in get_children():
+		background.screen_offset.y = camera_position.y
+
 func _process(delta: float) -> void:
+	if thumbnail_mode: return
 	for background in get_children():
 		if background is not Parallax2D: continue 
 		if background in player_1_backgrounds:background.screen_offset.y = player_1_camera.get_screen_center_position().y

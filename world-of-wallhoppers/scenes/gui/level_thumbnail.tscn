@@ -1,20 +1,45 @@
-[gd_scene load_steps=2 format=3 uid="uid://dfoemyveip84p"]
+[gd_scene load_steps=3 format=3 uid="uid://dfoemyveip84p"]
 
-[ext_resource type="PackedScene" uid="uid://d4hbsclhpfj4v" path="res://levels/level1/test_level_1.tscn" id="1_10eck"]
+[ext_resource type="Script" uid="uid://61es4akj8ph2" path="res://assets/scripts/Guis/level_thumbnail.gd" id="1_10eck"]
+[ext_resource type="Theme" uid="uid://ch10f1720xh7l" path="res://assets/themes/thumbnail_button.tres" id="1_fofor"]
 
-[node name="LevelThumbnail" type="Control"]
+[node name="LevelThumbnail" type="Button"]
 custom_minimum_size = Vector2(170, 260)
-layout_mode = 3
-anchors_preset = 0
+offset_right = 170.0
+offset_bottom = 260.0
+theme = ExtResource("1_fofor")
+script = ExtResource("1_10eck")
 
-[node name="LevelMask" type="ColorRect" parent="."]
-clip_children = 1
+[node name="ViewportContainer" type="SubViewportContainer" parent="."]
+show_behind_parent = true
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="LevelViewport" type="SubViewport" parent="ViewportContainer"]
+handle_input_locally = false
+size = Vector2i(170, 260)
+render_target_update_mode = 4
+
+[node name="Margins" type="MarginContainer" parent="."]
+show_behind_parent = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1, 1.0025)
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
 
-[node name="testLevel" parent="LevelMask" instance=ExtResource("1_10eck")]
-position = Vector2(70, 245)
+[node name="LevelName" type="Label" parent="Margins"]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+size_flags_vertical = 8
+text = "LevelName, LongName"
+horizontal_alignment = 1
+vertical_alignment = 2
+autowrap_mode = 3
