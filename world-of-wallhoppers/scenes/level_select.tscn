@@ -40,7 +40,7 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_3shnc")
-levels_list = Array[ExtResource("2_chg43")]([SubResource("Resource_rif6e"), SubResource("Resource_chg43"), SubResource("Resource_rif6e"), SubResource("Resource_chg43"), SubResource("Resource_r77uv"), SubResource("Resource_rif6e"), SubResource("Resource_4nqmc"), SubResource("Resource_rif6e"), SubResource("Resource_rif6e")])
+levels_list = Array[ExtResource("2_chg43")]([SubResource("Resource_rif6e"), SubResource("Resource_chg43"), SubResource("Resource_rif6e"), SubResource("Resource_chg43"), SubResource("Resource_r77uv"), SubResource("Resource_rif6e"), SubResource("Resource_4nqmc"), SubResource("Resource_rif6e"), SubResource("Resource_rif6e"), SubResource("Resource_r77uv")])
 
 [node name="VerticalContainer" type="VBoxContainer" parent="."]
 layout_mode = 0
@@ -98,7 +98,6 @@ size_flags_horizontal = 3
 focus_neighbor_bottom = NodePath("../../../LevelDisplayMargins/LevelDisplayPanel/ThumbnailGrid")
 theme_override_font_sizes/font_size = 52
 text = "<<<"
-script = ExtResource("2_p0wlc")
 
 [node name="NavRight" type="Button" parent="VerticalContainer/ArrowContainer/NavBoxes"]
 layout_mode = 2
@@ -106,4 +105,6 @@ size_flags_horizontal = 3
 focus_neighbor_bottom = NodePath("../../../LevelDisplayMargins/LevelDisplayPanel/ThumbnailGrid")
 theme_override_font_sizes/font_size = 52
 text = ">>>"
-script = ExtResource("2_p0wlc")
+
+[connection signal="pressed" from="VerticalContainer/ArrowContainer/NavBoxes/NavLeft" to="." method="nav_left"]
+[connection signal="pressed" from="VerticalContainer/ArrowContainer/NavBoxes/NavRight" to="." method="nav_right"]
