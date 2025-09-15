@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://rduk8lfaknsp"]
+[gd_scene load_steps=3 format=3 uid="uid://rduk8lfaknsp"]
 
-[ext_resource type="Script" uid="uid://cnhwoswmlkt0o" path="res://assets/scripts/Guis/load_levels/level_select_multiplayer.gd" id="1_ouddy"]
+[ext_resource type="Script" uid="uid://chsqvlfra6qyt" path="res://assets/scripts/Guis/load_levels/level_select.gd" id="1_3shnc"]
+[ext_resource type="Script" uid="uid://lbffc4qynn1d" path="res://assets/scripts/back_button.gd" id="2_p0wlc"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -11,16 +12,53 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-script = ExtResource("1_ouddy")
+script = ExtResource("1_3shnc")
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_right = 541.0
+offset_bottom = 958.0
 
-[node name="GridContainer" type="GridContainer" parent="CenterContainer"]
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 0
+
+[node name="Back" type="Button" parent="VBoxContainer/MarginContainer2"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "Back"
+script = ExtResource("2_p0wlc")
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer/MarginContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 5
+theme_override_constants/v_separation = 5
 columns = 3
+
+[node name="ColorRect2" type="ColorRect" parent="VBoxContainer/MarginContainer/PanelContainer/GridContainer"]
+custom_minimum_size = Vector2(170, 260)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+color = Color(0.169245, 0.169245, 0.169245, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="VBoxContainer/MarginContainer/PanelContainer/GridContainer"]
+custom_minimum_size = Vector2(170, 260)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+color = Color(0.169245, 0.169245, 0.169245, 1)

@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://dfoemyveip84p"]
+
+[ext_resource type="PackedScene" uid="uid://d4hbsclhpfj4v" path="res://levels/level1/test_level_1.tscn" id="1_10eck"]
+
+[node name="LevelThumbnail" type="Control"]
+custom_minimum_size = Vector2(170, 260)
+layout_mode = 3
+anchors_preset = 0
+
+[node name="LevelMask" type="ColorRect" parent="."]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="testLevel" parent="LevelMask" instance=ExtResource("1_10eck")]
+position = Vector2(70, 245)
