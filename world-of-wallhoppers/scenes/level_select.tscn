@@ -58,6 +58,7 @@ theme_override_constants/margin_bottom = 0
 layout_mode = 2
 size_flags_vertical = 0
 focus_neighbor_bottom = NodePath("../../LevelDisplayMargins/LevelDisplayPanel/ThumbnailGrid")
+theme_override_font_sizes/font_size = 32
 text = "Back"
 script = ExtResource("2_p0wlc")
 
@@ -67,7 +68,7 @@ size_flags_vertical = 3
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 0
 theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
+theme_override_constants/margin_bottom = 5
 
 [node name="LevelDisplayPanel" type="PanelContainer" parent="VerticalContainer/LevelDisplayMargins"]
 layout_mode = 2
@@ -79,3 +80,30 @@ focus_neighbor_top = NodePath("../../../TopContainer")
 theme_override_constants/h_separation = 5
 theme_override_constants/v_separation = 5
 columns = 3
+
+[node name="ArrowContainer" type="MarginContainer" parent="VerticalContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="NavBoxes" type="HBoxContainer" parent="VerticalContainer/ArrowContainer"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+
+[node name="NavLeft" type="Button" parent="VerticalContainer/ArrowContainer/NavBoxes"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_neighbor_bottom = NodePath("../../../LevelDisplayMargins/LevelDisplayPanel/ThumbnailGrid")
+theme_override_font_sizes/font_size = 52
+text = "<<<"
+script = ExtResource("2_p0wlc")
+
+[node name="NavRight" type="Button" parent="VerticalContainer/ArrowContainer/NavBoxes"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_neighbor_bottom = NodePath("../../../LevelDisplayMargins/LevelDisplayPanel/ThumbnailGrid")
+theme_override_font_sizes/font_size = 52
+text = ">>>"
+script = ExtResource("2_p0wlc")

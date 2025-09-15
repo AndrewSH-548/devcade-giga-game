@@ -29,16 +29,15 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("pause"):
-		pauseMenu(); 
+		# Toggle pause menu
+		set_pause(not paused)
 
-# Handles pausing 
-func pauseMenu():
+func set_pause(is_paused: bool):
+	paused = is_paused
 	if paused:
-		pause_menu.hide();
-		Engine.time_scale = 1;
-	else:
 		pause_menu.show(); 
 		$PauseMenu/MarginContainer/VBoxContainer/Resume.grab_focus(); 
 		Engine.time_scale = 0;
-	
-	paused = not paused; 
+	else:
+		pause_menu.hide();
+		Engine.time_scale = 1;
