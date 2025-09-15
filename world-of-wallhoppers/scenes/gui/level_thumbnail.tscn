@@ -14,6 +14,15 @@ offset_bottom = 260.0
 theme = ExtResource("1_fofor")
 script = ExtResource("1_10eck")
 
+[node name="Shading" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.118959, 0.111572, 0.11342, 0.584314)
+
 [node name="ViewportContainer" type="SubViewportContainer" parent="."]
 show_behind_parent = true
 layout_mode = 0
@@ -27,6 +36,7 @@ render_target_update_mode = 4
 
 [node name="Margins" type="MarginContainer" parent="."]
 show_behind_parent = true
+z_index = 1
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
