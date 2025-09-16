@@ -1,6 +1,6 @@
 [gd_scene load_steps=24 format=3 uid="uid://c42ynqlk3h4wp"]
 
-[ext_resource type="Script" uid="uid://xkik1qkpgt12" path="res://assets/scripts/player.gd" id="1_hw104"]
+[ext_resource type="Script" uid="uid://b4cra7t5rbaxf" path="res://assets/scripts/characters/reign.gd" id="1_jrwk1"]
 [ext_resource type="Texture2D" uid="uid://qeyg6x6t1ru4" path="res://assets/sprites/reign.png" id="2_iacc1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6ci1u"]
@@ -212,15 +212,16 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Player1Body" type="CharacterBody2D"]
+[node name="PlayerReign" type="CharacterBody2D"]
 collision_layer = 4
-script = ExtResource("1_hw104")
+script = ExtResource("1_jrwk1")
 walk_speed = 180
 run_speed = 260
 air_speed = 180
-air_accel = 12
+air_accel = 14
 jump_height = 160
-wall_jump_height = 160
+wall_jump_height = 200
+wall_pushoff_strength = 90
 fall_speed = 550
 gravity = 450
 weight = 13
@@ -229,18 +230,18 @@ move_left_action = "p1_left"
 move_right_action = "p1_right"
 run_modifier_action = "p1_run"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="Collision" type="CollisionShape2D" parent="."]
 position = Vector2(0, -7)
 shape = SubResource("RectangleShape2D_6ci1u")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="Animations" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_eose0")
 animation = &"run"
 
-[node name="Player1Hitbox" type="Area2D" parent="."]
+[node name="PlayerHitbox" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player1Hitbox"]
+[node name="HitboxShape" type="CollisionShape2D" parent="PlayerHitbox"]
 position = Vector2(0, -7)
 shape = SubResource("RectangleShape2D_6ci1u")
