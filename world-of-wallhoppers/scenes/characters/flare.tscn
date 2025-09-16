@@ -1,0 +1,105 @@
+[gd_scene load_steps=12 format=3 uid="uid://bojyqwmqsf6xx"]
+
+[ext_resource type="Script" uid="uid://dkjbdby517ry4" path="res://scenes/characters/flare.gd" id="1_sssk5"]
+[ext_resource type="Texture2D" uid="uid://dxxdo3wpshssn" path="res://assets/sprites/character_concept_pt6.png" id="2_on6cs"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_on6cs"]
+size = Vector2(17, 35)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4w0mk"]
+size = Vector2(22, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_on6cs"]
+atlas = ExtResource("2_on6cs")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gf061"]
+atlas = ExtResource("2_on6cs")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4w0mk"]
+atlas = ExtResource("2_on6cs")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4f27x"]
+atlas = ExtResource("2_on6cs")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dfykk"]
+atlas = ExtResource("2_on6cs")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_on6cs"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_on6cs")
+}],
+"loop": true,
+"name": &"Hitstun",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gf061")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4w0mk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4f27x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dfykk")
+}],
+"loop": true,
+"name": &"Roll",
+"speed": 12.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gf061"]
+size = Vector2(17, 35)
+
+[node name="Flare" type="CharacterBody2D"]
+collision_layer = 4
+script = ExtResource("1_sssk5")
+kick_action = &"p1_run"
+walk_speed = 70
+run_speed = 70
+air_speed = 180
+air_accel = 5
+jump_height = 200
+wall_jump_height = 300
+wall_pushoff_strength = 90
+fall_speed = 550
+gravity = 450
+weight = 13
+jump_action = "p1_jump"
+move_left_action = "p1_left"
+move_right_action = "p1_right"
+run_modifier_action = "p1_run"
+
+[node name="NormalCollision" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 6.5)
+shape = SubResource("RectangleShape2D_on6cs")
+
+[node name="RollCollision" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_4w0mk")
+debug_color = Color(0.757918, 2.88785e-05, 0.555706, 0.42)
+
+[node name="Animations" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_on6cs")
+animation = &"Roll"
+autoplay = "Idle"
+
+[node name="PlayerHitbox" type="Area2D" parent="."]
+
+[node name="HitboxShape" type="CollisionShape2D" parent="PlayerHitbox"]
+position = Vector2(0.5, 6.5)
+shape = SubResource("RectangleShape2D_gf061")
