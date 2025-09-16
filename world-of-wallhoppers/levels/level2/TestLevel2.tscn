@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://iembhyk5nlq" path="res://assets/scripts/visuals/backgrounds.gd" id="5_bxl2m"]
 [ext_resource type="Texture2D" uid="uid://cnfoa1y2m0f56" path="res://assets/terrain/background_jungle_vegitation.png" id="6_ohne2"]
 [ext_resource type="PackedScene" uid="uid://di3x7knkxawd3" path="res://scenes/visuals/light_beam.tscn" id="6_xjx7g"]
-[ext_resource type="Shader" uid="uid://vih4h60r5tp7" path="res://assets/shaders/wobble_warp.gdshader" id="8_05rs6"]
+[ext_resource type="Shader" path="res://assets/shaders/wobble_warp.gdshader" id="8_05rs6"]
 [ext_resource type="Texture2D" uid="uid://bnh82e2uan82h" path="res://assets/terrain/background_jungle_trees.png" id="9_jtkmd"]
 [ext_resource type="Texture2D" uid="uid://dgkqxhds83xeo" path="res://assets/terrain/particle_jungle_leaf.png" id="10_ohne2"]
 [ext_resource type="PackedScene" uid="uid://dhjkvej1d1nic" path="res://scenes/editor/tumbnail_marker.tscn" id="11_jtkmd"]

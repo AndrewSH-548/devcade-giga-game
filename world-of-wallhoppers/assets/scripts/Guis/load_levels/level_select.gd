@@ -55,7 +55,6 @@ func load_level(level_info: LevelInfo):
 class Page:
 	
 	var thumbnails: Array[Array] = [[]]
-	static var count: int = 0
 	# Please change these if you change the thumbnails!!!
 	const COLUMN_AMOUNT = 3
 	const ROW_AMOUNT = 3
@@ -67,8 +66,6 @@ class Page:
 	
 	# Adds a thumbnail to the page
 	func add(thumbnail: Control) -> void:
-		thumbnail.get_node("Margins/LevelName").text += str(count)
-		count += 1
 		# Don't allow a null thumbnail to be added
 		assert(thumbnail != null, "Cannot add to null thumbnail to a page!")
 		# Don't let a thumbnail be added to a full page
