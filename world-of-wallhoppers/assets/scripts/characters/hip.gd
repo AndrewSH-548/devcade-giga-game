@@ -1,71 +1,74 @@
 extends "res://assets/scripts/player.gd"
 
 @export var crouch_action: String = " "
+var is_wall_climbing: bool = false
 
-var isWallClimbing: bool = false;
-var isJumping: bool = false;
+@export var climb_speed: float
 
 func _physics_process(delta: float) -> void:
 	if get_tree().get_first_node_in_group("splitscreen").paused: # Doesn't work for singleplayer
-		return;
+		return
 	
-	if (velocity.y >= 0): isJumping = false;
-	isWallClimbing = false;
+	# Set is_wall_climbing to true if Wallsliding and the run button is pressed
+	is_wall_climbing = Input.is_action_pressed(run_modifier_action) and get_position_state() == STATE_ON_WALL
 	
-	if is_on_wall() and not is_on_floor() and Input.is_action_pressed(run_modifier_action) and !isJumping:
-		isWallClimbing = true;
+	var direction: float = get_horizontal_movement()
 	
-	# Add the gravity.
-	if not is_on_floor() and not isWallClimbing:
-		velocity.y += gravity * delta;
-		velocity.y = clamp(velocity.y, -jump_height, fall_speed);
-
-	# Handle jump.
-	if Input.is_action_just_pressed(jump_action) and is_on_floor() and not isWallClimbing and not hitstun:
-		velocity.y = -jump_height;
-		isJumping = true;
-
-	# Get the input direction and handle the movement/deceleration.
-	var direction := Input.get_axis(move_left_action, move_right_action)
-	flipCheck();
-	animate(direction);
-	# Move, and check whether the player in in hitstun
-	if direction:
-		# Push the player away from a wall when they jump off it.
-		if Input.is_action_just_pressed(jump_action) and is_on_wall() and !is_on_floor() and not hitstun:
-			velocity.x = -direction * wall_jump_height / 1.8;
-			velocity.y = -wall_jump_height;
-		elif !is_on_floor() and not hitstun:
-			if abs(velocity.x) < air_speed:
-				velocity.x += direction * air_accel;
-			else:
-				velocity.x = move_toward(velocity.x, direction*air_speed, air_accel);
-		elif Input.is_action_pressed(run_modifier_action) and not hitstun:
-			velocity.x = direction * run_speed;
-		elif not hitstun:
-			velocity.x = direction * walk_speed;
-	else:
-		velocity.x = move_toward(velocity.x, 0, 50); # use air_accel? 
+	# Don't do gravity when wallclibing
+	if not is_wall_climbing: process_gravity(delta)
+	process_jump(delta)
 	
-	if isWallClimbing:
-		var climbDirection = Input.get_axis(jump_action, crouch_action);
-		velocity.y = climbDirection * 100;
+	update_flipped()
+	
+	if not is_wall_climbing: process_walkrun(delta, direction)
+	process_walljump_hip(delta)
+	animate_hip(direction)
+	process_wallclimb()
 	
 	move_and_slide()
 
-func animate(direction: float) -> void:
+func get_climb_input():
+	return Input.get_axis(jump_action, crouch_action)
+
+func process_wallclimb():
+	if is_wall_climbing:
+		var climbDirection: float = get_climb_input()
+		velocity.y = climbDirection * climb_speed;
+
+func process_walljump_hip(delta: float) -> void:
+	# Skip this if the player is not wallsliding
+	# Look at get_position_state() and STATE_ON_WALL for wallsliding conditions
+	if get_position_state() != STATE_ON_WALL: return
+	
+	if Input.is_action_just_pressed(jump_action) and not is_wall_climbing:
+		velocity.x = get_pushoff_wall_direction() * wall_pushoff_strength
+		velocity.y = -wall_jump_height
+
+func update_flipped() -> void:
+	var left_wall: bool = is_touching_left_wall()
+	var right_wall: bool = is_touching_right_wall()
+	if (left_wall or right_wall) and not is_on_floor():
+		if left_wall: isFacingRight = false
+		if right_wall: isFacingRight = true
+	else:
+		if Input.is_action_just_pressed(move_left_action) and isFacingRight:
+			isFacingRight = false
+		elif Input.is_action_just_pressed(move_right_action) and not isFacingRight:
+			isFacingRight = true
+
+func animate_hip(direction: float) -> void:
 	if hitstun:
-		sprite.animation = "hurt";
-	elif is_on_wall() and not is_on_floor():
-		sprite.animation = "wall-climb" if isWallClimbing else "wall-cling";
+		sprite.animation = "hurt"
+	elif is_touching_wall() and not is_on_floor():
+		sprite.animation = "wall-climb" if is_wall_climbing else "wall-cling"
 	elif velocity.y < 0:
-		sprite.animation = "jump";
-	elif not is_on_wall() and not is_on_floor():
-		sprite.animation = "fall";
-	elif is_on_wall() && direction != 0:
-		sprite.animation = "wall-push";
+		sprite.animation = "jump"
+	elif get_position_state() == STATE_IN_AIR:
+		sprite.animation = "fall"
+	elif is_touching_wall() && direction != 0:
+		sprite.animation = "wall-push"
 	elif direction != 0:
-		sprite.animation = "run" if Input.is_action_pressed(run_modifier_action) else "walk";
-	else: sprite.animation = "idle";
+		sprite.animation = "run" if Input.is_action_pressed(run_modifier_action) else "walk"
+	else: sprite.animation = "idle"
 	
 	sprite.flip_h = !isFacingRight;
