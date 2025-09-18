@@ -1,12 +1,12 @@
 [gd_scene load_steps=5 format=3 uid="uid://c3bkjibfhfofl"]
 
-[ext_resource type="Script" uid="uid://ctflvn8gie88l" path="res://assets/scripts/singleplayer.gd" id="1_l25rm"]
-[ext_resource type="Script" uid="uid://d3p48lwnrft2t" path="res://assets/scripts/camera.gd" id="2_cbso6"]
-[ext_resource type="PackedScene" uid="uid://dtu1k6tt7cxej" path="res://scenes/characters/hip.tscn" id="3_bfebm"]
-[ext_resource type="PackedScene" uid="uid://dnpilee0jidao" path="res://scenes/pause_menu.tscn" id="4_ni31h"]
+[ext_resource type="Script" path="res://assets/scripts/singlescreen.gd" id="1_bp0l3"]
+[ext_resource type="Script" uid="uid://d3p48lwnrft2t" path="res://assets/scripts/camera.gd" id="2_5f7m3"]
+[ext_resource type="PackedScene" uid="uid://dtu1k6tt7cxej" path="res://scenes/characters/hip.tscn" id="3_vsp5y"]
+[ext_resource type="PackedScene" uid="uid://dnpilee0jidao" path="res://scenes/gui/pause_menu.tscn" id="4_i2xlj"]
 
 [node name="Node2D" type="Node2D" groups=["splitscreen"]]
-script = ExtResource("1_l25rm")
+script = ExtResource("1_bp0l3")
 
 [node name="ViewportContainerP1" type="SubViewportContainer" parent="."]
 offset_left = 135.0
@@ -22,10 +22,10 @@ render_target_update_mode = 4
 
 [node name="Camera2D" type="Camera2D" parent="ViewportContainerP1/SubViewport" node_paths=PackedStringArray("target") groups=["Player1Camera"]]
 offset = Vector2(135, 240)
-script = ExtResource("2_cbso6")
+script = ExtResource("2_5f7m3")
 target = NodePath("../Player1Body")
 
-[node name="Player1Body" parent="ViewportContainerP1/SubViewport" instance=ExtResource("3_bfebm")]
+[node name="Player1Body" parent="ViewportContainerP1/SubViewport" instance=ExtResource("3_vsp5y")]
 position = Vector2(44, 542)
 
 [node name="ColorRect2" type="ColorRect" parent="."]
@@ -41,5 +41,5 @@ offset_right = 135.0
 offset_bottom = 960.0
 color = Color(0, 0, 0, 1)
 
-[node name="PauseMenu" parent="." instance=ExtResource("4_ni31h")]
+[node name="PauseMenu" parent="." instance=ExtResource("4_i2xlj")]
 visible = false

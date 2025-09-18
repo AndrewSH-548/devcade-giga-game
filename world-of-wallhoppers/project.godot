@@ -36,6 +36,9 @@ Player2Camera=""
 player1="The Player 1"
 player2="The Player 2"
 splitscreen=""
+ThumbnailMarker=""
+ThumbnailDestination=""
+BackgroundsManager=""
 
 [input]
 

@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://dw2fas0otmqd1"]
+
+[ext_resource type="Script" uid="uid://bbjt38anmuqk2" path="res://assets/scripts/editor/only_visible_in_editor.gd" id="1_1swn5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yb00l"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 7
+border_width_top = 7
+border_width_right = 7
+border_width_bottom = 7
+border_color = Color(0.853985, 0.000478805, 0.833425, 1)
+border_blend = true
+corner_radius_top_left = 20
+corner_radius_bottom_right = 20
+
+[node name="TumbnailDestination" type="Marker2D" groups=["ThumbnailMarker"]]
+top_level = true
+script = ExtResource("1_1swn5")
+
+[node name="ColorRect" type="Panel" parent="." groups=["ThumbnailDestination"]]
+custom_minimum_size = Vector2(170, 260)
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_yb00l")
