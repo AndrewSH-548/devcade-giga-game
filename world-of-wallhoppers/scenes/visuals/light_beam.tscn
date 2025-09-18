@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://di3x7knkxawd3"]
+
+[ext_resource type="Script" uid="uid://c2qasqf3ve1ai" path="res://assets/scripts/visuals/light_beam.gd" id="1_lo1n2"]
+
+[node name="Beam" type="Node2D"]
+script = ExtResource("1_lo1n2")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+use_parent_material = true
+offset_left = -953.0
+offset_top = 953.0
+offset_right = 1475.0
+offset_bottom = 993.0
+rotation = -0.785398
+color = Color(1, 1, 1, 0.372549)

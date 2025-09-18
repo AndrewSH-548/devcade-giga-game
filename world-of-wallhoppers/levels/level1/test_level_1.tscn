@@ -1,9 +1,16 @@
-[gd_scene load_steps=13 format=4 uid="uid://d4hbsclhpfj4v"]
+[gd_scene load_steps=23 format=4 uid="uid://d4hbsclhpfj4v"]
 
-[ext_resource type="Texture2D" uid="uid://ulefhw2axopx" path="res://assets/tilesets/volcano.png" id="1_ccxi4"]
+[ext_resource type="Texture2D" uid="uid://ulefhw2axopx" path="res://assets/terrain/volcano.png" id="1_ccxi4"]
+[ext_resource type="Script" uid="uid://brm4mbapwva4" path="res://assets/scripts/goal.gd" id="2_nnacv"]
+
 [ext_resource type="Script" uid="uid://cphusaq70x4jg" path="res://assets/scripts/obstacles.gd" id="3_s743b"]
 [ext_resource type="PackedScene" uid="uid://bpos0rprc0elm" path="res://scenes/goalpost.tscn" id="4_5ohq7"]
 [ext_resource type="Texture2D" uid="uid://3ekv2i16hkw0" path="res://assets/sprites/16-bit-spike-Sheet.png" id="4_vodbx"]
+[ext_resource type="Texture2D" uid="uid://binr7f5lmii6q" path="res://assets/terrain/background_volcano_stone.png" id="5_bqy5f"]
+[ext_resource type="Script" uid="uid://iembhyk5nlq" path="res://assets/scripts/visuals/backgrounds.gd" id="5_qhdoh"]
+[ext_resource type="Shader" uid="uid://bnwrxjdbjs6bt" path="res://assets/shaders/heat_warp.gdshader" id="6_f5oh5"]
+[ext_resource type="Texture2D" uid="uid://7bumea00du76" path="res://assets/terrain/background_volcano_lava.png" id="6_khy24"]
+[ext_resource type="Texture2D" uid="uid://cthep0kultb3j" path="res://assets/terrain/background_volcano_smoke.png" id="7_c1j4u"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yaa17"]
 texture = ExtResource("1_ccxi4")
@@ -2032,6 +2039,44 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_16rsp"]
 size = Vector2(16.5, 16)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4afio"]
+shader = ExtResource("6_f5oh5")
+shader_parameter/intensity = 1.12
+shader_parameter/speed = 1.37
+shader_parameter/amplitude = 0.55
+
+[sub_resource type="Shader" id="Shader_7ggb1"]
+code = "shader_type canvas_item;
+
+uniform float intensity = 1.0;
+uniform float speed = 1.0;
+uniform float amplitude = 1.0;
+
+varying vec4 mod_color;
+
+void vertex() {
+	mod_color = COLOR;
+}
+
+
+void fragment() {
+	COLOR = texture(TEXTURE, vec2(UV.x + sin(TIME * speed + UV.y * 500.0 * intensity) / 100.0 * amplitude, UV.y));
+	COLOR *= mod_color;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_khy24"]
+shader = SubResource("Shader_7ggb1")
+shader_parameter/intensity = 1.425
+shader_parameter/speed = 4.95
+shader_parameter/amplitude = 2.045
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f5oh5"]
+shader = ExtResource("6_f5oh5")
+shader_parameter/intensity = 0.485
+shader_parameter/speed = 2.09
+shader_parameter/amplitude = 0.885
+
 [node name="testLevel" type="Node2D"]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
@@ -2072,6 +2117,81 @@ collision_mask = 6
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Static-squares/Static-square2/Area2D"]
 position = Vector2(0.25, 0)
 shape = SubResource("RectangleShape2D_16rsp")
+
+[node name="Backgrounds" type="Node2D" parent="."]
+visibility_layer = 13
+z_index = -1
+script = ExtResource("5_qhdoh")
+
+[node name="Back" type="Parallax2D" parent="Backgrounds"]
+scroll_scale = Vector2(0, 0)
+
+[node name="ColorRect" type="ColorRect" parent="Backgrounds/Back"]
+offset_left = -266.0
+offset_top = -1066.0
+offset_right = 348.0
+offset_bottom = 564.0
+color = Color(0, 0, 0, 1)
+
+[node name="Volcanos" type="Parallax2D" parent="Backgrounds"]
+visibility_layer = 4
+texture_repeat = 2
+material = SubResource("ShaderMaterial_4afio")
+scroll_scale = Vector2(0.05, 0.05)
+repeat_size = Vector2(0, 1920)
+repeat_times = 20
+ignore_camera_scroll = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Backgrounds/Volcanos"]
+use_parent_material = true
+texture = ExtResource("6_khy24")
+offset = Vector2(0, 180)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Backgrounds/Volcanos"]
+use_parent_material = true
+texture = ExtResource("6_khy24")
+offset = Vector2(0, 660)
+
+[node name="Smoke2" type="Parallax2D" parent="Backgrounds"]
+visibility_layer = 4
+scroll_scale = Vector2(0.4, 0.4)
+repeat_size = Vector2(270, 960)
+autoscroll = Vector2(10, 25)
+repeat_times = 20
+ignore_camera_scroll = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Backgrounds/Smoke2"]
+modulate = Color(0.215686, 0.12549, 0.113725, 0.196078)
+texture_repeat = 2
+material = SubResource("ShaderMaterial_khy24")
+scale = Vector2(2, 2)
+texture = ExtResource("7_c1j4u")
+
+[node name="CircleStones" type="Parallax2D" parent="Backgrounds"]
+visibility_layer = 4
+material = SubResource("ShaderMaterial_f5oh5")
+scroll_scale = Vector2(0.2, 0.2)
+repeat_size = Vector2(0, 960)
+repeat_times = 20
+ignore_camera_scroll = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Backgrounds/CircleStones"]
+use_parent_material = true
+texture = ExtResource("5_bqy5f")
+
+[node name="Smoke" type="Parallax2D" parent="Backgrounds"]
+visibility_layer = 4
+scroll_scale = Vector2(0.4, 0.4)
+repeat_size = Vector2(270, 960)
+autoscroll = Vector2(30, 50)
+repeat_times = 20
+ignore_camera_scroll = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Backgrounds/Smoke"]
+modulate = Color(0.215686, 0.12549, 0.113725, 0.431373)
+texture_repeat = 2
+material = SubResource("ShaderMaterial_khy24")
+texture = ExtResource("7_c1j4u")
 
 [connection signal="body_entered" from="Static-squares/Static-square1/Area2D" to="Static-squares" method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="Static-squares/Static-square2/Area2D" to="Static-squares" method="_on_area_2d_body_entered"]

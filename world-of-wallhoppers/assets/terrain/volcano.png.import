@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ulefhw2axopx"
-path="res://.godot/imported/volcano.png-714af01cac47fef4ebeba8f3540c3b14.ctex"
+path="res://.godot/imported/volcano.png-e6a84de6d87c7ce19b114a038eac26e7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tilesets/volcano.png"
-dest_files=["res://.godot/imported/volcano.png-714af01cac47fef4ebeba8f3540c3b14.ctex"]
+source_file="res://assets/terrain/volcano.png"
+dest_files=["res://.godot/imported/volcano.png-e6a84de6d87c7ce19b114a038eac26e7.ctex"]
 
 [params]
 
