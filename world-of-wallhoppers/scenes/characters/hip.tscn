@@ -176,15 +176,18 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Player1Body" type="CharacterBody2D"]
+[node name="PlayerHip" type="CharacterBody2D"]
 collision_layer = 4
 script = ExtResource("1_s6udp")
+crouch_action = "p1_crouch"
+climb_speed = 150.0
 walk_speed = 180
 run_speed = 260
 air_speed = 150
 air_accel = 8
 jump_height = 200
-wall_jump_height = 200
+wall_jump_height = 280
+wall_pushoff_strength = 110
 fall_speed = 900
 gravity = 550
 weight = 10
@@ -193,15 +196,15 @@ move_left_action = "p1_left"
 move_right_action = "p1_right"
 run_modifier_action = "p1_run"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="Collision" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_6ci1u")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="Animations" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_eose0")
 animation = &"idle"
 
-[node name="Player1Hitbox" type="Area2D" parent="."]
+[node name="Hitbox" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player1Hitbox"]
+[node name="HitboxShape" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource("RectangleShape2D_6ci1u")
