@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://cue05xubnlc2c" path="res://assets/scripts/Guis/start_screen.gd" id="1_kxo13"]
 [ext_resource type="Script" uid="uid://cpsa7dev5vw2p" path="res://assets/scripts/Guis/button_grab_focus.gd" id="3_he1sj"]
 
-[node name="Control" type="Control" node_paths=PackedStringArray("mutiplayer_button", "singleplayer_button", "quit_button", "settings_button", "tutorial_button")]
+[node name="StartScreen" type="Control" node_paths=PackedStringArray("mutiplayer_button", "singleplayer_button", "quit_button", "settings_button", "tutorial_button")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -62,3 +62,7 @@ text = "Tutorial (not implmented)"
 [node name="QuitButton" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Quit"
+
+[connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Mutiplayer" to="." method="load_level_select" binds= [true]]
+[connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SinglePlayer" to="." method="load_level_select" binds= [false]]
+[connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/QuitButton" to="." method="quit"]
