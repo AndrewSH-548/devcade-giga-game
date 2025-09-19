@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://br12fqlynos76"]
+
+[ext_resource type="Script" uid="uid://c7ndx6prtpvt4" path="res://assets/scripts/Guis/character_select/character_portrait.gd" id="1_i83p5"]
+[ext_resource type="Texture2D" uid="uid://cbpfskf2jthji" path="res://assets/sprites/hip.png" id="2_qiy3y"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yavv5"]
+atlas = ExtResource("2_qiy3y")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="LabelSettings" id="LabelSettings_qiy3y"]
+font_size = 32
+
+[node name="CharacterPortrait" type="Control"]
+custom_minimum_size = Vector2(270, 400)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_i83p5")
+
+[node name="Vertical" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ImageScale" type="AspectRatioContainer" parent="Vertical"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PortraitImage" type="TextureRect" parent="Vertical/ImageScale"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = SubResource("AtlasTexture_yavv5")
+
+[node name="Name" type="Label" parent="Vertical"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+text = "Hip"
+label_settings = SubResource("LabelSettings_qiy3y")
