@@ -2075,8 +2075,9 @@ position = Vector2(0.25, 0)
 shape = SubResource("RectangleShape2D_16rsp")
 
 [node name="MovingPlatform" parent="." instance=ExtResource("5_bqy5f")]
-position = Vector2(1, -121)
-target_left_position_y = 40
+position = Vector2(-111, 28)
+speed_scale = 0.5
+left_point_y = 80
 
 [connection signal="body_entered" from="Static-squares/Static-square1/Area2D" to="Static-squares" method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="Static-squares/Static-square2/Area2D" to="Static-squares" method="_on_area_2d_body_entered"]
