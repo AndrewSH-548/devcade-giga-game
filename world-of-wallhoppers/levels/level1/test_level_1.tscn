@@ -1,5 +1,4 @@
-
-[gd_scene load_steps=24 format=4 uid="uid://d4hbsclhpfj4v"]
+[gd_scene load_steps=25 format=4 uid="uid://d4hbsclhpfj4v"]
 
 [ext_resource type="Texture2D" uid="uid://ulefhw2axopx" path="res://assets/terrain/volcano.png" id="1_ccxi4"]
 [ext_resource type="PackedScene" uid="uid://dhjkvej1d1nic" path="res://scenes/editor/tumbnail_marker.tscn" id="1_f5oh5"]
@@ -7,14 +6,12 @@
 [ext_resource type="Script" uid="uid://cphusaq70x4jg" path="res://assets/scripts/obstacles.gd" id="3_s743b"]
 [ext_resource type="PackedScene" uid="uid://bpos0rprc0elm" path="res://scenes/goalpost.tscn" id="4_5ohq7"]
 [ext_resource type="Texture2D" uid="uid://3ekv2i16hkw0" path="res://assets/sprites/16-bit-spike-Sheet.png" id="4_vodbx"]
-
-[ext_resource type="PackedScene" uid="uid://dm6eckbq0lr8g" path="res://scenes/moving_platform.tscn" id="5_bqy5f"]
 [ext_resource type="Texture2D" uid="uid://binr7f5lmii6q" path="res://assets/terrain/background_volcano_stone.png" id="5_bqy5f"]
 [ext_resource type="Script" uid="uid://iembhyk5nlq" path="res://assets/scripts/visuals/backgrounds.gd" id="5_qhdoh"]
 [ext_resource type="Shader" path="res://assets/shaders/heat_warp.gdshader" id="6_f5oh5"]
 [ext_resource type="Texture2D" uid="uid://7bumea00du76" path="res://assets/terrain/background_volcano_lava.png" id="6_khy24"]
+[ext_resource type="PackedScene" uid="uid://dm6eckbq0lr8g" path="res://scenes/moving_platform.tscn" id="7_4afio"]
 [ext_resource type="Texture2D" uid="uid://cthep0kultb3j" path="res://assets/terrain/background_volcano_smoke.png" id="7_c1j4u"]
-
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yaa17"]
 texture = ExtResource("1_ccxi4")
@@ -2128,11 +2125,10 @@ collision_mask = 6
 position = Vector2(0.25, 0)
 shape = SubResource("RectangleShape2D_16rsp")
 
-
-[node name="MovingPlatform" parent="." instance=ExtResource("5_bqy5f")]
-position = Vector2(-111, 28)
-speed_scale = 0.5
-left_point_y = 80
+[node name="MovingPlatform2" parent="." instance=ExtResource("7_4afio")]
+position = Vector2(-103, -64)
+speed_scale = 0.8
+left_point_y = 40
 
 [node name="Backgrounds" type="Node2D" parent="."]
 visibility_layer = 13
