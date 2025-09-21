@@ -79,7 +79,7 @@ collision_layer = 129
 collision_mask = 129
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Path2D/AnimatableBody2D"]
-scale = Vector2(0.375, 0.140625)
+scale = Vector2(0.453125, 0.171875)
 sprite_frames = SubResource("SpriteFrames_afg43")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/AnimatableBody2D"]
