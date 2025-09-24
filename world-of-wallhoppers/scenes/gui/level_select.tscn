@@ -1,20 +1,27 @@
-[gd_scene load_steps=7 format=3 uid="uid://rduk8lfaknsp"]
+[gd_scene load_steps=9 format=3 uid="uid://rduk8lfaknsp"]
 
 [ext_resource type="Script" uid="uid://chsqvlfra6qyt" path="res://assets/scripts/Guis/load_levels/level_select.gd" id="1_i6x52"]
 [ext_resource type="Script" uid="uid://72arh6p6vdd" path="res://assets/scripts/Guis/level_info.gd" id="2_qphbd"]
-[ext_resource type="PackedScene" uid="uid://d4hbsclhpfj4v" path="res://levels/level1/test_level_1.tscn" id="3_1r8fe"]
-[ext_resource type="PackedScene" uid="uid://ne30x5qgi5u" path="res://levels/level2/TestLevel2.tscn" id="4_61t22"]
+[ext_resource type="PackedScene" path="res://scenes/levels/volcano.tscn" id="3_i6x52"]
+[ext_resource type="PackedScene" path="res://scenes/levels/jungle.tscn" id="4_qphbd"]
+[ext_resource type="PackedScene" path="res://scenes/levels/jungle-large.tscn" id="5_1r8fe"]
 
 [sub_resource type="Resource" id="Resource_rif6e"]
 script = ExtResource("2_qphbd")
-scene = ExtResource("3_1r8fe")
+scene = ExtResource("3_i6x52")
 name = "Volcano"
 metadata/_custom_type_script = "uid://72arh6p6vdd"
 
 [sub_resource type="Resource" id="Resource_chg43"]
 script = ExtResource("2_qphbd")
-scene = ExtResource("4_61t22")
+scene = ExtResource("4_qphbd")
 name = "Jungle"
+metadata/_custom_type_script = "uid://72arh6p6vdd"
+
+[sub_resource type="Resource" id="Resource_qphbd"]
+script = ExtResource("2_qphbd")
+scene = ExtResource("5_1r8fe")
+name = "Large Jungle"
 metadata/_custom_type_script = "uid://72arh6p6vdd"
 
 [node name="LevelSelect" type="Control"]
@@ -27,7 +34,7 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_i6x52")
-levels_list = Array[ExtResource("2_qphbd")]([SubResource("Resource_rif6e"), SubResource("Resource_chg43")])
+levels_list = Array[ExtResource("2_qphbd")]([SubResource("Resource_rif6e"), SubResource("Resource_chg43"), SubResource("Resource_qphbd")])
 
 [node name="VerticalContainer" type="VBoxContainer" parent="."]
 layout_mode = 0
