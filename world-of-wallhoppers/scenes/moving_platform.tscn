@@ -1,11 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://dm6eckbq0lr8g"]
+[gd_scene load_steps=10 format=3 uid="uid://dm6eckbq0lr8g"]
 
 [ext_resource type="Script" uid="uid://cjl4tqsxeq34t" path="res://assets/scripts/moving_platform.gd" id="1_1tdcd"]
 [ext_resource type="Texture2D" uid="uid://bb7mrddl4nkqn" path="res://icon.svg" id="2_mb26n"]
 
 [sub_resource type="Curve2D" id="Curve2D_1tdcd"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 240, 0)
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, -120, -40, 240, 0)
 }
 point_count = 2
 
@@ -61,6 +61,8 @@ _data = {
 &"move_platform": SubResource("Animation_1tdcd")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_1tdcd"]
+
 [node name="MovingPlatform" type="Node2D"]
 script = ExtResource("1_1tdcd")
 
@@ -68,24 +70,42 @@ script = ExtResource("1_1tdcd")
 curve = SubResource("Curve2D_1tdcd")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+rotates = false
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Path2D/PathFollow2D"]
-remote_path = NodePath("../../AnimatableBody2D")
+remote_path = NodePath("../../PlatformBody")
 update_rotation = false
 update_scale = false
 
-[node name="AnimatableBody2D" type="AnimatableBody2D" parent="Path2D"]
+[node name="PlatformBody" type="AnimatableBody2D" parent="Path2D"]
 collision_layer = 129
 collision_mask = 129
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Path2D/AnimatableBody2D"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Path2D/PlatformBody"]
 scale = Vector2(0.453125, 0.171875)
 sprite_frames = SubResource("SpriteFrames_afg43")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/AnimatableBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/PlatformBody"]
 shape = SubResource("RectangleShape2D_pgg5x")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_mb26n")
 }
+
+[node name="PauseArea" type="Node2D" parent="."]
+position = Vector2(120, 0)
+
+[node name="Area2D" type="Area2D" parent="PauseArea"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PauseArea/Area2D"]
+shape = SubResource("CircleShape2D_1tdcd")
+
+[node name="PauseTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="PauseCooldownTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="timeout" from="PauseTimer" to="." method="_on_pause_timer_timeout"]
