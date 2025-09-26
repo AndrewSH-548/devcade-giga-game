@@ -5,9 +5,9 @@
 
 [sub_resource type="Curve2D" id="Curve2D_1tdcd"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, -120, -40, 240, 0)
+"points": PackedVector2Array(-5.210556, -0.5394821, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -120, -40, 240, 0)
 }
-point_count = 2
+point_count = 8
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_afg43"]
 animations = [{
@@ -22,6 +22,8 @@ animations = [{
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pgg5x"]
 size = Vector2(54, 20)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1tdcd"]
 
 [sub_resource type="Animation" id="Animation_mb26n"]
 length = 0.001
@@ -61,8 +63,6 @@ _data = {
 &"move_platform": SubResource("Animation_1tdcd")
 }
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_1tdcd"]
-
 [node name="MovingPlatform" type="Node2D"]
 script = ExtResource("1_1tdcd")
 
@@ -88,11 +88,6 @@ sprite_frames = SubResource("SpriteFrames_afg43")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/PlatformBody"]
 shape = SubResource("RectangleShape2D_pgg5x")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_mb26n")
-}
-
 [node name="PauseArea" type="Node2D" parent="."]
 position = Vector2(120, 0)
 
@@ -100,6 +95,28 @@ position = Vector2(120, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PauseArea/Area2D"]
 shape = SubResource("CircleShape2D_1tdcd")
+
+[node name="DefaultPathPoints" type="Node2D" parent="."]
+
+[node name="DefaultStartPoint" type="Node2D" parent="DefaultPathPoints"]
+
+[node name="Area2D" type="Area2D" parent="DefaultPathPoints/DefaultStartPoint"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DefaultPathPoints/DefaultStartPoint/Area2D"]
+shape = SubResource("CircleShape2D_1tdcd")
+
+[node name="DefaultEndPoint" type="Node2D" parent="DefaultPathPoints"]
+position = Vector2(240, 0)
+
+[node name="Area2D" type="Area2D" parent="DefaultPathPoints/DefaultEndPoint"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DefaultPathPoints/DefaultEndPoint/Area2D"]
+shape = SubResource("CircleShape2D_1tdcd")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_mb26n")
+}
 
 [node name="PauseTimer" type="Timer" parent="."]
 one_shot = true

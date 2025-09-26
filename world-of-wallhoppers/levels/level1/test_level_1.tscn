@@ -2125,11 +2125,6 @@ collision_mask = 6
 position = Vector2(0.25, 0)
 shape = SubResource("RectangleShape2D_16rsp")
 
-[node name="MovingPlatform2" parent="." instance=ExtResource("7_4afio")]
-position = Vector2(-103, -64)
-speed_scale = 0.8
-left_point_y = 40
-
 [node name="Backgrounds" type="Node2D" parent="."]
 visibility_layer = 13
 z_index = -1
@@ -2204,6 +2199,32 @@ modulate = Color(0.215686, 0.12549, 0.113725, 0.431373)
 texture_repeat = 2
 material = SubResource("ShaderMaterial_khy24")
 texture = ExtResource("7_c1j4u")
+
+[node name="Platform&Points" type="Node2D" parent="."]
+
+[node name="MovingPlatform2" parent="Platform&Points" node_paths=PackedStringArray("start_point_0", "end_point_7", "point_1", "point_2", "point_3") instance=ExtResource("7_4afio")]
+position = Vector2(-100, -64)
+start_point_0 = NodePath("../StartPoint")
+end_point_7 = NodePath("../EndPoint")
+point_1 = NodePath("../Point1")
+point_2 = NodePath("../Point2")
+point_3 = NodePath("../Point3")
+speed_scale = 0.8
+
+[node name="Point1" type="Node2D" parent="Platform&Points"]
+position = Vector2(13, -167)
+
+[node name="Point2" type="Node2D" parent="Platform&Points"]
+position = Vector2(140, -64)
+
+[node name="Point3" type="Node2D" parent="Platform&Points"]
+position = Vector2(10, 40)
+
+[node name="StartPoint" type="Node2D" parent="Platform&Points"]
+position = Vector2(-100, -64)
+
+[node name="EndPoint" type="Node2D" parent="Platform&Points"]
+position = Vector2(-100, -64)
 
 [connection signal="body_entered" from="Static-squares/Static-square1/Area2D" to="Static-squares" method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="Static-squares/Static-square2/Area2D" to="Static-squares" method="_on_area_2d_body_entered"]
