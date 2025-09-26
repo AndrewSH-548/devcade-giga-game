@@ -2209,8 +2209,11 @@ end_point_7 = NodePath("../EndPoint")
 point_1 = NodePath("../Point1")
 point_2 = NodePath("../Point2")
 point_3 = NodePath("../Point3")
+start_point_x = null
+start_point_y = null
+end_point_x = null
+end_point_y = null
 speed_scale = 0.8
-pause_duration = 3.0
 
 [node name="Point1" type="Node2D" parent="Platform&Points"]
 position = Vector2(13, -167)

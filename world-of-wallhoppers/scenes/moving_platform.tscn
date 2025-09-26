@@ -88,12 +88,12 @@ sprite_frames = SubResource("SpriteFrames_afg43")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/PlatformBody"]
 shape = SubResource("RectangleShape2D_pgg5x")
 
-[node name="PauseArea" type="Node2D" parent="."]
+[node name="DefaultPauseArea" type="Node2D" parent="."]
 position = Vector2(120, 0)
 
-[node name="Area2D" type="Area2D" parent="PauseArea"]
+[node name="Area2D" type="Area2D" parent="DefaultPauseArea"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PauseArea/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DefaultPauseArea/Area2D"]
 shape = SubResource("CircleShape2D_1tdcd")
 
 [node name="DefaultPathPoints" type="Node2D" parent="."]
