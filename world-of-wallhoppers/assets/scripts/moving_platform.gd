@@ -18,17 +18,24 @@ extends Node2D
 @onready var pause_cooldown_timer: Timer = $PauseCooldownTimer
 
 # Points
-@export var start_point_0: Node2D = default_start_point; ## Create a Node(can be anything with a position) and set this variable to it. That node will be the platform's start.
-@export var end_point_7: Node2D = default_end_point; ## Create a Node(can be anything with a position) and set this variable to it. That node will be the platform's end.
-@export var point_1: Node2D = default_end_point; ## Create a Node(can be anything with a position) and set this variable to it. That node will be the 1st point on the platform's path.
-@export var point_2: Node2D = default_end_point; ## Create a Node(can be anything with a position) and set this variable to it. That node will be the 2nd point on the platform's path.
-@export var point_3: Node2D = default_end_point; ## Create a Node(can be anything with a position) and set this variable to it. That node will be the 3rd point on the platform's path.
-@export var point_4: Node2D = default_end_point; ## Create a Node(can be anything with a position) and set this variable to it. That node will be the 4th point on the platform's path.
-@export var point_5: Node2D = default_end_point; ## Create a Node(can be anything with a position) and set this variable to it. That node will be the 5th point on the platform's path.
-@export var point_6: Node2D = default_end_point; ## Create a Node(can be anything with a position) and set this variable to it. That node will be the 6th point on the platform's path.
+@export var start_point_0: Node2D; ## Create a Node(can be anything with a position) and set this variable to it. That node will be the platform's start.
+@export var end_point_7: Node2D; ## Create a Node(can be anything with a position) and set this variable to it. That node will be the platform's end.
+@export var point_1: Node2D; ## Create a Node(can be anything with a position) and set this variable to it. That node will be the 1st point on the platform's path.
+@export var point_2: Node2D; ## Create a Node(can be anything with a position) and set this variable to it. That node will be the 2nd point on the platform's path.
+@export var point_3: Node2D; ## Create a Node(can be anything with a position) and set this variable to it. That node will be the 3rd point on the platform's path.
+@export var point_4: Node2D; ## Create a Node(can be anything with a position) and set this variable to it. That node will be the 4th point on the platform's path.
+@export var point_5: Node2D; ## Create a Node(can be anything with a position) and set this variable to it. That node will be the 5th point on the platform's path.
+@export var point_6: Node2D; ## Create a Node(can be anything with a position) and set this variable to it. That node will be the 6th point on the platform's path.
 var number_of_points = 8; # the number of points on the platform's path
 
-@export var pause_area_1: Node2D = default_pause_area;
+@export var pause_area_1: Node2D; ## Create a Node(can be anything with a position) and set this variable to it. The platform will pause at that location for (pause_duration) seconds.
+@export var pause_area_2: Node2D; ## Create a Node(can be anything with a position) and set this variable to it. The platform will pause at that location for (pause_duration) seconds.
+@export var pause_area_3: Node2D; ## Create a Node(can be anything with a position) and set this variable to it. The platform will pause at that location for (pause_duration) seconds.
+@export var pause_area_4: Node2D; ## Create a Node(can be anything with a position) and set this variable to it. The platform will pause at that location for (pause_duration) seconds.
+@export var pause_area_5: Node2D; ## Create a Node(can be anything with a position) and set this variable to it. The platform will pause at that location for (pause_duration) seconds.
+@export var pause_area_6: Node2D; ## Create a Node(can be anything with a position) and set this variable to it. The platform will pause at that location for (pause_duration) seconds.
+@export var pause_area_7: Node2D; ## Create a Node(can be anything with a position) and set this variable to it. The platform will pause at that location for (pause_duration) seconds.
+@export var pause_area_8: Node2D; ## Create a Node(can be anything with a position) and set this variable to it. The platform will pause at that location for (pause_duration) seconds.
 
 # set the left and right travel points of the platform
 #@export var start_point_x: float = 0.0; ## Position is relative to the platform. (ex: 0 pixels horizontally away from the platform)
@@ -41,6 +48,8 @@ var number_of_points = 8; # the number of points on the platform's path
 
 @export var pause_duration: float = 1; ## The time(in seconds) the platform will stay paused.
 var paused = false; # if fthe platform is paused, this is true
+
+var pause_enabled = false;
 
 func _ready() -> void:
 #	if start_point_0 != null: # if the start and end points have been changed, update their positions
@@ -57,7 +66,10 @@ func _ready() -> void:
 #		end_point_7 = default_end_point;
 #		end_point_x = end_point_7.global_position.x - self.global_position.x;
 #		end_point_y = end_point_7.global_position.y - self.global_position.y;
-	
+	if start_point_0 == null:
+		start_point_0 = default_start_point;
+	if end_point_7 == null:
+		end_point_7 = default_end_point;
 	if point_1 == null: # if the points are not set, then default them to the end point (it does not work if you set them directly in the export variables)
 		point_1 = end_point_7;
 	if point_2 == null:
@@ -70,6 +82,32 @@ func _ready() -> void:
 		point_5 = end_point_7;
 	if point_6 == null:
 		point_6 = end_point_7;
+	
+	if pause_area_1 == null: # if the paused areas were set, then enable pause. Otherwise, disable pauses
+		pause_area_1 = default_pause_area;
+		pause_enabled = true;
+	if pause_area_2 == null:
+		pause_area_2 = default_pause_area;
+		pause_enabled = true;
+	if pause_area_3 == null:
+		pause_area_3 = default_pause_area;
+		pause_enabled = true;
+	if pause_area_4 == null:
+		pause_area_4 = default_pause_area;
+		pause_enabled = true;
+	if pause_area_5 == null:
+		pause_area_5 = default_pause_area;
+		pause_enabled = true;
+	if pause_area_6 == null:
+		pause_area_6 = default_pause_area;
+		pause_enabled = true;
+	if pause_area_7 == null:
+		pause_area_7 = default_pause_area;
+		pause_enabled = true;
+	if pause_area_8 == null:
+		pause_area_8 = default_pause_area;
+		pause_enabled = true;
+	
 
 	# set the position of the path points (subtract self.global_position to set the points at the right position)
 	path_2d.curve.set_point_position(0, Vector2(start_point_0.global_position.x - self.global_position.x, start_point_0.global_position.y - self.global_position.y));
@@ -87,14 +125,33 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if !paused && pause_cooldown_timer.is_stopped(): # pauses the platform at the pause_area for PLATFORM_PAUSE_DELAY seconds
 		#if ((platform_body.global_position.x >= pause_area.global_position.x - 0.5) && (platform_body.global_position.x <= pause_area.global_position.x + 0.5)) && ((platform_body.global_position.y >= pause_area.global_position.y - 0.5) && (platform_body.global_position.y <= pause_area.global_position.y + 0.5)):
-		if platform_body.global_position.distance_to(default_pause_area.global_position) < pause_area_radius:
+		if it_touching_pause_area():
 			remote_transform_2d.update_position = false;
 			paused = true;
 			animation_player.pause(); # pause the movement animation
 			pause_timer.start(pause_duration);
 
 func it_touching_pause_area() -> bool:
+	if pause_enabled == false:
+		return false;
+	
 	if platform_body.global_position.distance_to(default_pause_area.global_position) < pause_area_radius:
+		return true;
+	elif platform_body.global_position.distance_to(pause_area_1.global_position) < pause_area_radius:
+		return true;
+	elif platform_body.global_position.distance_to(pause_area_2.global_position) < pause_area_radius:
+		return true;
+	elif platform_body.global_position.distance_to(pause_area_3.global_position) < pause_area_radius:
+		return true;
+	elif platform_body.global_position.distance_to(pause_area_4.global_position) < pause_area_radius:
+		return true;
+	elif platform_body.global_position.distance_to(pause_area_5.global_position) < pause_area_radius:
+		return true;
+	elif platform_body.global_position.distance_to(pause_area_6.global_position) < pause_area_radius:
+		return true;
+	elif platform_body.global_position.distance_to(pause_area_7.global_position) < pause_area_radius:
+		return true;
+	elif platform_body.global_position.distance_to(pause_area_8.global_position) < pause_area_radius:
 		return true;
 	return false;
 
