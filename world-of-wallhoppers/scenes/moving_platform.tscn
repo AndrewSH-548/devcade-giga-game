@@ -122,7 +122,7 @@ libraries = {
 one_shot = true
 
 [node name="PauseCooldownTimer" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 0.25
 one_shot = true
 
 [connection signal="timeout" from="PauseTimer" to="." method="_on_pause_timer_timeout"]
