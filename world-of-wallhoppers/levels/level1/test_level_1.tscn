@@ -2211,6 +2211,7 @@ point_2 = NodePath("../Point2")
 point_3 = NodePath("../Point3")
 pause_area_1 = NodePath("../PauseArea1")
 speed_scale = 0.5
+path_type = "LOOP"
 
 [node name="Point1" type="Node2D" parent="Platform&Points"]
 position = Vector2(13, -167)

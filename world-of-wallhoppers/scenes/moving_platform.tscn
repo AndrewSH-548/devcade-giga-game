@@ -20,8 +20,8 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_pgg5x"]
-size = Vector2(54, 20)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1tdcd"]
+height = 58.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1tdcd"]
 
@@ -86,7 +86,8 @@ scale = Vector2(0.453125, 0.171875)
 sprite_frames = SubResource("SpriteFrames_afg43")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/PlatformBody"]
-shape = SubResource("RectangleShape2D_pgg5x")
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_1tdcd")
 
 [node name="DefaultPauseArea" type="Node2D" parent="."]
 position = Vector2(120, 0)
