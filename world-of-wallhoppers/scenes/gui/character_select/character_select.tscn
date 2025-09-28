@@ -1,7 +1,8 @@
-[gd_scene load_steps=23 format=3 uid="uid://bypgh8vwm65r6"]
+[gd_scene load_steps=27 format=3 uid="uid://bypgh8vwm65r6"]
 
 [ext_resource type="Script" uid="uid://ds787vg8b1cru" path="res://assets/scripts/Guis/character_select/character_select.gd" id="1_dlxgn"]
 [ext_resource type="Texture2D" uid="uid://dvsuivwldkw1b" path="res://assets/gui/character_dial_portraits.png" id="3_cl5d8"]
+[ext_resource type="PackedScene" uid="uid://bmuoxdjge2ld7" path="res://scenes/gui/character_select/character_tester.tscn" id="3_cxqtq"]
 [ext_resource type="Texture2D" uid="uid://brqsq5codsja1" path="res://assets/gui/water_element_icon.png" id="3_s7d2y"]
 [ext_resource type="Texture2D" uid="uid://cbpfskf2jthji" path="res://assets/sprites/hip.png" id="4_bfvoi"]
 [ext_resource type="Texture2D" uid="uid://dlhw68isl1ja2" path="res://assets/sprites/temporary_texture.png" id="5_bfvoi"]
@@ -17,6 +18,33 @@
 [ext_resource type="Texture2D" uid="uid://c4ttn020o6ovj" path="res://assets/gui/dial_pointer.png" id="11_8cco7"]
 [ext_resource type="PackedScene" uid="uid://c42ynqlk3h4wp" path="res://scenes/characters/reign.tscn" id="11_cl5d8"]
 [ext_resource type="Texture2D" uid="uid://dn82aym7hwgj0" path="res://assets/gui/character_dial_portraits2.png" id="16_qh53k"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_cxqtq"]
+font_size = 144
+shadow_size = 46
+shadow_color = Color(0, 0, 0, 0.34509805)
+stacked_outline_count = 2
+stacked_outline_0/size = 21
+stacked_outline_1/size = 15
+stacked_outline_1/color = Color(1, 1, 1, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_sqhw2"]
+font_size = 32
+shadow_size = 46
+shadow_color = Color(0, 0, 0, 0.34509805)
+stacked_outline_count = 2
+stacked_outline_0/size = 21
+stacked_outline_1/size = 15
+stacked_outline_1/color = Color(1, 1, 1, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_lfxm6"]
+font_size = 48
+shadow_size = 46
+shadow_color = Color(0, 0, 0, 0.34509805)
+stacked_outline_count = 2
+stacked_outline_0/size = 21
+stacked_outline_1/size = 15
+stacked_outline_1/color = Color(1, 1, 1, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uhpgm"]
 atlas = ExtResource("10_8cco7")
@@ -62,6 +90,49 @@ offset_right = 535.0
 offset_bottom = 954.0453
 texture = ExtResource("8_u0e5d")
 
+[node name="ReadyAll" type="Control" parent="."]
+z_index = 3
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Fade" type="ColorRect" parent="ReadyAll"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 368.0
+offset_bottom = -288.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.44705883)
+
+[node name="Texts" type="VBoxContainer" parent="ReadyAll"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Text" type="Label" parent="ReadyAll/Texts"]
+layout_mode = 2
+text = "START?"
+label_settings = SubResource("LabelSettings_cxqtq")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Text2" type="Label" parent="ReadyAll/Texts"]
+layout_mode = 2
+text = "Confirm to Continue"
+label_settings = SubResource("LabelSettings_sqhw2")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="MainVertical" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -82,11 +153,57 @@ layout_mode = 2
 size_flags_vertical = 0
 focus_neighbor_bottom = NodePath("../../LevelDisplayMargins/LevelDisplayPanel/ThumbnailGrid")
 theme_override_font_sizes/font_size = 32
-text = "Press RED / X to go Back"
+text = "Press X or Cancel to Cancel"
 
 [node name="CharacterWheel" type="Control" parent="MainVertical"]
 layout_mode = 2
 size_flags_vertical = 3
+
+[node name="CharacterTesterP1" parent="MainVertical/CharacterWheel" instance=ExtResource("3_cxqtq")]
+layout_mode = 0
+offset_left = 312.0
+offset_top = 109.0
+offset_right = 492.0
+offset_bottom = 279.0
+
+[node name="CharacterTesterP2" parent="MainVertical/CharacterWheel" instance=ExtResource("3_cxqtq")]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 629.0
+offset_right = 222.0
+offset_bottom = 799.0
+
+[node name="ReadyP1" type="Control" parent="MainVertical/CharacterWheel"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Text" type="Label" parent="MainVertical/CharacterWheel/ReadyP1"]
+layout_mode = 0
+offset_left = 304.0
+offset_top = 37.0
+offset_right = 470.0
+offset_bottom = 104.0
+text = "READY!"
+label_settings = SubResource("LabelSettings_lfxm6")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ReadyP2" type="Control" parent="MainVertical/CharacterWheel"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Text" type="Label" parent="MainVertical/CharacterWheel/ReadyP2"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 805.0
+offset_right = 206.0
+offset_bottom = 872.0
+text = "READY!"
+label_settings = SubResource("LabelSettings_lfxm6")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="TopPortraits" type="Control" parent="MainVertical/CharacterWheel"]
 z_index = -1

@@ -175,7 +175,11 @@ func nav_left():
 func nav_right():
 	navigate(+1)
 
-# Used by back_button
+func _input(event: InputEvent) -> void:
+	# Allow the player to press cancel to go back to the start
+	if event.is_action_pressed("ui_cancel") or event.is_action_pressed("p2_cancel"):
+		load_start_screen()
+
 func load_start_screen() -> void:
 	get_tree().change_scene_to_file("res://scenes/start_screen.tscn")
 	queue_free()

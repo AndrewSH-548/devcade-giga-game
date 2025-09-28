@@ -1,0 +1,97 @@
+[gd_scene load_steps=7 format=3 uid="uid://rduk8lfaknsp"]
+
+[ext_resource type="Script" uid="uid://chsqvlfra6qyt" path="res://assets/scripts/Guis/load_levels/level_select.gd" id="1_i6x52"]
+[ext_resource type="Script" uid="uid://72arh6p6vdd" path="res://assets/scripts/Guis/level_info.gd" id="2_qphbd"]
+[ext_resource type="PackedScene" uid="uid://d4hbsclhpfj4v" path="res://levels/level1/test_level_1.tscn" id="3_1r8fe"]
+[ext_resource type="PackedScene" uid="uid://ne30x5qgi5u" path="res://levels/level2/TestLevel2.tscn" id="4_61t22"]
+
+[sub_resource type="Resource" id="Resource_rif6e"]
+script = ExtResource("2_qphbd")
+scene = ExtResource("3_1r8fe")
+name = "Volcano"
+metadata/_custom_type_script = "uid://72arh6p6vdd"
+
+[sub_resource type="Resource" id="Resource_chg43"]
+script = ExtResource("2_qphbd")
+scene = ExtResource("4_61t22")
+name = "Jungle"
+metadata/_custom_type_script = "uid://72arh6p6vdd"
+
+[node name="LevelSelect" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_i6x52")
+levels_list = Array[ExtResource("2_qphbd")]([SubResource("Resource_rif6e"), SubResource("Resource_chg43")])
+
+[node name="VerticalContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 541.0
+offset_bottom = 958.0
+
+[node name="TopContainer" type="MarginContainer" parent="VerticalContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 0
+
+[node name="Back" type="Button" parent="VerticalContainer/TopContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+focus_neighbor_bottom = NodePath("../../LevelDisplayMargins/LevelDisplayPanel/ThumbnailGrid")
+theme_override_font_sizes/font_size = 32
+text = "Back"
+
+[node name="LevelDisplayMargins" type="MarginContainer" parent="VerticalContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 5
+
+[node name="LevelDisplayPanel" type="PanelContainer" parent="VerticalContainer/LevelDisplayMargins"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ThumbnailGrid" type="GridContainer" parent="VerticalContainer/LevelDisplayMargins/LevelDisplayPanel"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../../../TopContainer")
+theme_override_constants/h_separation = 5
+theme_override_constants/v_separation = 5
+columns = 3
+
+[node name="ArrowContainer" type="MarginContainer" parent="VerticalContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="NavBoxes" type="HBoxContainer" parent="VerticalContainer/ArrowContainer"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+
+[node name="NavLeft" type="Button" parent="VerticalContainer/ArrowContainer/NavBoxes"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_neighbor_bottom = NodePath("../../../LevelDisplayMargins/LevelDisplayPanel/ThumbnailGrid")
+theme_override_font_sizes/font_size = 52
+text = "<<<"
+
+[node name="NavRight" type="Button" parent="VerticalContainer/ArrowContainer/NavBoxes"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_neighbor_bottom = NodePath("../../../LevelDisplayMargins/LevelDisplayPanel/ThumbnailGrid")
+theme_override_font_sizes/font_size = 52
+text = ">>>"
+
+[connection signal="pressed" from="VerticalContainer/TopContainer/Back" to="." method="load_start_screen"]
+[connection signal="pressed" from="VerticalContainer/ArrowContainer/NavBoxes/NavLeft" to="." method="nav_left"]
+[connection signal="pressed" from="VerticalContainer/ArrowContainer/NavBoxes/NavRight" to="." method="nav_right"]

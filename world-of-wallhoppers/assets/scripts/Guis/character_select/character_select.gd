@@ -4,6 +4,13 @@ class_name CharacterSelect
 @onready var dial: Control = $MainVertical/CharacterWheel/DialPositioner
 @onready var pointer: Sprite2D = $MainVertical/CharacterWheel/DialPositioner/Pointer
 
+@onready var ready_all: Control = $ReadyAll
+@onready var ready_player_1: Control = $MainVertical/CharacterWheel/ReadyP1
+@onready var ready_player_2: Control = $MainVertical/CharacterWheel/ReadyP2
+
+@onready var character_tester_player_1: CharacterTester = $MainVertical/CharacterWheel/CharacterTesterP1
+@onready var character_tester_player_2: CharacterTester = $MainVertical/CharacterWheel/CharacterTesterP2
+
 static var player_colors: Array[Color] = [
 	Color(1.0, 0.37, 0.37, 1.0),
 	Color(0.109, 0.755, 0.547, 1.0),
@@ -12,6 +19,7 @@ static var player_colors: Array[Color] = [
 const CHARACTER_PORTRAIT = preload("uid://br12fqlynos76")
 const HEADER_MULTIPLAYER = preload("uid://ch4mextx4xjgt")
 const HEADER_SINGLEPLAYER = preload("uid://c3bkjibfhfofl")
+var LEVEL_SELECT = load("res://scenes/gui/level_select.tscn")
 
 ## -------------- HOW TO ADD A NEW CHARACYER --------------
 ## 
@@ -22,8 +30,10 @@ const HEADER_SINGLEPLAYER = preload("uid://c3bkjibfhfofl")
 
 var session_info: SessionInfo
 var current_dial_selection: Array[DIAL]
+var ready_players: Array[bool]
 var PLAYER_COUNT: int = 2
 var is_multiplayer: bool
+var was_all_ready_last_frame: bool = false
 
 enum DIAL {
 	NONE,
@@ -60,9 +70,11 @@ func start_game():
 	header.setup(session_info)
 	queue_free()
 
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("p1_run"):
-		start_game()
+func go_back_to_level_select():
+	var level_select: LevelSelect = LEVEL_SELECT.instantiate()
+	get_tree().root.add_child(level_select)
+	level_select.is_multiplayer = is_multiplayer
+	queue_free()
 
 func setup(_session_info: SessionInfo) -> void:
 	session_info = _session_info
@@ -70,12 +82,32 @@ func setup(_session_info: SessionInfo) -> void:
 	setup_for_player_count(PLAYER_COUNT)
 
 func _process(delta: float) -> void:
+	ready_button_process()
+	
 	player_selection(0)
-	if not is_multiplayer: return
-	player_selection(1)
+	if is_multiplayer:
+		player_selection(1)
+	
+	if ready_players[0]:
+		character_tester_player_1.start(dials[current_dial_selection[0]].character_scene, 0)
+	else:
+		character_tester_player_1.stop()
+	
+	if ready_players[1]:
+		character_tester_player_2.start(dials[current_dial_selection[1]].character_scene, 1)
+	else:
+		character_tester_player_2.stop()
+	
+	var is_all_ready: bool = not false in ready_players
+	ready_all.visible = is_all_ready
+	if is_all_ready and was_all_ready_last_frame and (player_just_pressed("confirm", 0) or player_just_pressed("confirm", 1)):
+		start_game()
+	
+	was_all_ready_last_frame = is_all_ready
 
 func setup_for_player_count(player_count: int):
 	if not is_multiplayer: player_count = 1
+	ready_players.resize(player_count)
 	current_dial_selection.resize(player_count)
 	for index in range(current_dial_selection.size()):
 		current_dial_selection[index] = DIAL.TOP
@@ -90,16 +122,28 @@ func player_ui_input(player_index: int) -> Vector2:
 	return Vector2.ZERO
 
 func move_destination(player_index: int, left: DIAL, right: DIAL, up: DIAL, down: DIAL):
-	if Input.is_action_just_pressed("p" + str(player_index + 1) + "_left"):
+	if player_just_pressed("left", player_index):
 		current_dial_selection[player_index] = left
-	if Input.is_action_just_pressed("p" + str(player_index + 1) + "_right"):
+	if player_just_pressed("right", player_index):
 		current_dial_selection[player_index] = right
-	if Input.is_action_just_pressed("p" + str(player_index + 1) + "_up"):
+	if player_just_pressed("up", player_index):
 		current_dial_selection[player_index] = up
-	if Input.is_action_just_pressed("p" + str(player_index + 1) + "_down"):
+	if player_just_pressed("down", player_index):
 		current_dial_selection[player_index] = down
 
 func player_selection(player_index: int):
+	
+	if ready_players[player_index] == true:
+		if player_just_pressed("cancel", player_index):
+			ready_players[player_index] = false
+		return
+	
+	if player_just_pressed("cancel", player_index):
+		go_back_to_level_select()
+	
+	if current_dial_selection[player_index] != DIAL.NONE and player_just_pressed("confirm", player_index):
+		ready_players[player_index] = true
+	
 	# Current is the currently selected dial, TOP, BOTTOM, BOTTOM_LEFT, etc, etc.
 	# move_destination is definited by, left, right, up, down
 	# So each match tells where each direction leads
@@ -115,3 +159,18 @@ func player_selection(player_index: int):
 	
 	for dial_button: CharacterSelectDialButton in dials.values():
 		dial_button.selected_by[player_index] = dial_button.dial_id == current_dial_selection[player_index]
+
+func ready_button_process():
+	ready_player_1.visible = ready_players[0] == true
+	if not is_multiplayer: return
+	ready_player_2.visible = ready_players[1] == true
+
+static func player_just_pressed(action_name: String, player_index: int):
+	
+	# Handle Special P1 Cases
+	if player_index == 0 and action_name in ["confirm", "cancel"]:
+		match action_name:
+			"confirm": return Input.is_action_just_pressed("ui_accept")
+			"cancel": return Input.is_action_just_pressed("ui_cancel")
+	
+	return Input.is_action_just_pressed("p" + str(player_index + 1) + "_" + action_name)

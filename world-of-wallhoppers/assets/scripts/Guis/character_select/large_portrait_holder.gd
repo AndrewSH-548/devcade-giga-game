@@ -18,6 +18,9 @@ func _ready() -> void:
 	assert(character_select != null, "Character select not found for a portrait holder! Is the character select not in the \"CharacterSelect\" group?")
 
 func _process(delta: float) -> void:
+	if not character_select.is_multiplayer and connected_player_index != 0:
+		visible = false
+		return
 	if character_select.current_dial_selection[connected_player_index] == connected_dial:
 		visible = true
 	else:
