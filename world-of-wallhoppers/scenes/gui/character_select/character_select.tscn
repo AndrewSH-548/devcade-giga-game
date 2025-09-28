@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://bypgh8vwm65r6"]
+[gd_scene load_steps=20 format=3 uid="uid://bypgh8vwm65r6"]
 
 [ext_resource type="Script" uid="uid://ds787vg8b1cru" path="res://assets/scripts/Guis/character_select/character_select.gd" id="1_dlxgn"]
 [ext_resource type="Script" uid="uid://yndhxnb68ach" path="res://assets/scripts/Guis/character_select/character_portrait_info.gd" id="2_ua81x"]
@@ -7,9 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://dlhw68isl1ja2" path="res://assets/sprites/temporary_texture.png" id="5_bfvoi"]
 [ext_resource type="Texture2D" uid="uid://c6mhrd5tyn1l" path="res://assets/gui/air_element_icon.png" id="5_s7d2y"]
 [ext_resource type="Texture2D" uid="uid://qeyg6x6t1ru4" path="res://assets/sprites/reign.png" id="6_bfvoi"]
-[ext_resource type="Texture2D" uid="uid://c2386a7ah0ihp" path="res://assets/gui/gui_dial_buttons.png" id="8_o4o7f"]
 [ext_resource type="Texture2D" uid="uid://dhvnkw5tq2g6l" path="res://assets/gui/gui_sketches_dial_b.png" id="8_u0e5d"]
-[ext_resource type="Texture2D" uid="uid://ulefhw2axopx" path="res://assets/terrain/volcano.png" id="10_u0e5d"]
+[ext_resource type="Script" uid="uid://coa3jlesxvfo7" path="res://assets/scripts/Guis/character_select/dial_button.gd" id="9_u0e5d"]
+[ext_resource type="Texture2D" uid="uid://cebblpjfgjt12" path="res://assets/gui/gui_dial_buttons.bmp" id="10_8cco7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jfsbr"]
 atlas = ExtResource("4_bfvoi")
@@ -40,88 +40,28 @@ portrait_sprite = ExtResource("5_bfvoi")
 element_sprite = ExtResource("5_bfvoi")
 metadata/_custom_type_script = "uid://yndhxnb68ach"
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_b51ev"]
-atlas = ExtResource("8_o4o7f")
+[sub_resource type="AtlasTexture" id="AtlasTexture_uhpgm"]
+atlas = ExtResource("10_8cco7")
 region = Rect2(0, 0, 320, 320)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_nj0pb"]
-atlas = ExtResource("4_bfvoi")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_cl5d8"]
-atlas = ExtResource("4_bfvoi")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qh53k"]
-atlas = ExtResource("4_bfvoi")
-region = Rect2(96, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_lfxm6"]
-atlas = ExtResource("4_bfvoi")
-region = Rect2(128, 0, 32, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_cxqtq"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_aqbib"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_nj0pb")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_cl5d8")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qh53k")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_lfxm6")
+"texture": SubResource("AtlasTexture_uhpgm")
 }],
 "loop": true,
-"name": &"default",
-"speed": 10.0
+"name": &"Normal",
+"speed": 5.0
 }]
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_u0e5d"]
-load_path = "res://.godot/imported/gui_dial_buttons.png-5db1ae825d046eaaeb0043eb4a81a5d8.ctex"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8cco7"]
-atlas = SubResource("CompressedTexture2D_u0e5d")
-region = Rect2(320, 0, 320, 320)
+atlas = ExtResource("4_bfvoi")
+region = Rect2(0, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_cxqtq"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_u0e5d"]
 atlas = ExtResource("6_bfvoi")
-region = Rect2(40, 0, 40, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_sqhw2"]
-atlas = ExtResource("6_bfvoi")
-region = Rect2(80, 0, 40, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_a3imy"]
-atlas = ExtResource("6_bfvoi")
-region = Rect2(120, 0, 40, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rhvis"]
-atlas = ExtResource("6_bfvoi")
-region = Rect2(0, 48, 40, 48)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_jl4ub"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_cxqtq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_sqhw2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_a3imy")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rhvis")
-}],
-"loop": true,
-"name": &"default",
-"speed": 12.0
-}]
+region = Rect2(0, 0, 32, 48)
 
 [node name="CharacterSelect" type="Control"]
 layout_mode = 3
@@ -161,7 +101,7 @@ layout_mode = 2
 size_flags_vertical = 0
 focus_neighbor_bottom = NodePath("../../LevelDisplayMargins/LevelDisplayPanel/ThumbnailGrid")
 theme_override_font_sizes/font_size = 32
-text = "Back"
+text = "Press RED / X to go Back"
 
 [node name="CharacterWheel" type="Control" parent="MainVertical"]
 layout_mode = 2
@@ -169,206 +109,148 @@ size_flags_vertical = 3
 
 [node name="DialPositioner" type="Control" parent="MainVertical/CharacterWheel"]
 anchors_preset = 0
-offset_left = 55.999992
-offset_top = 61.000008
-offset_right = 95.99999
-offset_bottom = 101.00001
+offset_left = 271.99997
+offset_top = 397.0
+offset_right = 271.99997
+offset_bottom = 397.0
 scale = Vector2(0.80343884, 0.80343884)
 
-[node name="Mask" type="TextureButton" parent="MainVertical/CharacterWheel/DialPositioner"]
-clip_children = 2
-layout_mode = 0
-offset_left = 110.00001
-offset_top = 173.00003
-offset_right = 430.0
-offset_bottom = 493.00003
-pivot_offset = Vector2(97, 185)
-texture_normal = SubResource("AtlasTexture_b51ev")
-texture_pressed = ExtResource("10_u0e5d")
+[node name="CenterMarker" type="Marker2D" parent="MainVertical/CharacterWheel/DialPositioner"]
+position = Vector2(-3.7983693e-05, -3.7983693e-05)
+scale = Vector2(1.0000001, 1.0000001)
+gizmo_extents = 128.0
 
-[node name="Background" type="TextureRect" parent="MainVertical/CharacterWheel/DialPositioner/Mask"]
-layout_mode = 0
-offset_left = 43.0
-offset_top = 5.0
-offset_right = 139.0
-offset_bottom = 174.0
-scale = Vector2(2.874711, 1.8627384)
+[node name="DialButtonTopLeft" type="Control" parent="MainVertical/CharacterWheel/DialPositioner"]
+anchors_preset = 0
+rotation = -1.0471976
+script = ExtResource("9_u0e5d")
+dial_position_angle = 240.0
+
+[node name="Mask" type="AnimatedSprite2D" parent="MainVertical/CharacterWheel/DialPositioner/DialButtonTopLeft"]
+clip_children = 1
+position = Vector2(-3.79837e-05, -159.31522)
+sprite_frames = SubResource("SpriteFrames_aqbib")
+animation = &"Normal"
+
+[node name="Background" type="Sprite2D" parent="MainVertical/CharacterWheel/DialPositioner/DialButtonTopLeft/Mask"]
+rotation = 1.0471976
+scale = Vector2(10, 10)
+texture = ExtResource("5_bfvoi")
+
+[node name="Character" type="Sprite2D" parent="MainVertical/CharacterWheel/DialPositioner/DialButtonTopLeft/Mask"]
+position = Vector2(-22.939835, 0.09576416)
+rotation = 1.0471976
+scale = Vector2(4, 4)
+texture = ExtResource("5_bfvoi")
+
+[node name="DialButtonTop" type="Control" parent="MainVertical/CharacterWheel/DialPositioner"]
+anchors_preset = 0
+script = ExtResource("9_u0e5d")
+dial_position_angle = 270.0
+
+[node name="Mask" type="AnimatedSprite2D" parent="MainVertical/CharacterWheel/DialPositioner/DialButtonTop"]
+clip_children = 1
+position = Vector2(-3.79837e-05, -159.31522)
+sprite_frames = SubResource("SpriteFrames_aqbib")
+animation = &"Normal"
+
+[node name="Background" type="Sprite2D" parent="MainVertical/CharacterWheel/DialPositioner/DialButtonTop/Mask"]
+scale = Vector2(4, 4)
 texture = ExtResource("3_s7d2y")
 
-[node name="Sprite" type="AnimatedSprite2D" parent="MainVertical/CharacterWheel/DialPositioner/Mask"]
-position = Vector2(158, 155)
-scale = Vector2(4.279194, 4.279194)
-sprite_frames = SubResource("SpriteFrames_cxqtq")
-frame = 2
-frame_progress = 0.3959559
-
-[node name="DialWater" type="Button" parent="MainVertical/CharacterWheel/DialPositioner"]
-layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
-
-[node name="DialAether" type="Button" parent="MainVertical/CharacterWheel/DialPositioner"]
-layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
-
-[node name="Mask" type="TextureRect" parent="MainVertical/CharacterWheel/DialPositioner/DialAether"]
-clip_children = 2
-layout_mode = 0
-offset_left = 246.0
-offset_top = 253.0
-offset_right = 566.0
-offset_bottom = 573.0
-pivot_offset = Vector2(97, 185)
+[node name="Character" type="Sprite2D" parent="MainVertical/CharacterWheel/DialPositioner/DialButtonTop/Mask"]
+position = Vector2(3.8146973e-06, 7.249415e-06)
+scale = Vector2(4, 4)
 texture = SubResource("AtlasTexture_8cco7")
 
-[node name="Background" type="TextureRect" parent="MainVertical/CharacterWheel/DialPositioner/DialAether/Mask"]
-layout_mode = 0
-offset_left = 41.999996
-offset_top = 256.0
-offset_right = 138.0
-offset_bottom = 425.0
-rotation = -1.5707964
-scale = Vector2(2.3651643, 1.3177016)
+[node name="DialButtonTopRight" type="Control" parent="MainVertical/CharacterWheel/DialPositioner"]
+anchors_preset = 0
+rotation = 1.0471976
+script = ExtResource("9_u0e5d")
+dial_position_angle = 330.0
+
+[node name="Mask" type="AnimatedSprite2D" parent="MainVertical/CharacterWheel/DialPositioner/DialButtonTopRight"]
+clip_children = 1
+position = Vector2(-3.79837e-05, -159.31522)
+sprite_frames = SubResource("SpriteFrames_aqbib")
+animation = &"Normal"
+
+[node name="Background" type="Sprite2D" parent="MainVertical/CharacterWheel/DialPositioner/DialButtonTopRight/Mask"]
+rotation = -1.0471976
+scale = Vector2(4, 4)
 texture = ExtResource("5_s7d2y")
 
-[node name="Sprite" type="AnimatedSprite2D" parent="MainVertical/CharacterWheel/DialPositioner/DialAether/Mask"]
-position = Vector2(152, 172)
-scale = Vector2(4.279194, 4.279194)
-sprite_frames = SubResource("SpriteFrames_jl4ub")
-frame = 2
-frame_progress = 0.031414945
+[node name="Character" type="Sprite2D" parent="MainVertical/CharacterWheel/DialPositioner/DialButtonTopRight/Mask"]
+position = Vector2(8.004057, 25.965378)
+rotation = -1.0471976
+scale = Vector2(4, 4)
+texture = SubResource("AtlasTexture_u0e5d")
 
-[node name="DialElectric" type="Button" parent="MainVertical/CharacterWheel/DialPositioner"]
-layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
+[node name="DialButtonBottomRight" type="Control" parent="MainVertical/CharacterWheel/DialPositioner"]
+anchors_preset = 0
+rotation = 2.0943952
+script = ExtResource("9_u0e5d")
+dial_position_angle = 30.0
 
-[node name="Mask" type="TextureRect" parent="MainVertical/CharacterWheel/DialPositioner/DialElectric"]
-clip_children = 2
-layout_mode = 0
-offset_left = 102.0
-offset_top = 253.0
-offset_right = 422.0
-offset_bottom = 573.0
-scale = Vector2(-1, 1)
-pivot_offset = Vector2(97, 185)
-texture = SubResource("AtlasTexture_8cco7")
+[node name="Mask" type="AnimatedSprite2D" parent="MainVertical/CharacterWheel/DialPositioner/DialButtonBottomRight"]
+clip_children = 1
+position = Vector2(-3.79837e-05, -159.31522)
+sprite_frames = SubResource("SpriteFrames_aqbib")
+animation = &"Normal"
 
-[node name="Background" type="TextureRect" parent="MainVertical/CharacterWheel/DialPositioner/DialElectric/Mask"]
-layout_mode = 0
-offset_left = 39.999996
-offset_top = 264.0
-offset_right = 136.0
-offset_bottom = 433.0
-rotation = -1.5707964
-scale = Vector2(2.3651643, 1.3177016)
-texture = ExtResource("5_s7d2y")
+[node name="Background" type="Sprite2D" parent="MainVertical/CharacterWheel/DialPositioner/DialButtonBottomRight/Mask"]
+rotation = -2.0943952
+scale = Vector2(10, 10)
+texture = ExtResource("5_bfvoi")
 
-[node name="Sprite" type="AnimatedSprite2D" parent="MainVertical/CharacterWheel/DialPositioner/DialElectric/Mask"]
-visible = false
-position = Vector2(152, 172)
-scale = Vector2(4.279194, 4.279194)
-sprite_frames = SubResource("SpriteFrames_jl4ub")
-frame = 2
-frame_progress = 0.031414945
+[node name="Character" type="Sprite2D" parent="MainVertical/CharacterWheel/DialPositioner/DialButtonBottomRight/Mask"]
+position = Vector2(-22.939835, 0.09576416)
+rotation = 4.1887903
+scale = Vector2(4, 4)
+texture = ExtResource("5_bfvoi")
 
-[node name="DialLife" type="Button" parent="MainVertical/CharacterWheel/DialPositioner"]
-layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
+[node name="DialButtonBottom" type="Control" parent="MainVertical/CharacterWheel/DialPositioner"]
+anchors_preset = 0
+rotation = -3.1415927
+script = ExtResource("9_u0e5d")
+dial_position_angle = 90.0
 
-[node name="Mask" type="TextureRect" parent="MainVertical/CharacterWheel/DialPositioner/DialLife"]
-clip_children = 2
-layout_mode = 0
-offset_left = 246.0
-offset_top = 363.0
-offset_right = 566.0
-offset_bottom = 683.0
-scale = Vector2(1, -1)
-pivot_offset = Vector2(97, 185)
-texture = SubResource("AtlasTexture_8cco7")
+[node name="Mask" type="AnimatedSprite2D" parent="MainVertical/CharacterWheel/DialPositioner/DialButtonBottom"]
+clip_children = 1
+position = Vector2(-3.79837e-05, -159.31522)
+sprite_frames = SubResource("SpriteFrames_aqbib")
+animation = &"Normal"
 
-[node name="Background" type="TextureRect" parent="MainVertical/CharacterWheel/DialPositioner/DialLife/Mask"]
-layout_mode = 0
-offset_left = 33.999996
-offset_top = 256.0
-offset_right = 130.0
-offset_bottom = 425.0
-rotation = -1.5707964
-scale = Vector2(2.3651643, 1.3177016)
-texture = ExtResource("5_s7d2y")
+[node name="Background" type="Sprite2D" parent="MainVertical/CharacterWheel/DialPositioner/DialButtonBottom/Mask"]
+rotation = 3.1415927
+scale = Vector2(10, 10)
+texture = ExtResource("5_bfvoi")
 
-[node name="Sprite" type="AnimatedSprite2D" parent="MainVertical/CharacterWheel/DialPositioner/DialLife/Mask"]
-visible = false
-position = Vector2(152, 172)
-scale = Vector2(4.279194, 4.279194)
-sprite_frames = SubResource("SpriteFrames_jl4ub")
-frame = 2
-frame_progress = 0.031414945
+[node name="Character" type="Sprite2D" parent="MainVertical/CharacterWheel/DialPositioner/DialButtonBottom/Mask"]
+position = Vector2(-22.939835, 0.09576416)
+rotation = 3.1415927
+scale = Vector2(4, 4)
+texture = ExtResource("5_bfvoi")
 
-[node name="DialShadow" type="Button" parent="MainVertical/CharacterWheel/DialPositioner"]
-layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
+[node name="DialButtonBottomLeft" type="Control" parent="MainVertical/CharacterWheel/DialPositioner"]
+anchors_preset = 0
+rotation = -2.0943952
+script = ExtResource("9_u0e5d")
+dial_position_angle = 120.0
 
-[node name="Mask" type="TextureRect" parent="MainVertical/CharacterWheel/DialPositioner/DialShadow"]
-clip_children = 2
-layout_mode = 0
-offset_left = 102.0
-offset_top = 363.0
-offset_right = 422.0
-offset_bottom = 683.0
-scale = Vector2(-1, -1)
-pivot_offset = Vector2(97, 185)
-texture = SubResource("AtlasTexture_8cco7")
+[node name="Mask" type="AnimatedSprite2D" parent="MainVertical/CharacterWheel/DialPositioner/DialButtonBottomLeft"]
+clip_children = 1
+position = Vector2(-3.79837e-05, -159.31522)
+sprite_frames = SubResource("SpriteFrames_aqbib")
+animation = &"Normal"
 
-[node name="Background" type="TextureRect" parent="MainVertical/CharacterWheel/DialPositioner/DialShadow/Mask"]
-layout_mode = 0
-offset_left = 31.999996
-offset_top = 256.0
-offset_right = 128.0
-offset_bottom = 425.0
-rotation = -1.5707964
-scale = Vector2(2.3651643, 1.3177016)
-texture = ExtResource("5_s7d2y")
+[node name="Background" type="Sprite2D" parent="MainVertical/CharacterWheel/DialPositioner/DialButtonBottomLeft/Mask"]
+rotation = 2.0943952
+scale = Vector2(10, 10)
+texture = ExtResource("5_bfvoi")
 
-[node name="Sprite" type="AnimatedSprite2D" parent="MainVertical/CharacterWheel/DialPositioner/DialShadow/Mask"]
-visible = false
-position = Vector2(152, 172)
-scale = Vector2(4.279194, 4.279194)
-sprite_frames = SubResource("SpriteFrames_jl4ub")
-frame = 2
-frame_progress = 0.031414945
-
-[node name="DialFire" type="Button" parent="MainVertical/CharacterWheel/DialPositioner"]
-layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
-
-[node name="Mask" type="TextureRect" parent="MainVertical/CharacterWheel/DialPositioner/DialFire"]
-clip_children = 2
-layout_mode = 0
-offset_left = 112.0
-offset_top = 501.0
-offset_right = 432.0
-offset_bottom = 821.0
-pivot_offset = Vector2(97, 185)
-texture = SubResource("AtlasTexture_b51ev")
-
-[node name="Background" type="TextureRect" parent="MainVertical/CharacterWheel/DialPositioner/DialFire/Mask"]
-layout_mode = 0
-offset_left = 43.0
-offset_top = 5.0
-offset_right = 139.0
-offset_bottom = 174.0
-scale = Vector2(2.874711, 1.8627384)
-texture = ExtResource("3_s7d2y")
-
-[node name="Sprite" type="AnimatedSprite2D" parent="MainVertical/CharacterWheel/DialPositioner/DialFire/Mask"]
-visible = false
-position = Vector2(158, 155)
-scale = Vector2(4.279194, 4.279194)
-sprite_frames = SubResource("SpriteFrames_cxqtq")
-frame = 2
-frame_progress = 0.3959559
+[node name="Character" type="Sprite2D" parent="MainVertical/CharacterWheel/DialPositioner/DialButtonBottomLeft/Mask"]
+position = Vector2(-22.939835, 0.09576416)
+rotation = 2.0943952
+scale = Vector2(4, 4)
+texture = ExtResource("5_bfvoi")
