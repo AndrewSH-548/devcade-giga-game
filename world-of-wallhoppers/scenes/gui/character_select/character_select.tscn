@@ -1,10 +1,11 @@
-[gd_scene load_steps=21 format=3 uid="uid://bypgh8vwm65r6"]
+[gd_scene load_steps=23 format=3 uid="uid://bypgh8vwm65r6"]
 
 [ext_resource type="Script" uid="uid://ds787vg8b1cru" path="res://assets/scripts/Guis/character_select/character_select.gd" id="1_dlxgn"]
 [ext_resource type="Texture2D" uid="uid://dvsuivwldkw1b" path="res://assets/gui/character_dial_portraits.png" id="3_cl5d8"]
 [ext_resource type="Texture2D" uid="uid://brqsq5codsja1" path="res://assets/gui/water_element_icon.png" id="3_s7d2y"]
 [ext_resource type="Texture2D" uid="uid://cbpfskf2jthji" path="res://assets/sprites/hip.png" id="4_bfvoi"]
 [ext_resource type="Texture2D" uid="uid://dlhw68isl1ja2" path="res://assets/sprites/temporary_texture.png" id="5_bfvoi"]
+[ext_resource type="Script" uid="uid://duhq76ptbpowd" path="res://assets/scripts/Guis/character_select/large_portrait_holder.gd" id="5_lfxm6"]
 [ext_resource type="Texture2D" uid="uid://c6mhrd5tyn1l" path="res://assets/gui/air_element_icon.png" id="5_s7d2y"]
 [ext_resource type="Texture2D" uid="uid://c2386a7ah0ihp" path="res://assets/gui/gui_dial_buttons.png" id="6_8cco7"]
 [ext_resource type="Texture2D" uid="uid://qeyg6x6t1ru4" path="res://assets/sprites/reign.png" id="6_bfvoi"]
@@ -15,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://cebblpjfgjt12" path="res://assets/gui/gui_dial_buttons.bmp" id="10_8cco7"]
 [ext_resource type="Texture2D" uid="uid://c4ttn020o6ovj" path="res://assets/gui/dial_pointer.png" id="11_8cco7"]
 [ext_resource type="PackedScene" uid="uid://c42ynqlk3h4wp" path="res://scenes/characters/reign.tscn" id="11_cl5d8"]
+[ext_resource type="Texture2D" uid="uid://dn82aym7hwgj0" path="res://assets/gui/character_dial_portraits2.png" id="16_qh53k"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uhpgm"]
 atlas = ExtResource("10_8cco7")
@@ -43,7 +45,7 @@ region = Rect2(0, 0, 32, 32)
 atlas = ExtResource("6_bfvoi")
 region = Rect2(0, 0, 32, 48)
 
-[node name="CharacterSelect" type="Control"]
+[node name="CharacterSelect" type="Control" groups=["CharacterSelect"]]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -87,15 +89,30 @@ layout_mode = 2
 size_flags_vertical = 3
 
 [node name="TopPortraits" type="Control" parent="MainVertical/CharacterWheel"]
+z_index = -1
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
 grow_horizontal = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="MainVertical/CharacterWheel/TopPortraits"]
-position = Vector2(128.00002, 189.00002)
+[node name="PortraitHolderHip" type="Node2D" parent="MainVertical/CharacterWheel/TopPortraits"]
+script = ExtResource("5_lfxm6")
+connected_dial = 1
+
+[node name="Hip" type="Sprite2D" parent="MainVertical/CharacterWheel/TopPortraits/PortraitHolderHip"]
+position = Vector2(128.00002, 189)
 scale = Vector2(1.7029545, 1.7029545)
 texture = ExtResource("3_cl5d8")
+flip_h = true
+
+[node name="PortraitHolderReign" type="Node2D" parent="MainVertical/CharacterWheel/TopPortraits"]
+script = ExtResource("5_lfxm6")
+connected_dial = 3
+
+[node name="Riegn" type="Sprite2D" parent="MainVertical/CharacterWheel/TopPortraits/PortraitHolderReign"]
+position = Vector2(104.00001, 141)
+scale = Vector2(1.2667192, 1.2667192)
+texture = ExtResource("16_qh53k")
 flip_h = true
 
 [node name="DialPositioner" type="Control" parent="MainVertical/CharacterWheel"]
@@ -294,6 +311,7 @@ scale = Vector2(1.0000002, 1.0000002)
 texture = ExtResource("11_8cco7")
 
 [node name="BottomPortraits" type="Control" parent="MainVertical/CharacterWheel"]
+z_index = -1
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -301,3 +319,25 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
+
+[node name="PortraitHolderHip" type="Node2D" parent="MainVertical/CharacterWheel/BottomPortraits"]
+position = Vector2(272, -344)
+script = ExtResource("5_lfxm6")
+placement = 1
+connected_dial = 1
+
+[node name="Hip" type="Sprite2D" parent="MainVertical/CharacterWheel/BottomPortraits/PortraitHolderHip"]
+position = Vector2(128.00002, 189)
+scale = Vector2(1.7029545, 1.7029545)
+texture = ExtResource("3_cl5d8")
+
+[node name="PortraitHolderReign" type="Node2D" parent="MainVertical/CharacterWheel/BottomPortraits"]
+position = Vector2(336, -304)
+script = ExtResource("5_lfxm6")
+placement = 1
+connected_dial = 3
+
+[node name="Riegn" type="Sprite2D" parent="MainVertical/CharacterWheel/BottomPortraits/PortraitHolderReign"]
+position = Vector2(104.00001, 141)
+scale = Vector2(1.2667192, 1.2667192)
+texture = ExtResource("16_qh53k")
