@@ -2,6 +2,8 @@ extends Control
 class_name CharacterSelectDialButton
 
 @export var dial_id: CharacterSelect.DIAL
+@export var character_scene: PackedScene
+
 @onready var selection: Sprite2D = $Selection
 
 var selected_by: Array[bool]

@@ -1,4 +1,6 @@
+@abstract
 extends CharacterBody2D
+class_name Character
 
 # Export stats
 @export var walk_speed: int
@@ -13,10 +15,10 @@ extends CharacterBody2D
 @export var gravity: int
 @export var weight: int
 
-@export var jump_action: String = " "
-@export var move_left_action: String = " "
-@export var move_right_action: String = " "
-@export var run_modifier_action: String = " "
+var jump_action: String = " "
+var move_left_action: String = " "
+var move_right_action: String = " "
+var run_modifier_action: String = " "
 
 var acceleration: float = 0
 var hitstun: bool = false
@@ -37,6 +39,8 @@ enum {
 	STATE_IN_AIR,
 	STATE_HITSTUN,
 }
+
+@abstract func setup_keybinds(player_number: int) -> void
 
 func _ready() -> void:
 	sprite = $Animations

@@ -1,6 +1,7 @@
 extends Camera2D
+class_name PlayerCamera
 
-@export var target:CharacterBody2D;
+var target: CharacterBody2D
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

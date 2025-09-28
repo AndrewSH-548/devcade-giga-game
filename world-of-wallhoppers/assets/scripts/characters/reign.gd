@@ -44,3 +44,10 @@ func animate_reign(direction: float) -> void:
 	else: sprite.animation = "idle";
 	
 	sprite.flip_h = !isFacingRight;
+
+func setup_keybinds(player_number: int) -> void:
+	var player_input: String = "p" + str(player_number) + "_"
+	jump_action = player_input + "jump"
+	move_left_action = player_input + "left"
+	run_modifier_action = player_input + "run"
+	move_right_action = player_input + "right"
