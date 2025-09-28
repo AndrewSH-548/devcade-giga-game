@@ -177,20 +177,22 @@ animations = [{
 }]
 
 [node name="PlayerHip" type="CharacterBody2D"]
+scale = Vector2(1.75, 1.75)
 collision_layer = 4
 script = ExtResource("1_s6udp")
 crouch_action = "p1_crouch"
 climb_speed = 150.0
-walk_speed = 180
-run_speed = 260
-air_speed = 150
-air_accel = 8
-jump_height = 200
-wall_jump_height = 280
-wall_pushoff_strength = 110
-fall_speed = 900
-gravity = 550
-weight = 10
+walk_speed = 270
+run_speed = 390
+deccel = 75
+air_speed = 225
+air_accel = 12
+jump_height = 300
+wall_jump_height = 420
+wall_pushoff_strength = 165
+fall_speed = 1350
+gravity = 825
+weight = 15
 jump_action = "p1_jump"
 move_left_action = "p1_left"
 move_right_action = "p1_right"
