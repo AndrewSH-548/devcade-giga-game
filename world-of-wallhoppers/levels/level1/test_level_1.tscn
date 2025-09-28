@@ -2092,7 +2092,7 @@ tile_map_data = PackedByteArray("AAAdABYAAQAEAAMAAAAdABQAAQAEAAoAAAAdABUAAQACAAI
 tile_set = SubResource("TileSet_yej4m")
 
 [node name="Goalpost" parent="." instance=ExtResource("4_5ohq7")]
-position = Vector2(82, -99)
+position = Vector2(2, -597)
 
 [node name="Static-squares" type="Node2D" parent="."]
 script = ExtResource("3_s743b")
@@ -2201,35 +2201,43 @@ material = SubResource("ShaderMaterial_khy24")
 texture = ExtResource("7_c1j4u")
 
 [node name="Platform&Points" type="Node2D" parent="."]
+position = Vector2(0, -339)
 
-[node name="MovingPlatform2" parent="Platform&Points" node_paths=PackedStringArray("start_point_0", "end_point_7", "point_1", "point_2", "point_3", "pause_area_1") instance=ExtResource("7_4afio")]
-position = Vector2(-100, -64)
+[node name="MovingPlatform2" parent="Platform&Points" node_paths=PackedStringArray("start_point_0", "end_point", "points", "pauses") instance=ExtResource("7_4afio")]
+position = Vector2(-91, -64)
 start_point_0 = NodePath("../StartPoint")
-end_point_7 = NodePath("../EndPoint")
-point_1 = NodePath("../Point1")
-point_2 = NodePath("../Point2")
-point_3 = NodePath("../Point3")
-pause_area_1 = NodePath("../PauseArea1")
-speed_scale = 0.5
+end_point = NodePath("../EndPoint")
+points = [NodePath("../Point1"), NodePath("../Point2"), NodePath("../Point3")]
+pauses = [NodePath("../PauseArea1"), NodePath("../PauseArea2"), NodePath("../PauseArea3"), NodePath("../PauseArea4")]
+speed_scale = 0.4
 path_type = "LOOP"
 
-[node name="Point1" type="Node2D" parent="Platform&Points"]
-position = Vector2(13, -167)
-
-[node name="Point2" type="Node2D" parent="Platform&Points"]
-position = Vector2(140, -64)
-
-[node name="Point3" type="Node2D" parent="Platform&Points"]
-position = Vector2(10, 40)
-
 [node name="StartPoint" type="Node2D" parent="Platform&Points"]
-position = Vector2(-100, -64)
+position = Vector2(-91, -64)
 
 [node name="EndPoint" type="Node2D" parent="Platform&Points"]
-position = Vector2(-100, -64)
+position = Vector2(-91, -64)
+
+[node name="Point1" type="Node2D" parent="Platform&Points"]
+position = Vector2(-91, -168)
+
+[node name="Point2" type="Node2D" parent="Platform&Points"]
+position = Vector2(91, -168)
+
+[node name="Point3" type="Node2D" parent="Platform&Points"]
+position = Vector2(91, -64)
 
 [node name="PauseArea1" type="Node2D" parent="Platform&Points"]
-position = Vector2(79, -10)
+position = Vector2(-91, -64)
+
+[node name="PauseArea2" type="Node2D" parent="Platform&Points"]
+position = Vector2(-91, -168)
+
+[node name="PauseArea3" type="Node2D" parent="Platform&Points"]
+position = Vector2(91, -168)
+
+[node name="PauseArea4" type="Node2D" parent="Platform&Points"]
+position = Vector2(91, -63)
 
 [connection signal="body_entered" from="Static-squares/Static-square1/Area2D" to="Static-squares" method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="Static-squares/Static-square2/Area2D" to="Static-squares" method="_on_area_2d_body_entered"]

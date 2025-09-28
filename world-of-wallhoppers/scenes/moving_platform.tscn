@@ -1,13 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://dm6eckbq0lr8g"]
+[gd_scene load_steps=9 format=3 uid="uid://dm6eckbq0lr8g"]
 
 [ext_resource type="Script" uid="uid://cjl4tqsxeq34t" path="res://assets/scripts/moving_platform.gd" id="1_1tdcd"]
 [ext_resource type="Texture2D" uid="uid://bb7mrddl4nkqn" path="res://icon.svg" id="2_mb26n"]
 
 [sub_resource type="Curve2D" id="Curve2D_1tdcd"]
 _data = {
-"points": PackedVector2Array(-5.210556, -0.5394821, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -120, -40, 240, 0)
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 240, 0)
 }
-point_count = 8
+point_count = 2
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_afg43"]
 animations = [{
@@ -19,9 +19,6 @@ animations = [{
 "name": &"default",
 "speed": 5.0
 }]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1tdcd"]
-height = 58.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1tdcd"]
 
@@ -85,12 +82,11 @@ collision_mask = 129
 scale = Vector2(0.453125, 0.171875)
 sprite_frames = SubResource("SpriteFrames_afg43")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/PlatformBody"]
-rotation = 1.5707964
-shape = SubResource("CapsuleShape2D_1tdcd")
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Path2D/PlatformBody"]
+position = Vector2(58, -105)
+polygon = PackedVector2Array(-86, 95, -30, 95, -27, 95, -30, 116, -86, 116, -89, 95)
 
 [node name="DefaultPauseArea" type="Node2D" parent="."]
-position = Vector2(120, 0)
 
 [node name="Area2D" type="Area2D" parent="DefaultPauseArea"]
 
@@ -107,7 +103,6 @@ shape = SubResource("CircleShape2D_1tdcd")
 shape = SubResource("CircleShape2D_1tdcd")
 
 [node name="DefaultEndPoint" type="Node2D" parent="DefaultPathPoints"]
-position = Vector2(240, 0)
 
 [node name="Area2D" type="Area2D" parent="DefaultPathPoints/DefaultEndPoint"]
 
