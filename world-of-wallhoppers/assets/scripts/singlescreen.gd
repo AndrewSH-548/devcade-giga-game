@@ -9,7 +9,7 @@ func setup(session_info: SessionInfo) -> void:
 	
 	assert(session_info.characters[0] != null, "The Level Header was loaded with a null Character!\nThis likely means a Character Select Dial was setup incorrectly!")
 	
-	var character: Character = session_info.characters[0].instantiate()
+	var character: Player = session_info.characters[0].instantiate()
 	parent_node.add_child(character)
 	character.add_to_group("player1")
 	character.setup_keybinds(1)

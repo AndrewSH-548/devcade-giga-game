@@ -1,6 +1,6 @@
 @abstract
 extends CharacterBody2D
-class_name Character
+class_name Player
 
 # Export stats
 @export var walk_speed: int

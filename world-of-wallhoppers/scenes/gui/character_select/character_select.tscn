@@ -1,6 +1,7 @@
-[gd_scene load_steps=20 format=3 uid="uid://bypgh8vwm65r6"]
+[gd_scene load_steps=21 format=3 uid="uid://bypgh8vwm65r6"]
 
 [ext_resource type="Script" uid="uid://ds787vg8b1cru" path="res://assets/scripts/Guis/character_select/character_select.gd" id="1_dlxgn"]
+[ext_resource type="Texture2D" uid="uid://dvsuivwldkw1b" path="res://assets/gui/character_dial_portraits.png" id="3_cl5d8"]
 [ext_resource type="Texture2D" uid="uid://brqsq5codsja1" path="res://assets/gui/water_element_icon.png" id="3_s7d2y"]
 [ext_resource type="Texture2D" uid="uid://cbpfskf2jthji" path="res://assets/sprites/hip.png" id="4_bfvoi"]
 [ext_resource type="Texture2D" uid="uid://dlhw68isl1ja2" path="res://assets/sprites/temporary_texture.png" id="5_bfvoi"]
@@ -85,13 +86,28 @@ text = "Press RED / X to go Back"
 layout_mode = 2
 size_flags_vertical = 3
 
+[node name="TopPortraits" type="Control" parent="MainVertical/CharacterWheel"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="MainVertical/CharacterWheel/TopPortraits"]
+position = Vector2(128.00002, 189.00002)
+scale = Vector2(1.7029545, 1.7029545)
+texture = ExtResource("3_cl5d8")
+flip_h = true
+
 [node name="DialPositioner" type="Control" parent="MainVertical/CharacterWheel"]
-anchors_preset = 0
-offset_left = 271.99997
-offset_top = 397.0
-offset_right = 271.99997
-offset_bottom = 397.0
-scale = Vector2(0.80343884, 0.80343884)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.7, 0.7)
 
 [node name="CenterMarker" type="Marker2D" parent="MainVertical/CharacterWheel/DialPositioner"]
 position = Vector2(-3.7983693e-05, -3.7983693e-05)
@@ -276,3 +292,12 @@ texture = SubResource("AtlasTexture_aqbib")
 visible = false
 scale = Vector2(1.0000002, 1.0000002)
 texture = ExtResource("11_8cco7")
+
+[node name="BottomPortraits" type="Control" parent="MainVertical/CharacterWheel"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0

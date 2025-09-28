@@ -13,6 +13,13 @@ const CHARACTER_PORTRAIT = preload("uid://br12fqlynos76")
 const HEADER_MULTIPLAYER = preload("uid://ch4mextx4xjgt")
 const HEADER_SINGLEPLAYER = preload("uid://c3bkjibfhfofl")
 
+## -------------- HOW TO ADD A NEW CHARACYER --------------
+## 
+## 1: Select the Dial Button you wish to use
+## 2: Select your character PackedScene in the Dial Button's exported variables
+## 2: Anything a child of "Mask" can be changed, and new things can be added
+## NOTE: DO NOT CHANGE THE DIAL ID! THIS WILL BREAK A LOT!
+
 var session_info: SessionInfo
 var current_dial_selection: Array[DIAL]
 var PLAYER_COUNT: int = 2

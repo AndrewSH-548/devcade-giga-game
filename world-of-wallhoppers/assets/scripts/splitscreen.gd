@@ -27,8 +27,8 @@ func setup(session_info: SessionInfo):
 	var players: Array[Node2D]
 	
 	for character in session_info.characters:
-		assert(character != null, "The Level Header was loaded with a null Character!\nThis likely means a Character Select Dial was setup incorrectly!")
-		var player: Character = character.instantiate()
+		assert(character != null, "The Level Header was loaded with a null Character!\nThis likely means a Character Select Dial was setup incorrectly, or a non-setup Character was chosen!")
+		var player: Player = character.instantiate()
 		
 		players.append(player)
 		parent_node.add_child(player)
