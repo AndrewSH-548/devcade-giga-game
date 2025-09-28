@@ -1,17 +1,44 @@
-[gd_scene load_steps=18 format=3 uid="uid://bypgh8vwm65r6"]
+[gd_scene load_steps=20 format=3 uid="uid://bypgh8vwm65r6"]
 
 [ext_resource type="Script" uid="uid://ds787vg8b1cru" path="res://assets/scripts/Guis/character_select/character_select.gd" id="1_dlxgn"]
+[ext_resource type="Script" uid="uid://yndhxnb68ach" path="res://assets/scripts/Guis/character_select/character_portrait_info.gd" id="2_ua81x"]
 [ext_resource type="Texture2D" uid="uid://brqsq5codsja1" path="res://assets/gui/water_element_icon.png" id="3_s7d2y"]
 [ext_resource type="Texture2D" uid="uid://cbpfskf2jthji" path="res://assets/sprites/hip.png" id="4_bfvoi"]
 [ext_resource type="Texture2D" uid="uid://dlhw68isl1ja2" path="res://assets/sprites/temporary_texture.png" id="5_bfvoi"]
 [ext_resource type="Texture2D" uid="uid://c6mhrd5tyn1l" path="res://assets/gui/air_element_icon.png" id="5_s7d2y"]
-[ext_resource type="Texture2D" uid="uid://c2386a7ah0ihp" path="res://assets/gui/gui_dial_buttons.png" id="6_8cco7"]
 [ext_resource type="Texture2D" uid="uid://qeyg6x6t1ru4" path="res://assets/sprites/reign.png" id="6_bfvoi"]
 [ext_resource type="Texture2D" uid="uid://dhvnkw5tq2g6l" path="res://assets/gui/gui_sketches_dial_b.png" id="8_u0e5d"]
 [ext_resource type="Script" uid="uid://coa3jlesxvfo7" path="res://assets/scripts/Guis/character_select/dial_button.gd" id="9_u0e5d"]
-[ext_resource type="Material" uid="uid://cvgooa66fd7yl" path="res://assets/shaders/materials/character_selection_material.tres" id="9_uhpgm"]
 [ext_resource type="Texture2D" uid="uid://cebblpjfgjt12" path="res://assets/gui/gui_dial_buttons.bmp" id="10_8cco7"]
-[ext_resource type="Texture2D" uid="uid://c4ttn020o6ovj" path="res://assets/gui/dial_pointer.png" id="11_8cco7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jfsbr"]
+atlas = ExtResource("4_bfvoi")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="Resource" id="Resource_o4o7f"]
+script = ExtResource("2_ua81x")
+character_name = "Hip"
+portrait_sprite = SubResource("AtlasTexture_jfsbr")
+element_sprite = ExtResource("3_s7d2y")
+metadata/_custom_type_script = "uid://yndhxnb68ach"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o4o7f"]
+atlas = ExtResource("6_bfvoi")
+region = Rect2(4, 0, 32, 48)
+
+[sub_resource type="Resource" id="Resource_ua81x"]
+script = ExtResource("2_ua81x")
+character_name = "Reign"
+portrait_sprite = SubResource("AtlasTexture_o4o7f")
+element_sprite = ExtResource("5_s7d2y")
+metadata/_custom_type_script = "uid://yndhxnb68ach"
+
+[sub_resource type="Resource" id="Resource_bfvoi"]
+script = ExtResource("2_ua81x")
+character_name = "Rick Shawn"
+portrait_sprite = ExtResource("5_bfvoi")
+element_sprite = ExtResource("5_bfvoi")
+metadata/_custom_type_script = "uid://yndhxnb68ach"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uhpgm"]
 atlas = ExtResource("10_8cco7")
@@ -27,10 +54,6 @@ animations = [{
 "name": &"Normal",
 "speed": 5.0
 }]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_aqbib"]
-atlas = ExtResource("6_8cco7")
-region = Rect2(0, 0, 320, 0)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8cco7"]
 atlas = ExtResource("4_bfvoi")
@@ -48,6 +71,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_dlxgn")
+characters = Array[ExtResource("2_ua81x")]([SubResource("Resource_o4o7f"), SubResource("Resource_ua81x"), SubResource("Resource_bfvoi")])
 
 [node name="TextureRect" type="TextureRect" parent="."]
 visible = false
@@ -100,7 +124,7 @@ gizmo_extents = 128.0
 anchors_preset = 0
 rotation = -1.0471976
 script = ExtResource("9_u0e5d")
-dial_id = 4
+dial_position_angle = 240.0
 
 [node name="Mask" type="AnimatedSprite2D" parent="MainVertical/CharacterWheel/DialPositioner/DialButtonTopLeft"]
 clip_children = 1
@@ -119,16 +143,10 @@ rotation = 1.0471976
 scale = Vector2(4, 4)
 texture = ExtResource("5_bfvoi")
 
-[node name="Selection" type="Sprite2D" parent="MainVertical/CharacterWheel/DialPositioner/DialButtonTopLeft"]
-z_index = -1
-material = ExtResource("9_uhpgm")
-position = Vector2(0, -160.00006)
-texture = SubResource("AtlasTexture_aqbib")
-
 [node name="DialButtonTop" type="Control" parent="MainVertical/CharacterWheel/DialPositioner"]
 anchors_preset = 0
 script = ExtResource("9_u0e5d")
-dial_id = 1
+dial_position_angle = 270.0
 
 [node name="Mask" type="AnimatedSprite2D" parent="MainVertical/CharacterWheel/DialPositioner/DialButtonTop"]
 clip_children = 1
@@ -145,18 +163,11 @@ position = Vector2(3.8146973e-06, 7.249415e-06)
 scale = Vector2(4, 4)
 texture = SubResource("AtlasTexture_8cco7")
 
-[node name="Selection" type="Sprite2D" parent="MainVertical/CharacterWheel/DialPositioner/DialButtonTop"]
-z_index = -1
-material = ExtResource("9_uhpgm")
-position = Vector2(0, -160.00015)
-scale = Vector2(1.0000002, 1.0000002)
-texture = SubResource("AtlasTexture_aqbib")
-
 [node name="DialButtonTopRight" type="Control" parent="MainVertical/CharacterWheel/DialPositioner"]
 anchors_preset = 0
 rotation = 1.0471976
 script = ExtResource("9_u0e5d")
-dial_id = 3
+dial_position_angle = 330.0
 
 [node name="Mask" type="AnimatedSprite2D" parent="MainVertical/CharacterWheel/DialPositioner/DialButtonTopRight"]
 clip_children = 1
@@ -175,17 +186,11 @@ rotation = -1.0471976
 scale = Vector2(4, 4)
 texture = SubResource("AtlasTexture_u0e5d")
 
-[node name="Selection" type="Sprite2D" parent="MainVertical/CharacterWheel/DialPositioner/DialButtonTopRight"]
-z_index = -1
-material = ExtResource("9_uhpgm")
-position = Vector2(0, -160.00006)
-texture = SubResource("AtlasTexture_aqbib")
-
 [node name="DialButtonBottomRight" type="Control" parent="MainVertical/CharacterWheel/DialPositioner"]
 anchors_preset = 0
 rotation = 2.0943952
 script = ExtResource("9_u0e5d")
-dial_id = 6
+dial_position_angle = 30.0
 
 [node name="Mask" type="AnimatedSprite2D" parent="MainVertical/CharacterWheel/DialPositioner/DialButtonBottomRight"]
 clip_children = 1
@@ -204,17 +209,11 @@ rotation = 4.1887903
 scale = Vector2(4, 4)
 texture = ExtResource("5_bfvoi")
 
-[node name="Selection" type="Sprite2D" parent="MainVertical/CharacterWheel/DialPositioner/DialButtonBottomRight"]
-z_index = -1
-material = ExtResource("9_uhpgm")
-position = Vector2(0, -160.00006)
-texture = SubResource("AtlasTexture_aqbib")
-
 [node name="DialButtonBottom" type="Control" parent="MainVertical/CharacterWheel/DialPositioner"]
 anchors_preset = 0
 rotation = -3.1415927
 script = ExtResource("9_u0e5d")
-dial_id = 2
+dial_position_angle = 90.0
 
 [node name="Mask" type="AnimatedSprite2D" parent="MainVertical/CharacterWheel/DialPositioner/DialButtonBottom"]
 clip_children = 1
@@ -233,17 +232,11 @@ rotation = 3.1415927
 scale = Vector2(4, 4)
 texture = ExtResource("5_bfvoi")
 
-[node name="Selection" type="Sprite2D" parent="MainVertical/CharacterWheel/DialPositioner/DialButtonBottom"]
-z_index = -1
-material = ExtResource("9_uhpgm")
-position = Vector2(0, -160.00006)
-texture = SubResource("AtlasTexture_aqbib")
-
 [node name="DialButtonBottomLeft" type="Control" parent="MainVertical/CharacterWheel/DialPositioner"]
 anchors_preset = 0
 rotation = -2.0943952
 script = ExtResource("9_u0e5d")
-dial_id = 5
+dial_position_angle = 120.0
 
 [node name="Mask" type="AnimatedSprite2D" parent="MainVertical/CharacterWheel/DialPositioner/DialButtonBottomLeft"]
 clip_children = 1
@@ -261,14 +254,3 @@ position = Vector2(-22.939835, 0.09576416)
 rotation = 2.0943952
 scale = Vector2(4, 4)
 texture = ExtResource("5_bfvoi")
-
-[node name="Selection" type="Sprite2D" parent="MainVertical/CharacterWheel/DialPositioner/DialButtonBottomLeft"]
-z_index = -1
-material = ExtResource("9_uhpgm")
-position = Vector2(0, -160.00006)
-texture = SubResource("AtlasTexture_aqbib")
-
-[node name="Pointer" type="Sprite2D" parent="MainVertical/CharacterWheel/DialPositioner"]
-visible = false
-scale = Vector2(1.0000002, 1.0000002)
-texture = ExtResource("11_8cco7")

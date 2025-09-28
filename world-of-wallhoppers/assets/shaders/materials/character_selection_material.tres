@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://cvgooa66fd7yl"]
+
+[ext_resource type="Shader" uid="uid://c3x2wer8hsyjj" path="res://assets/shaders/character_selection_outline.gdshader" id="1_3qucw"]
+[ext_resource type="Texture2D" uid="uid://bvy8hsskxd5av" path="res://assets/shaders/textures/shader_stripes.png" id="2_3qucw"]
+
+[resource]
+shader = ExtResource("1_3qucw")
+shader_parameter/colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+shader_parameter/noise = ExtResource("2_3qucw")
