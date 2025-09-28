@@ -1,4 +1,4 @@
-extends "res://assets/scripts/player.gd"
+extends Player
 
 var crouch_action: String = " "
 var is_wall_climbing: bool = false

@@ -1,4 +1,4 @@
-extends "res://assets/scripts/player.gd"
+extends Player
 
 var is_hovering: bool = false;
 

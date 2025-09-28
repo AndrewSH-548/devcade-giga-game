@@ -2,7 +2,7 @@ extends Node2D
 
 # When the player touches the obstacle
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body.name == "Player1Body" or body.name == "Player2Body":
+	if body is Player:
 		call_deferred("moveplayer", body)
 
 # Handles knockback of the player 
