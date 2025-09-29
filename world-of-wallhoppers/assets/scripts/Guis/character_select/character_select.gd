@@ -11,6 +11,9 @@ class_name CharacterSelect
 @onready var character_tester_player_1: CharacterTester = $MainVertical/CharacterWheel/CharacterTesterP1
 @onready var character_tester_player_2: CharacterTester = $MainVertical/CharacterWheel/CharacterTesterP2
 
+@onready var name_player_1: Label = $MainVertical/CharacterWheel/NameP1
+@onready var name_player_2: Label = $MainVertical/CharacterWheel/NameP2
+
 static var player_colors: Array[Color] = [
 	Color(1.0, 0.37, 0.37, 1.0),
 	Color(0.109, 0.755, 0.547, 1.0),
@@ -24,10 +27,17 @@ var LEVEL_SELECT = load("res://scenes/gui/level_select.tscn")
 ## -------------- HOW TO ADD A NEW CHARACYER --------------
 ## 
 ## 1: Select the Dial Button you wish to use
-## 2: Select your character PackedScene in the Dial Button's exported variables
-## 2: Anything a child of "Mask" can be changed, and new things can be added
-## NOTE: DO NOT CHANGE THE DIAL ID! THIS WILL BREAK A LOT!
-
+## 2: Enter your character's name in the Dial Button's variables
+## 3: Select your character's PackedScene in the Dial Button's variables
+## 4: Anything a child of "Mask" can be changed, and new things can be added
+##
+## NOTE: DO NOT CHANGE THE DIAL ID! THIS WILL BREAK A LOT OF THINGS!
+##
+## 5: Under both "TopPortraits" and "BottomPortraits" do these steps:
+##    1) Copy+Pase a "PortraitHolder", and set it's variable "ConnectedDial"
+##			to the dial spot which your character is on
+##    2) Make sure the "Placement" variable corresponds to its placement
+##    3) All children of the "PortraitHolder" can be changed, removed or added as you see fit
 var session_info: SessionInfo
 var current_dial_selection: Array[DIAL]
 var ready_players: Array[bool]
@@ -83,26 +93,28 @@ func setup(_session_info: SessionInfo) -> void:
 
 func _process(delta: float) -> void:
 	ready_button_process()
+	player_select_process()
+	name_label_process()
+	player_tester_process()
+	start_game_process()
+
+func name_label_process():
+	var dial_p1: CharacterSelectDialButton = dials.get(current_dial_selection[0])
+	var dial_p2: CharacterSelectDialButton = dials.get(current_dial_selection[1])
 	
+	name_player_1.text = dial_p1.character_name if dial_p1 != null else ""
+	name_player_2.text = dial_p2.character_name if dial_p2 != null else ""
+
+func player_select_process():
 	player_selection(0)
 	if is_multiplayer:
 		player_selection(1)
-	
-	if ready_players[0]:
-		character_tester_player_1.start(dials[current_dial_selection[0]].character_scene, 0)
-	else:
-		character_tester_player_1.stop()
-	
-	if is_multiplayer and ready_players[1]:
-		character_tester_player_2.start(dials[current_dial_selection[1]].character_scene, 1)
-	else:
-		character_tester_player_2.stop()
-	
+
+func start_game_process():
 	var is_all_ready: bool = not false in ready_players
 	ready_all.visible = is_all_ready
 	if is_all_ready and was_all_ready_last_frame and (player_just_pressed("confirm", 0) or player_just_pressed("confirm", 1)):
 		start_game()
-	
 	was_all_ready_last_frame = is_all_ready
 
 func setup_for_player_count(player_count: int):
@@ -174,3 +186,14 @@ static func player_just_pressed(action_name: String, player_index: int):
 			"cancel": return Input.is_action_just_pressed("ui_cancel")
 	
 	return Input.is_action_just_pressed("p" + str(player_index + 1) + "_" + action_name)
+
+func player_tester_process():
+	if ready_players[0]:
+		character_tester_player_1.start(dials[current_dial_selection[0]].character_scene, 0)
+	else:
+		character_tester_player_1.stop()
+	
+	if is_multiplayer and ready_players[1]:
+		character_tester_player_2.start(dials[current_dial_selection[1]].character_scene, 1)
+	else:
+		character_tester_player_2.stop()
