@@ -1,6 +1,6 @@
 [gd_scene load_steps=24 format=3 uid="uid://c42ynqlk3h4wp"]
 
-[ext_resource type="Script" uid="uid://b4cra7t5rbaxf" path="res://assets/scripts/characters/reign.gd" id="1_jrwk1"]
+[ext_resource type="Script" path="res://assets/scripts/characters/reign.gd" id="1_jrwk1"]
 [ext_resource type="Texture2D" uid="uid://qeyg6x6t1ru4" path="res://assets/sprites/reign.png" id="2_iacc1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6ci1u"]
