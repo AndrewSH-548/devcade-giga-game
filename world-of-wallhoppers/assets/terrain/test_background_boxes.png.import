@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c2v1yg7exlf6j"
-path="res://.godot/imported/character_dial_portraits1.png-c4b2f124a3aeee02333e6ce616074f84.ctex"
+uid="uid://cewv1wp4x8r25"
+path="res://.godot/imported/test_background_boxes.png-8474dc9d9f4f62d57ad3acf993010582.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Gigagame/world-of-wallhoppers/assets/gui/character_dial_portraits1.png"
-dest_files=["res://.godot/imported/character_dial_portraits1.png-c4b2f124a3aeee02333e6ce616074f84.ctex"]
+source_file="res://assets/terrain/test_background_boxes.png"
+dest_files=["res://.godot/imported/test_background_boxes.png-8474dc9d9f4f62d57ad3acf993010582.ctex"]
 
 [params]
 
