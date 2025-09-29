@@ -93,7 +93,7 @@ func _process(delta: float) -> void:
 	else:
 		character_tester_player_1.stop()
 	
-	if ready_players[1]:
+	if is_multiplayer and ready_players[1]:
 		character_tester_player_2.start(dials[current_dial_selection[1]].character_scene, 1)
 	else:
 		character_tester_player_2.stop()

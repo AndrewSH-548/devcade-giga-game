@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://c6mhrd5tyn1l" path="res://assets/gui/air_element_icon.png" id="5_s7d2y"]
 [ext_resource type="Texture2D" uid="uid://c2386a7ah0ihp" path="res://assets/gui/gui_dial_buttons.png" id="6_8cco7"]
 [ext_resource type="Texture2D" uid="uid://qeyg6x6t1ru4" path="res://assets/sprites/reign.png" id="6_bfvoi"]
+[ext_resource type="Texture2D" uid="uid://blc181pfjph4k" path="res://assets/Gigagame/world-of-wallhoppers/assets/gui/character_dial_portraits2.png" id="6_cxqtq"]
 [ext_resource type="PackedScene" uid="uid://dtu1k6tt7cxej" path="res://scenes/characters/hip.tscn" id="8_nj0pb"]
 [ext_resource type="Texture2D" uid="uid://dhvnkw5tq2g6l" path="res://assets/gui/gui_sketches_dial_b.png" id="8_u0e5d"]
 [ext_resource type="Script" uid="uid://coa3jlesxvfo7" path="res://assets/scripts/Guis/character_select/dial_button.gd" id="9_u0e5d"]
@@ -17,7 +18,6 @@
 [ext_resource type="Texture2D" uid="uid://cebblpjfgjt12" path="res://assets/gui/gui_dial_buttons.bmp" id="10_8cco7"]
 [ext_resource type="Texture2D" uid="uid://c4ttn020o6ovj" path="res://assets/gui/dial_pointer.png" id="11_8cco7"]
 [ext_resource type="PackedScene" uid="uid://c42ynqlk3h4wp" path="res://scenes/characters/reign.tscn" id="11_cl5d8"]
-[ext_resource type="Texture2D" uid="uid://dn82aym7hwgj0" path="res://assets/gui/character_dial_portraits2.png" id="16_qh53k"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_cxqtq"]
 font_size = 144
@@ -153,7 +153,7 @@ layout_mode = 2
 size_flags_vertical = 0
 focus_neighbor_bottom = NodePath("../../LevelDisplayMargins/LevelDisplayPanel/ThumbnailGrid")
 theme_override_font_sizes/font_size = 32
-text = "Press X or Cancel to Cancel"
+text = "Press X or Escape to Cancel"
 
 [node name="CharacterWheel" type="Control" parent="MainVertical"]
 layout_mode = 2
@@ -229,7 +229,7 @@ connected_dial = 3
 [node name="Riegn" type="Sprite2D" parent="MainVertical/CharacterWheel/TopPortraits/PortraitHolderReign"]
 position = Vector2(104.00001, 141)
 scale = Vector2(1.2667192, 1.2667192)
-texture = ExtResource("16_qh53k")
+texture = ExtResource("6_cxqtq")
 flip_h = true
 
 [node name="DialPositioner" type="Control" parent="MainVertical/CharacterWheel"]
@@ -457,4 +457,4 @@ connected_dial = 3
 [node name="Riegn" type="Sprite2D" parent="MainVertical/CharacterWheel/BottomPortraits/PortraitHolderReign"]
 position = Vector2(104.00001, 141)
 scale = Vector2(1.2667192, 1.2667192)
-texture = ExtResource("16_qh53k")
+texture = ExtResource("6_cxqtq")
