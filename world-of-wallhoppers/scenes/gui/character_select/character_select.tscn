@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://c6mhrd5tyn1l" path="res://assets/gui/air_element_icon.png" id="5_s7d2y"]
 [ext_resource type="Texture2D" uid="uid://c2386a7ah0ihp" path="res://assets/gui/gui_dial_buttons.png" id="6_8cco7"]
 [ext_resource type="Texture2D" uid="uid://qeyg6x6t1ru4" path="res://assets/sprites/reign.png" id="6_bfvoi"]
-[ext_resource type="Texture2D" uid="uid://blc181pfjph4k" path="res://assets/Gigagame/world-of-wallhoppers/assets/gui/character_dial_portraits2.png" id="6_cxqtq"]
+[ext_resource type="Texture2D" uid="uid://d36lgodtre2iy" path="res://Godot/syrm-phial-edition/assets/decor/reign_portrait.png" id="6_cxqtq"]
 [ext_resource type="PackedScene" uid="uid://dtu1k6tt7cxej" path="res://scenes/characters/hip.tscn" id="8_nj0pb"]
 [ext_resource type="Texture2D" uid="uid://dhvnkw5tq2g6l" path="res://assets/gui/gui_sketches_dial_b.png" id="8_u0e5d"]
 [ext_resource type="Script" uid="uid://coa3jlesxvfo7" path="res://assets/scripts/Guis/character_select/dial_button.gd" id="9_u0e5d"]
