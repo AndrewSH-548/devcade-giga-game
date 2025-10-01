@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://d3p48lwnrft2t" path="res://assets/scripts/camera.gd" id="4_c2woe"]
 [ext_resource type="PackedScene" uid="uid://dnpilee0jidao" path="res://scenes/gui/pause_menu.tscn" id="5_ylv1f"]
 
-[node name="Node2D2" type="Node2D" groups=["splitscreen"]]
+[node name="HeaderMultiplayer" type="Node2D" groups=["splitscreen"]]
 script = ExtResource("1_lcxr0")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
