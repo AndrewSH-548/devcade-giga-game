@@ -1,11 +1,10 @@
-[gd_scene load_steps=28 format=4 uid="uid://ne30x5qgi5u"]
+[gd_scene load_steps=20 format=4 uid="uid://ne30x5qgi5u"]
 
 [ext_resource type="Script" uid="uid://s7cnbl0ouo3x" path="res://levels/level1/level.gd" id="1_cccco"]
 [ext_resource type="Texture2D" uid="uid://bixals20gxij8" path="res://assets/terrain/jungle.png" id="1_vujue"]
 [ext_resource type="Script" uid="uid://brm4mbapwva4" path="res://assets/scripts/goal.gd" id="2_bxl2m"]
-[ext_resource type="Script" uid="uid://cphusaq70x4jg" path="res://assets/scripts/obstacles.gd" id="3_xjx7g"]
-[ext_resource type="Texture2D" uid="uid://3ekv2i16hkw0" path="res://assets/sprites/16-bit-spike-Sheet.png" id="4_cfdby"]
 [ext_resource type="Script" uid="uid://iembhyk5nlq" path="res://assets/scripts/visuals/backgrounds.gd" id="5_bxl2m"]
+[ext_resource type="PackedScene" uid="uid://cl7i05js3l62q" path="res://scenes/spike.tscn" id="5_jtkmd"]
 [ext_resource type="Texture2D" uid="uid://cnfoa1y2m0f56" path="res://assets/terrain/background_jungle_vegitation.png" id="6_ohne2"]
 [ext_resource type="PackedScene" uid="uid://di3x7knkxawd3" path="res://scenes/visuals/light_beam.tscn" id="6_xjx7g"]
 [ext_resource type="Shader" uid="uid://vih4h60r5tp7" path="res://assets/shaders/wobble_warp.gdshader" id="8_05rs6"]
@@ -408,60 +407,6 @@ sources/0 = SubResource("TileSetAtlasSource_leifp")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5xfay"]
 size = Vector2(60.5, 873.5)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qcw7f"]
-atlas = ExtResource("4_cfdby")
-region = Rect2(32, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dnlqm"]
-atlas = ExtResource("4_cfdby")
-region = Rect2(48, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ya0ya"]
-atlas = ExtResource("4_cfdby")
-region = Rect2(16, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gdeqv"]
-atlas = ExtResource("4_cfdby")
-region = Rect2(0, 0, 16, 16)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_s88d3"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qcw7f")
-}],
-"loop": true,
-"name": &"spikedown",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_dnlqm")
-}],
-"loop": true,
-"name": &"spikeleft",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ya0ya")
-}],
-"loop": true,
-"name": &"spikeright",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_gdeqv")
-}],
-"loop": true,
-"name": &"spikeup",
-"speed": 5.0
-}]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_leifp"]
-size = Vector2(16.5, 16)
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ohne2"]
 shader = ExtResource("8_05rs6")
 shader_parameter/amplitude = Vector2(0.775, 0.26)
@@ -531,88 +476,22 @@ script = ExtResource("2_bxl2m")
 goals = [NodePath("../Goal1")]
 
 [node name="Static-squares" type="Node2D" parent="."]
-script = ExtResource("3_xjx7g")
 
-[node name="Static-square1" type="Node2D" parent="Static-squares"]
+[node name="Spike" parent="Static-squares" instance=ExtResource("5_jtkmd")]
 position = Vector2(-35, -164)
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Static-squares/Static-square1"]
-sprite_frames = SubResource("SpriteFrames_s88d3")
-animation = &"spikeup"
+[node name="Spike2" parent="Static-squares" instance=ExtResource("5_jtkmd")]
+position = Vector2(-20, -324)
 
-[node name="Area2D" type="Area2D" parent="Static-squares/Static-square1"]
-collision_mask = 6
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Static-squares/Static-square1/Area2D"]
-position = Vector2(0.25, 0)
-shape = SubResource("RectangleShape2D_leifp")
-
-[node name="Static-square2" type="Node2D" parent="Static-squares"]
+[node name="Spike3" parent="Static-squares" instance=ExtResource("5_jtkmd")]
 position = Vector2(44, -356)
-rotation = -1.5708
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Static-squares/Static-square2"]
-rotation = -3.14159
-sprite_frames = SubResource("SpriteFrames_s88d3")
-animation = &"spikeleft"
-
-[node name="Area2D" type="Area2D" parent="Static-squares/Static-square2"]
-rotation = -1.5708
-collision_mask = 6
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Static-squares/Static-square2/Area2D"]
-position = Vector2(0.25, 0)
-rotation = -1.5708
-shape = SubResource("RectangleShape2D_leifp")
-
-[node name="Static-square5" type="Node2D" parent="Static-squares"]
-position = Vector2(124, -922)
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Static-squares/Static-square5"]
-sprite_frames = SubResource("SpriteFrames_s88d3")
-animation = &"spikeleft"
-
-[node name="Area2D" type="Area2D" parent="Static-squares/Static-square5"]
-collision_mask = 6
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Static-squares/Static-square5/Area2D"]
-position = Vector2(0.25, 0)
-shape = SubResource("RectangleShape2D_leifp")
-
-[node name="Static-square4" type="Node2D" parent="Static-squares"]
+[node name="Spike4" parent="Static-squares" instance=ExtResource("5_jtkmd")]
 position = Vector2(124, -388)
-rotation = -1.5708
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Static-squares/Static-square4"]
-rotation = -3.14159
-sprite_frames = SubResource("SpriteFrames_s88d3")
-animation = &"spikeleft"
-
-[node name="Area2D" type="Area2D" parent="Static-squares/Static-square4"]
-rotation = -1.5708
-collision_mask = 6
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Static-squares/Static-square4/Area2D"]
-position = Vector2(0.25, 0)
-rotation = -1.5708
-shape = SubResource("RectangleShape2D_leifp")
-
-[node name="Static-square3" type="Node2D" parent="Static-squares"]
-position = Vector2(-21, -324)
-rotation = 1.5708
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Static-squares/Static-square3"]
-sprite_frames = SubResource("SpriteFrames_s88d3")
-animation = &"spikeleft"
-
-[node name="Area2D" type="Area2D" parent="Static-squares/Static-square3"]
-rotation = 1.5708
-collision_mask = 6
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Static-squares/Static-square3/Area2D"]
-position = Vector2(0.25, 0)
-rotation = 1.5708
-shape = SubResource("RectangleShape2D_leifp")
+[node name="Spike5" parent="Static-squares" instance=ExtResource("5_jtkmd")]
+position = Vector2(124, -922)
+rotation = -1.5707964
 
 [node name="Backgrounds" type="Node2D" parent="." groups=["BackgroundsManager"]]
 z_index = -1
@@ -782,9 +661,3 @@ wobble_speed = 0.2
 [node name="Beam4" parent="Backgrounds/BeamsForeground" instance=ExtResource("6_xjx7g")]
 position = Vector2(0, -1914)
 wobble_speed = 0.2
-
-[connection signal="body_entered" from="Static-squares/Static-square1/Area2D" to="Static-squares" method="_on_area_2d_body_entered"]
-[connection signal="body_entered" from="Static-squares/Static-square2/Area2D" to="Static-squares" method="_on_area_2d_body_entered"]
-[connection signal="body_entered" from="Static-squares/Static-square5/Area2D" to="Static-squares" method="_on_area_2d_body_entered"]
-[connection signal="body_entered" from="Static-squares/Static-square4/Area2D" to="Static-squares" method="_on_area_2d_body_entered"]
-[connection signal="body_entered" from="Static-squares/Static-square3/Area2D" to="Static-squares" method="_on_area_2d_body_entered"]
