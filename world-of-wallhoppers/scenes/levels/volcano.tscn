@@ -1,6 +1,6 @@
 [gd_scene load_steps=19 format=4 uid="uid://d4hbsclhpfj4v"]
 
-[ext_resource type="Script" uid="uid://s7cnbl0ouo3x" path="res://levels/level1/level.gd" id="1_4afio"]
+[ext_resource type="Script" uid="uid://s7cnbl0ouo3x" path="res://assets/scripts/gameplay/level.gd" id="1_4afio"]
 [ext_resource type="Texture2D" uid="uid://ulefhw2axopx" path="res://assets/terrain/volcano.png" id="1_ccxi4"]
 [ext_resource type="PackedScene" uid="uid://dhjkvej1d1nic" path="res://scenes/editor/tumbnail_marker.tscn" id="1_f5oh5"]
 [ext_resource type="PackedScene" uid="uid://dw2fas0otmqd1" path="res://scenes/editor/tumbnail_destination.tscn" id="2_4afio"]
