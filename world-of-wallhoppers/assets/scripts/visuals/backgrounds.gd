@@ -3,6 +3,8 @@ extends Node2D
 const PLAYER_1_VISIBILITY: int = 4 # Visibility Layer 3
 const PLAYER_2_VISIBILITY: int = 8 # Visibility Layer 4
 
+const SCROLL_SCALE_GLOBAL: float = 0.5
+
 var player_1_camera: Camera2D
 var player_2_camera: Camera2D
 var thumbnail_mode: bool = false
@@ -42,5 +44,6 @@ func _process(delta: float) -> void:
 	if thumbnail_mode: return
 	for background in get_children():
 		if background is not Parallax2D: continue 
-		if background in player_1_backgrounds:background.screen_offset.y = player_1_camera.get_screen_center_position().y
-		else: background.screen_offset.y = player_2_camera.get_screen_center_position().y
+		if background in player_1_backgrounds:
+			background.screen_offset.y = player_1_camera.get_screen_center_position().y * SCROLL_SCALE_GLOBAL
+		else: background.screen_offset.y = player_2_camera.get_screen_center_position().y * SCROLL_SCALE_GLOBAL
