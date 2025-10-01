@@ -14,8 +14,8 @@ layout_direction = 2
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 540.0
-offset_bottom = 960.0
+offset_right = 1080.0
+offset_bottom = 1920.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -27,7 +27,7 @@ stretch = true
 [node name="SubViewport" type="SubViewport" parent="HBoxContainer/ViewportContainerP1"]
 handle_input_locally = false
 canvas_cull_mask = 4294967287
-size = Vector2i(268, 960)
+size = Vector2i(538, 1920)
 render_target_update_mode = 4
 
 [node name="Player1Body" parent="HBoxContainer/ViewportContainerP1/SubViewport" instance=ExtResource("2_3txip")]
@@ -42,7 +42,6 @@ run_modifier_action = "p2_run"
 
 [node name="Camera2D" type="Camera2D" parent="HBoxContainer/ViewportContainerP1/SubViewport" node_paths=PackedStringArray("target") groups=["Player1Camera"]]
 offset = Vector2(135, 240)
-zoom = Vector2(0.5, 0.5)
 script = ExtResource("4_c2woe")
 target = NodePath("../Player1Body")
 
@@ -54,12 +53,11 @@ stretch = true
 [node name="SubViewport" type="SubViewport" parent="HBoxContainer/ViewportContainerP2"]
 handle_input_locally = false
 canvas_cull_mask = 4294967291
-size = Vector2i(268, 960)
+size = Vector2i(538, 1920)
 render_target_update_mode = 4
 
 [node name="Camera2D" type="Camera2D" parent="HBoxContainer/ViewportContainerP2/SubViewport" node_paths=PackedStringArray("target") groups=["Player2Camera"]]
 offset = Vector2(135, 240)
-zoom = Vector2(0.5, 0.5)
 script = ExtResource("4_c2woe")
 target = NodePath("../../../ViewportContainerP1/SubViewport/Player2Body")
 
