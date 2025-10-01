@@ -213,18 +213,20 @@ animations = [{
 }]
 
 [node name="PlayerReign" type="CharacterBody2D"]
+scale = Vector2(1.75, 1.75)
 collision_layer = 4
 script = ExtResource("1_jrwk1")
-walk_speed = 180
-run_speed = 260
-air_speed = 180
-air_accel = 14
-jump_height = 160
-wall_jump_height = 200
-wall_pushoff_strength = 90
-fall_speed = 550
-gravity = 450
-weight = 13
+walk_speed = 270
+run_speed = 390
+deccel = 75
+air_speed = 270
+air_accel = 21
+jump_height = 240
+wall_jump_height = 300
+wall_pushoff_strength = 135
+fall_speed = 825
+gravity = 675
+weight = 19
 jump_action = "p1_jump"
 move_left_action = "p1_left"
 move_right_action = "p1_right"
