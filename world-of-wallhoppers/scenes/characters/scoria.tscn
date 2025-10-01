@@ -1,39 +1,39 @@
 [gd_scene load_steps=12 format=3 uid="uid://bojyqwmqsf6xx"]
 
-[ext_resource type="Script" uid="uid://dkjbdby517ry4" path="res://scenes/characters/flare.gd" id="1_sssk5"]
+[ext_resource type="Script" uid="uid://dkjbdby517ry4" path="res://scenes/characters/scoria.gd" id="1_sssk5"]
 [ext_resource type="Texture2D" uid="uid://dxxdo3wpshssn" path="res://assets/sprites/character_concept_pt6.png" id="2_on6cs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_on6cs"]
-size = Vector2(17, 35)
+size = Vector2(29.75, 61.25)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4w0mk"]
-size = Vector2(22, 21)
+size = Vector2(38.5, 36.75)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_on6cs"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_jn3up"]
 atlas = ExtResource("2_on6cs")
-region = Rect2(240, 0, 48, 48)
+region = Rect2(420, 0, 84, 84)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_gf061"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_7qr4j"]
 atlas = ExtResource("2_on6cs")
-region = Rect2(0, 0, 48, 48)
+region = Rect2(84, 0, 84, 84)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_4w0mk"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_hvvop"]
 atlas = ExtResource("2_on6cs")
-region = Rect2(96, 0, 48, 48)
+region = Rect2(168, 0, 84, 84)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_4f27x"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_t4yvv"]
 atlas = ExtResource("2_on6cs")
-region = Rect2(144, 0, 48, 48)
+region = Rect2(252, 0, 84, 84)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_dfykk"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_rxgtq"]
 atlas = ExtResource("2_on6cs")
-region = Rect2(192, 0, 48, 48)
+region = Rect2(336, 0, 84, 84)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_on6cs"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_on6cs")
+"texture": SubResource("AtlasTexture_jn3up")
 }],
 "loop": true,
 "name": &"Hitstun",
@@ -41,7 +41,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_gf061")
+"texture": SubResource("AtlasTexture_7qr4j")
 }],
 "loop": true,
 "name": &"Idle",
@@ -49,13 +49,13 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_4w0mk")
+"texture": SubResource("AtlasTexture_hvvop")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_4f27x")
+"texture": SubResource("AtlasTexture_t4yvv")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_dfykk")
+"texture": SubResource("AtlasTexture_rxgtq")
 }],
 "loop": true,
 "name": &"Roll",
@@ -63,15 +63,15 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gf061"]
-size = Vector2(17, 35)
+size = Vector2(29.75, 61.25)
 
 [node name="Flare" type="CharacterBody2D"]
 collision_layer = 4
 script = ExtResource("1_sssk5")
 kick_action = &"p1_run"
-walk_speed = 70
-run_speed = 70
-air_speed = 180
+walk_speed = 10
+run_speed = 10
+air_speed = 10
 air_accel = 5
 jump_height = 200
 wall_jump_height = 300
@@ -79,10 +79,6 @@ wall_pushoff_strength = 90
 fall_speed = 550
 gravity = 450
 weight = 13
-jump_action = "p1_jump"
-move_left_action = "p1_left"
-move_right_action = "p1_right"
-run_modifier_action = "p1_run"
 
 [node name="NormalCollision" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, 6.5)
@@ -95,7 +91,7 @@ debug_color = Color(0.757918, 2.88785e-05, 0.555706, 0.42)
 
 [node name="Animations" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_on6cs")
-animation = &"Roll"
+animation = &"Hitstun"
 autoplay = "Idle"
 
 [node name="PlayerHitbox" type="Area2D" parent="."]

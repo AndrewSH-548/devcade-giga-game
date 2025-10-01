@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://bypgh8vwm65r6"]
+[gd_scene load_steps=28 format=3 uid="uid://bypgh8vwm65r6"]
 
 [ext_resource type="Script" uid="uid://ds787vg8b1cru" path="res://assets/scripts/Guis/character_select/character_select.gd" id="1_dlxgn"]
 [ext_resource type="Texture2D" uid="uid://dvsuivwldkw1b" path="res://assets/gui/character_dial_portraits.png" id="3_cl5d8"]
@@ -18,7 +18,6 @@
 [ext_resource type="Texture2D" uid="uid://cebblpjfgjt12" path="res://assets/gui/gui_dial_buttons.bmp" id="10_8cco7"]
 [ext_resource type="Texture2D" uid="uid://c4ttn020o6ovj" path="res://assets/gui/dial_pointer.png" id="11_8cco7"]
 [ext_resource type="PackedScene" uid="uid://c42ynqlk3h4wp" path="res://scenes/characters/reign.tscn" id="11_cl5d8"]
-[ext_resource type="PackedScene" uid="uid://bojyqwmqsf6xx" path="res://scenes/characters/scoria.tscn" id="18_sqhw2"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_cxqtq"]
 font_size = 144
@@ -85,8 +84,11 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = -540.0
+offset_bottom = -960.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(2, 2)
 script = ExtResource("1_dlxgn")
 
 [node name="TextureRect" type="TextureRect" parent="."]
@@ -402,7 +404,6 @@ anchors_preset = 0
 rotation = -3.1415927
 script = ExtResource("9_u0e5d")
 dial_id = 2
-character_scene = ExtResource("18_sqhw2")
 
 [node name="Mask" type="AnimatedSprite2D" parent="MainVertical/CharacterWheel/DialPositioner/DialButtonBottom"]
 clip_children = 1
