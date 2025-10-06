@@ -191,10 +191,6 @@ wall_pushoff_strength = 165
 fall_speed = 1350
 gravity = 825
 weight = 15
-jump_action = "p1_jump"
-move_left_action = "p1_left"
-move_right_action = "p1_right"
-run_modifier_action = "p1_run"
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_6ci1u")
