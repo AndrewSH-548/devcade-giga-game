@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://qeyg6x6t1ru4" path="res://assets/sprites/reign.png" id="2_iacc1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6ci1u"]
-size = Vector2(40, 46)
+size = Vector2(40, 48.142857)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_eciwc"]
 atlas = ExtResource("2_iacc1")
@@ -228,13 +228,10 @@ wall_pushoff_strength = 180
 fall_speed = 1100
 gravity = 900
 weight = 26
-jump_action = "p1_jump"
-move_left_action = "p1_left"
-move_right_action = "p1_right"
-run_modifier_action = "p1_run"
 
 [node name="Collision" type="CollisionShape2D" parent="."]
-position = Vector2(0, -4.7683716e-07)
+position = Vector2(0, -2.3841858e-07)
+scale = Vector2(0.9999999, 0.9999999)
 shape = SubResource("RectangleShape2D_6ci1u")
 
 [node name="Animations" type="AnimatedSprite2D" parent="."]
