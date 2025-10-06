@@ -1,12 +1,13 @@
-extends "res://assets/scripts/player.gd"
+extends Player
 
-@export var crouch_action: String = " "
+var crouch_action: String = " "
 var is_wall_climbing: bool = false
 
 @export var climb_speed: float
 
 func _physics_process(delta: float) -> void:
-	if get_tree().get_first_node_in_group("splitscreen").paused: # Doesn't work for singleplayer
+	var header = get_tree().get_first_node_in_group("splitscreen")
+	if header != null and header.paused:
 		return
 	
 	# Set is_wall_climbing to true if Wallsliding and the run button is pressed
@@ -72,3 +73,11 @@ func animate_hip(direction: float) -> void:
 	else: sprite.animation = "idle"
 	
 	sprite.flip_h = !isFacingRight;
+
+func setup_keybinds(player_number: int) -> void:
+	var player_input: String = "p" + str(player_number) + "_"
+	jump_action = player_input + "jump"
+	crouch_action = player_input + "crouch"
+	move_left_action = player_input + "left"
+	run_modifier_action = player_input + "run"
+	move_right_action = player_input + "right"
