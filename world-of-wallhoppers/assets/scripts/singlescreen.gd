@@ -3,7 +3,7 @@ extends MainLevelHeader
 func setup(session_info: SessionInfo) -> void:
 	var parent_node: Node = $ViewportContainerP1/SubViewport
 	
-	var level: Node2D = session_info.level.instantiate()
+	var level: Node2D = session_info.level_info.scene.instantiate()
 	place_level(level, parent_node)
 	level = level as Level
 	
@@ -15,5 +15,8 @@ func setup(session_info: SessionInfo) -> void:
 	character.setup_keybinds(1)
 	
 	get_tree().get_first_node_in_group("Player1Camera").target = character
+	
+	$BorderLeft.color = session_info.level_info.border_color
+	$BorderRight.color = session_info.level_info.border_color
 	
 	character.global_position = level.player_spawn_1.global_position

@@ -24,16 +24,16 @@ offset = Vector2(135, 240)
 zoom = Vector2(0.5, 0.5)
 script = ExtResource("2_5f7m3")
 
-[node name="ColorRect2" type="ColorRect" parent="."]
+[node name="BorderLeft" type="ColorRect" parent="."]
 editor_description = "Original Color: 9c0000"
-offset_left = 404.0
-offset_right = 540.0
+offset_right = 135.0
 offset_bottom = 960.0
 color = Color(0, 0, 0, 1)
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="BorderRight" type="ColorRect" parent="."]
 editor_description = "Original Color: 9c0000"
-offset_right = 135.0
+offset_left = 404.0
+offset_right = 540.0
 offset_bottom = 960.0
 color = Color(0, 0, 0, 1)
 
