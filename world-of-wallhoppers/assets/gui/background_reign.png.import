@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c6mhrd5tyn1l"
-path="res://.godot/imported/air_element_icon.png-bc3a0f4376279ef3e49c73eee96e3444.ctex"
+path="res://.godot/imported/background_reign.png-3fcd5ce66e56c1f5a392598d4f04898a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/gui/air_element_icon.png"
-dest_files=["res://.godot/imported/air_element_icon.png-bc3a0f4376279ef3e49c73eee96e3444.ctex"]
+source_file="res://assets/gui/background_reign.png"
+dest_files=["res://.godot/imported/background_reign.png-3fcd5ce66e56c1f5a392598d4f04898a.ctex"]
 
 [params]
 
