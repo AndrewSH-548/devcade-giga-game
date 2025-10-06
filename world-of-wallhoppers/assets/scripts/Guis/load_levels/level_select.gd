@@ -1,4 +1,5 @@
 extends Control
+class_name LevelSelect
 
 @export var levels_list: Array[LevelInfo]
 @onready var thumbnail_grid: GridContainer = $VerticalContainer/LevelDisplayMargins/LevelDisplayPanel/ThumbnailGrid
@@ -7,8 +8,7 @@ extends Control
 @onready var nav_right_button: Button = $VerticalContainer/ArrowContainer/NavBoxes/NavRight
 
 const LEVEL_THUMBNAIL = preload("res://scenes/gui/level_thumbnail.tscn")
-const HEADER_SINGLEPLAYER = preload("res://scenes/header_singleplayer.tscn")
-const HEADER_MULTIPLAYER = preload("res://scenes/header_multiplayer.tscn")
+const CHARACTER_SELECT = preload("uid://bypgh8vwm65r6")
 
 var is_multiplayer: bool = false
 var pages: Array[Page]
@@ -21,7 +21,7 @@ var current_page_index: int = 0
 # 3: In the INSPECTOR, click on the Array[LevelInfo](size xx) thing, IF IT IS COLLAPSED
 # 4: Click "Add Element"
 # 5: In the new EMPTY element, click the down arrow, then "New LevelInfo"
-# 6: Click on the new LevelInfo, then add the SCENE and the NAME to the LevelInfo
+# 6: Click on the new LevelInfo, then add the SCENE, NAME, and BORDER COLOR to the LevelInfo
 
 # ---------- HOW TO ADD A THUMBNAIL -------------
 #
@@ -30,24 +30,18 @@ var current_page_index: int = 0
 # 3: Add ThumbnailDestination scene add child of the LEVEL
 # 4: Align the "box" with where you want the thumnail movement to END
 
-# Gets either the singleplayer or multiplayer header, depending on mode
-func get_level_header() -> MainLevelHeader:
-	if is_multiplayer: return HEADER_MULTIPLAYER.instantiate()
-	else: return HEADER_SINGLEPLAYER.instantiate()
-
 # Loads the level in level_info and switches scenes to it
 func load_level(level_info: LevelInfo):
-	# Load the specific level scene from the thumbnail
-	var level: Node2D = level_info.scene.instantiate()
-	# Put the level in the right location. I don't know why this
-	# exact location, but it was from the old one, and it works!
-	level.global_position = Vector2(132.0, 297.0)
-	# Load either the singleplayer or multiplayer header
-	var header: MainLevelHeader = get_level_header()
-	# Run the header's place runtion on level
-	header.place_level(level)
-	# Free the Level Select and switch to the HEADER scene (which has the level in it)
-	get_tree().root.add_child(header)
+	# Create a new SessionInfo to store the current level, and other settings
+	var session_info: SessionInfo = SessionInfo.new()
+	session_info.level_info = level_info
+	session_info.is_multiplayer = is_multiplayer
+	# Instantiate the Character Select
+	var character_select: CharacterSelect = CHARACTER_SELECT.instantiate()
+	# Give the Character Select the SessionInfo, then add it to the tree
+	get_tree().root.add_child(character_select)
+	character_select.setup(session_info)
+	# Delete Level Select Scene (self)
 	queue_free()
 
 # Holds the thumbnails for a single page,
@@ -181,7 +175,11 @@ func nav_left():
 func nav_right():
 	navigate(+1)
 
-# Used by back_button
+func _input(event: InputEvent) -> void:
+	# Allow the player to press cancel to go back to the start
+	if event.is_action_pressed("ui_cancel") or event.is_action_pressed("p2_cancel"):
+		load_start_screen()
+
 func load_start_screen() -> void:
 	get_tree().change_scene_to_file("res://scenes/start_screen.tscn")
 	queue_free()

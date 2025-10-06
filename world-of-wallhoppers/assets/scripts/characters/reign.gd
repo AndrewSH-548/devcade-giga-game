@@ -1,9 +1,10 @@
-extends "res://assets/scripts/player.gd"
+extends Player
 
 var is_hovering: bool = false;
 
 func _physics_process(delta: float) -> void:
-	if get_tree().get_first_node_in_group("splitscreen").paused:
+	var header = get_tree().get_first_node_in_group("splitscreen")
+	if header != null and header.paused:
 		return
 	
 	is_hovering = Input.is_action_pressed(run_modifier_action) and get_position_state() in [STATE_IN_AIR, STATE_ON_WALL];
@@ -44,3 +45,10 @@ func animate_reign(direction: float) -> void:
 	else: sprite.animation = "idle";
 	
 	sprite.flip_h = !isFacingRight;
+
+func setup_keybinds(player_number: int) -> void:
+	var player_input: String = "p" + str(player_number) + "_"
+	jump_action = player_input + "jump"
+	move_left_action = player_input + "left"
+	run_modifier_action = player_input + "run"
+	move_right_action = player_input + "right"

@@ -1,8 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://ch4mextx4xjgt"]
+[gd_scene load_steps=4 format=3 uid="uid://ch4mextx4xjgt"]
 
 [ext_resource type="Script" uid="uid://c0egamewutafp" path="res://assets/scripts/splitscreen.gd" id="1_lcxr0"]
-[ext_resource type="PackedScene" uid="uid://dtu1k6tt7cxej" path="res://scenes/characters/hip.tscn" id="2_3txip"]
-[ext_resource type="PackedScene" uid="uid://c42ynqlk3h4wp" path="res://scenes/characters/reign.tscn" id="3_4fkaa"]
 [ext_resource type="Script" uid="uid://d3p48lwnrft2t" path="res://assets/scripts/camera.gd" id="4_c2woe"]
 [ext_resource type="PackedScene" uid="uid://dnpilee0jidao" path="res://scenes/gui/pause_menu.tscn" id="5_ylv1f"]
 
@@ -30,20 +28,9 @@ canvas_cull_mask = 4294967287
 size = Vector2i(538, 1920)
 render_target_update_mode = 4
 
-[node name="Player1Body" parent="HBoxContainer/ViewportContainerP1/SubViewport" instance=ExtResource("2_3txip")]
-position = Vector2(43, 490)
-
-[node name="Player2Body" parent="HBoxContainer/ViewportContainerP1/SubViewport" instance=ExtResource("3_4fkaa")]
-position = Vector2(193, 494)
-jump_action = "p2_jump"
-move_left_action = "p2_left"
-move_right_action = "p2_right"
-run_modifier_action = "p2_run"
-
-[node name="Camera2D" type="Camera2D" parent="HBoxContainer/ViewportContainerP1/SubViewport" node_paths=PackedStringArray("target") groups=["Player1Camera"]]
+[node name="Camera2D" type="Camera2D" parent="HBoxContainer/ViewportContainerP1/SubViewport" groups=["Player1Camera"]]
 offset = Vector2(135, 240)
 script = ExtResource("4_c2woe")
-target = NodePath("../Player1Body")
 
 [node name="ViewportContainerP2" type="SubViewportContainer" parent="HBoxContainer"]
 layout_mode = 2
@@ -56,10 +43,9 @@ canvas_cull_mask = 4294967291
 size = Vector2i(538, 1920)
 render_target_update_mode = 4
 
-[node name="Camera2D" type="Camera2D" parent="HBoxContainer/ViewportContainerP2/SubViewport" node_paths=PackedStringArray("target") groups=["Player2Camera"]]
+[node name="Camera2D" type="Camera2D" parent="HBoxContainer/ViewportContainerP2/SubViewport" groups=["Player2Camera"]]
 offset = Vector2(135, 240)
 script = ExtResource("4_c2woe")
-target = NodePath("../../../ViewportContainerP1/SubViewport/Player2Body")
 
 [node name="PauseMenu" parent="." instance=ExtResource("5_ylv1f")]
 visible = false

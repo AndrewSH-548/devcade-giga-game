@@ -179,7 +179,6 @@ animations = [{
 [node name="PlayerHip" type="CharacterBody2D"]
 collision_layer = 4
 script = ExtResource("1_s6udp")
-crouch_action = "p1_crouch"
 climb_speed = 150.0
 walk_speed = 360
 run_speed = 520
@@ -192,10 +191,6 @@ wall_pushoff_strength = 220
 fall_speed = 1800
 gravity = 1100
 weight = 20
-jump_action = "p1_jump"
-move_left_action = "p1_left"
-move_right_action = "p1_right"
-run_modifier_action = "p1_run"
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_6ci1u")

@@ -1,0 +1,101 @@
+[gd_scene load_steps=6 format=3 uid="uid://br12fqlynos76"]
+
+[ext_resource type="Script" uid="uid://c7ndx6prtpvt4" path="res://assets/scripts/Guis/character_select/character_portrait.gd" id="1_i83p5"]
+[ext_resource type="Theme" uid="uid://c2p36e3pdlufx" path="res://assets/themes/character_portrait.tres" id="2_wnkbu"]
+[ext_resource type="Texture2D" uid="uid://d017d0tliorl2" path="res://assets/sprites/missing_texture.png" id="3_yavv5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yavv5"]
+atlas = ExtResource("3_yavv5")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="LabelSettings" id="LabelSettings_qiy3y"]
+font_size = 64
+
+[node name="CharacterPortrait" type="Button"]
+self_modulate = Color(1, 1, 1, 0)
+z_index = 1
+custom_minimum_size = Vector2(405, 600)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -202.5
+offset_top = -300.0
+offset_right = 202.5
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_i83p5")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_wnkbu")
+
+[node name="MainMargins" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme = ExtResource("2_wnkbu")
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="Vertical" type="VBoxContainer" parent="PanelContainer/MainMargins"]
+layout_mode = 2
+
+[node name="ImageAspectKeeper" type="AspectRatioContainer" parent="PanelContainer/MainMargins/Vertical"]
+custom_minimum_size = Vector2(0, 400)
+layout_mode = 2
+
+[node name="CharacterClipper" type="PanelContainer" parent="PanelContainer/MainMargins/Vertical/ImageAspectKeeper"]
+clip_children = 1
+layout_mode = 2
+theme = ExtResource("2_wnkbu")
+
+[node name="ElementIcon" type="TextureRect" parent="PanelContainer/MainMargins/Vertical/ImageAspectKeeper/CharacterClipper"]
+modulate = Color(0.38402733, 0.3593221, 0.40581784, 1)
+layout_mode = 2
+texture = ExtResource("3_yavv5")
+stretch_mode = 6
+
+[node name="CharacterMargins" type="MarginContainer" parent="PanelContainer/MainMargins/Vertical/ImageAspectKeeper/CharacterClipper"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="PortraitImage" type="TextureRect" parent="PanelContainer/MainMargins/Vertical/ImageAspectKeeper/CharacterClipper/CharacterMargins"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = SubResource("AtlasTexture_yavv5")
+stretch_mode = 5
+
+[node name="NamePanel" type="Panel" parent="PanelContainer/MainMargins/Vertical"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Name" type="Label" parent="PanelContainer/MainMargins/Vertical/NamePanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -53.0
+offset_top = -44.0
+offset_right = 53.0
+offset_bottom = 44.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+text = "None"
+label_settings = SubResource("LabelSettings_qiy3y")

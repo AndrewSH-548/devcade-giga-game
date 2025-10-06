@@ -1,5 +1,6 @@
-[gd_scene load_steps=18 format=4 uid="uid://bnajm44iu8kfe"]
+[gd_scene load_steps=19 format=4 uid="uid://bnajm44iu8kfe"]
 
+[ext_resource type="Script" uid="uid://s7cnbl0ouo3x" path="res://assets/scripts/gameplay/level.gd" id="1_gtp7y"]
 [ext_resource type="PackedScene" uid="uid://dhjkvej1d1nic" path="res://scenes/editor/tumbnail_marker.tscn" id="1_v6ges"]
 [ext_resource type="PackedScene" uid="uid://dw2fas0otmqd1" path="res://scenes/editor/tumbnail_destination.tscn" id="2_gtp7y"]
 [ext_resource type="Texture2D" uid="uid://ulefhw2axopx" path="res://assets/terrain/volcano.png" id="3_nwbnw"]
@@ -929,13 +930,20 @@ shader_parameter/intensity = 0.485
 shader_parameter/speed = 2.09
 shader_parameter/amplitude = 0.885
 
-[node name="testLevel2" type="Node2D"]
+[node name="Level" type="Node2D"]
+script = ExtResource("1_gtp7y")
 
 [node name="TumbnailMarker" parent="." instance=ExtResource("1_v6ges")]
 position = Vector2(62, -46)
 
 [node name="TumbnailDestination" parent="." instance=ExtResource("2_gtp7y")]
 position = Vector2(-298, -1276)
+
+[node name="PlayerSpawn1" type="Marker2D" parent="."]
+position = Vector2(-174, 1010)
+
+[node name="PlayerSpawn2" type="Marker2D" parent="."]
+position = Vector2(176, 1004)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 position = Vector2(-547, -486)
