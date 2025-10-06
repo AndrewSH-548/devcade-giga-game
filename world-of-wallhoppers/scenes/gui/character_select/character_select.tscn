@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://bypgh8vwm65r6"]
+[gd_scene load_steps=25 format=3 uid="uid://bypgh8vwm65r6"]
 
 [ext_resource type="Script" uid="uid://ds787vg8b1cru" path="res://assets/scripts/Guis/character_select/character_select.gd" id="1_dlxgn"]
 [ext_resource type="PackedScene" uid="uid://bmuoxdjge2ld7" path="res://scenes/gui/character_select/character_tester.tscn" id="3_cxqtq"]
@@ -49,18 +49,15 @@ shadow_color = Color(0, 0, 0, 0.34509805)
 stacked_outline_count = 1
 stacked_outline_0/size = 21
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_cl5d8"]
-load_path = "res://.godot/imported/gui_dial_buttons.bmp-3ccc9b235f9fa2422fbc2a6d78eec144.ctex"
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_uhpgm"]
-atlas = SubResource("CompressedTexture2D_cl5d8")
+[sub_resource type="AtlasTexture" id="AtlasTexture_cl5d8"]
+atlas = ExtResource("6_8cco7")
 region = Rect2(0, 0, 320, 320)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_aqbib"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_uhpgm")
+"texture": SubResource("AtlasTexture_cl5d8")
 }],
 "loop": true,
 "name": &"Normal",
