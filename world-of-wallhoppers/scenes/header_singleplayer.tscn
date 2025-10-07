@@ -8,33 +8,33 @@
 script = ExtResource("1_bp0l3")
 
 [node name="ViewportContainerP1" type="SubViewportContainer" parent="."]
-offset_left = 135.0
-offset_right = 405.0
-offset_bottom = 960.0
+offset_left = 270.0
+offset_right = 810.0
+offset_bottom = 1920.0
 size_flags_horizontal = 3
 stretch = true
 
 [node name="SubViewport" type="SubViewport" parent="ViewportContainerP1"]
 handle_input_locally = false
-size = Vector2i(270, 960)
+size = Vector2i(540, 1920)
 render_target_update_mode = 4
 
-[node name="Camera2D" type="Camera2D" parent="ViewportContainerP1/SubViewport" groups=["Player1Camera"]]
-offset = Vector2(135, 240)
-zoom = Vector2(0.5, 0.5)
+[node name="Camera2D" type="Camera2D" parent="ViewportContainerP1/SubViewport" node_paths=PackedStringArray("target") groups=["Player1Camera"]]
+offset = Vector2(136, 240)
+position_smoothing_enabled = true
 script = ExtResource("2_5f7m3")
 
 [node name="BorderLeft" type="ColorRect" parent="."]
 editor_description = "Original Color: 9c0000"
-offset_right = 135.0
-offset_bottom = 960.0
+offset_right = 270.0
+offset_bottom = 1920.0
 color = Color(0, 0, 0, 1)
 
 [node name="BorderRight" type="ColorRect" parent="."]
 editor_description = "Original Color: 9c0000"
-offset_left = 404.0
-offset_right = 540.0
-offset_bottom = 960.0
+offset_left = 809.0
+offset_right = 1080.0
+offset_bottom = 1920.0
 color = Color(0, 0, 0, 1)
 
 [node name="PauseMenu" parent="." instance=ExtResource("4_i2xlj")]
