@@ -57,6 +57,11 @@ enum DecoType {
 
 var current_state = Path_System.BOUNCE; ## The current state of the Path_System. The default is BOUNCE.
 
+# ---------- TO ADD A NEW PLATFORM VARIATION ----------
+#
+# 1: Add the name to the "DecoType" enum
+# 3: Go to eaach of the "Color" sections (Near the bottom of ready), and setup the wheel and track colors
+
 func _ready() -> void:
 	for i in path_2d.curve.point_count: # remove all points except for the start and end ones (cleans up the path before implementing stuff)
 		if (i != 0) && (i+1 != path_2d.curve.point_count):
@@ -129,11 +134,15 @@ func _ready() -> void:
 			# Create the new track
 			var path_visual: NinePatchRect = MOVING_PLATFORM_PATH.instantiate()
 			get_parent().add_child(path_visual)
+			
+			# COLOR SECTION TRACK --------------------------
 			match decoration_type:
 				DecoType.LAVA_ROCKS:
 					path_visual.modulate = Color(0.396, 0.12, 0.09, 1.0)
 				DecoType.JUNGLE_WOOD:
 					path_visual.modulate = Color(0.531, 0.281, 0.123, 1.0)
+			# ----------------------------------------------
+			
 			# Position the new track and save it for the next track
 			path_visual.global_position = global_position + point
 			path_visual.size.x = 0
@@ -146,6 +155,7 @@ func _ready() -> void:
 		get_parent().add_child(rest)
 		rest.global_position = position
 	
+	# COLOR SECTION WHEEL --------------------------
 	# Sets up the main platform's sprite
 	match decoration_type:
 		DecoType.LAVA_ROCKS:
@@ -154,6 +164,7 @@ func _ready() -> void:
 		DecoType.JUNGLE_WOOD:
 			main_sprite.texture = SPRITE_JUNGLE_WOOD
 			wheel_sprite.modulate = Color(0.59, 0.333, 0.205, 1.0)
+	# ----------------------------------------------
 
 
 func _process(delta: float) -> void:
