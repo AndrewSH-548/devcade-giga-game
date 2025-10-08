@@ -3,5 +3,6 @@
 [ext_resource type="Texture2D" uid="uid://dj57kevruc4bw" path="res://assets/sprites/moving_platform_volcano_rest.png" id="1_13xlj"]
 
 [node name="MovingPlatformRest" type="Sprite2D"]
+z_index = -1
 texture_filter = 1
 texture = ExtResource("1_13xlj")

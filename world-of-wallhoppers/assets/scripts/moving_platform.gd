@@ -18,6 +18,9 @@ extends Node2D
 @onready var pause_timer: Timer = $PauseTimer
 @onready var pause_cooldown_timer: Timer = $PauseCooldownTimer
 
+@onready var main_sprite: Sprite2D = $Path2D/PlatformBody/MainSprite
+@onready var wheel_sprite: Sprite2D = $Path2D/PlatformBody/WheelSprite
+
 # Points
 @export var start_point_0: Node2D; ## Create a Node(can be anything with a position) and set this variable to it. That node will be the platform's start. The default position is the platform's (0, 0).
 @export var end_point: Node2D; ## Create a Node(can be anything with a position) and set this variable to it. That node will be the platform's end. The default position is the platform's (0, 0).
@@ -30,9 +33,13 @@ extends Node2D
 
 @export var speed_scale: float = 1.0; ## The speed scaling ratio. For example, if this value is 1, then the platform moves at normal speed. If it's 0.5, then it moves at half speed. If it's 2, then it moves at double speed.
 @export var path_type: Path_System = Path_System.BOUNCE; ## The type of path the platform will follow. [BOUNCE] or [LOOP]. For [BOUNCE] the platform will travel start>end, end> start. For [LOOP] the platform will travel start>end, start>end continuously.
+@export var decoration_type: DecoType
 
 const MOVING_PLATFORM_PATH = preload("uid://k6238xtiriwm") ## Scene which contains the visuals for a single path part. These are constructed using the moving platform's path points
 const MOVING_PLATFORM_REST = preload("uid://yx5v3vnlt8nw") ## Scene which contains the visuals for a rest point
+
+const SPRITE_VOLCANO_ROCKS = preload("uid://cbxgmsa0gp044")
+const SPRITE_JUNGLE_WOOD = preload("uid://baeulnudn7mq7")
 
 var paused = false; ## If the platform is paused. Then this is true
 var pause_enabled = true; ## Stores if the pause_areas are enabled or not.
@@ -42,6 +49,11 @@ enum Path_System { ## different states for the path behavior
 	BOUNCE, ## travel from start->end, then end->start
 	LOOP, ## travel in a loop: start->end, start->end
 };
+
+enum DecoType {
+	LAVA_ROCKS,
+	JUNGLE_WOOD,
+}
 
 var current_state = Path_System.BOUNCE; ## The current state of the Path_System. The default is BOUNCE.
 
@@ -117,14 +129,31 @@ func _ready() -> void:
 			# Create the new track
 			var path_visual: NinePatchRect = MOVING_PLATFORM_PATH.instantiate()
 			get_parent().add_child(path_visual)
+			match decoration_type:
+				DecoType.LAVA_ROCKS:
+					path_visual.modulate = Color(0.396, 0.12, 0.09, 1.0)
+				DecoType.JUNGLE_WOOD:
+					path_visual.modulate = Color(0.531, 0.281, 0.123, 1.0)
 			# Position the new track and save it for the next track
 			path_visual.global_position = global_position + point
 			path_visual.size.x = 0
 			last_track = path_visual
 	
+	# Sets up the visuals for pauses
 	for pause in pauses:
-		var position: Vector2 = pause.global_position
-		
+		var position: Vector2 = pause.global_position + Vector2(-6, 6)
+		var rest: Node2D = MOVING_PLATFORM_REST.instantiate()
+		get_parent().add_child(rest)
+		rest.global_position = position
+	
+	# Sets up the main platform's sprite
+	match decoration_type:
+		DecoType.LAVA_ROCKS:
+			main_sprite.texture = SPRITE_VOLCANO_ROCKS
+			wheel_sprite.modulate = Color(0.608, 0.224, 0.15, 1.0)
+		DecoType.JUNGLE_WOOD:
+			main_sprite.texture = SPRITE_JUNGLE_WOOD
+			wheel_sprite.modulate = Color(0.59, 0.333, 0.205, 1.0)
 
 
 func _process(delta: float) -> void:

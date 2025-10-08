@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://d3icqnyej4fli"]
+
+[ext_resource type="Texture2D" uid="uid://cx8c5brhv4fcd" path="res://assets/sprites/moving_platform_post.png" id="1_jglhq"]
+
+[node name="MovingPlatformStake" type="Sprite2D"]
+z_index = -1
+texture = ExtResource("1_jglhq")

@@ -1,7 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://dm6eckbq0lr8g"]
+[gd_scene load_steps=10 format=3 uid="uid://dm6eckbq0lr8g"]
 
 [ext_resource type="Script" uid="uid://cjl4tqsxeq34t" path="res://assets/scripts/moving_platform.gd" id="1_1tdcd"]
-[ext_resource type="Texture2D" uid="uid://cbxgmsa0gp044" path="res://assets/sprites/moving_platform_volcano.png" id="2_1tdcd"]
+[ext_resource type="Texture2D" uid="uid://c66wliv8rf8mh" path="res://assets/sprites/moving_platform_shape.png" id="2_afg43"]
 [ext_resource type="Script" uid="uid://cru8vh7g6mqxl" path="res://assets/scripts/visuals/moving_platform_animation.gd" id="3_mb26n"]
 [ext_resource type="Texture2D" uid="uid://dxupx8br1asco" path="res://assets/sprites/moving_platform_volcano_wheel.png" id="4_afg43"]
 
@@ -10,21 +10,6 @@ _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 240, 0)
 }
 point_count = 2
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_mb26n"]
-atlas = ExtResource("2_1tdcd")
-region = Rect2(0, 0, 80, 48)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_afg43"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_mb26n")
-}],
-"loop": true,
-"name": &"Volcano",
-"speed": 5.0
-}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1tdcd"]
 
@@ -84,14 +69,13 @@ update_scale = false
 collision_layer = 129
 collision_mask = 129
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Path2D/PlatformBody"]
+[node name="MainSprite" type="Sprite2D" parent="Path2D/PlatformBody"]
 texture_filter = 1
 position = Vector2(0, -8)
-sprite_frames = SubResource("SpriteFrames_afg43")
-animation = &"Volcano"
+texture = ExtResource("2_afg43")
 script = ExtResource("3_mb26n")
 
-[node name="Sprite2D" type="Sprite2D" parent="Path2D/PlatformBody"]
+[node name="WheelSprite" type="Sprite2D" parent="Path2D/PlatformBody"]
 texture_filter = 1
 position = Vector2(0, -8)
 texture = ExtResource("4_afg43")

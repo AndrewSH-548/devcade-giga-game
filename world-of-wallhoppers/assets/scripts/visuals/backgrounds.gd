@@ -5,6 +5,8 @@ const PLAYER_2_VISIBILITY: int = 8 # Visibility Layer 4
 
 const SCROLL_SCALE_GLOBAL: float = 0.5
 
+@export var scroll_scale_local: float = 1.0
+
 var player_1_camera: Camera2D
 var player_2_camera: Camera2D
 var thumbnail_mode: bool = false
@@ -45,5 +47,5 @@ func _process(delta: float) -> void:
 	for background in get_children():
 		if background is not Parallax2D: continue 
 		if background in player_1_backgrounds:
-			background.screen_offset.y = player_1_camera.get_screen_center_position().y * SCROLL_SCALE_GLOBAL
-		else: background.screen_offset.y = player_2_camera.get_screen_center_position().y * SCROLL_SCALE_GLOBAL
+			background.screen_offset.y = player_1_camera.get_screen_center_position().y * SCROLL_SCALE_GLOBAL * scroll_scale_local
+		else: background.screen_offset.y = player_2_camera.get_screen_center_position().y * SCROLL_SCALE_GLOBAL * scroll_scale_local

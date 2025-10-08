@@ -954,11 +954,12 @@ tile_set = SubResource("TileSet_yej4m")
 [node name="Goalpost" parent="." instance=ExtResource("4_u4yvl")]
 position = Vector2(14, -1913)
 
-[node name="MovingPlatform" parent="." node_paths=PackedStringArray("start_point_0", "end_point", "points") instance=ExtResource("6_gmvyl")]
+[node name="MovingPlatform" parent="." node_paths=PackedStringArray("start_point_0", "end_point", "points", "pauses") instance=ExtResource("6_gmvyl")]
 position = Vector2(-176, -672)
 start_point_0 = NodePath("Start")
 end_point = NodePath("End")
 points = [NodePath("MidPoint1")]
+pauses = [NodePath("MidPoint1")]
 
 [node name="Start" type="Marker2D" parent="MovingPlatform"]
 
@@ -1015,6 +1016,7 @@ script = ExtResource("7_e4ep7")
 
 [node name="Back" type="Parallax2D" parent="Backgrounds"]
 scroll_scale = Vector2(0, 0)
+repeat_times = 40
 
 [node name="ColorRect" type="ColorRect" parent="Backgrounds/Back"]
 offset_left = -266.0
@@ -1029,7 +1031,7 @@ texture_repeat = 2
 material = SubResource("ShaderMaterial_4afio")
 scroll_scale = Vector2(0.025, 0.025)
 repeat_size = Vector2(0, 1920)
-repeat_times = 20
+repeat_times = 40
 ignore_camera_scroll = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Backgrounds/Volcanos"]
@@ -1047,7 +1049,7 @@ visibility_layer = 4
 scroll_scale = Vector2(0.2, 0.2)
 repeat_size = Vector2(270, 960)
 autoscroll = Vector2(10, 25)
-repeat_times = 20
+repeat_times = 40
 ignore_camera_scroll = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Backgrounds/Smoke2"]
@@ -1062,7 +1064,7 @@ visibility_layer = 4
 material = SubResource("ShaderMaterial_f5oh5")
 scroll_scale = Vector2(0.1, 0.1)
 repeat_size = Vector2(0, 960)
-repeat_times = 20
+repeat_times = 40
 ignore_camera_scroll = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Backgrounds/CircleStones"]
@@ -1074,7 +1076,7 @@ visibility_layer = 4
 scroll_scale = Vector2(0.2, 0.2)
 repeat_size = Vector2(270, 960)
 autoscroll = Vector2(30, 50)
-repeat_times = 20
+repeat_times = 40
 ignore_camera_scroll = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Backgrounds/Smoke"]

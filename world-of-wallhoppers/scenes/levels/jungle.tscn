@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://x8jwn1lvobhp"]
+[gd_scene load_steps=21 format=4 uid="uid://x8jwn1lvobhp"]
 
 [ext_resource type="PackedScene" uid="uid://dhjkvej1d1nic" path="res://scenes/editor/tumbnail_marker.tscn" id="1_32bmu"]
 [ext_resource type="Script" uid="uid://s7cnbl0ouo3x" path="res://assets/scripts/gameplay/level.gd" id="1_qxh53"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://bnh82e2uan82h" path="res://assets/terrain/background_jungle_trees.png" id="11_q68x1"]
 [ext_resource type="Texture2D" uid="uid://dgkqxhds83xeo" path="res://assets/terrain/particle_jungle_leaf.png" id="12_r5syr"]
 [ext_resource type="PackedScene" uid="uid://bpos0rprc0elm" path="res://scenes/goalpost.tscn" id="12_wlvd4"]
+[ext_resource type="PackedScene" uid="uid://dm6eckbq0lr8g" path="res://scenes/moving_platform.tscn" id="13_minv4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_leifp"]
 resource_name = "Jungle"
@@ -690,8 +691,9 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Trees" type="Parallax2D" parent="Backgrounds"]
 modulate = Color(0.395233, 0.47309, 0.229046, 1)
+texture_repeat = 3
 material = SubResource("ShaderMaterial_jtkmd")
-repeat_size = Vector2(0, 960)
+repeat_size = Vector2(270, 960)
 repeat_times = 10
 
 [node name="Sprite2D" type="Sprite2D" parent="Backgrounds/Trees"]
@@ -724,3 +726,11 @@ wobble_speed = 0.2
 
 [node name="Goalpost" parent="." instance=ExtResource("12_wlvd4")]
 position = Vector2(-70, -1856)
+
+[node name="MovingPlatform" parent="." node_paths=PackedStringArray("end_point") instance=ExtResource("13_minv4")]
+position = Vector2(0, 496)
+end_point = NodePath("End")
+decoration_type = 1
+
+[node name="End" type="Marker2D" parent="MovingPlatform"]
+position = Vector2(0, 272)

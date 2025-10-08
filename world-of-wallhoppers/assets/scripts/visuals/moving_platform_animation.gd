@@ -1,4 +1,4 @@
-extends AnimatedSprite2D
+extends Sprite2D
 
 func _process(delta: float) -> void:
 	var time: float = Time.get_ticks_msec() / 1000.0
