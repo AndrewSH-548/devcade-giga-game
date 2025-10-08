@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c4ttn020o6ovj"
-path="res://.godot/imported/dial_pointer.png-f1895a1593ac2c2313b55cca9b112cbf.ctex"
+uid="uid://2utjtrsth1yk"
+path="res://.godot/imported/portrait_hip.png-d01f38009bc9a45c3e35e5cf1d7cb2c5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/gui/dial_pointer.png"
-dest_files=["res://.godot/imported/dial_pointer.png-f1895a1593ac2c2313b55cca9b112cbf.ctex"]
+source_file="res://assets/gui/portrait_hip.png"
+dest_files=["res://.godot/imported/portrait_hip.png-d01f38009bc9a45c3e35e5cf1d7cb2c5.ctex"]
 
 [params]
 

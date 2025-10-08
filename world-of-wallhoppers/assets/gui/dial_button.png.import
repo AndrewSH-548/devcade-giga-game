@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cxqh7hpt54tkf"
-path="res://.godot/imported/character_small_portraits.png-a1d6c497cdd35e7bc6facb5aaea14280.ctex"
+uid="uid://c2386a7ah0ihp"
+path="res://.godot/imported/dial_button.png-3e3a24bde0b0b94eba7fb3f20dc76109.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/gui/character_small_portraits.png"
-dest_files=["res://.godot/imported/character_small_portraits.png-a1d6c497cdd35e7bc6facb5aaea14280.ctex"]
+source_file="res://assets/gui/dial_button.png"
+dest_files=["res://.godot/imported/dial_button.png-3e3a24bde0b0b94eba7fb3f20dc76109.ctex"]
 
 [params]
 

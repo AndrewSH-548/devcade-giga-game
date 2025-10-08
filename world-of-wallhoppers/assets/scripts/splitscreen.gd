@@ -20,7 +20,7 @@ func _ready() -> void:
 func setup(session_info: SessionInfo):
 	var parent_node: Node = $HBoxContainer/ViewportContainerP1/SubViewport
 	
-	var level: Node2D = session_info.level.instantiate()
+	var level: Node2D = session_info.level_info.scene.instantiate()
 	place_level(level, parent_node)
 	level = level as Level
 	

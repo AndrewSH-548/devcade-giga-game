@@ -1,10 +1,10 @@
 [gd_scene load_steps=24 format=3 uid="uid://c42ynqlk3h4wp"]
 
-[ext_resource type="Script" path="res://assets/scripts/characters/reign.gd" id="1_jrwk1"]
+[ext_resource type="Script" uid="uid://b4cra7t5rbaxf" path="res://assets/scripts/characters/reign.gd" id="1_jrwk1"]
 [ext_resource type="Texture2D" uid="uid://qeyg6x6t1ru4" path="res://assets/sprites/reign.png" id="2_iacc1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6ci1u"]
-size = Vector2(40, 46)
+size = Vector2(40, 48.142857)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_eciwc"]
 atlas = ExtResource("2_iacc1")
@@ -213,37 +213,35 @@ animations = [{
 }]
 
 [node name="PlayerReign" type="CharacterBody2D"]
+position = Vector2(0, 2.3841858e-07)
 scale = Vector2(1.75, 1.75)
 collision_layer = 4
 script = ExtResource("1_jrwk1")
-walk_speed = 270
-run_speed = 390
-deccel = 75
-air_speed = 270
-air_accel = 21
-jump_height = 240
-wall_jump_height = 300
-wall_pushoff_strength = 135
-fall_speed = 825
-gravity = 675
-weight = 19
-jump_action = "p1_jump"
-move_left_action = "p1_left"
-move_right_action = "p1_right"
-run_modifier_action = "p1_run"
+walk_speed = 360
+run_speed = 520
+deccel = 100
+air_speed = 360
+air_accel = 28
+jump_height = 320
+wall_jump_height = 400
+wall_pushoff_strength = 180
+fall_speed = 1100
+gravity = 900
+weight = 26
 
 [node name="Collision" type="CollisionShape2D" parent="."]
-position = Vector2(0, -7)
+position = Vector2(0, -2.3841858e-07)
+scale = Vector2(0.9999999, 0.9999999)
 shape = SubResource("RectangleShape2D_6ci1u")
 
 [node name="Animations" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-position = Vector2(0, -8)
+position = Vector2(0, -4.7683716e-07)
 sprite_frames = SubResource("SpriteFrames_eose0")
-animation = &"run"
+animation = &"wall-push"
 
 [node name="PlayerHitbox" type="Area2D" parent="."]
 
 [node name="HitboxShape" type="CollisionShape2D" parent="PlayerHitbox"]
-position = Vector2(0, -7)
+position = Vector2(0, -4.7683716e-07)
 shape = SubResource("RectangleShape2D_6ci1u")

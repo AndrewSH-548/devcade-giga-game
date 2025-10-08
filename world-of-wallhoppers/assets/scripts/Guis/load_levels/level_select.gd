@@ -21,7 +21,7 @@ var current_page_index: int = 0
 # 3: In the INSPECTOR, click on the Array[LevelInfo](size xx) thing, IF IT IS COLLAPSED
 # 4: Click "Add Element"
 # 5: In the new EMPTY element, click the down arrow, then "New LevelInfo"
-# 6: Click on the new LevelInfo, then add the SCENE and the NAME to the LevelInfo
+# 6: Click on the new LevelInfo, then add the SCENE, NAME, and BORDER COLOR to the LevelInfo
 
 # ---------- HOW TO ADD A THUMBNAIL -------------
 #
@@ -34,7 +34,7 @@ var current_page_index: int = 0
 func load_level(level_info: LevelInfo):
 	# Create a new SessionInfo to store the current level, and other settings
 	var session_info: SessionInfo = SessionInfo.new()
-	session_info.level = level_info.scene
+	session_info.level_info = level_info
 	session_info.is_multiplayer = is_multiplayer
 	# Instantiate the Character Select
 	var character_select: CharacterSelect = CHARACTER_SELECT.instantiate()

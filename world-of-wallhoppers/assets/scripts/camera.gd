@@ -9,4 +9,4 @@ func _process(delta: float) -> void:
 	if target.position.y < 250:
 		# Changing this actually positions the player onto the screen.
 		# The camera snaps very unprofessionally when the if statement and this offset don't match.
-		position = Vector2(position.x, target.position.y - 250);
+		position = floor(Vector2(position.x, target.position.y - 250));

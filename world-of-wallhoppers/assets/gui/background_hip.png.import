@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d36lgodtre2iy"
-path="res://.godot/imported/reign_portrait.png-57aceaf9d35ba462c2b54533c091808e.ctex"
+uid="uid://brqsq5codsja1"
+path="res://.godot/imported/background_hip.png-06d11438a1628a21d824617c125d05fc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Godot/syrm-phial-edition/assets/decor/reign_portrait.png"
-dest_files=["res://.godot/imported/reign_portrait.png-57aceaf9d35ba462c2b54533c091808e.ctex"]
+source_file="res://assets/gui/background_hip.png"
+dest_files=["res://.godot/imported/background_hip.png-06d11438a1628a21d824617c125d05fc.ctex"]
 
 [params]
 
