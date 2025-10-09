@@ -1,9 +1,9 @@
 [gd_scene load_steps=10 format=3 uid="uid://dm6eckbq0lr8g"]
 
-[ext_resource type="Script" uid="uid://cjl4tqsxeq34t" path="res://assets/scripts/moving_platform.gd" id="1_1tdcd"]
-[ext_resource type="Texture2D" uid="uid://c66wliv8rf8mh" path="res://assets/sprites/moving_platform_shape.png" id="2_afg43"]
-[ext_resource type="Script" uid="uid://cru8vh7g6mqxl" path="res://assets/scripts/visuals/moving_platform_animation.gd" id="3_mb26n"]
-[ext_resource type="Texture2D" uid="uid://dxupx8br1asco" path="res://assets/sprites/moving_platform_volcano_wheel.png" id="4_afg43"]
+[ext_resource type="Script" uid="uid://cjl4tqsxeq34t" path="res://assets/scripts/moving_platform.gd" id="1_8db3p"]
+[ext_resource type="Texture2D" uid="uid://c66wliv8rf8mh" path="res://assets/sprites/moving_platform/moving_platform_shape.png" id="2_plq0f"]
+[ext_resource type="Script" uid="uid://cru8vh7g6mqxl" path="res://assets/scripts/visuals/moving_platform_animation.gd" id="3_vrva7"]
+[ext_resource type="Texture2D" uid="uid://dxupx8br1asco" path="res://assets/sprites/moving_platform/moving_platform_wheel.png" id="4_idv53"]
 
 [sub_resource type="Curve2D" id="Curve2D_1tdcd"]
 _data = {
@@ -52,7 +52,7 @@ _data = {
 }
 
 [node name="MovingPlatform" type="Node2D"]
-script = ExtResource("1_1tdcd")
+script = ExtResource("1_8db3p")
 
 [node name="Path2D" type="Path2D" parent="."]
 curve = SubResource("Curve2D_1tdcd")
@@ -72,13 +72,13 @@ collision_mask = 129
 [node name="MainSprite" type="Sprite2D" parent="Path2D/PlatformBody"]
 texture_filter = 1
 position = Vector2(0, -8)
-texture = ExtResource("2_afg43")
-script = ExtResource("3_mb26n")
+texture = ExtResource("2_plq0f")
+script = ExtResource("3_vrva7")
 
 [node name="WheelSprite" type="Sprite2D" parent="Path2D/PlatformBody"]
 texture_filter = 1
 position = Vector2(0, -8)
-texture = ExtResource("4_afg43")
+texture = ExtResource("4_idv53")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Path2D/PlatformBody"]
 position = Vector2(58, -113)

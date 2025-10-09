@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cx8c5brhv4fcd"
-path="res://.godot/imported/moving_platform_post.png-547a26972794ef688fb5d3ac7f6f8b92.ctex"
+uid="uid://ooqp42affp83"
+path="res://.godot/imported/moving_platform_track.png-e5bc6ae92e4ca90a25b82f731491d646.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/moving_platform_post.png"
-dest_files=["res://.godot/imported/moving_platform_post.png-547a26972794ef688fb5d3ac7f6f8b92.ctex"]
+source_file="res://assets/sprites/moving_platform/moving_platform_track.png"
+dest_files=["res://.godot/imported/moving_platform_track.png-e5bc6ae92e4ca90a25b82f731491d646.ctex"]
 
 [params]
 

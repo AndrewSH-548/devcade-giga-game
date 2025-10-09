@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cwd4g68cowfx3"
-path="res://.godot/imported/moving_platform_volcano_wheel-export.png-49ebbd261ea5df9180ffa472ebcc7c33.ctex"
+uid="uid://c66wliv8rf8mh"
+path="res://.godot/imported/moving_platform_shape.png-0a193488dc175f19bc268ed4168f3629.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/moving_platform_volcano_wheel-export.png"
-dest_files=["res://.godot/imported/moving_platform_volcano_wheel-export.png-49ebbd261ea5df9180ffa472ebcc7c33.ctex"]
+source_file="res://assets/sprites/moving_platform/moving_platform_shape.png"
+dest_files=["res://.godot/imported/moving_platform_shape.png-0a193488dc175f19bc268ed4168f3629.ctex"]
 
 [params]
 

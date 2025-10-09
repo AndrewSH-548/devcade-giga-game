@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bp5fh5r11uidw"
-path="res://.godot/imported/moving_platform_jungle_wheel.png-2bed2be5115269bd95e69523d957590c.ctex"
+uid="uid://dxupx8br1asco"
+path="res://.godot/imported/moving_platform_wheel.png-18d801dd2924e023477b63292d97637e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/moving_platform_jungle_wheel.png"
-dest_files=["res://.godot/imported/moving_platform_jungle_wheel.png-2bed2be5115269bd95e69523d957590c.ctex"]
+source_file="res://assets/sprites/moving_platform/moving_platform_wheel.png"
+dest_files=["res://.godot/imported/moving_platform_wheel.png-18d801dd2924e023477b63292d97637e.ctex"]
 
 [params]
 

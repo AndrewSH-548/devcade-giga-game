@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://bnh82e2uan82h" path="res://assets/terrain/background_jungle_trees.png" id="11_q68x1"]
 [ext_resource type="Texture2D" uid="uid://dgkqxhds83xeo" path="res://assets/terrain/particle_jungle_leaf.png" id="12_r5syr"]
 [ext_resource type="PackedScene" uid="uid://bpos0rprc0elm" path="res://scenes/goalpost.tscn" id="12_wlvd4"]
-[ext_resource type="PackedScene" uid="uid://dm6eckbq0lr8g" path="res://scenes/moving_platform.tscn" id="13_minv4"]
+[ext_resource type="PackedScene" uid="uid://dm6eckbq0lr8g" path="res://scenes/objects/moving_platform/moving_platform.tscn" id="13_minv4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_leifp"]
 resource_name = "Jungle"

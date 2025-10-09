@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dj57kevruc4bw"
-path="res://.godot/imported/moving_platform_volcano_rest.png-5491e931b548d2a96acaeef7dc0b141f.ctex"
+path="res://.godot/imported/moving_platform_rest.png-3f606bd55a9eb872cbe8dfa9e2ee4a92.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/moving_platform_volcano_rest.png"
-dest_files=["res://.godot/imported/moving_platform_volcano_rest.png-5491e931b548d2a96acaeef7dc0b141f.ctex"]
+source_file="res://assets/sprites/moving_platform/moving_platform_rest.png"
+dest_files=["res://.godot/imported/moving_platform_rest.png-3f606bd55a9eb872cbe8dfa9e2ee4a92.ctex"]
 
 [params]
 

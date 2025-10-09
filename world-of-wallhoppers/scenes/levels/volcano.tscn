@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://ulefhw2axopx" path="res://assets/terrain/volcano.png" id="3_nwbnw"]
 [ext_resource type="PackedScene" uid="uid://bpos0rprc0elm" path="res://scenes/goalpost.tscn" id="4_u4yvl"]
 [ext_resource type="Script" uid="uid://cphusaq70x4jg" path="res://assets/scripts/obstacles.gd" id="5_1xcd4"]
-[ext_resource type="PackedScene" uid="uid://dm6eckbq0lr8g" path="res://scenes/moving_platform.tscn" id="6_gmvyl"]
+[ext_resource type="PackedScene" uid="uid://dm6eckbq0lr8g" path="res://scenes/objects/moving_platform/moving_platform.tscn" id="6_gmvyl"]
 [ext_resource type="Script" uid="uid://iembhyk5nlq" path="res://assets/scripts/visuals/backgrounds.gd" id="7_e4ep7"]
 [ext_resource type="PackedScene" uid="uid://cl7i05js3l62q" path="res://scenes/obstacles/spike.tscn" id="7_gtp7y"]
 [ext_resource type="Shader" uid="uid://bnwrxjdbjs6bt" path="res://assets/shaders/heat_warp.gdshader" id="8_7l734"]

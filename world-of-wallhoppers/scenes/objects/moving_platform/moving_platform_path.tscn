@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://k6238xtiriwm"]
 
-[ext_resource type="Texture2D" uid="uid://ooqp42affp83" path="res://assets/sprites/moving_platform_volcano_track.png" id="1_q8vjn"]
+[ext_resource type="Texture2D" uid="uid://ooqp42affp83" path="res://assets/sprites/moving_platform/moving_platform_track.png" id="1_q8vjn"]
 
 [node name="PathPart" type="NinePatchRect"]
 z_index = -1
