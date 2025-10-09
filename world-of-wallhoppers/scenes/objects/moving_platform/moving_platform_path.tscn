@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://k6238xtiriwm"]
+
+[ext_resource type="Texture2D" uid="uid://ooqp42affp83" path="res://assets/sprites/moving_platform/track.png" id="1_q8vjn"]
+
+[node name="PathPart" type="NinePatchRect"]
+z_index = -1
+texture_filter = 1
+offset_right = 112.0
+offset_bottom = 16.0
+pivot_offset = Vector2(0, 8)
+size_flags_horizontal = 0
+texture = ExtResource("1_q8vjn")
+patch_margin_left = 7
+patch_margin_top = 8
+patch_margin_right = 5
+patch_margin_bottom = 8
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1

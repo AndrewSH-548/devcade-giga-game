@@ -17,5 +17,8 @@ vec2 sincos(vec2 operand) {
 void fragment() {
 	vec2 offset = amplitude * 0.01 * sincos(vec2(TIME * speed * 0.1 + UV * width));
 	COLOR = texture(TEXTURE, UV + offset);
+	if(COLOR.rgb == vec3(0.0)) {
+		COLOR.a = 0.0;
+	}
 	COLOR *= mod_color;
 }
