@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://yx5v3vnlt8nw"]
+
+[ext_resource type="Texture2D" uid="uid://dj57kevruc4bw" path="res://assets/sprites/moving_platform/rest_point.png" id="1_13xlj"]
+
+[node name="MovingPlatformRest" type="Sprite2D"]
+z_index = -1
+texture_filter = 1
+texture = ExtResource("1_13xlj")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://bnajm44iu8kfe"]
+[gd_scene load_steps=20 format=4 uid="uid://bnajm44iu8kfe"]
 
 [ext_resource type="Script" uid="uid://s7cnbl0ouo3x" path="res://assets/scripts/gameplay/level.gd" id="1_gtp7y"]
 [ext_resource type="PackedScene" uid="uid://dhjkvej1d1nic" path="res://scenes/editor/tumbnail_marker.tscn" id="1_v6ges"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://ulefhw2axopx" path="res://assets/terrain/volcano.png" id="3_nwbnw"]
 [ext_resource type="PackedScene" uid="uid://bpos0rprc0elm" path="res://scenes/goalpost.tscn" id="4_u4yvl"]
 [ext_resource type="Script" uid="uid://cphusaq70x4jg" path="res://assets/scripts/obstacles.gd" id="5_1xcd4"]
+[ext_resource type="PackedScene" uid="uid://dm6eckbq0lr8g" path="res://scenes/objects/moving_platform/moving_platform.tscn" id="6_gmvyl"]
 [ext_resource type="Script" uid="uid://iembhyk5nlq" path="res://assets/scripts/visuals/backgrounds.gd" id="7_e4ep7"]
 [ext_resource type="PackedScene" uid="uid://cl7i05js3l62q" path="res://scenes/obstacles/spike.tscn" id="7_gtp7y"]
 [ext_resource type="Shader" uid="uid://bnwrxjdbjs6bt" path="res://assets/shaders/heat_warp.gdshader" id="8_7l734"]
@@ -953,6 +954,21 @@ tile_set = SubResource("TileSet_yej4m")
 [node name="Goalpost" parent="." instance=ExtResource("4_u4yvl")]
 position = Vector2(14, -1913)
 
+[node name="MovingPlatform" parent="." node_paths=PackedStringArray("start_point_0", "end_point", "points", "pauses") instance=ExtResource("6_gmvyl")]
+position = Vector2(-176, -672)
+start_point_0 = NodePath("Start")
+end_point = NodePath("End")
+points = [NodePath("MidPoint1")]
+pauses = [NodePath("MidPoint1")]
+
+[node name="Start" type="Marker2D" parent="MovingPlatform"]
+
+[node name="End" type="Marker2D" parent="MovingPlatform"]
+position = Vector2(384, 240)
+
+[node name="MidPoint1" type="Marker2D" parent="MovingPlatform"]
+position = Vector2(384, 0)
+
 [node name="Spikes" type="Node2D" parent="."]
 position = Vector2(0, -333)
 script = ExtResource("5_1xcd4")
@@ -1000,6 +1016,7 @@ script = ExtResource("7_e4ep7")
 
 [node name="Back" type="Parallax2D" parent="Backgrounds"]
 scroll_scale = Vector2(0, 0)
+repeat_times = 40
 
 [node name="ColorRect" type="ColorRect" parent="Backgrounds/Back"]
 offset_left = -266.0
@@ -1014,7 +1031,7 @@ texture_repeat = 2
 material = SubResource("ShaderMaterial_4afio")
 scroll_scale = Vector2(0.025, 0.025)
 repeat_size = Vector2(0, 1920)
-repeat_times = 20
+repeat_times = 40
 ignore_camera_scroll = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Backgrounds/Volcanos"]
@@ -1032,7 +1049,7 @@ visibility_layer = 4
 scroll_scale = Vector2(0.2, 0.2)
 repeat_size = Vector2(270, 960)
 autoscroll = Vector2(10, 25)
-repeat_times = 20
+repeat_times = 40
 ignore_camera_scroll = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Backgrounds/Smoke2"]
@@ -1047,7 +1064,7 @@ visibility_layer = 4
 material = SubResource("ShaderMaterial_f5oh5")
 scroll_scale = Vector2(0.1, 0.1)
 repeat_size = Vector2(0, 960)
-repeat_times = 20
+repeat_times = 40
 ignore_camera_scroll = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Backgrounds/CircleStones"]
@@ -1059,7 +1076,7 @@ visibility_layer = 4
 scroll_scale = Vector2(0.2, 0.2)
 repeat_size = Vector2(270, 960)
 autoscroll = Vector2(30, 50)
-repeat_times = 20
+repeat_times = 40
 ignore_camera_scroll = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Backgrounds/Smoke"]
