@@ -1,9 +1,9 @@
 [gd_scene load_steps=10 format=3 uid="uid://dm6eckbq0lr8g"]
 
 [ext_resource type="Script" uid="uid://cjl4tqsxeq34t" path="res://assets/scripts/moving_platform.gd" id="1_8db3p"]
-[ext_resource type="Texture2D" uid="uid://c66wliv8rf8mh" path="res://assets/sprites/moving_platform/moving_platform_shape.png" id="2_plq0f"]
+[ext_resource type="Texture2D" uid="uid://c66wliv8rf8mh" path="res://assets/sprites/moving_platform/basic_shape.png" id="2_plq0f"]
 [ext_resource type="Script" uid="uid://cru8vh7g6mqxl" path="res://assets/scripts/visuals/moving_platform_animation.gd" id="3_vrva7"]
-[ext_resource type="Texture2D" uid="uid://dxupx8br1asco" path="res://assets/sprites/moving_platform/moving_platform_wheel.png" id="4_idv53"]
+[ext_resource type="Texture2D" uid="uid://dxupx8br1asco" path="res://assets/sprites/moving_platform/wheel.png" id="4_idv53"]
 
 [sub_resource type="Curve2D" id="Curve2D_1tdcd"]
 _data = {

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ooqp42affp83"
-path="res://.godot/imported/moving_platform_track.png-e5bc6ae92e4ca90a25b82f731491d646.ctex"
+uid="uid://dj57kevruc4bw"
+path="res://.godot/imported/rest_point.png-01b88d2f16e8e78756196b01bec9b66f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/moving_platform/moving_platform_track.png"
-dest_files=["res://.godot/imported/moving_platform_track.png-e5bc6ae92e4ca90a25b82f731491d646.ctex"]
+source_file="res://assets/sprites/moving_platform/rest_point.png"
+dest_files=["res://.godot/imported/rest_point.png-01b88d2f16e8e78756196b01bec9b66f.ctex"]
 
 [params]
 

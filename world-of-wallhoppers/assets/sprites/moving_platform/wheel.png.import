@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c66wliv8rf8mh"
-path="res://.godot/imported/moving_platform_shape.png-0a193488dc175f19bc268ed4168f3629.ctex"
+uid="uid://dxupx8br1asco"
+path="res://.godot/imported/wheel.png-7f7bb0ae7ce40d667250e4d468efda2e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/moving_platform/moving_platform_shape.png"
-dest_files=["res://.godot/imported/moving_platform_shape.png-0a193488dc175f19bc268ed4168f3629.ctex"]
+source_file="res://assets/sprites/moving_platform/wheel.png"
+dest_files=["res://.godot/imported/wheel.png-7f7bb0ae7ce40d667250e4d468efda2e.ctex"]
 
 [params]
 

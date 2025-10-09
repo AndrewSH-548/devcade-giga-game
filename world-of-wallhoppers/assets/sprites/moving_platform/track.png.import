@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cbxgmsa0gp044"
-path="res://.godot/imported/moving_platform_volcano.png-dd426b1b88a70187355d197a8f3b69b3.ctex"
+uid="uid://ooqp42affp83"
+path="res://.godot/imported/track.png-8a3557c905f90e9af16c016734f2d42f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/moving_platform/moving_platform_volcano.png"
-dest_files=["res://.godot/imported/moving_platform_volcano.png-dd426b1b88a70187355d197a8f3b69b3.ctex"]
+source_file="res://assets/sprites/moving_platform/track.png"
+dest_files=["res://.godot/imported/track.png-8a3557c905f90e9af16c016734f2d42f.ctex"]
 
 [params]
 
