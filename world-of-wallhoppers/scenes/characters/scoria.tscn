@@ -68,10 +68,9 @@ size = Vector2(29.75, 61.25)
 [node name="Flare" type="CharacterBody2D"]
 collision_layer = 4
 script = ExtResource("1_sssk5")
-kick_action = &"p1_run"
-walk_speed = 10
-run_speed = 10
-air_speed = 10
+walk_speed = 300
+run_speed = 330
+air_speed = 100
 air_accel = 5
 jump_height = 200
 wall_jump_height = 300
