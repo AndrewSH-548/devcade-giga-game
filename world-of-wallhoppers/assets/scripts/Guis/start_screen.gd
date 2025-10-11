@@ -1,4 +1,5 @@
 extends Control
+class_name MenuStartScreen
 
 const LEVEL_SELECT = preload("res://scenes/gui/level_select.tscn")
 

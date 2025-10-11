@@ -3,6 +3,7 @@ class_name MainLevelHeader
 
 @onready var pause_menu = $PauseMenu;
 var paused: bool = false;
+var current_session_info: SessionInfo
 
 func setup(session_info: SessionInfo) -> void:
 	# This should be overidden in child classses! (Singlescreen, Splitscreen)

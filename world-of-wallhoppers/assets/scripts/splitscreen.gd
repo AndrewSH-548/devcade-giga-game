@@ -18,6 +18,7 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 func setup(session_info: SessionInfo):
+	current_session_info = session_info
 	var parent_node: Node = $HBoxContainer/ViewportContainerP1/SubViewport
 	
 	var level: Node2D = session_info.level_info.scene.instantiate()
