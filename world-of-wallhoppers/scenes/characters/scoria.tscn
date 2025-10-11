@@ -65,18 +65,18 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gf061"]
 size = Vector2(29.75, 61.25)
 
-[node name="Flare" type="CharacterBody2D"]
+[node name="Scoria" type="CharacterBody2D"]
 collision_layer = 4
 script = ExtResource("1_sssk5")
-walk_speed = 300
-run_speed = 330
-air_speed = 100
-air_accel = 5
-jump_height = 200
+walk_speed = 200
+run_speed = 200
+air_speed = 200
+air_accel = 10
+jump_height = 300
 wall_jump_height = 300
 wall_pushoff_strength = 90
 fall_speed = 550
-gravity = 450
+gravity = 900
 weight = 13
 
 [node name="NormalCollision" type="CollisionShape2D" parent="."]
@@ -98,3 +98,22 @@ autoplay = "Idle"
 [node name="HitboxShape" type="CollisionShape2D" parent="PlayerHitbox"]
 position = Vector2(0.5, 6.5)
 shape = SubResource("RectangleShape2D_gf061")
+
+[node name="Timers" type="Node" parent="."]
+
+[node name="Dash" type="Timer" parent="Timers"]
+one_shot = true
+
+[node name="Rebound" type="Timer" parent="Timers"]
+one_shot = true
+
+[node name="Flight" type="Timer" parent="Timers"]
+one_shot = true
+
+[node name="DashBuffer" type="Timer" parent="Timers"]
+one_shot = true
+
+[connection signal="timeout" from="Timers/Dash" to="." method="dash_timer_end"]
+[connection signal="timeout" from="Timers/Rebound" to="." method="rebound_timer_end"]
+[connection signal="timeout" from="Timers/Flight" to="." method="flight_timer_end"]
+[connection signal="timeout" from="Timers/DashBuffer" to="." method="dash_buffer_end"]

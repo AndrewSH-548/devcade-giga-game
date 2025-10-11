@@ -100,10 +100,10 @@ func do_jump() -> void:
 func is_touching_wall():
 	return is_touching_left_wall() or is_touching_right_wall()
 
-func is_touching_left_wall():
+func is_touching_left_wall() -> bool:
 	return test_move(transform, Vector2(-0.1, 0))
 
-func is_touching_right_wall():
+func is_touching_right_wall() -> bool:
 	return test_move(transform, Vector2(0.1, 0))
 
 func process_walkrun(delta: float, direction: float) -> void:
