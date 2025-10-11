@@ -34,7 +34,7 @@ func set_pause(is_paused: bool):
 	paused = is_paused
 	if paused:
 		pause_menu.show(); 
-		$PauseMenu/MarginContainer/VBoxContainer/Resume.grab_focus(); 
+		$PauseMenu/CenterContainer/VBoxContainer/Resume.grab_focus(); 
 		Engine.time_scale = 0;
 	else:
 		pause_menu.hide();
