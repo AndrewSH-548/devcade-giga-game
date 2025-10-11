@@ -22,9 +22,12 @@ func place_level(level: Node2D, parent_node: Node):
 	
 	camera_1.scroll_bounds_top = top_level_bounds
 	camera_1.scroll_bounds_bottom = bottom_level_bounds
+	camera_1.setup()
+	
 	if camera_2 != null:
 		camera_2.scroll_bounds_top = top_level_bounds
 		camera_2.scroll_bounds_bottom = bottom_level_bounds
+		camera_2.setup()
 
 func set_pause(is_paused: bool):
 	paused = is_paused
