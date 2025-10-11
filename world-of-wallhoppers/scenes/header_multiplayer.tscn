@@ -29,7 +29,7 @@ size = Vector2i(538, 1920)
 render_target_update_mode = 4
 
 [node name="Camera2D" type="Camera2D" parent="HBoxContainer/ViewportContainerP1/SubViewport" groups=["Player1Camera"]]
-offset = Vector2(135, 240)
+offset = Vector2(135, 0)
 script = ExtResource("4_c2woe")
 
 [node name="ViewportContainerP2" type="SubViewportContainer" parent="HBoxContainer"]
@@ -44,8 +44,16 @@ size = Vector2i(538, 1920)
 render_target_update_mode = 4
 
 [node name="Camera2D" type="Camera2D" parent="HBoxContainer/ViewportContainerP2/SubViewport" groups=["Player2Camera"]]
-offset = Vector2(135, 240)
+offset = Vector2(135, 0)
 script = ExtResource("4_c2woe")
 
 [node name="PauseMenu" parent="." instance=ExtResource("5_ylv1f")]
 visible = false
+custom_minimum_size = Vector2(1080, 1920)
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 1080.0
+offset_bottom = 1920.0
+grow_horizontal = 1
+grow_vertical = 1

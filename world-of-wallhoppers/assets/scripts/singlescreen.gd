@@ -1,6 +1,7 @@
 extends MainLevelHeader
 
 func setup(session_info: SessionInfo) -> void:
+	current_session_info = session_info
 	var parent_node: Node = $ViewportContainerP1/SubViewport
 	
 	var level: Node2D = session_info.level_info.scene.instantiate()

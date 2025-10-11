@@ -19,8 +19,8 @@ handle_input_locally = false
 size = Vector2i(540, 1920)
 render_target_update_mode = 4
 
-[node name="Camera2D" type="Camera2D" parent="ViewportContainerP1/SubViewport" node_paths=PackedStringArray("target") groups=["Player1Camera"]]
-offset = Vector2(136, 240)
+[node name="Camera2D" type="Camera2D" parent="ViewportContainerP1/SubViewport" groups=["Player1Camera"]]
+offset = Vector2(136, 0)
 position_smoothing_enabled = true
 script = ExtResource("2_5f7m3")
 
@@ -39,3 +39,11 @@ color = Color(0, 0, 0, 1)
 
 [node name="PauseMenu" parent="." instance=ExtResource("4_i2xlj")]
 visible = false
+custom_minimum_size = Vector2(1080, 1920)
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 1080.0
+offset_bottom = 1920.0
+grow_horizontal = 1
+grow_vertical = 1
