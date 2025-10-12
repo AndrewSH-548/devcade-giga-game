@@ -65,7 +65,7 @@ func process_gravity(delta: float):
 		velocity.y += gravity * delta;
 		velocity.y = clamp(velocity.y, -INF, fall_speed);
 
-func process_jump(delta: float):
+func process_jump(_delta: float):
 	
 	# If there is a jump in the buffer, and the player is on the floor, JUMP!
 	if get_position_state() == STATE_ON_FLOOR and not jump_buffer_timer.is_stopped():
@@ -106,7 +106,7 @@ func is_touching_left_wall() -> bool:
 func is_touching_right_wall() -> bool:
 	return test_move(transform, Vector2(0.1, 0))
 
-func process_walkrun(delta: float, direction: float) -> void:
+func process_walkrun(_delta: float, direction: float) -> void:
 	# Deccelerate if there is no input
 	if direction == 0.0:
 		velocity.x = move_toward(velocity.x, 0, deccel)
@@ -129,7 +129,7 @@ func process_walkrun(delta: float, direction: float) -> void:
 				else:
 					velocity.x = move_toward(velocity.x, direction*air_speed, air_accel)
 
-func process_walljump(delta: float) -> void:
+func process_walljump(_delta: float) -> void:
 	# Skip this if the player is not wallsliding
 	# Look at get_position_state() and STATE_ON_WALL for wallsliding conditions
 	if get_position_state() != STATE_ON_WALL: return

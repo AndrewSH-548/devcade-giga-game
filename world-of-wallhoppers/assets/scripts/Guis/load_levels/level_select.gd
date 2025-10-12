@@ -91,7 +91,7 @@ class Page:
 	func connect_back() -> void:
 		# Connect back to the top thumbnail that is closest to the top
 		var top_row: Array = thumbnails.get(0)
-		back_button_node.focus_neighbor_bottom = top_row.get(int(top_row.size() / 2)).get_path()
+		back_button_node.focus_neighbor_bottom = top_row.get(int(top_row.size() / 2.0)).get_path()
 	
 	# Allows controllers to navigate through the thumbnails
 	# This should be called AFTER the all of the thumbnails are added
@@ -115,8 +115,8 @@ class Page:
 				thumbnail.focus_neighbor_right = thumbnails.get(row).get(wrapi(col + 1, 0, thumbnails.get(row).size())).get_path()
 	
 	func focus_middle() -> void:
-		var middle_row: Array = thumbnails.get(int(thumbnails.size() / 2))
-		var middle_thumbnail: Control = middle_row.get(int(middle_row.size() / 2))
+		var middle_row: Array = thumbnails.get(int(thumbnails.size() / 2.0))
+		var middle_thumbnail: Control = middle_row.get(int(middle_row.size() / 2.0))
 		middle_thumbnail.grab_focus()
 
 func _ready() -> void:

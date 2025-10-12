@@ -36,7 +36,7 @@ func process_wallclimb():
 		var climbDirection: float = get_climb_input()
 		velocity.y = climbDirection * climb_speed;
 
-func process_walljump_hip(delta: float) -> void:
+func process_walljump_hip(_delta: float) -> void:
 	# Skip this if the player is not wallsliding
 	# Look at get_position_state() and STATE_ON_WALL for wallsliding conditions
 	if get_position_state() != STATE_ON_WALL: return

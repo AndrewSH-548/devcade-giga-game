@@ -42,7 +42,7 @@ func manual_set_camera_position(camera_position: Vector2):
 	for background in get_children():
 		background.screen_offset.y = camera_position.y
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if thumbnail_mode: return
 	for background in get_children():
 		if background is not Parallax2D: continue 
