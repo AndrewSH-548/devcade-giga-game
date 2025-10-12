@@ -6,6 +6,7 @@ extends Player
 @onready var dash_timer: Timer = $Timers/Dash
 @onready var rebound_timer: Timer = $Timers/Rebound
 @onready var flight_timer: Timer = $Timers/Flight
+@onready var re_dash_timer: Timer = $Timers/ReDash
 
 @onready var dash_buffer_timer: Timer = $Timers/DashBuffer
 
@@ -14,8 +15,10 @@ extends Player
 var dash_action: StringName
 
 var dash_speed: float = 512.0
-var dash_time: float = 0.08
+var dash_time: float = 0.13
 var dash_buffer_time: float = 0.2
+var can_dash: bool = true
+var re_dash_time: float = 0.5
 
 var rebound_direction: int = 1
 var rebound_time: float = 0.4
@@ -27,7 +30,9 @@ var spark_progress: float = 0.0
 var rebound_spark_amount: float = 1.3
 var spark_drain_per_second: float = 0.7
 
-var flight_speed: float = 710.0
+#710.0 - Too Small
+#960.0 - Too Large
+var flight_speed: float = 800.0
 var flight_time: float = 0.5
 var flight_offset_x: float = 32.0
 var flight_target_x: float
@@ -61,9 +66,9 @@ func _physics_process(delta: float) -> void:
 			process_gravity(delta)
 			process_jump(delta)
 			process_walljump(delta)
-			update_flipped()
 			if Input.is_action_just_pressed(dash_action) and move_state == MoveState.NORMAL:
-				do_dash()
+				if can_dash:
+					do_dash()
 		MoveState.DASH:
 			process_dash()
 		MoveState.REBOUND:
@@ -72,6 +77,7 @@ func _physics_process(delta: float) -> void:
 		MoveState.FLIGHT:
 			process_flight(delta)
 	
+	update_flipped()
 	animate_flare()
 	
 	move_and_slide()
@@ -79,8 +85,11 @@ func _physics_process(delta: float) -> void:
 func do_dash():
 	move_state = MoveState.DASH
 	dash_timer.start(dash_time)
+	can_dash = false
+	re_dash_timer.start(re_dash_time)
 
 func do_rebound(wall_direction: int):
+	can_dash = true
 	move_state = MoveState.REBOUND
 	dash_timer.stop()
 	spark_progress += rebound_spark_amount
@@ -159,5 +168,8 @@ func flight_timer_end() -> void:
 	animations.play("Idle")
 
 func dash_buffer_end() -> void:
-	if move_state == MoveState.NORMAL:
+	if move_state == MoveState.NORMAL and can_dash:
 		do_dash()
+
+func re_dash_timer_end() -> void:
+	can_dash = true
