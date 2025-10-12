@@ -1,13 +1,14 @@
-[gd_resource type="SpriteFrames" load_steps=7 format=3 uid="uid://dyusrrvvi0kwy"]
+[gd_resource type="SpriteFrames" load_steps=8 format=3 uid="uid://dyusrrvvi0kwy"]
 
 [ext_resource type="Texture2D" uid="uid://c6nhe28u5xreg" path="res://assets/sprites/scoria/scoria_sprites.png" id="1_hc7uu"]
+[ext_resource type="Texture2D" uid="uid://b544nasnsdqck" path="res://assets/sprites/scoria_sprites.png" id="2_rqdqe"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hc7uu"]
 atlas = ExtResource("1_hc7uu")
 region = Rect2(420, 84, 84, 84)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_rqdqe"]
-atlas = ExtResource("1_hc7uu")
+[sub_resource type="AtlasTexture" id="AtlasTexture_fiv8h"]
+atlas = ExtResource("2_rqdqe")
 region = Rect2(84, 84, 84, 84)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dyfgj"]
@@ -34,7 +35,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_rqdqe")
+"texture": SubResource("AtlasTexture_fiv8h")
 }],
 "loop": true,
 "name": &"Idle",

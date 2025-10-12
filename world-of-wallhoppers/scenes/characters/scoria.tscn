@@ -1,11 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://bojyqwmqsf6xx"]
+[gd_scene load_steps=10 format=3 uid="uid://bojyqwmqsf6xx"]
 
 [ext_resource type="Script" uid="uid://dkjbdby517ry4" path="res://scenes/characters/scoria.gd" id="1_sssk5"]
 [ext_resource type="Texture2D" uid="uid://m5t03mjigocy" path="res://assets/sprites/scoria/spark.png" id="2_7qr4j"]
-[ext_resource type="Texture2D" uid="uid://dxxdo3wpshssn" path="res://assets/sprites/character_concept_pt6.png" id="2_on6cs"]
+[ext_resource type="SpriteFrames" uid="uid://dyusrrvvi0kwy" path="res://assets/sprites/scoria/scoria_cold.tres" id="3_7qr4j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_on6cs"]
-size = Vector2(29.75, 61.25)
+size = Vector2(29.75, 66.125)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4w0mk"]
 size = Vector2(38.5, 36.75)
@@ -35,61 +35,8 @@ animations = [{
 "speed": 12.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jn3up"]
-atlas = ExtResource("2_on6cs")
-region = Rect2(420, 0, 84, 84)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7qr4j"]
-atlas = ExtResource("2_on6cs")
-region = Rect2(84, 0, 84, 84)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hvvop"]
-atlas = ExtResource("2_on6cs")
-region = Rect2(168, 0, 84, 84)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_t4yvv"]
-atlas = ExtResource("2_on6cs")
-region = Rect2(252, 0, 84, 84)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rxgtq"]
-atlas = ExtResource("2_on6cs")
-region = Rect2(336, 0, 84, 84)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_on6cs"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jn3up")
-}],
-"loop": true,
-"name": &"Hitstun",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_7qr4j")
-}],
-"loop": true,
-"name": &"Idle",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hvvop")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_t4yvv")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rxgtq")
-}],
-"loop": true,
-"name": &"Roll",
-"speed": 12.0
-}]
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gf061"]
-size = Vector2(29.75, 61.25)
+size = Vector2(29.75, 66.125)
 
 [node name="Scoria" type="CharacterBody2D"]
 collision_layer = 4
@@ -107,7 +54,7 @@ gravity = 900
 weight = 13
 
 [node name="NormalCollision" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, 6.5)
+position = Vector2(0.5, 8.9375)
 shape = SubResource("RectangleShape2D_on6cs")
 
 [node name="RollCollision" type="CollisionShape2D" parent="."]
@@ -122,14 +69,14 @@ frame = 2
 frame_progress = 1.0
 
 [node name="Animations" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_on6cs")
-animation = &"Roll"
+sprite_frames = ExtResource("3_7qr4j")
+animation = &"Idle"
 autoplay = "Idle"
 
 [node name="PlayerHitbox" type="Area2D" parent="."]
 
 [node name="HitboxShape" type="CollisionShape2D" parent="PlayerHitbox"]
-position = Vector2(0.5, 6.5)
+position = Vector2(0.5, 8.9375)
 shape = SubResource("RectangleShape2D_gf061")
 
 [node name="Timers" type="Node" parent="."]
