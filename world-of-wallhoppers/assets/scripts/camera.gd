@@ -2,11 +2,18 @@ extends Camera2D
 class_name PlayerCamera
 
 var target: CharacterBody2D
+var scroll_bounds_top: float
+var scroll_bounds_bottom: float
+
+func setup() -> void:
+	var half_height: float = get_viewport_rect().size.y / 2.0
+	global_position.y = INF
+	global_position.y = clampf(global_position.y, scroll_bounds_top + half_height, scroll_bounds_bottom - half_height)
+	reset_smoothing()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	# Changing this if affects when the camera starts scrolling.
-	if target.position.y < 250:
-		# Changing this actually positions the player onto the screen.
-		# The camera snaps very unprofessionally when the if statement and this offset don't match.
-		position = floor(Vector2(position.x, target.position.y - 250));
+func _process(_delta: float) -> void:
+	var half_height: float = get_viewport_rect().size.y / 2.0
+	
+	global_position.y = target.global_position.y
+	global_position.y = clampf(global_position.y, scroll_bounds_top + half_height, scroll_bounds_bottom - half_height)
