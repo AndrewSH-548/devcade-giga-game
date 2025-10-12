@@ -1,0 +1,56 @@
+[gd_resource type="SpriteFrames" load_steps=7 format=3 uid="uid://qx7wdomqsg3r"]
+
+[ext_resource type="Texture2D" uid="uid://c6nhe28u5xreg" path="res://assets/sprites/scoria/scoria_sprites.png" id="1_8qjac"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gwppw"]
+atlas = ExtResource("1_8qjac")
+region = Rect2(420, 336, 84, 84)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3tqek"]
+atlas = ExtResource("1_8qjac")
+region = Rect2(84, 336, 84, 84)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qcx72"]
+atlas = ExtResource("1_8qjac")
+region = Rect2(168, 336, 84, 84)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3yogv"]
+atlas = ExtResource("1_8qjac")
+region = Rect2(252, 336, 84, 84)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dyab2"]
+atlas = ExtResource("1_8qjac")
+region = Rect2(336, 336, 84, 84)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gwppw")
+}],
+"loop": true,
+"name": &"Hitstun",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3tqek")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qcx72")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3yogv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dyab2")
+}],
+"loop": true,
+"name": &"Roll",
+"speed": 12.0
+}]

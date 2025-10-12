@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://bojyqwmqsf6xx"]
+[gd_scene load_steps=16 format=3 uid="uid://bojyqwmqsf6xx"]
 
 [ext_resource type="Script" uid="uid://dkjbdby517ry4" path="res://scenes/characters/scoria.gd" id="1_sssk5"]
+[ext_resource type="Texture2D" uid="uid://m5t03mjigocy" path="res://assets/sprites/scoria/spark.png" id="2_7qr4j"]
 [ext_resource type="Texture2D" uid="uid://dxxdo3wpshssn" path="res://assets/sprites/character_concept_pt6.png" id="2_on6cs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_on6cs"]
@@ -8,6 +9,31 @@ size = Vector2(29.75, 61.25)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4w0mk"]
 size = Vector2(38.5, 36.75)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g2fet"]
+atlas = ExtResource("2_7qr4j")
+region = Rect2(0, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d70qg"]
+atlas = ExtResource("2_7qr4j")
+region = Rect2(96, 0, 96, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vyvb6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g2fet")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d70qg")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"Spark",
+"speed": 12.0
+}]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jn3up"]
 atlas = ExtResource("2_on6cs")
@@ -72,7 +98,7 @@ walk_speed = 200
 run_speed = 200
 air_speed = 200
 air_accel = 10
-jump_height = 300
+jump_height = 350
 wall_jump_height = 300
 wall_pushoff_strength = 90
 fall_speed = 550
@@ -88,9 +114,15 @@ position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_4w0mk")
 debug_color = Color(0.757918, 2.88785e-05, 0.555706, 0.42)
 
+[node name="Spark" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_vyvb6")
+animation = &"Spark"
+frame = 2
+frame_progress = 1.0
+
 [node name="Animations" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_on6cs")
-animation = &"Hitstun"
+animation = &"Roll"
 autoplay = "Idle"
 
 [node name="PlayerHitbox" type="Area2D" parent="."]
