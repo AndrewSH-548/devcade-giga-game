@@ -36,10 +36,8 @@ var rebound_leeway: float = 16.0
 
 var spark_progress: float = 0.0
 var rebound_spark_amount: float = 1.3
-var spark_drain_per_second: float = 0.35
+var spark_drain_per_second: float = 0.0
 
-#710.0 - Too Small
-#960.0 - Too Large
 var flight_speed: float = 800.0
 var flight_time: float = 0.5
 var flight_offset_x: float = 32.0
