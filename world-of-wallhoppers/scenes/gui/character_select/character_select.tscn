@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bypgh8vwm65r6"]
+[gd_scene load_steps=28 format=3 uid="uid://bypgh8vwm65r6"]
 
 [ext_resource type="Script" uid="uid://ds787vg8b1cru" path="res://assets/scripts/Guis/character_select/character_select.gd" id="1_dlxgn"]
 [ext_resource type="PackedScene" uid="uid://bmuoxdjge2ld7" path="res://scenes/gui/character_select/character_tester.tscn" id="3_cxqtq"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" uid="uid://coa3jlesxvfo7" path="res://assets/scripts/Guis/character_select/dial_button.gd" id="9_u0e5d"]
 [ext_resource type="Material" uid="uid://cvgooa66fd7yl" path="res://assets/shaders/materials/character_selection_material.tres" id="9_uhpgm"]
 [ext_resource type="PackedScene" uid="uid://c42ynqlk3h4wp" path="res://scenes/characters/reign.tscn" id="11_cl5d8"]
+[ext_resource type="Texture2D" uid="uid://mkjgs63nj8wd" path="res://assets/sprites/character_concept_pt5.png" id="17_lfxm6"]
 [ext_resource type="PackedScene" uid="uid://bojyqwmqsf6xx" path="res://scenes/characters/scoria.tscn" id="18_sqhw2"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_cxqtq"]
@@ -77,13 +78,19 @@ region = Rect2(0, 0, 56, 56)
 atlas = ExtResource("6_bfvoi")
 region = Rect2(0, 0, 32, 48)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_cxqtq"]
+atlas = ExtResource("17_lfxm6")
+
 [node name="CharacterSelect" type="Control" groups=["CharacterSelect"]]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = -540.0
+offset_bottom = -960.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(2, 2)
 script = ExtResource("1_dlxgn")
 
 [node name="ReadyAll" type="Control" parent="."]
@@ -405,10 +412,10 @@ scale = Vector2(10, 10)
 texture = ExtResource("5_bfvoi")
 
 [node name="Character" type="Sprite2D" parent="MainVertical/CharacterWheel/DialPositioner/DialButtonBottom/Mask"]
-position = Vector2(-22.939835, 0.09576416)
+position = Vector2(-2.85709, -9.9705)
 rotation = 3.1415927
 scale = Vector2(4, 4)
-texture = ExtResource("5_bfvoi")
+texture = SubResource("AtlasTexture_cxqtq")
 
 [node name="Selection" type="Sprite2D" parent="MainVertical/CharacterWheel/DialPositioner/DialButtonBottom"]
 z_index = -1
