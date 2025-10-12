@@ -5,7 +5,7 @@ class_name MainLevelHeader
 var paused: bool = false;
 var current_session_info: SessionInfo
 
-func setup(session_info: SessionInfo) -> void:
+func setup(_session_info: SessionInfo) -> void:
 	# This should be overidden in child classses! (Singlescreen, Splitscreen)
 	pass
 
@@ -41,7 +41,7 @@ func set_pause(is_paused: bool):
 		Engine.time_scale = 1;
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("pause"):
 		# Toggle pause menu
 		set_pause(not paused)

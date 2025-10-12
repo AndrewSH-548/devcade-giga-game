@@ -91,7 +91,7 @@ func setup(_session_info: SessionInfo) -> void:
 	is_multiplayer = session_info.is_multiplayer
 	setup_for_player_count(PLAYER_COUNT)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	ready_button_process()
 	player_select_process()
 	name_label_process()
