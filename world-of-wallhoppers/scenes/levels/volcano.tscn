@@ -1022,7 +1022,8 @@ script = ExtResource("7_e4ep7")
 
 [node name="Back" type="Parallax2D" parent="Backgrounds"]
 scroll_scale = Vector2(0, 0)
-repeat_times = 40
+repeat_size = Vector2(256, 256)
+repeat_times = 10
 
 [node name="ColorRect" type="ColorRect" parent="Backgrounds/Back"]
 offset_left = -266.0
@@ -1068,7 +1069,7 @@ texture = ExtResource("10_th25m")
 [node name="CircleStones" type="Parallax2D" parent="Backgrounds"]
 visibility_layer = 4
 material = SubResource("ShaderMaterial_f5oh5")
-scroll_scale = Vector2(0.1, 0.1)
+scroll_scale = Vector2(0.8, 0.8)
 repeat_size = Vector2(0, 960)
 repeat_times = 40
 ignore_camera_scroll = true
@@ -1079,7 +1080,7 @@ texture = ExtResource("11_ji8u0")
 
 [node name="Smoke" type="Parallax2D" parent="Backgrounds"]
 visibility_layer = 4
-scroll_scale = Vector2(0.2, 0.2)
+scroll_scale = Vector2(0.8, 0.8)
 repeat_size = Vector2(270, 960)
 autoscroll = Vector2(30, 50)
 repeat_times = 40

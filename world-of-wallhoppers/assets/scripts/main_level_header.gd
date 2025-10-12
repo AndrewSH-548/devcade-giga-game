@@ -3,6 +3,7 @@ class_name MainLevelHeader
 
 @onready var pause_menu = $PauseMenu;
 var paused: bool = false;
+var current_session_info: SessionInfo
 
 func setup(session_info: SessionInfo) -> void:
 	# This should be overidden in child classses! (Singlescreen, Splitscreen)
@@ -33,7 +34,7 @@ func set_pause(is_paused: bool):
 	paused = is_paused
 	if paused:
 		pause_menu.show(); 
-		$PauseMenu/MarginContainer/VBoxContainer/Resume.grab_focus(); 
+		$PauseMenu/CenterContainer/VBoxContainer/Resume.grab_focus(); 
 		Engine.time_scale = 0;
 	else:
 		pause_menu.hide();

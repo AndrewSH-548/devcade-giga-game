@@ -4,7 +4,7 @@ extends Button
 @onready var level_name: Label = $Margins/LevelName
 @onready var shading: ColorRect = $Shading
 
-const SHOWCASE_SPEED: float = 64.0
+const SHOWCASE_SPEED: float = 128.0
 
 var is_setup: bool = false
 var level: Node2D

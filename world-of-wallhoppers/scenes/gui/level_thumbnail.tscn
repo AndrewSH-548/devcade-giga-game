@@ -4,11 +4,13 @@
 [ext_resource type="Theme" uid="uid://ch10f1720xh7l" path="res://assets/themes/thumbnail_button.tres" id="1_fofor"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_fofor"]
-outline_size = 8
+font_size = 32
+outline_size = 16
 outline_color = Color(0, 0, 0, 1)
+shadow_size = 2
 
 [node name="LevelThumbnail" type="Button"]
-custom_minimum_size = Vector2(170, 260)
+custom_minimum_size = Vector2(340, 520)
 offset_right = 170.0
 offset_bottom = 260.0
 theme = ExtResource("1_fofor")
@@ -25,13 +27,16 @@ color = Color(0.118959, 0.111572, 0.11342, 0.584314)
 
 [node name="ViewportContainer" type="SubViewportContainer" parent="."]
 show_behind_parent = true
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="LevelViewport" type="SubViewport" parent="ViewportContainer"]
 handle_input_locally = false
-size = Vector2i(170, 260)
+size = Vector2i(340, 520)
 render_target_update_mode = 4
 
 [node name="Margins" type="MarginContainer" parent="."]
@@ -44,10 +49,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1, 1.0025)
-theme_override_constants/margin_left = 4
-theme_override_constants/margin_top = 4
-theme_override_constants/margin_right = 4
-theme_override_constants/margin_bottom = 4
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
 
 [node name="LevelName" type="Label" parent="Margins"]
 custom_minimum_size = Vector2(160, 0)
