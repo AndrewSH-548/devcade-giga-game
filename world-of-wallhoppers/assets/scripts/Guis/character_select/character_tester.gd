@@ -32,7 +32,7 @@ func stop():
 	if player != null: player.queue_free()
 	visible = false
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if not running: return
 	if player != null:
 		test_camera.global_position = player.global_position

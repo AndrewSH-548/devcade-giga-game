@@ -17,7 +17,7 @@ func _ready() -> void:
 	connected_player_index = 0 if placement == PLACEMENT.TOP else 1
 	assert(character_select != null, "Character select not found for a portrait holder! Is the character select not in the \"CharacterSelect\" group?")
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if not character_select.is_multiplayer and connected_player_index != 0:
 		visible = false
 		return

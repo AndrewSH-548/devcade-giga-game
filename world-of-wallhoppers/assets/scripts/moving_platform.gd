@@ -101,15 +101,15 @@ func _ready() -> void:
 	# Get the (very large) array of points in the curve
 	# Note that this is NOT the points we chose, instead it's hundreds of points which form the curve
 	# that is CREATED by the points we chose
-	var points: PackedVector2Array = path_2d.curve.get_baked_points()
+	var points_positions: PackedVector2Array = path_2d.curve.get_baked_points()
 	# Will store the last position a track was placed
 	var last_position: Vector2
 	# Will store the last track node what was placed
 	var last_track: NinePatchRect = null
 	# For each point
-	for index in range(points.size()):
+	for index in range(points_positions.size()):
 		# If it's the last point...
-		if index >= points.size() - 1:
+		if index >= points_positions.size() - 1:
 			# Looping
 			if current_state == Path_System.LOOP:
 				index = 0
@@ -119,9 +119,8 @@ func _ready() -> void:
 			else:
 				# End the loop
 				break
-		# Get current point and next point, and add randomness to current for visual flair
-		var point: Vector2 = points[index] + Vector2(randi_range(-2, 2), randi_range(-2, 2)) - Vector2(0, 4)
-		var next_point: Vector2 = points[index + 1]
+		# Get current point and add randomness to current for visual flair
+		var point: Vector2 = points_positions[index] + Vector2(randi_range(-2, 2), randi_range(-2, 2)) - Vector2(0, 4)
 		# Only place tracks a certain distance aprart
 		# This stops hundreds of tracks being placed
 		if index == 0 or last_position.distance_to(point) > 32:
@@ -150,10 +149,10 @@ func _ready() -> void:
 	
 	# Sets up the visuals for pauses
 	for pause in pauses:
-		var position: Vector2 = pause.global_position + Vector2(-6, 6)
+		var pause_position: Vector2 = pause.global_position + Vector2(-6, 6)
 		var rest: Node2D = MOVING_PLATFORM_REST.instantiate()
 		get_parent().add_child(rest)
-		rest.global_position = position
+		rest.global_position = pause_position
 	
 	# COLOR SECTION WHEEL --------------------------
 	# Sets up the main platform's sprite
