@@ -60,9 +60,10 @@ enum MoveState {
 }
 
 func _ready() -> void:
-	super._ready()
 	for index in range(5):
 		sprite_frames.append(make_frames(index))
+	animations.sprite_frames = sprite_frames[0]
+	super._ready()
 
 func make_frames(index: int) -> SpriteFrames:
 	var frames: SpriteFrames = SpriteFrames.new()
