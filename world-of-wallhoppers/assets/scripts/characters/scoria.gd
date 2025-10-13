@@ -211,7 +211,7 @@ func animate_flare():
 				animations.animation = "Roll"
 			MoveState.NORMAL:
 				if is_on_floor():
-					if (is_touching_right_wall() and isFacingRight) or (is_touching_left_wall() and not isFacingRight):
+					if ((is_touching_right_wall() and isFacingRight) or (is_touching_left_wall() and not isFacingRight)) and get_horizontal_movement() != 0.0:
 						animations.animation = "Against Wall"
 					elif get_horizontal_movement() == 0.0:
 						animations.animation = "Idle"
