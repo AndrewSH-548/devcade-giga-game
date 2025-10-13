@@ -27,7 +27,7 @@ var hip_movement: float = 0.0
 var hip_speed: float = 128.0
 var initlal: float
 
-var walk_time: float = 3.0
+var walk_time: float = 1.5
 var time_walked: float = 0.0
 
 func _ready() -> void:

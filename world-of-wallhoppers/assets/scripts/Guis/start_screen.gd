@@ -2,6 +2,7 @@ extends Control
 class_name MenuStartScreen
 
 const LEVEL_SELECT = preload("res://scenes/gui/level_select.tscn")
+const TUTORIAL = preload("uid://bdnher4a7qii8")
 
 @export var mutiplayer_button: Button
 @export var singleplayer_button: Button
@@ -24,4 +25,8 @@ func load_level_select(is_multiplayer: bool):
 	level_select.is_multiplayer = is_multiplayer
 	get_tree().root.add_child(level_select)
 	queue_free()
-	
+
+func load_tutorial():
+	var tutorial: Node2D = TUTORIAL.instantiate()
+	get_tree().root.add_child(tutorial)
+	queue_free()

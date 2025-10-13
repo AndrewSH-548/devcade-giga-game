@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=4 uid="uid://bdnher4a7qii8"]
+[gd_scene load_steps=49 format=4 uid="uid://bdnher4a7qii8"]
 
 [ext_resource type="Texture2D" uid="uid://3dsey0o0pes7" path="res://assets/terrain/tutorial.png" id="1_rnyxf"]
 [ext_resource type="Script" uid="uid://c5oi1mi3kkc6r" path="res://assets/scripts/gameplay/tutorial.gd" id="1_u4f7j"]
@@ -11,10 +11,11 @@
 [ext_resource type="Texture2D" uid="uid://dkaw5masvas3" path="res://assets/sprites/tutorial/confetti.png" id="8_g7bfq"]
 [ext_resource type="Material" uid="uid://d332qasrqdn1w" path="res://assets/scripts/tutorial/confetti_process_material.tres" id="9_4a02d"]
 [ext_resource type="Texture2D" uid="uid://b5r1mgn2ols7o" path="res://assets/sprites/tutorial/checkmark.png" id="10_84vya"]
-[ext_resource type="Script" uid="uid://bjcaxj5k4f03c" path="res://scenes/levels/tutorial_jump.gd" id="11_cw4as"]
+[ext_resource type="Script" uid="uid://bjcaxj5k4f03c" path="res://assets/scripts/tutorial/tutorial_jump.gd" id="11_cw4as"]
 [ext_resource type="Script" uid="uid://dryc7wrgyag76" path="res://assets/scripts/tutorial/hip_tutorial_jump.gd" id="12_4o3hj"]
 [ext_resource type="Texture2D" uid="uid://bdkur4rfrr5wg" path="res://assets/sprites/tutorial/press_red_button.png" id="12_uy53l"]
 [ext_resource type="Script" uid="uid://dh8dhttxvh6yx" path="res://assets/scripts/tutorial/tutorial_run.gd" id="13_wr5d5"]
+[ext_resource type="Script" uid="uid://crdto102dvk53" path="res://assets/scripts/tutorial/tutorial_walljump.gd" id="14_cyy7t"]
 [ext_resource type="Texture2D" uid="uid://bcbwc43jm65fc" path="res://assets/sprites/tutorial/press_blue_button.png" id="14_q462l"]
 [ext_resource type="Texture2D" uid="uid://ca4vonyt4tili" path="res://assets/sprites/tutorial/tutorial_player_pointer.png" id="16_uy53l"]
 [ext_resource type="Script" uid="uid://7te7bt52jftc" path="res://assets/scripts/tutorial/tutorial_player_pointer.gd" id="17_l8ohl"]
@@ -433,6 +434,14 @@ animations = [{
 "loop": true,
 "name": &"Walk",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cw4as")
+}],
+"loop": true,
+"name": &"Wall",
+"speed": 5.0
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4a02d"]
@@ -553,6 +562,30 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_hux2q"]
+atlas = ExtResource("14_q462l")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_n1gr0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cyy7t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hux2q")
+}],
+"loop": false,
+"name": &"Press",
+"speed": 6.0
+}]
+
+[sub_resource type="LabelSettings" id="LabelSettings_q462l"]
+paragraph_spacing = -40.0
+font_size = 96
+outline_size = 32
+outline_color = Color(0, 0, 0, 1)
+
 [node name="Tutorial" type="Node2D"]
 script = ExtResource("1_u4f7j")
 
@@ -573,9 +606,12 @@ position = Vector2(0, 544)
 [node name="CameraScrollTop" type="Marker2D" parent="."]
 position = Vector2(0, -1344)
 
+[node name="TutorialPosition" type="Marker2D" parent="."]
+position = Vector2(0, -496)
+
 [node name="TutorialWalk" type="Node2D" parent="."]
 z_index = -1
-position = Vector2(0, -496)
+position = Vector2(0, -864)
 script = ExtResource("5_1wklo")
 progress_color = SubResource("Gradient_4a02d")
 
@@ -588,7 +624,6 @@ theme = ExtResource("6_irnc0")
 metadata/_edit_use_anchors_ = true
 
 [node name="Hip" type="AnimatedSprite2D" parent="TutorialWalk"]
-position = Vector2(16, 16)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_g7bfq")
 animation = &"Walk"
@@ -741,7 +776,86 @@ gizmo_extents = 37.5
 [node name="RunTimer" type="Timer" parent="TutorialRun"]
 autostart = true
 
+[node name="TutorialWalljump" type="Node2D" parent="."]
+visible = false
+z_index = -1
+position = Vector2(0, -496)
+script = ExtResource("14_cyy7t")
+
+[node name="Panel" type="Panel" parent="TutorialWalljump"]
+offset_left = -160.0
+offset_top = -160.0
+offset_right = 160.0
+offset_bottom = 112.0
+theme = ExtResource("6_irnc0")
+
+[node name="Hip" type="AnimatedSprite2D" parent="TutorialWalljump"]
+position = Vector2(-112, 32)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_g7bfq")
+animation = &"Wall"
+autoplay = "Walk"
+
+[node name="ProgressBar" type="ProgressBar" parent="TutorialWalljump"]
+offset_left = -144.0
+offset_top = 64.0
+offset_right = 144.0
+offset_bottom = 91.0
+theme = SubResource("Theme_4o3hj")
+value = 50.0
+show_percentage = false
+
+[node name="Checkmark" type="Sprite2D" parent="TutorialWalljump"]
+visible = false
+scale = Vector2(2, 2)
+texture = ExtResource("10_84vya")
+
+[node name="Button" type="AnimatedSprite2D" parent="TutorialWalljump"]
+texture_filter = 1
+position = Vector2(80, -48)
+sprite_frames = SubResource("SpriteFrames_n1gr0")
+animation = &"Press"
+frame = 1
+frame_progress = 1.0
+
+[node name="Label" type="Label" parent="TutorialWalljump"]
+offset_left = -96.0
+offset_top = 96.0
+offset_right = 97.0
+offset_bottom = 141.0
+text = "Walljumping"
+label_settings = SubResource("LabelSettings_l8ohl")
+horizontal_alignment = 1
+
+[node name="JumpTimer" type="Timer" parent="TutorialWalljump"]
+wait_time = 1.5
+autostart = true
+
+[node name="Wall" type="Marker2D" parent="TutorialWalljump"]
+position = Vector2(-112, 32)
+
+[node name="Floor" type="Marker2D" parent="TutorialWalljump"]
+position = Vector2(-48, 32)
+
+[node name="Complete" type="Label" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -288.0
+offset_top = -576.0
+offset_right = 286.0
+offset_bottom = -335.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+text = "Tutorial
+Complete!"
+label_settings = SubResource("LabelSettings_q462l")
+horizontal_alignment = 1
+
 [node name="Confetti" type="Parallax2D" parent="."]
+visible = false
 scroll_scale = Vector2(0, 0)
 
 [node name="ConfettiLeft" type="GPUParticles2D" parent="Confetti"]
@@ -777,3 +891,4 @@ script = ExtResource("17_l8ohl")
 [connection signal="timeout" from="TutorialWalk/ChangeTimer" to="TutorialWalk" method="change"]
 [connection signal="timeout" from="TutorialJump/JumpTimer" to="TutorialJump" method="jump"]
 [connection signal="timeout" from="TutorialRun/RunTimer" to="TutorialRun" method="toggle_button"]
+[connection signal="timeout" from="TutorialWalljump/JumpTimer" to="TutorialWalljump" method="jump"]

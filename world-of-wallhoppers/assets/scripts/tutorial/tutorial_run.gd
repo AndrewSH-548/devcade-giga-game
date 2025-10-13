@@ -16,7 +16,7 @@ var hip_walk_speed: float = 128.0
 var hip_run_speed: float = 256.0
 var hip_direction: int = 1
 
-var run_time: float = 3.0
+var run_time: float = 1.0
 var time_ran: float = 0.0
 
 func _ready() -> void:
@@ -49,7 +49,7 @@ func update(delta: float) -> void:
 	
 	if progress_bar.value == 100.0:
 		is_finished = true
-		checkmark.visible = false
+		checkmark.visible = true
 		modulate = Color(0.265, 0.265, 0.265, 1.0)
 		hip.pause()
 		tutorial.confetti()
