@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://bypgh8vwm65r6"]
+[gd_scene load_steps=29 format=3 uid="uid://bypgh8vwm65r6"]
 
 [ext_resource type="Script" uid="uid://ds787vg8b1cru" path="res://assets/scripts/Guis/character_select/character_select.gd" id="1_dlxgn"]
 [ext_resource type="PackedScene" uid="uid://bmuoxdjge2ld7" path="res://scenes/gui/character_select/character_tester.tscn" id="3_cxqtq"]
@@ -9,13 +9,15 @@
 [ext_resource type="Script" uid="uid://duhq76ptbpowd" path="res://assets/scripts/Guis/character_select/large_portrait_holder.gd" id="5_lfxm6"]
 [ext_resource type="Texture2D" uid="uid://c6mhrd5tyn1l" path="res://assets/gui/background_reign.png" id="5_s7d2y"]
 [ext_resource type="Texture2D" uid="uid://c2386a7ah0ihp" path="res://assets/gui/dial_button.png" id="6_8cco7"]
-[ext_resource type="Texture2D" uid="uid://qeyg6x6t1ru4" path="res://assets/sprites/reign.png" id="6_bfvoi"]
 [ext_resource type="Texture2D" uid="uid://d36lgodtre2iy" path="res://assets/gui/portrait_reign.png" id="6_cxqtq"]
+[ext_resource type="Texture2D" uid="uid://cju8ny82qs3oy" path="res://assets/gui/portrait_scoria.png" id="6_sqhw2"]
 [ext_resource type="PackedScene" uid="uid://dtu1k6tt7cxej" path="res://scenes/characters/hip.tscn" id="8_nj0pb"]
 [ext_resource type="Script" uid="uid://coa3jlesxvfo7" path="res://assets/scripts/Guis/character_select/dial_button.gd" id="9_u0e5d"]
 [ext_resource type="Material" uid="uid://cvgooa66fd7yl" path="res://assets/shaders/materials/character_selection_material.tres" id="9_uhpgm"]
 [ext_resource type="PackedScene" uid="uid://c42ynqlk3h4wp" path="res://scenes/characters/reign.tscn" id="11_cl5d8"]
-[ext_resource type="Texture2D" uid="uid://mkjgs63nj8wd" path="res://assets/sprites/character_concept_pt5.png" id="17_lfxm6"]
+[ext_resource type="Texture2D" uid="uid://kryfyxapqv12" path="res://assets/gui/reign.png" id="15_cxqtq"]
+[ext_resource type="Texture2D" uid="uid://b473s08dlquti" path="res://assets/gui/background_scoria.png" id="17_sqhw2"]
+[ext_resource type="Texture2D" uid="uid://bsvpbsp4u6vv0" path="res://assets/sprites/scoria/scoria.png" id="18_a3imy"]
 [ext_resource type="PackedScene" uid="uid://bojyqwmqsf6xx" path="res://scenes/characters/scoria.tscn" id="18_sqhw2"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_cxqtq"]
@@ -74,12 +76,9 @@ region = Rect2(0, 0, 320, 0)
 atlas = ExtResource("4_bfvoi")
 region = Rect2(0, 0, 56, 56)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_u0e5d"]
-atlas = ExtResource("6_bfvoi")
-region = Rect2(0, 0, 32, 48)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_cxqtq"]
-atlas = ExtResource("17_lfxm6")
+atlas = ExtResource("18_a3imy")
+region = Rect2(0, 84, 84, 84)
 
 [node name="CharacterSelect" type="Control" groups=["CharacterSelect"]]
 layout_mode = 3
@@ -253,10 +252,20 @@ flip_h = true
 script = ExtResource("5_lfxm6")
 connected_dial = 3
 
-[node name="Riegn" type="Sprite2D" parent="MainVertical/CharacterWheel/TopPortraits/PortraitHolderReign"]
+[node name="Reign" type="Sprite2D" parent="MainVertical/CharacterWheel/TopPortraits/PortraitHolderReign"]
 position = Vector2(104.00001, 141)
 scale = Vector2(1.2667192, 1.2667192)
 texture = ExtResource("6_cxqtq")
+flip_h = true
+
+[node name="PortraitHolderScoria" type="Node2D" parent="MainVertical/CharacterWheel/TopPortraits"]
+script = ExtResource("5_lfxm6")
+connected_dial = 2
+
+[node name="Scoria" type="Sprite2D" parent="MainVertical/CharacterWheel/TopPortraits/PortraitHolderScoria"]
+position = Vector2(160, 157)
+scale = Vector2(1.2667192, 1.2667192)
+texture = ExtResource("6_sqhw2")
 flip_h = true
 
 [node name="DialPositioner" type="Control" parent="MainVertical/CharacterWheel"]
@@ -353,10 +362,10 @@ scale = Vector2(4, 4)
 texture = ExtResource("5_s7d2y")
 
 [node name="Character" type="Sprite2D" parent="MainVertical/CharacterWheel/DialPositioner/DialButtonTopRight/Mask"]
-position = Vector2(8.004057, 25.965378)
+position = Vector2(54.946777, 48.943817)
 rotation = -1.0471976
 scale = Vector2(4, 4)
-texture = SubResource("AtlasTexture_u0e5d")
+texture = ExtResource("15_cxqtq")
 
 [node name="Selection" type="Sprite2D" parent="MainVertical/CharacterWheel/DialPositioner/DialButtonTopRight"]
 z_index = -1
@@ -398,6 +407,7 @@ anchors_preset = 0
 rotation = -3.1415927
 script = ExtResource("9_u0e5d")
 dial_id = 2
+character_name = "Scoria"
 character_scene = ExtResource("18_sqhw2")
 
 [node name="Mask" type="AnimatedSprite2D" parent="MainVertical/CharacterWheel/DialPositioner/DialButtonBottom"]
@@ -408,11 +418,17 @@ animation = &"Normal"
 
 [node name="Background" type="Sprite2D" parent="MainVertical/CharacterWheel/DialPositioner/DialButtonBottom/Mask"]
 rotation = 3.1415927
-scale = Vector2(10, 10)
-texture = ExtResource("5_bfvoi")
+scale = Vector2(5, 5)
+texture = ExtResource("17_sqhw2")
+
+[node name="Background2" type="Sprite2D" parent="MainVertical/CharacterWheel/DialPositioner/DialButtonBottom/Mask"]
+position = Vector2(-37.14282, 24.315182)
+rotation = -3.1415925
+scale = Vector2(4.9999995, 4.9999995)
+texture = ExtResource("17_sqhw2")
 
 [node name="Character" type="Sprite2D" parent="MainVertical/CharacterWheel/DialPositioner/DialButtonBottom/Mask"]
-position = Vector2(-2.85709, -9.9705)
+position = Vector2(-4.2856445, -16.398804)
 rotation = 3.1415927
 scale = Vector2(4, 4)
 texture = SubResource("AtlasTexture_cxqtq")
@@ -483,3 +499,13 @@ connected_dial = 3
 position = Vector2(104.00001, 141)
 scale = Vector2(1.2667192, 1.2667192)
 texture = ExtResource("6_cxqtq")
+
+[node name="PortraitHolderScoria" type="Node2D" parent="MainVertical/CharacterWheel/BottomPortraits"]
+script = ExtResource("5_lfxm6")
+placement = 1
+connected_dial = 2
+
+[node name="Scoria" type="Sprite2D" parent="MainVertical/CharacterWheel/BottomPortraits/PortraitHolderScoria"]
+position = Vector2(368, -176)
+scale = Vector2(1.2667192, 1.2667192)
+texture = ExtResource("6_sqhw2")
