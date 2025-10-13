@@ -232,7 +232,7 @@ label_settings = SubResource("LabelSettings_a3imy")
 vertical_alignment = 1
 
 [node name="TopPortraits" type="Control" parent="MainVertical/CharacterWheel"]
-z_index = -1
+z_index = -3
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -469,7 +469,7 @@ position = Vector2(0, -160.00006)
 texture = SubResource("AtlasTexture_aqbib")
 
 [node name="BottomPortraits" type="Control" parent="MainVertical/CharacterWheel"]
-z_index = -1
+z_index = -3
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
