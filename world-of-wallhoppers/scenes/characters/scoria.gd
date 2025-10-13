@@ -13,11 +13,10 @@ extends Player
 @onready var animations: AnimatedSprite2D = $Animations
 @onready var spark_animation: AnimatedSprite2D = $Spark
 
-const FRAMES_COLD = preload("uid://dyusrrvvi0kwy")
-const FRAMES_HEATED = preload("uid://bhpx81eanaqud")
-const FRAMES_HOT = preload("uid://dkxtgcsyxa6ll")
-const FRAMES_SCORCHING = preload("uid://ccktww0200aun")
-const FRAMES_FLIGHT = preload("uid://qx7wdomqsg3r")
+const SPRITE_SCORIA = preload("uid://bsvpbsp4u6vv0")
+const SPRITE_SIZE: Vector2i = Vector2i(84, 84)
+
+var sprite_frames: Array[SpriteFrames]
 
 var dash_action: StringName
 var roll_action: StringName
@@ -59,6 +58,36 @@ enum MoveState {
 	REBOUND,
 	FLIGHT,
 }
+
+func _ready() -> void:
+	super._ready()
+	for index in range(5):
+		sprite_frames.append(make_frames(index))
+
+func make_frames(index: int) -> SpriteFrames:
+	var frames: SpriteFrames = SpriteFrames.new()
+	make_animation(frames, "Idle", index, [0])
+	make_animation(frames, "Walk", index, [1, 2, 3, 4], 8.0)
+	make_animation(frames, "Roll", index, [5, 6, 7], (12.0 if index != 4 else 8.0))
+	make_animation(frames, "Hitstun", index, [8])
+	make_animation(frames, "Against Wall", index, [9])
+	make_animation(frames, "Jump", index, [10])
+	make_animation(frames, "Fall", index, [11])
+	make_animation(frames, "On Wall", index, [12])
+	return frames
+
+func make_animation(frames: SpriteFrames, animation_name: StringName, row_index: int, column_indicies: Array[int], fps: float = 0.0) -> void:
+	frames.add_animation(animation_name)
+	frames.set_animation_speed(animation_name, fps)
+	for column_index in range(column_indicies.size()):
+		frames.add_frame(animation_name, make_atlas(Vector2i(column_indicies[column_index], row_index)))
+
+func make_atlas(coords: Vector2i) -> AtlasTexture:
+	var atlas: AtlasTexture = AtlasTexture.new()
+	atlas.atlas = SPRITE_SCORIA
+	atlas.region.size = SPRITE_SIZE
+	atlas.region.position = Vector2(SPRITE_SIZE * coords)
+	return atlas
 
 func _physics_process(delta: float) -> void:
 	var header = get_tree().get_first_node_in_group("splitscreen")
@@ -114,7 +143,6 @@ func do_rebound(wall_direction: int):
 	dash_timer.stop()
 	spark_progress += rebound_spark_amount
 	spark_animation.play()
-	animations.play("Roll")
 	if spark_progress >= 3.0:
 		do_flight(wall_direction)
 	else:
@@ -130,7 +158,6 @@ func do_flight(away_direction: int):
 	flight_timer.start(flight_time)
 
 func do_roll():
-	animations.play("Roll")
 	move_state = MoveState.ROLL
 
 func process_dash():
@@ -176,24 +203,39 @@ func animate_flare():
 	sprite.flip_h = !isFacingRight
 	
 	if get_position_state() == STATE_HITSTUN:
-		if animations.animation != "Hitstun":
-			animations.play("Hitstun")
+		animations.animation = "Hitstun"
 	else:
-		if animations.animation == "Hitstun":
-			animations.play("Idle")
+		match move_state:
+			MoveState.FLIGHT, MoveState.ROLL:
+				animations.animation = "Roll"
+			MoveState.NORMAL:
+				if is_on_floor():
+					if (is_touching_right_wall() and isFacingRight) or (is_touching_left_wall() and not isFacingRight):
+						animations.animation = "Against Wall"
+					elif get_horizontal_movement() == 0.0:
+						animations.animation = "Idle"
+					else:
+						animations.animation = "Walk"
+				else:
+					if (is_touching_right_wall() and isFacingRight) or (is_touching_left_wall() and not isFacingRight):
+						animations.animation = "On Wall"
+					elif velocity.y <= 0:
+						animations.animation = "Jump"
+					else:
+						animations.animation = "Fall"
 	
 	if not animations.is_playing():
 		animations.play()
 	if move_state == MoveState.FLIGHT:
-		animations.sprite_frames = FRAMES_FLIGHT
+		animations.sprite_frames = sprite_frames[4]
 	elif spark_progress > 3.0:
-		animations.sprite_frames = FRAMES_SCORCHING
+		animations.sprite_frames = sprite_frames[3]
 	elif spark_progress > 2.0:
-		animations.sprite_frames = FRAMES_HOT
+		animations.sprite_frames = sprite_frames[2]
 	elif spark_progress > 1.0:
-		animations.sprite_frames = FRAMES_HEATED
+		animations.sprite_frames = sprite_frames[1]
 	else:
-		animations.sprite_frames = FRAMES_COLD
+		animations.sprite_frames = sprite_frames[0]
 
 func setup_keybinds(player_number: int) -> void:
 	var player_input: String = "p" + str(player_number) + "_"
@@ -215,12 +257,10 @@ func dash_timer_end() -> void:
 
 func rebound_timer_end() -> void:
 	move_state = MoveState.NORMAL
-	animations.play("Idle")
 
 func flight_timer_end() -> void:
 	move_state = MoveState.NORMAL
 	spark_progress = 0.0
-	animations.play("Idle")
 
 func dash_buffer_end() -> void:
 	if move_state == MoveState.NORMAL:

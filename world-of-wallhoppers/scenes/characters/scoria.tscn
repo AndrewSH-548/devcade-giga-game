@@ -60,6 +60,7 @@ shape = SubResource("RectangleShape2D_on6cs")
 [node name="RollCollision" type="CollisionShape2D" parent="."]
 position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_4w0mk")
+disabled = true
 debug_color = Color(0.757918, 2.88785e-05, 0.555706, 0.42)
 
 [node name="Spark" type="AnimatedSprite2D" parent="."]
@@ -69,9 +70,11 @@ frame = 2
 frame_progress = 1.0
 
 [node name="Animations" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
 sprite_frames = ExtResource("3_7qr4j")
-animation = &"Idle"
+animation = &"Walk"
 autoplay = "Idle"
+frame_progress = 0.5682631
 
 [node name="PlayerHitbox" type="Area2D" parent="."]
 

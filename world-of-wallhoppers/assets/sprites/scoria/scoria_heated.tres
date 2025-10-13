@@ -1,32 +1,48 @@
-[gd_resource type="SpriteFrames" load_steps=7 format=3 uid="uid://bhpx81eanaqud"]
+[gd_resource type="SpriteFrames" load_steps=11 format=3 uid="uid://bhpx81eanaqud"]
 
-[ext_resource type="Texture2D" uid="uid://c6nhe28u5xreg" path="res://assets/sprites/scoria/scoria_sprites.png" id="1_nnvrd"]
+[ext_resource type="Texture2D" uid="uid://bsvpbsp4u6vv0" path="res://assets/sprites/scoria/scoria.png" id="1_nnvrd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nnvrd"]
+atlas = ExtResource("1_nnvrd")
+region = Rect2(672, 84, 84, 84)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_saqha"]
 atlas = ExtResource("1_nnvrd")
-region = Rect2(420, 0, 84, 84)
+region = Rect2(0, 84, 84, 84)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nm571"]
 atlas = ExtResource("1_nnvrd")
-region = Rect2(84, 0, 84, 84)
+region = Rect2(420, 84, 84, 84)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8b5pp"]
 atlas = ExtResource("1_nnvrd")
-region = Rect2(168, 0, 84, 84)
+region = Rect2(504, 84, 84, 84)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ixrp4"]
 atlas = ExtResource("1_nnvrd")
-region = Rect2(252, 0, 84, 84)
+region = Rect2(588, 84, 84, 84)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mc6sc"]
 atlas = ExtResource("1_nnvrd")
-region = Rect2(336, 0, 84, 84)
+region = Rect2(84, 84, 84, 84)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pxpji"]
+atlas = ExtResource("1_nnvrd")
+region = Rect2(168, 84, 84, 84)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_itcda"]
+atlas = ExtResource("1_nnvrd")
+region = Rect2(252, 84, 84, 84)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3abng"]
+atlas = ExtResource("1_nnvrd")
+region = Rect2(336, 84, 84, 84)
 
 [resource]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_saqha")
+"texture": SubResource("AtlasTexture_nnvrd")
 }],
 "loop": true,
 "name": &"Hitstun",
@@ -34,7 +50,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_nm571")
+"texture": SubResource("AtlasTexture_saqha")
 }],
 "loop": true,
 "name": &"Idle",
@@ -42,15 +58,32 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_nm571")
+}, {
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_8b5pp")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ixrp4")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_mc6sc")
 }],
 "loop": true,
 "name": &"Roll",
 "speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mc6sc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pxpji")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_itcda")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3abng")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 8.0
 }]
