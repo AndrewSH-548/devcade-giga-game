@@ -5,7 +5,7 @@ extends TutorialPart
 @onready var progress_bar: ProgressBar = $ProgressBar
 @onready var jump_timer: Timer = $JumpTimer
 @onready var tutorial: Node2D = $".."
-@onready var checkmark_2: Sprite2D = $Checkmark2
+@onready var checkmark_2: Sprite2D = $Checkmark
 @onready var button: AnimatedSprite2D = $Button
 
 @export var progress_color: Gradient
@@ -17,7 +17,6 @@ var velocity: float = 0.0
 var required_jumps: int = 6
 var jumps: int = 0
 var on_floor_last_frame: bool = false
-var is_finished: bool = false
 
 func _ready() -> void:
 	checkmark_2.visible = false
@@ -27,7 +26,7 @@ func _ready() -> void:
 	box.bg_color = progress_color.sample(0.0)
 	progress_bar.add_theme_stylebox_override("fill", box)
 
-func _physics_process(delta: float) -> void:
+func update(delta: float) -> void:
 	if is_finished:
 		return
 	velocity += gravity * delta
@@ -54,15 +53,19 @@ func _physics_process(delta: float) -> void:
 	var box: StyleBoxFlat = progress_bar.get_theme_stylebox("fill")
 	box.bg_color = progress_color.sample(progress_bar.value / 100.0)
 	progress_bar.add_theme_stylebox_override("fill", box)
+	
 	on_floor_last_frame = player_hip.test_move(player_hip.transform, Vector2(0.0, 32.9))
 	if jumps >= required_jumps:
 		is_finished = true
 		jump_timer.stop()
 		tutorial.confetti()
 		checkmark_2.visible = true
+		finished.emit()
 		modulate = Color(0.265, 0.265, 0.265, 1.0)
 
 func jump():
+	if not updating:
+		return
 	button.play("Pressed")
 	velocity = -jump_strength
 	await get_tree().create_timer(0.5).timeout

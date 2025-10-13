@@ -27,19 +27,19 @@ var hip_movement: float = 0.0
 var hip_speed: float = 128.0
 var initlal: float
 
-var walk_time: float = 1.0
+var walk_time: float = 3.0
 var time_walked: float = 0.0
 
 func _ready() -> void:
 	checkmark.visible = false
-	initlal = hip.global_position.x
+	initlal = hip.position.x
 	var box: StyleBoxFlat = progress_bar.get_theme_stylebox("fill")
 	box = box.duplicate()
 	box.bg_color = progress_color.sample(0.0)
 	progress_bar.add_theme_stylebox_override("fill", box)
 
 func change() -> void:
-	if finished:
+	if is_finished or not updating:
 		change_timer.stop()
 		return
 	state = wrapi(state + 1, 0, states.size())
@@ -56,7 +56,7 @@ func change() -> void:
 			hip.flip_h = false
 			hip_movement = -hip_speed
 			change_timer.start(1.0)
-			hip.global_position.x = initlal
+			hip.position.x = initlal
 		RIGHT:
 			hip.play()
 			joystick.play("Push")
@@ -66,8 +66,8 @@ func change() -> void:
 			change_timer.start(1.0)
 
 func update(delta: float):
-	if finished: return
-	hip.global_position.x += hip_movement * delta
+	if is_finished: return
+	hip.position.x += hip_movement * delta
 	if Input.is_action_pressed("p1_left") or Input.is_action_pressed("p1_right"):
 		time_walked += delta
 	progress_bar.value = clamp(time_walked / walk_time, 0.0, 1.0) * 100.0
@@ -78,10 +78,11 @@ func update(delta: float):
 		finish()
 
 func finish():
-	if finished: return
+	if is_finished: return
 	modulate = Color(0.265, 0.265, 0.265, 1.0)
 	tutorial.confetti()
 	hip.pause()
 	joystick.pause()
 	checkmark.visible = true
-	finished = true
+	finished.emit()
+	is_finished = true
