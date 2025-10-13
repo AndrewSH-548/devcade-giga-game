@@ -157,7 +157,9 @@ func get_horizontal_movement() -> float:
 	return Input.get_axis(move_left_action, move_right_action)
 
 func update_flipped() -> void:
-	if Input.is_action_just_pressed(move_left_action) and isFacingRight:
+	if Input.is_action_pressed(move_right_action) and Input.is_action_pressed(move_left_action):
+		return
+	if Input.is_action_pressed(move_left_action) and isFacingRight:
 		isFacingRight = false
-	elif Input.is_action_just_pressed(move_right_action) and not isFacingRight:
+	elif Input.is_action_pressed(move_right_action) and not isFacingRight:
 		isFacingRight = true
