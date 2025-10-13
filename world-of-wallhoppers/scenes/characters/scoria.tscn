@@ -1,8 +1,8 @@
 [gd_scene load_steps=10 format=3 uid="uid://bojyqwmqsf6xx"]
 
-[ext_resource type="Script" uid="uid://dkjbdby517ry4" path="res://scenes/characters/scoria.gd" id="1_sssk5"]
+[ext_resource type="Script" uid="uid://dkjbdby517ry4" path="res://assets/scripts/characters/scoria.gd" id="1_sssk5"]
 [ext_resource type="Texture2D" uid="uid://m5t03mjigocy" path="res://assets/sprites/scoria/spark.png" id="2_7qr4j"]
-[ext_resource type="SpriteFrames" uid="uid://dyusrrvvi0kwy" path="res://assets/sprites/scoria/scoria_cold.tres" id="3_7qr4j"]
+[ext_resource type="SpriteFrames" uid="uid://dyusrrvvi0kwy" path="res://assets/sprites/scoria/scoria_editor_frames.tres" id="3_7qr4j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_on6cs"]
 size = Vector2(29.75, 66.125)
@@ -74,7 +74,7 @@ texture_filter = 1
 sprite_frames = ExtResource("3_7qr4j")
 animation = &"Walk"
 autoplay = "Idle"
-frame_progress = 0.5682631
+frame_progress = 0.4437445
 
 [node name="PlayerHitbox" type="Area2D" parent="."]
 

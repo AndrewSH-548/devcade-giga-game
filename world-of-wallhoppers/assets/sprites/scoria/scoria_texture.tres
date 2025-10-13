@@ -1,7 +1,0 @@
-[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://cab1b5sv58c8i"]
-
-[ext_resource type="Texture2D" uid="uid://c3ppda3aqpdh4" path="res://assets/sprites/scoria.png" id="1_b0570"]
-
-[resource]
-atlas = ExtResource("1_b0570")
-region = Rect2(0, 0, 0, 84)
