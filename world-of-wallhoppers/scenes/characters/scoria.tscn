@@ -72,9 +72,8 @@ frame_progress = 1.0
 [node name="Animations" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = ExtResource("3_7qr4j")
-animation = &"Walk"
+animation = &"Bounce"
 autoplay = "Idle"
-frame_progress = 0.4437445
 
 [node name="PlayerHitbox" type="Area2D" parent="."]
 

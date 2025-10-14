@@ -64,6 +64,11 @@ animations = [{
 "name": &"AgainstWall",
 "speed": 5.0
 }, {
+"frames": [],
+"loop": true,
+"name": &"Bounce",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_o3kf2")

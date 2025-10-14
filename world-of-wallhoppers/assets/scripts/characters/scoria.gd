@@ -44,8 +44,8 @@ var flight_target_x: float
 var flight_gravity: float = 900.0
 
 var roll_speed: float = 320.0
-var roll_gravity: float = 1200.0
-var roll_bounce_strength: float = 256.0
+var roll_gravity: float = 1280.0
+var roll_bounce_strength: float = 320.0
 
 var on_floor_last_frame: bool = false
 
@@ -77,9 +77,10 @@ func make_frames(index: int) -> SpriteFrames:
 	make_animation(frames, "On Wall", index, [12])
 	return frames
 
-func make_animation(frames: SpriteFrames, animation_name: StringName, row_index: int, column_indicies: Array[int], fps: float = 0.0) -> void:
+func make_animation(frames: SpriteFrames, animation_name: StringName, row_index: int, column_indicies: Array[int], fps: float = 0.0, loop: bool = true) -> void:
 	frames.add_animation(animation_name)
 	frames.set_animation_speed(animation_name, fps)
+	frames.set_animation_loop(animation_name, loop)
 	for column_index in range(column_indicies.size()):
 		frames.add_frame(animation_name, make_atlas(Vector2i(column_indicies[column_index], row_index)))
 
@@ -102,6 +103,10 @@ func _physics_process(delta: float) -> void:
 	if move_state != MoveState.NORMAL:
 		if Input.is_action_just_pressed(dash_action):
 			dash_buffer_timer.start(dash_buffer_time)
+	
+	roll_collision.disabled = move_state != MoveState.ROLL
+	normal_collision.disabled = move_state == MoveState.ROLL
+	
 	
 	if get_position_state() != STATE_HITSTUN:
 		match move_state:
