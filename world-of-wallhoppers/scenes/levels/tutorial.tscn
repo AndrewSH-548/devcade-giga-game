@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=4 uid="uid://bdnher4a7qii8"]
+[gd_scene load_steps=50 format=4 uid="uid://bdnher4a7qii8"]
 
 [ext_resource type="Texture2D" uid="uid://3dsey0o0pes7" path="res://assets/terrain/tutorial.png" id="1_rnyxf"]
 [ext_resource type="Script" uid="uid://c5oi1mi3kkc6r" path="res://assets/scripts/gameplay/tutorial.gd" id="1_u4f7j"]
@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://bcbwc43jm65fc" path="res://assets/sprites/tutorial/press_blue_button.png" id="14_q462l"]
 [ext_resource type="Texture2D" uid="uid://ca4vonyt4tili" path="res://assets/sprites/tutorial/tutorial_player_pointer.png" id="16_uy53l"]
 [ext_resource type="Script" uid="uid://7te7bt52jftc" path="res://assets/scripts/tutorial/tutorial_player_pointer.gd" id="17_l8ohl"]
+[ext_resource type="Texture2D" uid="uid://bb5ri38gqtcsx" path="res://assets/terrain/tutorial_background.png" id="20_cyy7t"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ub0e1"]
 texture = ExtResource("1_rnyxf")
@@ -887,6 +888,12 @@ position = Vector2(150, -178)
 scale = Vector2(2, 2)
 texture = ExtResource("16_uy53l")
 script = ExtResource("17_l8ohl")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+modulate = Color(0.32420284, 0.32420272, 0.32420272, 1)
+z_index = -17
+position = Vector2(0, -448)
+texture = ExtResource("20_cyy7t")
 
 [connection signal="timeout" from="TutorialWalk/ChangeTimer" to="TutorialWalk" method="change"]
 [connection signal="timeout" from="TutorialJump/JumpTimer" to="TutorialJump" method="jump"]
