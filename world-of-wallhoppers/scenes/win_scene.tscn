@@ -37,6 +37,15 @@ offset_bottom = 114.5
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="TimeLabel" type="Label" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 60
+label_settings = SubResource("LabelSettings_p78a6")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Label" type="Label" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 240)
 layout_mode = 2
@@ -56,6 +65,26 @@ text = "Level Select"
 layout_mode = 2
 theme_override_font_sizes/font_size = 100
 text = "Quit"
+
+[node name="LeaderboardTitle" type="Label" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 240)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 45
+text = "Player won! Play again?"
+label_settings = SubResource("LabelSettings_p78a6")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Leaderboard" type="Label" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 240)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 45
+text = "Player won! Play again?"
+label_settings = SubResource("LabelSettings_p78a6")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="VBoxContainer/Level Select" to="." method="_on_level_select_pressed"]
 [connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]
