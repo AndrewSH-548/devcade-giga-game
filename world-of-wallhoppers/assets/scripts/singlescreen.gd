@@ -1,5 +1,10 @@
 extends MainLevelHeader
 
+@onready var singleplayer_timer_label: Label = $ViewportContainerP1/SubViewport/Camera2D/SingleplayerTimerLabel
+@onready var singleplayer_timer: Timer = $SingleplayerTimer
+
+var singleplayer_time: float = 0;
+
 func setup(session_info: SessionInfo) -> void:
 	current_session_info = session_info
 	var parent_node: Node = $ViewportContainerP1/SubViewport
@@ -21,3 +26,7 @@ func setup(session_info: SessionInfo) -> void:
 	$BorderRight.color = session_info.level_info.border_color
 	
 	character.global_position = level.player_spawn_1.global_position
+
+func _on_singleplayer_timer_timeout() -> void:
+	singleplayer_time += 1;
+	singleplayer_timer_label.text = str(singleplayer_time/10);
