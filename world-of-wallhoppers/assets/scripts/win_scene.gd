@@ -1,7 +1,10 @@
 extends Control
 
+@onready var time_label: Label = $VBoxContainer/TimeLabel
+
 func _ready() -> void:
 	$"VBoxContainer/Level Select".grab_focus();
+	time_label.text = "Completion Time: " + str(TimeManager.return_and_reset_temporary_singleplayer_time());
 
 func _on_level_select_pressed() -> void:
 	var level_select: Control =  MenuStartScreen.LEVEL_SELECT.instantiate()
