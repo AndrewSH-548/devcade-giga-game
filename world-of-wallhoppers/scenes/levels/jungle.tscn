@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://x8jwn1lvobhp"]
+[gd_scene load_steps=22 format=4 uid="uid://x8jwn1lvobhp"]
 
 [ext_resource type="PackedScene" uid="uid://dhjkvej1d1nic" path="res://scenes/editor/tumbnail_marker.tscn" id="1_32bmu"]
 [ext_resource type="Script" uid="uid://s7cnbl0ouo3x" path="res://assets/scripts/gameplay/level.gd" id="1_qxh53"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://dgkqxhds83xeo" path="res://assets/terrain/particle_jungle_leaf.png" id="12_r5syr"]
 [ext_resource type="PackedScene" uid="uid://bpos0rprc0elm" path="res://scenes/goalpost.tscn" id="12_wlvd4"]
 [ext_resource type="PackedScene" uid="uid://dm6eckbq0lr8g" path="res://scenes/objects/moving_platform/moving_platform.tscn" id="13_minv4"]
+[ext_resource type="Texture2D" uid="uid://cotc4m53mxg85" path="res://assets/sprites/rick_shawn/rick_shawn.png" id="14_4sij2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_leifp"]
 resource_name = "Jungle"
@@ -650,3 +651,7 @@ decoration_type = 1
 
 [node name="End" type="Marker2D" parent="MovingPlatform"]
 position = Vector2(0, 272)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-25, 732)
+texture = ExtResource("14_4sij2")
