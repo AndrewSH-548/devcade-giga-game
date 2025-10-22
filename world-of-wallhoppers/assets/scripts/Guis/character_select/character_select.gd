@@ -2,7 +2,6 @@ extends Control
 class_name CharacterSelect
 
 @onready var dial: Control = $MainVertical/CharacterWheel/DialPositioner
-@onready var pointer: Sprite2D = $MainVertical/CharacterWheel/DialPositioner/Pointer
 
 @onready var ready_all: Control = $ReadyAll
 @onready var ready_player_1: Control = $MainVertical/CharacterWheel/ReadyP1
