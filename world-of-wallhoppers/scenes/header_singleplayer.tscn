@@ -24,6 +24,19 @@ offset = Vector2(136, 0)
 position_smoothing_enabled = true
 script = ExtResource("2_5f7m3")
 
+[node name="SingleplayerTimerLabel" type="Label" parent="ViewportContainerP1/SubViewport/Camera2D"]
+z_index = 20
+z_as_relative = false
+offset_left = 8.0
+offset_top = -493.0
+offset_right = 293.0
+offset_bottom = -313.0
+theme_override_font_sizes/font_size = 80
+text = "000"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 1
+
 [node name="BorderLeft" type="ColorRect" parent="."]
 editor_description = "Original Color: 9c0000"
 offset_right = 270.0
@@ -47,3 +60,9 @@ offset_right = 1080.0
 offset_bottom = 1920.0
 grow_horizontal = 1
 grow_vertical = 1
+
+[node name="SingleplayerTimer" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
+[connection signal="timeout" from="SingleplayerTimer" to="." method="_on_singleplayer_timer_timeout"]
