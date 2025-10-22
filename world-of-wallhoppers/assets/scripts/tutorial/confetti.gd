@@ -1,8 +1,8 @@
 extends GPUParticles2D
 class_name Confetti
 
-const CONFETTI = preload("uid://dkaw5masvas3")
-const CONFETTI_PROCESS_MATERIAL = preload("uid://d332qasrqdn1w")
+const CONFETTI = preload("res://assets/sprites/tutorial/confetti.png")
+const CONFETTI_PROCESS_MATERIAL = preload("res://assets/scripts/tutorial/confetti_process_material.tres")
 
 func _ready() -> void:
 	emitting = false
