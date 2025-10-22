@@ -2,7 +2,7 @@ extends Control
 class_name MenuStartScreen
 
 const LEVEL_SELECT = preload("res://scenes/gui/level_select.tscn")
-const TUTORIAL = preload("uid://bdnher4a7qii8")
+const TUTORIAL = preload("res://scenes/levels/tutorial.tscn")
 
 @export var mutiplayer_button: Button
 @export var singleplayer_button: Button

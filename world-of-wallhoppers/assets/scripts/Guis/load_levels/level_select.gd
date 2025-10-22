@@ -8,7 +8,7 @@ class_name LevelSelect
 @onready var nav_right_button: Button = $VerticalContainer/ArrowContainer/NavBoxes/NavRight
 
 const LEVEL_THUMBNAIL = preload("res://scenes/gui/level_thumbnail.tscn")
-const CHARACTER_SELECT = preload("uid://bypgh8vwm65r6")
+const CHARACTER_SELECT = preload("res://scenes/gui/character_select/character_select.tscn")
 
 var is_multiplayer: bool = false
 var pages: Array[Page]
