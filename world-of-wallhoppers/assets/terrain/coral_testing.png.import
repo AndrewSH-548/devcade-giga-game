@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bixals20gxij8"
-path="res://.godot/imported/jungle.png-f3f458de555dca8da8b1550a25122cba.ctex"
+uid="uid://ce8re0jo7sqlx"
+path="res://.godot/imported/coral_testing.png-bc0b697812fba3a7ccc5021380892a76.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/terrain/jungle.png"
-dest_files=["res://.godot/imported/jungle.png-f3f458de555dca8da8b1550a25122cba.ctex"]
+source_file="res://assets/terrain/coral_testing.png"
+dest_files=["res://.godot/imported/coral_testing.png-bc0b697812fba3a7ccc5021380892a76.ctex"]
 
 [params]
 
