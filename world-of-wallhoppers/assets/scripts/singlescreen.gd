@@ -1,6 +1,6 @@
 extends MainLevelHeader
 
-@onready var singleplayer_timer_label: Label = $ViewportContainerP1/SubViewport/Camera2D/SingleplayerTimerLabel
+@onready var singleplayer_timer_label: Label = $SingleplayerTimerLabel
 @onready var singleplayer_timer: Timer = $SingleplayerTimer
 
 func setup(session_info: SessionInfo) -> void:
