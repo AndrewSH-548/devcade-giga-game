@@ -40,6 +40,7 @@ func _ready() -> void:
 
 func manual_set_camera_position(camera_position: Vector2):
 	for background in get_children():
+		if background is not Parallax2D: continue
 		background.screen_offset.y = camera_position.y
 
 func _process(_delta: float) -> void:
