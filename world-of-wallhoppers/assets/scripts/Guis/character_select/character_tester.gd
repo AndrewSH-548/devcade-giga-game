@@ -5,7 +5,7 @@ class_name CharacterTester
 @onready var spawn_pos: Marker2D = $MarginContainer/SubViewportContainer/Main/SpawnPos
 @onready var test_camera: Camera2D = $MarginContainer/SubViewportContainer/Main/TestCamera
 
-var player: Player
+var player: CharacterBody2D
 
 var running: bool = false
 
