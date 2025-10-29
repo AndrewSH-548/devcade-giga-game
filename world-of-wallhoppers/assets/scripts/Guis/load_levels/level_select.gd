@@ -42,7 +42,6 @@ func load_level(level_info: LevelInfo):
 	get_tree().root.add_child(character_select)
 	character_select.setup(session_info)
 	# Set the level manager's current_level
-	print("LEVELINFO"+level_info.name)
 	LevelManager.switch_level(level_info.name);
 	# Delete Level Select Scene (self)
 	queue_free()

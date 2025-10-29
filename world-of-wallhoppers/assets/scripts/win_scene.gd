@@ -11,14 +11,14 @@ func _ready() -> void:
 	leaderboard.text = "";
 	
 	var leaderboard_values = TimeManager.current_leaderboard.values(); # gets all the values in the leaderboard
-	var player_name = "_____";
+	var player_name = "_____"; # default player name
 	leaderboard_values.sort();
 	for i in range(len(leaderboard_values)): # displays the current_leaderboard
 		for player in TimeManager.current_leaderboard: # loop through all the players in the leaderboard, if the playername matches the time, then use it and stop the loop
 			if(TimeManager.current_leaderboard.get(player) == leaderboard_values[i]):
 				player_name = player;
 				break;
-		leaderboard.text += player_name + " -------- " + str(leaderboard_values[i]) + "\n";
+		leaderboard.text += player_name + " ---------- " + str(leaderboard_values[i]) + "s\n";
 
 
 func _on_level_select_pressed() -> void:

@@ -2,7 +2,7 @@ extends Node
 
 var current_leaderboard = {} ## holds the current leaderboard, which is dynamically set throughout the game
 
-var volcano_leaderboard = {}; ## leaderboard for completion times (TODO: Change to a Dictionary and allow for player's usernames with username:time as the key:value
+var volcano_leaderboard = {}; ## leaderboard for completion times 
 var jungle_leaderboard = {};
 
 var temporary_singleplayer_time: float = 0; ## the current singleplayer time
@@ -21,7 +21,7 @@ func return_and_reset_temporary_singleplayer_time(level: String, player_name: St
 			set_current_leaderboard(level);
 			#volcano_singleplayer_leaderboard.sort(); # sorts the leaderboard in descending order
 		"jungle":
-			volcano_leaderboard[player_name] = temp;
+			jungle_leaderboard[player_name] = temp;
 			set_current_leaderboard(level);
 		_:
 			print_debug("ERROR: Invalid level -> " + level);
