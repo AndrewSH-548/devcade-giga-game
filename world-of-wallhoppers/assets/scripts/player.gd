@@ -101,10 +101,10 @@ func is_touching_wall():
 	return is_touching_left_wall() or is_touching_right_wall()
 
 func is_touching_left_wall() -> bool:
-	return test_move(transform, Vector2(-0.1, 0))
+	return test_move(transform, Vector2(-2, 0))
 
 func is_touching_right_wall() -> bool:
-	return test_move(transform, Vector2(0.1, 0))
+	return test_move(transform, Vector2(2, 0))
 
 func process_walkrun(_delta: float, direction: float) -> void:
 	# Deccelerate if there is no input
