@@ -35,11 +35,11 @@ extends Node2D
 @export var path_type: Path_System = Path_System.BOUNCE; ## The type of path the platform will follow. [BOUNCE] or [LOOP]. For [BOUNCE] the platform will travel start>end, end> start. For [LOOP] the platform will travel start>end, start>end continuously.
 @export var decoration_type: DecoType
 
-const MOVING_PLATFORM_PATH = preload("uid://k6238xtiriwm") ## Scene which contains the visuals for a single path part. These are constructed using the moving platform's path points
-const MOVING_PLATFORM_REST = preload("uid://yx5v3vnlt8nw") ## Scene which contains the visuals for a rest point
+const MOVING_PLATFORM_PATH = preload("res://scenes/objects/moving_platform/moving_platform_path.tscn") ## Scene which contains the visuals for a single path part. These are constructed using the moving platform's path points
+const MOVING_PLATFORM_REST = preload("res://scenes/objects/moving_platform/moving_platform_rest.tscn") ## Scene which contains the visuals for a rest point
 
-const SPRITE_VOLCANO_ROCKS = preload("uid://cbxgmsa0gp044")
-const SPRITE_JUNGLE_WOOD = preload("uid://baeulnudn7mq7")
+const SPRITE_VOLCANO_ROCKS = preload("res://assets/sprites/moving_platform/volcano.png")
+const SPRITE_JUNGLE_WOOD = preload("res://assets/sprites/moving_platform/jungle.png")
 
 var paused = false; ## If the platform is paused. Then this is true
 var pause_enabled = true; ## Stores if the pause_areas are enabled or not.

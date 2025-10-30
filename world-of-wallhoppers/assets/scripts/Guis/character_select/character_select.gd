@@ -2,7 +2,6 @@ extends Control
 class_name CharacterSelect
 
 @onready var dial: Control = $MainVertical/CharacterWheel/DialPositioner
-@onready var pointer: Sprite2D = $MainVertical/CharacterWheel/DialPositioner/Pointer
 
 @onready var ready_all: Control = $ReadyAll
 @onready var ready_player_1: Control = $MainVertical/CharacterWheel/ReadyP1
@@ -19,9 +18,8 @@ static var player_colors: Array[Color] = [
 	Color(0.109, 0.755, 0.547, 1.0),
 ]
 
-const CHARACTER_PORTRAIT = preload("uid://br12fqlynos76")
-const HEADER_MULTIPLAYER = preload("uid://ch4mextx4xjgt")
-const HEADER_SINGLEPLAYER = preload("uid://c3bkjibfhfofl")
+const HEADER_MULTIPLAYER = preload("res://scenes/header_multiplayer.tscn")
+const HEADER_SINGLEPLAYER = preload("res://scenes/header_singleplayer.tscn")
 var LEVEL_SELECT = load("res://scenes/gui/level_select.tscn")
 
 ## -------------- HOW TO ADD A NEW CHARACYER --------------

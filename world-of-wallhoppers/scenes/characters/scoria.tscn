@@ -1,0 +1,105 @@
+[gd_scene load_steps=10 format=3 uid="uid://bojyqwmqsf6xx"]
+
+[ext_resource type="Script" uid="uid://dkjbdby517ry4" path="res://assets/scripts/characters/scoria.gd" id="1_sssk5"]
+[ext_resource type="Texture2D" uid="uid://m5t03mjigocy" path="res://assets/sprites/scoria/spark.png" id="2_7qr4j"]
+[ext_resource type="SpriteFrames" uid="uid://dyusrrvvi0kwy" path="res://assets/sprites/scoria/scoria_editor_frames.tres" id="3_7qr4j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_on6cs"]
+size = Vector2(29.75, 66.125)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4w0mk"]
+size = Vector2(38.5, 36.75)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g2fet"]
+atlas = ExtResource("2_7qr4j")
+region = Rect2(0, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d70qg"]
+atlas = ExtResource("2_7qr4j")
+region = Rect2(96, 0, 96, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vyvb6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g2fet")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d70qg")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"Spark",
+"speed": 12.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gf061"]
+size = Vector2(29.75, 66.125)
+
+[node name="Scoria" type="CharacterBody2D"]
+collision_layer = 4
+script = ExtResource("1_sssk5")
+walk_speed = 300
+run_speed = 300
+deccel = 100
+air_speed = 300
+air_accel = 16
+jump_height = 350
+wall_jump_height = 430
+wall_pushoff_strength = 200
+fall_speed = 550
+gravity = 900
+weight = 13
+
+[node name="NormalCollision" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 8.9375)
+shape = SubResource("RectangleShape2D_on6cs")
+
+[node name="RollCollision" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_4w0mk")
+disabled = true
+debug_color = Color(0.757918, 2.88785e-05, 0.555706, 0.42)
+
+[node name="Spark" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_vyvb6")
+animation = &"Spark"
+frame = 2
+frame_progress = 1.0
+
+[node name="Animations" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = ExtResource("3_7qr4j")
+animation = &"Bounce"
+autoplay = "Idle"
+
+[node name="PlayerHitbox" type="Area2D" parent="."]
+
+[node name="HitboxShape" type="CollisionShape2D" parent="PlayerHitbox"]
+position = Vector2(0.5, 8.9375)
+shape = SubResource("RectangleShape2D_gf061")
+
+[node name="Timers" type="Node" parent="."]
+
+[node name="Dash" type="Timer" parent="Timers"]
+one_shot = true
+
+[node name="Rebound" type="Timer" parent="Timers"]
+one_shot = true
+
+[node name="Flight" type="Timer" parent="Timers"]
+one_shot = true
+
+[node name="DashBuffer" type="Timer" parent="Timers"]
+one_shot = true
+
+[node name="ReDash" type="Timer" parent="Timers"]
+one_shot = true
+
+[connection signal="timeout" from="Timers/Dash" to="." method="dash_timer_end"]
+[connection signal="timeout" from="Timers/Rebound" to="." method="rebound_timer_end"]
+[connection signal="timeout" from="Timers/Flight" to="." method="flight_timer_end"]
+[connection signal="timeout" from="Timers/DashBuffer" to="." method="dash_buffer_end"]
+[connection signal="timeout" from="Timers/ReDash" to="." method="re_dash_timer_end"]
