@@ -17,7 +17,7 @@ func increase_singleplayer_time(value: float) -> void: ## increases the temporar
 	singleplayer_time = snapped(temp, 0.1);
 
 
-func return_and_reset_temporary_singleplayer_time(level: String, player_name: String = "XXXX") -> float: ## returns and resets the temporary_singleplayer_time given the (player_name), defaulted to 'XXXXX', and the (level) (volcano_singleplayer, volcano_multiplayer, jungle_singleplayer, etc,)
+func return_and_reset_temporary_singleplayer_time(level: String, player_name: String = "XXXXX") -> float: ## returns and resets the temporary_singleplayer_time given the (player_name), defaulted to 'XXXXX', and the (level) (volcano_singleplayer, volcano_multiplayer, jungle_singleplayer, etc,)
 	var temp = singleplayer_time;
 	
 	match level.to_lower():
@@ -50,7 +50,7 @@ func save(): ## save all leaderboards to "res://save_data/leaderboards.save"
 	file.store_var(volcano_leaderboard);
 	file.store_var(jungle_leaderboard);
 	print_debug("Data Saved");
-	FileAccess.close();
+	file.close();
 
 
 func load_data(): ## load all leaderboards from "res://save_data/leaderboards.save"
@@ -60,9 +60,15 @@ func load_data(): ## load all leaderboards from "res://save_data/leaderboards.sa
 		volcano_leaderboard = file.get_var();
 		jungle_leaderboard = file.get_var();
 		print_debug("Data Loaded");
-		FileAccess.close();
+		file.close();
 	else:
 		print_debug("No leaderboard data saved...");
 
-func clear_all_data():
-	
+func clear_all_data(): ## clear leaderboard data from "res://save_data/leaderboards.save"
+	if FileAccess.file_exists(save_path):
+		var file = FileAccess.open(save_path, FileAccess.WRITE);
+		volcano_leaderboard = {};
+		jungle_leaderboard = {};
+		file.store_var(volcano_leaderboard);
+		file.store_var(jungle_leaderboard);
+		file.close();
