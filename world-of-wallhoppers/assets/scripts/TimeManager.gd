@@ -11,13 +11,16 @@ var singleplayer_time: float = 0; ## the current singleplayer time
 
 func _ready() -> void:
 	load_data(); # load data on start
+	
+	#clear_all_data(); # uncomment and run to clear data
+	#save_data();
 
 func increase_singleplayer_time(value: float) -> void: ## increases the temporary_singleplayer_time by (value)
 	var temp = singleplayer_time + value; # the following code is to the time sticks to 1 decimal place
 	singleplayer_time = snapped(temp, 0.1);
 
 
-func return_and_reset_temporary_singleplayer_time(level: String, player_name: String = "XXXXX") -> float: ## returns and resets the temporary_singleplayer_time given the (player_name), defaulted to 'XXXXX', and the (level) (volcano_singleplayer, volcano_multiplayer, jungle_singleplayer, etc,)
+func return_and_reset_temporary_singleplayer_time(level: String, player_name: String = "XXXXXXXX") -> float: ## returns and resets the temporary_singleplayer_time given the (player_name), defaulted to 'XXXXX', and the (level) (volcano_singleplayer, volcano_multiplayer, jungle_singleplayer, etc,)
 	var temp = singleplayer_time;
 	
 	match level.to_lower():
@@ -31,7 +34,7 @@ func return_and_reset_temporary_singleplayer_time(level: String, player_name: St
 		_:
 			print_debug("ERROR: Invalid level -> " + level);
 	
-	save();
+	save_data();
 	singleplayer_time = 0; # reset the time
 	return temp;
 
@@ -44,7 +47,7 @@ func set_current_leaderboard(level: String) -> void: ## sets the current leaderb
 		_:
 			print_debug("ERROR: Invalid level -> " + level);
 	
-func save(): ## save all leaderboards to "res://save_data/leaderboards.save"
+func save_data(): ## save all leaderboards to "res://save_data/leaderboards.save"
 	var file = FileAccess.open(save_path, FileAccess.WRITE);
 	# Store leaderboards
 	file.store_var(volcano_leaderboard);
