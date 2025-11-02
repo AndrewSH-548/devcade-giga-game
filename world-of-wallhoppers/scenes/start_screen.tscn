@@ -1,7 +1,67 @@
-[gd_scene load_steps=3 format=3 uid="uid://b2wwcwwsq0ao7"]
+[gd_scene load_steps=17 format=3 uid="uid://b2wwcwwsq0ao7"]
 
 [ext_resource type="Script" uid="uid://cue05xubnlc2c" path="res://assets/scripts/Guis/start_screen.gd" id="1_kxo13"]
+[ext_resource type="FontFile" uid="uid://dqb2dmcm5fa81" path="res://assets/fonts/Better VCR 9.0.1.ttf" id="2_hm208"]
+[ext_resource type="Texture2D" uid="uid://b0caltdc8h4a5" path="res://assets/gui/multiplayer_patch1.png" id="2_r2jwc"]
 [ext_resource type="Script" uid="uid://cpsa7dev5vw2p" path="res://assets/scripts/Guis/button_grab_focus.gd" id="3_he1sj"]
+[ext_resource type="Texture2D" uid="uid://bbama5rxog76d" path="res://assets/gui/main_menu_parts.png" id="3_r2jwc"]
+[ext_resource type="Texture2D" uid="uid://dcu80vyl872iq" path="res://assets/gui/multiplayer_patch2.png" id="6_5pab1"]
+
+[sub_resource type="FontVariation" id="FontVariation_hm208"]
+base_font = ExtResource("2_hm208")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hm208"]
+texture = ExtResource("2_r2jwc")
+texture_margin_left = 12.0
+texture_margin_top = 12.0
+texture_margin_right = 12.0
+texture_margin_bottom = 12.0
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[sub_resource type="Theme" id="Theme_5pab1"]
+Button/fonts/font = SubResource("FontVariation_hm208")
+Button/styles/normal = SubResource("StyleBoxTexture_hm208")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o30b1"]
+atlas = ExtResource("3_r2jwc")
+region = Rect2(104, 20.5, 139, 95)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hm208"]
+atlas = ExtResource("3_r2jwc")
+region = Rect2(0, 0, 106, 108.5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ka6nf"]
+atlas = ExtResource("3_r2jwc")
+region = Rect2(244.18176, 16.545456, 130.90912, 92.727264)
+
+[sub_resource type="FontVariation" id="FontVariation_o30b1"]
+base_font = ExtResource("2_hm208")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ka6nf"]
+texture = ExtResource("6_5pab1")
+texture_margin_left = 12.0
+texture_margin_top = 12.0
+texture_margin_right = 12.0
+texture_margin_bottom = 12.0
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[sub_resource type="Theme" id="Theme_ws7p0"]
+Button/fonts/font = SubResource("FontVariation_o30b1")
+Button/styles/normal = SubResource("StyleBoxTexture_ka6nf")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5pab1"]
+atlas = ExtResource("3_r2jwc")
+region = Rect2(221, 141, 65, 70)
 
 [node name="StartScreen" type="Control" node_paths=PackedStringArray("mutiplayer_button", "singleplayer_button", "quit_button", "settings_button", "tutorial_button")]
 layout_mode = 3
@@ -42,26 +102,57 @@ theme_override_constants/separation = 18
 
 [node name="Mutiplayer" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme = SubResource("Theme_5pab1")
 theme_override_font_sizes/font_size = 48
 text = "Multiplayer
 "
 script = ExtResource("3_he1sj")
 
+[node name="Sprite2D2" type="Sprite2D" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Mutiplayer"]
+show_behind_parent = true
+position = Vector2(144, -38.200256)
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_o30b1")
+
+[node name="Sprite2D" type="Sprite2D" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Mutiplayer"]
+show_behind_parent = true
+position = Vector2(-17, -23.181828)
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_hm208")
+
+[node name="Sprite2D3" type="Sprite2D" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Mutiplayer"]
+show_behind_parent = true
+position = Vector2(539, -45.208855)
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_ka6nf")
+
 [node name="SinglePlayer" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme = SubResource("Theme_ws7p0")
 theme_override_font_sizes/font_size = 48
 text = "Single Player"
+
+[node name="TutorialButton" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Tutorial"
+
+[node name="RecordsButton" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Records (unimplemented)"
+
+[node name="Sprite2D3" type="Sprite2D" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/RecordsButton"]
+show_behind_parent = true
+position = Vector2(-14, 27.227318)
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_5pab1")
 
 [node name="SettingsButton" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 48
 text = "Settings (not implmented)"
-
-[node name="TutorialButton" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 48
-text = "Tutorial"
 
 [node name="QuitButton" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
