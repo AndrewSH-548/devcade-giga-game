@@ -61,7 +61,9 @@ func update(delta: float) -> void:
 		tutorial.confetti()
 		checkmark_2.visible = true
 		finished.emit()
-		modulate = Color(0.265, 0.265, 0.265, 1.0)
+		for child in get_children():
+			if child.name != "Checkmark" and child is CanvasItem:
+				child.modulate = Color(0.265, 0.265, 0.265, 1.0)
 
 func jump():
 	if not updating:

@@ -650,6 +650,8 @@ show_percentage = false
 metadata/_edit_use_anchors_ = true
 
 [node name="Checkmark" type="Sprite2D" parent="TutorialWalk"]
+z_index = 1
+z_as_relative = false
 scale = Vector2(2, 2)
 texture = ExtResource("10_84vya")
 
@@ -686,6 +688,8 @@ value = 50.0
 show_percentage = false
 
 [node name="Checkmark" type="Sprite2D" parent="TutorialJump"]
+z_index = 1
+z_as_relative = false
 scale = Vector2(2, 2)
 texture = ExtResource("10_84vya")
 
@@ -748,6 +752,8 @@ show_percentage = false
 
 [node name="Checkmark" type="Sprite2D" parent="TutorialRun"]
 visible = false
+z_index = 1
+z_as_relative = false
 scale = Vector2(2, 2)
 texture = ExtResource("10_84vya")
 
@@ -808,6 +814,8 @@ show_percentage = false
 
 [node name="Checkmark" type="Sprite2D" parent="TutorialWalljump"]
 visible = false
+z_index = 1
+z_as_relative = false
 scale = Vector2(2, 2)
 texture = ExtResource("10_84vya")
 
