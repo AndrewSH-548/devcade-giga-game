@@ -53,7 +53,9 @@ func update(delta: float):
 	
 	if jumps >= required_jumps:
 		is_finished = true
-		modulate = Color(0.265, 0.265, 0.265, 1.0)
+		for child in get_children():
+			if child.name != "Checkmark" and child is CanvasItem:
+				child.modulate = Color(0.265, 0.265, 0.265, 1.0)
 		tutorial.confetti()
 		hip.pause()
 		button.pause()

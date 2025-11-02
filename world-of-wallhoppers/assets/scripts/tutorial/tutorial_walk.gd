@@ -79,7 +79,9 @@ func update(delta: float):
 
 func finish():
 	if is_finished: return
-	modulate = Color(0.265, 0.265, 0.265, 1.0)
+	for child in get_children():
+		if child.name != "Checkmark" and child is CanvasItem:
+			child.modulate = Color(0.265, 0.265, 0.265, 1.0)
 	tutorial.confetti()
 	hip.pause()
 	joystick.pause()

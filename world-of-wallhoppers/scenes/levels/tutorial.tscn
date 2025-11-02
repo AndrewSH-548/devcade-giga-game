@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=4 uid="uid://bdnher4a7qii8"]
+[gd_scene load_steps=51 format=4 uid="uid://bdnher4a7qii8"]
 
 [ext_resource type="Texture2D" uid="uid://3dsey0o0pes7" path="res://assets/terrain/tutorial.png" id="1_rnyxf"]
 [ext_resource type="Script" uid="uid://c5oi1mi3kkc6r" path="res://assets/scripts/gameplay/tutorial.gd" id="1_u4f7j"]
@@ -500,6 +500,10 @@ bg_color = Color(0.4481063, 0.6713564, 0.35024047, 1)
 ProgressBar/styles/background = SubResource("StyleBoxFlat_4a02d")
 ProgressBar/styles/fill = SubResource("StyleBoxFlat_uu0hj")
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_cyy7t"]
+blend_mode = 4
+light_mode = 1
+
 [sub_resource type="LabelSettings" id="LabelSettings_l8ohl"]
 font_size = 32
 outline_size = 16
@@ -650,6 +654,9 @@ show_percentage = false
 metadata/_edit_use_anchors_ = true
 
 [node name="Checkmark" type="Sprite2D" parent="TutorialWalk"]
+z_index = 1
+z_as_relative = false
+material = SubResource("CanvasItemMaterial_cyy7t")
 scale = Vector2(2, 2)
 texture = ExtResource("10_84vya")
 
@@ -686,6 +693,9 @@ value = 50.0
 show_percentage = false
 
 [node name="Checkmark" type="Sprite2D" parent="TutorialJump"]
+z_index = 1
+z_as_relative = false
+material = SubResource("CanvasItemMaterial_cyy7t")
 scale = Vector2(2, 2)
 texture = ExtResource("10_84vya")
 
@@ -748,6 +758,9 @@ show_percentage = false
 
 [node name="Checkmark" type="Sprite2D" parent="TutorialRun"]
 visible = false
+z_index = 1
+z_as_relative = false
+material = SubResource("CanvasItemMaterial_cyy7t")
 scale = Vector2(2, 2)
 texture = ExtResource("10_84vya")
 
@@ -808,6 +821,9 @@ show_percentage = false
 
 [node name="Checkmark" type="Sprite2D" parent="TutorialWalljump"]
 visible = false
+z_index = 1
+z_as_relative = false
+material = SubResource("CanvasItemMaterial_cyy7t")
 scale = Vector2(2, 2)
 texture = ExtResource("10_84vya")
 
