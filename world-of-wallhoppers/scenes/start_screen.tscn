@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://b2wwcwwsq0ao7"]
+[gd_scene load_steps=37 format=3 uid="uid://b2wwcwwsq0ao7"]
 
 [ext_resource type="Script" uid="uid://cue05xubnlc2c" path="res://assets/scripts/Guis/start_screen.gd" id="1_kxo13"]
 [ext_resource type="Theme" uid="uid://c6hja04x4l2oq" path="res://assets/themes/start_screen_ancient_button.tres" id="2_5pab1"]
@@ -67,6 +67,10 @@ shader_parameter/pixel_scale = 2
 [sub_resource type="AtlasTexture" id="AtlasTexture_5pab1"]
 atlas = ExtResource("3_r2jwc")
 region = Rect2(221, 141, 65, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3opy0"]
+atlas = ExtResource("3_r2jwc")
+region = Rect2(272, 224, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bdg0b"]
 atlas = ExtResource("3_r2jwc")
@@ -293,14 +297,12 @@ script = ExtResource("7_ka6nf")
 speed = 50.0
 wobble_scale = 1.0
 
-[node name="ColorRect" type="ColorRect" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/RecordsButton/Shader/Sprite2D3"]
-offset_left = -7.833332
-offset_top = -28.7895
-offset_right = 29.166672
-offset_bottom = -7.456156
-color = Color(0, 0, 0, 1)
+[node name="Sprite2D7" type="Sprite2D" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/RecordsButton/Shader/Sprite2D3"]
+position = Vector2(0.5, 3.5438232)
+texture = SubResource("AtlasTexture_3opy0")
 
 [node name="ColorRect" type="ColorRect" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/RecordsButton/Shader"]
+offset_left = 56.66667
 offset_top = -8.821838
 offset_right = 502.0
 offset_bottom = 95.30597
@@ -496,7 +498,7 @@ texture = SubResource("AtlasTexture_q3i3u")
 
 [node name="Sprite2D12" type="Sprite2D" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/QuitButton/Shader/Node2D"]
 show_behind_parent = true
-position = Vector2(317, 16.459595)
+position = Vector2(344.99997, 16.459595)
 scale = Vector2(2, 2)
 texture = SubResource("AtlasTexture_2banv")
 
@@ -540,6 +542,22 @@ position = Vector2(388, 122.00124)
 rotation = 1.5707941
 scale = Vector2(2, 2)
 texture = SubResource("AtlasTexture_ytx0m")
+flip_h = true
+
+[node name="Sprite2D8" type="Sprite2D" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/QuitButton/Shader"]
+show_behind_parent = true
+position = Vector2(90, 15.334582)
+rotation = 3.1415882
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_a4px2")
+flip_h = true
+
+[node name="Sprite2D9" type="Sprite2D" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/QuitButton/Shader"]
+show_behind_parent = true
+position = Vector2(-20, 62.00125)
+rotation = 4.7123823
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_a4px2")
 flip_h = true
 
 [connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Mutiplayer" to="." method="load_level_select" binds= [true]]
