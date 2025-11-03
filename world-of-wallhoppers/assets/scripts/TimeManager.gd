@@ -19,8 +19,12 @@ func increase_singleplayer_time(value: float) -> void: ## increases the temporar
 	var temp = singleplayer_time + value; # the following code is to the time sticks to 1 decimal place
 	singleplayer_time = snapped(temp, 0.1);
 
+func return_singleplayer_time(): ## returns the current singleplayer time, does not add anything to the leaderboards
+	return singleplayer_time;
 
-func return_and_reset_temporary_singleplayer_time(level: String, player_name: String = "XXXXXXXX") -> float: ## returns and resets the temporary_singleplayer_time given the (player_name), defaulted to 'XXXXX', and the (level) (volcano_singleplayer, volcano_multiplayer, jungle_singleplayer, etc,)
+## Returns and resets the temporary_singleplayer_time given the (player_name), defaulted to 'XXXXX', 
+## and the (level) (volcano_singleplayer, volcano_multiplayer, jungle_singleplayer, etc,). Updates the leaderboard for the given player and time
+func return_and_reset_temporary_singleplayer_time(level: String, player_name: String = "XXXXXXXX") -> float: 
 	var temp = singleplayer_time;
 	
 	match level.to_lower():
