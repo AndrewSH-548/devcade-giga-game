@@ -1,0 +1,36 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://c6hja04x4l2oq"]
+
+[ext_resource type="FontFile" uid="uid://dqb2dmcm5fa81" path="res://assets/fonts/Better VCR 9.0.1.ttf" id="1_tvqix"]
+
+[sub_resource type="FontVariation" id="FontVariation_hm208"]
+base_font = ExtResource("1_tvqix")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_t0cmi"]
+texture_margin_left = 14.0
+texture_margin_top = 14.0
+texture_margin_right = 14.0
+texture_margin_bottom = 14.0
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hm208"]
+texture_margin_left = 12.0
+texture_margin_top = 12.0
+texture_margin_right = 12.0
+texture_margin_bottom = 12.0
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[resource]
+Button/fonts/font = SubResource("FontVariation_hm208")
+Button/styles/focus = SubResource("StyleBoxTexture_t0cmi")
+Button/styles/hover = SubResource("StyleBoxTexture_t0cmi")
+Button/styles/normal = SubResource("StyleBoxTexture_hm208")
