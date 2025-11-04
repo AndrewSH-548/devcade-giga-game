@@ -1,14 +1,74 @@
-[gd_scene load_steps=37 format=3 uid="uid://b2wwcwwsq0ao7"]
+[gd_scene load_steps=72 format=3 uid="uid://b2wwcwwsq0ao7"]
 
 [ext_resource type="Script" uid="uid://cue05xubnlc2c" path="res://assets/scripts/Guis/start_screen.gd" id="1_kxo13"]
+[ext_resource type="Shader" uid="uid://bruhjepogvrwm" path="res://assets/shaders/scroll.gdshader" id="2_2banv"]
 [ext_resource type="Theme" uid="uid://c6hja04x4l2oq" path="res://assets/themes/start_screen_ancient_button.tres" id="2_5pab1"]
+[ext_resource type="Texture2D" uid="uid://clnnrqyj3wydv" path="res://assets/gui/island_diorama/island_base.png" id="2_ecdxc"]
+[ext_resource type="Script" uid="uid://cwf5ea3i4otev" path="res://assets/scripts/visuals/island_diorama.gd" id="3_bdg0b"]
 [ext_resource type="Shader" uid="uid://0x4jvlcv8440" path="res://assets/shaders/start_menu_button_decoration_pulse.gdshader" id="3_ka6nf"]
+[ext_resource type="Texture2D" uid="uid://c8vmplkpgjbq1" path="res://assets/gui/island_diorama/island_monolith.png" id="3_qls88"]
 [ext_resource type="Texture2D" uid="uid://bbama5rxog76d" path="res://assets/gui/main_menu_parts.png" id="3_r2jwc"]
-[ext_resource type="Script" uid="uid://dq8rxk71tt67n" path="res://scenes/start_menu_button.gd" id="4_o30b1"]
+[ext_resource type="Texture2D" uid="uid://b58ull54tv542" path="res://assets/gui/island_diorama/clouds_1.png" id="3_ytx0m"]
+[ext_resource type="Script" uid="uid://dq8rxk71tt67n" path="res://assets/scripts/Guis/start_menu/start_menu_button.gd" id="4_o30b1"]
+[ext_resource type="Texture2D" uid="uid://tg8dgfq72yoi" path="res://assets/gui/island_diorama/water_edge.png" id="4_ytx0m"]
 [ext_resource type="Shader" uid="uid://dd0gpsgd5uxvw" path="res://assets/shaders/start_menu_button_decoration.gdshader" id="5_o30b1"]
-[ext_resource type="Script" uid="uid://163a1e1rl2du" path="res://scenes/start_menu_wobble_visual.gd" id="7_ka6nf"]
+[ext_resource type="Texture2D" uid="uid://bkxv31wd3iwhe" path="res://assets/gui/island_diorama/mountain_1.png" id="5_xfy2r"]
+[ext_resource type="Texture2D" uid="uid://dqdnbd0gal1gs" path="res://assets/gui/island_diorama/dune_1.png" id="6_xfy2r"]
+[ext_resource type="Script" uid="uid://163a1e1rl2du" path="res://assets/scripts/Guis/start_menu/start_menu_wobble_visual.gd" id="7_ka6nf"]
+[ext_resource type="Texture2D" uid="uid://bpmpiepa0wjqw" path="res://assets/gui/island_diorama/mountain_bloir_1.png" id="7_lt4el"]
 [ext_resource type="Script" uid="uid://e011a8thkqgk" path="res://assets/scripts/visuals/start_screen_jungle_cog.gd" id="7_o30b1"]
+[ext_resource type="Texture2D" uid="uid://hbil865jufsx" path="res://assets/gui/island_diorama/mountain_bloir_2.png" id="8_phykr"]
 [ext_resource type="Shader" uid="uid://cce8k77l1hi1q" path="res://assets/shaders/start_menu_button_decoration_warp.gdshader" id="9_ws7p0"]
+[ext_resource type="Texture2D" uid="uid://1a8pq6hm08bd" path="res://assets/gui/island_diorama/island_skyship.png" id="12_3opy0"]
+[ext_resource type="Texture2D" uid="uid://dt82g4tluvrqd" path="res://assets/gui/island_diorama/island_castle_1.png" id="13_53rsf"]
+[ext_resource type="Texture2D" uid="uid://dgl0i4nev7kp0" path="res://assets/gui/island_diorama/island_sky_city.png" id="14_qlcmr"]
+[ext_resource type="Texture2D" uid="uid://cjak0f5ye0pt8" path="res://assets/gui/island_diorama/island_deep_tree_1.png" id="15_0y2qr"]
+[ext_resource type="Script" uid="uid://brg07hgm2ncfm" path="res://assets/scripts/Guis/start_menu/start_menu_button_particles.gd" id="15_a7uje"]
+[ext_resource type="Texture2D" uid="uid://7ynip8y66nsi" path="res://assets/gui/island_diorama/island_tree2.png" id="15_r6qw7"]
+[ext_resource type="Shader" uid="uid://c6twqcbqfltg4" path="res://assets/shaders/start_menu_button_decoration_sine_warp.gdshader" id="16_37qom"]
+[ext_resource type="Texture2D" uid="uid://by6kkwqc7sach" path="res://assets/gui/island_diorama/island_tree1.png" id="16_r6qw7"]
+[ext_resource type="Texture2D" uid="uid://crnd5da7ahot4" path="res://assets/gui/menu_fish.png" id="17_37qom"]
+[ext_resource type="Texture2D" uid="uid://ceayqi10dtxsp" path="res://assets/gui/island_diorama/island_deep_root_1.png" id="18_bjnkw"]
+[ext_resource type="Texture2D" uid="uid://cyavfe82xilqj" path="res://assets/gui/circle.png" id="19_8c457"]
+[ext_resource type="Texture2D" uid="uid://brc5csq5daq1s" path="res://assets/gui/island_diorama/island_ruins_1.png" id="19_v6sgr"]
+[ext_resource type="Texture2D" uid="uid://dux61t0lvsuo4" path="res://assets/gui/island_diorama/island_ruins_2.png" id="21_8ijck"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a4px2"]
+shader = ExtResource("2_2banv")
+shader_parameter/speed = Vector2(0.2, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v6sgr"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+shading_mode = 0
+albedo_color = Color(0.23141274, 0.20894656, 0.20670259, 1)
+albedo_texture = ExtResource("19_8c457")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_8ijck"]
+_data = [Vector2(1e-05, 0), 0.0, 0.0, 0, 0, Vector2(0.39755353, 0.48253852), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_1jj22"]
+curve = SubResource("Curve_8ijck")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_0nsjh"]
+emission_shape_scale = Vector3(0.3, 0, 0.1)
+emission_shape = 1
+emission_sphere_radius = 1.0
+direction = Vector3(0, 1, 0)
+spread = 1.0
+initial_velocity_min = 0.95
+initial_velocity_max = 0.95
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_1jj22")
+
+[sub_resource type="QuadMesh" id="QuadMesh_ce0he"]
 
 [sub_resource type="GDScript" id="GDScript_5pab1"]
 resource_name = "GrabFocus"
@@ -20,7 +80,7 @@ func _ready() -> void:
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bdg0b"]
 shader = ExtResource("3_ka6nf")
-shader_parameter/color = Color(0.8173728, 0.053707436, 0.3269965, 1)
+shader_parameter/color = Color(0.99723774, 0.56631017, 0.633914, 1)
 shader_parameter/active = true
 shader_parameter/fill_color = Color(0.8796277, 0.21125641, 0.2742213, 1)
 shader_parameter/unselected_fill = Color(0, 0, 0, 1)
@@ -41,20 +101,65 @@ atlas = ExtResource("3_r2jwc")
 region = Rect2(244.18176, 16.545456, 130.90912, 92.727264)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_o30b1"]
-shader = ExtResource("5_o30b1")
-shader_parameter/color = Color(0.0967995, 0.49013758, 0.62851256, 1)
+shader = ExtResource("16_37qom")
+shader_parameter/color = Color(0.5626142, 0.8564792, 0.98653525, 1)
 shader_parameter/active = true
 shader_parameter/fill_color = Color(0.36141932, 0.5092024, 0.71287304, 1)
 shader_parameter/unselected_fill = Color(0, 0, 0, 1)
 shader_parameter/pixel_scale = 2
 
+[sub_resource type="Curve" id="Curve_a4px2"]
+_limits = [0.0, 6.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 44.272774, 0, 0, Vector2(0.11314985, 5.5899367), 0.0, 0.0, 0, 0, Vector2(0.49541286, 6), 0.0, 0.0, 0, 0, Vector2(0.8960246, 5.502066), 0.0, 0.0, 0, 0, Vector2(1, 0), -27.940334, 0.0, 0, 0]
+point_count = 5
+
+[sub_resource type="CurveTexture" id="CurveTexture_37qom"]
+curve = SubResource("Curve_a4px2")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_a7uje"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(1, 48, 1)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+angle_min = -9.9999895
+angle_max = 10.0000105
+spread = 0.0
+initial_velocity_min = -250.0
+initial_velocity_max = -250.0
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_37qom")
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ws7p0"]
 shader = ExtResource("5_o30b1")
-shader_parameter/color = Color(0.40269423, 0.6444379, 0.6596949, 1)
+shader_parameter/color = Color(0.34319586, 0.7926395, 0.7610168, 1)
 shader_parameter/active = true
-shader_parameter/fill_color = Color(0.24724904, 0.4839254, 0.64793795, 1)
+shader_parameter/fill_color = Color(0.52422494, 0.7431044, 0.83301383, 1)
 shader_parameter/unselected_fill = Color(0, 0, 0, 1)
 shader_parameter/pixel_scale = 2
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q3i3u"]
+atlas = ExtResource("3_r2jwc")
+region = Rect2(192, 224, 64, 64)
+
+[sub_resource type="Curve" id="Curve_8c457"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.13149847, 0.8779572), 1.755952, 1.755952, 0, 0, Vector2(0.3577982, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_3opy0"]
+curve = SubResource("Curve_8c457")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qlcmr"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(260.285, 64, 1)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+spread = 180.0
+initial_velocity_min = 87.5
+initial_velocity_max = 148.5
+gravity = Vector3(0, -1, 0)
+scale_curve = SubResource("CurveTexture_3opy0")
+turbulence_enabled = true
+turbulence_noise_strength = 4.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ecdxc"]
 shader = ExtResource("5_o30b1")
@@ -128,10 +233,6 @@ shader_parameter/pixel_scale = 2
 atlas = ExtResource("3_r2jwc")
 region = Rect2(224, 288, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_q3i3u"]
-atlas = ExtResource("3_r2jwc")
-region = Rect2(192, 224, 64, 64)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_2banv"]
 atlas = ExtResource("3_r2jwc")
 region = Rect2(192, 288, 32, 32)
@@ -156,46 +257,274 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_kxo13")
-mutiplayer_button = NodePath("CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Mutiplayer")
-singleplayer_button = NodePath("CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SinglePlayer")
-quit_button = NodePath("CenterContainer/PanelContainer/MarginContainer/VBoxContainer/QuitButton")
-settings_button = NodePath("CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SettingsButton")
-tutorial_button = NodePath("CenterContainer/PanelContainer/MarginContainer/VBoxContainer/TutorialButton")
+mutiplayer_button = NodePath("VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Mutiplayer")
+singleplayer_button = NodePath("VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SinglePlayer")
+quit_button = NodePath("VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/QuitButton")
+settings_button = NodePath("VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SettingsButton")
+tutorial_button = NodePath("VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/TutorialButton")
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
+[node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -360.0
-offset_bottom = -640.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(1.5, 1.5)
+color = Color(0.23036203, 0.39206788, 0.86449015, 1)
 
-[node name="PanelContainer" type="PanelContainer" parent="CenterContainer"]
+[node name="ColorRect2" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -1410.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.6430463, 0.8710509, 0.99999994, 1)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_a4px2")
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 499.0
+grow_horizontal = 2
+texture = ExtResource("3_ytx0m")
+stretch_mode = 6
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_a4px2")
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = -1.0
+offset_top = 299.0
+offset_right = -1.0
+offset_bottom = 798.0
+grow_horizontal = 2
+texture = ExtResource("4_ytx0m")
+stretch_mode = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.2
+stretch = true
+stretch_shrink = 3
+
+[node name="SubViewport" type="SubViewport" parent="VBoxContainer/SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+size = Vector2i(360, 348)
+size_2d_override = Vector2i(360, 348)
+render_target_update_mode = 4
+
+[node name="Camera3D" type="Camera3D" parent="VBoxContainer/SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 0.9500483, 0.31210282, 0, -0.3121028, 0.9500483, 4.7683716e-07, 2.8815331, 3.4560673)
+projection = 1
+size = 5.559881
+
+[node name="Sprite3D" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport"]
+sorting_offset = -10.0
+pixel_size = 0.04
+axis = 1
+texture_filter = 0
+texture = ExtResource("2_ecdxc")
+script = ExtResource("3_bdg0b")
+
+[node name="Sprite3D" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Sprite3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.329768, -1.0683055, -0.75767744)
+sorting_offset = -3.0
+offset = Vector2(0, 64)
+pixel_size = 0.03
+billboard = 1
+texture_filter = 0
+texture = ExtResource("3_qls88")
+
+[node name="Sprite3D2" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Sprite3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0598593, -0.21564388, -1.1198698)
+offset = Vector2(0, 16)
+pixel_size = 0.03
+billboard = 1
+texture_filter = 0
+texture = ExtResource("5_xfy2r")
+
+[node name="Sprite3D3" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Sprite3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1696129, -0.21564388, -0.8775211)
+offset = Vector2(0, 16)
+pixel_size = 0.03
+billboard = 1
+texture_filter = 0
+texture = ExtResource("6_xfy2r")
+
+[node name="Sprite3D4" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Sprite3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3168156, -0.21564388, -0.3459439)
+offset = Vector2(0, 16)
+pixel_size = 0.03
+billboard = 1
+texture_filter = 0
+texture = ExtResource("6_xfy2r")
+
+[node name="Sprite3D8" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Sprite3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.409733, -0.050743222, -1.4000294)
+offset = Vector2(0, 16)
+pixel_size = 0.03
+billboard = 1
+texture_filter = 0
+texture = ExtResource("13_53rsf")
+
+[node name="Sprite3D5" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Sprite3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6208879, -0.21564388, -2.0637922)
+offset = Vector2(0, 16)
+pixel_size = 0.03
+billboard = 1
+texture_filter = 0
+texture = ExtResource("7_lt4el")
+
+[node name="Sprite3D6" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Sprite3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7417146, 0.27006412, -2.2613864)
+offset = Vector2(0, 16)
+pixel_size = 0.03
+billboard = 1
+texture_filter = 0
+texture = ExtResource("8_phykr")
+
+[node name="Sprite3D7" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Sprite3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2644966, 2.3412876, -1.1588005)
+offset = Vector2(0, 16)
+pixel_size = 0.03
+billboard = 1
+texture_filter = 0
+texture = ExtResource("12_3opy0")
+
+[node name="Sprite3D9" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Sprite3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.701784, 2.3412876, 0.09855044)
+offset = Vector2(0, 16)
+pixel_size = 0.03
+billboard = 1
+texture_filter = 0
+texture = ExtResource("14_qlcmr")
+
+[node name="Sprite3D10" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Sprite3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.216057, -0.04202217, -0.3007278)
+offset = Vector2(0, 16)
+pixel_size = 0.03
+billboard = 1
+texture_filter = 0
+texture = ExtResource("15_0y2qr")
+
+[node name="Sprite3D11" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Sprite3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5010781, -0.29923505, -0.74265146)
+offset = Vector2(0, 16)
+pixel_size = 0.03
+billboard = 1
+texture_filter = 0
+texture = ExtResource("16_r6qw7")
+
+[node name="Sprite3D12" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Sprite3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1020055, -0.29923505, -0.50160766)
+offset = Vector2(0, 16)
+pixel_size = 0.03
+billboard = 1
+texture_filter = 0
+texture = ExtResource("15_r6qw7")
+
+[node name="Sprite3D13" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Sprite3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6787798, -0.29923505, 0.39006698)
+offset = Vector2(0, 16)
+pixel_size = 0.03
+billboard = 1
+texture_filter = 0
+texture = ExtResource("16_r6qw7")
+
+[node name="Sprite3D14" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Sprite3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8876688, -0.0420222, -0.07798061)
+offset = Vector2(0, 16)
+pixel_size = 0.03
+billboard = 1
+texture_filter = 0
+texture = ExtResource("18_bjnkw")
+
+[node name="Sprite3D15" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Sprite3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6681378, -0.0420222, -1.198189)
+offset = Vector2(0, 16)
+pixel_size = 0.03
+billboard = 1
+texture_filter = 0
+texture = ExtResource("18_bjnkw")
+
+[node name="Sprite3D16" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Sprite3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7759446, -0.2904785, -0.70773447)
+offset = Vector2(0, 16)
+pixel_size = 0.03
+billboard = 1
+texture_filter = 0
+texture = ExtResource("19_v6sgr")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Sprite3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1599505, 0.2898211, -1.1021017)
+material_override = SubResource("StandardMaterial3D_v6sgr")
+amount = 12
+lifetime = 2.5
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_0nsjh")
+draw_pass_1 = SubResource("QuadMesh_ce0he")
+
+[node name="Sprite3D17" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Sprite3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4935324, -0.2904785, -0.6968752)
+offset = Vector2(0, 16)
+pixel_size = 0.03
+billboard = 1
+texture_filter = 0
+texture = ExtResource("19_v6sgr")
+
+[node name="Sprite3D18" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Sprite3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0635629, -0.21564388, 0.57730746)
+offset = Vector2(0, 16)
+pixel_size = 0.03
+billboard = 1
+texture_filter = 0
+texture = ExtResource("21_8ijck")
+
+[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/CenterContainer"]
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 
-[node name="ColorRect" type="ColorRect" parent="CenterContainer/PanelContainer"]
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/CenterContainer/PanelContainer"]
 visible = false
 layout_direction = 1
 layout_mode = 2
 size_flags_vertical = 3
 color = Color(0, 0, 0, 1)
 
-[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/CenterContainer/PanelContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 18
 
-[node name="Mutiplayer" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="Mutiplayer" type="Button" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
 z_index = 1
 layout_mode = 2
 theme = ExtResource("2_5pab1")
@@ -204,78 +533,150 @@ text = "Multiplayer
 "
 script = SubResource("GDScript_5pab1")
 
-[node name="Shader" type="CanvasGroup" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Mutiplayer"]
+[node name="Shader" type="CanvasGroup" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Mutiplayer"]
 show_behind_parent = true
 z_as_relative = false
 material = SubResource("ShaderMaterial_bdg0b")
 
-[node name="ColorRect" type="ColorRect" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Mutiplayer/Shader"]
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Mutiplayer/Shader"]
 offset_left = 2.0
 offset_top = -1.666666
 offset_right = 484.0
 offset_bottom = 159.66664
 color = Color(0, 0, 0, 1)
 
-[node name="Sprite2D2" type="Sprite2D" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Mutiplayer/Shader"]
+[node name="Sprite2D2" type="Sprite2D" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Mutiplayer/Shader"]
 show_behind_parent = true
 position = Vector2(174, -7.173218)
 scale = Vector2(2, 2)
 texture = SubResource("AtlasTexture_o30b1")
 
-[node name="Sprite2D" type="Sprite2D" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Mutiplayer/Shader"]
+[node name="Sprite2D" type="Sprite2D" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Mutiplayer/Shader"]
 show_behind_parent = true
 position = Vector2(6, 29.872253)
 scale = Vector2(2, 2)
 texture = SubResource("AtlasTexture_hm208")
 
-[node name="Sprite2D3" type="Sprite2D" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Mutiplayer/Shader"]
+[node name="Sprite2D3" type="Sprite2D" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Mutiplayer/Shader"]
 show_behind_parent = true
 position = Vector2(460, 2.8170166)
 scale = Vector2(2, 2)
 texture = SubResource("AtlasTexture_ka6nf")
 
-[node name="SinglePlayer" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="SinglePlayer" type="Button" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" node_paths=PackedStringArray("particle")]
 z_index = 1
 layout_mode = 2
 theme = ExtResource("2_5pab1")
 theme_override_font_sizes/font_size = 48
 text = "Single Player"
-script = ExtResource("4_o30b1")
+script = ExtResource("15_a7uje")
+particle = NodePath("Shader/MenuFish")
 
-[node name="Shader" type="CanvasGroup" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SinglePlayer"]
+[node name="Shader" type="CanvasGroup" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SinglePlayer"]
 show_behind_parent = true
 z_as_relative = false
 material = SubResource("ShaderMaterial_o30b1")
 
-[node name="ColorRect" type="ColorRect" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SinglePlayer/Shader"]
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SinglePlayer/Shader"]
 offset_left = -10.666664
 offset_top = -8.821838
 offset_right = 502.00003
-offset_bottom = 95.30597
+offset_bottom = 224.99994
 size_flags_horizontal = 3
 color = Color(0, 0, 0, 1)
 
-[node name="TutorialButton" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="MenuFish" type="GPUParticles2D" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SinglePlayer/Shader"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(549, 50)
+amount = 50
+texture = ExtResource("17_37qom")
+lifetime = 2.5
+preprocess = 2.5
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_a7uje")
+
+[node name="ColorRect2" type="ColorRect" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SinglePlayer/Shader"]
+offset_left = -751.0
+offset_top = 23.999939
+offset_right = -238.33331
+offset_bottom = 128.12775
+size_flags_horizontal = 3
+color = Color(0, 0, 0, 0)
+
+[node name="ColorRect3" type="ColorRect" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SinglePlayer/Shader"]
+offset_left = 708.99994
+offset_top = 43.99994
+offset_right = 1221.6666
+offset_bottom = 148.12775
+size_flags_horizontal = 3
+color = Color(0, 0, 0, 0)
+
+[node name="TutorialButton" type="Button" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" node_paths=PackedStringArray("particle")]
 z_index = 1
 layout_mode = 2
 theme = ExtResource("2_5pab1")
 theme_override_font_sizes/font_size = 48
 text = "Tutorial"
-script = ExtResource("4_o30b1")
+script = ExtResource("15_a7uje")
+particle = NodePath("Shader/Clouds")
 
-[node name="Shader" type="CanvasGroup" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/TutorialButton"]
+[node name="Shader" type="CanvasGroup" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/TutorialButton"]
 show_behind_parent = true
 z_as_relative = false
 material = SubResource("ShaderMaterial_ws7p0")
 
-[node name="ColorRect" type="ColorRect" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/TutorialButton/Shader"]
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/TutorialButton/Shader"]
 offset_left = -14.0
 offset_top = -8.821838
 offset_right = 502.0
 offset_bottom = 95.30597
 color = Color(0, 0, 0, 1)
 
-[node name="RecordsButton" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="Sprite2D9" type="Sprite2D" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/TutorialButton/Shader"]
+show_behind_parent = true
+position = Vector2(5, 76)
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_q3i3u")
+
+[node name="Sprite2D10" type="Sprite2D" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/TutorialButton/Shader"]
+show_behind_parent = true
+position = Vector2(13, 21)
+scale = Vector2(1.4375, 1.4375)
+texture = SubResource("AtlasTexture_q3i3u")
+
+[node name="Sprite2D11" type="Sprite2D" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/TutorialButton/Shader"]
+show_behind_parent = true
+position = Vector2(501, 87)
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_q3i3u")
+
+[node name="Sprite2D12" type="Sprite2D" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/TutorialButton/Shader"]
+show_behind_parent = true
+position = Vector2(520, 16)
+scale = Vector2(1.4375, 1.4375)
+texture = SubResource("AtlasTexture_q3i3u")
+
+[node name="Sprite2D13" type="Sprite2D" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/TutorialButton/Shader"]
+show_behind_parent = true
+position = Vector2(455, 24)
+scale = Vector2(1.4375, 1.4375)
+texture = SubResource("AtlasTexture_q3i3u")
+
+[node name="Clouds" type="GPUParticles2D" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/TutorialButton/Shader"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(239, 80)
+amount = 120
+texture = ExtResource("19_8c457")
+preprocess = 0.7
+process_material = SubResource("ParticleProcessMaterial_qlcmr")
+
+[node name="Sprite2D14" type="Sprite2D" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/TutorialButton/Shader"]
+show_behind_parent = true
+position = Vector2(128, 40)
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_q3i3u")
+
+[node name="RecordsButton" type="Button" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
 z_index = 1
 layout_mode = 2
 theme = ExtResource("2_5pab1")
@@ -283,12 +684,12 @@ theme_override_font_sizes/font_size = 48
 text = "(Records)"
 script = ExtResource("4_o30b1")
 
-[node name="Shader" type="CanvasGroup" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/RecordsButton"]
+[node name="Shader" type="CanvasGroup" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/RecordsButton"]
 show_behind_parent = true
 z_as_relative = false
 material = SubResource("ShaderMaterial_ecdxc")
 
-[node name="Sprite2D3" type="Sprite2D" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/RecordsButton/Shader"]
+[node name="Sprite2D3" type="Sprite2D" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/RecordsButton/Shader"]
 show_behind_parent = true
 position = Vector2(13, 37.245667)
 scale = Vector2(2, 2)
@@ -297,68 +698,68 @@ script = ExtResource("7_ka6nf")
 speed = 50.0
 wobble_scale = 1.0
 
-[node name="Sprite2D7" type="Sprite2D" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/RecordsButton/Shader/Sprite2D3"]
+[node name="Sprite2D7" type="Sprite2D" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/RecordsButton/Shader/Sprite2D3"]
 position = Vector2(0.5, 3.5438232)
 texture = SubResource("AtlasTexture_3opy0")
 
-[node name="ColorRect" type="ColorRect" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/RecordsButton/Shader"]
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/RecordsButton/Shader"]
 offset_left = 56.66667
 offset_top = -8.821838
 offset_right = 502.0
 offset_bottom = 95.30597
 color = Color(0, 0, 0, 1)
 
-[node name="ColorRect2" type="ColorRect" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/RecordsButton/Shader"]
+[node name="ColorRect2" type="ColorRect" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/RecordsButton/Shader"]
 offset_left = 488.0
 offset_top = 14.20636
 offset_right = 527.0
 offset_bottom = 72.27765
 color = Color(0, 0, 0, 1)
 
-[node name="Node2D2" type="Node2D" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/RecordsButton/Shader"]
+[node name="Node2D2" type="Node2D" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/RecordsButton/Shader"]
 script = ExtResource("7_ka6nf")
 speed = -40.0
 wobble_scale = 2.0
 
-[node name="ColorRect3" type="ColorRect" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/RecordsButton/Shader/Node2D2"]
+[node name="ColorRect3" type="ColorRect" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/RecordsButton/Shader/Node2D2"]
 offset_left = 495.0
 offset_top = -1.8132324
 offset_right = 553.0
 offset_bottom = 56.258053
 color = Color(0, 0, 0, 1)
 
-[node name="ColorRect4" type="ColorRect" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/RecordsButton/Shader/Node2D2"]
+[node name="ColorRect4" type="ColorRect" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/RecordsButton/Shader/Node2D2"]
 offset_left = 437.0
 offset_top = 37.234726
 offset_right = 504.0
 offset_bottom = 95.306015
 color = Color(0, 0, 0, 1)
 
-[node name="Node2D" type="Node2D" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/RecordsButton/Shader"]
+[node name="Node2D" type="Node2D" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/RecordsButton/Shader"]
 script = ExtResource("7_ka6nf")
 speed = -40.0
 wobble_scale = 2.0
 
-[node name="Sprite2D4" type="Sprite2D" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/RecordsButton/Shader/Node2D"]
+[node name="Sprite2D4" type="Sprite2D" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/RecordsButton/Shader/Node2D"]
 show_behind_parent = true
 position = Vector2(527, 77.28375)
 scale = Vector2(2, 2)
 texture = SubResource("AtlasTexture_bdg0b")
 
-[node name="Sprite2D5" type="Sprite2D" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/RecordsButton/Shader/Node2D"]
+[node name="Sprite2D5" type="Sprite2D" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/RecordsButton/Shader/Node2D"]
 show_behind_parent = true
 position = Vector2(510, 33.22986)
 scale = Vector2(2, 2)
 texture = SubResource("AtlasTexture_xfy2r")
 
-[node name="Sprite2D6" type="Sprite2D" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/RecordsButton/Shader/Node2D"]
+[node name="Sprite2D6" type="Sprite2D" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/RecordsButton/Shader/Node2D"]
 show_behind_parent = true
 position = Vector2(539, 29.224792)
 scale = Vector2(2, 2)
 texture = SubResource("AtlasTexture_lt4el")
 flip_h = true
 
-[node name="SettingsButton" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="SettingsButton" type="Button" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
 z_index = 1
 layout_mode = 2
 theme = ExtResource("2_5pab1")
@@ -366,45 +767,45 @@ theme_override_font_sizes/font_size = 48
 text = "(Settings)"
 script = ExtResource("4_o30b1")
 
-[node name="Shader" type="CanvasGroup" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SettingsButton"]
+[node name="Shader" type="CanvasGroup" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SettingsButton"]
 show_behind_parent = true
 z_as_relative = false
 material = SubResource("ShaderMaterial_qls88")
 
-[node name="Sprite2D3" type="Sprite2D" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SettingsButton/Shader"]
+[node name="Sprite2D3" type="Sprite2D" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SettingsButton/Shader"]
 show_behind_parent = true
 position = Vector2(26, 68.33333)
 scale = Vector2(2, 2)
 texture = SubResource("AtlasTexture_ws7p0")
 
-[node name="Sprite2D4" type="Sprite2D" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SettingsButton/Shader"]
+[node name="Sprite2D4" type="Sprite2D" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SettingsButton/Shader"]
 show_behind_parent = true
 position = Vector2(50, -8.333353)
 scale = Vector2(2, 2)
 texture = SubResource("AtlasTexture_ecdxc")
 
-[node name="Sprite2D6" type="Sprite2D" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SettingsButton/Shader"]
+[node name="Sprite2D6" type="Sprite2D" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SettingsButton/Shader"]
 show_behind_parent = true
 position = Vector2(462, 9.666671)
 scale = Vector2(2, 2)
 texture = SubResource("AtlasTexture_pcj7n")
 flip_h = true
 
-[node name="Sprite2D5" type="Sprite2D" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SettingsButton/Shader"]
+[node name="Sprite2D5" type="Sprite2D" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SettingsButton/Shader"]
 show_behind_parent = true
 position = Vector2(470.66666, 79.000015)
 scale = Vector2(2, 2)
 texture = SubResource("AtlasTexture_qls88")
 flip_h = true
 
-[node name="Cog" type="Sprite2D" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SettingsButton/Shader"]
+[node name="Cog" type="Sprite2D" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SettingsButton/Shader"]
 show_behind_parent = true
 position = Vector2(-17, 30.35139)
 scale = Vector2(2, 2)
 texture = SubResource("AtlasTexture_37qom")
 script = ExtResource("7_o30b1")
 
-[node name="Cog2" type="Sprite2D" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SettingsButton/Shader"]
+[node name="Cog2" type="Sprite2D" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SettingsButton/Shader"]
 show_behind_parent = true
 position = Vector2(510, 68.39813)
 scale = Vector2(2, 2)
@@ -412,21 +813,21 @@ texture = SubResource("AtlasTexture_a7uje")
 script = ExtResource("7_o30b1")
 speed = -2.0
 
-[node name="ColorRect" type="ColorRect" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SettingsButton/Shader"]
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SettingsButton/Shader"]
 offset_left = 50.66667
 offset_top = -23.666626
 offset_right = 436.6667
 offset_bottom = 137.66669
 color = Color(0, 0, 0, 1)
 
-[node name="Sprite2D7" type="Sprite2D" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SettingsButton/Shader"]
+[node name="Sprite2D7" type="Sprite2D" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SettingsButton/Shader"]
 show_behind_parent = true
 position = Vector2(434.00003, 25.66668)
 scale = Vector2(2, 2)
 texture = SubResource("AtlasTexture_ecdxc")
 flip_h = true
 
-[node name="QuitButton" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="QuitButton" type="Button" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
 z_index = 1
 layout_mode = 2
 theme = ExtResource("2_5pab1")
@@ -434,93 +835,93 @@ theme_override_font_sizes/font_size = 48
 text = "Quit"
 script = ExtResource("4_o30b1")
 
-[node name="Shader" type="CanvasGroup" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/QuitButton"]
+[node name="Shader" type="CanvasGroup" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/QuitButton"]
 show_behind_parent = true
 z_as_relative = false
 material = SubResource("ShaderMaterial_pcj7n")
 position = Vector2(0, -1.0012207)
 
-[node name="Node2D" type="Node2D" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/QuitButton/Shader"]
+[node name="Node2D" type="Node2D" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/QuitButton/Shader"]
 
-[node name="Sprite2D3" type="Sprite2D" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/QuitButton/Shader/Node2D"]
+[node name="Sprite2D3" type="Sprite2D" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/QuitButton/Shader/Node2D"]
 show_behind_parent = true
 position = Vector2(-7, 21.340088)
 scale = Vector2(2, 2)
 texture = SubResource("AtlasTexture_phykr")
 
-[node name="Sprite2D4" type="Sprite2D" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/QuitButton/Shader/Node2D"]
+[node name="Sprite2D4" type="Sprite2D" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/QuitButton/Shader/Node2D"]
 show_behind_parent = true
 position = Vector2(474, 65.5199)
 scale = Vector2(2, 2)
 texture = SubResource("AtlasTexture_phykr")
 
-[node name="Sprite2D5" type="Sprite2D" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/QuitButton/Shader/Node2D"]
+[node name="Sprite2D5" type="Sprite2D" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/QuitButton/Shader/Node2D"]
 show_behind_parent = true
 position = Vector2(66, 67.52222)
 scale = Vector2(2, 2)
 texture = SubResource("AtlasTexture_phykr")
 
-[node name="Sprite2D6" type="Sprite2D" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/QuitButton/Shader/Node2D"]
+[node name="Sprite2D6" type="Sprite2D" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/QuitButton/Shader/Node2D"]
 show_behind_parent = true
 position = Vector2(411, 25.470825)
 scale = Vector2(2, 2)
 texture = SubResource("AtlasTexture_phykr")
 
-[node name="Sprite2D7" type="Sprite2D" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/QuitButton/Shader/Node2D"]
+[node name="Sprite2D7" type="Sprite2D" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/QuitButton/Shader/Node2D"]
 show_behind_parent = true
 position = Vector2(415, 37.48535)
 scale = Vector2(2, 2)
 texture = SubResource("AtlasTexture_q3i3u")
 
-[node name="Sprite2D8" type="Sprite2D" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/QuitButton/Shader/Node2D"]
+[node name="Sprite2D8" type="Sprite2D" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/QuitButton/Shader/Node2D"]
 show_behind_parent = true
 position = Vector2(339, 70.52588)
 scale = Vector2(2, 2)
 texture = SubResource("AtlasTexture_q3i3u")
 
-[node name="Sprite2D9" type="Sprite2D" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/QuitButton/Shader/Node2D"]
+[node name="Sprite2D9" type="Sprite2D" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/QuitButton/Shader/Node2D"]
 show_behind_parent = true
 position = Vector2(267, 46.49646)
 scale = Vector2(2, 2)
 texture = SubResource("AtlasTexture_q3i3u")
 
-[node name="Sprite2D10" type="Sprite2D" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/QuitButton/Shader/Node2D"]
+[node name="Sprite2D10" type="Sprite2D" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/QuitButton/Shader/Node2D"]
 show_behind_parent = true
 position = Vector2(205, 68.52344)
 scale = Vector2(4.171875, 2)
 texture = SubResource("AtlasTexture_q3i3u")
 
-[node name="Sprite2D11" type="Sprite2D" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/QuitButton/Shader/Node2D"]
+[node name="Sprite2D11" type="Sprite2D" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/QuitButton/Shader/Node2D"]
 show_behind_parent = true
 position = Vector2(141, 31.478027)
 scale = Vector2(4.171875, 2)
 texture = SubResource("AtlasTexture_q3i3u")
 
-[node name="Sprite2D12" type="Sprite2D" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/QuitButton/Shader/Node2D"]
+[node name="Sprite2D12" type="Sprite2D" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/QuitButton/Shader/Node2D"]
 show_behind_parent = true
 position = Vector2(344.99997, 16.459595)
 scale = Vector2(2, 2)
 texture = SubResource("AtlasTexture_2banv")
 
-[node name="Sprite2D13" type="Sprite2D" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/QuitButton/Shader/Node2D"]
+[node name="Sprite2D13" type="Sprite2D" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/QuitButton/Shader/Node2D"]
 show_behind_parent = true
 position = Vector2(399, 82.54065)
 scale = Vector2(2, 2)
 texture = SubResource("AtlasTexture_2banv")
 
-[node name="Sprite2D14" type="Sprite2D" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/QuitButton/Shader/Node2D"]
+[node name="Sprite2D14" type="Sprite2D" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/QuitButton/Shader/Node2D"]
 show_behind_parent = true
-position = Vector2(266.6667, 143.33447)
+position = Vector2(235.66669, 147.33447)
 scale = Vector2(4.171875, 2)
 texture = SubResource("AtlasTexture_q3i3u")
 
-[node name="Sprite2D15" type="Sprite2D" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/QuitButton/Shader/Node2D"]
+[node name="Sprite2D15" type="Sprite2D" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/QuitButton/Shader/Node2D"]
 show_behind_parent = true
-position = Vector2(263.3331, 137.3345)
+position = Vector2(232.33313, 137.33447)
 scale = Vector2(2, 2)
 texture = SubResource("AtlasTexture_8c457")
 
-[node name="Sprite2D5" type="Sprite2D" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/QuitButton/Shader"]
+[node name="Sprite2D5" type="Sprite2D" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/QuitButton/Shader"]
 show_behind_parent = true
 position = Vector2(515, 48.49888)
 rotation = 1.5707941
@@ -528,7 +929,7 @@ scale = Vector2(2, 2)
 texture = SubResource("AtlasTexture_ytx0m")
 flip_h = true
 
-[node name="Sprite2D6" type="Sprite2D" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/QuitButton/Shader"]
+[node name="Sprite2D6" type="Sprite2D" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/QuitButton/Shader"]
 show_behind_parent = true
 position = Vector2(106, 112.57751)
 rotation = 3.1415882
@@ -536,7 +937,7 @@ scale = Vector2(2, 2)
 texture = SubResource("AtlasTexture_a4px2")
 flip_h = true
 
-[node name="Sprite2D7" type="Sprite2D" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/QuitButton/Shader"]
+[node name="Sprite2D7" type="Sprite2D" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/QuitButton/Shader"]
 show_behind_parent = true
 position = Vector2(388, 122.00124)
 rotation = 1.5707941
@@ -544,7 +945,7 @@ scale = Vector2(2, 2)
 texture = SubResource("AtlasTexture_ytx0m")
 flip_h = true
 
-[node name="Sprite2D8" type="Sprite2D" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/QuitButton/Shader"]
+[node name="Sprite2D8" type="Sprite2D" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/QuitButton/Shader"]
 show_behind_parent = true
 position = Vector2(90, 15.334582)
 rotation = 3.1415882
@@ -552,7 +953,7 @@ scale = Vector2(2, 2)
 texture = SubResource("AtlasTexture_a4px2")
 flip_h = true
 
-[node name="Sprite2D9" type="Sprite2D" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/QuitButton/Shader"]
+[node name="Sprite2D9" type="Sprite2D" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/QuitButton/Shader"]
 show_behind_parent = true
 position = Vector2(-20, 62.00125)
 rotation = 4.7123823
@@ -560,7 +961,7 @@ scale = Vector2(2, 2)
 texture = SubResource("AtlasTexture_a4px2")
 flip_h = true
 
-[connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Mutiplayer" to="." method="load_level_select" binds= [true]]
-[connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SinglePlayer" to="." method="load_level_select" binds= [false]]
-[connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/TutorialButton" to="." method="load_tutorial"]
-[connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/QuitButton" to="." method="quit"]
+[connection signal="pressed" from="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Mutiplayer" to="." method="load_level_select" binds= [true]]
+[connection signal="pressed" from="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SinglePlayer" to="." method="load_level_select" binds= [false]]
+[connection signal="pressed" from="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/TutorialButton" to="." method="load_tutorial"]
+[connection signal="pressed" from="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/QuitButton" to="." method="quit"]
