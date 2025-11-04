@@ -19,7 +19,7 @@ void fragment() {
 		}
 		if(COLOR.a != 1.0) {
 			for(int i = 0; i < 4; i++) {
-			vec2 direction = directions[i];
+				vec2 direction = directions[i];
 				if(texture(source, SCREEN_UV + (direction * SCREEN_PIXEL_SIZE * float(pixel_scale))).a != 0.0) {
 					COLOR = vec4(color, 1.0);
 					break;

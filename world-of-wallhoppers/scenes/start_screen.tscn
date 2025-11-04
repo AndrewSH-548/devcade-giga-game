@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=3 uid="uid://b2wwcwwsq0ao7"]
+[gd_scene load_steps=77 format=3 uid="uid://b2wwcwwsq0ao7"]
 
 [ext_resource type="Script" uid="uid://cue05xubnlc2c" path="res://assets/scripts/Guis/start_screen.gd" id="1_kxo13"]
 [ext_resource type="Shader" uid="uid://bruhjepogvrwm" path="res://assets/shaders/scroll.gdshader" id="2_2banv"]
@@ -31,28 +31,28 @@
 [ext_resource type="Texture2D" uid="uid://ceayqi10dtxsp" path="res://assets/gui/island_diorama/island_deep_root_1.png" id="18_bjnkw"]
 [ext_resource type="Texture2D" uid="uid://cyavfe82xilqj" path="res://assets/gui/circle.png" id="19_8c457"]
 [ext_resource type="Texture2D" uid="uid://brc5csq5daq1s" path="res://assets/gui/island_diorama/island_ruins_1.png" id="19_v6sgr"]
+[ext_resource type="Shader" uid="uid://d358nr55isdje" path="res://assets/shaders/volcano_smoke.gdshader" id="20_0nsjh"]
 [ext_resource type="Texture2D" uid="uid://dux61t0lvsuo4" path="res://assets/gui/island_diorama/island_ruins_2.png" id="21_8ijck"]
+[ext_resource type="Texture2D" uid="uid://bq870pmfxoaio" path="res://assets/gui/circle_bordered.png" id="21_ce0he"]
 [ext_resource type="Texture2D" uid="uid://ba718hcets3i6" path="res://assets/gui/island_diorama/island_ash_1.png" id="22_1jj22"]
+[ext_resource type="Texture2D" uid="uid://brox464hn6xps" path="res://assets/gui/island_diorama/island_swamp_tree_1.png" id="24_xanmy"]
+[ext_resource type="Texture2D" uid="uid://bco5uf3orqwv4" path="res://assets/gui/island_diorama/island_swamp_tree_2.png" id="25_ulm5y"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_a4px2"]
 shader = ExtResource("2_2banv")
 shader_parameter/speed = Vector2(0.2, 0)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v6sgr"]
-transparency = 2
-alpha_scissor_threshold = 0.5
-alpha_antialiasing_mode = 0
-shading_mode = 0
-albedo_color = Color(0.23141274, 0.20894656, 0.20670259, 1)
-albedo_texture = ExtResource("19_8c457")
-billboard_mode = 3
-billboard_keep_scale = true
-particles_anim_h_frames = 1
-particles_anim_v_frames = 1
-particles_anim_loop = false
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ce0he"]
+render_priority = 0
+shader = ExtResource("20_0nsjh")
+shader_parameter/albedo_texture = ExtResource("21_ce0he")
+shader_parameter/color = Color(0.22670749, 0.22670749, 0.22670746, 1)
+shader_parameter/outline_color = Color(0.15294118, 0.14117648, 0.23529412, 1)
+shader_parameter/outline_size = 30.02
 
 [sub_resource type="Curve" id="Curve_8ijck"]
-_data = [Vector2(1e-05, 0), 0.0, 0.0, 0, 0, Vector2(0.39755353, 0.48253852), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+_limits = [0.0, 2.0, 0.0, 1.0]
+_data = [Vector2(1e-05, 0), 0.0, 0.0, 0, 0, Vector2(0.37966102, 1.7306632), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 3
 
 [sub_resource type="CurveTexture" id="CurveTexture_1jj22"]
@@ -346,9 +346,9 @@ texture = ExtResource("2_ecdxc")
 script = ExtResource("3_bdg0b")
 
 [node name="Sprite3D" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Sprite3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.329768, -1.0683055, -0.75767744)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.32986188, 0.09189728, -0.7562996)
 sorting_offset = -3.0
-offset = Vector2(0, 64)
+offset = Vector2(0, 32)
 pixel_size = 0.03
 billboard = 1
 texture_filter = 0
@@ -476,10 +476,11 @@ texture = ExtResource("19_v6sgr")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Sprite3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1599505, 0.2898211, -1.1021017)
-material_override = SubResource("StandardMaterial3D_v6sgr")
+material_override = SubResource("ShaderMaterial_ce0he")
 amount = 12
 lifetime = 2.5
 local_coords = true
+transform_align = 1
 process_material = SubResource("ParticleProcessMaterial_0nsjh")
 draw_pass_1 = SubResource("QuadMesh_ce0he")
 
@@ -506,6 +507,22 @@ pixel_size = 0.03
 billboard = 1
 texture_filter = 0
 texture = ExtResource("22_1jj22")
+
+[node name="Sprite3D20" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Sprite3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.97386515, -0.022982448, 0.41851366)
+offset = Vector2(0, 16)
+pixel_size = 0.03
+billboard = 1
+texture_filter = 0
+texture = ExtResource("24_xanmy")
+
+[node name="Sprite3D21" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Sprite3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1128564, -0.022982448, 0.94407463)
+offset = Vector2(0, 16)
+pixel_size = 0.03
+billboard = 1
+texture_filter = 0
+texture = ExtResource("25_ulm5y")
 
 [node name="CenterContainer" type="CenterContainer" parent="VBoxContainer"]
 layout_mode = 2
