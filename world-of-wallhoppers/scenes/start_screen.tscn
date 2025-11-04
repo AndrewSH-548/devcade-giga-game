@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=3 uid="uid://b2wwcwwsq0ao7"]
+[gd_scene load_steps=73 format=3 uid="uid://b2wwcwwsq0ao7"]
 
 [ext_resource type="Script" uid="uid://cue05xubnlc2c" path="res://assets/scripts/Guis/start_screen.gd" id="1_kxo13"]
 [ext_resource type="Shader" uid="uid://bruhjepogvrwm" path="res://assets/shaders/scroll.gdshader" id="2_2banv"]
@@ -32,6 +32,7 @@
 [ext_resource type="Texture2D" uid="uid://cyavfe82xilqj" path="res://assets/gui/circle.png" id="19_8c457"]
 [ext_resource type="Texture2D" uid="uid://brc5csq5daq1s" path="res://assets/gui/island_diorama/island_ruins_1.png" id="19_v6sgr"]
 [ext_resource type="Texture2D" uid="uid://dux61t0lvsuo4" path="res://assets/gui/island_diorama/island_ruins_2.png" id="21_8ijck"]
+[ext_resource type="Texture2D" uid="uid://ba718hcets3i6" path="res://assets/gui/island_diorama/island_ash_1.png" id="22_1jj22"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_a4px2"]
 shader = ExtResource("2_2banv")
@@ -491,12 +492,20 @@ texture_filter = 0
 texture = ExtResource("19_v6sgr")
 
 [node name="Sprite3D18" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Sprite3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0635629, -0.21564388, 0.57730746)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4558499, -0.021173, 0.68504345)
 offset = Vector2(0, 16)
 pixel_size = 0.03
 billboard = 1
 texture_filter = 0
 texture = ExtResource("21_8ijck")
+
+[node name="Sprite3D19" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Sprite3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.914408, 0.08971733, 0.60202885)
+offset = Vector2(0, 16)
+pixel_size = 0.03
+billboard = 1
+texture_filter = 0
+texture = ExtResource("22_1jj22")
 
 [node name="CenterContainer" type="CenterContainer" parent="VBoxContainer"]
 layout_mode = 2
