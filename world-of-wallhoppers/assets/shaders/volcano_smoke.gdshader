@@ -1,6 +1,5 @@
 shader_type spatial;
 render_mode unshaded, cull_disabled, depth_test_default;
-stencil_mode read, compare_not_equal, 1;
 
 uniform sampler2D albedo_texture: source_color;
 uniform vec3 color: source_color = vec3(1.0);

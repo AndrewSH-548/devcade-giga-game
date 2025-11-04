@@ -1,4 +1,4 @@
-[gd_scene load_steps=77 format=3 uid="uid://b2wwcwwsq0ao7"]
+[gd_scene load_steps=83 format=3 uid="uid://b2wwcwwsq0ao7"]
 
 [ext_resource type="Script" uid="uid://cue05xubnlc2c" path="res://assets/scripts/Guis/start_screen.gd" id="1_kxo13"]
 [ext_resource type="Shader" uid="uid://bruhjepogvrwm" path="res://assets/shaders/scroll.gdshader" id="2_2banv"]
@@ -37,6 +37,12 @@
 [ext_resource type="Texture2D" uid="uid://ba718hcets3i6" path="res://assets/gui/island_diorama/island_ash_1.png" id="22_1jj22"]
 [ext_resource type="Texture2D" uid="uid://brox464hn6xps" path="res://assets/gui/island_diorama/island_swamp_tree_1.png" id="24_xanmy"]
 [ext_resource type="Texture2D" uid="uid://bco5uf3orqwv4" path="res://assets/gui/island_diorama/island_swamp_tree_2.png" id="25_ulm5y"]
+[ext_resource type="Texture2D" uid="uid://bon88uywv3hfq" path="res://assets/gui/island_diorama/island_swamp_tree_3.png" id="26_ulm5y"]
+[ext_resource type="Texture2D" uid="uid://ivj5id4nrq72" path="res://assets/gui/island_diorama/island_tower_1.png" id="27_0e3oe"]
+[ext_resource type="Texture2D" uid="uid://cm3ggxmjoiltu" path="res://assets/gui/island_diorama/island_tower_2.png" id="28_q3skl"]
+[ext_resource type="Texture2D" uid="uid://bq2gjl5ie1s4j" path="res://assets/gui/island_diorama/island_tower_3.png" id="29_lyip4"]
+[ext_resource type="Texture2D" uid="uid://raf52sfvgk0f" path="res://assets/gui/island_diorama/island_house_1.png" id="30_kbp7x"]
+[ext_resource type="Texture2D" uid="uid://dt2nmur1l2cj0" path="res://assets/gui/island_diorama/island_house_2.png" id="31_5cfws"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_a4px2"]
 shader = ExtResource("2_2banv")
@@ -264,7 +270,7 @@ quit_button = NodePath("VBoxContainer/CenterContainer/PanelContainer/MarginConta
 settings_button = NodePath("VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SettingsButton")
 tutorial_button = NodePath("VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/TutorialButton")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="Water" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -273,7 +279,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.23036203, 0.39206788, 0.86449015, 1)
 
-[node name="ColorRect2" type="ColorRect" parent="."]
+[node name="Sky" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -283,7 +289,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.6430463, 0.8710509, 0.99999994, 1)
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="Clouds" type="TextureRect" parent="."]
 texture_repeat = 2
 material = SubResource("ShaderMaterial_a4px2")
 layout_mode = 1
@@ -294,7 +300,7 @@ grow_horizontal = 2
 texture = ExtResource("3_ytx0m")
 stretch_mode = 6
 
-[node name="TextureRect2" type="TextureRect" parent="."]
+[node name="WaterEdge" type="TextureRect" parent="."]
 texture_repeat = 2
 material = SubResource("ShaderMaterial_a4px2")
 layout_mode = 1
@@ -337,145 +343,162 @@ transform = Transform3D(1, 0, 0, 0, 0.9500483, 0.31210282, 0, -0.3121028, 0.9500
 projection = 1
 size = 5.559881
 
-[node name="Sprite3D" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport"]
+[node name="Island" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport"]
 sorting_offset = -10.0
+sorting_use_aabb_center = false
 pixel_size = 0.04
 axis = 1
 texture_filter = 0
 texture = ExtResource("2_ecdxc")
 script = ExtResource("3_bdg0b")
 
-[node name="Sprite3D" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Sprite3D"]
+[node name="Monolith" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Island"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.32986188, 0.09189728, -0.7562996)
-sorting_offset = -3.0
+sorting_use_aabb_center = false
 offset = Vector2(0, 32)
 pixel_size = 0.03
 billboard = 1
 texture_filter = 0
 texture = ExtResource("3_qls88")
 
-[node name="Sprite3D2" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Sprite3D"]
+[node name="Volcano" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Island"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0598593, -0.21564388, -1.1198698)
+sorting_use_aabb_center = false
 offset = Vector2(0, 16)
 pixel_size = 0.03
 billboard = 1
 texture_filter = 0
 texture = ExtResource("5_xfy2r")
 
-[node name="Sprite3D3" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Sprite3D"]
+[node name="Dune1" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Island"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1696129, -0.21564388, -0.8775211)
+sorting_use_aabb_center = false
 offset = Vector2(0, 16)
 pixel_size = 0.03
 billboard = 1
 texture_filter = 0
 texture = ExtResource("6_xfy2r")
 
-[node name="Sprite3D4" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Sprite3D"]
+[node name="Dune2" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Island"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3168156, -0.21564388, -0.3459439)
+sorting_use_aabb_center = false
 offset = Vector2(0, 16)
 pixel_size = 0.03
 billboard = 1
 texture_filter = 0
 texture = ExtResource("6_xfy2r")
 
-[node name="Sprite3D8" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Sprite3D"]
+[node name="Castle" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Island"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.409733, -0.050743222, -1.4000294)
+sorting_use_aabb_center = false
 offset = Vector2(0, 16)
 pixel_size = 0.03
 billboard = 1
 texture_filter = 0
 texture = ExtResource("13_53rsf")
 
-[node name="Sprite3D5" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Sprite3D"]
+[node name="SmallMountain" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Island"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6208879, -0.21564388, -2.0637922)
+sorting_use_aabb_center = false
 offset = Vector2(0, 16)
 pixel_size = 0.03
 billboard = 1
 texture_filter = 0
 texture = ExtResource("7_lt4el")
 
-[node name="Sprite3D6" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Sprite3D"]
+[node name="LargeMountain" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Island"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7417146, 0.27006412, -2.2613864)
+sorting_use_aabb_center = false
 offset = Vector2(0, 16)
 pixel_size = 0.03
 billboard = 1
 texture_filter = 0
 texture = ExtResource("8_phykr")
 
-[node name="Sprite3D7" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Sprite3D"]
+[node name="Blimp" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Island"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2644966, 2.3412876, -1.1588005)
+sorting_use_aabb_center = false
 offset = Vector2(0, 16)
 pixel_size = 0.03
 billboard = 1
 texture_filter = 0
 texture = ExtResource("12_3opy0")
 
-[node name="Sprite3D9" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Sprite3D"]
+[node name="SkyCtiy" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Island"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.701784, 2.3412876, 0.09855044)
+sorting_use_aabb_center = false
 offset = Vector2(0, 16)
 pixel_size = 0.03
 billboard = 1
 texture_filter = 0
 texture = ExtResource("14_qlcmr")
 
-[node name="Sprite3D10" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Sprite3D"]
+[node name="ForestTree1" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Island"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.216057, -0.04202217, -0.3007278)
+sorting_use_aabb_center = false
 offset = Vector2(0, 16)
 pixel_size = 0.03
 billboard = 1
 texture_filter = 0
 texture = ExtResource("15_0y2qr")
 
-[node name="Sprite3D11" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Sprite3D"]
+[node name="ForestTreeSmall1" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Island"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5010781, -0.29923505, -0.74265146)
+sorting_use_aabb_center = false
 offset = Vector2(0, 16)
 pixel_size = 0.03
 billboard = 1
 texture_filter = 0
 texture = ExtResource("16_r6qw7")
 
-[node name="Sprite3D12" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Sprite3D"]
+[node name="ForestTreeSmall2" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Island"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1020055, -0.29923505, -0.50160766)
+sorting_use_aabb_center = false
 offset = Vector2(0, 16)
 pixel_size = 0.03
 billboard = 1
 texture_filter = 0
 texture = ExtResource("15_r6qw7")
 
-[node name="Sprite3D13" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Sprite3D"]
+[node name="ForestTreeSmall3" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Island"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6787798, -0.29923505, 0.39006698)
+sorting_use_aabb_center = false
 offset = Vector2(0, 16)
 pixel_size = 0.03
 billboard = 1
 texture_filter = 0
 texture = ExtResource("16_r6qw7")
 
-[node name="Sprite3D14" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Sprite3D"]
+[node name="ForestRoot1" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Island"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8876688, -0.0420222, -0.07798061)
+sorting_use_aabb_center = false
 offset = Vector2(0, 16)
 pixel_size = 0.03
 billboard = 1
 texture_filter = 0
 texture = ExtResource("18_bjnkw")
 
-[node name="Sprite3D15" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Sprite3D"]
+[node name="ForestRoot2" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Island"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6681378, -0.0420222, -1.198189)
+sorting_use_aabb_center = false
 offset = Vector2(0, 16)
 pixel_size = 0.03
 billboard = 1
 texture_filter = 0
 texture = ExtResource("18_bjnkw")
 
-[node name="Sprite3D16" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Sprite3D"]
+[node name="VolcanoRuin1" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Island"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7759446, -0.2904785, -0.70773447)
+sorting_use_aabb_center = false
 offset = Vector2(0, 16)
 pixel_size = 0.03
 billboard = 1
 texture_filter = 0
 texture = ExtResource("19_v6sgr")
 
-[node name="GPUParticles3D" type="GPUParticles3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Sprite3D"]
+[node name="VolcanoSmoke" type="GPUParticles3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Island"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1599505, 0.2898211, -1.1021017)
+sorting_offset = -5.0
 material_override = SubResource("ShaderMaterial_ce0he")
 amount = 12
 lifetime = 2.5
@@ -484,45 +507,113 @@ transform_align = 1
 process_material = SubResource("ParticleProcessMaterial_0nsjh")
 draw_pass_1 = SubResource("QuadMesh_ce0he")
 
-[node name="Sprite3D17" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Sprite3D"]
+[node name="VolcanoRuin2" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Island"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4935324, -0.2904785, -0.6968752)
+sorting_use_aabb_center = false
 offset = Vector2(0, 16)
 pixel_size = 0.03
 billboard = 1
 texture_filter = 0
 texture = ExtResource("19_v6sgr")
 
-[node name="Sprite3D18" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Sprite3D"]
+[node name="AshRuin1" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Island"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4558499, -0.021173, 0.68504345)
+sorting_use_aabb_center = false
 offset = Vector2(0, 16)
 pixel_size = 0.03
 billboard = 1
 texture_filter = 0
 texture = ExtResource("21_8ijck")
 
-[node name="Sprite3D19" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Sprite3D"]
+[node name="AshRuin2" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Island"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.914408, 0.08971733, 0.60202885)
+sorting_use_aabb_center = false
 offset = Vector2(0, 16)
 pixel_size = 0.03
 billboard = 1
 texture_filter = 0
 texture = ExtResource("22_1jj22")
 
-[node name="Sprite3D20" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Sprite3D"]
+[node name="SwampTree1" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Island"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.97386515, -0.022982448, 0.41851366)
+sorting_use_aabb_center = false
 offset = Vector2(0, 16)
 pixel_size = 0.03
 billboard = 1
 texture_filter = 0
 texture = ExtResource("24_xanmy")
 
-[node name="Sprite3D21" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Sprite3D"]
+[node name="SwampTree2" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Island"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1128564, -0.022982448, 0.94407463)
+sorting_use_aabb_center = false
 offset = Vector2(0, 16)
 pixel_size = 0.03
 billboard = 1
 texture_filter = 0
 texture = ExtResource("25_ulm5y")
+
+[node name="SwampTree3" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Island"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8971231, -0.021173, 1.1398612)
+sorting_use_aabb_center = false
+offset = Vector2(0, 24)
+pixel_size = 0.03
+billboard = 1
+texture_filter = 0
+texture = ExtResource("26_ulm5y")
+
+[node name="SwampTree4" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Island"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4113576, -0.022982448, 1.1923714)
+sorting_use_aabb_center = false
+offset = Vector2(0, 16)
+pixel_size = 0.03
+billboard = 1
+texture_filter = 0
+texture = ExtResource("24_xanmy")
+
+[node name="Tower1" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Island"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.52127033, -0.022982448, 2.3083956)
+sorting_use_aabb_center = false
+offset = Vector2(0, 16)
+pixel_size = 0.03
+billboard = 1
+texture_filter = 0
+texture = ExtResource("27_0e3oe")
+
+[node name="Dome1" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Island"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.30633432, -0.022982448, 1.9437753)
+sorting_use_aabb_center = false
+offset = Vector2(0, 16)
+pixel_size = 0.03
+billboard = 1
+texture_filter = 0
+texture = ExtResource("28_q3skl")
+
+[node name="Skyscraper1" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Island"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0990922, -0.022982448, 1.3941083)
+sorting_use_aabb_center = false
+offset = Vector2(0, 16)
+pixel_size = 0.03
+billboard = 1
+texture_filter = 0
+texture = ExtResource("29_lyip4")
+
+[node name="HouseA1" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Island"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5714366, 0.08971733, 2.000141)
+sorting_use_aabb_center = false
+offset = Vector2(0, 16)
+pixel_size = 0.03
+billboard = 1
+texture_filter = 0
+texture = ExtResource("30_kbp7x")
+
+[node name="HouseB1" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Island"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0633307, 0.08971733, 1.8457772)
+sorting_use_aabb_center = false
+offset = Vector2(0, 16)
+pixel_size = 0.03
+billboard = 1
+texture_filter = 0
+texture = ExtResource("31_5cfws")
 
 [node name="CenterContainer" type="CenterContainer" parent="VBoxContainer"]
 layout_mode = 2
