@@ -1,7 +1,7 @@
 shader_type spatial;
 render_mode unshaded, cull_disabled, depth_test_default;
 
-uniform sampler2D albedo_texture: source_color;
+uniform sampler2D albedo_texture: source_color, filter_nearest;
 uniform vec3 color: source_color = vec3(1.0);
 uniform vec3 outline_color: source_color;
 uniform float outline_size = 1.0;

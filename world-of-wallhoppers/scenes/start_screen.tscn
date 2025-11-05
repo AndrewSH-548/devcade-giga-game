@@ -1,4 +1,4 @@
-[gd_scene load_steps=83 format=3 uid="uid://b2wwcwwsq0ao7"]
+[gd_scene load_steps=90 format=3 uid="uid://b2wwcwwsq0ao7"]
 
 [ext_resource type="Script" uid="uid://cue05xubnlc2c" path="res://assets/scripts/Guis/start_screen.gd" id="1_kxo13"]
 [ext_resource type="Shader" uid="uid://bruhjepogvrwm" path="res://assets/shaders/scroll.gdshader" id="2_2banv"]
@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://clnnrqyj3wydv" path="res://assets/gui/island_diorama/island_base.png" id="2_ecdxc"]
 [ext_resource type="Script" uid="uid://cwf5ea3i4otev" path="res://assets/scripts/visuals/island_diorama.gd" id="3_bdg0b"]
 [ext_resource type="Shader" uid="uid://0x4jvlcv8440" path="res://assets/shaders/start_menu_button_decoration_pulse.gdshader" id="3_ka6nf"]
-[ext_resource type="Texture2D" uid="uid://c8vmplkpgjbq1" path="res://assets/gui/island_diorama/island_monolith.png" id="3_qls88"]
 [ext_resource type="Texture2D" uid="uid://bbama5rxog76d" path="res://assets/gui/main_menu_parts.png" id="3_r2jwc"]
 [ext_resource type="Texture2D" uid="uid://b58ull54tv542" path="res://assets/gui/island_diorama/clouds_1.png" id="3_ytx0m"]
 [ext_resource type="Script" uid="uid://dq8rxk71tt67n" path="res://assets/scripts/Guis/start_menu/start_menu_button.gd" id="4_o30b1"]
@@ -14,9 +13,12 @@
 [ext_resource type="Shader" uid="uid://dd0gpsgd5uxvw" path="res://assets/shaders/start_menu_button_decoration.gdshader" id="5_o30b1"]
 [ext_resource type="Texture2D" uid="uid://bkxv31wd3iwhe" path="res://assets/gui/island_diorama/mountain_1.png" id="5_xfy2r"]
 [ext_resource type="Texture2D" uid="uid://dqdnbd0gal1gs" path="res://assets/gui/island_diorama/dune_1.png" id="6_xfy2r"]
+[ext_resource type="Texture2D" uid="uid://ov8pfmy15ysj" path="res://assets/gui/island_diorama/monolith_texture.png" id="7_0e3oe"]
 [ext_resource type="Script" uid="uid://163a1e1rl2du" path="res://assets/scripts/Guis/start_menu/start_menu_wobble_visual.gd" id="7_ka6nf"]
+[ext_resource type="Shader" uid="uid://fj3f5762qt7p" path="res://assets/shaders/outlined_no_bottom.gdshader" id="7_kbp7x"]
 [ext_resource type="Texture2D" uid="uid://bpmpiepa0wjqw" path="res://assets/gui/island_diorama/mountain_bloir_1.png" id="7_lt4el"]
 [ext_resource type="Script" uid="uid://e011a8thkqgk" path="res://assets/scripts/visuals/start_screen_jungle_cog.gd" id="7_o30b1"]
+[ext_resource type="Texture2D" uid="uid://el3bgmcl5wg8" path="res://assets/gui/island_diorama/vines_1.png" id="7_q3skl"]
 [ext_resource type="Texture2D" uid="uid://hbil865jufsx" path="res://assets/gui/island_diorama/mountain_bloir_2.png" id="8_phykr"]
 [ext_resource type="Shader" uid="uid://cce8k77l1hi1q" path="res://assets/shaders/start_menu_button_decoration_warp.gdshader" id="9_ws7p0"]
 [ext_resource type="Texture2D" uid="uid://1a8pq6hm08bd" path="res://assets/gui/island_diorama/island_skyship.png" id="12_3opy0"]
@@ -43,10 +45,38 @@
 [ext_resource type="Texture2D" uid="uid://bq2gjl5ie1s4j" path="res://assets/gui/island_diorama/island_tower_3.png" id="29_lyip4"]
 [ext_resource type="Texture2D" uid="uid://raf52sfvgk0f" path="res://assets/gui/island_diorama/island_house_1.png" id="30_kbp7x"]
 [ext_resource type="Texture2D" uid="uid://dt2nmur1l2cj0" path="res://assets/gui/island_diorama/island_house_2.png" id="31_5cfws"]
+[ext_resource type="FontFile" uid="uid://cp02w5mdy0pdm" path="res://assets/fonts/BelanidiSerif-Regular.otf" id="46_kbp7x"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_a4px2"]
 shader = ExtResource("2_2banv")
 shader_parameter/speed = Vector2(0.2, 0)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_q3skl"]
+viewport_path = NodePath("VBoxContainer/SubViewportContainer/SubViewport/Island/MonolithRenderer/SubViewport")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kbp7x"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("7_kbp7x")
+shader_parameter/albedo_texture = SubResource("ViewportTexture_q3skl")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+shader_parameter/outline_size = 1.005
+shader_parameter/use_diagonals = true
+shader_parameter/use_billboard = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0e3oe"]
+diffuse_mode = 3
+albedo_texture = ExtResource("7_0e3oe")
+rim = 0.6
+uv1_triplanar = true
+uv2_triplanar = true
+texture_filter = 0
+disable_receive_shadows = true
+grow_amount = 0.67
+stencil_mode = 3
+stencil_flags = 2
+stencil_outline_thickness = 0.02
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ce0he"]
 render_priority = 0
@@ -256,6 +286,14 @@ region = Rect2(160, 288, 32, 40)
 atlas = ExtResource("3_r2jwc")
 region = Rect2(64, 216, 48, 48)
 
+[sub_resource type="LabelSettings" id="LabelSettings_5cfws"]
+line_spacing = 2.805
+paragraph_spacing = -48.47
+font = ExtResource("46_kbp7x")
+font_size = 81
+outline_size = 38
+outline_color = Color(0, 0, 0, 1)
+
 [node name="StartScreen" type="Control" node_paths=PackedStringArray("mutiplayer_button", "singleplayer_button", "quit_button", "settings_button", "tutorial_button")]
 layout_mode = 3
 anchors_preset = 15
@@ -328,13 +366,13 @@ layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 1.2
 stretch = true
-stretch_shrink = 3
+stretch_shrink = 4
 
 [node name="SubViewport" type="SubViewport" parent="VBoxContainer/SubViewportContainer"]
 transparent_bg = true
 handle_input_locally = false
 canvas_item_default_texture_filter = 0
-size = Vector2i(360, 348)
+size = Vector2i(270, 261)
 size_2d_override = Vector2i(360, 348)
 render_target_update_mode = 4
 
@@ -352,14 +390,110 @@ texture_filter = 0
 texture = ExtResource("2_ecdxc")
 script = ExtResource("3_bdg0b")
 
-[node name="Monolith" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Island"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.32986188, 0.09189728, -0.7562996)
+[node name="MonolithRenderer" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Island"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.122000635, 0)
 sorting_use_aabb_center = false
-offset = Vector2(0, 32)
-pixel_size = 0.03
+material_override = SubResource("ShaderMaterial_kbp7x")
+cast_shadow = 0
+offset = Vector2(0, 129.425)
+pixel_size = 0.015
 billboard = 1
 texture_filter = 0
-texture = ExtResource("3_qls88")
+texture = SubResource("ViewportTexture_q3skl")
+
+[node name="SubViewport" type="SubViewport" parent="VBoxContainer/SubViewportContainer/SubViewport/Island/MonolithRenderer"]
+own_world_3d = true
+transparent_bg = true
+canvas_item_default_texture_filter = 0
+
+[node name="Monolith" type="CSGCombiner3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Island/MonolithRenderer/SubViewport"]
+transform = Transform3D(0.7, 0, 0, 0, 1, 0, 0, 0, 0.7, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_0e3oe")
+script = ExtResource("3_bdg0b")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Island/MonolithRenderer/SubViewport/Monolith"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.9265347, 0)
+size = Vector3(0.7, 10.22, 1.5)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Island/MonolithRenderer/SubViewport/Monolith"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 4.9265347, 0)
+size = Vector3(0.7, 10.22, 1.5)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Island/MonolithRenderer/SubViewport/Monolith"]
+transform = Transform3D(0.70710075, 0, 0.7071008, 0, 0.99999404, 0, -0.7071008, 0, 0.70710075, 0, 0.9925078, 0)
+radius = 1.2949219
+height = 2.3437805
+sides = 4
+cone = true
+smooth_faces = false
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Island/MonolithRenderer/SubViewport/Monolith"]
+transform = Transform3D(-4.2573717e-08, 0, 0.9999752, 0, 0.9999827, 0, -0.9999752, 0, -4.2573717e-08, 0, 2.1359124, 0)
+radius = 1.2949219
+height = 4.630558
+sides = 4
+cone = true
+smooth_faces = false
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Island/MonolithRenderer/SubViewport/Monolith"]
+transform = Transform3D(0.9999937, 0, 0, 0, 0.9999956, 0, 0, 0, 0.9999937, -1.0769447, 2.9080544, 0.25298974)
+operation = 2
+size = Vector3(1.6000977, 1, 1.5059814)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Island/MonolithRenderer/SubViewport/Monolith"]
+transform = Transform3D(0.9999936, 0, 0, 0, 0.9999955, 0, 0, 0, 0.9999936, 0.9201712, 3.7603762, 0.25298974)
+operation = 2
+size = Vector3(1.6000977, 1, 1.5059814)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Island/MonolithRenderer/SubViewport/Monolith"]
+transform = Transform3D(0.9999934, 0, 0, 0, 0.99999535, 0, 0, 0, 0.9999934, 0.9126497, 1.9434186, 1.0435375)
+operation = 2
+size = Vector3(1.6000977, 1, 1.5059814)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Island/MonolithRenderer/SubViewport/Monolith"]
+transform = Transform3D(0.9999932, 0, 0, 0, 0.99999523, 0, 0, 0, 0.9999932, -1.3167356, 1.6251296, -0.515833)
+operation = 2
+size = Vector3(1.6000977, 1, 1.5059814)
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Island/MonolithRenderer/SubViewport/Monolith"]
+transform = Transform3D(0.9999902, 0, 0, 0, 0.99999315, 0, 0, 0, 0.9999902, -0.8849997, 6.0695677, 0.25298974)
+operation = 2
+size = Vector3(1.6000977, 2.015625, 1.5059814)
+
+[node name="Decal" type="Decal" parent="VBoxContainer/SubViewportContainer/SubViewport/Island/MonolithRenderer/SubViewport/Monolith"]
+transform = Transform3D(1.4274181, -0.057380937, -2.5082003e-09, 0, -4.3711374e-08, 0.9999997, -0.057380937, -1.4274181, -6.239442e-08, 0.39226693, 1.6541593, 0.27052587)
+size = Vector3(2, 4.5340576, 2)
+texture_albedo = ExtResource("7_q3skl")
+upper_fade = 659753.56
+lower_fade = 0.57956296
+
+[node name="Decal2" type="Decal" parent="VBoxContainer/SubViewportContainer/SubViewport/Island/MonolithRenderer/SubViewport/Monolith"]
+transform = Transform3D(-0.6123812, 1.2906598, 5.6416525e-08, 3.8296935e-15, -4.3711356e-08, 0.9999993, 1.2906598, 0.6123812, 2.6768024e-08, -0.012927477, 3.015079, -0.05532809)
+size = Vector3(2, 4.5340576, 2)
+texture_albedo = ExtResource("7_q3skl")
+upper_fade = 659753.56
+lower_fade = 0.57956296
+
+[node name="Camera3D" type="Camera3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Island/MonolithRenderer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 0.9500483, 0.31210282, 0, -0.3121028, 0.9500483, 4.7683716e-07, 2.8815331, 3.4560673)
+projection = 1
+size = 7.711
+
+[node name="Sun" type="DirectionalLight3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Island/MonolithRenderer/SubViewport"]
+transform = Transform3D(0.79874057, -0.27766448, 0.53377515, -1.2869551e-08, 0.88714784, 0.4614854, -0.60167557, -0.36860713, 0.70860094, 1.7909322, 1.7504114, 0)
+light_color = Color(0.73, 0.7046934, 0.67160004, 1)
+light_energy = 4.215
+
+[node name="VolcanoSmoke" type="GPUParticles3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Island"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1599505, 0.2898211, -1.1021017)
+sorting_offset = -5.0
+material_override = SubResource("ShaderMaterial_ce0he")
+amount = 12
+lifetime = 2.5
+local_coords = true
+transform_align = 1
+process_material = SubResource("ParticleProcessMaterial_0nsjh")
+draw_pass_1 = SubResource("QuadMesh_ce0he")
 
 [node name="Volcano" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Island"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0598593, -0.21564388, -1.1198698)
@@ -496,17 +630,6 @@ billboard = 1
 texture_filter = 0
 texture = ExtResource("19_v6sgr")
 
-[node name="VolcanoSmoke" type="GPUParticles3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Island"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1599505, 0.2898211, -1.1021017)
-sorting_offset = -5.0
-material_override = SubResource("ShaderMaterial_ce0he")
-amount = 12
-lifetime = 2.5
-local_coords = true
-transform_align = 1
-process_material = SubResource("ParticleProcessMaterial_0nsjh")
-draw_pass_1 = SubResource("QuadMesh_ce0he")
-
 [node name="VolcanoRuin2" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Island"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4935324, -0.2904785, -0.6968752)
 sorting_use_aabb_center = false
@@ -526,9 +649,9 @@ texture_filter = 0
 texture = ExtResource("21_8ijck")
 
 [node name="AshRuin2" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Island"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.914408, 0.08971733, 0.60202885)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.914408, -0.01203689, 0.60202885)
 sorting_use_aabb_center = false
-offset = Vector2(0, 16)
+offset = Vector2(0, 20)
 pixel_size = 0.03
 billboard = 1
 texture_filter = 0
@@ -573,7 +696,7 @@ texture = ExtResource("24_xanmy")
 [node name="Tower1" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Island"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.52127033, -0.022982448, 2.3083956)
 sorting_use_aabb_center = false
-offset = Vector2(0, 16)
+offset = Vector2(0, 8)
 pixel_size = 0.03
 billboard = 1
 texture_filter = 0
@@ -582,38 +705,119 @@ texture = ExtResource("27_0e3oe")
 [node name="Dome1" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Island"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.30633432, -0.022982448, 1.9437753)
 sorting_use_aabb_center = false
-offset = Vector2(0, 16)
+offset = Vector2(0, 10)
 pixel_size = 0.03
 billboard = 1
 texture_filter = 0
 texture = ExtResource("28_q3skl")
 
 [node name="Skyscraper1" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Island"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0990922, -0.022982448, 1.3941083)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.65523565, -0.022982448, 1.5374802)
 sorting_use_aabb_center = false
-offset = Vector2(0, 16)
+offset = Vector2(0, 8)
 pixel_size = 0.03
 billboard = 1
 texture_filter = 0
 texture = ExtResource("29_lyip4")
 
 [node name="HouseA1" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Island"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5714366, 0.08971733, 2.000141)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5714366, -0.046755195, 2.000141)
 sorting_use_aabb_center = false
-offset = Vector2(0, 16)
+offset = Vector2(0, 8)
 pixel_size = 0.03
 billboard = 1
 texture_filter = 0
 texture = ExtResource("30_kbp7x")
 
 [node name="HouseB1" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Island"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0633307, 0.08971733, 1.8457772)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0633307, -0.028321266, 1.8457772)
 sorting_use_aabb_center = false
-offset = Vector2(0, 16)
+offset = Vector2(0, 8)
 pixel_size = 0.03
 billboard = 1
 texture_filter = 0
 texture = ExtResource("31_5cfws")
+
+[node name="HouseB2" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Island"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1391475, -0.028321266, 1.8232107)
+sorting_use_aabb_center = false
+offset = Vector2(0, 8)
+pixel_size = 0.03
+billboard = 1
+texture_filter = 0
+texture = ExtResource("31_5cfws")
+
+[node name="HouseB3" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Island"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.93558764, -0.028321266, 2.3630466)
+sorting_use_aabb_center = false
+offset = Vector2(0, 8)
+pixel_size = 0.03
+billboard = 1
+texture_filter = 0
+texture = ExtResource("31_5cfws")
+
+[node name="HouseB4" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Island"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3559997, -0.028321266, 1.900751)
+sorting_use_aabb_center = false
+offset = Vector2(0, 8)
+pixel_size = 0.03
+billboard = 1
+texture_filter = 0
+texture = ExtResource("31_5cfws")
+
+[node name="HouseA2" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Island"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.856282, -0.046755195, 2.0027034)
+sorting_use_aabb_center = false
+offset = Vector2(0, 8)
+pixel_size = 0.03
+billboard = 1
+texture_filter = 0
+texture = ExtResource("30_kbp7x")
+
+[node name="HouseA3" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Island"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.114663124, -0.046755195, 2.1796446)
+sorting_use_aabb_center = false
+offset = Vector2(0, 8)
+pixel_size = 0.03
+billboard = 1
+texture_filter = 0
+texture = ExtResource("30_kbp7x")
+
+[node name="HouseA4" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Island"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.079722, -0.046755195, 1.7217652)
+sorting_use_aabb_center = false
+offset = Vector2(0, 8)
+pixel_size = 0.03
+billboard = 1
+texture_filter = 0
+texture = ExtResource("30_kbp7x")
+
+[node name="Tower2" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Island"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.34714234, -0.022982448, 2.2959614)
+sorting_use_aabb_center = false
+offset = Vector2(0, 8)
+pixel_size = 0.03
+billboard = 1
+texture_filter = 0
+texture = ExtResource("27_0e3oe")
+
+[node name="Tower3" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Island"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.334424, -0.022982448, 1.6427988)
+sorting_use_aabb_center = false
+offset = Vector2(0, 8)
+pixel_size = 0.03
+billboard = 1
+texture_filter = 0
+texture = ExtResource("27_0e3oe")
+
+[node name="Skyscraper2" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Island"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1042056, -0.022982448, 1.6102424)
+sorting_use_aabb_center = false
+offset = Vector2(0, 8)
+pixel_size = 0.03
+billboard = 1
+texture_filter = 0
+texture = ExtResource("29_lyip4")
 
 [node name="CenterContainer" type="CenterContainer" parent="VBoxContainer"]
 layout_mode = 2
@@ -1077,6 +1281,19 @@ rotation = 4.7123823
 scale = Vector2(2, 2)
 texture = SubResource("AtlasTexture_a4px2")
 flip_h = true
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = -57.0
+offset_bottom = 254.0
+grow_horizontal = 2
+text = "WORLD OF
+WALLHOPPERS"
+label_settings = SubResource("LabelSettings_5cfws")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Mutiplayer" to="." method="load_level_select" binds= [true]]
 [connection signal="pressed" from="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SinglePlayer" to="." method="load_level_select" binds= [false]]
