@@ -23,6 +23,7 @@ func _ready() -> void:
 func set_leaderboard() -> void: ## Set the leaderboard with the new time
 	time_label.text = "Completion Time: " + str(TimeManager.return_and_reset_temporary_singleplayer_time(LevelManager.current_level, player_name));
 	var leaderboard_values = TimeManager.current_leaderboard.values(); # gets all the values in the leaderboard
+		# sorts the values so that the leaderboard is displayed from fastest to slowest times.
 	leaderboard_values.sort();
 	for i in range(len(leaderboard_values)): # displays the current_leaderboard
 		for player in TimeManager.current_leaderboard: # loop through all the players in the leaderboard, if the playername matches the time, then use it and stop the loop
