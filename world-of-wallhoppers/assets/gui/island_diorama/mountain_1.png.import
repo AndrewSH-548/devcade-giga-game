@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bqnatxvhdl8ps"
-path.s3tc="res://.godot/imported/perlin_noise_1.png-0371ba1ec8d9e7c51411bd257b5a61b3.s3tc.ctex"
+uid="uid://bkxv31wd3iwhe"
+path.s3tc="res://.godot/imported/mountain_1.png-3db5c1c34a357126670c039f0ad61ca3.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/shaders/noise/perlin_noise_1.png"
-dest_files=["res://.godot/imported/perlin_noise_1.png-0371ba1ec8d9e7c51411bd257b5a61b3.s3tc.ctex"]
+source_file="res://assets/gui/island_diorama/mountain_1.png"
+dest_files=["res://.godot/imported/mountain_1.png-3db5c1c34a357126670c039f0ad61ca3.s3tc.ctex"]
 
 [params]
 

@@ -1,7 +1,298 @@
-[gd_scene load_steps=3 format=3 uid="uid://b2wwcwwsq0ao7"]
+[gd_scene load_steps=90 format=3 uid="uid://b2wwcwwsq0ao7"]
 
 [ext_resource type="Script" uid="uid://cue05xubnlc2c" path="res://assets/scripts/Guis/start_screen.gd" id="1_kxo13"]
-[ext_resource type="Script" uid="uid://cpsa7dev5vw2p" path="res://assets/scripts/Guis/button_grab_focus.gd" id="3_he1sj"]
+[ext_resource type="Shader" uid="uid://bruhjepogvrwm" path="res://assets/shaders/scroll.gdshader" id="2_2banv"]
+[ext_resource type="Theme" uid="uid://c6hja04x4l2oq" path="res://assets/themes/start_screen_ancient_button.tres" id="2_5pab1"]
+[ext_resource type="Texture2D" uid="uid://clnnrqyj3wydv" path="res://assets/gui/island_diorama/island_base.png" id="2_ecdxc"]
+[ext_resource type="Script" uid="uid://cwf5ea3i4otev" path="res://assets/scripts/visuals/island_diorama.gd" id="3_bdg0b"]
+[ext_resource type="Shader" uid="uid://0x4jvlcv8440" path="res://assets/shaders/start_menu_button_decoration_pulse.gdshader" id="3_ka6nf"]
+[ext_resource type="Texture2D" uid="uid://bbama5rxog76d" path="res://assets/gui/main_menu_parts.png" id="3_r2jwc"]
+[ext_resource type="Texture2D" uid="uid://b58ull54tv542" path="res://assets/gui/island_diorama/clouds_1.png" id="3_ytx0m"]
+[ext_resource type="Script" uid="uid://dq8rxk71tt67n" path="res://assets/scripts/Guis/start_menu/start_menu_button.gd" id="4_o30b1"]
+[ext_resource type="Texture2D" uid="uid://tg8dgfq72yoi" path="res://assets/gui/island_diorama/water_edge.png" id="4_ytx0m"]
+[ext_resource type="Shader" uid="uid://dd0gpsgd5uxvw" path="res://assets/shaders/start_menu_button_decoration.gdshader" id="5_o30b1"]
+[ext_resource type="Texture2D" uid="uid://bkxv31wd3iwhe" path="res://assets/gui/island_diorama/mountain_1.png" id="5_xfy2r"]
+[ext_resource type="Texture2D" uid="uid://dqdnbd0gal1gs" path="res://assets/gui/island_diorama/dune_1.png" id="6_xfy2r"]
+[ext_resource type="Texture2D" uid="uid://ov8pfmy15ysj" path="res://assets/gui/island_diorama/monolith_texture.png" id="7_0e3oe"]
+[ext_resource type="Script" uid="uid://163a1e1rl2du" path="res://assets/scripts/Guis/start_menu/start_menu_wobble_visual.gd" id="7_ka6nf"]
+[ext_resource type="Shader" uid="uid://fj3f5762qt7p" path="res://assets/shaders/outlined_no_bottom.gdshader" id="7_kbp7x"]
+[ext_resource type="Texture2D" uid="uid://bpmpiepa0wjqw" path="res://assets/gui/island_diorama/mountain_bloir_1.png" id="7_lt4el"]
+[ext_resource type="Script" uid="uid://e011a8thkqgk" path="res://assets/scripts/visuals/start_screen_jungle_cog.gd" id="7_o30b1"]
+[ext_resource type="Texture2D" uid="uid://el3bgmcl5wg8" path="res://assets/gui/island_diorama/vines_1.png" id="7_q3skl"]
+[ext_resource type="Texture2D" uid="uid://hbil865jufsx" path="res://assets/gui/island_diorama/mountain_bloir_2.png" id="8_phykr"]
+[ext_resource type="Shader" uid="uid://cce8k77l1hi1q" path="res://assets/shaders/start_menu_button_decoration_warp.gdshader" id="9_ws7p0"]
+[ext_resource type="Texture2D" uid="uid://1a8pq6hm08bd" path="res://assets/gui/island_diorama/island_skyship.png" id="12_3opy0"]
+[ext_resource type="Texture2D" uid="uid://dt82g4tluvrqd" path="res://assets/gui/island_diorama/island_castle_1.png" id="13_53rsf"]
+[ext_resource type="Texture2D" uid="uid://dgl0i4nev7kp0" path="res://assets/gui/island_diorama/island_sky_city.png" id="14_qlcmr"]
+[ext_resource type="Texture2D" uid="uid://cjak0f5ye0pt8" path="res://assets/gui/island_diorama/island_deep_tree_1.png" id="15_0y2qr"]
+[ext_resource type="Script" uid="uid://brg07hgm2ncfm" path="res://assets/scripts/Guis/start_menu/start_menu_button_particles.gd" id="15_a7uje"]
+[ext_resource type="Texture2D" uid="uid://7ynip8y66nsi" path="res://assets/gui/island_diorama/island_tree2.png" id="15_r6qw7"]
+[ext_resource type="Shader" uid="uid://c6twqcbqfltg4" path="res://assets/shaders/start_menu_button_decoration_sine_warp.gdshader" id="16_37qom"]
+[ext_resource type="Texture2D" uid="uid://by6kkwqc7sach" path="res://assets/gui/island_diorama/island_tree1.png" id="16_r6qw7"]
+[ext_resource type="Texture2D" uid="uid://crnd5da7ahot4" path="res://assets/gui/menu_fish.png" id="17_37qom"]
+[ext_resource type="Texture2D" uid="uid://ceayqi10dtxsp" path="res://assets/gui/island_diorama/island_deep_root_1.png" id="18_bjnkw"]
+[ext_resource type="Texture2D" uid="uid://cyavfe82xilqj" path="res://assets/gui/circle.png" id="19_8c457"]
+[ext_resource type="Texture2D" uid="uid://brc5csq5daq1s" path="res://assets/gui/island_diorama/island_ruins_1.png" id="19_v6sgr"]
+[ext_resource type="Shader" uid="uid://d358nr55isdje" path="res://assets/shaders/volcano_smoke.gdshader" id="20_0nsjh"]
+[ext_resource type="Texture2D" uid="uid://dux61t0lvsuo4" path="res://assets/gui/island_diorama/island_ruins_2.png" id="21_8ijck"]
+[ext_resource type="Texture2D" uid="uid://bq870pmfxoaio" path="res://assets/gui/circle_bordered.png" id="21_ce0he"]
+[ext_resource type="Texture2D" uid="uid://ba718hcets3i6" path="res://assets/gui/island_diorama/island_ash_1.png" id="22_1jj22"]
+[ext_resource type="Texture2D" uid="uid://brox464hn6xps" path="res://assets/gui/island_diorama/island_swamp_tree_1.png" id="24_xanmy"]
+[ext_resource type="Texture2D" uid="uid://bco5uf3orqwv4" path="res://assets/gui/island_diorama/island_swamp_tree_2.png" id="25_ulm5y"]
+[ext_resource type="Texture2D" uid="uid://bon88uywv3hfq" path="res://assets/gui/island_diorama/island_swamp_tree_3.png" id="26_ulm5y"]
+[ext_resource type="Texture2D" uid="uid://ivj5id4nrq72" path="res://assets/gui/island_diorama/island_tower_1.png" id="27_0e3oe"]
+[ext_resource type="Texture2D" uid="uid://cm3ggxmjoiltu" path="res://assets/gui/island_diorama/island_tower_2.png" id="28_q3skl"]
+[ext_resource type="Texture2D" uid="uid://bq2gjl5ie1s4j" path="res://assets/gui/island_diorama/island_tower_3.png" id="29_lyip4"]
+[ext_resource type="Texture2D" uid="uid://raf52sfvgk0f" path="res://assets/gui/island_diorama/island_house_1.png" id="30_kbp7x"]
+[ext_resource type="Texture2D" uid="uid://dt2nmur1l2cj0" path="res://assets/gui/island_diorama/island_house_2.png" id="31_5cfws"]
+[ext_resource type="FontFile" uid="uid://cp02w5mdy0pdm" path="res://assets/fonts/BelanidiSerif-Regular.otf" id="46_kbp7x"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a4px2"]
+shader = ExtResource("2_2banv")
+shader_parameter/speed = Vector2(0.2, 0)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_q3skl"]
+viewport_path = NodePath("VBoxContainer/SubViewportContainer/SubViewport/Island/MonolithRenderer/SubViewport")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kbp7x"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("7_kbp7x")
+shader_parameter/albedo_texture = SubResource("ViewportTexture_q3skl")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+shader_parameter/outline_size = 1.005
+shader_parameter/use_diagonals = true
+shader_parameter/use_billboard = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0e3oe"]
+diffuse_mode = 3
+albedo_texture = ExtResource("7_0e3oe")
+rim = 0.6
+uv1_triplanar = true
+uv2_triplanar = true
+texture_filter = 0
+disable_receive_shadows = true
+grow_amount = 0.67
+stencil_mode = 3
+stencil_flags = 2
+stencil_outline_thickness = 0.02
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ce0he"]
+render_priority = 0
+shader = ExtResource("20_0nsjh")
+shader_parameter/albedo_texture = ExtResource("21_ce0he")
+shader_parameter/color = Color(0.22670749, 0.22670749, 0.22670746, 1)
+shader_parameter/outline_color = Color(0.15294118, 0.14117648, 0.23529412, 1)
+shader_parameter/outline_size = 30.02
+
+[sub_resource type="Curve" id="Curve_8ijck"]
+_limits = [0.0, 2.0, 0.0, 1.0]
+_data = [Vector2(1e-05, 0), 0.0, 0.0, 0, 0, Vector2(0.37966102, 1.7306632), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_1jj22"]
+curve = SubResource("Curve_8ijck")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_0nsjh"]
+emission_shape_scale = Vector3(0.3, 0, 0.1)
+emission_shape = 1
+emission_sphere_radius = 1.0
+direction = Vector3(0, 1, 0)
+spread = 1.0
+initial_velocity_min = 0.95
+initial_velocity_max = 0.95
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_1jj22")
+
+[sub_resource type="QuadMesh" id="QuadMesh_ce0he"]
+
+[sub_resource type="GDScript" id="GDScript_5pab1"]
+resource_name = "GrabFocus"
+script/source = "extends StartMenuButton
+
+func _ready() -> void:
+	grab_focus()
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bdg0b"]
+shader = ExtResource("3_ka6nf")
+shader_parameter/color = Color(0.99723774, 0.56631017, 0.633914, 1)
+shader_parameter/active = true
+shader_parameter/fill_color = Color(0.8796277, 0.21125641, 0.2742213, 1)
+shader_parameter/unselected_fill = Color(0, 0, 0, 1)
+shader_parameter/pulse_color = Color(0.4436672, 0, 0.015188404, 1)
+shader_parameter/pixel_scale = 2
+shader_parameter/pulse_speed = 1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o30b1"]
+atlas = ExtResource("3_r2jwc")
+region = Rect2(104, 20.5, 139, 95)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hm208"]
+atlas = ExtResource("3_r2jwc")
+region = Rect2(0, 0, 106, 108.5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ka6nf"]
+atlas = ExtResource("3_r2jwc")
+region = Rect2(244.18176, 16.545456, 130.90912, 92.727264)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o30b1"]
+shader = ExtResource("16_37qom")
+shader_parameter/color = Color(0.5626142, 0.8564792, 0.98653525, 1)
+shader_parameter/active = true
+shader_parameter/fill_color = Color(0.36141932, 0.5092024, 0.71287304, 1)
+shader_parameter/unselected_fill = Color(0, 0, 0, 1)
+shader_parameter/pixel_scale = 2
+
+[sub_resource type="Curve" id="Curve_a4px2"]
+_limits = [0.0, 6.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 44.272774, 0, 0, Vector2(0.11314985, 5.5899367), 0.0, 0.0, 0, 0, Vector2(0.49541286, 6), 0.0, 0.0, 0, 0, Vector2(0.8960246, 5.502066), 0.0, 0.0, 0, 0, Vector2(1, 0), -27.940334, 0.0, 0, 0]
+point_count = 5
+
+[sub_resource type="CurveTexture" id="CurveTexture_37qom"]
+curve = SubResource("Curve_a4px2")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_a7uje"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(1, 48, 1)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+angle_min = -9.9999895
+angle_max = 10.0000105
+spread = 0.0
+initial_velocity_min = -250.0
+initial_velocity_max = -250.0
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_37qom")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ws7p0"]
+shader = ExtResource("5_o30b1")
+shader_parameter/color = Color(0.34319586, 0.7926395, 0.7610168, 1)
+shader_parameter/active = true
+shader_parameter/fill_color = Color(0.52422494, 0.7431044, 0.83301383, 1)
+shader_parameter/unselected_fill = Color(0, 0, 0, 1)
+shader_parameter/pixel_scale = 2
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q3i3u"]
+atlas = ExtResource("3_r2jwc")
+region = Rect2(192, 224, 64, 64)
+
+[sub_resource type="Curve" id="Curve_8c457"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.13149847, 0.8779572), 1.755952, 1.755952, 0, 0, Vector2(0.3577982, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_3opy0"]
+curve = SubResource("Curve_8c457")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qlcmr"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(260.285, 50.75, 1)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+spread = 180.0
+initial_velocity_min = 87.5
+initial_velocity_max = 148.5
+gravity = Vector3(0, -1, 0)
+scale_curve = SubResource("CurveTexture_3opy0")
+turbulence_enabled = true
+turbulence_noise_strength = 4.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ecdxc"]
+shader = ExtResource("5_o30b1")
+shader_parameter/color = Color(0.99092907, 0.7740923, 1.540184e-06, 1)
+shader_parameter/active = true
+shader_parameter/fill_color = Color(0.76393664, 0.526839, 0.11651199, 1)
+shader_parameter/unselected_fill = Color(0, 0, 0, 1)
+shader_parameter/pixel_scale = 2
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5pab1"]
+atlas = ExtResource("3_r2jwc")
+region = Rect2(221, 141, 65, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3opy0"]
+atlas = ExtResource("3_r2jwc")
+region = Rect2(272, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bdg0b"]
+atlas = ExtResource("3_r2jwc")
+region = Rect2(413, 157, 26, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xfy2r"]
+atlas = ExtResource("3_r2jwc")
+region = Rect2(316, 142, 11, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lt4el"]
+atlas = ExtResource("3_r2jwc")
+region = Rect2(288, 160, 10, 18)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qls88"]
+shader = ExtResource("5_o30b1")
+shader_parameter/color = Color(0.56019855, 0.70822084, 0.18243793, 1)
+shader_parameter/active = true
+shader_parameter/fill_color = Color(0.16002333, 0.39246437, 0.1821701, 1)
+shader_parameter/unselected_fill = Color(0, 0, 0, 1)
+shader_parameter/pixel_scale = 2
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ws7p0"]
+atlas = ExtResource("3_r2jwc")
+region = Rect2(14, 116, 86, 47)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ecdxc"]
+atlas = ExtResource("3_r2jwc")
+region = Rect2(109, 102, 56, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pcj7n"]
+atlas = ExtResource("3_r2jwc")
+region = Rect2(102, 152, 66, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qls88"]
+atlas = ExtResource("3_r2jwc")
+region = Rect2(37, 164, 56, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_37qom"]
+atlas = ExtResource("3_r2jwc")
+region = Rect2(400, 32, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a7uje"]
+atlas = ExtResource("3_r2jwc")
+region = Rect2(448, 48, 64, 64)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pcj7n"]
+shader = ExtResource("9_ws7p0")
+shader_parameter/color = Color(0.71602684, 0.44026253, 1, 1)
+shader_parameter/fill_color = Color(0.13196605, 0.0512949, 0.24994093, 1)
+shader_parameter/unselected_fill = Color(0, 0, 0, 1)
+shader_parameter/active = true
+shader_parameter/pixel_scale = 2
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_phykr"]
+atlas = ExtResource("3_r2jwc")
+region = Rect2(224, 288, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2banv"]
+atlas = ExtResource("3_r2jwc")
+region = Rect2(192, 288, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8c457"]
+atlas = ExtResource("3_r2jwc")
+region = Rect2(128, 216, 48, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ytx0m"]
+atlas = ExtResource("3_r2jwc")
+region = Rect2(160, 288, 32, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a4px2"]
+atlas = ExtResource("3_r2jwc")
+region = Rect2(64, 216, 48, 48)
+
+[sub_resource type="LabelSettings" id="LabelSettings_5cfws"]
+line_spacing = 2.805
+paragraph_spacing = -48.47
+font = ExtResource("46_kbp7x")
+font_size = 81
+outline_size = 38
+outline_color = Color(0, 0, 0, 1)
 
 [node name="StartScreen" type="Control" node_paths=PackedStringArray("mutiplayer_button", "singleplayer_button", "quit_button", "settings_button", "tutorial_button")]
 layout_mode = 3
@@ -10,65 +301,1058 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(1, 0.998773)
 script = ExtResource("1_kxo13")
-mutiplayer_button = NodePath("CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Mutiplayer")
-singleplayer_button = NodePath("CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SinglePlayer")
-quit_button = NodePath("CenterContainer/PanelContainer/MarginContainer/VBoxContainer/QuitButton")
-settings_button = NodePath("CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SettingsButton")
-tutorial_button = NodePath("CenterContainer/PanelContainer/MarginContainer/VBoxContainer/TutorialButton")
+mutiplayer_button = NodePath("VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Mutiplayer")
+singleplayer_button = NodePath("VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SinglePlayer")
+quit_button = NodePath("VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/QuitButton")
+settings_button = NodePath("VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SettingsButton")
+tutorial_button = NodePath("VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/TutorialButton")
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
+[node name="Water" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+color = Color(0.23036203, 0.39206788, 0.86449015, 1)
 
-[node name="PanelContainer" type="PanelContainer" parent="CenterContainer"]
+[node name="Sky" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -1410.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.6430463, 0.8710509, 0.99999994, 1)
+
+[node name="Clouds" type="TextureRect" parent="."]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_a4px2")
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 499.0
+grow_horizontal = 2
+texture = ExtResource("3_ytx0m")
+stretch_mode = 6
+
+[node name="WaterEdge" type="TextureRect" parent="."]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_a4px2")
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = -1.0
+offset_top = 299.0
+offset_right = -1.0
+offset_bottom = 798.0
+grow_horizontal = 2
+texture = ExtResource("4_ytx0m")
+stretch_mode = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.2
+focus_mode = 0
+stretch = true
+stretch_shrink = 4
+
+[node name="SubViewport" type="SubViewport" parent="VBoxContainer/SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+size = Vector2i(270, 261)
+size_2d_override = Vector2i(360, 348)
+render_target_update_mode = 4
+
+[node name="Camera3D" type="Camera3D" parent="VBoxContainer/SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 0.9500483, 0.31210282, 0, -0.3121028, 0.9500483, 4.7683716e-07, 2.8815331, 3.4560673)
+projection = 1
+size = 5.559881
+
+[node name="Island" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport"]
+sorting_offset = -10.0
+sorting_use_aabb_center = false
+pixel_size = 0.04
+axis = 1
+texture_filter = 0
+texture = ExtResource("2_ecdxc")
+script = ExtResource("3_bdg0b")
+
+[node name="MonolithRenderer" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Island"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.122000635, 0)
+sorting_use_aabb_center = false
+material_override = SubResource("ShaderMaterial_kbp7x")
+cast_shadow = 0
+offset = Vector2(0, 129.425)
+pixel_size = 0.015
+billboard = 1
+texture_filter = 0
+texture = SubResource("ViewportTexture_q3skl")
+
+[node name="SubViewport" type="SubViewport" parent="VBoxContainer/SubViewportContainer/SubViewport/Island/MonolithRenderer"]
+own_world_3d = true
+transparent_bg = true
+canvas_item_default_texture_filter = 0
+
+[node name="Monolith" type="CSGCombiner3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Island/MonolithRenderer/SubViewport"]
+transform = Transform3D(0.7, 0, 0, 0, 1, 0, 0, 0, 0.7, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_0e3oe")
+script = ExtResource("3_bdg0b")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Island/MonolithRenderer/SubViewport/Monolith"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.9265347, 0)
+size = Vector3(0.7, 10.22, 1.5)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Island/MonolithRenderer/SubViewport/Monolith"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 4.9265347, 0)
+size = Vector3(0.7, 10.22, 1.5)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Island/MonolithRenderer/SubViewport/Monolith"]
+transform = Transform3D(0.70710075, 0, 0.7071008, 0, 0.99999404, 0, -0.7071008, 0, 0.70710075, 0, 0.9925078, 0)
+radius = 1.2949219
+height = 2.3437805
+sides = 4
+cone = true
+smooth_faces = false
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Island/MonolithRenderer/SubViewport/Monolith"]
+transform = Transform3D(-4.2573717e-08, 0, 0.9999752, 0, 0.9999827, 0, -0.9999752, 0, -4.2573717e-08, 0, 2.1359124, 0)
+radius = 1.2949219
+height = 4.630558
+sides = 4
+cone = true
+smooth_faces = false
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Island/MonolithRenderer/SubViewport/Monolith"]
+transform = Transform3D(0.9999937, 0, 0, 0, 0.9999956, 0, 0, 0, 0.9999937, -1.0769447, 2.9080544, 0.25298974)
+operation = 2
+size = Vector3(1.6000977, 1, 1.5059814)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Island/MonolithRenderer/SubViewport/Monolith"]
+transform = Transform3D(0.9999936, 0, 0, 0, 0.9999955, 0, 0, 0, 0.9999936, 0.9201712, 3.7603762, 0.25298974)
+operation = 2
+size = Vector3(1.6000977, 1, 1.5059814)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Island/MonolithRenderer/SubViewport/Monolith"]
+transform = Transform3D(0.9999934, 0, 0, 0, 0.99999535, 0, 0, 0, 0.9999934, 0.9126497, 1.9434186, 1.0435375)
+operation = 2
+size = Vector3(1.6000977, 1, 1.5059814)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Island/MonolithRenderer/SubViewport/Monolith"]
+transform = Transform3D(0.9999932, 0, 0, 0, 0.99999523, 0, 0, 0, 0.9999932, -1.3167356, 1.6251296, -0.515833)
+operation = 2
+size = Vector3(1.6000977, 1, 1.5059814)
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Island/MonolithRenderer/SubViewport/Monolith"]
+transform = Transform3D(0.9999902, 0, 0, 0, 0.99999315, 0, 0, 0, 0.9999902, -0.8849997, 6.0695677, 0.25298974)
+operation = 2
+size = Vector3(1.6000977, 2.015625, 1.5059814)
+
+[node name="Decal" type="Decal" parent="VBoxContainer/SubViewportContainer/SubViewport/Island/MonolithRenderer/SubViewport/Monolith"]
+transform = Transform3D(1.4274181, -0.057380937, -2.5082003e-09, 0, -4.3711374e-08, 0.9999997, -0.057380937, -1.4274181, -6.239442e-08, 0.39226693, 1.6541593, 0.27052587)
+size = Vector3(2, 4.5340576, 2)
+texture_albedo = ExtResource("7_q3skl")
+upper_fade = 659753.56
+lower_fade = 0.57956296
+
+[node name="Decal2" type="Decal" parent="VBoxContainer/SubViewportContainer/SubViewport/Island/MonolithRenderer/SubViewport/Monolith"]
+transform = Transform3D(-0.6123812, 1.2906598, 5.6416525e-08, 3.8296935e-15, -4.3711356e-08, 0.9999993, 1.2906598, 0.6123812, 2.6768024e-08, -0.012927477, 3.015079, -0.05532809)
+size = Vector3(2, 4.5340576, 2)
+texture_albedo = ExtResource("7_q3skl")
+upper_fade = 659753.56
+lower_fade = 0.57956296
+
+[node name="Camera3D" type="Camera3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Island/MonolithRenderer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 0.9500483, 0.31210282, 0, -0.3121028, 0.9500483, 4.7683716e-07, 2.8815331, 3.4560673)
+projection = 1
+size = 7.711
+
+[node name="Sun" type="DirectionalLight3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Island/MonolithRenderer/SubViewport"]
+transform = Transform3D(0.79874057, -0.27766448, 0.53377515, -1.2869551e-08, 0.88714784, 0.4614854, -0.60167557, -0.36860713, 0.70860094, 1.7909322, 1.7504114, 0)
+light_color = Color(0.73, 0.7046934, 0.67160004, 1)
+light_energy = 4.215
+
+[node name="VolcanoSmoke" type="GPUParticles3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Island"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1599505, 0.2898211, -1.1021017)
+sorting_offset = -5.0
+material_override = SubResource("ShaderMaterial_ce0he")
+amount = 12
+lifetime = 2.5
+local_coords = true
+transform_align = 1
+process_material = SubResource("ParticleProcessMaterial_0nsjh")
+draw_pass_1 = SubResource("QuadMesh_ce0he")
+
+[node name="Volcano" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Island"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0598593, -0.21564388, -1.1198698)
+sorting_use_aabb_center = false
+offset = Vector2(0, 16)
+pixel_size = 0.03
+billboard = 1
+texture_filter = 0
+texture = ExtResource("5_xfy2r")
+
+[node name="Dune1" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Island"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1696129, -0.21564388, -0.8775211)
+sorting_use_aabb_center = false
+offset = Vector2(0, 16)
+pixel_size = 0.03
+billboard = 1
+texture_filter = 0
+texture = ExtResource("6_xfy2r")
+
+[node name="Dune2" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Island"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3168156, -0.21564388, -0.3459439)
+sorting_use_aabb_center = false
+offset = Vector2(0, 16)
+pixel_size = 0.03
+billboard = 1
+texture_filter = 0
+texture = ExtResource("6_xfy2r")
+
+[node name="Castle" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Island"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.409733, -0.050743222, -1.4000294)
+sorting_use_aabb_center = false
+offset = Vector2(0, 16)
+pixel_size = 0.03
+billboard = 1
+texture_filter = 0
+texture = ExtResource("13_53rsf")
+
+[node name="SmallMountain" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Island"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6208879, -0.21564388, -2.0637922)
+sorting_use_aabb_center = false
+offset = Vector2(0, 16)
+pixel_size = 0.03
+billboard = 1
+texture_filter = 0
+texture = ExtResource("7_lt4el")
+
+[node name="LargeMountain" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Island"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7417146, 0.27006412, -2.2613864)
+sorting_use_aabb_center = false
+offset = Vector2(0, 16)
+pixel_size = 0.03
+billboard = 1
+texture_filter = 0
+texture = ExtResource("8_phykr")
+
+[node name="Blimp" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Island"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2644966, 2.3412876, -1.1588005)
+sorting_use_aabb_center = false
+offset = Vector2(0, 16)
+pixel_size = 0.03
+billboard = 1
+texture_filter = 0
+texture = ExtResource("12_3opy0")
+
+[node name="SkyCtiy" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Island"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.701784, 2.3412876, 0.09855044)
+sorting_use_aabb_center = false
+offset = Vector2(0, 16)
+pixel_size = 0.03
+billboard = 1
+texture_filter = 0
+texture = ExtResource("14_qlcmr")
+
+[node name="ForestTree1" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Island"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.216057, -0.04202217, -0.3007278)
+sorting_use_aabb_center = false
+offset = Vector2(0, 16)
+pixel_size = 0.03
+billboard = 1
+texture_filter = 0
+texture = ExtResource("15_0y2qr")
+
+[node name="ForestTreeSmall1" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Island"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5010781, -0.29923505, -0.74265146)
+sorting_use_aabb_center = false
+offset = Vector2(0, 16)
+pixel_size = 0.03
+billboard = 1
+texture_filter = 0
+texture = ExtResource("16_r6qw7")
+
+[node name="ForestTreeSmall2" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Island"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1020055, -0.29923505, -0.50160766)
+sorting_use_aabb_center = false
+offset = Vector2(0, 16)
+pixel_size = 0.03
+billboard = 1
+texture_filter = 0
+texture = ExtResource("15_r6qw7")
+
+[node name="ForestTreeSmall3" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Island"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6787798, -0.29923505, 0.39006698)
+sorting_use_aabb_center = false
+offset = Vector2(0, 16)
+pixel_size = 0.03
+billboard = 1
+texture_filter = 0
+texture = ExtResource("16_r6qw7")
+
+[node name="ForestTreeSmall4" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Island"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.45287704, -0.29923505, -0.88128245)
+sorting_use_aabb_center = false
+offset = Vector2(0, 16)
+pixel_size = 0.03
+billboard = 1
+texture_filter = 0
+texture = ExtResource("16_r6qw7")
+
+[node name="ForestRoot1" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Island"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8876688, -0.0420222, -0.07798061)
+sorting_use_aabb_center = false
+offset = Vector2(0, 16)
+pixel_size = 0.03
+billboard = 1
+texture_filter = 0
+texture = ExtResource("18_bjnkw")
+
+[node name="ForestRoot2" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Island"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6681378, -0.0420222, -1.198189)
+sorting_use_aabb_center = false
+offset = Vector2(0, 16)
+pixel_size = 0.03
+billboard = 1
+texture_filter = 0
+texture = ExtResource("18_bjnkw")
+
+[node name="ForestRoot3" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Island"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.31840992, -0.0420222, -0.56557214)
+sorting_use_aabb_center = false
+offset = Vector2(0, 16)
+pixel_size = 0.03
+billboard = 1
+texture_filter = 0
+texture = ExtResource("18_bjnkw")
+
+[node name="VolcanoRuin1" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Island"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7759446, -0.2904785, -0.70773447)
+sorting_use_aabb_center = false
+offset = Vector2(0, 16)
+pixel_size = 0.03
+billboard = 1
+texture_filter = 0
+texture = ExtResource("19_v6sgr")
+
+[node name="VolcanoRuin2" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Island"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4935324, -0.2904785, -0.6968752)
+sorting_use_aabb_center = false
+offset = Vector2(0, 16)
+pixel_size = 0.03
+billboard = 1
+texture_filter = 0
+texture = ExtResource("19_v6sgr")
+
+[node name="AshRuin1" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Island"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4558499, -0.021173, 0.68504345)
+sorting_use_aabb_center = false
+offset = Vector2(0, 16)
+pixel_size = 0.03
+billboard = 1
+texture_filter = 0
+texture = ExtResource("21_8ijck")
+
+[node name="AshRuin2" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Island"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.914408, -0.01203689, 0.60202885)
+sorting_use_aabb_center = false
+offset = Vector2(0, 20)
+pixel_size = 0.03
+billboard = 1
+texture_filter = 0
+texture = ExtResource("22_1jj22")
+
+[node name="SwampTree1" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Island"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.97386515, -0.022982448, 0.41851366)
+sorting_use_aabb_center = false
+offset = Vector2(0, 16)
+pixel_size = 0.03
+billboard = 1
+texture_filter = 0
+texture = ExtResource("24_xanmy")
+
+[node name="SwampTree2" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Island"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1128564, -0.022982448, 0.94407463)
+sorting_use_aabb_center = false
+offset = Vector2(0, 16)
+pixel_size = 0.03
+billboard = 1
+texture_filter = 0
+texture = ExtResource("25_ulm5y")
+
+[node name="SwampTree3" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Island"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8971231, -0.021173, 1.1398612)
+sorting_use_aabb_center = false
+offset = Vector2(0, 24)
+pixel_size = 0.03
+billboard = 1
+texture_filter = 0
+texture = ExtResource("26_ulm5y")
+
+[node name="SwampTree4" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Island"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4113576, -0.022982448, 1.1923714)
+sorting_use_aabb_center = false
+offset = Vector2(0, 16)
+pixel_size = 0.03
+billboard = 1
+texture_filter = 0
+texture = ExtResource("24_xanmy")
+
+[node name="Tower1" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Island"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.52127033, -0.022982448, 2.3083956)
+sorting_use_aabb_center = false
+offset = Vector2(0, 8)
+pixel_size = 0.03
+billboard = 1
+texture_filter = 0
+texture = ExtResource("27_0e3oe")
+
+[node name="Dome1" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Island"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.30633432, -0.022982448, 1.9437753)
+sorting_use_aabb_center = false
+offset = Vector2(0, 10)
+pixel_size = 0.03
+billboard = 1
+texture_filter = 0
+texture = ExtResource("28_q3skl")
+
+[node name="Skyscraper1" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Island"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.65523565, -0.022982448, 1.5374802)
+sorting_use_aabb_center = false
+offset = Vector2(0, 8)
+pixel_size = 0.03
+billboard = 1
+texture_filter = 0
+texture = ExtResource("29_lyip4")
+
+[node name="HouseA1" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Island"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5714366, -0.046755195, 2.000141)
+sorting_use_aabb_center = false
+offset = Vector2(0, 8)
+pixel_size = 0.03
+billboard = 1
+texture_filter = 0
+texture = ExtResource("30_kbp7x")
+
+[node name="HouseB1" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Island"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0633307, -0.028321266, 1.8457772)
+sorting_use_aabb_center = false
+offset = Vector2(0, 8)
+pixel_size = 0.03
+billboard = 1
+texture_filter = 0
+texture = ExtResource("31_5cfws")
+
+[node name="HouseB2" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Island"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1391475, -0.028321266, 1.8232107)
+sorting_use_aabb_center = false
+offset = Vector2(0, 8)
+pixel_size = 0.03
+billboard = 1
+texture_filter = 0
+texture = ExtResource("31_5cfws")
+
+[node name="HouseB3" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Island"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.93558764, -0.028321266, 2.3630466)
+sorting_use_aabb_center = false
+offset = Vector2(0, 8)
+pixel_size = 0.03
+billboard = 1
+texture_filter = 0
+texture = ExtResource("31_5cfws")
+
+[node name="HouseB4" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Island"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3559997, -0.028321266, 1.900751)
+sorting_use_aabb_center = false
+offset = Vector2(0, 8)
+pixel_size = 0.03
+billboard = 1
+texture_filter = 0
+texture = ExtResource("31_5cfws")
+
+[node name="HouseA2" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Island"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.856282, -0.046755195, 2.0027034)
+sorting_use_aabb_center = false
+offset = Vector2(0, 8)
+pixel_size = 0.03
+billboard = 1
+texture_filter = 0
+texture = ExtResource("30_kbp7x")
+
+[node name="HouseA3" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Island"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.114663124, -0.046755195, 2.1796446)
+sorting_use_aabb_center = false
+offset = Vector2(0, 8)
+pixel_size = 0.03
+billboard = 1
+texture_filter = 0
+texture = ExtResource("30_kbp7x")
+
+[node name="HouseA4" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Island"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.079722, -0.046755195, 1.7217652)
+sorting_use_aabb_center = false
+offset = Vector2(0, 8)
+pixel_size = 0.03
+billboard = 1
+texture_filter = 0
+texture = ExtResource("30_kbp7x")
+
+[node name="Tower2" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Island"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.34714234, -0.022982448, 2.2959614)
+sorting_use_aabb_center = false
+offset = Vector2(0, 8)
+pixel_size = 0.03
+billboard = 1
+texture_filter = 0
+texture = ExtResource("27_0e3oe")
+
+[node name="Tower3" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Island"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.334424, -0.022982448, 1.6427988)
+sorting_use_aabb_center = false
+offset = Vector2(0, 8)
+pixel_size = 0.03
+billboard = 1
+texture_filter = 0
+texture = ExtResource("27_0e3oe")
+
+[node name="Skyscraper2" type="Sprite3D" parent="VBoxContainer/SubViewportContainer/SubViewport/Island"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1042056, -0.022982448, 1.6102424)
+sorting_use_aabb_center = false
+offset = Vector2(0, 8)
+pixel_size = 0.03
+billboard = 1
+texture_filter = 0
+texture = ExtResource("29_lyip4")
+
+[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/CenterContainer"]
+self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/PanelContainer"]
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/CenterContainer/PanelContainer"]
+visible = false
+layout_direction = 1
+layout_mode = 2
+size_flags_vertical = 3
+color = Color(0, 0, 0, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/CenterContainer/PanelContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 18
 
-[node name="Mutiplayer" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="Mutiplayer" type="Button" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+z_index = 1
 layout_mode = 2
+focus_neighbor_top = NodePath("../QuitButton")
+theme = ExtResource("2_5pab1")
 theme_override_font_sizes/font_size = 48
 text = "Multiplayer
 "
-script = ExtResource("3_he1sj")
+script = SubResource("GDScript_5pab1")
 
-[node name="SinglePlayer" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="Shader" type="CanvasGroup" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Mutiplayer"]
+show_behind_parent = true
+z_as_relative = false
+material = SubResource("ShaderMaterial_bdg0b")
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Mutiplayer/Shader"]
+offset_left = 2.0
+offset_top = -1.666666
+offset_right = 484.0
+offset_bottom = 159.66664
+focus_neighbor_top = NodePath("../../../QuitButton")
+color = Color(0, 0, 0, 1)
+
+[node name="Sprite2D2" type="Sprite2D" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Mutiplayer/Shader"]
+show_behind_parent = true
+position = Vector2(174, -7.173218)
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_o30b1")
+
+[node name="Sprite2D" type="Sprite2D" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Mutiplayer/Shader"]
+show_behind_parent = true
+position = Vector2(6, 29.872253)
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_hm208")
+
+[node name="Sprite2D3" type="Sprite2D" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Mutiplayer/Shader"]
+show_behind_parent = true
+position = Vector2(460, 2.8170166)
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_ka6nf")
+
+[node name="SinglePlayer" type="Button" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" node_paths=PackedStringArray("particle")]
+z_index = 1
 layout_mode = 2
+theme = ExtResource("2_5pab1")
 theme_override_font_sizes/font_size = 48
 text = "Single Player"
+script = ExtResource("15_a7uje")
+particle = NodePath("Shader/MenuFish")
 
-[node name="SettingsButton" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 48
-text = "Settings (not implmented)"
+[node name="Shader" type="CanvasGroup" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SinglePlayer"]
+show_behind_parent = true
+z_as_relative = false
+material = SubResource("ShaderMaterial_o30b1")
 
-[node name="TutorialButton" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SinglePlayer/Shader"]
+offset_left = -10.666664
+offset_top = -8.821838
+offset_right = 502.00003
+offset_bottom = 224.99994
+size_flags_horizontal = 3
+color = Color(0, 0, 0, 1)
+
+[node name="MenuFish" type="GPUParticles2D" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SinglePlayer/Shader"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(549, 50)
+amount = 50
+texture = ExtResource("17_37qom")
+lifetime = 2.5
+preprocess = 2.5
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_a7uje")
+
+[node name="ColorRect2" type="ColorRect" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SinglePlayer/Shader"]
+offset_left = -535.0
+offset_top = 78.99994
+offset_right = -22.333313
+offset_bottom = 183.12775
+size_flags_horizontal = 3
+color = Color(0, 0, 0, 0)
+
+[node name="ColorRect3" type="ColorRect" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SinglePlayer/Shader"]
+offset_left = 708.99994
+offset_top = 43.99994
+offset_right = 1221.6666
+offset_bottom = 148.12775
+size_flags_horizontal = 3
+color = Color(0, 0, 0, 0)
+
+[node name="TutorialButton" type="Button" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" node_paths=PackedStringArray("particle")]
+z_index = 1
 layout_mode = 2
+theme = ExtResource("2_5pab1")
 theme_override_font_sizes/font_size = 48
 text = "Tutorial"
+script = ExtResource("15_a7uje")
+particle = NodePath("Shader/Clouds")
 
-[node name="QuitButton" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="Shader" type="CanvasGroup" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/TutorialButton"]
+show_behind_parent = true
+z_as_relative = false
+material = SubResource("ShaderMaterial_ws7p0")
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/TutorialButton/Shader"]
+offset_left = -14.0
+offset_top = -8.821838
+offset_right = 502.0
+offset_bottom = 95.30597
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/TutorialButton/Shader/ColorRect"]
+layout_mode = 0
+offset_left = -734.0
+offset_top = -160.17828
+offset_right = -218.0
+offset_bottom = -56.050476
+color = Color(0, 0, 0, 0)
+
+[node name="ColorRect2" type="ColorRect" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/TutorialButton/Shader/ColorRect"]
+layout_mode = 0
+offset_left = 648.0
+offset_top = 165.82172
+offset_right = 1164.0
+offset_bottom = 269.94952
+color = Color(0, 0, 0, 0)
+
+[node name="Sprite2D9" type="Sprite2D" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/TutorialButton/Shader"]
+show_behind_parent = true
+position = Vector2(5, 76)
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_q3i3u")
+
+[node name="Sprite2D10" type="Sprite2D" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/TutorialButton/Shader"]
+show_behind_parent = true
+position = Vector2(13, 21)
+scale = Vector2(1.4375, 1.4375)
+texture = SubResource("AtlasTexture_q3i3u")
+
+[node name="Sprite2D11" type="Sprite2D" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/TutorialButton/Shader"]
+show_behind_parent = true
+position = Vector2(486, 83)
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_q3i3u")
+
+[node name="Sprite2D12" type="Sprite2D" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/TutorialButton/Shader"]
+show_behind_parent = true
+position = Vector2(500, 27)
+scale = Vector2(1.4375, 1.4375)
+texture = SubResource("AtlasTexture_q3i3u")
+
+[node name="Sprite2D13" type="Sprite2D" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/TutorialButton/Shader"]
+show_behind_parent = true
+position = Vector2(455, 24)
+scale = Vector2(1.4375, 1.4375)
+texture = SubResource("AtlasTexture_q3i3u")
+
+[node name="Clouds" type="GPUParticles2D" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/TutorialButton/Shader"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(239, 80)
+amount = 400
+texture = ExtResource("19_8c457")
+lifetime = 5.0
+preprocess = 4.0
+process_material = SubResource("ParticleProcessMaterial_qlcmr")
+
+[node name="Sprite2D14" type="Sprite2D" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/TutorialButton/Shader"]
+show_behind_parent = true
+position = Vector2(128, 40)
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_q3i3u")
+
+[node name="Sprite2D15" type="Sprite2D" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/TutorialButton/Shader"]
+show_behind_parent = true
+position = Vector2(264, 18)
+scale = Vector2(1.4375, 1.4375)
+texture = SubResource("AtlasTexture_q3i3u")
+
+[node name="Sprite2D16" type="Sprite2D" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/TutorialButton/Shader"]
+show_behind_parent = true
+position = Vector2(86, 15)
+scale = Vector2(1.4375, 1.4375)
+texture = SubResource("AtlasTexture_q3i3u")
+
+[node name="Sprite2D17" type="Sprite2D" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/TutorialButton/Shader"]
+show_behind_parent = true
+position = Vector2(347, 18)
+scale = Vector2(1.4375, 1.4375)
+texture = SubResource("AtlasTexture_q3i3u")
+
+[node name="RecordsButton" type="Button" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+z_index = 1
 layout_mode = 2
+theme = ExtResource("2_5pab1")
+theme_override_font_sizes/font_size = 48
+text = "(Records)"
+script = ExtResource("4_o30b1")
+
+[node name="Shader" type="CanvasGroup" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/RecordsButton"]
+show_behind_parent = true
+z_as_relative = false
+material = SubResource("ShaderMaterial_ecdxc")
+
+[node name="Sprite2D3" type="Sprite2D" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/RecordsButton/Shader"]
+show_behind_parent = true
+position = Vector2(13, 37.245667)
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_5pab1")
+script = ExtResource("7_ka6nf")
+speed = 50.0
+wobble_scale = 1.0
+
+[node name="Sprite2D7" type="Sprite2D" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/RecordsButton/Shader/Sprite2D3"]
+position = Vector2(0.5, 3.5438232)
+texture = SubResource("AtlasTexture_3opy0")
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/RecordsButton/Shader"]
+offset_left = 56.66667
+offset_top = -8.821838
+offset_right = 502.0
+offset_bottom = 95.30597
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/RecordsButton/Shader"]
+offset_left = 488.0
+offset_top = 14.20636
+offset_right = 527.0
+offset_bottom = 72.27765
+color = Color(0, 0, 0, 1)
+
+[node name="Node2D2" type="Node2D" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/RecordsButton/Shader"]
+script = ExtResource("7_ka6nf")
+speed = -40.0
+wobble_scale = 2.0
+
+[node name="ColorRect3" type="ColorRect" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/RecordsButton/Shader/Node2D2"]
+offset_left = 495.0
+offset_top = -1.8132324
+offset_right = 553.0
+offset_bottom = 56.258053
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/RecordsButton/Shader/Node2D2"]
+offset_left = 437.0
+offset_top = 37.234726
+offset_right = 504.0
+offset_bottom = 95.306015
+color = Color(0, 0, 0, 1)
+
+[node name="Node2D" type="Node2D" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/RecordsButton/Shader"]
+script = ExtResource("7_ka6nf")
+speed = -40.0
+wobble_scale = 2.0
+
+[node name="Sprite2D4" type="Sprite2D" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/RecordsButton/Shader/Node2D"]
+show_behind_parent = true
+position = Vector2(527, 77.28375)
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_bdg0b")
+
+[node name="Sprite2D5" type="Sprite2D" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/RecordsButton/Shader/Node2D"]
+show_behind_parent = true
+position = Vector2(510, 33.22986)
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_xfy2r")
+
+[node name="Sprite2D6" type="Sprite2D" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/RecordsButton/Shader/Node2D"]
+show_behind_parent = true
+position = Vector2(539, 29.224792)
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_lt4el")
+flip_h = true
+
+[node name="SettingsButton" type="Button" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+z_index = 1
+layout_mode = 2
+theme = ExtResource("2_5pab1")
+theme_override_font_sizes/font_size = 48
+text = "(Settings)"
+script = ExtResource("4_o30b1")
+
+[node name="Shader" type="CanvasGroup" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SettingsButton"]
+show_behind_parent = true
+z_as_relative = false
+material = SubResource("ShaderMaterial_qls88")
+
+[node name="Sprite2D3" type="Sprite2D" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SettingsButton/Shader"]
+show_behind_parent = true
+position = Vector2(26, 68.33333)
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_ws7p0")
+
+[node name="Sprite2D4" type="Sprite2D" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SettingsButton/Shader"]
+show_behind_parent = true
+position = Vector2(50, -8.333353)
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_ecdxc")
+
+[node name="Sprite2D6" type="Sprite2D" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SettingsButton/Shader"]
+show_behind_parent = true
+position = Vector2(462, 9.666671)
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_pcj7n")
+flip_h = true
+
+[node name="Sprite2D5" type="Sprite2D" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SettingsButton/Shader"]
+show_behind_parent = true
+position = Vector2(470.66666, 79.000015)
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_qls88")
+flip_h = true
+
+[node name="Cog" type="Sprite2D" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SettingsButton/Shader"]
+show_behind_parent = true
+position = Vector2(-17, 30.35139)
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_37qom")
+script = ExtResource("7_o30b1")
+
+[node name="Cog2" type="Sprite2D" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SettingsButton/Shader"]
+show_behind_parent = true
+position = Vector2(510, 68.39813)
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_a7uje")
+script = ExtResource("7_o30b1")
+speed = -2.0
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SettingsButton/Shader"]
+offset_left = 50.66667
+offset_top = -23.666626
+offset_right = 436.6667
+offset_bottom = 137.66669
+color = Color(0, 0, 0, 1)
+
+[node name="Sprite2D7" type="Sprite2D" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SettingsButton/Shader"]
+show_behind_parent = true
+position = Vector2(434.00003, 25.66668)
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_ecdxc")
+flip_h = true
+
+[node name="QuitButton" type="Button" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+z_index = 1
+layout_mode = 2
+focus_neighbor_bottom = NodePath("../Mutiplayer")
+theme = ExtResource("2_5pab1")
 theme_override_font_sizes/font_size = 48
 text = "Quit"
+script = ExtResource("4_o30b1")
 
-[connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Mutiplayer" to="." method="load_level_select" binds= [true]]
-[connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SinglePlayer" to="." method="load_level_select" binds= [false]]
-[connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/TutorialButton" to="." method="load_tutorial"]
-[connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/QuitButton" to="." method="quit"]
+[node name="Shader" type="CanvasGroup" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/QuitButton"]
+show_behind_parent = true
+z_as_relative = false
+material = SubResource("ShaderMaterial_pcj7n")
+position = Vector2(0, -1.0012207)
+
+[node name="Node2D" type="Node2D" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/QuitButton/Shader"]
+
+[node name="Sprite2D3" type="Sprite2D" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/QuitButton/Shader/Node2D"]
+show_behind_parent = true
+position = Vector2(-7, 21.340088)
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_phykr")
+
+[node name="Sprite2D4" type="Sprite2D" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/QuitButton/Shader/Node2D"]
+show_behind_parent = true
+position = Vector2(474, 65.5199)
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_phykr")
+
+[node name="Sprite2D5" type="Sprite2D" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/QuitButton/Shader/Node2D"]
+show_behind_parent = true
+position = Vector2(66, 67.52222)
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_phykr")
+
+[node name="Sprite2D6" type="Sprite2D" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/QuitButton/Shader/Node2D"]
+show_behind_parent = true
+position = Vector2(411, 25.470825)
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_phykr")
+
+[node name="Sprite2D7" type="Sprite2D" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/QuitButton/Shader/Node2D"]
+show_behind_parent = true
+position = Vector2(415, 37.48535)
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_q3i3u")
+
+[node name="Sprite2D8" type="Sprite2D" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/QuitButton/Shader/Node2D"]
+show_behind_parent = true
+position = Vector2(339, 70.52588)
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_q3i3u")
+
+[node name="Sprite2D9" type="Sprite2D" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/QuitButton/Shader/Node2D"]
+show_behind_parent = true
+position = Vector2(267, 46.49646)
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_q3i3u")
+
+[node name="Sprite2D10" type="Sprite2D" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/QuitButton/Shader/Node2D"]
+show_behind_parent = true
+position = Vector2(205, 68.52344)
+scale = Vector2(4.171875, 2)
+texture = SubResource("AtlasTexture_q3i3u")
+
+[node name="Sprite2D11" type="Sprite2D" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/QuitButton/Shader/Node2D"]
+show_behind_parent = true
+position = Vector2(141, 31.478027)
+scale = Vector2(4.171875, 2)
+texture = SubResource("AtlasTexture_q3i3u")
+
+[node name="Sprite2D12" type="Sprite2D" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/QuitButton/Shader/Node2D"]
+show_behind_parent = true
+position = Vector2(344.99997, 16.459595)
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_2banv")
+
+[node name="Sprite2D13" type="Sprite2D" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/QuitButton/Shader/Node2D"]
+show_behind_parent = true
+position = Vector2(399, 82.54065)
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_2banv")
+
+[node name="Sprite2D14" type="Sprite2D" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/QuitButton/Shader/Node2D"]
+show_behind_parent = true
+position = Vector2(235.66669, 147.33447)
+scale = Vector2(4.171875, 2)
+texture = SubResource("AtlasTexture_q3i3u")
+
+[node name="Sprite2D15" type="Sprite2D" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/QuitButton/Shader/Node2D"]
+show_behind_parent = true
+position = Vector2(232.33313, 137.33447)
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_8c457")
+
+[node name="Sprite2D5" type="Sprite2D" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/QuitButton/Shader"]
+show_behind_parent = true
+position = Vector2(515, 48.49888)
+rotation = 1.5707941
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_ytx0m")
+flip_h = true
+
+[node name="Sprite2D6" type="Sprite2D" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/QuitButton/Shader"]
+show_behind_parent = true
+position = Vector2(106, 112.57751)
+rotation = 3.1415882
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_a4px2")
+flip_h = true
+
+[node name="Sprite2D7" type="Sprite2D" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/QuitButton/Shader"]
+show_behind_parent = true
+position = Vector2(388, 122.00124)
+rotation = 1.5707941
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_ytx0m")
+flip_h = true
+
+[node name="Sprite2D8" type="Sprite2D" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/QuitButton/Shader"]
+show_behind_parent = true
+position = Vector2(90, 15.334582)
+rotation = 3.1415882
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_a4px2")
+flip_h = true
+
+[node name="Sprite2D9" type="Sprite2D" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/QuitButton/Shader"]
+show_behind_parent = true
+position = Vector2(-20, 62.00125)
+rotation = 4.7123823
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_a4px2")
+flip_h = true
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = -57.0
+offset_bottom = 254.0
+grow_horizontal = 2
+text = "WORLD OF
+WALLHOPPERS"
+label_settings = SubResource("LabelSettings_5cfws")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Mutiplayer" to="." method="load_level_select" binds= [true]]
+[connection signal="pressed" from="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SinglePlayer" to="." method="load_level_select" binds= [false]]
+[connection signal="pressed" from="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/TutorialButton" to="." method="load_tutorial"]
+[connection signal="pressed" from="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/QuitButton" to="." method="quit"]

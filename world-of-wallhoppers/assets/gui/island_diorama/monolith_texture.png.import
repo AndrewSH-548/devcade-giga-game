@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bqnatxvhdl8ps"
-path.s3tc="res://.godot/imported/perlin_noise_1.png-0371ba1ec8d9e7c51411bd257b5a61b3.s3tc.ctex"
+uid="uid://ov8pfmy15ysj"
+path.s3tc="res://.godot/imported/monolith_texture.png-35a5979d3a3c8d422f1948cbd3ed1f59.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/shaders/noise/perlin_noise_1.png"
-dest_files=["res://.godot/imported/perlin_noise_1.png-0371ba1ec8d9e7c51411bd257b5a61b3.s3tc.ctex"]
+source_file="res://assets/gui/island_diorama/monolith_texture.png"
+dest_files=["res://.godot/imported/monolith_texture.png-35a5979d3a3c8d422f1948cbd3ed1f59.s3tc.ctex"]
 
 [params]
 
