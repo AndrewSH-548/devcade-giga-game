@@ -31,7 +31,7 @@ func display_leaderboard(level: String) -> void:
 			if(TimeManager.current_leaderboard.get(player) == leaderboard_values[i]):
 				player_name = player;
 				break;
-		leaderboard.text += player_name + " ---------- " + str(leaderboard_values[i]) + "s\n";
+		leaderboard.text += player_name + " ----- " + str(leaderboard_values[i]) + "s\n";
 
 
 func load_start_screen() -> void:

@@ -30,7 +30,7 @@ func set_leaderboard() -> void: ## Set the leaderboard with the new time
 			if(TimeManager.current_leaderboard.get(player) == leaderboard_values[i]):
 				player_name = player;
 				break;
-		leaderboard.text += player_name + " ---------- " + str(leaderboard_values[i]) + "s\n";
+		leaderboard.text += player_name + " ----- " + str(leaderboard_values[i]) + "s\n";
 
 func _on_level_select_pressed() -> void:
 	var level_select: Control =  MenuStartScreen.LEVEL_SELECT.instantiate()
