@@ -8,7 +8,7 @@ class_name LevelSelect
 @onready var nav_right_button: Button = $VerticalContainer/ArrowContainer/NavBoxes/NavRight
 
 const LEVEL_THUMBNAIL = preload("res://scenes/gui/level_thumbnail.tscn")
-const CHARACTER_SELECT = preload("uid://bypgh8vwm65r6")
+const CHARACTER_SELECT = preload("res://scenes/gui/character_select/character_select.tscn")
 
 var is_multiplayer: bool = false
 var pages: Array[Page]
@@ -41,6 +41,8 @@ func load_level(level_info: LevelInfo):
 	# Give the Character Select the SessionInfo, then add it to the tree
 	get_tree().root.add_child(character_select)
 	character_select.setup(session_info)
+	# Set the level manager's current_level
+	LevelManager.switch_level(level_info.name);
 	# Delete Level Select Scene (self)
 	queue_free()
 
