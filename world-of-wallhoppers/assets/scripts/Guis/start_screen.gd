@@ -3,6 +3,7 @@ class_name MenuStartScreen
 
 const LEVEL_SELECT = preload("res://scenes/gui/level_select.tscn")
 const TUTORIAL = preload("res://scenes/levels/tutorial.tscn")
+const RECORDS = preload("uid://bmm55s7158oio")
 
 @export var mutiplayer_button: Button
 @export var singleplayer_button: Button
@@ -24,6 +25,11 @@ func load_level_select(is_multiplayer: bool):
 	var level_select: Control = LEVEL_SELECT.instantiate()
 	level_select.is_multiplayer = is_multiplayer
 	get_tree().root.add_child(level_select)
+	queue_free()
+
+func load_records() -> void:
+	var records: Control = RECORDS.instantiate()
+	get_tree().root.add_child(records)
 	queue_free()
 
 func load_tutorial():

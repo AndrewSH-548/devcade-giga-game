@@ -2,10 +2,12 @@ extends Control
 
 @onready var volcano_leaderboard: Label = $VBoxContainer/VScrollBar/MarginContainer/VBoxContainer/Volcano/VolcanoLeaderboard
 @onready var jungle_leaderboard: Label = $VBoxContainer/VScrollBar/MarginContainer/VBoxContainer/Jungle/JungleLeaderboard
+@onready var back: Button = $VBoxContainer/TopContainer/Back
 
 func _ready() -> void:
 	display_leaderboard("volcano");
 	display_leaderboard("jungle");
+	back.grab_focus();
 
 func display_leaderboard(level: String) -> void:
 	var player_name = "";
