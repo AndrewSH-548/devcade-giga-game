@@ -1,0 +1,24 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://bpxfbgab807nk"]
+
+[ext_resource type="FontFile" uid="uid://dqb2dmcm5fa81" path="res://assets/fonts/Better VCR 9.0.1.ttf" id="1_jhcpf"]
+[ext_resource type="Texture2D" uid="uid://dcu80vyl872iq" path="res://assets/gui/multiplayer_patch2.png" id="2_1yxdr"]
+
+[sub_resource type="FontVariation" id="FontVariation_o30b1"]
+base_font = ExtResource("1_jhcpf")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ka6nf"]
+texture = ExtResource("2_1yxdr")
+texture_margin_left = 12.0
+texture_margin_top = 12.0
+texture_margin_right = 12.0
+texture_margin_bottom = 12.0
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[resource]
+Button/fonts/font = SubResource("FontVariation_o30b1")
+Button/styles/normal = SubResource("StyleBoxTexture_ka6nf")
