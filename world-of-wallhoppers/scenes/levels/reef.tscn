@@ -1,10 +1,10 @@
-[gd_scene load_steps=63 format=4 uid="uid://c70tcpci8tum8"]
+[gd_scene load_steps=62 format=4 uid="uid://c70tcpci8tum8"]
 
 [ext_resource type="Script" uid="uid://s7cnbl0ouo3x" path="res://assets/scripts/gameplay/level.gd" id="1_68ikf"]
-[ext_resource type="Shader" uid="uid://c8oh1ksd7urfj" path="res://scenes/levels/testing_coral.gdshader" id="1_e6kjs"]
+[ext_resource type="Shader" path="res://scenes/levels/testing_coral.gdshader" id="1_e6kjs"]
 [ext_resource type="PackedScene" uid="uid://dhjkvej1d1nic" path="res://scenes/editor/tumbnail_marker.tscn" id="1_ho7ke"]
 [ext_resource type="PackedScene" uid="uid://dw2fas0otmqd1" path="res://scenes/editor/tumbnail_destination.tscn" id="2_68ikf"]
-[ext_resource type="Script" uid="uid://dr0wyqfd3aina" path="res://assets/scripts/editor/level_boundaries_drawer.gd" id="2_520pj"]
+[ext_resource type="Script" path="res://assets/scripts/editor/level_boundaries_drawer.gd" id="2_520pj"]
 [ext_resource type="Texture2D" uid="uid://jg8y14rd0nyq" path="res://assets/shaders/noise/Marble 11 - 256x256.png" id="2_v15yl"]
 [ext_resource type="Texture2D" uid="uid://ce8re0jo7sqlx" path="res://assets/terrain/coral_testing.png" id="3_ho7ke"]
 [ext_resource type="PackedScene" uid="uid://cxbhfxbygx0cj" path="res://scenes/objects/scuttlecrab/scuttlecrab.tscn" id="6_jby0e"]
@@ -15,15 +15,15 @@
 [ext_resource type="Texture2D" uid="uid://b1nghnxv0hwsp" path="res://assets/terrain/reef/Layer 3.png" id="9_6ntwv"]
 [ext_resource type="Texture2D" uid="uid://c8entdwfl7grh" path="res://assets/terrain/reef/Layer 7.png" id="9_j8awl"]
 [ext_resource type="Texture2D" uid="uid://bngsxsrbqa202" path="res://assets/shaders/textures/fish.png" id="9_ni50x"]
-[ext_resource type="Script" uid="uid://cc0hfx5laehuv" path="res://assets/scripts/visuals/flock.gd" id="9_oam1e"]
+[ext_resource type="Script" path="res://assets/scripts/visuals/flock.gd" id="9_oam1e"]
 [ext_resource type="Texture2D" uid="uid://blg1w5rsfbrpj" path="res://assets/terrain/reef/CoralTube2.png" id="9_qwnwj"]
-[ext_resource type="Shader" uid="uid://ckodcxapjdx13" path="res://assets/shaders/fish_flock.gdshader" id="10_p168k"]
+[ext_resource type="Shader" path="res://assets/shaders/fish_flock.gdshader" id="10_p168k"]
 [ext_resource type="Texture2D" uid="uid://ch240dkcnqw86" path="res://assets/terrain/reef/Layer 5.png" id="10_pi4hs"]
 [ext_resource type="Texture2D" uid="uid://88uyh6onmt1" path="res://assets/terrain/reef_town.png" id="11_4ekcj"]
 [ext_resource type="Texture2D" uid="uid://d0sjqsnij4b5g" path="res://assets/terrain/reef/CoralTube2Blue.png" id="13_eheh8"]
 [ext_resource type="Texture2D" uid="uid://dm1yd84h0su8e" path="res://assets/terrain/reef/CoralTube1Blue.png" id="15_7awis"]
 [ext_resource type="Texture2D" uid="uid://dik3q2hridjan" path="res://assets/terrain/reef/NearDune.png" id="16_j8awl"]
-[ext_resource type="Shader" uid="uid://cuunx1ccvtl7l" path="res://assets/shaders/water.gdshader" id="20_i2cuu"]
+[ext_resource type="Shader" path="res://assets/shaders/water.gdshader" id="20_i2cuu"]
 [ext_resource type="Texture2D" uid="uid://c08h1elnoo46u" path="res://assets/shaders/caustics/caust_001.png" id="21_7e53o"]
 [ext_resource type="Texture2D" uid="uid://cce2rfray4ya1" path="res://assets/shaders/caustics/caust_002.png" id="22_ahjse"]
 [ext_resource type="Texture2D" uid="uid://cdx8ihm3ufnln" path="res://assets/shaders/caustics/caust_003.png" id="23_7d7s3"]
@@ -44,9 +44,8 @@
 [ext_resource type="Texture2D" uid="uid://csh1psytu3get" path="res://assets/shaders/caustics/caust_016.png" id="36_whokn"]
 [ext_resource type="PackedScene" uid="uid://cdc75l7j5xgdi" path="res://scenes/objects/elastishroom/elastishroom.tscn" id="39_5a3n2"]
 [ext_resource type="Texture2D" uid="uid://cvru5awnv1fs2" path="res://assets/terrain/reef/SandDunes.png" id="43_11pdi"]
-[ext_resource type="Texture2D" path="res://assets/terrain/reef/sun.png" id="44_3cngt"]
 [ext_resource type="Texture2D" uid="uid://duyda5ggnetob" path="res://assets/terrain/reef/Sky.png" id="44_6hyix"]
-[ext_resource type="Shader" uid="uid://bmodboxln1pts" path="res://assets/shaders/fade.gdshader" id="44_qy2a3"]
+[ext_resource type="Shader" path="res://assets/shaders/fade.gdshader" id="44_qy2a3"]
 [ext_resource type="Texture2D" uid="uid://7xg8w0gqedms" path="res://assets/terrain/reef/reef_above.png" id="45_6iw0u"]
 [ext_resource type="Texture2D" uid="uid://dg66yukdvdlfb" path="res://assets/terrain/reef/clouds.png" id="46_qd2yw"]
 [ext_resource type="PackedScene" uid="uid://bpos0rprc0elm" path="res://scenes/goalpost.tscn" id="50_kq7qb"]
@@ -1468,7 +1467,6 @@ scroll_offset = Vector2(2046, 0)
 visible = false
 position = Vector2(-40, 12706)
 scale = Vector2(0.5, 1)
-texture = ExtResource("44_3cngt")
 
 [node name="Sprite2D2" type="Sprite2D" parent="BackgroundsManager/Above/AboveSky2"]
 position = Vector2(7.5, 12428)
