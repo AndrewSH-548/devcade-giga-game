@@ -161,6 +161,10 @@ p2_cancel={
 
 2d_render/layer_3="Player1View"
 2d_render/layer_4="Player2View"
+2d_physics/layer_1="Solid"
+2d_physics/layer_3="Player"
+2d_physics/layer_4="Hitstun"
+2d_physics/layer_5="ScuttlecrabStopper"
 
 [rendering]
 

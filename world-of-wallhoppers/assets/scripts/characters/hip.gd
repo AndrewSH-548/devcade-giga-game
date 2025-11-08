@@ -1,4 +1,5 @@
 extends Player
+class_name PlayerHip
 
 var crouch_action: String = " "
 var is_wall_climbing: bool = false

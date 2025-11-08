@@ -1,6 +1,5 @@
-[gd_scene load_steps=9 format=3 uid="uid://cl7i05js3l62q"]
+[gd_scene load_steps=8 format=3 uid="uid://cl7i05js3l62q"]
 
-[ext_resource type="Script" uid="uid://cphusaq70x4jg" path="res://assets/scripts/obstacles.gd" id="1_7a7y0"]
 [ext_resource type="Texture2D" uid="uid://3ekv2i16hkw0" path="res://assets/sprites/16-bit-spike-Sheet.png" id="1_ljd5v"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qcw7f"]
@@ -58,14 +57,14 @@ animations = [{
 size = Vector2(16.5, 16)
 
 [node name="Static-square1" type="Node2D"]
-script = ExtResource("1_7a7y0")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_s88d3")
 animation = &"spikeup"
 
 [node name="Area2D" type="Area2D" parent="."]
-collision_mask = 6
+collision_layer = 8
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0.25, 0)

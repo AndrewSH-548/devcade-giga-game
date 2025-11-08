@@ -1,4 +1,5 @@
 extends Player
+class_name PlayerScoria
 
 @onready var normal_collision: CollisionShape2D = $NormalCollision
 @onready var roll_collision: CollisionShape2D = $RollCollision
@@ -128,6 +129,7 @@ func _physics_process(delta: float) -> void:
 			MoveState.ROLL:
 				process_roll(delta)
 	else:
+		process_gravity(delta)
 		move_state = MoveState.NORMAL
 	
 	if move_state != MoveState.ROLL:

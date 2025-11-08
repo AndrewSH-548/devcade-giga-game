@@ -649,4 +649,4 @@ end_point = NodePath("End")
 decoration_type = 1
 
 [node name="End" type="Marker2D" parent="MovingPlatform"]
-position = Vector2(0, 272)
+position = Vector2(0, 185)
