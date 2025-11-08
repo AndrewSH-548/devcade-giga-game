@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://cct1u4ooao545"]
+
+[ext_resource type="Texture2D" uid="uid://do03bvrho2v20" path="res://assets/sprites/scuttlecrab/scuttlecrab_stopper.png" id="1_cc1ek"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cc1ek"]
+size = Vector2(128, 16)
+
+[node name="ScuttlecrabStopper" type="StaticBody2D"]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(64, -8)
+shape = SubResource("RectangleShape2D_cc1ek")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(64, -8)
+texture = ExtResource("1_cc1ek")

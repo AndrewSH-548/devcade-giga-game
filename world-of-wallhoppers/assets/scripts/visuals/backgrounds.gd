@@ -13,6 +13,7 @@ var thumbnail_mode: bool = false
 
 # Used to differentiate the backgrounds
 var player_1_backgrounds: Array[Parallax2D]
+var player_2_backgrounds: Array[Parallax2D]
 
 ## This node should be setup with all parallax layers as direct children.
 
@@ -32,6 +33,7 @@ func _ready() -> void:
 		# Duplicate each parallax node fully
 		var secondary_background: Parallax2D = background.duplicate()
 		add_child(secondary_background)
+		player_2_backgrounds.append(secondary_background)
 		secondary_background.global_position = background.global_position
 		# Make this layer only visible to player 2. This is required for parallax
 		secondary_background.visibility_layer = PLAYER_2_VISIBILITY

@@ -356,8 +356,10 @@ sprite_frames = SubResource("SpriteFrames_eose0")
 animation = &"fall"
 frame_progress = 0.102952026
 
-[node name="PlayerHitbox" type="Area2D" parent="."]
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
 
-[node name="HitboxShape" type="CollisionShape2D" parent="PlayerHitbox"]
+[node name="HitboxShape" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(0, 7.1525574e-07)
 shape = SubResource("RectangleShape2D_6ci1u")

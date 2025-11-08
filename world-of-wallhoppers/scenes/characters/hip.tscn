@@ -201,6 +201,8 @@ animation = &"idle"
 frame_progress = 0.7178589
 
 [node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
 
 [node name="HitboxShape" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource("RectangleShape2D_6ci1u")

@@ -1,4 +1,5 @@
 extends Player
+class_name PlayerReign
 
 var is_hovering: bool = false;
 

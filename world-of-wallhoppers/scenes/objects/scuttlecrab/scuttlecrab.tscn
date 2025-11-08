@@ -1,0 +1,60 @@
+[gd_scene load_steps=8 format=3 uid="uid://cxbhfxbygx0cj"]
+
+[ext_resource type="Script" uid="uid://dbv355604gvvg" path="res://assets/scripts/objects/scuttlecrab.gd" id="1_j78v4"]
+[ext_resource type="Texture2D" uid="uid://t3imaqsxrnw3" path="res://assets/sprites/scuttlecrab/scuttlecrab.png" id="1_q4tks"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j78v4"]
+atlas = ExtResource("1_q4tks")
+region = Rect2(128, 0, 128, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_70skm"]
+atlas = ExtResource("1_q4tks")
+region = Rect2(0, 0, 128, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xvchu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j78v4")
+}],
+"loop": true,
+"name": &"Scuttle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_70skm")
+}],
+"loop": true,
+"name": &"Sleep",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j78v4"]
+size = Vector2(92, 128)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_70skm"]
+size = Vector2(95.5, 101.5)
+
+[node name="Scuttlecrab" type="AnimatableBody2D"]
+collision_mask = 17
+sync_to_physics = false
+script = ExtResource("1_j78v4")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_xvchu")
+animation = &"Sleep"
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_j78v4")
+
+[node name="PlayerDetector" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector"]
+position = Vector2(0.25, -13.75)
+shape = SubResource("RectangleShape2D_70skm")
+debug_color = Color(0.8916544, 0.00024450422, 0.79114836, 0.41960785)
+
+[connection signal="body_entered" from="PlayerDetector" to="." method="on_body_on_top"]

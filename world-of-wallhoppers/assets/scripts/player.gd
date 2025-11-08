@@ -15,6 +15,8 @@ class_name Player
 @export var gravity: int
 @export var weight: int
 
+@onready var hitbox: Area2D = $Hitbox
+
 var jump_action: String = " "
 var move_left_action: String = " "
 var move_right_action: String = " "
@@ -25,6 +27,12 @@ var hitstun: bool = false
 
 var sprite: AnimatedSprite2D
 var isFacingRight: bool = true
+
+var disable_decceleration: bool = false
+var deccel_disable_timer: Timer = Timer.new()
+
+var disable_walk_input: bool = false
+var walk_input_disable_timer: Timer= Timer.new()
 
 const JUMP_BUFFER_TIME: float = 0.1
 const COYOTE_TIME: float = 0.07
@@ -43,8 +51,15 @@ enum {
 @abstract func setup_keybinds(player_number: int) -> void
 
 func _ready() -> void:
+	deccel_disable_timer.one_shot = true
+	walk_input_disable_timer.one_shot = true
+	add_child(deccel_disable_timer)
+	add_child(walk_input_disable_timer)
+	deccel_disable_timer.timeout.connect(func(): disable_decceleration = false)
+	walk_input_disable_timer.timeout.connect(func(): disable_walk_input = false)
 	sprite = $Animations
 	sprite.play();
+	hitbox.area_entered.connect(func(_body): do_hitstun())
 
 func make_timer(time: float) -> Timer:
 	var timer: Timer = Timer.new()
@@ -52,6 +67,14 @@ func make_timer(time: float) -> Timer:
 	timer.wait_time = time
 	add_child(timer)
 	return timer
+
+func disable_decceleration_timed(time: float) -> void:
+	disable_decceleration = true
+	deccel_disable_timer.start(time)
+
+func disable_walk_input_timed(time: float) -> void:
+	disable_walk_input = true
+	walk_input_disable_timer.start(time)
 
 func get_position_state() -> int:
 	if hitstun: return STATE_HITSTUN
@@ -108,10 +131,10 @@ func is_touching_right_wall() -> bool:
 
 func process_walkrun(_delta: float, direction: float) -> void:
 	# Deccelerate if there is no input
-	if direction == 0.0:
+	if (direction == 0.0 or disable_walk_input) and not disable_decceleration:
 		velocity.x = move_toward(velocity.x, 0, deccel)
 	# Other, run this if there IS input
-	else:
+	elif not disable_walk_input:
 		# Do different things based on the state...
 		match get_position_state():
 			
@@ -140,6 +163,19 @@ func process_walljump(_delta: float) -> void:
 func do_walljump() -> void:
 	velocity.x = get_pushoff_wall_direction() * wall_pushoff_strength
 	velocity.y = -wall_jump_height
+
+func do_hitstun() -> void:
+	if not hitstun:
+		hitstun = true
+		if not velocity.x == 0:
+			# Move the player in the opposite direction of their motion 
+			velocity.x = -(velocity.x/abs(velocity.x)) * 20*weight # 20 can be changed
+		if not velocity.y == 0:
+			velocity.y = -(velocity.y/abs(velocity.y)) * 20*weight
+		
+		# Create hitstun effect (time can be changed (currently 1 second))
+		await get_tree().create_timer(1).timeout
+		hitstun = false
 
 func get_pushoff_wall_direction() -> float:
 	# The Wall Normal is a Vector2 which points away from the wall

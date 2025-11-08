@@ -75,9 +75,11 @@ sprite_frames = ExtResource("3_7qr4j")
 animation = &"Bounce"
 autoplay = "Idle"
 
-[node name="PlayerHitbox" type="Area2D" parent="."]
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
 
-[node name="HitboxShape" type="CollisionShape2D" parent="PlayerHitbox"]
+[node name="HitboxShape" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(0.5, 8.9375)
 shape = SubResource("RectangleShape2D_gf061")
 
