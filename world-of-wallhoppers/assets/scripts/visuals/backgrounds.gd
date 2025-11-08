@@ -55,6 +55,12 @@ func manual_set_camera_position(camera_position: Vector2):
 func _process(_delta: float) -> void:
 	if thumbnail_mode: return
 	for background in player_1_backgrounds:
-		background.screen_offset.y = player_1_camera.get_screen_center_position().y * SCROLL_SCALE_GLOBAL * scroll_scale_local
+		if background.scroll_scale.y == 0.0:
+			background.screen_offset.y = player_1_camera.get_screen_center_position().y
+		else:
+			background.screen_offset.y = player_1_camera.get_screen_center_position().y * SCROLL_SCALE_GLOBAL * scroll_scale_local
 	for background in player_2_backgrounds:
-		background.screen_offset.y = player_2_camera.get_screen_center_position().y * SCROLL_SCALE_GLOBAL * scroll_scale_local
+		if background.scroll_scale.y == 0.0:
+			background.screen_offset.y = player_2_camera.get_screen_center_position().y
+		else:
+			background.screen_offset.y = player_2_camera.get_screen_center_position().y * SCROLL_SCALE_GLOBAL * scroll_scale_local
