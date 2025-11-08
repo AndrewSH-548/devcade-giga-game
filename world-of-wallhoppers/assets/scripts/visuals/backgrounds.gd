@@ -27,9 +27,9 @@ func _ready() -> void:
 		setup_background(background)
 	for extra in extra_background_holders:
 		for background in extra.get_children():
-			setup_background(background)
+			setup_background(background, extra)
 
-func setup_background(background: Node):
+func setup_background(background: Node, parent: Node = self):
 	if background is not Parallax2D: return
 	player_1_backgrounds.append(background)
 	# Make this layer only visible to player 1. This is required for parallax
@@ -39,7 +39,7 @@ func setup_background(background: Node):
 	if player_2_camera == null: return
 	# Duplicate each parallax node fully
 	var secondary_background: Parallax2D = background.duplicate()
-	add_child(secondary_background)
+	parent.add_child(secondary_background)
 	player_2_backgrounds.append(secondary_background)
 	secondary_background.global_position = background.global_position
 	# Make this layer only visible to player 2. This is required for parallax

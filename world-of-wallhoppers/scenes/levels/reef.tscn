@@ -977,9 +977,9 @@ metadata/_custom_type_script = "uid://iembhyk5nlq"
 
 [node name="Below" type="ColorRect" parent="BackgroundsManager"]
 clip_children = 1
-offset_left = -912.0
+offset_left = -3298.0
 offset_top = -8252.0
-offset_right = 808.0
+offset_right = 4662.0
 offset_bottom = 3194.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="BackgroundsManager/Below"]
@@ -1041,7 +1041,7 @@ color = Color(0, 0, 0, 1)
 
 [node name="CoralTubesLarge" type="Parallax2D" parent="BackgroundsManager/Below"]
 scroll_scale = Vector2(0.04, 0.04)
-scroll_offset = Vector2(910, 208)
+scroll_offset = Vector2(3298, -1840)
 repeat_size = Vector2(0, 2048)
 repeat_times = 20
 
@@ -1116,7 +1116,7 @@ flip_v = true
 
 [node name="SHADE4" type="Parallax2D" parent="BackgroundsManager/Below"]
 scroll_scale = Vector2(0.5, 0.5)
-scroll_offset = Vector2(910, 64)
+scroll_offset = Vector2(3298, -448)
 repeat_size = Vector2(0, 512)
 repeat_times = 40
 
@@ -1129,7 +1129,7 @@ color = Color(0.07058824, 0.18431373, 0.32941177, 0.32156864)
 
 [node name="BEAMS" type="Parallax2D" parent="BackgroundsManager/Below"]
 scroll_scale = Vector2(0.6, 0.6)
-scroll_offset = Vector2(910, 64)
+scroll_offset = Vector2(3298, -960)
 repeat_size = Vector2(0, 1024)
 repeat_times = 40
 
@@ -1147,7 +1147,7 @@ wobble_speed = 0.2
 
 [node name="CoralTubesSmall" type="Parallax2D" parent="BackgroundsManager/Below"]
 scroll_scale = Vector2(0.1, 0.1)
-scroll_offset = Vector2(910, 208)
+scroll_offset = Vector2(3298, -1840)
 repeat_size = Vector2(0, 2048)
 repeat_times = 20
 
@@ -1162,7 +1162,7 @@ flip_v = true
 
 [node name="SHADE3" type="Parallax2D" parent="BackgroundsManager/Below"]
 scroll_scale = Vector2(0.5, 0.5)
-scroll_offset = Vector2(910, 64)
+scroll_offset = Vector2(3298, -448)
 repeat_size = Vector2(0, 512)
 repeat_times = 40
 
@@ -1175,7 +1175,7 @@ color = Color(0.07058824, 0.18431373, 0.32941177, 0.32156864)
 
 [node name="FarDune" type="Parallax2D" parent="BackgroundsManager/Below"]
 scroll_scale = Vector2(0.3, 0.3)
-scroll_offset = Vector2(910, 8400)
+scroll_offset = Vector2(3298, 8400)
 
 [node name="Sprite2D" type="Sprite2D" parent="BackgroundsManager/Below/FarDune"]
 position = Vector2(12, 563)
@@ -1254,7 +1254,7 @@ script = ExtResource("9_oam1e")
 
 [node name="SHADE2" type="Parallax2D" parent="BackgroundsManager/Below"]
 scroll_scale = Vector2(0.4, 0.4)
-scroll_offset = Vector2(910, 64)
+scroll_offset = Vector2(3298, -448)
 repeat_size = Vector2(0, 512)
 repeat_times = 40
 
@@ -1268,7 +1268,7 @@ color = Color(0.07058824, 0.18431373, 0.32941177, 0.32156864)
 [node name="BEAMS2" type="Parallax2D" parent="BackgroundsManager/Below"]
 scale = Vector2(2, 2)
 scroll_scale = Vector2(0.4, 0.4)
-scroll_offset = Vector2(910, 64)
+scroll_offset = Vector2(3298, -1984)
 repeat_size = Vector2(0, 1024)
 repeat_times = 40
 
@@ -1286,7 +1286,7 @@ wobble_speed = 0.2
 
 [node name="MidDune" type="Parallax2D" parent="BackgroundsManager/Below"]
 scroll_scale = Vector2(0.5, 0.5)
-scroll_offset = Vector2(910, 8256)
+scroll_offset = Vector2(3298, 8256)
 
 [node name="Sprite2D" type="Sprite2D" parent="BackgroundsManager/Below/MidDune"]
 position = Vector2(12, 682)
@@ -1339,7 +1339,7 @@ texture = ExtResource("9_1aaut")
 
 [node name="NearDune" type="Parallax2D" parent="BackgroundsManager/Below"]
 scroll_scale = Vector2(0.775, 0.775)
-scroll_offset = Vector2(910, 8166)
+scroll_offset = Vector2(3298, 8166)
 
 [node name="Sprite2D" type="Sprite2D" parent="BackgroundsManager/Below/NearDune"]
 position = Vector2(0, 798)
@@ -1422,7 +1422,7 @@ texture = ExtResource("16_j8awl")
 
 [node name="SHADE" type="Parallax2D" parent="BackgroundsManager/Below"]
 scroll_scale = Vector2(0.5, 0.5)
-scroll_offset = Vector2(910, 64)
+scroll_offset = Vector2(3298, -448)
 repeat_size = Vector2(0, 512)
 repeat_times = 40
 
