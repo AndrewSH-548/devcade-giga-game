@@ -1,6 +1,6 @@
 [gd_scene load_steps=30 format=3 uid="uid://bypgh8vwm65r6"]
 
-[ext_resource type="Script" uid="uid://ds787vg8b1cru" path="res://assets/scripts/Guis/character_select/character_select.gd" id="1_dlxgn"]
+[ext_resource type="Script" uid="uid://tcblcoqshjkf" path="res://assets/scripts/testing/rick_shawn_animation_testing.gd" id="1_a3imy"]
 [ext_resource type="PackedScene" uid="uid://bmuoxdjge2ld7" path="res://scenes/gui/character_select/character_tester.tscn" id="3_cxqtq"]
 [ext_resource type="Texture2D" uid="uid://brqsq5codsja1" path="res://assets/gui/background_hip.png" id="3_s7d2y"]
 [ext_resource type="Texture2D" uid="uid://cbpfskf2jthji" path="res://assets/sprites/hip.png" id="4_bfvoi"]
@@ -16,7 +16,7 @@
 [ext_resource type="Material" uid="uid://cvgooa66fd7yl" path="res://assets/shaders/materials/character_selection_material.tres" id="9_uhpgm"]
 [ext_resource type="PackedScene" uid="uid://c42ynqlk3h4wp" path="res://scenes/characters/reign.tscn" id="11_cl5d8"]
 [ext_resource type="Texture2D" uid="uid://kryfyxapqv12" path="res://assets/gui/reign.png" id="15_cxqtq"]
-[ext_resource type="PackedScene" path="res://scenes/characters/rick_shawn_animation_testing.tscn" id="17_a3imy"]
+[ext_resource type="PackedScene" uid="uid://cos0asti3njcf" path="res://scenes/characters/rick_shawn_animation_testing.tscn" id="17_a3imy"]
 [ext_resource type="Texture2D" uid="uid://b473s08dlquti" path="res://assets/gui/background_scoria.png" id="17_sqhw2"]
 [ext_resource type="Texture2D" uid="uid://bsvpbsp4u6vv0" path="res://assets/sprites/scoria/scoria.png" id="18_a3imy"]
 [ext_resource type="PackedScene" uid="uid://bojyqwmqsf6xx" path="res://scenes/characters/scoria.tscn" id="18_sqhw2"]
@@ -91,7 +91,7 @@ offset_bottom = -960.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(2, 2)
-script = ExtResource("1_dlxgn")
+script = ExtResource("1_a3imy")
 
 [node name="ReadyAll" type="Control" parent="."]
 visible = false
