@@ -1355,4 +1355,5 @@ vertical_alignment = 1
 [connection signal="pressed" from="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Mutiplayer" to="." method="load_level_select" binds= [true]]
 [connection signal="pressed" from="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SinglePlayer" to="." method="load_level_select" binds= [false]]
 [connection signal="pressed" from="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/TutorialButton" to="." method="load_tutorial"]
+[connection signal="pressed" from="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/RecordsButton" to="." method="load_records"]
 [connection signal="pressed" from="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/QuitButton" to="." method="quit"]

@@ -1,0 +1,115 @@
+[gd_scene load_steps=2 format=3 uid="uid://bmm55s7158oio"]
+
+[ext_resource type="Script" uid="uid://ch57tfqek3sco" path="res://assets/scripts/Guis/records.gd" id="1_cv0jy"]
+
+[node name="Records" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cv0jy")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.261113, 0.261113, 0.261113, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TopContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 0
+
+[node name="Back" type="Button" parent="VBoxContainer/TopContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+focus_neighbor_bottom = NodePath("../../LevelDisplayMargins/LevelDisplayPanel/ThumbnailGrid")
+theme_override_font_sizes/font_size = 64
+text = "Back"
+
+[node name="VScrollBar" type="VScrollBar" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 1
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/VScrollBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 80
+theme_override_constants/margin_top = 80
+theme_override_constants/margin_right = 80
+theme_override_constants/margin_bottom = 80
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/VScrollBar/MarginContainer"]
+layout_mode = 2
+
+[node name="Volcano" type="VBoxContainer" parent="VBoxContainer/VScrollBar/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VLeaderboardTitle" type="Label" parent="VBoxContainer/VScrollBar/MarginContainer/VBoxContainer/Volcano"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "Volcano"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VolcanoLeaderboard" type="Label" parent="VBoxContainer/VScrollBar/MarginContainer/VBoxContainer/Volcano"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 80
+text = "v"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/VScrollBar/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 80
+text = "---------------------------------------"
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+
+[node name="Jungle" type="VBoxContainer" parent="VBoxContainer/VScrollBar/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="JLeaderboardTitle" type="Label" parent="VBoxContainer/VScrollBar/MarginContainer/VBoxContainer/Jungle"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "Jungle"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="JungleLeaderboard" type="Label" parent="VBoxContainer/VScrollBar/MarginContainer/VBoxContainer/Jungle"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 80
+text = "j"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[connection signal="pressed" from="VBoxContainer/TopContainer/Back" to="." method="load_start_screen"]
