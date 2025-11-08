@@ -44,7 +44,7 @@
 [ext_resource type="Texture2D" uid="uid://csh1psytu3get" path="res://assets/shaders/caustics/caust_016.png" id="36_whokn"]
 [ext_resource type="PackedScene" uid="uid://cdc75l7j5xgdi" path="res://scenes/objects/elastishroom/elastishroom.tscn" id="39_5a3n2"]
 [ext_resource type="Texture2D" uid="uid://cvru5awnv1fs2" path="res://assets/terrain/reef/SandDunes.png" id="43_11pdi"]
-[ext_resource type="Texture2D" uid="uid://bxrk5wgrapost" path="res://assets/terrain/reef/sun.png" id="44_3cngt"]
+[ext_resource type="Texture2D" path="res://assets/terrain/reef/sun.png" id="44_3cngt"]
 [ext_resource type="Texture2D" uid="uid://duyda5ggnetob" path="res://assets/terrain/reef/Sky.png" id="44_6hyix"]
 [ext_resource type="Shader" uid="uid://bmodboxln1pts" path="res://assets/shaders/fade.gdshader" id="44_qy2a3"]
 [ext_resource type="Texture2D" uid="uid://7xg8w0gqedms" path="res://assets/terrain/reef/reef_above.png" id="45_6iw0u"]
