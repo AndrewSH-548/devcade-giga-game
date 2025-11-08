@@ -50,7 +50,9 @@ func update(delta: float) -> void:
 	if progress_bar.value == 100.0:
 		is_finished = true
 		checkmark.visible = true
-		modulate = Color(0.265, 0.265, 0.265, 1.0)
+		for child in get_children():
+			if child.name != "Checkmark" and child is CanvasItem:
+				child.modulate = Color(0.265, 0.265, 0.265, 1.0)
 		hip.pause()
 		tutorial.confetti()
 		finished.emit()

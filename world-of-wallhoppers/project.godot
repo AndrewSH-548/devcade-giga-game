@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 SceneSwitcher="*res://assets/scripts/Guis/scene_switcher.gd"
 TimeManager="*res://assets/scripts/TimeManager.gd"
+LevelManager="*res://assets/scripts/LevelManager.gd"
 
 [display]
 
@@ -165,5 +166,6 @@ p2_cancel={
 
 textures/canvas_textures/default_texture_filter=3
 renderer/rendering_method="mobile"
+textures/decals/filter=0
 2d/snap/snap_2d_transforms_to_pixel=true
 2d/snap/snap_2d_vertices_to_pixel=true
