@@ -9,6 +9,8 @@ extends Control
 @onready var name_input_container: VBoxContainer = $NameInputPanel/NameInputContainer
 @onready var name_input_panel: Panel = $NameInputPanel
 
+@onready var level_select_button: Button = $"VBoxContainer/Level Select"
+
 var player_name = "XXXXX";
 
 func _ready() -> void:
@@ -49,9 +51,9 @@ func _on_submit_button_pressed() -> void:
 	player_name = player_name_label.text;
 	name_input.text = player_name_label.text;
 	name_input_panel.hide();
+	level_select_button.grab_focus()
 	
 	set_leaderboard(); # submit leaderboard on name_input_pressed
-
 
 func _on_a_pressed() -> void:
 	player_name_label.text += "A";
