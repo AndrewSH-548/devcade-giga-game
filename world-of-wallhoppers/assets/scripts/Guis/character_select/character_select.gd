@@ -71,6 +71,8 @@ func start_game():
 	session_info.characters = []
 	for index in range(PLAYER_COUNT):
 		if index > 0 and not is_multiplayer: break
+		if dials.get(index) == null: return
+		if dials[current_dial_selection[index]].character_scene == null: return
 		session_info.characters.append(dials[current_dial_selection[index]].character_scene)
 	
 	var header: MainLevelHeader = get_level_header()
@@ -190,11 +192,17 @@ static func player_just_pressed(action_name: String, player_index: int):
 
 func player_tester_process():
 	if ready_players[0]:
-		character_tester_player_1.start(dials[current_dial_selection[0]].character_scene, 0)
+		if dials[current_dial_selection[0]].character_scene == null:
+			ready_players[0] = false
+		else:
+			character_tester_player_1.start(dials[current_dial_selection[0]].character_scene, 0)
 	else:
 		character_tester_player_1.stop()
 	
 	if is_multiplayer and ready_players[1]:
-		character_tester_player_2.start(dials[current_dial_selection[1]].character_scene, 1)
+		if dials[current_dial_selection[1]].character_scene == null:
+			ready_players[1] = false
+		else:
+			character_tester_player_2.start(dials[current_dial_selection[1]].character_scene, 1)
 	else:
 		character_tester_player_2.stop()
