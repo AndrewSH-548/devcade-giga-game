@@ -71,8 +71,6 @@ func start_game():
 	session_info.characters = []
 	for index in range(PLAYER_COUNT):
 		if index > 0 and not is_multiplayer: break
-		if dials.get(index) == null: return
-		if dials[current_dial_selection[index]].character_scene == null: return
 		session_info.characters.append(dials[current_dial_selection[index]].character_scene)
 	
 	var header: MainLevelHeader = get_level_header()
