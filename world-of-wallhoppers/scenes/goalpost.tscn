@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cvvvobm1cpgpn" path="res://assets/sprites/goalpost.png" id="2_jxhj0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ksp5y"]
-size = Vector2(73, 873)
+size = Vector2(54, 65.5)
 
 [node name="Goalpost" type="Node2D"]
 script = ExtResource("1_bhbof")
@@ -15,7 +15,7 @@ collision_mask = 7
 input_pickable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Goal1"]
-position = Vector2(0, -430)
+position = Vector2(0, -26.25)
 shape = SubResource("RectangleShape2D_ksp5y")
 
 [node name="Icon" type="Sprite2D" parent="."]
