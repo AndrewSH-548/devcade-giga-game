@@ -111,8 +111,8 @@ scale_curve = SubResource("CurveTexture_1jj22")
 resource_name = "GrabFocus"
 script/source = "extends StartMenuButton
 
-func _ready() -> void:
-	grab_focus()
+#func _ready() -> void:
+	#grab_focus()
 "
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bdg0b"]
@@ -294,7 +294,7 @@ font_size = 81
 outline_size = 38
 outline_color = Color(0, 0, 0, 1)
 
-[node name="StartScreen" type="Control" node_paths=PackedStringArray("mutiplayer_button", "singleplayer_button", "quit_button", "settings_button", "tutorial_button")]
+[node name="StartScreen" type="Control" node_paths=PackedStringArray("mutiplayer_button", "singleplayer_button", "quit_button", "records_button", "settings_button", "tutorial_button")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -305,6 +305,7 @@ script = ExtResource("1_kxo13")
 mutiplayer_button = NodePath("VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Mutiplayer")
 singleplayer_button = NodePath("VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SinglePlayer")
 quit_button = NodePath("VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/QuitButton")
+records_button = NodePath("VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/RecordsButton")
 settings_button = NodePath("VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SettingsButton")
 tutorial_button = NodePath("VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/TutorialButton")
 
