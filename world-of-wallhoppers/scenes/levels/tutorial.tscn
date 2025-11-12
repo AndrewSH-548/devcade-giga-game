@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=4 uid="uid://bdnher4a7qii8"]
+[gd_scene load_steps=51 format=4 uid="uid://bdnher4a7qii8"]
 
 [ext_resource type="Texture2D" uid="uid://3dsey0o0pes7" path="res://assets/terrain/tutorial.png" id="1_rnyxf"]
 [ext_resource type="Script" uid="uid://c5oi1mi3kkc6r" path="res://assets/scripts/gameplay/tutorial.gd" id="1_u4f7j"]
@@ -20,6 +20,10 @@
 [ext_resource type="Texture2D" uid="uid://ca4vonyt4tili" path="res://assets/sprites/tutorial/tutorial_player_pointer.png" id="16_uy53l"]
 [ext_resource type="Script" uid="uid://7te7bt52jftc" path="res://assets/scripts/tutorial/tutorial_player_pointer.gd" id="17_l8ohl"]
 [ext_resource type="Texture2D" uid="uid://bb5ri38gqtcsx" path="res://assets/terrain/tutorial_background.png" id="20_cyy7t"]
+
+[sub_resource type="Gradient" id="Gradient_4a02d"]
+interpolation_color_space = 2
+colors = PackedColorArray(0.7559771, 0.4126828, 9.62615e-07, 1, 0.095813684, 0.7535267, 0, 1)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ub0e1"]
 texture = ExtResource("1_rnyxf")
@@ -368,10 +372,6 @@ terrain_set_0/terrain_0/name = "Stone"
 terrain_set_0/terrain_0/color = Color(0.17916456, 0.38361207, 0.66455054, 1)
 sources/1 = SubResource("TileSetAtlasSource_ub0e1")
 
-[sub_resource type="Gradient" id="Gradient_4a02d"]
-interpolation_color_space = 2
-colors = PackedColorArray(0.7559771, 0.4126828, 9.62615e-07, 1, 0.095813684, 0.7535267, 0, 1)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_cw4as"]
 atlas = ExtResource("6_7ac3l")
 region = Rect2(64, 0, 32, 32)
@@ -564,17 +564,21 @@ animations = [{
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hux2q"]
-atlas = ExtResource("14_q462l")
+atlas = ExtResource("12_uy53l")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n1gr0"]
+atlas = ExtResource("12_uy53l")
 region = Rect2(0, 0, 128, 128)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_n1gr0"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_cyy7t")
+"texture": SubResource("AtlasTexture_hux2q")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_hux2q")
+"texture": SubResource("AtlasTexture_n1gr0")
 }],
 "loop": false,
 "name": &"Press",
@@ -589,6 +593,7 @@ outline_color = Color(0, 0, 0, 1)
 
 [node name="Tutorial" type="Node2D"]
 script = ExtResource("1_u4f7j")
+progress_color = SubResource("Gradient_4a02d")
 
 [node name="Camera" type="Camera2D" parent="."]
 position = Vector2(0, -416)
@@ -788,6 +793,7 @@ visible = false
 z_index = -1
 position = Vector2(0, -496)
 script = ExtResource("14_cyy7t")
+progress_color = SubResource("Gradient_4a02d")
 
 [node name="Panel" type="Panel" parent="TutorialWalljump"]
 offset_left = -160.0
@@ -824,8 +830,6 @@ texture_filter = 1
 position = Vector2(80, -48)
 sprite_frames = SubResource("SpriteFrames_n1gr0")
 animation = &"Press"
-frame = 1
-frame_progress = 1.0
 
 [node name="Label" type="Label" parent="TutorialWalljump"]
 offset_left = -96.0
@@ -848,19 +852,49 @@ position = Vector2(-48, 32)
 
 [node name="Complete" type="Label" parent="."]
 visible = false
+z_index = -3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -288.0
-offset_top = -576.0
+offset_top = -672.0
 offset_right = 286.0
-offset_bottom = -335.5
+offset_bottom = -431.5
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 text = "Tutorial
 Complete!"
 label_settings = SubResource("LabelSettings_q462l")
+horizontal_alignment = 1
+
+[node name="CompleteBar" type="ProgressBar" parent="Complete"]
+layout_mode = 0
+offset_left = 144.0
+offset_top = 304.0
+offset_right = 432.0
+offset_bottom = 352.0
+theme = SubResource("Theme_4o3hj")
+max_value = 1.0
+step = 0.0
+show_percentage = false
+
+[node name="Complete" type="RichTextLabel" parent="Complete"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -288.0
+offset_top = 224.0
+offset_right = 286.0
+offset_bottom = 464.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_constants/outline_size = 15
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "Hold [color=#3355FF]BLUE[/color] to Exit!"
 horizontal_alignment = 1
 
 [node name="Confetti" type="Parallax2D" parent="."]

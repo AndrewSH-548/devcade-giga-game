@@ -16,6 +16,7 @@ extends Node2D
 @onready var confetti_right: Confetti = $Confetti/ConfettiRight
 @onready var complete: Label = $Complete
 @onready var tutorial_position: Marker2D = $TutorialPosition
+@onready var complete_bar: ProgressBar = $Complete/CompleteBar
 
 @onready var tutorials: Array[Node2D] = [
 	tutorial_walk,
@@ -24,7 +25,12 @@ extends Node2D
 	tutorial_walljump,
 ]
 
+@export var progress_color: Gradient
+
 var tutorial_index: int = 0
+var finished_tutorial: bool = false
+var exit_fill_speed: float = 0.5
+var exit_fill: float = 0.0
 
 func _ready() -> void:
 	player.setup_keybinds(1)
@@ -45,16 +51,32 @@ func _ready() -> void:
 		tutorial_index += 1
 	
 	complete.visible = true
-	await get_tree().create_timer(1.0).timeout
-	
-	var start_screen: Control = load("res://scenes/start_screen.tscn").instantiate()
-	get_tree().root.add_child(start_screen)
-	queue_free()
+	finished_tutorial = true
 
 func _physics_process(delta: float) -> void:
 	tutorial_walk.global_position.y = lerpf(tutorial_walk.global_position.y, tutorial_position.global_position.y, 0.26)
 	if tutorial_index < tutorials.size():
 		tutorials[tutorial_index].update(delta)
+	
+	
+	if not finished_tutorial: return
+	
+	if Input.is_action_pressed("p1_run"):
+		exit_fill += exit_fill_speed * delta
+	else:
+		exit_fill -= exit_fill_speed * delta
+	exit_fill = clampf(exit_fill, 0.0, 1.0)
+	complete_bar.value = exit_fill
+	
+	var box: StyleBoxFlat = complete_bar.get_theme_stylebox("fill")
+	box.bg_color = progress_color.sample(complete_bar.value)
+	complete_bar.add_theme_stylebox_override("fill", box)
+	
+	if exit_fill == 1.0:
+		var start_screen: Control = load("res://scenes/start_screen.tscn").instantiate()
+		get_tree().root.add_child(start_screen)
+		queue_free()
+		
 
 func confetti():
 	confetti_left.burst()
