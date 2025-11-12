@@ -206,3 +206,6 @@ collision_mask = 8
 
 [node name="HitboxShape" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource("RectangleShape2D_6ci1u")
+
+[node name="FootPosition" type="Marker2D" parent="."]
+position = Vector2(0, 28)

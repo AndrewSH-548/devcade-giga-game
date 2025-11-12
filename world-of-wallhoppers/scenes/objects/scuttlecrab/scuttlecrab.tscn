@@ -31,7 +31,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j78v4"]
-size = Vector2(92, 128)
+size = Vector2(95, 128)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_70skm"]
 size = Vector2(95.5, 101.5)
@@ -45,7 +45,7 @@ script = ExtResource("1_j78v4")
 sprite_frames = SubResource("SpriteFrames_xvchu")
 animation = &"Sleep"
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
+[node name="Collision" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_j78v4")
 
 [node name="PlayerDetector" type="Area2D" parent="."]

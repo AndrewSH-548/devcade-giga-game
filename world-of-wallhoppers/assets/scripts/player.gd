@@ -16,6 +16,7 @@ class_name Player
 @export var weight: int
 
 @onready var hitbox: Area2D = $Hitbox
+@onready var foot_position_marker: Marker2D = $FootPosition
 
 var jump_action: String = " "
 var move_left_action: String = " "
@@ -36,6 +37,10 @@ var walk_input_disable_timer: Timer= Timer.new()
 
 const JUMP_BUFFER_TIME: float = 0.1
 const COYOTE_TIME: float = 0.07
+
+var global_foot_position: Vector2:
+	get(): return global_position + to_local(foot_position_marker.global_position)
+	set(new): global_position = new - to_local(foot_position_marker.global_position)
 
 @onready var jump_buffer_timer: Timer = make_timer(JUMP_BUFFER_TIME)
 @onready var coyote_timer: Timer = make_timer(COYOTE_TIME)

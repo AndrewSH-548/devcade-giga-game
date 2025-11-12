@@ -72,7 +72,7 @@ frame_progress = 1.0
 [node name="Animations" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = ExtResource("3_7qr4j")
-animation = &"Bounce"
+animation = &"Hitstun"
 autoplay = "Idle"
 
 [node name="Hitbox" type="Area2D" parent="."]
@@ -99,6 +99,9 @@ one_shot = true
 
 [node name="ReDash" type="Timer" parent="Timers"]
 one_shot = true
+
+[node name="FootPosition" type="Marker2D" parent="."]
+position = Vector2(0, 42)
 
 [connection signal="timeout" from="Timers/Dash" to="." method="dash_timer_end"]
 [connection signal="timeout" from="Timers/Rebound" to="." method="rebound_timer_end"]

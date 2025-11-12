@@ -16,6 +16,7 @@ enum {
 var state: int = SLEEPING
 
 @onready var sprite: AnimatedSprite2D = $Sprite
+@onready var collision_shape: CollisionShape2D = $Collision
 
 var velocity: Vector2 = Vector2.ZERO
 var acceleration: float = 1024.0
@@ -49,15 +50,26 @@ func _physics_process(delta: float) -> void:
 			velocity.y = move_toward(velocity.y, -max_speed, acceleration * delta)
 			var last_velocity: float = velocity.y
 			var collision: KinematicCollision2D = move_and_collide(velocity * delta)
+			print(velocity.y)
 			if collision != null:
 				state = WAITING
 				wait_timer.start(1.0)
 				for body in player_detector.get_overlapping_bodies():
 					if body is Player:
-						body.velocity.y = -320 * abs(last_velocity / max_speed)
+						#collision_shape.disabled = true
+						call_deferred("boost_player", body, last_velocity)
+			#else:
+			#	for body in player_detector.get_overlapping_bodies():
+			#		if body is Player:
+			#			body.global_foot_position.y = global_position.y - 32.0
 		RETURN:
+			#collision_shape.disabled = false
 			velocity.y = return_speed
 			var collision: KinematicCollision2D = move_and_collide(velocity * delta)
 			if collision != null:
 				state = SLEEPING
 				sprite.play("Sleep")
+
+func boost_player(body: CharacterBody2D, last_velocity: float):
+	#print("BOOST!: " + str(abs(last_velocity * 1.3)))
+	body.velocity.y = -abs(last_velocity * 1.1)
