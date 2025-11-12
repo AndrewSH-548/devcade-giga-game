@@ -42,7 +42,9 @@ func _on_level_select_pressed() -> void:
 	queue_free()
 
 func _on_quit_pressed() -> void:
-	get_tree().quit(); 
+	get_tree().get_first_node_in_group("splitscreen").queue_free()
+	get_tree().change_scene_to_file("res://scenes/start_screen.tscn")
+	queue_free()
 
 func _on_name_input_pressed() -> void:
 	name_input_panel.show();
