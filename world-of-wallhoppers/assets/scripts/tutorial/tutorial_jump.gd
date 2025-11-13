@@ -14,7 +14,7 @@ var position_y: float
 var jump_strength: float = 370.0
 var gravity: float = 1280.0
 var velocity: float = 0.0
-var required_jumps: int = 5
+var required_jumps: int = 3
 var jumps: int = 0
 var on_floor_last_frame: bool = false
 

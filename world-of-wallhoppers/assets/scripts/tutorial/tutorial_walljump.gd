@@ -20,7 +20,7 @@ var jump_strength: float = 236.0
 var pushoff_strength: float = 400.0
 var gravity: float = 550.0
 
-var required_jumps: int = 5
+var required_jumps: int = 3
 var jumps: int = 0
 
 func update(delta: float):
