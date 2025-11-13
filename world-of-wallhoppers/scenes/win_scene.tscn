@@ -1,9 +1,19 @@
-[gd_scene load_steps=4 format=3 uid="uid://3fa66vjha0pm"]
+[gd_scene load_steps=6 format=3 uid="uid://3fa66vjha0pm"]
 
 [ext_resource type="Script" uid="uid://csymixlonsaw3" path="res://assets/scripts/win_scene.gd" id="1_p78a6"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_ecqtd"]
+font_size = 128
+stacked_outline_count = 1
+stacked_outline_0/size = 64
+
 [sub_resource type="LabelSettings" id="LabelSettings_p78a6"]
 font_size = 80
+
+[sub_resource type="LabelSettings" id="LabelSettings_aw8vk"]
+font_size = 96
+stacked_outline_count = 1
+stacked_outline_0/size = 64
 
 [sub_resource type="Theme" id="Theme_p78a6"]
 Button/font_sizes/font_size = 100
@@ -27,7 +37,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.261113, 0.261113, 0.261113, 1)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="Results" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -41,17 +51,27 @@ offset_bottom = 649.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TimeLabel" type="Label" parent="VBoxContainer"]
+[node name="WinnerMultiplayer" type="Label" parent="Results"]
+custom_minimum_size = Vector2(1100, 400)
+layout_mode = 2
+text = "Congradulations!"
+label_settings = SubResource("LabelSettings_ecqtd")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="TimeLabel" type="Label" parent="Results"]
 custom_minimum_size = Vector2(0, 120)
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 60
-text = "43.1"
+text = "Completion Time: 43.1"
 label_settings = SubResource("LabelSettings_p78a6")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label" type="Label" parent="VBoxContainer"]
+[node name="Label" type="Label" parent="Results"]
+visible = false
 custom_minimum_size = Vector2(0, 240)
 layout_mode = 2
 size_flags_vertical = 3
@@ -61,17 +81,17 @@ label_settings = SubResource("LabelSettings_p78a6")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Level Select" type="Button" parent="VBoxContainer"]
+[node name="Level Select" type="Button" parent="Results"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 100
 text = "Level Select"
 
-[node name="Quit" type="Button" parent="VBoxContainer"]
+[node name="Quit" type="Button" parent="Results"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 100
 text = "Main Menu"
 
-[node name="LeaderboardTitle" type="Label" parent="VBoxContainer"]
+[node name="LeaderboardTitle" type="Label" parent="Results"]
 custom_minimum_size = Vector2(0, 240)
 layout_mode = 2
 size_flags_vertical = 3
@@ -81,7 +101,7 @@ label_settings = SubResource("LabelSettings_p78a6")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Leaderboard" type="Label" parent="VBoxContainer"]
+[node name="Leaderboard" type="Label" parent="Results"]
 custom_minimum_size = Vector2(0, 240)
 layout_mode = 2
 size_flags_vertical = 3
@@ -91,14 +111,14 @@ label_settings = SubResource("LabelSettings_p78a6")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Name Input" type="Button" parent="VBoxContainer"]
+[node name="Name Input" type="Button" parent="Results"]
 visible = false
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 theme_override_font_sizes/font_size = 100
 text = "Name: ______"
 
-[node name="NameInputPanel" type="Panel" parent="."]
+[node name="EnterRecord" type="Panel" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -107,7 +127,37 @@ offset_top = 851.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="NameInputContainer" type="VBoxContainer" parent="NameInputPanel"]
+[node name="Winner" type="Label" parent="EnterRecord"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -727.0
+offset_bottom = -1344.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Congradulations!"
+label_settings = SubResource("LabelSettings_ecqtd")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="InstructionsEnterName" type="Label" parent="EnterRecord"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -402.0
+offset_bottom = -1019.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Enter your Name"
+label_settings = SubResource("LabelSettings_aw8vk")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="NameInputContainer" type="VBoxContainer" parent="EnterRecord"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -117,11 +167,11 @@ offset_bottom = 14.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Panel" type="Panel" parent="NameInputPanel/NameInputContainer"]
+[node name="Panel" type="Panel" parent="EnterRecord/NameInputContainer"]
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
 
-[node name="PlayerNameLabel" type="Label" parent="NameInputPanel/NameInputContainer/Panel"]
+[node name="PlayerNameLabel" type="Label" parent="EnterRecord/NameInputContainer/Panel"]
 custom_minimum_size = Vector2(0, 240)
 layout_mode = 1
 anchors_preset = 15
@@ -137,228 +187,228 @@ label_settings = SubResource("LabelSettings_p78a6")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="GridContainer" type="GridContainer" parent="NameInputPanel/NameInputContainer"]
+[node name="GridContainer" type="GridContainer" parent="EnterRecord/NameInputContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 columns = 7
 
-[node name="A" type="Button" parent="NameInputPanel/NameInputContainer/GridContainer"]
+[node name="A" type="Button" parent="EnterRecord/NameInputContainer/GridContainer"]
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 theme = SubResource("Theme_p78a6")
 text = "A"
 
-[node name="B" type="Button" parent="NameInputPanel/NameInputContainer/GridContainer"]
+[node name="B" type="Button" parent="EnterRecord/NameInputContainer/GridContainer"]
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 theme = SubResource("Theme_p78a6")
 text = "B
 "
 
-[node name="C" type="Button" parent="NameInputPanel/NameInputContainer/GridContainer"]
+[node name="C" type="Button" parent="EnterRecord/NameInputContainer/GridContainer"]
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 theme = SubResource("Theme_p78a6")
 text = "C"
 
-[node name="D" type="Button" parent="NameInputPanel/NameInputContainer/GridContainer"]
+[node name="D" type="Button" parent="EnterRecord/NameInputContainer/GridContainer"]
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 theme = SubResource("Theme_p78a6")
 text = "D"
 
-[node name="E" type="Button" parent="NameInputPanel/NameInputContainer/GridContainer"]
+[node name="E" type="Button" parent="EnterRecord/NameInputContainer/GridContainer"]
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 theme = SubResource("Theme_p78a6")
 text = "E"
 
-[node name="F" type="Button" parent="NameInputPanel/NameInputContainer/GridContainer"]
+[node name="F" type="Button" parent="EnterRecord/NameInputContainer/GridContainer"]
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 theme = SubResource("Theme_p78a6")
 text = "F"
 
-[node name="G" type="Button" parent="NameInputPanel/NameInputContainer/GridContainer"]
+[node name="G" type="Button" parent="EnterRecord/NameInputContainer/GridContainer"]
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 theme = SubResource("Theme_p78a6")
 text = "G"
 
-[node name="H" type="Button" parent="NameInputPanel/NameInputContainer/GridContainer"]
+[node name="H" type="Button" parent="EnterRecord/NameInputContainer/GridContainer"]
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 theme = SubResource("Theme_p78a6")
 text = "H"
 
-[node name="I" type="Button" parent="NameInputPanel/NameInputContainer/GridContainer"]
+[node name="I" type="Button" parent="EnterRecord/NameInputContainer/GridContainer"]
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 theme = SubResource("Theme_p78a6")
 text = "I"
 
-[node name="J" type="Button" parent="NameInputPanel/NameInputContainer/GridContainer"]
+[node name="J" type="Button" parent="EnterRecord/NameInputContainer/GridContainer"]
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 theme = SubResource("Theme_p78a6")
 text = "J"
 
-[node name="K" type="Button" parent="NameInputPanel/NameInputContainer/GridContainer"]
+[node name="K" type="Button" parent="EnterRecord/NameInputContainer/GridContainer"]
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 theme = SubResource("Theme_p78a6")
 text = "K"
 
-[node name="L" type="Button" parent="NameInputPanel/NameInputContainer/GridContainer"]
+[node name="L" type="Button" parent="EnterRecord/NameInputContainer/GridContainer"]
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 theme = SubResource("Theme_p78a6")
 text = "L"
 
-[node name="M" type="Button" parent="NameInputPanel/NameInputContainer/GridContainer"]
+[node name="M" type="Button" parent="EnterRecord/NameInputContainer/GridContainer"]
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 theme = SubResource("Theme_p78a6")
 text = "M"
 
-[node name="N" type="Button" parent="NameInputPanel/NameInputContainer/GridContainer"]
+[node name="N" type="Button" parent="EnterRecord/NameInputContainer/GridContainer"]
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 theme = SubResource("Theme_p78a6")
 text = "N"
 
-[node name="O" type="Button" parent="NameInputPanel/NameInputContainer/GridContainer"]
+[node name="O" type="Button" parent="EnterRecord/NameInputContainer/GridContainer"]
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 theme = SubResource("Theme_p78a6")
 text = "O"
 
-[node name="P" type="Button" parent="NameInputPanel/NameInputContainer/GridContainer"]
+[node name="P" type="Button" parent="EnterRecord/NameInputContainer/GridContainer"]
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 theme = SubResource("Theme_p78a6")
 text = "P"
 
-[node name="Q" type="Button" parent="NameInputPanel/NameInputContainer/GridContainer"]
+[node name="Q" type="Button" parent="EnterRecord/NameInputContainer/GridContainer"]
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 theme = SubResource("Theme_p78a6")
 text = "Q"
 
-[node name="R" type="Button" parent="NameInputPanel/NameInputContainer/GridContainer"]
+[node name="R" type="Button" parent="EnterRecord/NameInputContainer/GridContainer"]
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 theme = SubResource("Theme_p78a6")
 text = "R"
 
-[node name="S" type="Button" parent="NameInputPanel/NameInputContainer/GridContainer"]
+[node name="S" type="Button" parent="EnterRecord/NameInputContainer/GridContainer"]
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 theme = SubResource("Theme_p78a6")
 text = "S"
 
-[node name="T" type="Button" parent="NameInputPanel/NameInputContainer/GridContainer"]
+[node name="T" type="Button" parent="EnterRecord/NameInputContainer/GridContainer"]
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 theme = SubResource("Theme_p78a6")
 text = "T"
 
-[node name="U" type="Button" parent="NameInputPanel/NameInputContainer/GridContainer"]
+[node name="U" type="Button" parent="EnterRecord/NameInputContainer/GridContainer"]
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 theme = SubResource("Theme_p78a6")
 text = "U"
 
-[node name="Buffer1" type="Button" parent="NameInputPanel/NameInputContainer/GridContainer"]
+[node name="Buffer1" type="Button" parent="EnterRecord/NameInputContainer/GridContainer"]
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 theme = SubResource("Theme_p78a6")
 
-[node name="V" type="Button" parent="NameInputPanel/NameInputContainer/GridContainer"]
+[node name="V" type="Button" parent="EnterRecord/NameInputContainer/GridContainer"]
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 theme = SubResource("Theme_p78a6")
 text = "V"
 
-[node name="W" type="Button" parent="NameInputPanel/NameInputContainer/GridContainer"]
+[node name="W" type="Button" parent="EnterRecord/NameInputContainer/GridContainer"]
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 theme = SubResource("Theme_p78a6")
 text = "W"
 
-[node name="X" type="Button" parent="NameInputPanel/NameInputContainer/GridContainer"]
+[node name="X" type="Button" parent="EnterRecord/NameInputContainer/GridContainer"]
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 theme = SubResource("Theme_p78a6")
 text = "X
 "
 
-[node name="Y" type="Button" parent="NameInputPanel/NameInputContainer/GridContainer"]
+[node name="Y" type="Button" parent="EnterRecord/NameInputContainer/GridContainer"]
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 theme = SubResource("Theme_p78a6")
 text = "Y"
 
-[node name="Z" type="Button" parent="NameInputPanel/NameInputContainer/GridContainer"]
+[node name="Z" type="Button" parent="EnterRecord/NameInputContainer/GridContainer"]
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 theme = SubResource("Theme_p78a6")
 text = "Z"
 
-[node name="Buffer2" type="Button" parent="NameInputPanel/NameInputContainer/GridContainer"]
+[node name="Buffer2" type="Button" parent="EnterRecord/NameInputContainer/GridContainer"]
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 theme = SubResource("Theme_p78a6")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="NameInputPanel/NameInputContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="EnterRecord/NameInputContainer"]
 layout_mode = 2
 
-[node name="DeleteButton" type="Button" parent="NameInputPanel/NameInputContainer/HBoxContainer"]
+[node name="DeleteButton" type="Button" parent="EnterRecord/NameInputContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 80
 text = "Delete"
 
-[node name="ClearButton" type="Button" parent="NameInputPanel/NameInputContainer/HBoxContainer"]
+[node name="ClearButton" type="Button" parent="EnterRecord/NameInputContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 80
 text = "Clear"
 
-[node name="SubmitButton" type="Button" parent="NameInputPanel/NameInputContainer"]
+[node name="SubmitButton" type="Button" parent="EnterRecord/NameInputContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 100
 text = "Enter"
 
-[connection signal="pressed" from="VBoxContainer/Level Select" to="." method="_on_level_select_pressed"]
-[connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]
-[connection signal="pressed" from="VBoxContainer/Name Input" to="." method="_on_name_input_pressed"]
-[connection signal="pressed" from="NameInputPanel/NameInputContainer/GridContainer/A" to="." method="_on_a_pressed"]
-[connection signal="pressed" from="NameInputPanel/NameInputContainer/GridContainer/B" to="." method="_on_b_pressed"]
-[connection signal="pressed" from="NameInputPanel/NameInputContainer/GridContainer/C" to="." method="_on_c_pressed"]
-[connection signal="pressed" from="NameInputPanel/NameInputContainer/GridContainer/D" to="." method="_on_d_pressed"]
-[connection signal="pressed" from="NameInputPanel/NameInputContainer/GridContainer/E" to="." method="_on_e_pressed"]
-[connection signal="pressed" from="NameInputPanel/NameInputContainer/GridContainer/F" to="." method="_on_f_pressed"]
-[connection signal="pressed" from="NameInputPanel/NameInputContainer/GridContainer/G" to="." method="_on_g_pressed"]
-[connection signal="pressed" from="NameInputPanel/NameInputContainer/GridContainer/H" to="." method="_on_h_pressed"]
-[connection signal="pressed" from="NameInputPanel/NameInputContainer/GridContainer/I" to="." method="_on_i_pressed"]
-[connection signal="pressed" from="NameInputPanel/NameInputContainer/GridContainer/J" to="." method="_on_j_pressed"]
-[connection signal="pressed" from="NameInputPanel/NameInputContainer/GridContainer/K" to="." method="_on_k_pressed"]
-[connection signal="pressed" from="NameInputPanel/NameInputContainer/GridContainer/L" to="." method="_on_l_pressed"]
-[connection signal="pressed" from="NameInputPanel/NameInputContainer/GridContainer/M" to="." method="_on_m_pressed"]
-[connection signal="pressed" from="NameInputPanel/NameInputContainer/GridContainer/N" to="." method="_on_n_pressed"]
-[connection signal="pressed" from="NameInputPanel/NameInputContainer/GridContainer/O" to="." method="_on_o_pressed"]
-[connection signal="pressed" from="NameInputPanel/NameInputContainer/GridContainer/P" to="." method="_on_p_pressed"]
-[connection signal="pressed" from="NameInputPanel/NameInputContainer/GridContainer/Q" to="." method="_on_q_pressed"]
-[connection signal="pressed" from="NameInputPanel/NameInputContainer/GridContainer/R" to="." method="_on_r_pressed"]
-[connection signal="pressed" from="NameInputPanel/NameInputContainer/GridContainer/S" to="." method="_on_s_pressed"]
-[connection signal="pressed" from="NameInputPanel/NameInputContainer/GridContainer/T" to="." method="_on_t_pressed"]
-[connection signal="pressed" from="NameInputPanel/NameInputContainer/GridContainer/U" to="." method="_on_u_pressed"]
-[connection signal="pressed" from="NameInputPanel/NameInputContainer/GridContainer/V" to="." method="_on_v_pressed"]
-[connection signal="pressed" from="NameInputPanel/NameInputContainer/GridContainer/W" to="." method="_on_w_pressed"]
-[connection signal="pressed" from="NameInputPanel/NameInputContainer/GridContainer/X" to="." method="_on_x_pressed"]
-[connection signal="pressed" from="NameInputPanel/NameInputContainer/GridContainer/Y" to="." method="_on_y_pressed"]
-[connection signal="pressed" from="NameInputPanel/NameInputContainer/GridContainer/Z" to="." method="_on_z_pressed"]
-[connection signal="pressed" from="NameInputPanel/NameInputContainer/HBoxContainer/DeleteButton" to="." method="_on_delete_button_pressed"]
-[connection signal="pressed" from="NameInputPanel/NameInputContainer/HBoxContainer/ClearButton" to="." method="_on_clear_button_pressed"]
-[connection signal="pressed" from="NameInputPanel/NameInputContainer/SubmitButton" to="." method="_on_submit_button_pressed"]
+[connection signal="pressed" from="Results/Level Select" to="." method="_on_level_select_pressed"]
+[connection signal="pressed" from="Results/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="Results/Name Input" to="." method="_on_name_input_pressed"]
+[connection signal="pressed" from="EnterRecord/NameInputContainer/GridContainer/A" to="." method="_on_a_pressed"]
+[connection signal="pressed" from="EnterRecord/NameInputContainer/GridContainer/B" to="." method="_on_b_pressed"]
+[connection signal="pressed" from="EnterRecord/NameInputContainer/GridContainer/C" to="." method="_on_c_pressed"]
+[connection signal="pressed" from="EnterRecord/NameInputContainer/GridContainer/D" to="." method="_on_d_pressed"]
+[connection signal="pressed" from="EnterRecord/NameInputContainer/GridContainer/E" to="." method="_on_e_pressed"]
+[connection signal="pressed" from="EnterRecord/NameInputContainer/GridContainer/F" to="." method="_on_f_pressed"]
+[connection signal="pressed" from="EnterRecord/NameInputContainer/GridContainer/G" to="." method="_on_g_pressed"]
+[connection signal="pressed" from="EnterRecord/NameInputContainer/GridContainer/H" to="." method="_on_h_pressed"]
+[connection signal="pressed" from="EnterRecord/NameInputContainer/GridContainer/I" to="." method="_on_i_pressed"]
+[connection signal="pressed" from="EnterRecord/NameInputContainer/GridContainer/J" to="." method="_on_j_pressed"]
+[connection signal="pressed" from="EnterRecord/NameInputContainer/GridContainer/K" to="." method="_on_k_pressed"]
+[connection signal="pressed" from="EnterRecord/NameInputContainer/GridContainer/L" to="." method="_on_l_pressed"]
+[connection signal="pressed" from="EnterRecord/NameInputContainer/GridContainer/M" to="." method="_on_m_pressed"]
+[connection signal="pressed" from="EnterRecord/NameInputContainer/GridContainer/N" to="." method="_on_n_pressed"]
+[connection signal="pressed" from="EnterRecord/NameInputContainer/GridContainer/O" to="." method="_on_o_pressed"]
+[connection signal="pressed" from="EnterRecord/NameInputContainer/GridContainer/P" to="." method="_on_p_pressed"]
+[connection signal="pressed" from="EnterRecord/NameInputContainer/GridContainer/Q" to="." method="_on_q_pressed"]
+[connection signal="pressed" from="EnterRecord/NameInputContainer/GridContainer/R" to="." method="_on_r_pressed"]
+[connection signal="pressed" from="EnterRecord/NameInputContainer/GridContainer/S" to="." method="_on_s_pressed"]
+[connection signal="pressed" from="EnterRecord/NameInputContainer/GridContainer/T" to="." method="_on_t_pressed"]
+[connection signal="pressed" from="EnterRecord/NameInputContainer/GridContainer/U" to="." method="_on_u_pressed"]
+[connection signal="pressed" from="EnterRecord/NameInputContainer/GridContainer/V" to="." method="_on_v_pressed"]
+[connection signal="pressed" from="EnterRecord/NameInputContainer/GridContainer/W" to="." method="_on_w_pressed"]
+[connection signal="pressed" from="EnterRecord/NameInputContainer/GridContainer/X" to="." method="_on_x_pressed"]
+[connection signal="pressed" from="EnterRecord/NameInputContainer/GridContainer/Y" to="." method="_on_y_pressed"]
+[connection signal="pressed" from="EnterRecord/NameInputContainer/GridContainer/Z" to="." method="_on_z_pressed"]
+[connection signal="pressed" from="EnterRecord/NameInputContainer/HBoxContainer/DeleteButton" to="." method="_on_delete_button_pressed"]
+[connection signal="pressed" from="EnterRecord/NameInputContainer/HBoxContainer/ClearButton" to="." method="_on_clear_button_pressed"]
+[connection signal="pressed" from="EnterRecord/NameInputContainer/SubmitButton" to="." method="_on_submit_button_pressed"]
