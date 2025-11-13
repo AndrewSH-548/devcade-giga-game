@@ -1,4 +1,5 @@
 extends Control
+class_name WinScene
 
 @onready var time_label: Label = $Results/TimeLabel
 @onready var leaderboard_title: Label = $Results/LeaderboardTitle
@@ -13,6 +14,7 @@ extends Control
 
 @onready var level_select_button: Button = $"Results/Level Select"
 
+var session_info: SessionInfo
 var player_name = "";
 
 func _ready() -> void:
@@ -41,7 +43,7 @@ func set_leaderboard() -> void: ## Set the leaderboard with the new time
 				break;
 		leaderboard.text += player_name + " ----- " + str(leaderboard_values[i]) + "s\n";
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	player_name_label.text = player_name if player_name != "" else "Enter Name..."
 
 func _on_level_select_pressed() -> void:

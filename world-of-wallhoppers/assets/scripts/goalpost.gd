@@ -2,9 +2,6 @@ extends Node2D
 
 @onready var goal_1: Area2D = $Goal1
 
-## one parameter: the player number (an integer)
-var game_finish: Signal
-
 
 ## When one of the player(s) hits the goal, the game should end. [br]
 ## This function handles the emitition of the signal of that [br]
@@ -17,7 +14,10 @@ func _on_goal_1_body_entered(body: Node2D) -> void:
 		end_game(2)
 
 func end_game(player_number: int) -> void:
-	game_finish.emit(player_number)
-	print("player_number " + str(player_number) + " won");
-	# TODO: add implientation code so that the game ends and reports nessisary data in the future
-	get_tree().change_scene_to_file("res://scenes/win_scene.tscn"); 
+	var level_header: MainLevelHeader = get_tree().get_first_node_in_group("splitscreen") as MainLevelHeader
+	var session_info: SessionInfo = level_header.current_session_info
+	session_info.winner = player_number
+	var win_screen: WinScene = preload("res://scenes/win_scene.tscn").instantiate()
+	get_tree().root.add_child(win_screen)
+	win_screen.session_info = session_info
+	level_header.queue_free()
