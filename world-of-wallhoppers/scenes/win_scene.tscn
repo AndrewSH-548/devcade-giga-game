@@ -1,12 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://3fa66vjha0pm"]
+[gd_scene load_steps=6 format=3 uid="uid://3fa66vjha0pm"]
 
 [ext_resource type="Script" uid="uid://csymixlonsaw3" path="res://assets/scripts/win_scene.gd" id="1_p78a6"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ecqtd"]
+font_size = 128
+stacked_outline_count = 1
+stacked_outline_0/size = 64
 
 [sub_resource type="LabelSettings" id="LabelSettings_p78a6"]
 font_size = 80
 
 [sub_resource type="LabelSettings" id="LabelSettings_aw8vk"]
-font_size = 150
+font_size = 96
 stacked_outline_count = 1
 stacked_outline_0/size = 64
 
@@ -46,6 +51,15 @@ offset_bottom = 649.5
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="WinnerMultiplayer" type="Label" parent="Results"]
+custom_minimum_size = Vector2(1100, 400)
+layout_mode = 2
+text = "Congradulations!"
+label_settings = SubResource("LabelSettings_ecqtd")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
 [node name="TimeLabel" type="Label" parent="Results"]
 custom_minimum_size = Vector2(0, 120)
 layout_mode = 2
@@ -57,6 +71,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Label" type="Label" parent="Results"]
+visible = false
 custom_minimum_size = Vector2(0, 240)
 layout_mode = 2
 size_flags_vertical = 3
@@ -112,13 +127,28 @@ offset_top = 851.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Instructions" type="Label" parent="EnterRecord"]
+[node name="Winner" type="Label" parent="EnterRecord"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -679.0
-offset_bottom = -1296.0
+offset_top = -727.0
+offset_bottom = -1344.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Congradulations!"
+label_settings = SubResource("LabelSettings_ecqtd")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="InstructionsEnterName" type="Label" parent="EnterRecord"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -402.0
+offset_bottom = -1019.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Enter your Name"

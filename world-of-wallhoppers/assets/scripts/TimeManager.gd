@@ -6,6 +6,7 @@ var current_leaderboard = {} ## holds the current leaderboard, which is dynamica
 
 var volcano_leaderboard = {}; ## leaderboard for completion times 
 var jungle_leaderboard = {};
+var reef_leaderboard = {}
 
 var singleplayer_time: float = 0; ## the current singleplayer time
 
@@ -29,12 +30,21 @@ func return_and_reset_temporary_singleplayer_time(level: String, player_name: St
 	
 	match level.to_lower():
 		"volcano":
-			volcano_leaderboard[player_name] = temp;
-			set_current_leaderboard(level);
+			var current = volcano_leaderboard.get(player_name)
+			if current == null or temp < current:
+				volcano_leaderboard[player_name] = temp
+				set_current_leaderboard(level);
 			#volcano_singleplayer_leaderboard.sort(); # sorts the leaderboard in descending order
 		"jungle":
-			jungle_leaderboard[player_name] = temp;
-			set_current_leaderboard(level);
+			var current = jungle_leaderboard.get(player_name)
+			if current == null or temp < current:
+				jungle_leaderboard[player_name] = temp
+				set_current_leaderboard(level);
+		"reef":
+			var current = reef_leaderboard.get(player_name)
+			if current == null or temp < current:
+				reef_leaderboard[player_name] = temp
+				set_current_leaderboard(level)
 		_:
 			print_debug("ERROR: Invalid level -> " + level);
 	
@@ -48,6 +58,8 @@ func set_current_leaderboard(level: String) -> void: ## sets the current leaderb
 			current_leaderboard = volcano_leaderboard;
 		"jungle":
 			current_leaderboard = jungle_leaderboard;
+		"reef":
+			current_leaderboard = reef_leaderboard
 		_:
 			print_debug("ERROR: Invalid level -> " + level);
 	
@@ -56,6 +68,7 @@ func save_data(): ## save all leaderboards to "res://save_data/leaderboards.save
 	# Store leaderboards
 	file.store_var(volcano_leaderboard);
 	file.store_var(jungle_leaderboard);
+	file.store_var(reef_leaderboard);
 	print_debug("Data Saved");
 	file.close();
 
@@ -66,6 +79,10 @@ func load_data(): ## load all leaderboards from "res://save_data/leaderboards.sa
 		# Set leaderboards from save data
 		volcano_leaderboard = file.get_var();
 		jungle_leaderboard = file.get_var();
+		reef_leaderboard = file.get_var();
+		if volcano_leaderboard == null: volcano_leaderboard = {}
+		if jungle_leaderboard == null: jungle_leaderboard = {}
+		if reef_leaderboard == null: reef_leaderboard = {}
 		print_debug("Data Loaded");
 		file.close();
 	else:
@@ -76,6 +93,8 @@ func clear_all_data(): ## clear leaderboard data from "res://save_data/leaderboa
 		var file = FileAccess.open(save_path, FileAccess.WRITE);
 		volcano_leaderboard = {};
 		jungle_leaderboard = {};
+		reef_leaderboard = {}
 		file.store_var(volcano_leaderboard);
 		file.store_var(jungle_leaderboard);
+		file.store_var(reef_leaderboard);
 		file.close();

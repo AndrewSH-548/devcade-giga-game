@@ -9,5 +9,7 @@ func switch_level(level: String):
 			current_level = level;
 		"jungle":
 			current_level = level;
+		"reef":
+			current_level = level
 		_:
 			print_debug("ERROR: Invalid level -> " + level);

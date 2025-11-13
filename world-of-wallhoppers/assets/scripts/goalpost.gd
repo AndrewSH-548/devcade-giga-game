@@ -16,8 +16,6 @@ func _on_goal_1_body_entered(body: Node2D) -> void:
 func end_game(player_number: int) -> void:
 	var level_header: MainLevelHeader = get_tree().get_first_node_in_group("splitscreen") as MainLevelHeader
 	var session_info: SessionInfo = level_header.current_session_info
+	SessionInfo.pass_along = session_info
 	session_info.winner = player_number
-	var win_screen: WinScene = preload("res://scenes/win_scene.tscn").instantiate()
-	get_tree().root.add_child(win_screen)
-	win_screen.session_info = session_info
-	level_header.queue_free()
+	get_tree().change_scene_to_file("res://scenes/win_scene.tscn")

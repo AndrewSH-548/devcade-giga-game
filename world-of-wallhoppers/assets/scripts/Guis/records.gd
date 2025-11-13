@@ -2,11 +2,13 @@ extends Control
 
 @onready var volcano_leaderboard: Label = $VBoxContainer/VScrollBar/MarginContainer/VBoxContainer/Volcano/VolcanoLeaderboard
 @onready var jungle_leaderboard: Label = $VBoxContainer/VScrollBar/MarginContainer/VBoxContainer/Jungle/JungleLeaderboard
+@onready var reef_leaderboard: Label = $VBoxContainer/VScrollBar/MarginContainer/VBoxContainer/Reef/ReefLeaderboard
 @onready var back: Button = $VBoxContainer/TopContainer/Back
 
 func _ready() -> void:
 	display_leaderboard("volcano");
 	display_leaderboard("jungle");
+	display_leaderboard("reef")
 	back.grab_focus();
 
 func display_leaderboard(level: String) -> void:
@@ -17,6 +19,8 @@ func display_leaderboard(level: String) -> void:
 			leaderboard = volcano_leaderboard;
 		"jungle":
 			leaderboard = jungle_leaderboard;
+		"reef":
+			leaderboard = reef_leaderboard
 		_:
 			print_debug("Error: Invalid level entered.");
 	TimeManager.set_current_leaderboard(level);

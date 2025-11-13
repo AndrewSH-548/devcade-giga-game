@@ -1,6 +1,8 @@
 extends RefCounted
 class_name SessionInfo
 
+static var pass_along: SessionInfo = null
+
 var is_multiplayer: bool
 var level_info: LevelInfo
 var characters: Array[PackedScene]

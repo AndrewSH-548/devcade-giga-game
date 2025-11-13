@@ -11,6 +11,8 @@ class_name WinScene
 @onready var name_input_container: VBoxContainer = $EnterRecord/NameInputContainer
 @onready var name_input_panel: Panel = $EnterRecord
 @onready var d_key: Button = $EnterRecord/NameInputContainer/GridContainer/D
+@onready var winner_label: Label = $EnterRecord/Winner
+@onready var winner_multiplayer: Label = $Results/WinnerMultiplayer
 
 @onready var level_select_button: Button = $"Results/Level Select"
 
@@ -18,18 +20,36 @@ var session_info: SessionInfo
 var player_name = "";
 
 func _ready() -> void:
+	session_info = SessionInfo.pass_along
+	if session_info.is_multiplayer:
+		winner_label.text = "Player " + str(session_info.winner) + " Won!"
+		winner_multiplayer.text = winner_label.text
+		winner_label.visible = false
+	else:
+		winner_label.text = "Congradulations!"
+		winner_multiplayer.visible = false
 	get_tree().get_first_node_in_group("splitscreen").queue_free()
-	results.focus_behavior_recursive = Control.FOCUS_BEHAVIOR_DISABLED
-	name_input_panel.focus_behavior_recursive = Control.FOCUS_BEHAVIOR_INHERITED
-	results.visible = false
-	name_input_panel.visible = true
-	d_key.grab_focus()
+	if not session_info.is_multiplayer:
+		results.focus_behavior_recursive = Control.FOCUS_BEHAVIOR_DISABLED
+		name_input_panel.focus_behavior_recursive = Control.FOCUS_BEHAVIOR_INHERITED
+		results.visible = false
+		name_input_panel.visible = true
+		d_key.grab_focus()
+		name_input_panel.show();
+	else:
+		results.focus_behavior_recursive = Control.FOCUS_BEHAVIOR_INHERITED
+		name_input_panel.focus_behavior_recursive = Control.FOCUS_BEHAVIOR_DISABLED
+		results.visible = true
+		name_input_panel.visible = false
+		time_label.visible = false
+		leaderboard_title.visible = false
+		leaderboard.visible = false
+		level_select_button.grab_focus()
 	time_label.text = "Completion Time: " + str(TimeManager.return_singleplayer_time());
 	leaderboard_title.text = "Leaderboard";
 	leaderboard.text = "";
 	player_name = ""
 
-	name_input_panel.show();
 
 func set_leaderboard() -> void: ## Set the leaderboard with the new time
 	time_label.text = "Completion Time: " + str(TimeManager.return_and_reset_temporary_singleplayer_time(LevelManager.current_level, player_name));
@@ -48,7 +68,8 @@ func _physics_process(_delta: float) -> void:
 
 func _on_level_select_pressed() -> void:
 	var level_select: Control =  MenuStartScreen.LEVEL_SELECT.instantiate()
-	level_select.is_multiplayer = get_tree().get_first_node_in_group("splitscreen").current_session_info.is_multiplayer
+	level_select.is_multiplayer = session_info.is_multiplayer
+	session_info = null
 	get_tree().root.add_child(level_select)
 	queue_free()
 
@@ -67,7 +88,6 @@ func _on_submit_button_pressed() -> void:
 	results.visible = true
 	name_input_panel.visible = false
 	level_select_button.grab_focus()
-	
 	set_leaderboard(); # submit leaderboard on name_input_pressed
 
 func _on_a_pressed() -> void:

@@ -112,4 +112,33 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
+[node name="Label2" type="Label" parent="VBoxContainer/VScrollBar/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 80
+text = "---------------------------------------"
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+
+[node name="Reef" type="VBoxContainer" parent="VBoxContainer/VScrollBar/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="RLeaderboardTitle" type="Label" parent="VBoxContainer/VScrollBar/MarginContainer/VBoxContainer/Reef"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "Reef"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ReefLeaderboard" type="Label" parent="VBoxContainer/VScrollBar/MarginContainer/VBoxContainer/Reef"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 80
+text = "r"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
 [connection signal="pressed" from="VBoxContainer/TopContainer/Back" to="." method="load_start_screen"]
