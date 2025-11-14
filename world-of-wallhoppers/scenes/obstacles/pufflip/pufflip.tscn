@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://40v37q8uw0gt"]
+[gd_scene load_steps=10 format=3 uid="uid://40v37q8uw0gt"]
 
 [ext_resource type="Script" uid="uid://b8eyq3cjx15vb" path="res://assets/scripts/objects/pufflip.gd" id="1_omwum"]
 [ext_resource type="Texture2D" uid="uid://b3qr8i6y54878" path="res://assets/sprites/pufflip/pufflip.png" id="1_tqlc6"]
+[ext_resource type="Script" uid="uid://cphusaq70x4jg" path="res://assets/scripts/obstacles.gd" id="3_vjo6s"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_omwum"]
 atlas = ExtResource("1_tqlc6")
@@ -48,12 +49,15 @@ animations = [{
 radius = 25.079872
 
 [node name="Pufflip" type="Node2D"]
+modulate = Color(0.417, 0.868, 0.737, 1)
 script = ExtResource("1_omwum")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
+rotation = 5.435406
 sprite_frames = SubResource("SpriteFrames_l0m2d")
-animation = &"Puff"
+animation = &"Shrink"
 autoplay = "Shrink"
+frame = 1
 
 [node name="FlipTimer" type="Timer" parent="."]
 autostart = true
@@ -61,6 +65,9 @@ autostart = true
 [node name="HitArea" type="Area2D" parent="."]
 collision_layer = 8
 collision_mask = 0
+script = ExtResource("3_vjo6s")
+launch_mode = 1
+direction_offset_angle = -90.0
 
 [node name="Collision" type="CollisionShape2D" parent="HitArea"]
 shape = SubResource("CircleShape2D_omwum")

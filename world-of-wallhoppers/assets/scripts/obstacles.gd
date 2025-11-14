@@ -1,20 +1,14 @@
 extends Node2D
+class_name Obstacle
 
-# When the player touches the obstacle
-func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body is Player:
-		call_deferred("moveplayer", body)
+@export_enum("Facing Away", "Facing Angle") var launch_mode: int = 0
 
-# Handles knockback of the player 
-func moveplayer(body: Node2D):
-	if not body.hitstun:
-		body.hitstun = true
-		if not body.velocity.x == 0:
-			# Move the player in the opposite direction of their motion 
-			body.velocity.x = -(body.velocity.x/abs(body.velocity.x)) * 20*body.weight # 20 can be changed
-		if not body.velocity.y == 0:
-			body.velocity.y = -(body.velocity.y/abs(body.velocity.y)) * 20*body.weight
-		
-		# Create hitstun effect (time can be changed (currently 1 second))
-		await get_tree().create_timer(1).timeout
-		body.hitstun = false
+@export var direction_offset_angle: float = 0.0
+
+func get_direction(to_global_position: Vector2):
+	match launch_mode:
+		0:
+			return global_position.direction_to(to_global_position).rotated(deg_to_rad(direction_offset_angle))
+		1:
+			return Vector2.from_angle(global_rotation_degrees).rotated(direction_offset_angle)
+	return Vector2.ZERO

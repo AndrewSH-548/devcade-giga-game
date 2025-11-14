@@ -34,6 +34,8 @@ var deccel_disable_timer: Timer = Timer.new()
 var disable_walk_input: bool = false
 var walk_input_disable_timer: Timer= Timer.new()
 
+var hitstun_max_fall_speed_modifier: float = 80.0
+
 const JUMP_BUFFER_TIME: float = 0.1
 const COYOTE_TIME: float = 0.07
 
@@ -59,7 +61,7 @@ func _ready() -> void:
 	walk_input_disable_timer.timeout.connect(func(): disable_walk_input = false)
 	sprite = $Animations
 	sprite.play();
-	hitbox.area_entered.connect(func(_body): do_hitstun())
+	hitbox.area_entered.connect(func(body): do_hitstun(body))
 
 func make_timer(time: float) -> Timer:
 	var timer: Timer = Timer.new()
@@ -85,8 +87,10 @@ func get_position_state() -> int:
 func process_gravity(delta: float):
 	# Add the gravity.
 	if get_position_state() in [STATE_ON_WALL, STATE_IN_AIR, STATE_HITSTUN]:
-		velocity.y += gravity * delta;
+		velocity.y += gravity * delta
 		velocity.y = clamp(velocity.y, -INF, fall_speed);
+	if hitstun:
+		velocity.y = clampf(velocity.y, -INF, hitstun_max_fall_speed_modifier)
 
 func process_jump(_delta: float):
 	
@@ -164,15 +168,15 @@ func do_walljump() -> void:
 	velocity.x = get_pushoff_wall_direction() * wall_pushoff_strength
 	velocity.y = -wall_jump_height
 
-func do_hitstun() -> void:
+func do_hitstun(body: Node2D) -> void:
+	var direction: Vector2 = body.global_position.direction_to(global_position)
+	if body is Obstacle:
+		direction = body.get_direction(global_position)
+		print("OBSTACE: " + str(body.global_rotation_degrees))
 	if not hitstun:
 		hitstun = true
-		if not velocity.x == 0:
-			# Move the player in the opposite direction of their motion 
-			velocity.x = -(velocity.x/abs(velocity.x)) * 20*weight # 20 can be changed
-		if not velocity.y == 0:
-			velocity.y = -(velocity.y/abs(velocity.y)) * 20*weight
-		
+		velocity = direction * 500.0
+		velocity.y *= 1.35
 		# Create hitstun effect (time can be changed (currently 1 second))
 		await get_tree().create_timer(1).timeout
 		hitstun = false
