@@ -1,31 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://rduk8lfaknsp"]
+[gd_scene load_steps=2 format=3 uid="uid://rduk8lfaknsp"]
 
 [ext_resource type="Script" uid="uid://chsqvlfra6qyt" path="res://assets/scripts/Guis/load_levels/level_select.gd" id="1_i6x52"]
-[ext_resource type="Script" uid="uid://72arh6p6vdd" path="res://assets/scripts/Guis/level_info.gd" id="2_qphbd"]
-[ext_resource type="PackedScene" uid="uid://x8jwn1lvobhp" path="res://scenes/levels/jungle.tscn" id="5_1r8fe"]
-[ext_resource type="PackedScene" uid="uid://c70tcpci8tum8" path="res://scenes/levels/reef.tscn" id="5_i6x52"]
-[ext_resource type="PackedScene" uid="uid://bnajm44iu8kfe" path="res://scenes/levels/volcano.tscn" id="6_qphbd"]
-
-[sub_resource type="Resource" id="Resource_qphbd"]
-script = ExtResource("2_qphbd")
-scene = ExtResource("5_1r8fe")
-name = "Jungle"
-border_color = Color(0.43529412, 0.23921569, 0, 1)
-metadata/_custom_type_script = "uid://72arh6p6vdd"
-
-[sub_resource type="Resource" id="Resource_1r8fe"]
-script = ExtResource("2_qphbd")
-scene = ExtResource("6_qphbd")
-name = "Volcano"
-border_color = Color(0.12941177, 0.011764706, 0.06666667, 1)
-metadata/_custom_type_script = "uid://72arh6p6vdd"
-
-[sub_resource type="Resource" id="Resource_61t22"]
-script = ExtResource("2_qphbd")
-scene = ExtResource("5_i6x52")
-name = "Reef"
-border_color = Color(0, 0.0627451, 0.33333334, 1)
-metadata/_custom_type_script = "uid://72arh6p6vdd"
 
 [node name="LevelSelect" type="Control"]
 layout_mode = 3
@@ -37,7 +12,6 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_i6x52")
-levels_list = Array[ExtResource("2_qphbd")]([SubResource("Resource_qphbd"), SubResource("Resource_1r8fe"), SubResource("Resource_61t22")])
 
 [node name="VerticalContainer" type="VBoxContainer" parent="."]
 layout_mode = 1

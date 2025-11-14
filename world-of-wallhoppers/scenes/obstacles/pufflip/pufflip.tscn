@@ -53,7 +53,7 @@ modulate = Color(0.417, 0.868, 0.737, 1)
 script = ExtResource("1_omwum")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
-rotation = 5.435406
+rotation = 3.112724
 sprite_frames = SubResource("SpriteFrames_l0m2d")
 animation = &"Shrink"
 autoplay = "Shrink"

@@ -1,7 +1,6 @@
 extends Control
 class_name LevelSelect
 
-@export var levels_list: Array[LevelInfo]
 @onready var thumbnail_grid: GridContainer = $VerticalContainer/LevelDisplayMargins/LevelDisplayPanel/ThumbnailGrid
 @onready var back_button: Button = $VerticalContainer/TopContainer/Back
 @onready var nav_left_button: Button = $VerticalContainer/ArrowContainer/NavBoxes/NavLeft
@@ -20,10 +19,10 @@ var current_page_index: int = 0
 #
 # 1: Open level_select scene
 # 2: Click on the root node (LevelSelect)
-# 3: In the INSPECTOR, click on the Array[LevelInfo](size xx) thing, IF IT IS COLLAPSED
+# 3: In the INSPECTOR, click on the Array[LevelDef](size xx) thing, IF IT IS COLLAPSED
 # 4: Click "Add Element"
-# 5: In the new EMPTY element, click the down arrow, then "New LevelInfo"
-# 6: Click on the new LevelInfo, then add the SCENE, NAME, and BORDER COLOR to the LevelInfo
+# 5: In the new EMPTY element, click the down arrow, then "New LevelDef"
+# 6: Click on the new LevelDef, then add the SCENE, NAME, and BORDER COLOR to the LevelDef
 
 # ---------- HOW TO ADD A THUMBNAIL -------------
 #
@@ -33,7 +32,7 @@ var current_page_index: int = 0
 # 4: Align the "box" with where you want the thumnail movement to END
 
 # Loads the level in level_info and switches scenes to it
-func load_level(level_info: LevelInfo):
+func load_level(level_info: LevelDef):
 	# Create a new SessionInfo to store the current level, and other settings
 	var session_info: SessionInfo = SessionInfo.new()
 	session_info.level_info = level_info
@@ -132,7 +131,7 @@ func setup():
 	pages.append(current_page)
 	
 	# Loop through level infos...
-	for level in levels_list:
+	for level in Definitions.levels:
 		# Move to a new page when the current is full
 		if current_page.is_full():
 			current_page = Page.new(back_button)
@@ -189,5 +188,5 @@ func load_start_screen() -> void:
 	queue_free()
 
 func pick_random_level() -> void:
-	var level: LevelInfo = levels_list[randi_range(0, levels_list.size() - 1)]
+	var level: LevelDef = Definitions.levels[randi_range(0, Definitions.levels.size() - 1)]
 	load_level(level)

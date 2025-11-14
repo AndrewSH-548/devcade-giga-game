@@ -1,100 +1,63 @@
 extends Node
 
-const save_path = "res://save_data/leaderboards.save"; ## The path to the file the leaderboards data will be saved to
+# I've added a version number, so old versions of the save data won't be used.
+# If breaking changes are made to the file, increment the version number
+# Complete overhauls should change the 1st number and reset the second to 0, small overhauls change the second
+const save_path = "res://save_data/leaderboard_data_0.1.save"; ## The path to the file the leaderboards data will be saved to
 
-var current_leaderboard = {} ## holds the current leaderboard, which is dynamically set throughout the game
+## Leaderboards[LevelName, Scores[PlayerName, Record]]
+var leaderboards: Dictionary = {}
 
-var volcano_leaderboard = {}; ## leaderboard for completion times 
-var jungle_leaderboard = {};
-var reef_leaderboard = {}
-
-var singleplayer_time: float = 0; ## the current singleplayer time
+var current_time_trial_time: float = 0; ## the current singleplayer time
 
 func _ready() -> void:
-	load_data(); # load data on start
+	load_leaderboard_data(); # load data on start
 	
 	#clear_all_data(); # uncomment and run to clear data
-	#save_data();
+	#save_leaderboards_to_disk;
 
-func increase_singleplayer_time(value: float) -> void: ## increases the temporary_singleplayer_time by (value)
-	var temp = singleplayer_time + value; # the following code is to the time sticks to 1 decimal place
-	singleplayer_time = snapped(temp, 0.1);
+func do_time_trial_time_tick(value: float) -> void: ## increases the temporary_singleplayer_time by (value)
+	var temp = current_time_trial_time + value; # the following code is to the time sticks to 1 decimal place
+	current_time_trial_time = snapped(temp, 0.1);
 
-func return_singleplayer_time(): ## returns the current singleplayer time, does not add anything to the leaderboards
-	return singleplayer_time;
+func get_time_trial_time(): ## returns the current singleplayer time, does not add anything to the leaderboards
+	return current_time_trial_time
 
-## Returns and resets the temporary_singleplayer_time given the (player_name), defaulted to 'XXXXX', 
+## Returns and resets the temporary_singleplayer_time given the (player_name)
 ## and the (level) (volcano_singleplayer, volcano_multiplayer, jungle_singleplayer, etc,). Updates the leaderboard for the given player and time
-func return_and_reset_temporary_singleplayer_time(level: String, player_name: String = "XXXXXXXX") -> float: 
-	var temp = singleplayer_time;
+func get_and_save_current_time_and_clear(level: String, player_name: String) -> float: 
+	assert(level in leaderboards.keys())
 	
-	match level.to_lower():
-		"volcano":
-			var current = volcano_leaderboard.get(player_name)
-			if current == null or temp < current:
-				volcano_leaderboard[player_name] = temp
-				set_current_leaderboard(level);
-			#volcano_singleplayer_leaderboard.sort(); # sorts the leaderboard in descending order
-		"jungle":
-			var current = jungle_leaderboard.get(player_name)
-			if current == null or temp < current:
-				jungle_leaderboard[player_name] = temp
-				set_current_leaderboard(level);
-		"reef":
-			var current = reef_leaderboard.get(player_name)
-			if current == null or temp < current:
-				reef_leaderboard[player_name] = temp
-				set_current_leaderboard(level)
-		_:
-			print_debug("ERROR: Invalid level -> " + level);
+	var leaderboard: Dictionary = leaderboards.get(level)
+	var current_score = leaderboard.get(player_name)
+	if current_score == null or current_score > current_time_trial_time:
+		leaderboard.set(player_name, current_time_trial_time)
 	
-	save_data();
-	singleplayer_time = 0; # reset the time
-	return temp;
+	save_leaderboards_to_disk()
+	current_time_trial_time = 0
+	return current_time_trial_time
 
-func set_current_leaderboard(level: String) -> void: ## sets the current leaderboard to the respective (level)'s leaderboard
-	match level.to_lower():
-		"volcano":
-			current_leaderboard = volcano_leaderboard;
-		"jungle":
-			current_leaderboard = jungle_leaderboard;
-		"reef":
-			current_leaderboard = reef_leaderboard
-		_:
-			print_debug("ERROR: Invalid level -> " + level);
-	
-func save_data(): ## save all leaderboards to "res://save_data/leaderboards.save"
+func save_leaderboards_to_disk(): ## save all leaderboards to "res://save_data/leaderboards.save"
 	var file = FileAccess.open(save_path, FileAccess.WRITE);
-	# Store leaderboards
-	file.store_var(volcano_leaderboard);
-	file.store_var(jungle_leaderboard);
-	file.store_var(reef_leaderboard);
-	print_debug("Data Saved");
+	file.store_var(leaderboards)
+	print_debug("Saved Leaderboards to Disk")
 	file.close();
 
-
-func load_data(): ## load all leaderboards from "res://save_data/leaderboards.save"
+func load_leaderboard_data(): ## load all leaderboards from "res://save_data/leaderboards.save"
 	if FileAccess.file_exists(save_path):
 		var file = FileAccess.open(save_path, FileAccess.READ);
 		# Set leaderboards from save data
-		volcano_leaderboard = file.get_var();
-		jungle_leaderboard = file.get_var();
-		reef_leaderboard = file.get_var();
-		if volcano_leaderboard == null: volcano_leaderboard = {}
-		if jungle_leaderboard == null: jungle_leaderboard = {}
-		if reef_leaderboard == null: reef_leaderboard = {}
-		print_debug("Data Loaded");
+		var possible_leaderboards = file.get_var()
+		if possible_leaderboards == null: possible_leaderboards = {}
+		leaderboards = possible_leaderboards
+		print_debug("Loaded Leaderboards from Disk")
 		file.close();
 	else:
 		print_debug("No leaderboard data saved...");
 
 func clear_all_data(): ## clear leaderboard data from "res://save_data/leaderboards.save"
 	if FileAccess.file_exists(save_path):
-		var file = FileAccess.open(save_path, FileAccess.WRITE);
-		volcano_leaderboard = {};
-		jungle_leaderboard = {};
-		reef_leaderboard = {}
-		file.store_var(volcano_leaderboard);
-		file.store_var(jungle_leaderboard);
-		file.store_var(reef_leaderboard);
-		file.close();
+		var file = FileAccess.open(save_path, FileAccess.WRITE)
+		leaderboards = {}
+		file.store_var(leaderboards)
+		file.close()

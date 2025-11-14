@@ -1,5 +1,5 @@
 extends Resource
-class_name LevelInfo
+class_name LevelDef
 
 @export var scene: PackedScene
 @export var name: String

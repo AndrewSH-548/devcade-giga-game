@@ -45,20 +45,21 @@ func _ready() -> void:
 		leaderboard_title.visible = false
 		leaderboard.visible = false
 		level_select_button.grab_focus()
-	time_label.text = "Completion Time: " + str(TimeManager.return_singleplayer_time());
+	time_label.text = "Completion Time: " + str(TimeManager.get_time_trial_time());
 	leaderboard_title.text = "Leaderboard";
 	leaderboard.text = "";
 	player_name = ""
 
 
-func set_leaderboard() -> void: ## Set the leaderboard with the new time
-	time_label.text = "Completion Time: " + str(TimeManager.return_and_reset_temporary_singleplayer_time(LevelManager.current_level, player_name));
-	var leaderboard_values = TimeManager.current_leaderboard.values(); # gets all the values in the leaderboard
-		# sorts the values so that the leaderboard is displayed from fastest to slowest times.
+func save_time_to_leaderboard() -> void: ## Set the leaderboard with the new time
+	time_label.text = "Completion Time: " + str(TimeManager.get_and_save_current_time_and_clear(LevelManager.current_level, player_name));
+	var current_leaderboard: Dictionary = TimeManager.leaderboards[session_info.level_info.name]
+	var leaderboard_values = current_leaderboard.values() # gets all the values in the leaderboard
+		# sorts the values so that the leaderboard is displayed from fastest to slowest times
 	leaderboard_values.sort();
 	for i in range(len(leaderboard_values)): # displays the current_leaderboard
-		for player in TimeManager.current_leaderboard: # loop through all the players in the leaderboard, if the playername matches the time, then use it and stop the loop
-			if(TimeManager.current_leaderboard.get(player) == leaderboard_values[i]):
+		for player in current_leaderboard: # loop through all the players in the leaderboard, if the playername matches the time, then use it and stop the loop
+			if(current_leaderboard.get(player) == leaderboard_values[i]):
 				player_name = player;
 				break;
 		leaderboard.text += player_name + " ----- " + str(leaderboard_values[i]) + "s\n";
@@ -88,7 +89,7 @@ func _on_submit_button_pressed() -> void:
 	results.visible = true
 	name_input_panel.visible = false
 	level_select_button.grab_focus()
-	set_leaderboard(); # submit leaderboard on name_input_pressed
+	save_time_to_leaderboard(); # submit leaderboard on name_input_pressed
 
 func _on_a_pressed() -> void:
 	player_name += "A";
