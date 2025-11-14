@@ -4,20 +4,6 @@ class_name Definitions
 static var characters: Array[CharacterDef]
 static var levels: Array[LevelDef]
 
-class CharacterDef:
-	var character_name: String
-	var scene: PackedScene
-	var dial_position: DialPosition
-
-enum DialPosition {
-	TOP,
-	TOP_LEFT,
-	TOP_RIGHT,
-	BOTTOM,
-	BOTTOM_LEFT,
-	BOTTOM_RIGHT,
-}
-
 # ---=== Put the definitions here ===---
 static func define():
 	add_level("Jungle", preload("res://scenes/levels/jungle.tscn"), Color(0.43529412, 0.23921569, 0, 1))

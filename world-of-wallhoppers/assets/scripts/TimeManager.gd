@@ -11,7 +11,7 @@ var leaderboards: Dictionary = {}
 var current_time_trial_time: float = 0; ## the current singleplayer time
 
 func _ready() -> void:
-	load_leaderboard_data(); # load data on start
+	load_leaderboards_from_disk(); # load data on start
 	
 	#clear_all_data(); # uncomment and run to clear data
 	#save_leaderboards_to_disk;
@@ -25,13 +25,15 @@ func get_time_trial_time(): ## returns the current singleplayer time, does not a
 
 ## Returns and resets the temporary_singleplayer_time given the (player_name)
 ## and the (level) (volcano_singleplayer, volcano_multiplayer, jungle_singleplayer, etc,). Updates the leaderboard for the given player and time
-func get_and_save_current_time_and_clear(level: String, player_name: String) -> float: 
+func get_and_save_current_time_and_clear(level: String, player_name: String, name_of_used_character: String) -> float: 
 	assert(level in leaderboards.keys())
 	
 	var leaderboard: Dictionary = leaderboards.get(level)
+	print(leaderboards)
 	var current_score = leaderboard.get(player_name)
 	if current_score == null or current_score > current_time_trial_time:
 		leaderboard.set(player_name, current_time_trial_time)
+	print(leaderboards)
 	
 	save_leaderboards_to_disk()
 	current_time_trial_time = 0
@@ -39,15 +41,17 @@ func get_and_save_current_time_and_clear(level: String, player_name: String) -> 
 
 func save_leaderboards_to_disk(): ## save all leaderboards to "res://save_data/leaderboards.save"
 	var file = FileAccess.open(save_path, FileAccess.WRITE);
+	print(leaderboards)
 	file.store_var(leaderboards)
 	print_debug("Saved Leaderboards to Disk")
 	file.close();
 
-func load_leaderboard_data(): ## load all leaderboards from "res://save_data/leaderboards.save"
+func load_leaderboards_from_disk(): ## load all leaderboards from "res://save_data/leaderboards.save"
 	if FileAccess.file_exists(save_path):
 		var file = FileAccess.open(save_path, FileAccess.READ);
 		# Set leaderboards from save data
 		var possible_leaderboards = file.get_var()
+		print("POSSIBLE: ", possible_leaderboards)
 		if possible_leaderboards == null: possible_leaderboards = {}
 		leaderboards = possible_leaderboards
 		print_debug("Loaded Leaderboards from Disk")

@@ -78,7 +78,9 @@ custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 80
-text = "v"
+text = "One --- 1
+Two ---
+Three --- "
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
@@ -107,7 +109,9 @@ custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 80
-text = "j"
+text = "One --- 
+Two ---
+Three ---"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
@@ -136,7 +140,9 @@ custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 80
-text = "r"
+text = "One ---
+Two ---
+Three ---"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2

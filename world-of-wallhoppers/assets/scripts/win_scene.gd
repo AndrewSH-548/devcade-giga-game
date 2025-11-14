@@ -52,7 +52,7 @@ func _ready() -> void:
 
 
 func save_time_to_leaderboard() -> void: ## Set the leaderboard with the new time
-	time_label.text = "Completion Time: " + str(TimeManager.get_and_save_current_time_and_clear(LevelManager.current_level, player_name));
+	time_label.text = "Completion Time: " + str(TimeManager.get_and_save_current_time_and_clear(session_info.level_info.name, player_name));
 	var current_leaderboard: Dictionary = TimeManager.leaderboards[session_info.level_info.name]
 	var leaderboard_values = current_leaderboard.values() # gets all the values in the leaderboard
 		# sorts the values so that the leaderboard is displayed from fastest to slowest times
