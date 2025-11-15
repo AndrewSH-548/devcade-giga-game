@@ -5,7 +5,6 @@ extends Node
 # Complete overhauls should change the 1st number and reset the second to 0, small overhauls change the second
 const save_path = "res://save_data/leaderboard_data_0.1.save"; ## The path to the file the leaderboards data will be saved to
 
-## Leaderboards[LevelName, Scores[PlayerName, Record]]
 var leaderboards: Dictionary = {}
 
 var current_time_trial_time: float = 0; ## the current singleplayer time
@@ -55,13 +54,9 @@ func load_leaderboards_from_disk(): ## load all leaderboards from "res://save_da
 		if possible_leaderboards == null: possible_leaderboards = {}
 		leaderboards = possible_leaderboards
 		print_debug("Loaded Leaderboards from Disk")
-		file.close();
+		file.close()
 	else:
 		print_debug("No leaderboard data saved...");
 
 func clear_all_data(): ## clear leaderboard data from "res://save_data/leaderboards.save"
-	if FileAccess.file_exists(save_path):
-		var file = FileAccess.open(save_path, FileAccess.WRITE)
-		leaderboards = {}
-		file.store_var(leaderboards)
-		file.close()
+	pass

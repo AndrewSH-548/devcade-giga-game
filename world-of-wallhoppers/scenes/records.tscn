@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bmm55s7158oio"]
+[gd_scene load_steps=3 format=3 uid="uid://bmm55s7158oio"]
 
 [ext_resource type="Script" uid="uid://ch57tfqek3sco" path="res://assets/scripts/Guis/records.gd" id="1_cv0jy"]
+[ext_resource type="Script" uid="uid://kxe0xviel6rk" path="res://assets/gui/records/leaderboard_table.gd" id="2_vve43"]
 
 [node name="Records" type="Control"]
 layout_mode = 3
@@ -62,18 +63,19 @@ theme_override_constants/margin_bottom = 80
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/VScrollBar/MarginContainer"]
 layout_mode = 2
 
-[node name="Volcano" type="VBoxContainer" parent="VBoxContainer/VScrollBar/MarginContainer/VBoxContainer"]
+[node name="Board" type="VBoxContainer" parent="VBoxContainer/VScrollBar/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+script = ExtResource("2_vve43")
 
-[node name="VLeaderboardTitle" type="Label" parent="VBoxContainer/VScrollBar/MarginContainer/VBoxContainer/Volcano"]
+[node name="Title" type="Label" parent="VBoxContainer/VScrollBar/MarginContainer/VBoxContainer/Board"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 60
 text = "Volcano"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="VolcanoLeaderboard" type="Label" parent="VBoxContainer/VScrollBar/MarginContainer/VBoxContainer/Volcano"]
+[node name="Records" type="Label" parent="VBoxContainer/VScrollBar/MarginContainer/VBoxContainer/Board"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_vertical = 3
@@ -85,7 +87,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="Label" type="Label" parent="VBoxContainer/VScrollBar/MarginContainer/VBoxContainer"]
+[node name="Divider1" type="Label" parent="VBoxContainer/VScrollBar/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 80
 text = "---------------------------------------"
@@ -93,30 +95,31 @@ horizontal_alignment = 1
 vertical_alignment = 1
 clip_text = true
 
-[node name="Jungle" type="VBoxContainer" parent="VBoxContainer/VScrollBar/MarginContainer/VBoxContainer"]
+[node name="Board2" type="VBoxContainer" parent="VBoxContainer/VScrollBar/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+script = ExtResource("2_vve43")
 
-[node name="JLeaderboardTitle" type="Label" parent="VBoxContainer/VScrollBar/MarginContainer/VBoxContainer/Jungle"]
+[node name="Title" type="Label" parent="VBoxContainer/VScrollBar/MarginContainer/VBoxContainer/Board2"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 60
-text = "Jungle"
+text = "Volcano"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="JungleLeaderboard" type="Label" parent="VBoxContainer/VScrollBar/MarginContainer/VBoxContainer/Jungle"]
+[node name="Records" type="Label" parent="VBoxContainer/VScrollBar/MarginContainer/VBoxContainer/Board2"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 80
-text = "One --- 
+text = "One --- 1
 Two ---
-Three ---"
+Three --- "
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="Label2" type="Label" parent="VBoxContainer/VScrollBar/MarginContainer/VBoxContainer"]
+[node name="Divider2" type="Label" parent="VBoxContainer/VScrollBar/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 80
 text = "---------------------------------------"
@@ -124,25 +127,26 @@ horizontal_alignment = 1
 vertical_alignment = 1
 clip_text = true
 
-[node name="Reef" type="VBoxContainer" parent="VBoxContainer/VScrollBar/MarginContainer/VBoxContainer"]
+[node name="Board3" type="VBoxContainer" parent="VBoxContainer/VScrollBar/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+script = ExtResource("2_vve43")
 
-[node name="RLeaderboardTitle" type="Label" parent="VBoxContainer/VScrollBar/MarginContainer/VBoxContainer/Reef"]
+[node name="Title" type="Label" parent="VBoxContainer/VScrollBar/MarginContainer/VBoxContainer/Board3"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 60
-text = "Reef"
+text = "Volcano"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ReefLeaderboard" type="Label" parent="VBoxContainer/VScrollBar/MarginContainer/VBoxContainer/Reef"]
+[node name="Records" type="Label" parent="VBoxContainer/VScrollBar/MarginContainer/VBoxContainer/Board3"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 80
-text = "One ---
+text = "One --- 1
 Two ---
-Three ---"
+Three --- "
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
