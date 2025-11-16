@@ -7,9 +7,9 @@ extends Control
 @onready var back: Button = $VBoxContainer/TopContainer/Back
 
 func _ready() -> void:
-	board_1.leaderboard = LevelLeaderboard.new("Jungle")
-	board_2.leaderboard = LevelLeaderboard.new("Volcano")
-	board_3.leaderboard = LevelLeaderboard.new("Reef")
+	board_1.leaderboard = TimeManager.leaderboards["Jungle"]
+	board_2.leaderboard = TimeManager.leaderboards["Volcano"]
+	board_3.leaderboard = TimeManager.leaderboards["Reef"]
 	back.grab_focus()
 	update_all()
 

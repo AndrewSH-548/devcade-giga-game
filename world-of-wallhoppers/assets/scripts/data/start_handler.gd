@@ -2,4 +2,5 @@ extends Node
 
 func _ready() -> void:
 	Definitions.define()
-	LevelLeaderboard.new(&"Jungle")
+	TimeManager.load_leaderboards_from_disk()
+	#LevelLeaderboard.new(&"Jungle")

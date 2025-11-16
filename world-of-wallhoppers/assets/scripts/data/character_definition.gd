@@ -1,7 +1,7 @@
 extends Resource
 class_name CharacterDef
 
-var character_name: StringName
+var name: StringName
 var scene: PackedScene
 var dial_position: DialPosition
 

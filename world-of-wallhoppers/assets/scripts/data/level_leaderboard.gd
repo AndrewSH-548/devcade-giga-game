@@ -1,25 +1,19 @@
+extends Resource
 class_name LevelLeaderboard
 ## This class represents a Leaderboard for a single level
 
-var level: StringName
-var records: Array[SingleRecord] = []
-var best_records: Array[SingleRecord] = []
+@export var level: StringName
+@export var records: Array[SingleRecord] = []
+@export var best_records: Array[SingleRecord] = []
 
 func _init(level_name: StringName) -> void:
 	level = level_name
-	for i in range(100):
-		add_record(["A", "B", "C", "D", "E"].pick_random(), str(randi_range(0, 5)), randi_range(0, 20))
-	update_all()
-	for r in records:
-		print(r.time, " : ", r.player, " using: ", r.character)
-	print("\n--- BEST ---\n")
-	for r in best_records:
-		print(r.time, " : ", r.player, " using: ", r.character)
 
 class SingleRecord:
-	var player: StringName
-	var character: StringName
-	var time: float
+	extends Resource
+	@export var player: StringName
+	@export var character: StringName
+	@export var time: float
 	func faster_than(other: SingleRecord) -> bool:
 		return time < other.time
 	func slower_than(other: SingleRecord) -> bool:
@@ -50,6 +44,23 @@ func sort_all():
 	records = _records_merge_sort(records)
 	best_records = _records_merge_sort(best_records)
 
+## Returns a string representation of the best records for each player on this Leaderboard's Level
+func string_best_records(max_amount: int = 3) -> String:
+	update_all()
+	var result: String = ""
+	var amount: int = 0
+	for record in best_records:
+		if amount >= max_amount:
+			break
+		amount += 1
+		result += string_record(record) + '\n'
+	return result.substr(0, result.length() - 1)
+
+## Returns a string representation of a "SingleRecord" object
+func string_record(record: SingleRecord):
+	var time: String = str(record.time).pad_decimals(1)
+	return (record.player + ': ' + record.character).rpad(30 - time.length()) + time
+
 func calculate_only_best():
 	best_records = []
 	var player_best: Dictionary[StringName, SingleRecord]
@@ -62,7 +73,7 @@ func calculate_only_best():
 	best_records = _records_merge_sort(best_records)
 
 func _records_merge_sort(array: Array[SingleRecord]) -> Array[SingleRecord]:
-	if array.size() == 1:
+	if array.size() <= 1:
 		return array
 	var a: Array[SingleRecord] = array.duplicate()
 	var half_size: int = int(a.size() / 2.0)
@@ -98,3 +109,23 @@ func _sorted_combine(array_1: Array[SingleRecord], array_2: Array[SingleRecord])
 		index_2 += 1
 		index_dest += 1
 	return dest
+
+func pack() -> Dictionary:
+	var packed: Dictionary = {}
+	packed["level"] = level
+	var packed_records: Array = []
+	for record in records:
+		packed_records.append({ "player": record.player, "character": record.character, "time": record.time })
+	packed["records"] = packed_records
+	return packed
+
+static func from_packed(packed_leaderboard: Dictionary) -> LevelLeaderboard:
+	var new: LevelLeaderboard = LevelLeaderboard.new(packed_leaderboard["level"])
+	var packed_records: Array = packed_leaderboard["records"]
+	for record in packed_records:
+		var unpacked_record: SingleRecord = SingleRecord.new()
+		unpacked_record.player = record["player"]
+		unpacked_record.character = record["character"]
+		unpacked_record.time = record["time"]
+		new.records.append(unpacked_record)
+	return new

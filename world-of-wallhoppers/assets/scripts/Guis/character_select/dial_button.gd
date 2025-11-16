@@ -2,8 +2,8 @@ extends Control
 class_name CharacterSelectDialButton
 
 @export var dial_id: CharacterSelect.DIAL
-@export var character_name: String = ""
-@export var character_scene: PackedScene
+@export var character_name: StringName = ""
+var character_def: CharacterDef
 
 @onready var selection: Sprite2D = $Selection
 
@@ -13,6 +13,8 @@ var selected_scale: float = 1.2
 
 func _ready() -> void:
 	selection.material = selection.material.duplicate_deep(Resource.DEEP_DUPLICATE_ALL)
+	if character_name == "": return
+	character_def = Definitions.get_character(character_name)
 
 func _process(delta: float) -> void:
 	if selection == null: return

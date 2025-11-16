@@ -50,19 +50,12 @@ func _ready() -> void:
 	leaderboard.text = "";
 	player_name = ""
 
-
-func save_time_to_leaderboard() -> void: ## Set the leaderboard with the new time
-	time_label.text = "Completion Time: " + str(TimeManager.get_and_save_current_time_and_clear(session_info.level_info.name, player_name));
-	var current_leaderboard: Dictionary = TimeManager.leaderboards[session_info.level_info.name]
-	var leaderboard_values = current_leaderboard.values() # gets all the values in the leaderboard
-		# sorts the values so that the leaderboard is displayed from fastest to slowest times
-	leaderboard_values.sort();
-	for i in range(len(leaderboard_values)): # displays the current_leaderboard
-		for player in current_leaderboard: # loop through all the players in the leaderboard, if the playername matches the time, then use it and stop the loop
-			if(current_leaderboard.get(player) == leaderboard_values[i]):
-				player_name = player;
-				break;
-		leaderboard.text += player_name + " ----- " + str(leaderboard_values[i]) + "s\n";
+func save_time_to_leaderboard() -> void:
+	time_label.text = "Completion Time: " + str(TimeManager.current_time_trial_time);
+	TimeManager.save_current_time(player_name, session_info)
+	TimeManager.reset_timer()
+	var current_leaderboard: LevelLeaderboard = TimeManager.leaderboards[session_info.level_info.name]
+	leaderboard.text = current_leaderboard.string_best_records()
 
 func _physics_process(_delta: float) -> void:
 	player_name_label.text = player_name if player_name != "" else "Enter Name..."
