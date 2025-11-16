@@ -10,7 +10,7 @@ static func define():
 	add_level("Jungle", preload("res://scenes/levels/jungle.tscn"), Color(0.43529412, 0.23921569, 0, 1))
 	add_level("Volcano", preload("res://scenes/levels/volcano.tscn"), Color(0.12941177, 0.011764706, 0.06666667, 1))
 	add_level("Reef", preload("res://scenes/levels/reef.tscn"), Color(0, 0.0627451, 0.33333334, 1))
-	# --------- CHARACTERS ---------
+	# ------- CHARACTERS -------
 	add_character("Hip", preload("res://scenes/characters/hip.tscn"))
 	add_character("Reign", preload("res://scenes/characters/reign.tscn"))
 	add_character("Scoria", preload("res://scenes/characters/scoria.tscn"))

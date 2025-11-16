@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://bmm55s7158oio"]
+[gd_scene load_steps=4 format=3 uid="uid://bmm55s7158oio"]
 
 [ext_resource type="Script" uid="uid://ch57tfqek3sco" path="res://assets/scripts/Guis/records.gd" id="1_cv0jy"]
 [ext_resource type="Script" uid="uid://kxe0xviel6rk" path="res://assets/gui/records/leaderboard_table.gd" id="2_vve43"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_vve43"]
+font_size = 100
 
 [node name="Records" type="Control"]
 layout_mode = 3
@@ -39,43 +42,56 @@ theme_override_constants/margin_bottom = 0
 [node name="Back" type="Button" parent="VBoxContainer/TopContainer"]
 layout_mode = 2
 size_flags_vertical = 0
-focus_neighbor_bottom = NodePath("../../LevelDisplayMargins/LevelDisplayPanel/ThumbnailGrid")
 theme_override_font_sizes/font_size = 64
 text = "Back"
 
-[node name="VScrollBar" type="VScrollBar" parent="VBoxContainer"]
+[node name="Boards" type="Panel" parent="VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 1
 size_flags_vertical = 3
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/VScrollBar"]
+[node name="Up" type="Button" parent="VBoxContainer/Boards"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 96.0
+grow_horizontal = 2
+size_flags_vertical = 0
+focus_neighbor_bottom = NodePath("../Down")
+theme_override_font_sizes/font_size = 64
+text = "/\\ /\\ /\\"
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Boards"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 80
-theme_override_constants/margin_top = 80
-theme_override_constants/margin_right = 80
-theme_override_constants/margin_bottom = 80
+theme_override_constants/margin_top = 120
+theme_override_constants/margin_bottom = 120
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/VScrollBar/MarginContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/Boards/MarginContainer"]
 layout_mode = 2
 
-[node name="Board" type="VBoxContainer" parent="VBoxContainer/VScrollBar/MarginContainer/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Boards/MarginContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 2
+
+[node name="Board" type="VBoxContainer" parent="VBoxContainer/Boards/MarginContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 script = ExtResource("2_vve43")
 
-[node name="Title" type="Label" parent="VBoxContainer/VScrollBar/MarginContainer/VBoxContainer/Board"]
+[node name="Title" type="Label" parent="VBoxContainer/Boards/MarginContainer/ScrollContainer/VBoxContainer/Board"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 60
 text = "Volcano"
+label_settings = SubResource("LabelSettings_vve43")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Records" type="Label" parent="VBoxContainer/VScrollBar/MarginContainer/VBoxContainer/Board"]
+[node name="Records" type="Label" parent="VBoxContainer/Boards/MarginContainer/ScrollContainer/VBoxContainer/Board"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_vertical = 3
@@ -87,7 +103,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="Divider1" type="Label" parent="VBoxContainer/VScrollBar/MarginContainer/VBoxContainer"]
+[node name="Divider1" type="Label" parent="VBoxContainer/Boards/MarginContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 80
 text = "---------------------------------------"
@@ -95,19 +111,20 @@ horizontal_alignment = 1
 vertical_alignment = 1
 clip_text = true
 
-[node name="Board2" type="VBoxContainer" parent="VBoxContainer/VScrollBar/MarginContainer/VBoxContainer"]
+[node name="Board2" type="VBoxContainer" parent="VBoxContainer/Boards/MarginContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 script = ExtResource("2_vve43")
 
-[node name="Title" type="Label" parent="VBoxContainer/VScrollBar/MarginContainer/VBoxContainer/Board2"]
+[node name="Title" type="Label" parent="VBoxContainer/Boards/MarginContainer/ScrollContainer/VBoxContainer/Board2"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 60
 text = "Volcano"
+label_settings = SubResource("LabelSettings_vve43")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Records" type="Label" parent="VBoxContainer/VScrollBar/MarginContainer/VBoxContainer/Board2"]
+[node name="Records" type="Label" parent="VBoxContainer/Boards/MarginContainer/ScrollContainer/VBoxContainer/Board2"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_vertical = 3
@@ -119,7 +136,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="Divider2" type="Label" parent="VBoxContainer/VScrollBar/MarginContainer/VBoxContainer"]
+[node name="Divider2" type="Label" parent="VBoxContainer/Boards/MarginContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 80
 text = "---------------------------------------"
@@ -127,19 +144,20 @@ horizontal_alignment = 1
 vertical_alignment = 1
 clip_text = true
 
-[node name="Board3" type="VBoxContainer" parent="VBoxContainer/VScrollBar/MarginContainer/VBoxContainer"]
+[node name="Board3" type="VBoxContainer" parent="VBoxContainer/Boards/MarginContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 script = ExtResource("2_vve43")
 
-[node name="Title" type="Label" parent="VBoxContainer/VScrollBar/MarginContainer/VBoxContainer/Board3"]
+[node name="Title" type="Label" parent="VBoxContainer/Boards/MarginContainer/ScrollContainer/VBoxContainer/Board3"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 60
 text = "Volcano"
+label_settings = SubResource("LabelSettings_vve43")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Records" type="Label" parent="VBoxContainer/VScrollBar/MarginContainer/VBoxContainer/Board3"]
+[node name="Records" type="Label" parent="VBoxContainer/Boards/MarginContainer/ScrollContainer/VBoxContainer/Board3"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_vertical = 3
@@ -150,5 +168,151 @@ Three --- "
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
+
+[node name="Divider3" type="Label" parent="VBoxContainer/Boards/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 80
+text = "---------------------------------------"
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+
+[node name="Board4" type="VBoxContainer" parent="VBoxContainer/Boards/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+script = ExtResource("2_vve43")
+
+[node name="Title" type="Label" parent="VBoxContainer/Boards/MarginContainer/ScrollContainer/VBoxContainer/Board4"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "Volcano"
+label_settings = SubResource("LabelSettings_vve43")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Records" type="Label" parent="VBoxContainer/Boards/MarginContainer/ScrollContainer/VBoxContainer/Board4"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 80
+text = "One --- 1
+Two ---
+Three --- "
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Divider4" type="Label" parent="VBoxContainer/Boards/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 80
+text = "---------------------------------------"
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+
+[node name="Board5" type="VBoxContainer" parent="VBoxContainer/Boards/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+script = ExtResource("2_vve43")
+
+[node name="Title" type="Label" parent="VBoxContainer/Boards/MarginContainer/ScrollContainer/VBoxContainer/Board5"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "Volcano"
+label_settings = SubResource("LabelSettings_vve43")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Records" type="Label" parent="VBoxContainer/Boards/MarginContainer/ScrollContainer/VBoxContainer/Board5"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 80
+text = "One --- 1
+Two ---
+Three --- "
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Divider5" type="Label" parent="VBoxContainer/Boards/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 80
+text = "---------------------------------------"
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+
+[node name="Board6" type="VBoxContainer" parent="VBoxContainer/Boards/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+script = ExtResource("2_vve43")
+
+[node name="Title" type="Label" parent="VBoxContainer/Boards/MarginContainer/ScrollContainer/VBoxContainer/Board6"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "Volcano"
+label_settings = SubResource("LabelSettings_vve43")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Records" type="Label" parent="VBoxContainer/Boards/MarginContainer/ScrollContainer/VBoxContainer/Board6"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 80
+text = "One --- 1
+Two ---
+Three --- "
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Divider6" type="Label" parent="VBoxContainer/Boards/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 80
+text = "---------------------------------------"
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+
+[node name="Board7" type="VBoxContainer" parent="VBoxContainer/Boards/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+script = ExtResource("2_vve43")
+
+[node name="Title" type="Label" parent="VBoxContainer/Boards/MarginContainer/ScrollContainer/VBoxContainer/Board7"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "Volcano"
+label_settings = SubResource("LabelSettings_vve43")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Records" type="Label" parent="VBoxContainer/Boards/MarginContainer/ScrollContainer/VBoxContainer/Board7"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 80
+text = "One --- 1
+Two ---
+Three --- "
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Down" type="Button" parent="VBoxContainer/Boards"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -96.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 0
+focus_neighbor_top = NodePath("../Up")
+theme_override_font_sizes/font_size = 64
+text = "\\/ \\/ \\/"
 
 [connection signal="pressed" from="VBoxContainer/TopContainer/Back" to="." method="load_start_screen"]

@@ -99,12 +99,12 @@ func _process(_delta: float) -> void:
 func name_label_process():
 	var dial_p1: CharacterSelectDialButton = dials.get(current_dial_selection[0])
 	
-	name_player_1.text = dial_p1.character_name if dial_p1 != null else ""
+	name_player_1.text = String(dial_p1.character_name) if dial_p1 != null else ""
 	
 	if not is_multiplayer: return
 	
 	var dial_p2: CharacterSelectDialButton = dials.get(current_dial_selection[1])
-	name_player_2.text = dial_p2.character_name if dial_p2 != null else ""
+	name_player_2.text = String(dial_p2.character_name) if dial_p2 != null else ""
 
 func player_select_process():
 	player_selection(0)
