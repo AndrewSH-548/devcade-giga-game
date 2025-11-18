@@ -1,6 +1,6 @@
 extends Node
 
-const save_path = "res://save_data/leaderboards.save"; ## The path to the file the leaderboards data will be saved to
+const save_path = "user://leaderboards.save"; ## The path to the file the leaderboards data will be saved to
 
 var current_leaderboard = {} ## holds the current leaderboard, which is dynamically set throughout the game
 
