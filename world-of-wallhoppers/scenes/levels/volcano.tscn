@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://bnajm44iu8kfe"]
+[gd_scene load_steps=24 format=4 uid="uid://bnajm44iu8kfe"]
 
 [ext_resource type="Script" uid="uid://s7cnbl0ouo3x" path="res://assets/scripts/gameplay/level.gd" id="1_gtp7y"]
 [ext_resource type="PackedScene" uid="uid://dhjkvej1d1nic" path="res://scenes/editor/tumbnail_marker.tscn" id="1_v6ges"]
@@ -13,6 +13,10 @@
 [ext_resource type="Texture2D" uid="uid://7bumea00du76" path="res://assets/terrain/background_volcano_lava.png" id="9_0lymu"]
 [ext_resource type="Texture2D" uid="uid://cthep0kultb3j" path="res://assets/terrain/background_volcano_smoke.png" id="10_th25m"]
 [ext_resource type="Texture2D" uid="uid://binr7f5lmii6q" path="res://assets/terrain/background_volcano_stone.png" id="11_ji8u0"]
+[ext_resource type="Texture2D" uid="uid://bpvuy32hsnbno" path="res://assets/terrain/volcano_magma_1.png" id="14_jnwba"]
+[ext_resource type="Texture2D" uid="uid://cgtxli3sbr803" path="res://assets/terrain/volcano_magma_2.png" id="15_7dirn"]
+[ext_resource type="Texture2D" uid="uid://qxt7021q1i33" path="res://assets/terrain/volcano_magma_3.png" id="16_7dirn"]
+[ext_resource type="Texture2D" uid="uid://bvub4e1y1iuh0" path="res://assets/terrain/volcano_magma_4.png" id="17_pm6ki"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yaa17"]
 texture = ExtResource("3_nwbnw")
@@ -654,3 +658,38 @@ modulate = Color(0.215686, 0.12549, 0.113725, 0.431373)
 texture_repeat = 2
 material = SubResource("ShaderMaterial_khy24")
 texture = ExtResource("10_th25m")
+
+[node name="Deco" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Deco"]
+position = Vector2(-66, 211)
+texture = ExtResource("14_jnwba")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Deco"]
+position = Vector2(-17, 0)
+texture = ExtResource("15_7dirn")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Deco"]
+position = Vector2(-136, -485)
+rotation = 1.5707964
+texture = ExtResource("15_7dirn")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Deco"]
+position = Vector2(-226, -313)
+rotation = 1.5707964
+texture = ExtResource("14_jnwba")
+
+[node name="Sprite2D5" type="Sprite2D" parent="Deco"]
+position = Vector2(75, 200)
+rotation = 1.5707964
+texture = ExtResource("16_7dirn")
+
+[node name="Sprite2D6" type="Sprite2D" parent="Deco"]
+position = Vector2(45, 404)
+rotation = 1.5707964
+texture = ExtResource("17_pm6ki")
+
+[node name="Sprite2D7" type="Sprite2D" parent="Deco"]
+position = Vector2(-274, 581)
+rotation = 1.5707964
+texture = ExtResource("17_pm6ki")
