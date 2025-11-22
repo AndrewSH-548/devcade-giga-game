@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://nws0dbyvm3h4"]
+
+[ext_resource type="Texture2D" uid="uid://bx7ghaj1jhlq4" path="res://assets/terrain/volcano_rock_wall.png" id="1_5iw7d"]
+[ext_resource type="Script" uid="uid://bma8q1hxcskns" path="res://assets/scripts/objects/rock_wall.gd" id="1_6vfwu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5iw7d"]
+size = Vector2(114, 128)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6vfwu"]
+size = Vector2(32, 128)
+
+[node name="RockWall" type="StaticBody2D"]
+collision_mask = 0
+script = ExtResource("1_6vfwu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_5iw7d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-7, 0)
+shape = SubResource("RectangleShape2D_5iw7d")
+
+[node name="RockTimer" type="Timer" parent="."]
+process_callback = 0
+wait_time = 2.0
+
+[node name="RockDestroyer" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RockDestroyer"]
+position = Vector2(-48, 0)
+shape = SubResource("RectangleShape2D_6vfwu")
+debug_color = Color(0.9967492, 0, 0.18961081, 0.41960785)

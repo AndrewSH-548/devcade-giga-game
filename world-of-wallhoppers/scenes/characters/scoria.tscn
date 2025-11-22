@@ -40,6 +40,7 @@ size = Vector2(29.75, 66.125)
 
 [node name="Scoria" type="CharacterBody2D"]
 collision_layer = 4
+collision_mask = 65
 script = ExtResource("1_sssk5")
 walk_speed = 300
 run_speed = 300
