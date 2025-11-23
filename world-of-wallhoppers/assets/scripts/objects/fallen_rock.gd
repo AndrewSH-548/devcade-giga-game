@@ -2,8 +2,8 @@
 extends CharacterBody2D
 class_name FallenRock
 
-var gravity: float = 128.0
-var max_fall_speed: float = 256.0
+var gravity: float = 256.0
+var max_fall_speed: float = 1024.0
 var air_decceleration: float = 64.0
 
 @export var size: Vector2i = Vector2i.ONE:
@@ -14,15 +14,14 @@ var air_decceleration: float = 64.0
 			set_size(new, true)
 
 @onready var up: CollisionShape2D = $Up
-@onready var right: CollisionShape2D = $Right
-@onready var left: CollisionShape2D = $Left
+@onready var hit_collision: CollisionShape2D = $HitArea/Collision
+@onready var hit_area: Obstacle = $HitArea
 
 @onready var texture_rect: NinePatchRect = $TextureRect
 
 func _ready() -> void:
 	up.shape = up.shape.duplicate()
-	right.shape = right.shape.duplicate()
-	left.shape = left.shape.duplicate()
+	hit_collision.shape = hit_collision.shape.duplicate()
 	velocity.y = 256.0
 	set_size(size)
 
@@ -45,7 +44,5 @@ func set_size(new_size: Vector2i, skip: bool = false):
 	texture_rect.position = Vector2(-size.x / 2.0 * 32.0, -size.y * 32.0 / 2.0)
 	up.shape.size = new_size * 32.0
 	up.position.y = -new_size.y / 2.0
-	right.shape.size = Vector2(up.shape.size.y, up.shape.size.x)
-	right.position.y = up.position.y
-	left.shape.size = right.shape.size
-	left.position.y = up.position.y
+	hit_collision.shape.size.x = up.shape.size.x - 8
+	hit_area.position.y = new_size.y * 32 / 2.0 - hit_collision.shape.size.y

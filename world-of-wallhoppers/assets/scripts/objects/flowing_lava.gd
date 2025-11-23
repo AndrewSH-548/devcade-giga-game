@@ -2,6 +2,9 @@
 extends TextureRect
 class_name FlowingLava
 
+@onready var hit_area: Obstacle = $HitArea
+@onready var hit_collision: CollisionShape2D = $HitArea/Collision
+
 var body: StaticBody2D
 var area: Area2D
 
@@ -12,8 +15,24 @@ var physic_bodies: Array[CharacterBody2D]
 
 var acceleration: float = 512.0
 var target_speed: float = 196.0
+var buoyancy_acceleration: float = 320.0
+var max_sink_speed: float = 32.0
+var max_lavafall_sink_speed: float = 128.0
+var upwards_lava_speed: float = 64.0
 
-@export_enum("Right", "Left") var flow_direction: int = 1
+@export var flow_direction: FLOW_DIRECTION = FLOW_DIRECTION.RIGHT
+
+enum FLOW_DIRECTION {
+	NONE,
+	RIGHT,
+	LEFT,
+	DOWN,
+	UP,
+}
+
+const LAYER_NONE: int = 0
+const LAYER_PLAYER_ONLY: int = 64
+const LAYER_MOVE_OBJECT_ZONE: int = 32
 
 func _ready() -> void:
 	if Engine.is_editor_hint(): return
@@ -34,35 +53,66 @@ func _ready() -> void:
 	add_child(body)
 	add_child(area)
 	
-	body.collision_mask = 0
-	body.collision_layer = 1
+	body.collision_mask = LAYER_NONE
+	body.collision_layer = LAYER_PLAYER_ONLY
 	
-	area.collision_layer = 0
-	area.collision_mask = 32
+	area.collision_layer = LAYER_NONE
+	area.collision_mask = LAYER_MOVE_OBJECT_ZONE
 	
 	body.add_child(body_shape)
 	area.add_child(area_shape)
 	
 	body_shape.position = size / 2.0
 	area_shape.position = size / 2.0
+	hit_collision.position = size / 2.0
 	
 	body_shape.shape = b_shape
 	area_shape.shape = a_shape
+	hit_collision.shape = area_shape.shape
 	
 	area_shape.position.y -= 2
+	hit_collision.position.y -= 1
 	
-	flip_h = flow_direction == 0
+	set_shader_flow(flow_direction)
 	
 	area.body_entered.connect(body_entered)
 	area.body_exited.connect(body_exited)
 
+func set_shader_flow(flow: FLOW_DIRECTION):
+	match flow:
+		FLOW_DIRECTION.NONE:
+			material.set_shader_parameter("direction", Vector2.ZERO)
+		FLOW_DIRECTION.RIGHT:
+			material.set_shader_parameter("direction", Vector2.RIGHT)
+		FLOW_DIRECTION.LEFT:
+			material.set_shader_parameter("direction", Vector2.LEFT)
+		FLOW_DIRECTION.DOWN:
+			material.set_shader_parameter("direction", Vector2.DOWN)
+		FLOW_DIRECTION.UP:
+			material.set_shader_parameter("direction", Vector2.UP)
+
 func _physics_process(delta: float) -> void:
 	if Engine.is_editor_hint(): 
-		flip_h = flow_direction == 0
+		set_shader_flow(flow_direction)
 		return
-	for other in physic_bodies:
-		var direction: int = 1 if flow_direction == 0 else -1
-		other.velocity.x = move_toward(other.velocity.x, target_speed * direction, delta * acceleration)
+	
+	match flow_direction:
+		FLOW_DIRECTION.LEFT, FLOW_DIRECTION.RIGHT:
+			for other in physic_bodies:
+				var direction: int = 1 if flow_direction == 0 else -1
+				other.velocity.x = move_toward(other.velocity.x, target_speed * direction, delta * acceleration)
+	
+	match flow_direction:
+		FLOW_DIRECTION.LEFT, FLOW_DIRECTION.RIGHT, FLOW_DIRECTION.NONE:
+			for other in physic_bodies:
+				other.velocity.y -= buoyancy_acceleration * delta
+				other.velocity.y = minf(other.velocity.y, max_sink_speed)
+		FLOW_DIRECTION.DOWN:
+			for other in physic_bodies:
+				other.velocity.y = minf(other.velocity.y, max_lavafall_sink_speed)
+		FLOW_DIRECTION.UP:
+			for other in physic_bodies:
+				other.velocity.y = move_toward(other.velocity.y, -upwards_lava_speed, delta * buoyancy_acceleration)
 
 func body_entered(other_body: Node2D):
 	if other_body is CharacterBody2D:

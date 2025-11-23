@@ -7,7 +7,7 @@ const PLAYER_ONLY_LAYER: int = 64
 @onready var rock_timer: Timer = $RockTimer
 @onready var rock_destroyer: Area2D = $RockDestroyer
 
-@export_enum("Spawning", "Destroying", "Inactive") var rock_spawning_mode: int = 0
+@export_enum("Spawning", "Destroying") var rock_spawning_mode: int = 0
 @export var possible_sizes: Array[Vector2i] = [Vector2i(2, 2)]
 
 var rng: RandomNumberGenerator = RandomNumberGenerator.new()
@@ -29,6 +29,7 @@ func spawn_rock() -> void:
 	var rock: FallenRock = FALLEN_ROCK.instantiate()
 	add_child(rock)
 	rock.z_index -= 1
+	print("SPAWN")
 	rock.physics_interpolation_mode = Node.PHYSICS_INTERPOLATION_MODE_OFF
 	rock.global_position = global_position
 	rock.global_rotation = 0
@@ -42,4 +43,5 @@ func ensure_valid_size(current_size: Vector2i) -> Vector2i:
 
 func on_possible_rock_entry(body: Node2D) -> void:
 	if body is FallenRock:
+		print("DESTROY")
 		body.queue_free()

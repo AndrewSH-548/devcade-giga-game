@@ -22,10 +22,11 @@ shape = SubResource("RectangleShape2D_5iw7d")
 
 [node name="RockTimer" type="Timer" parent="."]
 process_callback = 0
-wait_time = 2.0
+wait_time = 1.7999999999999998
 
 [node name="RockDestroyer" type="Area2D" parent="."]
 collision_layer = 0
+collision_mask = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RockDestroyer"]
 position = Vector2(-48, 0)

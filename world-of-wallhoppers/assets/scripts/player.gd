@@ -39,6 +39,8 @@ var hitstun_max_fall_speed_modifier: float = 80.0
 const JUMP_BUFFER_TIME: float = 0.1
 const COYOTE_TIME: float = 0.07
 
+const LAYER_NOT_HITSTUN: int = 128
+
 @onready var jump_buffer_timer: Timer = make_timer(JUMP_BUFFER_TIME)
 @onready var coyote_timer: Timer = make_timer(COYOTE_TIME)
 var has_done_coyote: bool = true
@@ -62,6 +64,8 @@ func _ready() -> void:
 	sprite = $Animations
 	sprite.play();
 	hitbox.area_entered.connect(func(body): do_hitstun(body))
+	# Collide with LAYER_NOT_HITSTUN
+	collision_mask |= LAYER_NOT_HITSTUN
 
 func make_timer(time: float) -> Timer:
 	var timer: Timer = Timer.new()
@@ -175,10 +179,14 @@ func do_hitstun(body: Node2D) -> void:
 		print("OBSTACE: " + str(body.global_rotation_degrees))
 	if not hitstun:
 		hitstun = true
+		# Don't Collide with LAYER_NOT_HITSTUN
+		collision_mask &= ~LAYER_NOT_HITSTUN
 		velocity = direction * 500.0
 		velocity.y *= 1.35
 		# Create hitstun effect (time can be changed (currently 1 second))
 		await get_tree().create_timer(1).timeout
+		# DO Collide with LAYER_NOT_HITSTUN
+		collision_mask |= LAYER_NOT_HITSTUN
 		hitstun = false
 
 func get_pushoff_wall_direction() -> float:

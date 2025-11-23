@@ -176,6 +176,7 @@ p2_cancel={
 2d_physics/layer_5="ScuttlecrabStopper"
 2d_physics/layer_6="MoveObjectZone"
 2d_physics/layer_7="PlayerOnly"
+2d_physics/layer_8="SolidNotHitstun"
 
 [rendering]
 
