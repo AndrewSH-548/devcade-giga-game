@@ -17,7 +17,7 @@ var acceleration: float = 512.0
 var target_speed: float = 196.0
 var buoyancy_acceleration: float = 320.0
 var max_sink_speed: float = 32.0
-var max_lavafall_sink_speed: float = 128.0
+var max_lavafall_sink_speed: float = 96.0
 var upwards_lava_speed: float = 64.0
 
 @export var flow_direction: FLOW_DIRECTION = FLOW_DIRECTION.RIGHT
@@ -31,8 +31,9 @@ enum FLOW_DIRECTION {
 }
 
 const LAYER_NONE: int = 0
-const LAYER_PLAYER_ONLY: int = 64
 const LAYER_MOVE_OBJECT_ZONE: int = 32
+
+@export var hit_type: Obstacle.HIT_MODE = Obstacle.HIT_MODE.UP_OR_DOWN
 
 func _ready() -> void:
 	if Engine.is_editor_hint(): return
@@ -47,14 +48,14 @@ func _ready() -> void:
 	var b_shape: RectangleShape2D = RectangleShape2D.new()
 	var a_shape: RectangleShape2D = RectangleShape2D.new()
 	
-	b_shape.size = size
+	b_shape.size = size - Vector2.ONE * 2.0
 	a_shape.size = size
 	
 	add_child(body)
 	add_child(area)
 	
 	body.collision_mask = LAYER_NONE
-	body.collision_layer = LAYER_PLAYER_ONLY
+	body.collision_layer = LAYER_NONE
 	
 	area.collision_layer = LAYER_NONE
 	area.collision_mask = LAYER_MOVE_OBJECT_ZONE
@@ -64,19 +65,20 @@ func _ready() -> void:
 	
 	body_shape.position = size / 2.0
 	area_shape.position = size / 2.0
-	hit_collision.position = size / 2.0
+	hit_area.position = size / 2.0
 	
 	body_shape.shape = b_shape
 	area_shape.shape = a_shape
 	hit_collision.shape = area_shape.shape
 	
 	area_shape.position.y -= 2
-	hit_collision.position.y -= 1
 	
 	set_shader_flow(flow_direction)
 	
 	area.body_entered.connect(body_entered)
 	area.body_exited.connect(body_exited)
+	
+	hit_area.launch_mode = hit_type
 
 func set_shader_flow(flow: FLOW_DIRECTION):
 	match flow:
@@ -99,7 +101,7 @@ func _physics_process(delta: float) -> void:
 	match flow_direction:
 		FLOW_DIRECTION.LEFT, FLOW_DIRECTION.RIGHT:
 			for other in physic_bodies:
-				var direction: int = 1 if flow_direction == 0 else -1
+				var direction: int = 1 if flow_direction == FLOW_DIRECTION.RIGHT else -1
 				other.velocity.x = move_toward(other.velocity.x, target_speed * direction, delta * acceleration)
 	
 	match flow_direction:

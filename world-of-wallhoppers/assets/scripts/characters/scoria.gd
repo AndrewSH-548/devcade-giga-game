@@ -115,6 +115,7 @@ func _physics_process(delta: float) -> void:
 				process_walkrun(delta, direction)
 				process_gravity(delta)
 				process_jump(delta)
+				process_wallcheck(delta)
 				process_walljump(delta)
 				if Input.is_action_just_pressed(roll_action):
 					do_roll()

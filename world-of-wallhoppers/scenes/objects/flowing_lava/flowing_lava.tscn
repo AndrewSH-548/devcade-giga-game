@@ -23,8 +23,10 @@ offset_bottom = 14.0
 texture = ExtResource("2_gq5in")
 stretch_mode = 1
 script = ExtResource("3_d4b8o")
+hit_type = null
 
 [node name="HitArea" type="Area2D" parent="."]
+z_index = 6
 collision_layer = 8
 collision_mask = 0
 script = ExtResource("4_gq5in")
@@ -32,6 +34,5 @@ launch_mode = 1
 direction_offset_angle = -90.0
 
 [node name="Collision" type="CollisionShape2D" parent="HitArea"]
-position = Vector2(0, 8)
 shape = SubResource("RectangleShape2D_d4b8o")
-debug_color = Color(0.9698636, 0, 0.46169943, 0.41960785)
+debug_color = Color(0.8680398, 0.0005390644, 0.8566467, 0.41960785)
