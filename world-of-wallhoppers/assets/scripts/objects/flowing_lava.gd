@@ -32,6 +32,7 @@ enum FLOW_DIRECTION {
 
 const LAYER_NONE: int = 0
 const LAYER_MOVE_OBJECT_ZONE: int = 32
+const LAYER_PLAYER_ONLY: int = 64
 
 @export var hit_type: Obstacle.HIT_MODE = Obstacle.HIT_MODE.UP_OR_DOWN
 
@@ -55,7 +56,7 @@ func _ready() -> void:
 	add_child(area)
 	
 	body.collision_mask = LAYER_NONE
-	body.collision_layer = LAYER_NONE
+	body.collision_layer = LAYER_PLAYER_ONLY
 	
 	area.collision_layer = LAYER_NONE
 	area.collision_mask = LAYER_MOVE_OBJECT_ZONE
