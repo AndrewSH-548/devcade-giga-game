@@ -24,14 +24,14 @@ anchor_bottom = 1.0
 offset_left = -16.0
 offset_top = -16.0
 offset_right = 16.0
-offset_bottom = 16.0
+offset_bottom = 17.0
 grow_horizontal = 2
 grow_vertical = 0
 texture = ExtResource("2_3vvti")
 patch_margin_left = 16
 patch_margin_top = 16
 patch_margin_right = 16
-patch_margin_bottom = 16
+patch_margin_bottom = 17
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
