@@ -831,6 +831,7 @@ hit_type = 3
 [node name="Gusher" parent="Objects" instance=ExtResource("19_fitjb")]
 z_index = -1
 position = Vector2(-176, 333)
+initial_offset = 0.2
 
 [node name="FlowingLava9" parent="Objects" instance=ExtResource("17_5a2mf")]
 material = SubResource("ShaderMaterial_8ooar")
@@ -872,11 +873,13 @@ hit_type = 3
 z_index = -1
 position = Vector2(93, -2061)
 rotation = -1.5707964
+initial_offset = 0.8
 
 [node name="Gusher3" parent="Objects" instance=ExtResource("19_fitjb")]
 z_index = -1
 position = Vector2(93, -2243)
 rotation = -1.5707964
+initial_offset = null
 
 [node name="FallenRock3" parent="Objects" instance=ExtResource("20_fitjb")]
 z_index = -1

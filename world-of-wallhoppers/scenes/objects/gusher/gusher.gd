@@ -20,6 +20,9 @@ var max_sink_speed: float = 128.0
 			update_all_size()
 var rise_amount: float = 1.0
 
+@export var initial_offset: float = 0.0
+var time: float = 0.0
+
 func _ready() -> void:
 	hit_collision.shape = hit_collision.shape.duplicate()
 	bouyancy_collision.shape = bouyancy_collision.shape.duplicate()
@@ -35,9 +38,10 @@ func _physics_process(delta: float) -> void:
 		#other.velocity.y = move_toward(other.velocity.y, -upwards_push_speed, delta * buoyancy_acceleration)
 
 
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
 	if Engine.is_editor_hint(): return
-	rise_amount = (sin(Time.get_ticks_msec() / 1000.0) + 1.0) * 0.5
+	time += delta
+	rise_amount = (cos(time + initial_offset * TAU) + 1.0) * 0.5
 	update_visual_size()
 
 func update_visual_size() -> void:
