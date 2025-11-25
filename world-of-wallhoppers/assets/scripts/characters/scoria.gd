@@ -30,15 +30,15 @@ var re_dash_time: float = 0.5
 
 var rebound_direction: int = 1
 var rebound_time: float = 0.3
-var rebound_pushoff_strength: float = 90.0
-var rebound_boost_strength: float = 200.0
+var rebound_pushoff_strength: float = 120.0
+var rebound_boost_strength: float = 400.0
 var rebound_leeway: float = 16.0
 
 var spark_progress: float = 0.0
 var rebound_spark_amount: float = 1.3
 var spark_drain_per_second: float = 0.0
 
-var flight_speed: float = 800.0
+var flight_speed: float = 1000.0
 var flight_time: float = 0.5
 var flight_offset_x: float = 32.0
 var flight_target_x: float
@@ -46,7 +46,8 @@ var flight_gravity: float = 900.0
 
 var roll_speed: float = 320.0
 var roll_gravity: float = 1280.0
-var roll_bounce_strength: float = 320.0
+var roll_bounce_strength: float = 300.0
+var roll_launch_strength: float = 0.0
 
 var on_floor_last_frame: bool = false
 
@@ -167,6 +168,7 @@ func do_flight(away_direction: int):
 
 func do_roll():
 	move_state = MoveState.ROLL
+	velocity.y = -roll_launch_strength
 
 func process_dash():
 	var facing: int = 1 if isFacingRight else -1
