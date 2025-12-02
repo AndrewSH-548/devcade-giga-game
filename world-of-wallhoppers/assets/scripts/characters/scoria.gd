@@ -49,6 +49,8 @@ var roll_gravity: float = 1280.0
 var roll_bounce_strength: float = 300.0
 var roll_launch_strength: float = 0.0
 
+var slam_speed: float = 1024.0
+
 var on_floor_last_frame: bool = false
 
 var move_state: MoveState = MoveState.NORMAL
@@ -58,6 +60,7 @@ enum MoveState {
 	ROLL,
 	DASH,
 	REBOUND,
+	SLAM,
 	FLIGHT,
 }
 
@@ -125,10 +128,14 @@ func _physics_process(delta: float) -> void:
 			MoveState.REBOUND:
 				process_rebound()
 				process_gravity(delta)
+			MoveState.SLAM:
+				process_slam(delta)
 			MoveState.FLIGHT:
 				process_flight(delta)
 			MoveState.ROLL:
 				process_roll(delta)
+				if Input.is_action_just_pressed(down_action):
+					move_state = MoveState.SLAM
 	else:
 		process_gravity(delta)
 		move_state = MoveState.NORMAL
@@ -209,6 +216,11 @@ func process_roll(delta: float):
 		snap_wall_direction(facing * rebound_leeway)
 		do_rebound(-facing)
 
+func process_slam(_delta: float):
+	velocity.y = slam_speed
+	if is_on_floor():
+		move_state = MoveState.ROLL
+
 func animate_flare():
 	sprite.flip_h = !isFacingRight
 	
@@ -255,6 +267,7 @@ func setup_keybinds(player_number: int) -> void:
 	move_right_action = player_input + "right"
 	dash_action = player_input + "run"
 	roll_action = player_input + "run"
+	down_action = player_input + "crouch"
 
 func test_wall_direction(distance: float):
 	return test_move(transform, Vector2(distance, 0))
