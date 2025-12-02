@@ -142,7 +142,7 @@ func _physics_process(delta: float) -> void:
 	
 	if move_state != MoveState.ROLL:
 		update_flipped()
-	animate_flare()
+	animated_scoria()
 	
 	on_floor_last_frame = is_on_floor()
 	move_and_slide()
@@ -157,8 +157,7 @@ func do_rebound(wall_direction: int):
 	can_dash = true
 	move_state = MoveState.REBOUND
 	dash_timer.stop()
-	spark_progress += rebound_spark_amount
-	spark_animation.play()
+	do_spark()
 	if spark_progress >= 3.0:
 		do_flight(wall_direction)
 	else:
@@ -176,6 +175,10 @@ func do_flight(away_direction: int):
 func do_roll():
 	move_state = MoveState.ROLL
 	velocity.y = -roll_launch_strength
+
+func do_spark():
+	spark_progress += rebound_spark_amount
+	spark_animation.play()
 
 func process_dash():
 	var facing: int = 1 if isFacingRight else -1
@@ -209,8 +212,7 @@ func process_roll(delta: float):
 		velocity.y = -roll_bounce_strength
 	
 	if is_on_floor() and not on_floor_last_frame:
-		spark_progress += rebound_spark_amount
-		spark_animation.play()
+		do_spark()
 	
 	if test_wall_direction(facing * rebound_leeway):
 		snap_wall_direction(facing * rebound_leeway)
@@ -218,11 +220,18 @@ func process_roll(delta: float):
 
 func process_slam(_delta: float):
 	velocity.y = slam_speed
+	velocity.x = 0.0
 	if is_on_floor():
 		move_state = MoveState.ROLL
 
-func animate_flare():
+func animated_scoria():
 	sprite.flip_h = !isFacingRight
+	
+	if move_state == MoveState.SLAM:
+		animations.scale.x = 0.5
+		animations.scale.y = 1.2
+	else:
+		animations.scale = Vector2.ONE
 	
 	if get_position_state() == STATE_HITSTUN:
 		animations.animation = "Hitstun"
