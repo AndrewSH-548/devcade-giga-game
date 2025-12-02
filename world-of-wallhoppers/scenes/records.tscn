@@ -42,18 +42,17 @@ focus_neighbor_bottom = NodePath("../../LevelDisplayMargins/LevelDisplayPanel/Th
 theme_override_font_sizes/font_size = 64
 text = "Back"
 
-[node name="VScrollBar" type="VScrollBar" parent="VBoxContainer"]
+[node name="VScrollBar" type="ScrollContainer" parent="VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 1
 size_flags_vertical = 3
+follow_focus = true
+draw_focus_border = true
+horizontal_scroll_mode = 0
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/VScrollBar"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 theme_override_constants/margin_left = 80
 theme_override_constants/margin_top = 80
 theme_override_constants/margin_right = 80
