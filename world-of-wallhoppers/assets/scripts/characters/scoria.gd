@@ -38,11 +38,11 @@ var spark_progress: float = 0.0
 var rebound_spark_amount: float = 1.3
 var spark_drain_per_second: float = 0.0
 
-var flight_speed: float = 1000.0
+var flight_speed: float = 800.0
 var flight_time: float = 0.5
 var flight_offset_x: float = 32.0
 var flight_target_x: float
-var flight_gravity: float = 900.0
+var flight_gravity: float = 1000.0
 
 var roll_speed: float = 320.0
 var roll_gravity: float = 1280.0
@@ -222,13 +222,13 @@ func process_slam(_delta: float):
 	velocity.y = slam_speed
 	velocity.x = 0.0
 	if is_on_floor():
-		move_state = MoveState.ROLL
+		do_roll()
 
 func animated_scoria():
 	sprite.flip_h = !isFacingRight
 	
 	if move_state == MoveState.SLAM:
-		animations.scale.x = 0.5
+		animations.scale.x = 0.7
 		animations.scale.y = 1.2
 	else:
 		animations.scale = Vector2.ONE
