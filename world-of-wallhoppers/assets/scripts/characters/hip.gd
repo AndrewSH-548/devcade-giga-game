@@ -53,10 +53,7 @@ func update_flipped() -> void:
 		if left_wall: isFacingRight = false
 		if right_wall: isFacingRight = true
 	else:
-		if Input.is_action_just_pressed(move_left_action) and isFacingRight:
-			isFacingRight = false
-		elif Input.is_action_just_pressed(move_right_action) and not isFacingRight:
-			isFacingRight = true
+		super.update_flipped()
 
 func animate_hip(direction: float) -> void:
 	if hitstun:
