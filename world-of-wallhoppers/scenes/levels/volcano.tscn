@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://bpvuy32hsnbno" path="res://assets/terrain/volcano_magma_1.png" id="14_jnwba"]
 [ext_resource type="Texture2D" uid="uid://cgtxli3sbr803" path="res://assets/terrain/volcano_magma_2.png" id="15_7dirn"]
 [ext_resource type="PackedScene" uid="uid://chesjkcwr3t35" path="res://scenes/objects/flowing_lava/flowing_lava.tscn" id="17_5a2mf"]
-[ext_resource type="Shader" uid="uid://dr1a7hb3mi8yr" path="res://assets/shaders/flowing_lava.gdshader" id="17_cq0ec"]
+[ext_resource type="Shader" path="res://assets/shaders/flowing_lava.gdshader" id="17_cq0ec"]
 [ext_resource type="Texture2D" uid="uid://bvub4e1y1iuh0" path="res://assets/terrain/volcano_magma_4.png" id="17_pm6ki"]
 [ext_resource type="PackedScene" uid="uid://nws0dbyvm3h4" path="res://scenes/objects/rock_wall/rock_wall.tscn" id="19_cq0ec"]
 [ext_resource type="PackedScene" uid="uid://cykm64hhjrwks" path="res://scenes/objects/gusher/gusher.tscn" id="19_fitjb"]
@@ -879,7 +879,6 @@ initial_offset = 0.8
 z_index = -1
 position = Vector2(93, -2243)
 rotation = -1.5707964
-initial_offset = null
 
 [node name="FallenRock3" parent="Objects" instance=ExtResource("20_fitjb")]
 z_index = -1
