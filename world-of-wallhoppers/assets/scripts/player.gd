@@ -175,10 +175,18 @@ func do_hitstun(body: Node2D) -> void:
 		print("OBSTACE: " + str(body.global_rotation_degrees))
 	if not hitstun:
 		hitstun = true
-		velocity = direction * 500.0
+		disable_walk_input = true;
+		print(str(direction))
+		velocity = direction * 200.0
 		velocity.y *= 1.35
+		if(self.isFacingRight):
+			velocity.x = -200.0
+		else:
+			velocity.x = 200.0
+		velocity.x *= 1.35
 		# Create hitstun effect (time can be changed (currently 1 second))
-		await get_tree().create_timer(1).timeout
+		await get_tree().create_timer(0.6).timeout
+		disable_walk_input = false;
 		hitstun = false
 
 func get_pushoff_wall_direction() -> float:
