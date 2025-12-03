@@ -4,12 +4,21 @@ extends Control
 @onready var jungle_leaderboard: Label = $VBoxContainer/VScrollBar/MarginContainer/VBoxContainer/Jungle/JungleLeaderboard
 @onready var reef_leaderboard: Label = $VBoxContainer/VScrollBar/MarginContainer/VBoxContainer/Reef/ReefLeaderboard
 @onready var back: Button = $VBoxContainer/TopContainer/Back
+@onready var v_scroll_bar: ScrollContainer = $VBoxContainer/VScrollBar
+
+const SCROLL_SHIFT = 20; ## determines how much the page will scroll for every user input
 
 func _ready() -> void:
 	display_leaderboard("volcano");
 	display_leaderboard("jungle");
 	display_leaderboard("reef")
 	back.grab_focus();
+	
+func _process(delta: float) -> void:
+	if(Input.is_action_pressed("p1_jump") || Input.is_action_pressed("p2_jump")): # allows the user to scroll through the records page
+		v_scroll_bar.scroll_vertical -= SCROLL_SHIFT;
+	if(Input.is_action_pressed("p1_crouch") || Input.is_action_pressed("p2_crouch")):
+		v_scroll_bar.scroll_vertical += SCROLL_SHIFT;
 
 func display_leaderboard(level: String) -> void:
 	var player_name = "";
