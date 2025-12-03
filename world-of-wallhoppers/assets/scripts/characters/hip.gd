@@ -37,14 +37,11 @@ func process_wallclimb():
 		var climbDirection: float = get_climb_input()
 		velocity.y = climbDirection * climb_speed;
 
-func process_walljump_hip(_delta: float) -> void:
-	# Skip this if the player is not wallsliding
-	# Look at get_position_state() and STATE_ON_WALL for wallsliding conditions
-	if get_position_state() != STATE_ON_WALL: return
-	
-	if Input.is_action_just_pressed(jump_action) and not is_wall_climbing:
-		velocity.x = get_pushoff_wall_direction() * wall_pushoff_strength
-		velocity.y = -wall_jump_height
+func process_walljump_hip(delta: float) -> void:
+	process_wallcheck(delta)
+	# Skip walljump processing if currently wallclimbing
+	if is_wall_climbing: return
+	process_walljump(delta)
 
 func update_flipped() -> void:
 	var left_wall: bool = is_touching_left_wall()

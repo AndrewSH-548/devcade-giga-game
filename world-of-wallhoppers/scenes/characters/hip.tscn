@@ -178,6 +178,8 @@ animations = [{
 
 [node name="PlayerHip" type="CharacterBody2D"]
 collision_layer = 4
+collision_mask = 65
+platform_on_leave = 1
 script = ExtResource("1_s6udp")
 climb_speed = 150.0
 walk_speed = 360
