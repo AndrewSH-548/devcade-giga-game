@@ -21,6 +21,7 @@ var jump_action: String = " "
 var move_left_action: String = " "
 var move_right_action: String = " "
 var run_modifier_action: String = " "
+var down_action: String = " "
 
 var acceleration: float = 0
 var hitstun: bool = false
