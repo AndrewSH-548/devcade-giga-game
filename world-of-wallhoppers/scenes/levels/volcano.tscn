@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=4 uid="uid://bnajm44iu8kfe"]
+[gd_scene load_steps=37 format=4 uid="uid://bnajm44iu8kfe"]
 
 [ext_resource type="Script" uid="uid://s7cnbl0ouo3x" path="res://assets/scripts/gameplay/level.gd" id="1_gtp7y"]
 [ext_resource type="PackedScene" uid="uid://dhjkvej1d1nic" path="res://scenes/editor/tumbnail_marker.tscn" id="1_v6ges"]
@@ -13,8 +13,9 @@
 [ext_resource type="Texture2D" uid="uid://bpvuy32hsnbno" path="res://assets/terrain/volcano_magma_1.png" id="14_jnwba"]
 [ext_resource type="Texture2D" uid="uid://cgtxli3sbr803" path="res://assets/terrain/volcano_magma_2.png" id="15_7dirn"]
 [ext_resource type="PackedScene" uid="uid://chesjkcwr3t35" path="res://scenes/objects/flowing_lava/flowing_lava.tscn" id="17_5a2mf"]
-[ext_resource type="Shader" path="res://assets/shaders/flowing_lava.gdshader" id="17_cq0ec"]
+[ext_resource type="Shader" uid="uid://dr1a7hb3mi8yr" path="res://assets/shaders/flowing_lava.gdshader" id="17_cq0ec"]
 [ext_resource type="Texture2D" uid="uid://bvub4e1y1iuh0" path="res://assets/terrain/volcano_magma_4.png" id="17_pm6ki"]
+[ext_resource type="PackedScene" uid="uid://bplcy6vin1ood" path="res://scenes/obstacles/turret/turret.tscn" id="19_0ybtn"]
 [ext_resource type="PackedScene" uid="uid://nws0dbyvm3h4" path="res://scenes/objects/rock_wall/rock_wall.tscn" id="19_cq0ec"]
 [ext_resource type="PackedScene" uid="uid://cykm64hhjrwks" path="res://scenes/objects/gusher/gusher.tscn" id="19_fitjb"]
 [ext_resource type="PackedScene" uid="uid://bjmad4wpe8ugf" path="res://scenes/objects/fallen_rock/fallen_rock.tscn" id="20_fitjb"]
@@ -902,3 +903,27 @@ size = Vector2i(3, 2)
 [node name="FallenRock7" parent="Objects" instance=ExtResource("20_fitjb")]
 position = Vector2(199, -1739)
 size = Vector2i(2, 5)
+
+[node name="Turret" parent="." instance=ExtResource("19_0ybtn")]
+position = Vector2(255, 415)
+location = "wall-right"
+attack_duration = 4
+
+[node name="Turret4" parent="." instance=ExtResource("19_0ybtn")]
+position = Vector2(-85, 205)
+location = "ceiling"
+cooldown_duration = 3
+
+[node name="Turret5" parent="." instance=ExtResource("19_0ybtn")]
+position = Vector2(20, 496)
+cooldown_duration = 4
+
+[node name="Turret3" parent="." instance=ExtResource("19_0ybtn")]
+position = Vector2(-224, 274)
+location = "wall-left"
+cooldown_duration = 1
+
+[node name="Turret2" parent="." instance=ExtResource("19_0ybtn")]
+position = Vector2(-228, -90)
+location = "wall-left"
+turret_type = "laser"
