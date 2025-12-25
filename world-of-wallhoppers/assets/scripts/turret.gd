@@ -1,7 +1,7 @@
 extends Node2D
 
 @export var location: String = "ground"; ## The turret's location on a wall (ground, wall-left, wall-right, or ceiling)
-@export var turret_type: String = "straight"; ## The type of the turret: laser, straight, arc TODO: Implement turret_type: arc
+@export var turret_type: String = "straight"; ## The type of the turret: laser, straight, arc-left, arc-right
 @export var bullet_speed = 500; ## The speed of the bullet, (default: 500)
 @export var attack_duration = 2; ## the duration of an attack
 @export var cooldown_duration = 2; ## The cooldown between attacks
@@ -54,7 +54,6 @@ func _process(_delta: float) -> void:
 		_:
 			print_debug("Invalid location for turret" + str(location));
 			location = "ground"; # go to ground for default.
-	turret.rotation_degrees = turret_rotation;
 
 	match current_state:
 		State.COOLDOWN:
@@ -70,13 +69,17 @@ func _process(_delta: float) -> void:
 
 func start_projectile_firing_cycle() -> void: ## continuously fire the respective projectile
 	while(true):
-		match turret_type.to_lower(): # laser, straight, arc
+		match turret_type.to_lower(): # laser, straight, arc-left, arc-right
 			"laser":
 				fire_laser();
 			"straight":
 				fire_projectile_straight();
-			"arc":
-				fire_projectile_arc();
+			"arc-left":
+				turret.rotation_degrees = -45;
+				fire_projectile_arc("left");
+			"arc-right":
+				turret.rotation_degrees = 45;
+				fire_projectile_arc("right");
 		await cooldown_timer.timeout;
 
 func fire_laser() -> void: ## fire laser script
@@ -107,7 +110,7 @@ func fire_projectile_straight() -> void: ## fire a projectile in a straight line
 		var bullet = BULLET.instantiate();
 		var bullet_position_offset = 40; ## offset the bullet so it looks like it is shooting from the cannon
 		bullet.position.y -= bullet_position_offset; # offset the starting bullet position
-		match location.to_lower(): # sets the ditrection of the bullet's movement
+		match location.to_lower(): # sets the direction of the bullet's movement
 			"ground":
 				bullet.velocity.y = -bullet_speed;
 			"wall-left":
@@ -127,8 +130,50 @@ func fire_projectile_straight() -> void: ## fire a projectile in a straight line
 		firing = false;
 		cooldown_timer.start(cooldown_duration); # start cooldown timer
 
-func fire_projectile_arc() -> void: ## fire a projectile in an arc line
-	pass;
+func fire_projectile_arc(angle: String) -> void: ## fire a projectile in an arc
+	if(!firing):
+		firing = true;
+		var bullet = BULLET.instantiate();
+		var gravity = 9.8;
+		bullet.enable_gravity(gravity);
+		var bullet_position_offset_y = 60;
+		bullet.position.y -= bullet_position_offset_y; # offset the starting bullet position
+		match location.to_lower(): # sets the direction of the bullet's movement
+			"ground":
+				bullet.velocity.y = -bullet_speed;
+				if(angle == "left"):
+					bullet.velocity.x = -bullet_speed;
+				elif(angle == "right"):
+					bullet.velocity.x = bullet_speed
+			"wall-left":
+				if(angle == "left"):
+					bullet.velocity.y = -bullet_speed;
+				elif(angle == "right"):
+					bullet.velocity.y = bullet_speed;
+				bullet.velocity.x = bullet_speed;
+			"wall-right":
+				if(angle == "right"):
+					bullet.velocity.y = -bullet_speed;
+				elif(angle == "left"):
+					bullet.velocity.y = bullet_speed;
+				bullet.velocity.x = -bullet_speed;
+			"ceiling":
+				if(angle == "left"):
+					bullet.velocity.x = bullet_speed;
+					bullet.velocity.y = bullet_speed;
+				elif(angle == "right"):
+					bullet.velocity.x = -bullet_speed;
+					bullet.velocity.y = bullet_speed;
+			_:
+				print_debug("Invalid location for turret" + str(location));
+		
+		turret.add_child(bullet); # add the bullet as a child of the turret
+		bullet.show();
+		attack_duration_timer.start(attack_duration);
+		change_state(State.COOLDOWN);
+		await attack_duration_timer.timeout;
+		firing = false;
+		cooldown_timer.start(cooldown_duration); # start cooldown timer
 
 #func camera_shake() -> void: # shakes the camera
 	#var camera = get_tree().get_root().get_node("Game").get_child(0); # get the camera node (using very sloppy code)

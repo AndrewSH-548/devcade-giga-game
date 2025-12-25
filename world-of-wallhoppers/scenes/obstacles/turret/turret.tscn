@@ -46,11 +46,13 @@ position = Vector2(0, -16)
 texture = ExtResource("1_pmwqm")
 
 [node name="TurretHead" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -50)
+position = Vector2(0, -43)
 sprite_frames = SubResource("SpriteFrames_xcw7g")
 animation = &"ready"
+offset = Vector2(0, -7)
 
 [node name="LaserBeam" type="Sprite2D" parent="TurretHead"]
+visible = false
 position = Vector2(0, -766)
 rotation = 1.5707964
 texture = ExtResource("4_e3gec")
@@ -67,6 +69,7 @@ position = Vector2(0.75, -1.4551915e-11)
 shape = SubResource("RectangleShape2D_hkeo5")
 
 [node name="LaserBall" type="Sprite2D" parent="TurretHead"]
+visible = false
 position = Vector2(0, -68)
 texture = ExtResource("5_hkeo5")
 

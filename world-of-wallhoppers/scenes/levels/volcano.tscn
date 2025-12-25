@@ -907,19 +907,65 @@ size = Vector2i(2, 5)
 [node name="Turret" parent="." instance=ExtResource("19_0ybtn")]
 position = Vector2(255, 415)
 location = "wall-right"
+turret_type = "arc-left"
+attack_duration = 4
+
+[node name="Turret11" parent="." instance=ExtResource("19_0ybtn")]
+position = Vector2(255, 31)
+location = "wall-right"
+attack_duration = 4
+
+[node name="Turret9" parent="." instance=ExtResource("19_0ybtn")]
+position = Vector2(255, 347)
+location = "wall-right"
+turret_type = "arc-right"
 attack_duration = 4
 
 [node name="Turret4" parent="." instance=ExtResource("19_0ybtn")]
 position = Vector2(-85, 205)
 location = "ceiling"
+turret_type = "arc-right"
+cooldown_duration = 3
+
+[node name="Turret6" parent="." instance=ExtResource("19_0ybtn")]
+position = Vector2(-9, 205)
+location = "ceiling"
+turret_type = "arc-left"
+cooldown_duration = 3
+
+[node name="Turret12" parent="." instance=ExtResource("19_0ybtn")]
+position = Vector2(96, -204)
+location = "ceiling"
 cooldown_duration = 3
 
 [node name="Turret5" parent="." instance=ExtResource("19_0ybtn")]
 position = Vector2(20, 496)
+turret_type = "arc-left"
+cooldown_duration = 4
+
+[node name="Turret8" parent="." instance=ExtResource("19_0ybtn")]
+position = Vector2(89, 496)
+turret_type = "arc-right"
+cooldown_duration = 4
+
+[node name="Turret13" parent="." instance=ExtResource("19_0ybtn")]
+position = Vector2(154, 496)
 cooldown_duration = 4
 
 [node name="Turret3" parent="." instance=ExtResource("19_0ybtn")]
 position = Vector2(-224, 274)
+location = "wall-left"
+turret_type = "arc-left"
+cooldown_duration = 1
+
+[node name="Turret7" parent="." instance=ExtResource("19_0ybtn")]
+position = Vector2(-224, 339)
+location = "wall-left"
+turret_type = "arc-right"
+cooldown_duration = 1
+
+[node name="Turret10" parent="." instance=ExtResource("19_0ybtn")]
+position = Vector2(-224, 20)
 location = "wall-left"
 cooldown_duration = 1
 
