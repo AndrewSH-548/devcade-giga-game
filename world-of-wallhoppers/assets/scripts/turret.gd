@@ -1,16 +1,17 @@
 extends Node2D
 
 @export var location: String = "ground"; ## The turret's location on a wall (ground, wall-left, wall-right, or ceiling)
-@export var turret_type: String = "straight"; ## The type of the turret: laser, straight, arc-left, arc-right
+@export var turret_type: String = "straight"; ## The type of the turret: laser, straight, arc
+@export_range(0.0, 360.0,  45.0) var turret_rotation: float = 0.1; ## The turret's rotation (in degrees) (if at default value [0.1], will rotate the turret in the direction it is located.
 @export var bullet_speed = 500; ## The speed of the bullet, (default: 500)
 @export var attack_duration = 2; ## the duration of an attack
 @export var cooldown_duration = 2; ## The cooldown between attacks
-@export var turret_rotation: float = 0; ## The rotation of the turret (in degrees) (default: 0 degrees) TODO: Implement bullets being able to fire at different angles
 
 @onready var turret: AnimatedSprite2D = $TurretHead
 @onready var laser_beam: Sprite2D = $TurretHead/LaserBeam
 @onready var laser_ball: Sprite2D = $TurretHead/LaserBall
 
+@onready var rotation_circle: Sprite2D = $RotationCircle
 @onready var attack_duration_timer: Timer = $AttackDurationTimer
 @onready var cooldown_timer: Timer = $CooldownTimer
 
@@ -18,6 +19,7 @@ extends Node2D
 
 const BULLET = preload("res://scenes/obstacles/projectiles/bullet.tscn");
 
+const PROJECTILE_GRAVITY = 19.6; ## the gravity for projectiles
 
 var current_state;
 var firing = false;
@@ -31,30 +33,42 @@ enum State {
 	FIRE,
 }
 
-var laserTween = create_tween().set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT_IN);
-
 func _ready() -> void:
+	rotation_circle.hide();
 	laser_ball.hide();
 	laser_beam.hide();
 	hurtbox.monitorable = false;
 	change_state(State.READY);
-	start_projectile_firing_cycle();
-
-func _process(_delta: float) -> void:
 	
 	match location.to_lower(): # rotates the turret based on the provided location
 		"ground":
 			rotation_degrees = 0;
+			if(turret_rotation == 0.1):
+				turret_rotation = 0.0;
+			turret.rotation_degrees = turret_rotation;
 		"wall-left":
 			rotation_degrees = 90;
+			if(turret_rotation == 0.1):
+				turret_rotation = 90.0;
+			turret.rotation_degrees = turret_rotation - 90;
 		"wall-right":
 			rotation_degrees = -90;
+			if(turret_rotation == 0.1):
+				turret_rotation = 270.0;
+			turret.rotation_degrees = turret_rotation - 270;
 		"ceiling":
 			rotation_degrees = 180;
+			if(turret_rotation == 0.1):
+				turret_rotation = 180.0;
+			turret.rotation_degrees = turret_rotation - 180;
 		_:
 			print_debug("Invalid location for turret" + str(location));
 			location = "ground"; # go to ground for default.
+	
+	start_projectile_firing_cycle();
 
+func _process(_delta: float) -> void:
+	
 	match current_state:
 		State.COOLDOWN:
 			turret.play("cooldown");
@@ -74,12 +88,8 @@ func start_projectile_firing_cycle() -> void: ## continuously fire the respectiv
 				fire_laser();
 			"straight":
 				fire_projectile_straight();
-			"arc-left":
-				turret.rotation_degrees = -45;
-				fire_projectile_arc("left");
-			"arc-right":
-				turret.rotation_degrees = 45;
-				fire_projectile_arc("right");
+			"arc":
+				fire_projectile_arc();
 		await cooldown_timer.timeout;
 
 func fire_laser() -> void: ## fire laser script
@@ -87,11 +97,10 @@ func fire_laser() -> void: ## fire laser script
 		firing = true;
 		laser_ball.show();
 		laser_ball.scale = Vector2(0, 0);
-		if !laserTween.is_valid(): # re-creates tween if it's invalid.
-			laserTween.kill();
-			laserTween = create_tween().set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT_IN);
+		var laserTween = create_tween().set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT_IN);
 		laserTween.tween_property(laser_ball, "scale", Vector2(1, 1), 0.5);
 		await laserTween.finished; # charge finished
+		laserTween.kill();
 		hurtbox.monitorable = true;
 		#SoundManager.laser_fire.play();
 		#camera_shake();
@@ -104,23 +113,37 @@ func fire_laser() -> void: ## fire laser script
 		firing = false;
 		cooldown_timer.start(cooldown_duration); # start cooldown timer
 
-func fire_projectile_straight() -> void: ## fire a projectile in a straight line
+func fire_projectile_straight() -> void: ## fire a projectile in a straight line TODO: Make it work at 45deg angles
 	if(!firing):
 		firing = true;
 		var bullet = BULLET.instantiate();
 		var bullet_position_offset = 40; ## offset the bullet so it looks like it is shooting from the cannon
 		bullet.position.y -= bullet_position_offset; # offset the starting bullet position
-		match location.to_lower(): # sets the direction of the bullet's movement
-			"ground":
+		match turret_rotation: # sets the direction of the bullet
+			0.0:
 				bullet.velocity.y = -bullet_speed;
-			"wall-left":
+			45.0:
+				bullet.velocity.y = -bullet_speed;
+				bullet.velocity.x = bullet_speed
+			90.0:
 				bullet.velocity.x = bullet_speed;
-			"wall-right":
-				bullet.velocity.x = -bullet_speed;
-			"ceiling":
+			135.0:
 				bullet.velocity.y = bullet_speed;
+				bullet.velocity.x = bullet_speed;
+			180.0:
+				bullet.velocity.y = bullet_speed;
+			225.0:
+				bullet.velocity.y = bullet_speed;
+				bullet.velocity.x = -bullet_speed;
+			270.0:
+				bullet.velocity.x = -bullet_speed;
+			315.0:
+				bullet.velocity.y = -bullet_speed;
+				bullet.velocity.x = -bullet_speed;
+			360.0:
+				bullet.velocity.y = -bullet_speed;
 			_:
-				print_debug("Invalid location for turret" + str(location));
+				print_debug("Invalid rotation for turret" + str(turret_rotation));
 		
 		turret.add_child(bullet); # add the bullet as a child of the turret
 		bullet.show();
@@ -130,42 +153,39 @@ func fire_projectile_straight() -> void: ## fire a projectile in a straight line
 		firing = false;
 		cooldown_timer.start(cooldown_duration); # start cooldown timer
 
-func fire_projectile_arc(angle: String) -> void: ## fire a projectile in an arc
+func fire_projectile_arc() -> void: ## fire a projectile in an arc
 	if(!firing):
 		firing = true;
 		var bullet = BULLET.instantiate();
-		var gravity = 9.8;
+		var gravity = PROJECTILE_GRAVITY;
 		bullet.enable_gravity(gravity);
 		var bullet_position_offset_y = 60;
 		bullet.position.y -= bullet_position_offset_y; # offset the starting bullet position
-		match location.to_lower(): # sets the direction of the bullet's movement
-			"ground":
+		match turret_rotation: # sets the direction of the bullet
+			0.0:
 				bullet.velocity.y = -bullet_speed;
-				if(angle == "left"):
-					bullet.velocity.x = -bullet_speed;
-				elif(angle == "right"):
-					bullet.velocity.x = bullet_speed
-			"wall-left":
-				if(angle == "left"):
-					bullet.velocity.y = -bullet_speed;
-				elif(angle == "right"):
-					bullet.velocity.y = bullet_speed;
+			45.0:
+				bullet.velocity.y = -bullet_speed;
+				bullet.velocity.x = bullet_speed
+			90.0:
 				bullet.velocity.x = bullet_speed;
-			"wall-right":
-				if(angle == "right"):
-					bullet.velocity.y = -bullet_speed;
-				elif(angle == "left"):
-					bullet.velocity.y = bullet_speed;
+			135.0:
+				bullet.velocity.y = bullet_speed;
+				bullet.velocity.x = bullet_speed;
+			180.0:
+				bullet.velocity.y = bullet_speed;
+			225.0:
+				bullet.velocity.y = bullet_speed;
 				bullet.velocity.x = -bullet_speed;
-			"ceiling":
-				if(angle == "left"):
-					bullet.velocity.x = bullet_speed;
-					bullet.velocity.y = bullet_speed;
-				elif(angle == "right"):
-					bullet.velocity.x = -bullet_speed;
-					bullet.velocity.y = bullet_speed;
+			270.0:
+				bullet.velocity.x = -bullet_speed;
+			315.0:
+				bullet.velocity.y = -bullet_speed;
+				bullet.velocity.x = -bullet_speed;
+			360.0:
+				bullet.velocity.y = -bullet_speed;
 			_:
-				print_debug("Invalid location for turret" + str(location));
+				print_debug("Invalid rotation for turret" + str(turret_rotation));
 		
 		turret.add_child(bullet); # add the bullet as a child of the turret
 		bullet.show();
