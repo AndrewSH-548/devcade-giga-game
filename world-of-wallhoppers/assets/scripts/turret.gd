@@ -1,7 +1,20 @@
 extends Node2D
 
-@export var location: String = "ground"; ## The turret's location on a wall (ground, wall-left, wall-right, or ceiling)
-@export var turret_type: String = "straight"; ## The type of the turret: laser, straight, arc
+enum Locations {
+	GROUND,
+	WALL_LEFT,
+	WALL_RIGHT,
+	CEILING
+}
+
+enum TurretType {
+	LASER,
+	STRAIGHT,
+	ARC
+}
+
+@export var location_export: Locations = Locations.GROUND; ## The turret's location on a wall (ground, wall_left, wall_right, or ceiling)
+@export var turret_type_export: TurretType = TurretType.STRAIGHT; ## The type of the turret: laser, straight, arc
 @export_range(0.0, 360.0,  45.0) var turret_rotation: float = 0.1; ## The turret's rotation (in degrees) (if at default value [0.1], will rotate the turret in the direction it is located.
 @export var bullet_speed = 500; ## The speed of the bullet, (default: 500)
 @export var attack_duration = 2; ## the duration of an attack
@@ -33,7 +46,14 @@ enum State {
 	FIRE,
 }
 
+var location = "";
+var turret_type = "";
+
 func _ready() -> void:
+	location = Locations.find_key(location_export).to_lower();
+	turret_type = TurretType.find_key(turret_type_export).to_lower();
+	
+	print(location);
 	rotation_circle.hide();
 	laser_ball.hide();
 	laser_beam.hide();
@@ -46,12 +66,12 @@ func _ready() -> void:
 			if(turret_rotation == 0.1):
 				turret_rotation = 0.0;
 			turret.rotation_degrees = turret_rotation;
-		"wall-left":
+		"wall_left":
 			rotation_degrees = 90;
 			if(turret_rotation == 0.1):
 				turret_rotation = 90.0;
 			turret.rotation_degrees = turret_rotation - 90;
-		"wall-right":
+		"wall_right":
 			rotation_degrees = -90;
 			if(turret_rotation == 0.1):
 				turret_rotation = 270.0;

@@ -906,72 +906,72 @@ size = Vector2i(2, 5)
 
 [node name="Turret" parent="." instance=ExtResource("19_0ybtn")]
 position = Vector2(255, 415)
-location = "wall-right"
-turret_type = "arc"
+location_export = 2
+turret_type_export = 2
 turret_rotation = 225.0
 
 [node name="Turret11" parent="." instance=ExtResource("19_0ybtn")]
 position = Vector2(255, 31)
-location = "wall-right"
+location_export = 2
 attack_duration = 4
 
 [node name="Turret14" parent="." instance=ExtResource("19_0ybtn")]
-position = Vector2(255, 79)
-location = "wall-right"
+position = Vector2(255, 128)
+location_export = 2
 turret_rotation = 225.0
 attack_duration = 4
 
 [node name="Turret15" parent="." instance=ExtResource("19_0ybtn")]
 position = Vector2(255, -49)
-location = "wall-right"
+location_export = 2
 turret_rotation = 315.0
 attack_duration = 4
 
 [node name="Turret9" parent="." instance=ExtResource("19_0ybtn")]
 position = Vector2(255, 347)
-location = "wall-right"
-turret_type = "arc"
+location_export = 2
+turret_type_export = 2
 turret_rotation = 315.0
 
 [node name="Turret4" parent="." instance=ExtResource("19_0ybtn")]
 position = Vector2(-85, 205)
-location = "ceiling"
-turret_type = "arc"
+location_export = 3
+turret_type_export = 2
 turret_rotation = 225.0
 cooldown_duration = 3
 
 [node name="Turret6" parent="." instance=ExtResource("19_0ybtn")]
 position = Vector2(-9, 205)
-location = "ceiling"
-turret_type = "arc"
+location_export = 3
+turret_type_export = 2
 turret_rotation = 135.0
 cooldown_duration = 3
 
 [node name="Turret12" parent="." instance=ExtResource("19_0ybtn")]
 position = Vector2(96, -204)
-location = "ceiling"
+location_export = 3
 cooldown_duration = 3
 
 [node name="Turret21" parent="." instance=ExtResource("19_0ybtn")]
 position = Vector2(8, -204)
-location = "ceiling"
+location_export = 3
 turret_rotation = 225.0
 cooldown_duration = 3
 
 [node name="Turret20" parent="." instance=ExtResource("19_0ybtn")]
 position = Vector2(183, -204)
-location = "ceiling"
+location_export = 3
 turret_rotation = 135.0
 cooldown_duration = 3
 
 [node name="Turret5" parent="." instance=ExtResource("19_0ybtn")]
 position = Vector2(-46, 490)
-turret_type = "arc"
+turret_type_export = 2
 turret_rotation = 315.0
 
 [node name="Turret8" parent="." instance=ExtResource("19_0ybtn")]
 position = Vector2(44, 490)
-turret_type = "arc"
+turret_type_export = 2
 turret_rotation = 45.0
 
 [node name="Turret13" parent="." instance=ExtResource("19_0ybtn")]
@@ -991,54 +991,55 @@ turret_rotation = 45.0
 
 [node name="Turret3" parent="." instance=ExtResource("19_0ybtn")]
 position = Vector2(-222, 358)
-location = "wall-left"
-turret_type = "arc"
+location_export = 1
+turret_type_export = 2
 turret_rotation = 45.0
 
 [node name="Turret7" parent="." instance=ExtResource("19_0ybtn")]
 position = Vector2(-224, 427)
-location = "wall-left"
-turret_type = "arc"
+location_export = 1
+turret_type_export = 2
 turret_rotation = 135.0
 
 [node name="Turret10" parent="." instance=ExtResource("19_0ybtn")]
 position = Vector2(-224, 20)
-location = "wall-left"
+location_export = 1
 cooldown_duration = 1
 
 [node name="Turret17" parent="." instance=ExtResource("19_0ybtn")]
 position = Vector2(-224, -52)
-location = "wall-left"
+location_export = 1
 turret_rotation = 45.0
 cooldown_duration = 1
 
 [node name="Turret16" parent="." instance=ExtResource("19_0ybtn")]
-position = Vector2(-224, 76)
-location = "wall-left"
+position = Vector2(-224, 115)
+location_export = 1
 turret_rotation = 135.0
 cooldown_duration = 1
 
 [node name="Turret2" parent="." instance=ExtResource("19_0ybtn")]
 position = Vector2(-63, -9)
-location = "wall-left"
-turret_type = "laser"
+location_export = 1
+turret_type_export = 0
 
 [node name="Turret23" parent="." instance=ExtResource("19_0ybtn")]
 position = Vector2(263, -179)
-location = "wall-right"
-turret_type = "laser"
+location_export = 2
+turret_type_export = 0
 turret_rotation = 315.0
 
 [node name="Turret24" parent="." instance=ExtResource("19_0ybtn")]
 position = Vector2(115, -32)
-turret_type = "laser"
+location_export = 2
+turret_type_export = 0
 
 [node name="Turret26" parent="." instance=ExtResource("19_0ybtn")]
 position = Vector2(115, 60)
-turret_type = "laser"
+turret_type_export = 0
 turret_rotation = 225.0
 
 [node name="Turret25" parent="." instance=ExtResource("19_0ybtn")]
 position = Vector2(67, -136)
-location = "ceiling"
-turret_type = "laser"
+location_export = 3
+turret_type_export = 0
