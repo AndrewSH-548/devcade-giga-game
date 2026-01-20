@@ -22,7 +22,7 @@ void fragment() {
 	vec3 out_color = outline_color;
 	float out_size = outline_size;
 	if(selected) {
-		out_size *= 2.0;
+		out_size *= 4.0;
 		if(value > 0.5) {
 			out_color.rgb = colors[0];
 		} else {
