@@ -7,7 +7,7 @@ enum Locations {
 	CEILING
 }
 
-enum TurretType {
+enum TurretType { ## BUG: The Laser mode is scuffed. It does not hit people back and you can just walk through it if you are already in the hitbox.
 	LASER,
 	STRAIGHT,
 	ARC
@@ -18,7 +18,7 @@ enum TurretType {
 @export_range(0.0, 360.0,  45.0) var turret_rotation: float = 0.1; ## The turret's rotation (in degrees) (if at default value [0.1], will rotate the turret in the direction it is located.
 @export var bullet_speed = 500; ## The speed of the bullet, (default: 500)
 @export var attack_duration = 2; ## the duration of an attack
-@export var cooldown_duration = 2; ## The cooldown between attacks
+@export var cooldown_duration = 2; ## The cooldown between attacks (used for lasers)
 
 @onready var turret: AnimatedSprite2D = $TurretHead
 @onready var laser_beam: Sprite2D = $TurretHead/LaserBeam
