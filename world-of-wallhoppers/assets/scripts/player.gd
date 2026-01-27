@@ -201,7 +201,6 @@ func do_hitstun(body: Node2D) -> void:
 		# Don't Collide with LAYER_NOT_HITSTUN
 		collision_mask &= ~LAYER_NOT_HITSTUN
 		disable_walk_input = true;
-		print(str(direction))
 		velocity = direction * 200.0
 		velocity.y *= 1.35
 		if(self.isFacingRight):
