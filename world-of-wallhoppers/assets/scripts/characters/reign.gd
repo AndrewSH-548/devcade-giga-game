@@ -30,23 +30,26 @@ func process_hover(delta: float) -> void:
 		process_walljump(delta)
 
 func animate_reign(direction: float) -> void:
+	sprite.flip_h = false;
 	if hitstun:
-		sprite.animation = "hurt";
+		sprite.animation = "hurt" if isFacingRight else "hurt-left";
 	elif get_position_state() == STATE_ON_WALL:
-		sprite.animation = "wall-cling";
+		sprite.flip_h = true;
+		sprite.animation = "wall-cling-left" if isFacingRight else "wall-cling";
 	elif is_hovering:
-		sprite.animation = "run";
+		sprite.animation = "run" if isFacingRight else "run-left";
 	elif velocity.y < 0 :
-		sprite.animation = "jump";
+		sprite.animation = "jump" if isFacingRight else "jump-left";
 	elif get_position_state() == STATE_IN_AIR:
-		sprite.animation = "fall";
+		sprite.animation = "fall" if isFacingRight else "fall-left";
 	elif is_touching_wall() && direction != 0:
-		sprite.animation = "wall-push";
+		sprite.animation = "wall-push" if isFacingRight else "wall-push-left";
 	elif direction != 0:
-		sprite.animation = "run" if Input.is_action_pressed(run_modifier_action) else "walk";
-	else: sprite.animation = "idle";
+		if Input.is_action_pressed(run_modifier_action):
+			sprite.animation = "run" if isFacingRight else "run-left" 
+		else: sprite.animation = "walk" if isFacingRight else "walk-left";
+	else: sprite.animation = "idle" if isFacingRight else "idle-left";
 	
-	sprite.flip_h = !isFacingRight;
 
 func setup_keybinds(player_number: int) -> void:
 	var player_input: String = "p" + str(player_number) + "_"
