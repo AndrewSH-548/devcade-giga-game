@@ -30,8 +30,8 @@ var re_dash_time: float = 0.5
 
 var rebound_direction: int = 1
 var rebound_time: float = 0.3
-var rebound_pushoff_strength: float = 90.0
-var rebound_boost_strength: float = 200.0
+var rebound_pushoff_strength: float = 120.0
+var rebound_boost_strength: float = 400.0
 var rebound_leeway: float = 16.0
 
 var spark_progress: float = 0.0
@@ -42,11 +42,14 @@ var flight_speed: float = 800.0
 var flight_time: float = 0.5
 var flight_offset_x: float = 32.0
 var flight_target_x: float
-var flight_gravity: float = 900.0
+var flight_gravity: float = 1000.0
 
 var roll_speed: float = 320.0
 var roll_gravity: float = 1280.0
-var roll_bounce_strength: float = 320.0
+var roll_bounce_strength: float = 300.0
+var roll_launch_strength: float = 0.0
+
+var slam_speed: float = 1024.0
 
 var on_floor_last_frame: bool = false
 
@@ -57,6 +60,7 @@ enum MoveState {
 	ROLL,
 	DASH,
 	REBOUND,
+	SLAM,
 	FLIGHT,
 }
 
@@ -115,6 +119,7 @@ func _physics_process(delta: float) -> void:
 				process_walkrun(delta, direction)
 				process_gravity(delta)
 				process_jump(delta)
+				process_wallcheck(delta)
 				process_walljump(delta)
 				if Input.is_action_just_pressed(roll_action):
 					do_roll()
@@ -124,17 +129,21 @@ func _physics_process(delta: float) -> void:
 			MoveState.REBOUND:
 				process_rebound()
 				process_gravity(delta)
+			MoveState.SLAM:
+				process_slam(delta)
 			MoveState.FLIGHT:
 				process_flight(delta)
 			MoveState.ROLL:
 				process_roll(delta)
+				if Input.is_action_just_pressed(down_action):
+					move_state = MoveState.SLAM
 	else:
 		process_gravity(delta)
 		move_state = MoveState.NORMAL
 	
 	if move_state != MoveState.ROLL:
 		update_flipped()
-	animate_flare()
+	animated_scoria()
 	
 	on_floor_last_frame = is_on_floor()
 	move_and_slide()
@@ -149,8 +158,7 @@ func do_rebound(wall_direction: int):
 	can_dash = true
 	move_state = MoveState.REBOUND
 	dash_timer.stop()
-	spark_progress += rebound_spark_amount
-	spark_animation.play()
+	do_spark()
 	if spark_progress >= 3.0:
 		do_flight(wall_direction)
 	else:
@@ -167,6 +175,11 @@ func do_flight(away_direction: int):
 
 func do_roll():
 	move_state = MoveState.ROLL
+	velocity.y = -roll_launch_strength
+
+func do_spark():
+	spark_progress += rebound_spark_amount
+	spark_animation.play()
 
 func process_dash():
 	var facing: int = 1 if isFacingRight else -1
@@ -200,15 +213,26 @@ func process_roll(delta: float):
 		velocity.y = -roll_bounce_strength
 	
 	if is_on_floor() and not on_floor_last_frame:
-		spark_progress += rebound_spark_amount
-		spark_animation.play()
+		do_spark()
 	
 	if test_wall_direction(facing * rebound_leeway):
 		snap_wall_direction(facing * rebound_leeway)
 		do_rebound(-facing)
 
-func animate_flare():
+func process_slam(_delta: float):
+	velocity.y = slam_speed
+	velocity.x = 0.0
+	if is_on_floor():
+		do_roll()
+
+func animated_scoria():
 	sprite.flip_h = !isFacingRight
+	
+	if move_state == MoveState.SLAM:
+		animations.scale.x = 0.7
+		animations.scale.y = 1.2
+	else:
+		animations.scale = Vector2.ONE
 	
 	if get_position_state() == STATE_HITSTUN:
 		animations.animation = "Hitstun"
@@ -253,6 +277,7 @@ func setup_keybinds(player_number: int) -> void:
 	move_right_action = player_input + "right"
 	dash_action = player_input + "run"
 	roll_action = player_input + "run"
+	down_action = player_input + "crouch"
 
 func test_wall_direction(distance: float):
 	return test_move(transform, Vector2(distance, 0))

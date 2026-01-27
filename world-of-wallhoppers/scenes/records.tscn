@@ -42,38 +42,40 @@ focus_neighbor_bottom = NodePath("../../LevelDisplayMargins/LevelDisplayPanel/Th
 theme_override_font_sizes/font_size = 64
 text = "Back"
 
-[node name="VScrollBar" type="VScrollBar" parent="VBoxContainer"]
+[node name="VScrollBar" type="ScrollContainer" parent="VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 1
 size_flags_vertical = 3
+follow_focus = true
+draw_focus_border = true
+horizontal_scroll_mode = 0
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/VScrollBar"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 80
-theme_override_constants/margin_top = 80
-theme_override_constants/margin_right = 80
-theme_override_constants/margin_bottom = 80
-
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/VScrollBar/MarginContainer"]
 layout_mode = 2
-
-[node name="Volcano" type="VBoxContainer" parent="VBoxContainer/VScrollBar/MarginContainer/VBoxContainer"]
-layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="VLeaderboardTitle" type="Label" parent="VBoxContainer/VScrollBar/MarginContainer/VBoxContainer/Volcano"]
+[node name="TabContainer" type="TabContainer" parent="VBoxContainer/VScrollBar/MarginContainer"]
+layout_mode = 2
+tab_alignment = 1
+current_tab = 1
+tabs_visible = false
+tab_focus_mode = 0
+
+[node name="Volcano" type="VBoxContainer" parent="VBoxContainer/VScrollBar/MarginContainer/TabContainer"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+metadata/_tab_index = 0
+
+[node name="VLeaderboardTitle" type="Label" parent="VBoxContainer/VScrollBar/MarginContainer/TabContainer/Volcano"]
+custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
 theme_override_font_sizes/font_size = 60
-text = "Volcano"
+text = "<--    Volcano    -->"
 horizontal_alignment = 1
-vertical_alignment = 1
+vertical_alignment = 2
 
-[node name="VolcanoLeaderboard" type="Label" parent="VBoxContainer/VScrollBar/MarginContainer/VBoxContainer/Volcano"]
+[node name="VolcanoLeaderboard" type="Label" parent="VBoxContainer/VScrollBar/MarginContainer/TabContainer/Volcano"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_vertical = 3
@@ -83,7 +85,8 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="Label" type="Label" parent="VBoxContainer/VScrollBar/MarginContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="VBoxContainer/VScrollBar/MarginContainer/TabContainer/Volcano"]
+visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 80
 text = "---------------------------------------"
@@ -91,18 +94,20 @@ horizontal_alignment = 1
 vertical_alignment = 1
 clip_text = true
 
-[node name="Jungle" type="VBoxContainer" parent="VBoxContainer/VScrollBar/MarginContainer/VBoxContainer"]
+[node name="Jungle" type="VBoxContainer" parent="VBoxContainer/VScrollBar/MarginContainer/TabContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+metadata/_tab_index = 1
 
-[node name="JLeaderboardTitle" type="Label" parent="VBoxContainer/VScrollBar/MarginContainer/VBoxContainer/Jungle"]
+[node name="JLeaderboardTitle" type="Label" parent="VBoxContainer/VScrollBar/MarginContainer/TabContainer/Jungle"]
+custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
 theme_override_font_sizes/font_size = 60
-text = "Jungle"
+text = "<--    Jungle    -->"
 horizontal_alignment = 1
-vertical_alignment = 1
+vertical_alignment = 2
 
-[node name="JungleLeaderboard" type="Label" parent="VBoxContainer/VScrollBar/MarginContainer/VBoxContainer/Jungle"]
+[node name="JungleLeaderboard" type="Label" parent="VBoxContainer/VScrollBar/MarginContainer/TabContainer/Jungle"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_vertical = 3
@@ -112,7 +117,8 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="Label2" type="Label" parent="VBoxContainer/VScrollBar/MarginContainer/VBoxContainer"]
+[node name="Label2" type="Label" parent="VBoxContainer/VScrollBar/MarginContainer/TabContainer/Jungle"]
+visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 80
 text = "---------------------------------------"
@@ -120,18 +126,21 @@ horizontal_alignment = 1
 vertical_alignment = 1
 clip_text = true
 
-[node name="Reef" type="VBoxContainer" parent="VBoxContainer/VScrollBar/MarginContainer/VBoxContainer"]
+[node name="Reef" type="VBoxContainer" parent="VBoxContainer/VScrollBar/MarginContainer/TabContainer"]
+visible = false
 layout_mode = 2
 size_flags_vertical = 3
+metadata/_tab_index = 2
 
-[node name="RLeaderboardTitle" type="Label" parent="VBoxContainer/VScrollBar/MarginContainer/VBoxContainer/Reef"]
+[node name="RLeaderboardTitle" type="Label" parent="VBoxContainer/VScrollBar/MarginContainer/TabContainer/Reef"]
+custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
 theme_override_font_sizes/font_size = 60
-text = "Reef"
+text = "<--    Reef    -->"
 horizontal_alignment = 1
-vertical_alignment = 1
+vertical_alignment = 2
 
-[node name="ReefLeaderboard" type="Label" parent="VBoxContainer/VScrollBar/MarginContainer/VBoxContainer/Reef"]
+[node name="ReefLeaderboard" type="Label" parent="VBoxContainer/VScrollBar/MarginContainer/TabContainer/Reef"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_vertical = 3
@@ -140,5 +149,14 @@ text = "r"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
+
+[node name="Label3" type="Label" parent="VBoxContainer/VScrollBar/MarginContainer/TabContainer/Reef"]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 80
+text = "---------------------------------------"
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
 
 [connection signal="pressed" from="VBoxContainer/TopContainer/Back" to="." method="load_start_screen"]

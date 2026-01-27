@@ -7,6 +7,8 @@ class_name LevelSelect
 @onready var nav_left_button: Button = $VerticalContainer/ArrowContainer/NavBoxes/NavLeft
 @onready var nav_right_button: Button = $VerticalContainer/ArrowContainer/NavBoxes/NavRight
 
+@onready var random_level_button: Button = $VerticalContainer/RandomPadding/RandomLevel
+
 const LEVEL_THUMBNAIL = preload("res://scenes/gui/level_thumbnail.tscn")
 const CHARACTER_SELECT = preload("res://scenes/gui/character_select/character_select.tscn")
 
@@ -185,3 +187,7 @@ func _input(event: InputEvent) -> void:
 func load_start_screen() -> void:
 	get_tree().change_scene_to_file("res://scenes/start_screen.tscn")
 	queue_free()
+
+func pick_random_level() -> void:
+	var level: LevelInfo = levels_list[randi_range(0, levels_list.size() - 1)]
+	load_level(level)

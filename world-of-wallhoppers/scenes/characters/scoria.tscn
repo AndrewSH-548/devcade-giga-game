@@ -40,6 +40,8 @@ size = Vector2(29.75, 66.125)
 
 [node name="Scoria" type="CharacterBody2D"]
 collision_layer = 4
+collision_mask = 65
+platform_on_leave = 1
 script = ExtResource("1_sssk5")
 walk_speed = 300
 run_speed = 300
@@ -72,7 +74,7 @@ frame_progress = 1.0
 [node name="Animations" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = ExtResource("3_7qr4j")
-animation = &"Bounce"
+animation = &"Fall"
 autoplay = "Idle"
 
 [node name="Hitbox" type="Area2D" parent="."]

@@ -21,6 +21,7 @@ var jump_action: String = " "
 var move_left_action: String = " "
 var move_right_action: String = " "
 var run_modifier_action: String = " "
+var down_action: String = " "
 
 var acceleration: float = 0
 var hitstun: bool = false
@@ -34,13 +35,21 @@ var deccel_disable_timer: Timer = Timer.new()
 var disable_walk_input: bool = false
 var walk_input_disable_timer: Timer= Timer.new()
 
+var on_wall_last_frame: bool = false
+
 var hitstun_max_fall_speed_modifier: float = 80.0
 
 const JUMP_BUFFER_TIME: float = 0.1
 const COYOTE_TIME: float = 0.07
+const WALL_JUMP_COYOTE_TIME: float = 0.1
+const WALL_JUMP_BUFFER_TIME: float = 0.07
+
+const LAYER_NOT_HITSTUN: int = 128
 
 @onready var jump_buffer_timer: Timer = make_timer(JUMP_BUFFER_TIME)
 @onready var coyote_timer: Timer = make_timer(COYOTE_TIME)
+@onready var wall_jump_coyote_timer: Timer = make_timer(WALL_JUMP_COYOTE_TIME)
+@onready var wall_jump_buffer_timer: Timer = make_timer(WALL_JUMP_BUFFER_TIME)
 var has_done_coyote: bool = true
 
 enum {
@@ -62,6 +71,8 @@ func _ready() -> void:
 	sprite = $Animations
 	sprite.play();
 	hitbox.area_entered.connect(func(body): do_hitstun(body))
+	# Collide with LAYER_NOT_HITSTUN
+	collision_mask |= LAYER_NOT_HITSTUN
 
 func make_timer(time: float) -> Timer:
 	var timer: Timer = Timer.new()
@@ -135,7 +146,7 @@ func is_touching_right_wall() -> bool:
 
 func process_walkrun(_delta: float, direction: float) -> void:
 	# Deccelerate if there is no input
-	if (direction == 0.0 or disable_walk_input) and not disable_decceleration:
+	if (direction == 0.0 or disable_walk_input or get_position_state() == STATE_HITSTUN) and not disable_decceleration:
 		velocity.x = move_toward(velocity.x, 0, deccel)
 	# Other, run this if there IS input
 	elif not disable_walk_input:
@@ -156,17 +167,29 @@ func process_walkrun(_delta: float, direction: float) -> void:
 				else:
 					velocity.x = move_toward(velocity.x, direction*air_speed, air_accel)
 
+func process_wallcheck(_delta: float) -> void:
+	
+	if on_wall_last_frame and get_position_state() != STATE_ON_WALL:
+		wall_jump_coyote_timer.start()
+	
+	on_wall_last_frame = get_position_state() == STATE_ON_WALL
+
 func process_walljump(_delta: float) -> void:
 	# Skip this if the player is not wallsliding
 	# Look at get_position_state() and STATE_ON_WALL for wallsliding conditions
-	if get_position_state() != STATE_ON_WALL: return
+	if get_position_state() != STATE_ON_WALL and wall_jump_coyote_timer.is_stopped():
+		if Input.is_action_just_pressed(jump_action) and not get_position_state() == STATE_ON_FLOOR:
+			jump_buffer_timer.start()
+		return
 	
-	if Input.is_action_just_pressed(jump_action):
+	if Input.is_action_just_pressed(jump_action) or not jump_buffer_timer.is_stopped():
 		do_walljump()
 
 func do_walljump() -> void:
 	velocity.x = get_pushoff_wall_direction() * wall_pushoff_strength
 	velocity.y = -wall_jump_height
+	wall_jump_coyote_timer.stop()
+	wall_jump_buffer_timer.stop()
 
 func do_hitstun(body: Node2D) -> void:
 	var direction: Vector2 = body.global_position.direction_to(global_position)
@@ -175,6 +198,8 @@ func do_hitstun(body: Node2D) -> void:
 		print("OBSTACE: " + str(body.global_rotation_degrees))
 	if not hitstun:
 		hitstun = true
+		# Don't Collide with LAYER_NOT_HITSTUN
+		collision_mask &= ~LAYER_NOT_HITSTUN
 		disable_walk_input = true;
 		print(str(direction))
 		velocity = direction * 200.0
@@ -185,7 +210,9 @@ func do_hitstun(body: Node2D) -> void:
 			velocity.x = 200.0
 		velocity.x *= 1.35
 		# Create hitstun effect (time can be changed (currently 1 second))
+		# DO Collide with LAYER_NOT_HITSTUN
 		await get_tree().create_timer(0.6).timeout
+		collision_mask |= LAYER_NOT_HITSTUN
 		disable_walk_input = false;
 		hitstun = false
 

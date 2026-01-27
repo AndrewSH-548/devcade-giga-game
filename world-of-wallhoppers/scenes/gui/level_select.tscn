@@ -80,6 +80,19 @@ theme_override_constants/h_separation = 5
 theme_override_constants/v_separation = 5
 columns = 3
 
+[node name="RandomPadding" type="MarginContainer" parent="VerticalContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="RandomLevel" type="Button" parent="VerticalContainer/RandomPadding"]
+custom_minimum_size = Vector2(0, 128)
+layout_mode = 2
+theme_override_font_sizes/font_size = 96
+text = "Random"
+
 [node name="ArrowContainer" type="MarginContainer" parent="VerticalContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 10
@@ -106,5 +119,6 @@ theme_override_font_sizes/font_size = 104
 text = ">>>"
 
 [connection signal="pressed" from="VerticalContainer/TopContainer/Back" to="." method="load_start_screen"]
+[connection signal="pressed" from="VerticalContainer/RandomPadding/RandomLevel" to="." method="pick_random_level"]
 [connection signal="pressed" from="VerticalContainer/ArrowContainer/NavBoxes/NavLeft" to="." method="nav_left"]
 [connection signal="pressed" from="VerticalContainer/ArrowContainer/NavBoxes/NavRight" to="." method="nav_right"]

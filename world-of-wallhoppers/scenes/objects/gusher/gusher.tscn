@@ -1,0 +1,65 @@
+[gd_scene load_steps=7 format=3 uid="uid://cykm64hhjrwks"]
+
+[ext_resource type="Texture2D" uid="uid://djr6rbotp54vs" path="res://assets/sprites/gusher/lava_gusher.png" id="1_412kj"]
+[ext_resource type="Script" uid="uid://b626rmf22d6cs" path="res://scenes/objects/gusher/gusher.gd" id="2_m4hj3"]
+[ext_resource type="Script" uid="uid://cphusaq70x4jg" path="res://assets/scripts/obstacles.gd" id="3_m4hj3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m4hj3"]
+size = Vector2(50, 192)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vcmvo"]
+size = Vector2(64, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hjsvx"]
+atlas = ExtResource("1_412kj")
+region = Rect2(0, 2, 0, 64)
+
+[node name="Gusher" type="Node2D"]
+script = ExtResource("2_m4hj3")
+full_size = Vector2i(2, 6)
+hit_type = null
+
+[node name="FrameTimer" type="Timer" parent="."]
+wait_time = 0.2
+autostart = true
+
+[node name="HitArea" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("3_m4hj3")
+launch_mode = 1
+direction_offset_angle = -90.0
+
+[node name="Collision" type="CollisionShape2D" parent="HitArea"]
+position = Vector2(32, 96)
+shape = SubResource("RectangleShape2D_m4hj3")
+debug_color = Color(0.9698636, 0, 0.46169943, 0.41960785)
+
+[node name="BouyancyArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 32
+script = ExtResource("3_m4hj3")
+launch_mode = 1
+direction_offset_angle = -90.0
+
+[node name="Collision" type="CollisionShape2D" parent="BouyancyArea"]
+position = Vector2(32, 96)
+shape = SubResource("RectangleShape2D_vcmvo")
+debug_color = Color(0.47153366, 0.46568674, 0.93479615, 0.41960785)
+
+[node name="GusherPatch" type="NinePatchRect" parent="."]
+custom_minimum_size = Vector2(64, 32)
+offset_right = 64.0
+offset_bottom = 192.0
+texture = SubResource("AtlasTexture_hjsvx")
+region_rect = Rect2(0, 0, 64, 64)
+patch_margin_left = 16
+patch_margin_top = 32
+patch_margin_right = 16
+patch_margin_bottom = 16
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[connection signal="timeout" from="FrameTimer" to="." method="next_frame"]
+[connection signal="body_entered" from="BouyancyArea" to="." method="bouyancy_body_entered"]
+[connection signal="body_exited" from="BouyancyArea" to="." method="bouyancy_body_exited"]

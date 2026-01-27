@@ -26,6 +26,7 @@ func process_hover(delta: float) -> void:
 	else:
 		process_gravity(delta)
 		process_jump(delta)
+		process_wallcheck(delta)
 		process_walljump(delta)
 
 func animate_reign(direction: float) -> void:
