@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://h33kbi24xce8"]
+
+[ext_resource type="Script" uid="uid://cgfwcug5yxepp" path="res://assets/scripts/bullet.gd" id="1_agjdo"]
+[ext_resource type="Texture2D" uid="uid://caynchsya2rop" path="res://assets/sprites/projectiles/Bullet.png" id="1_tcjtc"]
+[ext_resource type="Script" uid="uid://cphusaq70x4jg" path="res://assets/scripts/obstacles.gd" id="2_agjdo"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tcjtc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qkl2a"]
+size = Vector2(16.5, 16)
+
+[node name="Bullet" type="CharacterBody2D"]
+script = ExtResource("1_agjdo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_tcjtc")
+disabled = true
+
+[node name="Bullet" type="Sprite2D" parent="."]
+scale = Vector2(1.875, 1.875)
+texture = ExtResource("1_tcjtc")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("2_agjdo")
+launch_mode = 1
+direction_offset_angle = -90.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0.25, 0)
+shape = SubResource("RectangleShape2D_qkl2a")
