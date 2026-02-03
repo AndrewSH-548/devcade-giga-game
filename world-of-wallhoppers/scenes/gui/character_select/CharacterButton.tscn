@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://chd4b8sjek0pn"]
+
+[ext_resource type="Script" uid="uid://d2w56rlca1qa3" path="res://assets/scripts/Guis/character_select/character_button.gd" id="1_bgdko"]
+[ext_resource type="Shader" uid="uid://c3x2wer8hsyjj" path="res://assets/shaders/character_selection_outline.gdshader" id="2_bdv3g"]
+[ext_resource type="Texture2D" uid="uid://bqnatxvhdl8ps" path="res://assets/shaders/noise/perlin_noise_1.png" id="3_gcs3x"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nwj3o"]
+shader = ExtResource("2_bdv3g")
+shader_parameter/colors = PackedColorArray(0.9981194, 0.4576009, 0.62299997, 1, 0.17795208, 0.78403705, 0.6462559, 1)
+shader_parameter/noise = ExtResource("3_gcs3x")
+
+[node name="CharacterButton" type="Button"]
+offset_right = 416.0
+offset_bottom = 432.0
+script = ExtResource("1_bgdko")
+metadata/_custom_type_script = "uid://d2w56rlca1qa3"
+
+[node name="ButtonColor" type="ColorRect" parent="."]
+show_behind_parent = true
+material = SubResource("ShaderMaterial_nwj3o")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

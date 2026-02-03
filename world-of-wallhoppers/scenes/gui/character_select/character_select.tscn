@@ -1,34 +1,17 @@
-[gd_scene load_steps=43 format=3 uid="uid://bypgh8vwm65r6"]
+[gd_scene load_steps=18 format=3 uid="uid://bypgh8vwm65r6"]
 
 [ext_resource type="Script" uid="uid://ds787vg8b1cru" path="res://assets/scripts/Guis/character_select/character_select.gd" id="1_dlxgn"]
 [ext_resource type="Shader" uid="uid://ddaqfuly3ptrg" path="res://assets/shaders/patterns/pattern_a.gdshader" id="2_nk16p"]
+[ext_resource type="Script" uid="uid://c1c364hhlfwr5" path="res://assets/scripts/data/character_definition.gd" id="2_o4o7f"]
 [ext_resource type="Texture2D" uid="uid://ctikpvc1wa7ag" path="res://assets/gui/background_a.png" id="3_ads0s"]
-[ext_resource type="PackedScene" uid="uid://bmuoxdjge2ld7" path="res://scenes/gui/character_select/character_tester.tscn" id="3_cxqtq"]
-[ext_resource type="Texture2D" uid="uid://brqsq5codsja1" path="res://assets/gui/background_hip.png" id="3_s7d2y"]
-[ext_resource type="Texture2D" uid="uid://cbpfskf2jthji" path="res://assets/sprites/hip.png" id="4_bfvoi"]
 [ext_resource type="Texture2D" uid="uid://dbx47oqbrkl4n" path="res://assets/shaders/noise/Voronoi 12 - 256x256.png" id="4_le0to"]
-[ext_resource type="Texture2D" uid="uid://dlhw68isl1ja2" path="res://assets/sprites/temporary_texture.png" id="5_bfvoi"]
-[ext_resource type="Texture2D" uid="uid://2utjtrsth1yk" path="res://assets/gui/portrait_hip.png" id="5_cxqtq"]
-[ext_resource type="Script" uid="uid://duhq76ptbpowd" path="res://assets/scripts/Guis/character_select/large_portrait_holder.gd" id="5_lfxm6"]
-[ext_resource type="Texture2D" uid="uid://c6mhrd5tyn1l" path="res://assets/gui/background_reign.png" id="5_s7d2y"]
-[ext_resource type="Texture2D" uid="uid://c2386a7ah0ihp" path="res://assets/gui/dial_button.png" id="6_8cco7"]
-[ext_resource type="Texture2D" uid="uid://d36lgodtre2iy" path="res://assets/gui/portrait_reign.png" id="6_cxqtq"]
-[ext_resource type="Texture2D" uid="uid://cju8ny82qs3oy" path="res://assets/gui/portrait_scoria.png" id="6_sqhw2"]
-[ext_resource type="PackedScene" uid="uid://dtu1k6tt7cxej" path="res://scenes/characters/hip.tscn" id="8_nj0pb"]
-[ext_resource type="Script" uid="uid://coa3jlesxvfo7" path="res://assets/scripts/Guis/character_select/dial_button.gd" id="9_u0e5d"]
-[ext_resource type="Material" uid="uid://cvgooa66fd7yl" path="res://assets/shaders/materials/character_selection_material.tres" id="9_uhpgm"]
-[ext_resource type="PackedScene" uid="uid://c42ynqlk3h4wp" path="res://scenes/characters/reign.tscn" id="11_cl5d8"]
-[ext_resource type="Texture2D" uid="uid://kryfyxapqv12" path="res://assets/gui/reign.png" id="15_cxqtq"]
-[ext_resource type="Texture2D" uid="uid://b473s08dlquti" path="res://assets/gui/background_scoria.png" id="17_sqhw2"]
-[ext_resource type="Texture2D" uid="uid://bsvpbsp4u6vv0" path="res://assets/sprites/scoria/scoria.png" id="18_a3imy"]
-[ext_resource type="PackedScene" uid="uid://bojyqwmqsf6xx" path="res://scenes/characters/scoria.tscn" id="18_sqhw2"]
-[ext_resource type="Texture2D" uid="uid://qlym4kqvakc0" path="res://assets/terrain/reef/Back.png" id="20_2qggg"]
-[ext_resource type="Shader" uid="uid://cr7a13xiya4pn" path="res://assets/shaders/character_select_outline.gdshader" id="21_1va7e"]
-[ext_resource type="Shader" uid="uid://ctp7akjwqsqb2" path="res://assets/shaders/outlined_2d.gdshader" id="21_55ilb"]
-[ext_resource type="Texture2D" uid="uid://bfe80tkm43i8u" path="res://assets/sprites/reign/right.png" id="22_1va7e"]
-[ext_resource type="Texture2D" uid="uid://bqnatxvhdl8ps" path="res://assets/shaders/noise/perlin_noise_1.png" id="22_l3mcf"]
-[ext_resource type="Texture2D" uid="uid://bau6tj4o6m33h" path="res://assets/sprites/rick_shawn/rick_shawn.png" id="23_l3mcf"]
-[ext_resource type="Texture2D" uid="uid://ngfyaq6xotri" path="res://assets/gui/random.png" id="24_r3eo1"]
+[ext_resource type="Texture2D" uid="uid://c6mhrd5tyn1l" path="res://assets/gui/background_reign.png" id="5_jfsbr"]
+[ext_resource type="Texture2D" uid="uid://2utjtrsth1yk" path="res://assets/gui/portrait_hip.png" id="6_o4o7f"]
+[ext_resource type="Texture2D" uid="uid://d36lgodtre2iy" path="res://assets/gui/portrait_reign.png" id="7_b51ev"]
+
+[sub_resource type="Resource" id="Resource_b51ev"]
+script = ExtResource("2_o4o7f")
+metadata/_custom_type_script = "uid://c1c364hhlfwr5"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wjce1"]
 shader = ExtResource("2_nk16p")
@@ -66,65 +49,17 @@ stacked_outline_0/size = 21
 stacked_outline_1/size = 15
 stacked_outline_1/color = Color(1, 1, 1, 1)
 
-[sub_resource type="LabelSettings" id="LabelSettings_lfxm6"]
-font_size = 48
-shadow_size = 46
-shadow_color = Color(0, 0, 0, 0.34509805)
-stacked_outline_count = 2
-stacked_outline_0/size = 21
-stacked_outline_1/size = 15
-stacked_outline_1/color = Color(1, 1, 1, 1)
+[sub_resource type="LabelSettings" id="LabelSettings_ua81x"]
+font_size = 31
 
-[sub_resource type="LabelSettings" id="LabelSettings_a3imy"]
-font_size = 32
-shadow_color = Color(0, 0, 0, 0.34509805)
-stacked_outline_count = 1
-stacked_outline_0/size = 21
+[sub_resource type="Gradient" id="Gradient_jfsbr"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_cl5d8"]
-atlas = ExtResource("6_8cco7")
-region = Rect2(0, 0, 320, 320)
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_o4o7f"]
+gradient = SubResource("Gradient_jfsbr")
+width = 1
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_aqbib"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_cl5d8")
-}],
-"loop": true,
-"name": &"Normal",
-"speed": 5.0
-}]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_aqbib"]
-atlas = ExtResource("6_8cco7")
-region = Rect2(0, 0, 320, 0)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8cco7"]
-atlas = ExtResource("4_bfvoi")
-region = Rect2(0, 0, 56, 56)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_cxqtq"]
-atlas = ExtResource("18_a3imy")
-region = Rect2(0, 84, 84, 84)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_2qggg"]
-shader = ExtResource("21_1va7e")
-shader_parameter/outline_color = Color(1, 1, 1, 1)
-shader_parameter/outline_size = 1.0
-shader_parameter/use_diagonals = true
-shader_parameter/use_billboard = false
-shader_parameter/colors = PackedColorArray(0.99999934, 0.5994264, 0.65736306, 1, 0.23590559, 0.746872, 0.3793007, 1)
-shader_parameter/noise = ExtResource("22_l3mcf")
-shader_parameter/noise_scale = 2.49
-shader_parameter/selected = true
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_nk16p"]
-shader = ExtResource("21_55ilb")
-shader_parameter/outline_color = Color(1, 1, 1, 1)
-shader_parameter/outline_size = 1.0
-shader_parameter/use_diagonals = true
-shader_parameter/use_billboard = false
+[sub_resource type="LabelSettings" id="LabelSettings_s7d2y"]
+font_size = 34
 
 [node name="CharacterSelect" type="Control" groups=["CharacterSelect"]]
 layout_mode = 3
@@ -137,6 +72,7 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(2, 2)
 script = ExtResource("1_dlxgn")
+characters = Array[ExtResource("2_o4o7f")]([SubResource("Resource_b51ev"), null])
 
 [node name="Background" type="Node2D" parent="."]
 z_index = -20
@@ -207,479 +143,144 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TopContainer" type="MarginContainer" parent="MainVertical"]
-layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 0
-
-[node name="Back" type="Button" parent="MainVertical/TopContainer"]
-layout_mode = 2
-size_flags_vertical = 0
-focus_neighbor_bottom = NodePath("../../LevelDisplayMargins/LevelDisplayPanel/ThumbnailGrid")
-theme_override_font_sizes/font_size = 32
-text = "Press X or Escape to Cancel"
-
-[node name="CharacterWheel" type="Control" parent="MainVertical"]
+[node name="PanelLevel" type="Panel" parent="MainVertical"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="CharacterTesterP1" parent="MainVertical/CharacterWheel" instance=ExtResource("3_cxqtq")]
-layout_mode = 0
-offset_left = 312.0
-offset_top = 109.0
-offset_right = 502.0
-offset_bottom = 279.0
-
-[node name="CharacterTesterP2" parent="MainVertical/CharacterWheel" instance=ExtResource("3_cxqtq")]
-layout_mode = 0
-offset_left = 32.0
-offset_top = 629.0
-offset_right = 222.0
-offset_bottom = 799.0
-
-[node name="ReadyP1" type="Control" parent="MainVertical/CharacterWheel"]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Text" type="Label" parent="MainVertical/CharacterWheel/ReadyP1"]
-layout_mode = 0
-offset_left = 304.0
-offset_top = 37.0
-offset_right = 470.0
-offset_bottom = 104.0
-text = "READY!"
-label_settings = SubResource("LabelSettings_lfxm6")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="ReadyP2" type="Control" parent="MainVertical/CharacterWheel"]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Text" type="Label" parent="MainVertical/CharacterWheel/ReadyP2"]
-layout_mode = 0
-offset_left = 40.0
-offset_top = 805.0
-offset_right = 206.0
-offset_bottom = 872.0
-text = "READY!"
-label_settings = SubResource("LabelSettings_lfxm6")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="NameP1" type="Label" parent="MainVertical/CharacterWheel"]
-z_index = 1
-layout_mode = 0
-offset_left = -32.5
-offset_top = 227.5
-offset_right = 210.5
-offset_bottom = 294.5
-text = "NAME"
-label_settings = SubResource("LabelSettings_a3imy")
-horizontal_alignment = 2
-vertical_alignment = 1
-
-[node name="NameP2" type="Label" parent="MainVertical/CharacterWheel"]
-z_index = 1
-layout_mode = 0
-offset_left = 329.5
-offset_top = 606.5
-offset_right = 495.5
-offset_bottom = 673.5
-text = "NAME"
-label_settings = SubResource("LabelSettings_a3imy")
-vertical_alignment = 1
-
-[node name="TopPortraits" type="Control" parent="MainVertical/CharacterWheel"]
-z_index = -3
+[node name="MarginContainer" type="MarginContainer" parent="MainVertical/PanelLevel"]
 layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_left = 18.499998
-offset_top = 5.4999995
-offset_right = 18.5
-offset_bottom = 5.4999995
-grow_horizontal = 2
-scale = Vector2(0.7865386, 0.7865386)
-
-[node name="PortraitHolderHip" type="Node2D" parent="MainVertical/CharacterWheel/TopPortraits"]
-script = ExtResource("5_lfxm6")
-connected_dial = 1
-
-[node name="Hip" type="Sprite2D" parent="MainVertical/CharacterWheel/TopPortraits/PortraitHolderHip"]
-position = Vector2(128.00002, 189)
-scale = Vector2(1.7029545, 1.7029545)
-texture = ExtResource("5_cxqtq")
-flip_h = true
-
-[node name="PortraitHolderReign" type="Node2D" parent="MainVertical/CharacterWheel/TopPortraits"]
-script = ExtResource("5_lfxm6")
-connected_dial = 3
-
-[node name="Reign" type="Sprite2D" parent="MainVertical/CharacterWheel/TopPortraits/PortraitHolderReign"]
-position = Vector2(104.00001, 141)
-scale = Vector2(1.2667192, 1.2667192)
-texture = ExtResource("6_cxqtq")
-flip_h = true
-
-[node name="PortraitHolderScoria" type="Node2D" parent="MainVertical/CharacterWheel/TopPortraits"]
-script = ExtResource("5_lfxm6")
-connected_dial = 2
-
-[node name="Scoria" type="Sprite2D" parent="MainVertical/CharacterWheel/TopPortraits/PortraitHolderScoria"]
-position = Vector2(160, 157)
-scale = Vector2(1.2667192, 1.2667192)
-texture = ExtResource("6_sqhw2")
-flip_h = true
-
-[node name="DialPositioner" type="Control" parent="MainVertical/CharacterWheel"]
-visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.7, 0.7)
-
-[node name="CenterMarker" type="Marker2D" parent="MainVertical/CharacterWheel/DialPositioner"]
-position = Vector2(-3.7983693e-05, -3.7983693e-05)
-scale = Vector2(1.0000001, 1.0000001)
-gizmo_extents = 128.0
-
-[node name="DialButtonTopLeft" type="Control" parent="MainVertical/CharacterWheel/DialPositioner"]
-anchors_preset = 0
-rotation = -1.0471976
-script = ExtResource("9_u0e5d")
-dial_id = 4
-
-[node name="Mask" type="AnimatedSprite2D" parent="MainVertical/CharacterWheel/DialPositioner/DialButtonTopLeft"]
-clip_children = 1
-position = Vector2(-3.79837e-05, -159.31522)
-sprite_frames = SubResource("SpriteFrames_aqbib")
-animation = &"Normal"
-
-[node name="Background" type="Sprite2D" parent="MainVertical/CharacterWheel/DialPositioner/DialButtonTopLeft/Mask"]
-rotation = 1.0471976
-scale = Vector2(10, 10)
-texture = ExtResource("5_bfvoi")
-
-[node name="Character" type="Sprite2D" parent="MainVertical/CharacterWheel/DialPositioner/DialButtonTopLeft/Mask"]
-position = Vector2(-22.939835, 0.09576416)
-rotation = 1.0471976
-scale = Vector2(4, 4)
-texture = ExtResource("5_bfvoi")
-
-[node name="Selection" type="Sprite2D" parent="MainVertical/CharacterWheel/DialPositioner/DialButtonTopLeft"]
-z_index = -1
-material = ExtResource("9_uhpgm")
-position = Vector2(0, -160.00006)
-texture = SubResource("AtlasTexture_aqbib")
-
-[node name="DialButtonTop" type="Control" parent="MainVertical/CharacterWheel/DialPositioner"]
-anchors_preset = 0
-script = ExtResource("9_u0e5d")
-dial_id = 1
-character_name = "Hip"
-character_scene = ExtResource("8_nj0pb")
-
-[node name="Mask" type="AnimatedSprite2D" parent="MainVertical/CharacterWheel/DialPositioner/DialButtonTop"]
-clip_children = 1
-position = Vector2(-3.79837e-05, -159.31522)
-sprite_frames = SubResource("SpriteFrames_aqbib")
-animation = &"Normal"
-
-[node name="Background" type="Sprite2D" parent="MainVertical/CharacterWheel/DialPositioner/DialButtonTop/Mask"]
-scale = Vector2(4, 4)
-texture = ExtResource("3_s7d2y")
-
-[node name="Character" type="Sprite2D" parent="MainVertical/CharacterWheel/DialPositioner/DialButtonTop/Mask"]
-position = Vector2(2.8571892, -2.8276205)
-scale = Vector2(4, 4)
-texture = SubResource("AtlasTexture_8cco7")
-
-[node name="Selection" type="Sprite2D" parent="MainVertical/CharacterWheel/DialPositioner/DialButtonTop"]
-z_index = -1
-material = ExtResource("9_uhpgm")
-position = Vector2(0, -160.00015)
-scale = Vector2(1.0000002, 1.0000002)
-texture = SubResource("AtlasTexture_aqbib")
-
-[node name="DialButtonTopRight" type="Control" parent="MainVertical/CharacterWheel/DialPositioner"]
-anchors_preset = 0
-rotation = 1.0471976
-script = ExtResource("9_u0e5d")
-dial_id = 3
-character_name = "Reign"
-character_scene = ExtResource("11_cl5d8")
-
-[node name="Mask" type="AnimatedSprite2D" parent="MainVertical/CharacterWheel/DialPositioner/DialButtonTopRight"]
-clip_children = 1
-position = Vector2(-3.79837e-05, -159.31522)
-sprite_frames = SubResource("SpriteFrames_aqbib")
-animation = &"Normal"
-
-[node name="Background" type="Sprite2D" parent="MainVertical/CharacterWheel/DialPositioner/DialButtonTopRight/Mask"]
-rotation = -1.0471976
-scale = Vector2(4, 4)
-texture = ExtResource("5_s7d2y")
-
-[node name="Character" type="Sprite2D" parent="MainVertical/CharacterWheel/DialPositioner/DialButtonTopRight/Mask"]
-position = Vector2(54.946777, 48.943817)
-rotation = -1.0471976
-scale = Vector2(4, 4)
-texture = ExtResource("15_cxqtq")
-
-[node name="Selection" type="Sprite2D" parent="MainVertical/CharacterWheel/DialPositioner/DialButtonTopRight"]
-z_index = -1
-material = ExtResource("9_uhpgm")
-position = Vector2(0, -160.00006)
-texture = SubResource("AtlasTexture_aqbib")
-
-[node name="DialButtonBottomRight" type="Control" parent="MainVertical/CharacterWheel/DialPositioner"]
-anchors_preset = 0
-rotation = 2.0943952
-script = ExtResource("9_u0e5d")
-dial_id = 6
-
-[node name="Mask" type="AnimatedSprite2D" parent="MainVertical/CharacterWheel/DialPositioner/DialButtonBottomRight"]
-clip_children = 1
-position = Vector2(-3.79837e-05, -159.31522)
-sprite_frames = SubResource("SpriteFrames_aqbib")
-animation = &"Normal"
-
-[node name="Background" type="Sprite2D" parent="MainVertical/CharacterWheel/DialPositioner/DialButtonBottomRight/Mask"]
-rotation = -2.0943952
-scale = Vector2(10, 10)
-texture = ExtResource("5_bfvoi")
-
-[node name="Character" type="Sprite2D" parent="MainVertical/CharacterWheel/DialPositioner/DialButtonBottomRight/Mask"]
-position = Vector2(-22.939835, 0.09576416)
-rotation = 4.1887903
-scale = Vector2(4, 4)
-texture = ExtResource("5_bfvoi")
-
-[node name="Selection" type="Sprite2D" parent="MainVertical/CharacterWheel/DialPositioner/DialButtonBottomRight"]
-z_index = -1
-material = ExtResource("9_uhpgm")
-position = Vector2(0, -160.00006)
-texture = SubResource("AtlasTexture_aqbib")
-
-[node name="DialButtonBottom" type="Control" parent="MainVertical/CharacterWheel/DialPositioner"]
-anchors_preset = 0
-rotation = -3.1415927
-script = ExtResource("9_u0e5d")
-dial_id = 2
-character_name = "Scoria"
-character_scene = ExtResource("18_sqhw2")
-
-[node name="Mask" type="AnimatedSprite2D" parent="MainVertical/CharacterWheel/DialPositioner/DialButtonBottom"]
-clip_children = 1
-position = Vector2(-3.79837e-05, -159.31522)
-sprite_frames = SubResource("SpriteFrames_aqbib")
-animation = &"Normal"
-
-[node name="Background" type="Sprite2D" parent="MainVertical/CharacterWheel/DialPositioner/DialButtonBottom/Mask"]
-rotation = 3.1415927
-scale = Vector2(5, 5)
-texture = ExtResource("17_sqhw2")
-
-[node name="Background2" type="Sprite2D" parent="MainVertical/CharacterWheel/DialPositioner/DialButtonBottom/Mask"]
-position = Vector2(-37.14282, 24.315182)
-rotation = -3.1415925
-scale = Vector2(4.9999995, 4.9999995)
-texture = ExtResource("17_sqhw2")
-
-[node name="Character" type="Sprite2D" parent="MainVertical/CharacterWheel/DialPositioner/DialButtonBottom/Mask"]
-position = Vector2(-4.2856445, -16.398804)
-rotation = 3.1415927
-scale = Vector2(4, 4)
-texture = SubResource("AtlasTexture_cxqtq")
-
-[node name="Selection" type="Sprite2D" parent="MainVertical/CharacterWheel/DialPositioner/DialButtonBottom"]
-z_index = -1
-material = ExtResource("9_uhpgm")
-position = Vector2(0, -160.00006)
-texture = SubResource("AtlasTexture_aqbib")
-
-[node name="DialButtonBottomLeft" type="Control" parent="MainVertical/CharacterWheel/DialPositioner"]
-anchors_preset = 0
-rotation = -2.0943952
-script = ExtResource("9_u0e5d")
-dial_id = 5
-
-[node name="Mask" type="AnimatedSprite2D" parent="MainVertical/CharacterWheel/DialPositioner/DialButtonBottomLeft"]
-clip_children = 1
-position = Vector2(-3.79837e-05, -159.31522)
-sprite_frames = SubResource("SpriteFrames_aqbib")
-animation = &"Normal"
-
-[node name="Background" type="Sprite2D" parent="MainVertical/CharacterWheel/DialPositioner/DialButtonBottomLeft/Mask"]
-rotation = 2.0943952
-scale = Vector2(10, 10)
-texture = ExtResource("5_bfvoi")
-
-[node name="Character" type="Sprite2D" parent="MainVertical/CharacterWheel/DialPositioner/DialButtonBottomLeft/Mask"]
-position = Vector2(-22.939835, 0.09576416)
-rotation = 2.0943952
-scale = Vector2(4, 4)
-texture = ExtResource("5_bfvoi")
-
-[node name="Selection" type="Sprite2D" parent="MainVertical/CharacterWheel/DialPositioner/DialButtonBottomLeft"]
-z_index = -1
-material = ExtResource("9_uhpgm")
-position = Vector2(0, -160.00006)
-texture = SubResource("AtlasTexture_aqbib")
-
-[node name="TESTING_CHARACTER_SELECT" type="Control" parent="MainVertical/CharacterWheel"]
-z_index = 6
-anchors_preset = 0
-offset_top = -67.0
-offset_right = 40.0
-offset_bottom = -27.0
-
-[node name="A" type="Control" parent="MainVertical/CharacterWheel/TESTING_CHARACTER_SELECT"]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="BACK" type="Sprite2D" parent="MainVertical/CharacterWheel/TESTING_CHARACTER_SELECT/A"]
-z_index = -10
-position = Vector2(407.26044, 262.89352)
-scale = Vector2(0.41256788, 0.1004393)
-skew = 0.10471976
-texture = ExtResource("20_2qggg")
-
-[node name="BACK2" type="Sprite2D" parent="MainVertical/CharacterWheel/TESTING_CHARACTER_SELECT/A"]
-position = Vector2(227.84206, 576)
-scale = Vector2(0.74458, 0.04713542)
-skew = 0.541052
-texture = ExtResource("20_2qggg")
-
-[node name="BACK4" type="Sprite2D" parent="MainVertical/CharacterWheel/TESTING_CHARACTER_SELECT/A"]
-position = Vector2(238.50005, 445)
-scale = Vector2(0.74458, 0.04713542)
-skew = 0.541052
-texture = ExtResource("20_2qggg")
-
-[node name="BACK5" type="Sprite2D" parent="MainVertical/CharacterWheel/TESTING_CHARACTER_SELECT/A"]
-position = Vector2(460.17508, 508)
-scale = Vector2(0.23846298, 0.06926883)
-skew = 0.20943952
-texture = ExtResource("20_2qggg")
-
-[node name="Sprite2D" type="Sprite2D" parent="MainVertical/CharacterWheel/TESTING_CHARACTER_SELECT/A"]
-material = SubResource("ShaderMaterial_2qggg")
-position = Vector2(236.43433, 435)
-scale = Vector2(2, 2)
-texture = ExtResource("4_bfvoi")
-region_enabled = true
-region_rect = Rect2(0, 0, 56, 56)
-
-[node name="Sprite2D2" type="Sprite2D" parent="MainVertical/CharacterWheel/TESTING_CHARACTER_SELECT/A"]
-material = SubResource("ShaderMaterial_nk16p")
-position = Vector2(342.43433, 437)
-scale = Vector2(2, 2)
-texture = ExtResource("22_1va7e")
-region_enabled = true
-region_rect = Rect2(0, 0, 72, 88)
-
-[node name="Sprite2D3" type="Sprite2D" parent="MainVertical/CharacterWheel/TESTING_CHARACTER_SELECT/A"]
-material = SubResource("ShaderMaterial_nk16p")
-position = Vector2(137.5, 427.5)
-scale = Vector2(2, 2)
-texture = ExtResource("18_a3imy")
-region_enabled = true
-region_rect = Rect2(0, 88, 80, 88)
-
-[node name="Sprite2D4" type="Sprite2D" parent="MainVertical/CharacterWheel/TESTING_CHARACTER_SELECT/A"]
-modulate = Color(0.2820874, 0.43487495, 0.19899943, 1)
-material = SubResource("ShaderMaterial_nk16p")
-position = Vector2(233.34209, 570.5)
-scale = Vector2(2, 2)
-texture = ExtResource("4_bfvoi")
-region_enabled = true
-region_rect = Rect2(0, 0, 56, 56)
-
-[node name="Sprite2D5" type="Sprite2D" parent="MainVertical/CharacterWheel/TESTING_CHARACTER_SELECT/A"]
-modulate = Color(0.57027864, 0.18816903, 0.6580238, 1)
-material = SubResource("ShaderMaterial_nk16p")
-position = Vector2(339.3421, 572.5)
-scale = Vector2(2, 2)
-texture = ExtResource("22_1va7e")
-region_enabled = true
-region_rect = Rect2(0, 0, 72, 88)
-
-[node name="Sprite2D6" type="Sprite2D" parent="MainVertical/CharacterWheel/TESTING_CHARACTER_SELECT/A"]
-material = SubResource("ShaderMaterial_nk16p")
-position = Vector2(110, 567.5)
-scale = Vector2(2, 2)
-texture = ExtResource("23_l3mcf")
-region_enabled = true
-region_rect = Rect2(8, 0, 88, 112)
-
-[node name="Sprite2D7" type="Sprite2D" parent="MainVertical/CharacterWheel/TESTING_CHARACTER_SELECT/A"]
-position = Vector2(463.5, 503.5)
-scale = Vector2(2, 2)
-texture = ExtResource("24_r3eo1")
-region_rect = Rect2(0, 0, 56, 56)
-
-[node name="BACK3" type="Sprite2D" parent="MainVertical/CharacterWheel/TESTING_CHARACTER_SELECT/A"]
-z_index = -10
-position = Vector2(127, 781.49994)
-scale = Vector2(0.41256788, 0.1004393)
-skew = 0.10471976
-texture = ExtResource("20_2qggg")
-
-[node name="BottomPortraits" type="Control" parent="MainVertical/CharacterWheel"]
-z_index = -3
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 78.5
-offset_top = -12.999939
-offset_right = 78.5
-offset_bottom = -12.999939
 grow_horizontal = 2
-grow_vertical = 0
-scale = Vector2(0.7854626, 0.7854626)
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
 
-[node name="PortraitHolderHip" type="Node2D" parent="MainVertical/CharacterWheel/BottomPortraits"]
-position = Vector2(272, -344)
-script = ExtResource("5_lfxm6")
-placement = 1
-connected_dial = 1
+[node name="LevelPicture" type="TextureRect" parent="MainVertical/PanelLevel/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("5_jfsbr")
 
-[node name="Hip" type="Sprite2D" parent="MainVertical/CharacterWheel/BottomPortraits/PortraitHolderHip"]
-position = Vector2(128.00002, 189)
-scale = Vector2(1.7029545, 1.7029545)
-texture = ExtResource("5_cxqtq")
+[node name="NameLevel" type="Label" parent="MainVertical"]
+custom_minimum_size = Vector2(0, 56)
+layout_mode = 2
+text = "Level Name"
+label_settings = SubResource("LabelSettings_ua81x")
+horizontal_alignment = 1
 
-[node name="PortraitHolderReign" type="Node2D" parent="MainVertical/CharacterWheel/BottomPortraits"]
-position = Vector2(336, -304)
-script = ExtResource("5_lfxm6")
-placement = 1
-connected_dial = 3
+[node name="ContainerCharacters" type="PanelContainer" parent="MainVertical"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(0, 256)
+layout_mode = 2
 
-[node name="Riegn" type="Sprite2D" parent="MainVertical/CharacterWheel/BottomPortraits/PortraitHolderReign"]
-position = Vector2(104.00001, 141)
-scale = Vector2(1.2667192, 1.2667192)
-texture = ExtResource("6_cxqtq")
+[node name="Sprite2D" type="Sprite2D" parent="MainVertical/ContainerCharacters"]
+self_modulate = Color(1, 1, 1, 0.5058824)
+z_index = -1
+position = Vector2(39.648643, -2.5)
+scale = Vector2(496.35132, 266.31662)
+skew = 0.13962626
+texture = SubResource("GradientTexture1D_o4o7f")
 
-[node name="PortraitHolderScoria" type="Node2D" parent="MainVertical/CharacterWheel/BottomPortraits"]
-script = ExtResource("5_lfxm6")
-placement = 1
-connected_dial = 2
+[node name="CenterContainer" type="MarginContainer" parent="MainVertical/ContainerCharacters"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_right = 8
 
-[node name="Scoria" type="Sprite2D" parent="MainVertical/CharacterWheel/BottomPortraits/PortraitHolderScoria"]
-position = Vector2(368, -176)
-scale = Vector2(1.2667192, 1.2667192)
-texture = ExtResource("6_sqhw2")
+[node name="CharacterFlow" type="FlowContainer" parent="MainVertical/ContainerCharacters/CenterContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Container" type="Control" parent="MainVertical"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HorizontalPlayers" type="HBoxContainer" parent="MainVertical/Container"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Player1" type="VBoxContainer" parent="MainVertical/Container/HorizontalPlayers"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="MainVertical/Container/HorizontalPlayers/Player1"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+
+[node name="NameP1" type="Label" parent="MainVertical/Container/HorizontalPlayers/Player1/MarginContainer"]
+layout_mode = 2
+text = "Rick Shawn"
+label_settings = SubResource("LabelSettings_s7d2y")
+
+[node name="PanelP1" type="Panel" parent="MainVertical/Container/HorizontalPlayers/Player1"]
+clip_contents = true
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="MainVertical/Container/HorizontalPlayers/Player1/PanelP1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="Player1Portrait" type="TextureRect" parent="MainVertical/Container/HorizontalPlayers/Player1/PanelP1/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("6_o4o7f")
+stretch_mode = 2
+flip_h = true
+
+[node name="Control" type="Control" parent="MainVertical/Container/HorizontalPlayers"]
+custom_minimum_size = Vector2(16, 0)
+layout_mode = 2
+
+[node name="Player2" type="VBoxContainer" parent="MainVertical/Container/HorizontalPlayers"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="MainVertical/Container/HorizontalPlayers/Player2"]
+layout_mode = 2
+theme_override_constants/margin_right = 8
+
+[node name="NameP2" type="Label" parent="MainVertical/Container/HorizontalPlayers/Player2/MarginContainer"]
+layout_mode = 2
+text = "Rick Shawn"
+label_settings = SubResource("LabelSettings_s7d2y")
+horizontal_alignment = 2
+
+[node name="PanelP2" type="Panel" parent="MainVertical/Container/HorizontalPlayers/Player2"]
+clip_contents = true
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="MainVertical/Container/HorizontalPlayers/Player2/PanelP2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="Player2Portrait" type="TextureRect" parent="MainVertical/Container/HorizontalPlayers/Player2/PanelP2/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("7_b51ev")
+stretch_mode = 2
