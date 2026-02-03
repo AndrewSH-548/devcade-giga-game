@@ -200,12 +200,19 @@ func do_hitstun(body: Node2D) -> void:
 		hitstun = true
 		# Don't Collide with LAYER_NOT_HITSTUN
 		collision_mask &= ~LAYER_NOT_HITSTUN
-		velocity = direction * 500.0
+		disable_walk_input = true;
+		velocity = direction * 200.0
 		velocity.y *= 1.35
+		if(self.isFacingRight):
+			velocity.x = -200.0
+		else:
+			velocity.x = 200.0
+		velocity.x *= 1.35
 		# Create hitstun effect (time can be changed (currently 1 second))
-		await get_tree().create_timer(1).timeout
 		# DO Collide with LAYER_NOT_HITSTUN
+		await get_tree().create_timer(0.6).timeout
 		collision_mask |= LAYER_NOT_HITSTUN
+		disable_walk_input = false;
 		hitstun = false
 
 func get_pushoff_wall_direction() -> float:
