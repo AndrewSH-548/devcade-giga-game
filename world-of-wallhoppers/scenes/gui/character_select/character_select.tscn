@@ -1,10 +1,9 @@
-[gd_scene load_steps=16 format=3 uid="uid://bypgh8vwm65r6"]
+[gd_scene load_steps=15 format=3 uid="uid://bypgh8vwm65r6"]
 
 [ext_resource type="Script" uid="uid://ds787vg8b1cru" path="res://assets/scripts/Guis/character_select/character_select.gd" id="1_dlxgn"]
 [ext_resource type="Shader" uid="uid://ddaqfuly3ptrg" path="res://assets/shaders/patterns/pattern_a.gdshader" id="2_nk16p"]
 [ext_resource type="Texture2D" uid="uid://ctikpvc1wa7ag" path="res://assets/gui/background_a.png" id="3_ads0s"]
 [ext_resource type="Texture2D" uid="uid://dbx47oqbrkl4n" path="res://assets/shaders/noise/Voronoi 12 - 256x256.png" id="4_le0to"]
-[ext_resource type="Texture2D" uid="uid://c6mhrd5tyn1l" path="res://assets/gui/background_reign.png" id="5_jfsbr"]
 [ext_resource type="Texture2D" uid="uid://2utjtrsth1yk" path="res://assets/gui/portrait_hip.png" id="6_o4o7f"]
 [ext_resource type="Texture2D" uid="uid://d36lgodtre2iy" path="res://assets/gui/portrait_reign.png" id="7_b51ev"]
 
@@ -153,9 +152,14 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="LevelPicture" type="TextureRect" parent="MainVertical/PanelLevel/MarginContainer"]
+[node name="LevelPreviewContainer" type="SubViewportContainer" parent="MainVertical/PanelLevel/MarginContainer"]
 layout_mode = 2
-texture = ExtResource("5_jfsbr")
+stretch = true
+
+[node name="LevelPreviewViewport" type="SubViewport" parent="MainVertical/PanelLevel/MarginContainer/LevelPreviewContainer"]
+handle_input_locally = false
+size = Vector2i(524, 302)
+render_target_update_mode = 4
 
 [node name="NameLevel" type="Label" parent="MainVertical"]
 custom_minimum_size = Vector2(0, 56)
@@ -234,6 +238,7 @@ theme_override_constants/margin_bottom = 4
 
 [node name="Player1Portrait" type="TextureRect" parent="MainVertical/Container/HorizontalPlayers/Player1/PanelP1/MarginContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
 texture = ExtResource("6_o4o7f")
 stretch_mode = 2
 flip_h = true

@@ -5,6 +5,7 @@ class_name SessionInfo
 static var pass_along: SessionInfo = null
 
 var is_multiplayer: bool
+var is_random_level: bool = false
 var level_info: LevelDefinition
 var characters: Array[CharacterDefinition]
 var winner: int = -1

@@ -41,11 +41,12 @@ var current_page_index: int = 0
 # Definitions.get_level() is case IN-sensitive, so any case is fine
 
 # Loads the level in level_info and switches scenes to it
-func load_level(level_info: LevelDefinition):
+func load_level(level_info: LevelDefinition, random: bool = false):
 	# Create a new SessionInfo to store the current level, and other settings
 	var session_info: SessionInfo = SessionInfo.new()
 	session_info.level_info = level_info
 	session_info.is_multiplayer = is_multiplayer
+	session_info.is_random_level = random
 	# Instantiate the Character Select
 	var character_select: CharacterSelect = CHARACTER_SELECT.instantiate()
 	# Give the Character Select the SessionInfo, then add it to the tree
@@ -198,4 +199,4 @@ func load_start_screen() -> void:
 
 func pick_random_level() -> void:
 	var level: LevelDefinition = Definitions.levels[randi_range(0, Definitions.levels.size() - 1)]
-	load_level(level)
+	load_level(level, true)

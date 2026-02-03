@@ -10,11 +10,16 @@ var colors: Array[Color] = [
 var selected: Array[bool] = [false, false]
 
 const MISSING_TEXTURE: Texture2D = preload("res://assets/sprites/missing_texture.png")
-const RANDOM_TEXTURE: Texture2D = preload("res://assets/sprites/missing_texture.png")
+const RANDOM_TEXTURE: Texture2D = preload("res://assets/sprites/temporary_texture.png")
+const RANDOM_PORTRAIT = preload("res://assets/gui/character_select/random_portrait.png")
 const SIZE: int = 72
+
+var is_random: bool = false
 
 func setup(definition: CharacterDefinition) -> void:
 	character_definition = definition
+	if definition == null:
+		is_random = true
 
 func _ready() -> void:
 	select_color.material = select_color.material.duplicate()
@@ -25,9 +30,9 @@ func _ready() -> void:
 	select_color.pivot_offset = pivot_offset
 	
 	# Use the provided texture, or the "missing" texture if none is provided
-	if character_definition == null:
+	if is_random:
 		texture.texture = RANDOM_TEXTURE
-	elif character_definition.button_texture != null:
+	elif character_definition == null or character_definition.button_texture != null:
 		texture.texture = character_definition.button_texture
 	else:
 		texture.texture = MISSING_TEXTURE
@@ -67,3 +72,18 @@ func process_update_shader() -> void:
 			colors[1],
 			colors[1],
 		]))
+
+func get_character_name() -> String:
+	if character_definition != null:
+		return character_definition.name
+	return "Random"
+
+func get_character_portrait() -> Texture2D:
+	if character_definition != null:
+		return character_definition.portrait_texture
+	return RANDOM_PORTRAIT
+
+func get_character() -> CharacterDefinition:
+	if character_definition != null:
+		return character_definition
+	return Definitions.characters.pick_random()
