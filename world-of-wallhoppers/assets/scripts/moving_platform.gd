@@ -38,8 +38,8 @@ extends Node2D
 const MOVING_PLATFORM_PATH = preload("res://scenes/objects/moving_platform/moving_platform_path.tscn") ## Scene which contains the visuals for a single path part. These are constructed using the moving platform's path points
 const MOVING_PLATFORM_REST = preload("res://scenes/objects/moving_platform/moving_platform_rest.tscn") ## Scene which contains the visuals for a rest point
 
-const SPRITE_VOLCANO_ROCKS = preload("res://assets/sprites/moving_platform/volcano.png")
-const SPRITE_JUNGLE_WOOD = preload("res://assets/sprites/moving_platform/jungle.png")
+const SPRITE_VOLCANO_ROCKS = preload("res://assets/sprites/stage_hazards/moving_platform/volcano.png")
+const SPRITE_JUNGLE_WOOD = preload("res://assets/sprites/stage_hazards/moving_platform/jungle.png")
 
 var paused = false; ## If the platform is paused. Then this is true
 var pause_enabled = true; ## Stores if the pause_areas are enabled or not.

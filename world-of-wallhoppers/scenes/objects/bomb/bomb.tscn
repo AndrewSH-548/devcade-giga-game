@@ -1,0 +1,89 @@
+[gd_scene load_steps=12 format=3 uid="uid://cwt4047hace0o"]
+
+[ext_resource type="Script" uid="uid://clmnw71ufrynj" path="res://assets/scripts/objects/bomb.gd" id="1_s3m63"]
+[ext_resource type="Texture2D" uid="uid://bg4xhm6jbpvsy" path="res://assets/sprites/stage_hazards/skyscraper/bomb/bomb.png" id="2_gmufi"]
+[ext_resource type="Texture2D" uid="uid://0bmn2f4mioy3" path="res://assets/sprites/stage_hazards/skyscraper/bomb/explosion.png" id="3_02van"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0l2wl"]
+atlas = ExtResource("2_gmufi")
+region = Rect2(0, 0, 19, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_doxbc"]
+atlas = ExtResource("2_gmufi")
+region = Rect2(19, 0, 19, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hrl22"]
+atlas = ExtResource("3_02van")
+region = Rect2(0, 0, 62, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_skuol"]
+atlas = ExtResource("3_02van")
+region = Rect2(62, 0, 62, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_babe7"]
+atlas = ExtResource("3_02van")
+region = Rect2(124, 0, 62, 55)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cki18"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0l2wl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_doxbc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hrl22")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_skuol")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_babe7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hrl22")
+}, {
+"duration": 1.5,
+"texture": SubResource("AtlasTexture_skuol")
+}],
+"loop": true,
+"name": &"explosion",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ugdxq"]
+radius = 11.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_s3m63"]
+radius = 13.0
+
+[node name="Bomb" type="RigidBody2D"]
+contact_monitor = true
+max_contacts_reported = 3
+script = ExtResource("1_s3m63")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_cki18")
+frame_progress = 0.11112203
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4)
+shape = SubResource("CircleShape2D_ugdxq")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 3)
+shape = SubResource("CircleShape2D_s3m63")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_player_collision"]
