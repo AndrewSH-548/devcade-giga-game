@@ -10,7 +10,7 @@ var colors: Array[Color] = [
 var selected: Array[bool] = [false, false]
 
 const MISSING_TEXTURE: Texture2D = preload("res://assets/sprites/missing_texture.png")
-const RANDOM_TEXTURE: Texture2D = preload("res://assets/sprites/temporary_texture.png")
+const RANDOM_TEXTURE: Texture2D = preload("res://assets/gui/character_select/random_button.png")
 const RANDOM_PORTRAIT = preload("res://assets/gui/character_select/random_portrait.png")
 const SIZE: int = 72
 

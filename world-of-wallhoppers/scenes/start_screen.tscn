@@ -1060,7 +1060,7 @@ z_index = 1
 layout_mode = 2
 theme = ExtResource("2_5pab1")
 theme_override_font_sizes/font_size = 48
-text = "(Records)"
+text = "Records"
 script = ExtResource("4_o30b1")
 
 [node name="Shader" type="CanvasGroup" parent="VBoxContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/RecordsButton"]
