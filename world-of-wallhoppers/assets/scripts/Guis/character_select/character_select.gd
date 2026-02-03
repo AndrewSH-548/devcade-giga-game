@@ -9,16 +9,23 @@ class_name CharacterSelect
 
 # The flow control for the buttons
 @onready var character_flow: FlowContainer = $MainVertical/ContainerCharacters/CenterContainer/CharacterFlow
+# The "START?" text that is shown before starting the round
+@onready var ready_all: Control = $ReadyAll
+
 # Used for 2-Player selection, change this if the amount of character buttons
 # per row changes for some reason. Might change this later to work differently
 const CHARACTERS_PER_FLOW_ROW: int = 6
 
-const CHARACTER_BUTTON = preload("uid://chd4b8sjek0pn")
+const CHARACTER_BUTTON = preload("res://scenes/gui/character_select/character_button.tscn")
 
 var buttons: Array[CharacterButton] = []
-# The currenlt focuesed button for each player
-var focus_player_1: CharacterButton = null
-var focus_player_2: CharacterButton = null
+# The current focuesed button for each player
+var player_focued: Array[CharacterButton] = []
+# The current choice of each player, -1 if not chosen
+var player_choices: Array[int] = []
+
+# The amount of players in the current session
+var player_count: int = -1
 
 # Using these to make code easier to read
 const PLAYER_1: int = 0
@@ -43,22 +50,37 @@ func setup(_session_info: SessionInfo) -> void:
 	# Get and save the SessionInfo from 
 	session_info = _session_info
 	# Configure for singleplayer and multiplayer
-	focus_player_1 = buttons[0]
+	player_count = 1
 	if session_info.is_multiplayer:
-		focus_player_2 = buttons[0]
+		player_count = 2
+	# Resize the focus array to the amount of players, and focus all to the first button
+	player_focued.resize(player_count)
+	player_focued.fill(buttons[0])
+	# Same for the player_choices array, with no choice as default
+	player_choices.resize(player_count)
+	player_choices.fill(-1)
 
 func player_pressed(player_index: int, action: String) -> bool:
-	match player_index:
-		PLAYER_1: return Input.is_action_just_pressed("p1_" + action)
-		PLAYER_2: return Input.is_action_just_pressed("p2_" + action)
-	assert(false, "Invalid player index used in player_pressed. Index Entered: " + str(player_index))
+	# Special Cases for P1 Input
+	if action == "confirm" and player_index == PLAYER_1:
+		return Input.is_action_just_pressed("ui_accept")
+	if action == "cancel" and player_index == PLAYER_1:
+		return Input.is_action_just_pressed("ui_cancel")
+	# General Case
+	if player_index + 1 <= player_count:
+		return Input.is_action_just_pressed("p" + str(player_index + 1) + "_" + action)
+	# If the index was larger than the player count
+	assert(false, "Invalid player index used in player_pressed. Index Entered: " +
+		str(player_index) + " (Player #" + str(player_index + 1) + "), Player Count: "
+		+ str(player_count))
 	return false
 
 func get_player_focus(player_index: int) -> CharacterButton:
-	match player_index:
-		PLAYER_1: return focus_player_1
-		PLAYER_2: return focus_player_2
-	assert(false, "Invalid player index used in get_player_focus. Index Entered: " + str(player_index))
+	if player_index + 1 <= player_count:
+		return player_focued[player_index]
+	assert(false, "Invalid player index used in get_player_focus. Index Entered: " +
+		str(player_index) + " (Player #" + str(player_index + 1) + "), Player Count: "
+		+ str(player_count))
 	return null
 
 func player_input_to_neighbor(player_index: int) -> Control:
@@ -77,22 +99,40 @@ func _process(_delta: float) -> void:
 	process_input()
 
 func process_input() -> void:
-	# If the players have pressed a direction, and that leads to a button,
-	# move the selection to thet button
-	var player_1_move_to: Control = player_input_to_neighbor(PLAYER_1)
-	if player_1_move_to is CharacterButton:
-		focus_player_1 = player_1_move_to
-	# Skip player 2 if not in multiplayer
-	if not session_info.is_multiplayer:
+	# if ALL players have chosen a character...
+	if -1 not in player_choices:
+		ready_all.visible = true
+		# If any player presses confirm, start the round
+		for player_index in range(player_count):
+			if player_pressed(player_index, "confirm"):
+				# TODO: START ROUND
+				pass
 		return
-	# Handle player 2
-	var player_2_move_to: Control = player_input_to_neighbor(PLAYER_2)
-	if player_2_move_to is CharacterButton:
-		focus_player_2 = player_2_move_to
+	ready_all.visible = false
+	
+	for player_index in range(player_count):
+		# Handle the player as "ready" if they have selected a character
+		if player_choices[player_index] != -1:
+			handle_ready_player_input(player_index)
+			return
+		# Otherwise, if they have not selected, handle button selection
+		handle_player_selection(player_index)
+
+func handle_player_selection(player_index: int):
+	# If the players have pressed a direction, and that leads to a button,
+	# move the selection to that button
+	var player_move_to: Control = player_input_to_neighbor(player_index)
+	if player_move_to is CharacterButton:
+		player_focued[player_index] = player_move_to
+
+func handle_ready_player_input(player_index: int):
+	# Cancel button selection if the cancel button is pressed
+	if player_pressed(player_index, "cancel"):
+		player_choices[player_index] = -1
 
 func process_button_updating() -> void:
 	for button in buttons:
 		# If the button is focused by a player, set the
 		# corresponding "selected" index to true, otherwise false
-		button.selected[PLAYER_1] = button == focus_player_1
-		button.selected[PLAYER_2] = button == focus_player_2
+		for player_index in range(player_count):
+			button.selected[player_index] = button == player_focued[player_index]

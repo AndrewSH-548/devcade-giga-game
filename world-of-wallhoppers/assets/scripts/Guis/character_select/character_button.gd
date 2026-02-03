@@ -10,6 +10,7 @@ var colors: Array[Color] = [
 var selected: Array[bool] = [false, false]
 
 const MISSING_TEXTURE: Texture2D = preload("res://assets/sprites/missing_texture.png")
+const RANDOM_TEXTURE: Texture2D = preload("res://assets/sprites/missing_texture.png")
 const SIZE: int = 72
 
 func setup(definition: CharacterDefinition) -> void:
@@ -24,7 +25,9 @@ func _ready() -> void:
 	select_color.pivot_offset = pivot_offset
 	
 	# Use the provided texture, or the "missing" texture if none is provided
-	if character_definition != null and character_definition.button_texture != null:
+	if character_definition == null:
+		texture.texture = RANDOM_TEXTURE
+	elif character_definition.button_texture != null:
 		texture.texture = character_definition.button_texture
 	else:
 		texture.texture = MISSING_TEXTURE
