@@ -10,6 +10,6 @@ func _ready() -> void:
 	await timer.timeout
 	queue_free()
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if not timer.is_stopped():
 		modulate.a = timer.time_left / timer.wait_time
