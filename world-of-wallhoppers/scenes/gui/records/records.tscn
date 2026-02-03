@@ -1,0 +1,92 @@
+[gd_scene load_steps=7 format=3 uid="uid://bmm55s7158oio"]
+
+[ext_resource type="Script" uid="uid://ch57tfqek3sco" path="res://assets/scripts/Guis/records.gd" id="1_7i7x5"]
+[ext_resource type="Shader" uid="uid://ddaqfuly3ptrg" path="res://assets/shaders/patterns/pattern_a.gdshader" id="2_5oiun"]
+[ext_resource type="Texture2D" uid="uid://ctikpvc1wa7ag" path="res://assets/gui/background_a.png" id="3_tf8nq"]
+[ext_resource type="Texture2D" uid="uid://dbx47oqbrkl4n" path="res://assets/shaders/noise/Voronoi 12 - 256x256.png" id="4_1382e"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_87oii"]
+shader = ExtResource("2_5oiun")
+shader_parameter/tex = ExtResource("3_tf8nq")
+shader_parameter/color = Color(0.3762934, 0.022772536, 0.3842729, 1)
+shader_parameter/alpha = 1.0
+shader_parameter/scale = 17.19
+shader_parameter/speed = Vector2(1, 1)
+shader_parameter/snap_color = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fw5nr"]
+shader = ExtResource("2_5oiun")
+shader_parameter/tex = ExtResource("4_1382e")
+shader_parameter/color = Color(0.9561948, 0.71507245, 0.95050555, 1)
+shader_parameter/alpha = 0.37
+shader_parameter/scale = 6.6899999999999995
+shader_parameter/speed = Vector2(-0.795, -0.645)
+shader_parameter/snap_color = true
+
+[node name="Records" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7i7x5")
+
+[node name="Background" type="Node2D" parent="."]
+z_index = -20
+scale = Vector2(2, 2)
+
+[node name="Back" type="ColorRect" parent="Background"]
+material = SubResource("ShaderMaterial_87oii")
+offset_left = -247.0
+offset_top = -28.5
+offset_right = 834.5
+offset_bottom = 1053.0
+
+[node name="Back2" type="ColorRect" parent="Background"]
+material = SubResource("ShaderMaterial_fw5nr")
+offset_left = -281.5
+offset_top = -49.0
+offset_right = 859.0
+offset_bottom = 1091.5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TopContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 0
+
+[node name="Back" type="Button" parent="VBoxContainer/TopContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 64
+text = "Back"
+
+[node name="VScrollBar" type="ScrollContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+follow_focus = true
+draw_focus_border = true
+horizontal_scroll_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/VScrollBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="TabContainer" type="TabContainer" parent="VBoxContainer/VScrollBar/MarginContainer"]
+layout_mode = 2
+tab_alignment = 1
+tabs_visible = false
+tab_focus_mode = 0
+
+[connection signal="pressed" from="VBoxContainer/TopContainer/Back" to="." method="load_start_screen"]

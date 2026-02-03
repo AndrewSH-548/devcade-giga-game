@@ -1,8 +1,6 @@
 extends Control
 class_name CharacterSelect
 
-# The big level picture
-@onready var level_picture: TextureRect = $MainVertical/PanelLevel/MarginContainer/LevelPicture
 # The big portraits of the characters
 @onready var player_1_portrait: TextureRect = $MainVertical/Container/HorizontalPlayers/Player1/PanelP1/MarginContainer/Player1Portrait
 @onready var player_2_portrait: TextureRect = $MainVertical/Container/HorizontalPlayers/Player2/PanelP2/MarginContainer/Player2Portrait
@@ -55,13 +53,13 @@ func _ready() -> void:
 	# Loop through all the DEFINITIONS of all the characters...
 	for character in Definitions.characters:
 		# Add a button for each character
-		var button: CharacterButton = CHARACTER_BUTTON.instantiate()
+		var character_button: CharacterButton = CHARACTER_BUTTON.instantiate()
 		# Setup the button, handled internally
-		button.setup(character)
+		character_button.setup(character)
 		# Add the button to the FLOW CONTROL
-		character_flow.add_child(button)
+		character_flow.add_child(character_button)
 		# Add the button to the buttons array
-		buttons.append(button)
+		buttons.append(character_button)
 	# Add the "random" character
 	var button: CharacterButton = CHARACTER_BUTTON.instantiate()
 	# Setup the random button, handled internally when null

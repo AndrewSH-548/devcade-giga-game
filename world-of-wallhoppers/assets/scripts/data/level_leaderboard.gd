@@ -110,6 +110,17 @@ func _sorted_combine(array_1: Array[SingleRecord], array_2: Array[SingleRecord])
 		index_dest += 1
 	return dest
 
+# Packs the leaderboard into the folling format:
+#
+# {
+#    level: "Level Name"
+#    records: [
+#       { player: "my name", character:"Hip", time: 21.0 },
+#       { player: "joe", character:"Reign", time: 19.1 },
+#       { player: "doe", character:"Scoria", time: 23.4 },
+#    ]
+# }
+
 func pack() -> Dictionary:
 	var packed: Dictionary = {}
 	packed["level"] = level

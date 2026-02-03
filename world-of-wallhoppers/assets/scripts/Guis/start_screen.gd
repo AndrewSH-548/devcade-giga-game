@@ -3,7 +3,7 @@ class_name MenuStartScreen
 
 const LEVEL_SELECT = preload("res://scenes/gui/level_select.tscn")
 const TUTORIAL = preload("res://scenes/levels/tutorial.tscn")
-const RECORDS = preload("uid://bmm55s7158oio")
+const RECORDS = preload("res://scenes/gui/records/records.tscn")
 
 @export var mutiplayer_button: Button
 @export var singleplayer_button: Button

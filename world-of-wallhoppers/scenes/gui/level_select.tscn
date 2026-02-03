@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://ctikpvc1wa7ag" path="res://assets/gui/background_a.png" id="3_i6x52"]
 [ext_resource type="Texture2D" uid="uid://dbx47oqbrkl4n" path="res://assets/shaders/noise/Voronoi 12 - 256x256.png" id="4_qphbd"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_1r8fe"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n0t0f"]
 shader = ExtResource("2_n0t0f")
 shader_parameter/tex = ExtResource("3_i6x52")
 shader_parameter/color = Color(0.3762934, 0.022772536, 0.3842729, 1)
@@ -14,7 +14,7 @@ shader_parameter/scale = 17.19
 shader_parameter/speed = Vector2(1, 1)
 shader_parameter/snap_color = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_61t22"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i6x52"]
 shader = ExtResource("2_n0t0f")
 shader_parameter/tex = ExtResource("4_qphbd")
 shader_parameter/color = Color(0.9561948, 0.71507245, 0.95050555, 1)
@@ -34,22 +34,23 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_i6x52")
 
-[node name="Background" type="Node2D" parent="."]
+[node name="Background2" type="Node2D" parent="."]
 z_index = -20
+scale = Vector2(2, 2)
 
-[node name="Back" type="ColorRect" parent="Background"]
-material = SubResource("ShaderMaterial_1r8fe")
+[node name="Back" type="ColorRect" parent="Background2"]
+material = SubResource("ShaderMaterial_n0t0f")
 offset_left = -247.0
 offset_top = -28.5
-offset_right = 1872.0
-offset_bottom = 2090.5
+offset_right = 834.5
+offset_bottom = 1053.0
 
-[node name="Back2" type="ColorRect" parent="Background"]
-material = SubResource("ShaderMaterial_61t22")
+[node name="Back2" type="ColorRect" parent="Background2"]
+material = SubResource("ShaderMaterial_i6x52")
 offset_left = -281.5
 offset_top = -49.0
-offset_right = 1856.0
-offset_bottom = 2088.5
+offset_right = 859.0
+offset_bottom = 1091.5
 
 [node name="VerticalContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
