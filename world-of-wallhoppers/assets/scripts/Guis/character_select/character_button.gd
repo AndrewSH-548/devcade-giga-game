@@ -16,8 +16,12 @@ func setup(definition: CharacterDefinition) -> void:
 	character_definition = definition
 
 func _ready() -> void:
+	select_color.material = select_color.material.duplicate()
 	var texture: TextureRect = TextureRect.new()
 	add_child(texture)
+	
+	pivot_offset = size / 2
+	select_color.pivot_offset = pivot_offset
 	
 	# Use the provided texture, or the "missing" texture if none is provided
 	if character_definition != null and character_definition.button_texture != null:
@@ -38,9 +42,9 @@ func _process(delta: float) -> void:
 # Makes the button grow when selected, and shrink when de-selected
 func process_button_size(delta: float) -> void:
 	if true in selected:
-		scale = scale.move_toward(1.2 * Vector2.ONE, delta)
+		select_color.scale = select_color.scale.move_toward(1.5 * Vector2.ONE, delta * 16.0)
 	else:
-		scale = scale.move_toward(1.0 * Vector2.ONE, delta)
+		select_color.scale = select_color.scale.move_toward(1.0 * Vector2.ONE, delta * 16.0)
 
 # Updates the shader for the "noise" texture used to show which players 
 # have selected this button

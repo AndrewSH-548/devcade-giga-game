@@ -1,17 +1,12 @@
-[gd_scene load_steps=18 format=3 uid="uid://bypgh8vwm65r6"]
+[gd_scene load_steps=16 format=3 uid="uid://bypgh8vwm65r6"]
 
 [ext_resource type="Script" uid="uid://ds787vg8b1cru" path="res://assets/scripts/Guis/character_select/character_select.gd" id="1_dlxgn"]
 [ext_resource type="Shader" uid="uid://ddaqfuly3ptrg" path="res://assets/shaders/patterns/pattern_a.gdshader" id="2_nk16p"]
-[ext_resource type="Script" uid="uid://c1c364hhlfwr5" path="res://assets/scripts/data/character_definition.gd" id="2_o4o7f"]
 [ext_resource type="Texture2D" uid="uid://ctikpvc1wa7ag" path="res://assets/gui/background_a.png" id="3_ads0s"]
 [ext_resource type="Texture2D" uid="uid://dbx47oqbrkl4n" path="res://assets/shaders/noise/Voronoi 12 - 256x256.png" id="4_le0to"]
 [ext_resource type="Texture2D" uid="uid://c6mhrd5tyn1l" path="res://assets/gui/background_reign.png" id="5_jfsbr"]
 [ext_resource type="Texture2D" uid="uid://2utjtrsth1yk" path="res://assets/gui/portrait_hip.png" id="6_o4o7f"]
 [ext_resource type="Texture2D" uid="uid://d36lgodtre2iy" path="res://assets/gui/portrait_reign.png" id="7_b51ev"]
-
-[sub_resource type="Resource" id="Resource_b51ev"]
-script = ExtResource("2_o4o7f")
-metadata/_custom_type_script = "uid://c1c364hhlfwr5"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wjce1"]
 shader = ExtResource("2_nk16p")
@@ -72,7 +67,6 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(2, 2)
 script = ExtResource("1_dlxgn")
-characters = Array[ExtResource("2_o4o7f")]([SubResource("Resource_b51ev"), null])
 
 [node name="Background" type="Node2D" parent="."]
 z_index = -20

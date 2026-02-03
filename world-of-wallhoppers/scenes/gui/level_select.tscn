@@ -1,6 +1,27 @@
-[gd_scene load_steps=2 format=3 uid="uid://rduk8lfaknsp"]
+[gd_scene load_steps=7 format=3 uid="uid://rduk8lfaknsp"]
 
 [ext_resource type="Script" uid="uid://chsqvlfra6qyt" path="res://assets/scripts/Guis/load_levels/level_select.gd" id="1_i6x52"]
+[ext_resource type="Shader" uid="uid://ddaqfuly3ptrg" path="res://assets/shaders/patterns/pattern_a.gdshader" id="2_n0t0f"]
+[ext_resource type="Texture2D" uid="uid://ctikpvc1wa7ag" path="res://assets/gui/background_a.png" id="3_i6x52"]
+[ext_resource type="Texture2D" uid="uid://dbx47oqbrkl4n" path="res://assets/shaders/noise/Voronoi 12 - 256x256.png" id="4_qphbd"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1r8fe"]
+shader = ExtResource("2_n0t0f")
+shader_parameter/tex = ExtResource("3_i6x52")
+shader_parameter/color = Color(0.3762934, 0.022772536, 0.3842729, 1)
+shader_parameter/alpha = 1.0
+shader_parameter/scale = 17.19
+shader_parameter/speed = Vector2(1, 1)
+shader_parameter/snap_color = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_61t22"]
+shader = ExtResource("2_n0t0f")
+shader_parameter/tex = ExtResource("4_qphbd")
+shader_parameter/color = Color(0.9561948, 0.71507245, 0.95050555, 1)
+shader_parameter/alpha = 0.37
+shader_parameter/scale = 6.6899999999999995
+shader_parameter/speed = Vector2(-0.795, -0.645)
+shader_parameter/snap_color = true
 
 [node name="LevelSelect" type="Control"]
 layout_mode = 3
@@ -12,6 +33,23 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_i6x52")
+
+[node name="Background" type="Node2D" parent="."]
+z_index = -20
+
+[node name="Back" type="ColorRect" parent="Background"]
+material = SubResource("ShaderMaterial_1r8fe")
+offset_left = -247.0
+offset_top = -28.5
+offset_right = 1872.0
+offset_bottom = 2090.5
+
+[node name="Back2" type="ColorRect" parent="Background"]
+material = SubResource("ShaderMaterial_61t22")
+offset_left = -281.5
+offset_top = -49.0
+offset_right = 1856.0
+offset_bottom = 2088.5
 
 [node name="VerticalContainer" type="VBoxContainer" parent="."]
 layout_mode = 1

@@ -1,0 +1,80 @@
+[gd_resource type="Resource" script_class="GameDefinition" load_steps=20 format=3 uid="uid://cn1341ksalk55"]
+
+[ext_resource type="Script" uid="uid://c1c364hhlfwr5" path="res://assets/scripts/data/character_definition.gd" id="1_tsxfc"]
+[ext_resource type="Script" uid="uid://72arh6p6vdd" path="res://assets/scripts/data/level_definition.gd" id="2_sgbyo"]
+[ext_resource type="Script" uid="uid://ck53kg0d2q07n" path="res://assets/scripts/data/game_definitions.gd" id="3_bigc5"]
+[ext_resource type="PackedScene" uid="uid://c42ynqlk3h4wp" path="res://scenes/characters/reign.tscn" id="3_m7u6u"]
+[ext_resource type="PackedScene" uid="uid://x8jwn1lvobhp" path="res://scenes/levels/jungle.tscn" id="3_sgbyo"]
+[ext_resource type="PackedScene" uid="uid://bojyqwmqsf6xx" path="res://scenes/characters/scoria.tscn" id="4_5edyq"]
+[ext_resource type="PackedScene" uid="uid://bnajm44iu8kfe" path="res://scenes/levels/volcano.tscn" id="4_ylx47"]
+[ext_resource type="PackedScene" uid="uid://c70tcpci8tum8" path="res://scenes/levels/reef.tscn" id="5_5semu"]
+[ext_resource type="PackedScene" uid="uid://dtu1k6tt7cxej" path="res://scenes/characters/hip.tscn" id="6_5semu"]
+
+[sub_resource type="Resource" id="Resource_6hegu"]
+script = ExtResource("1_tsxfc")
+scene = ExtResource("6_5semu")
+name = "Hip"
+metadata/_custom_type_script = "uid://c1c364hhlfwr5"
+
+[sub_resource type="Resource" id="Resource_ciu7n"]
+script = ExtResource("1_tsxfc")
+scene = ExtResource("3_m7u6u")
+name = "Reign"
+metadata/_custom_type_script = "uid://c1c364hhlfwr5"
+
+[sub_resource type="Resource" id="Resource_m022u"]
+script = ExtResource("1_tsxfc")
+scene = ExtResource("4_5edyq")
+name = "Scoria"
+metadata/_custom_type_script = "uid://c1c364hhlfwr5"
+
+[sub_resource type="Resource" id="Resource_5edyq"]
+script = ExtResource("1_tsxfc")
+scene = ExtResource("4_5edyq")
+name = "Scoria1"
+metadata/_custom_type_script = "uid://c1c364hhlfwr5"
+
+[sub_resource type="Resource" id="Resource_lgy02"]
+script = ExtResource("1_tsxfc")
+scene = ExtResource("4_5edyq")
+name = "Scoria2"
+metadata/_custom_type_script = "uid://c1c364hhlfwr5"
+
+[sub_resource type="Resource" id="Resource_oq5yk"]
+script = ExtResource("1_tsxfc")
+scene = ExtResource("4_5edyq")
+name = "Scoria3"
+metadata/_custom_type_script = "uid://c1c364hhlfwr5"
+
+[sub_resource type="Resource" id="Resource_733ne"]
+script = ExtResource("1_tsxfc")
+scene = ExtResource("4_5edyq")
+name = "Scoria4"
+metadata/_custom_type_script = "uid://c1c364hhlfwr5"
+
+[sub_resource type="Resource" id="Resource_bigc5"]
+script = ExtResource("2_sgbyo")
+scene = ExtResource("3_sgbyo")
+name = "Jungle"
+border_color = Color(0.43529412, 0.23921569, 0, 1)
+metadata/_custom_type_script = "uid://72arh6p6vdd"
+
+[sub_resource type="Resource" id="Resource_00dtc"]
+script = ExtResource("2_sgbyo")
+scene = ExtResource("4_ylx47")
+name = "Volcano"
+border_color = Color(0.12941177, 0.011764706, 0.06666667, 1)
+metadata/_custom_type_script = "uid://72arh6p6vdd"
+
+[sub_resource type="Resource" id="Resource_m7u6u"]
+script = ExtResource("2_sgbyo")
+scene = ExtResource("5_5semu")
+name = "Reef"
+border_color = Color(0, 0.0627451, 0.33333334, 1)
+metadata/_custom_type_script = "uid://72arh6p6vdd"
+
+[resource]
+script = ExtResource("3_bigc5")
+characters = Array[ExtResource("1_tsxfc")]([SubResource("Resource_6hegu"), SubResource("Resource_ciu7n"), SubResource("Resource_m022u"), SubResource("Resource_5edyq"), SubResource("Resource_lgy02"), SubResource("Resource_oq5yk"), SubResource("Resource_733ne")])
+levels = Array[ExtResource("2_sgbyo")]([SubResource("Resource_bigc5"), SubResource("Resource_00dtc"), SubResource("Resource_m7u6u")])
+metadata/_custom_type_script = "uid://ck53kg0d2q07n"

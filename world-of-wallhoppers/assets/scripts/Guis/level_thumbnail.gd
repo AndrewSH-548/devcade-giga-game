@@ -13,11 +13,11 @@ var thumbnail_destination: Node
 var backgrounds_manager: Node2D
 var going_towards_destination: bool = true
 
-func setup(level_info: LevelDef):
+func setup(level_info: LevelDefinition):
 	var level_scene: PackedScene = level_info.scene
 	level_name.text = level_info.name
 	is_setup = true
-	assert(level_info.scene != null, "LevelDef cannot be loaded with no level scene!")
+	assert(level_info.scene != null, "LevelDefinition cannot be loaded with no level scene!")
 	# Instantiate level and add it so the SubViewport
 	level = level_scene.instantiate()
 	level.process_mode = Node.PROCESS_MODE_DISABLED
