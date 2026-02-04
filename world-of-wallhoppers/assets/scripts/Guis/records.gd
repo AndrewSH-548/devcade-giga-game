@@ -11,6 +11,7 @@ func _ready() -> void:
 		var leaderboard: RecordsLevelLeaderboard = RECORDS_LEVEL_LEADERBOARD.instantiate()
 		tab_container.add_child(leaderboard)
 		leaderboard.setup(level)
+		back.grab_focus()
 
 func _process(_delta: float) -> void:
 	if(Input.is_action_just_pressed("p1_right") || Input.is_action_just_pressed("p2_right")):
