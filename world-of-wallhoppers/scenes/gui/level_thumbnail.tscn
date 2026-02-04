@@ -10,7 +10,7 @@ outline_color = Color(0, 0, 0, 1)
 shadow_size = 2
 
 [node name="LevelThumbnail" type="Button"]
-custom_minimum_size = Vector2(340, 520)
+custom_minimum_size = Vector2(350, 520)
 offset_right = 170.0
 offset_bottom = 260.0
 theme = ExtResource("1_fofor")
@@ -36,7 +36,7 @@ grow_vertical = 2
 
 [node name="LevelViewport" type="SubViewport" parent="ViewportContainer"]
 handle_input_locally = false
-size = Vector2i(340, 520)
+size = Vector2i(350, 520)
 render_target_update_mode = 4
 
 [node name="Margins" type="MarginContainer" parent="."]

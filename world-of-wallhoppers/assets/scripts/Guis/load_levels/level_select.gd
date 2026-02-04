@@ -1,7 +1,6 @@
 extends Control
 class_name LevelSelect
 
-@export var levels_list: Array[LevelInfo]
 @onready var thumbnail_grid: GridContainer = $VerticalContainer/LevelDisplayMargins/LevelDisplayPanel/ThumbnailGrid
 @onready var back_button: Button = $VerticalContainer/TopContainer/Back
 @onready var nav_left_button: Button = $VerticalContainer/ArrowContainer/NavBoxes/NavLeft
@@ -18,26 +17,36 @@ var current_page_index: int = 0
 
 # ------------- HOW TO ADD A LEVEL --------------
 #
-# 1: Open level_select scene
-# 2: Click on the root node (LevelSelect)
-# 3: In the INSPECTOR, click on the Array[LevelInfo](size xx) thing, IF IT IS COLLAPSED
+# 1: Find the FileSystem, go to assets/data, and open "game_definitions.tres"
+# 2: In the Inspector, there should be a "Characters" array, and "Levels" array
+# 3: Click the "Levels" array to expand it, it it's not expanded already
 # 4: Click "Add Element"
-# 5: In the new EMPTY element, click the down arrow, then "New LevelInfo"
-# 6: Click on the new LevelInfo, then add the SCENE, NAME, and BORDER COLOR to the LevelInfo
+# 5: Click the "Menu" arrow (between the trash can and the folder icon), and select new "LevelDefinition"
+# 6: Expand the new LevelDefinition, then add the SCENE, NAME, and BORDER COLOR to the LevelDefinition
 
 # ---------- HOW TO ADD A THUMBNAIL -------------
 #
-# 1: Add ThumbnailMarker scene as child of the LEVEL (found in scenes/editor)
+# 1: Add "thumbnail_marker.tscn" scene as child of the LEVEL (found in scenes/editor)
 # 2: Align the "box" with where you want the thumbnail to START
-# 3: Add ThumbnailDestination scene add child of the LEVEL
+# 3: Add "thumbnail_destination.tscn" scene add child of the LEVEL
 # 4: Align the "box" with where you want the thumnail movement to END
 
+# -- HOW TO ACCESS LEVEL DEFINITIONS IN CODE ----
+# 
+# Level definitions (The level SCENE, NAME, and BORDER COLOR),
+# can be accessed via Definitions.levels, which is an array of all
+# LevelDefinition objects that have been created and imported.
+# To access a specific level's LevelDefinition, Definitions.get_level(*name*),
+# can be used, for example: Definitions.get_level("jungle").
+# Definitions.get_level() is case IN-sensitive, so any case is fine
+
 # Loads the level in level_info and switches scenes to it
-func load_level(level_info: LevelInfo):
+func load_level(level_info: LevelDefinition, random: bool = false):
 	# Create a new SessionInfo to store the current level, and other settings
 	var session_info: SessionInfo = SessionInfo.new()
 	session_info.level_info = level_info
 	session_info.is_multiplayer = is_multiplayer
+	session_info.is_random_level = random
 	# Instantiate the Character Select
 	var character_select: CharacterSelect = CHARACTER_SELECT.instantiate()
 	# Give the Character Select the SessionInfo, then add it to the tree
@@ -132,7 +141,7 @@ func setup():
 	pages.append(current_page)
 	
 	# Loop through level infos...
-	for level in levels_list:
+	for level in Definitions.levels:
 		# Move to a new page when the current is full
 		if current_page.is_full():
 			current_page = Page.new(back_button)
@@ -189,5 +198,5 @@ func load_start_screen() -> void:
 	queue_free()
 
 func pick_random_level() -> void:
-	var level: LevelInfo = levels_list[randi_range(0, levels_list.size() - 1)]
-	load_level(level)
+	var level: LevelDefinition = Definitions.levels[randi_range(0, Definitions.levels.size() - 1)]
+	load_level(level, true)

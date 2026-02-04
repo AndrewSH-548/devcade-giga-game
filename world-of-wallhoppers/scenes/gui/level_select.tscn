@@ -1,31 +1,27 @@
-[gd_scene load_steps=9 format=3 uid="uid://rduk8lfaknsp"]
+[gd_scene load_steps=7 format=3 uid="uid://rduk8lfaknsp"]
 
 [ext_resource type="Script" uid="uid://chsqvlfra6qyt" path="res://assets/scripts/Guis/load_levels/level_select.gd" id="1_i6x52"]
-[ext_resource type="Script" uid="uid://72arh6p6vdd" path="res://assets/scripts/Guis/level_info.gd" id="2_qphbd"]
-[ext_resource type="PackedScene" uid="uid://x8jwn1lvobhp" path="res://scenes/levels/jungle.tscn" id="5_1r8fe"]
-[ext_resource type="PackedScene" uid="uid://c70tcpci8tum8" path="res://scenes/levels/reef.tscn" id="5_i6x52"]
-[ext_resource type="PackedScene" uid="uid://bnajm44iu8kfe" path="res://scenes/levels/volcano.tscn" id="6_qphbd"]
+[ext_resource type="Shader" uid="uid://ddaqfuly3ptrg" path="res://assets/shaders/patterns/pattern_a.gdshader" id="2_n0t0f"]
+[ext_resource type="Texture2D" uid="uid://ctikpvc1wa7ag" path="res://assets/gui/background_a.png" id="3_i6x52"]
+[ext_resource type="Texture2D" uid="uid://dbx47oqbrkl4n" path="res://assets/shaders/noise/Voronoi 12 - 256x256.png" id="4_qphbd"]
 
-[sub_resource type="Resource" id="Resource_qphbd"]
-script = ExtResource("2_qphbd")
-scene = ExtResource("5_1r8fe")
-name = "Jungle"
-border_color = Color(0.43529412, 0.23921569, 0, 1)
-metadata/_custom_type_script = "uid://72arh6p6vdd"
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n0t0f"]
+shader = ExtResource("2_n0t0f")
+shader_parameter/tex = ExtResource("3_i6x52")
+shader_parameter/color = Color(0.3762934, 0.022772536, 0.3842729, 1)
+shader_parameter/alpha = 1.0
+shader_parameter/scale = 17.19
+shader_parameter/speed = Vector2(1, 1)
+shader_parameter/snap_color = true
 
-[sub_resource type="Resource" id="Resource_1r8fe"]
-script = ExtResource("2_qphbd")
-scene = ExtResource("6_qphbd")
-name = "Volcano"
-border_color = Color(0.12941177, 0.011764706, 0.06666667, 1)
-metadata/_custom_type_script = "uid://72arh6p6vdd"
-
-[sub_resource type="Resource" id="Resource_61t22"]
-script = ExtResource("2_qphbd")
-scene = ExtResource("5_i6x52")
-name = "Reef"
-border_color = Color(0, 0.0627451, 0.33333334, 1)
-metadata/_custom_type_script = "uid://72arh6p6vdd"
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i6x52"]
+shader = ExtResource("2_n0t0f")
+shader_parameter/tex = ExtResource("4_qphbd")
+shader_parameter/color = Color(0.9561948, 0.71507245, 0.95050555, 1)
+shader_parameter/alpha = 0.37
+shader_parameter/scale = 6.6899999999999995
+shader_parameter/speed = Vector2(-0.795, -0.645)
+shader_parameter/snap_color = true
 
 [node name="LevelSelect" type="Control"]
 layout_mode = 3
@@ -37,7 +33,24 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_i6x52")
-levels_list = Array[ExtResource("2_qphbd")]([SubResource("Resource_qphbd"), SubResource("Resource_1r8fe"), SubResource("Resource_61t22")])
+
+[node name="Background2" type="Node2D" parent="."]
+z_index = -20
+scale = Vector2(2, 2)
+
+[node name="Back" type="ColorRect" parent="Background2"]
+material = SubResource("ShaderMaterial_n0t0f")
+offset_left = -247.0
+offset_top = -28.5
+offset_right = 834.5
+offset_bottom = 1053.0
+
+[node name="Back2" type="ColorRect" parent="Background2"]
+material = SubResource("ShaderMaterial_i6x52")
+offset_left = -281.5
+offset_top = -49.0
+offset_right = 859.0
+offset_bottom = 1091.5
 
 [node name="VerticalContainer" type="VBoxContainer" parent="."]
 layout_mode = 1

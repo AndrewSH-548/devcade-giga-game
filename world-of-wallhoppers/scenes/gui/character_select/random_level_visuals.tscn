@@ -1,0 +1,55 @@
+[gd_scene load_steps=7 format=3 uid="uid://cvyviwdrjdy25"]
+
+[ext_resource type="Shader" uid="uid://bruhjepogvrwm" path="res://assets/shaders/scroll.gdshader" id="1_2livj"]
+[ext_resource type="Shader" uid="uid://bna1g6rjssn1g" path="res://scenes/gui/character_select/pattern_b.gdshader" id="1_pabsa"]
+[ext_resource type="Texture2D" uid="uid://crhyfukflaq84" path="res://assets/gui/character_select/question_mark.png" id="2_25qo0"]
+[ext_resource type="Texture2D" uid="uid://jg8y14rd0nyq" path="res://assets/shaders/noise/Marble 11 - 256x256.png" id="2_pabsa"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p7r8o"]
+shader = ExtResource("1_pabsa")
+shader_parameter/tex = ExtResource("2_pabsa")
+shader_parameter/color = Color(0.9561948, 0.71507245, 0.95050555, 1)
+shader_parameter/alpha = 0.1
+shader_parameter/scale = 6.6899999999999995
+shader_parameter/speed = Vector2(-0.795, -0.645)
+shader_parameter/snap_color = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pabsa"]
+shader = ExtResource("1_2livj")
+shader_parameter/modulate = Color(0.5213693, 0.5096997, 0.5153917, 0.5529412)
+shader_parameter/speed = Vector2(1, 1)
+
+[node name="RandomLevelVisuals" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = -304.0
+offset_top = -208.0
+offset_right = 896.0
+offset_bottom = 688.0
+color = Color(0.115210496, 0.09719103, 0.1566472, 1)
+
+[node name="Back2" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_p7r8o")
+layout_mode = 0
+offset_left = -352.0
+offset_top = -336.0
+offset_right = 788.5
+offset_bottom = 804.5
+
+[node name="TextureRect" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_pabsa")
+layout_mode = 0
+offset_left = -176.0
+offset_top = -256.0
+offset_right = 852.0906
+offset_bottom = 423.2362
+rotation = 0.2607024
+texture = ExtResource("2_25qo0")
+stretch_mode = 1

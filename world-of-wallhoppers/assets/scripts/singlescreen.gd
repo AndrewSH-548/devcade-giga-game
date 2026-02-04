@@ -4,7 +4,7 @@ extends MainLevelHeader
 @onready var singleplayer_timer: Timer = $SingleplayerTimer
 
 func setup(session_info: SessionInfo) -> void:
-	TimeManager.singleplayer_time = 0; # reset the singleplayer timer
+	TimeManager.current_time_trial_time = 0; # reset the singleplayer timer
 	
 	current_session_info = session_info
 	var parent_node: Node = $ViewportContainerP1/SubViewport
@@ -15,7 +15,7 @@ func setup(session_info: SessionInfo) -> void:
 	
 	assert(session_info.characters[0] != null, "The Level Header was loaded with a null Character!\nThis likely means a Character Select Dial was setup incorrectly!")
 	
-	var character: Player = session_info.characters[0].instantiate()
+	var character: Player = session_info.characters[0].scene.instantiate()
 	parent_node.add_child(character)
 	character.add_to_group("player1")
 	character.setup_keybinds(1)
@@ -28,5 +28,5 @@ func setup(session_info: SessionInfo) -> void:
 	character.global_position = level.player_spawn_1.global_position
 
 func _on_singleplayer_timer_timeout() -> void:
-	TimeManager.increase_singleplayer_time(0.1);
-	singleplayer_timer_label.text = str(TimeManager.singleplayer_time);
+	TimeManager.do_time_trial_time_tick(0.1);
+	singleplayer_timer_label.text = str(TimeManager.current_time_trial_time);

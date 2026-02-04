@@ -1,206 +1,284 @@
 extends Control
 class_name CharacterSelect
 
-@onready var dial: Control = $MainVertical/CharacterWheel/DialPositioner
-
+# The big portraits of the characters
+@onready var player_1_portrait: TextureRect = $MainVertical/Container/HorizontalPlayers/Player1/PanelP1/MarginContainer/Player1Portrait
+@onready var player_2_portrait: TextureRect = $MainVertical/Container/HorizontalPlayers/Player2/PanelP2/MarginContainer/Player2Portrait
+# The name labels of the characters
+@onready var name_player_1: Label = $MainVertical/Container/HorizontalPlayers/Player1/MarginContainer/NameP1
+@onready var name_player_2: Label = $MainVertical/Container/HorizontalPlayers/Player2/MarginContainer/NameP2
+# The flow control for the buttons
+@onready var character_flow: FlowContainer = $MainVertical/ContainerCharacters/CenterContainer/CharacterFlow
+# The "START?" text that is shown before starting the round
 @onready var ready_all: Control = $ReadyAll
-@onready var ready_player_1: Control = $MainVertical/CharacterWheel/ReadyP1
-@onready var ready_player_2: Control = $MainVertical/CharacterWheel/ReadyP2
+# The Viewport for the level preview
+@onready var level_preview_viewport: SubViewport = $MainVertical/PanelLevel/MarginContainer/LevelPreviewContainer/LevelPreviewViewport
+# The level label
+@onready var level_name: Label = $MainVertical/NameLevel
+# The main container of the player 2 portrait
+@onready var player_2_container: VBoxContainer = $MainVertical/Container/HorizontalPlayers/Player2
 
-@onready var character_tester_player_1: CharacterTester = $MainVertical/CharacterWheel/CharacterTesterP1
-@onready var character_tester_player_2: CharacterTester = $MainVertical/CharacterWheel/CharacterTesterP2
+# Used for 2-Player selection, change this if the amount of character buttons
+# per row changes for some reason. Might change this later to work differently
+const CHARACTERS_PER_FLOW_ROW: int = 6
 
-@onready var name_player_1: Label = $MainVertical/CharacterWheel/NameP1
-@onready var name_player_2: Label = $MainVertical/CharacterWheel/NameP2
-
-static var player_colors: Array[Color] = [
-	Color(1.0, 0.37, 0.37, 1.0),
-	Color(0.109, 0.755, 0.547, 1.0),
-]
-
+const CHARACTER_BUTTON = preload("res://scenes/gui/character_select/character_button.tscn")
 const HEADER_MULTIPLAYER = preload("res://scenes/header_multiplayer.tscn")
 const HEADER_SINGLEPLAYER = preload("res://scenes/header_singleplayer.tscn")
-var LEVEL_SELECT = load("res://scenes/gui/level_select.tscn")
+const MISSING_TEXTURE = preload("res://assets/sprites/missing_texture.png")
+const RANDOM_LEVEL_VISUALS = preload("res://scenes/gui/character_select/random_level_visuals.tscn")
+@onready var LEVEL_SELECT = load("res://scenes/gui/level_select.tscn")
 
-## -------------- HOW TO ADD A NEW CHARACYER --------------
-## 
-## 1: Select the Dial Button you wish to use
-## 2: Enter your character's name in the Dial Button's variables
-## 3: Select your character's PackedScene in the Dial Button's variables
-## 4: Anything a child of "Mask" can be changed, and new things can be added
-##
-## NOTE: DO NOT CHANGE THE DIAL ID! THIS WILL BREAK A LOT OF THINGS!
-##
-## 5: Under both "TopPortraits" and "BottomPortraits" do these steps:
-##    1) Copy+Pase a "PortraitHolder", and set it's variable "ConnectedDial"
-##			to the dial spot which your character is on
-##    2) Make sure the "Placement" variable corresponds to its placement
-##    3) All children of the "PortraitHolder" can be changed, removed or added as you see fit
+var buttons: Array[CharacterButton] = []
+# The current focuesed button for each player
+var player_focused: Array[CharacterButton] = []
+# The current choice of each player, null if not chosen
+var player_choices: Array[CharacterDefinition] = []
+# Holds all player portraits
+var player_portraits: Array[TextureRect] = []
+# Holds all the player name labels
+var player_name_labels: Array[Label] = []
+
+# The amount of players in the current session
+var player_count: int = -1
+
+# Using these to make code easier to read
+const PLAYER_1: int = 0
+const PLAYER_2: int = 1
+
+# The current entire SessionInfo
 var session_info: SessionInfo
-var current_dial_selection: Array[DIAL]
-var ready_players: Array[bool]
-var PLAYER_COUNT: int = 2
-var is_multiplayer: bool
-var was_all_ready_last_frame: bool = false
 
-enum DIAL {
-	NONE,
-	TOP,
-	BOTTOM,
-	TOP_RIGHT,
-	TOP_LEFT,
-	BOTTOM_LEFT,
-	BOTTOM_RIGHT,
-}
+func _ready() -> void:
+	# Loop through all the DEFINITIONS of all the characters...
+	for character in Definitions.characters:
+		# Add a button for each character
+		var character_button: CharacterButton = CHARACTER_BUTTON.instantiate()
+		# Setup the button, handled internally
+		character_button.setup(character)
+		# Add the button to the FLOW CONTROL
+		character_flow.add_child(character_button)
+		# Add the button to the buttons array
+		buttons.append(character_button)
+	# Add the "random" character
+	var button: CharacterButton = CHARACTER_BUTTON.instantiate()
+	# Setup the random button, handled internally when null
+	button.setup(null)
+	# Add the button to the FLOW CONTROL
+	character_flow.add_child(button)
+	# Add the button to the buttons array
+	buttons.append(button)
 
-@onready var dials: Dictionary[DIAL, CharacterSelectDialButton] = {
-	DIAL.TOP_LEFT: $MainVertical/CharacterWheel/DialPositioner/DialButtonTopLeft,
-	DIAL.TOP: $MainVertical/CharacterWheel/DialPositioner/DialButtonTop,
-	DIAL.TOP_RIGHT: $MainVertical/CharacterWheel/DialPositioner/DialButtonTopRight,
-	DIAL.BOTTOM_RIGHT: $MainVertical/CharacterWheel/DialPositioner/DialButtonBottomRight,
-	DIAL.BOTTOM: $MainVertical/CharacterWheel/DialPositioner/DialButtonBottom,
-	DIAL.BOTTOM_LEFT: $MainVertical/CharacterWheel/DialPositioner/DialButtonBottomLeft,
-}
+func setup(_session_info: SessionInfo) -> void:
+	# Get and save the SessionInfo from 
+	session_info = _session_info
+	# Configure for singleplayer and multiplayer
+	player_count = 1
+	if session_info.is_multiplayer:
+		player_count = 2
+	else:
+		# Hid the player 2 portrait and center player 1's name if not in multiplayer
+		player_2_container.visible = false
+		name_player_1.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	# Resize the focus array to the amount of players, and focus all to the first button
+	player_focused.resize(player_count)
+	player_focused.fill(buttons[0])
+	# Same for the player_choices array, with no choice as default
+	player_choices.resize(player_count)
+	player_choices.fill(null)
+	# Populate the player portaits
+	player_portraits = [
+		player_1_portrait,
+		player_2_portrait,
+	]
+	# Populate the name labels
+	player_name_labels = [
+		name_player_1,
+		name_player_2,
+	]
+	# Setup the level preview
+	setup_level_preview()
+
+func setup_level_preview() -> void:
+	# If a random level was chosen, display the random level visual
+	if session_info.is_random_level:
+		setup_random_level_preview()
+		return
+	# Instantiate level and add it so the SubViewport
+	var level: Level = session_info.level_info.scene.instantiate()
+	level.process_mode = Node.PROCESS_MODE_DISABLED
+	level_preview_viewport.add_child(level)
+	level.global_position = Vector2(240, 297.0)
+	# Get the backgrounds manager
+	var backgrounds_manager = get_child_in_group(level, "BackgroundsManager")
+	if backgrounds_manager != null:
+		backgrounds_manager.thumbnail_mode = true
+		backgrounds_manager.process_mode = Node.PROCESS_MODE_ALWAYS
+
+# Imports the "random_level_visuals.tscn" scene instead of an actual level
+func setup_random_level_preview() -> void:
+	var level: Control = RANDOM_LEVEL_VISUALS.instantiate()
+	level_preview_viewport.add_child(level)
+
+func player_pressed(player_index: int, action: String) -> bool:
+	# Special Cases for P1 Input
+	if action == "confirm" and player_index == PLAYER_1:
+		return Input.is_action_just_pressed("ui_accept")
+	if action == "cancel" and player_index == PLAYER_1:
+		return Input.is_action_just_pressed("ui_cancel")
+	# General Case
+	if player_index + 1 <= player_count:
+		return Input.is_action_just_pressed("p" + str(player_index + 1) + "_" + action)
+	# If the index was larger than the player count
+	assert(false, "Invalid player index used in player_pressed. Index Entered: " +
+		str(player_index) + " (Player #" + str(player_index + 1) + "), Player Count: "
+		+ str(player_count))
+	return false
+
+func get_player_focus(player_index: int) -> CharacterButton:
+	if player_index + 1 <= player_count:
+		return player_focused[player_index]
+	assert(false, "Invalid player index used in get_player_focus. Index Entered: " +
+		str(player_index) + " (Player #" + str(player_index + 1) + "), Player Count: "
+		+ str(player_count))
+	return null
+
+func player_input_to_neighbor(player_index: int) -> Control:
+	if player_pressed(player_index, "up"):
+		return get_player_focus(player_index).find_valid_focus_neighbor(SIDE_TOP)
+	if player_pressed(player_index, "down"):
+		return get_player_focus(player_index).find_valid_focus_neighbor(SIDE_BOTTOM)
+	if player_pressed(player_index, "left"):
+		return get_player_focus(player_index).find_valid_focus_neighbor(SIDE_LEFT)
+	if player_pressed(player_index, "right"):
+		return get_player_focus(player_index).find_valid_focus_neighbor(SIDE_RIGHT)
+	return null
+
+func _process(_delta: float) -> void:
+	process_button_updating()
+	process_level_display()
+	process_input()
+	process_portraits()
+
+func start_game():
+	# Make new characters array
+	session_info.characters = []
+	for player_index in range(player_count):
+		session_info.characters.append(player_choices[player_index])
+	
+	# Get either the singleplayer or multiplayer header...
+	var header: MainLevelHeader = get_level_header()
+	# Load it
+	get_tree().root.add_child(header)
+	# Pass the level header the session info
+	header.setup(session_info)
+	# Delete this character select
+	queue_free()
+
+func go_back_to_level_select():
+	# Load the level select
+	var level_select: LevelSelect = LEVEL_SELECT.instantiate()
+	# Add it to the tree
+	get_tree().root.add_child(level_select)
+	# Setup the multiplayer variable
+	level_select.is_multiplayer = session_info.is_multiplayer
+	# Delete this character select
+	queue_free()
+
+func process_portraits() -> void:
+	# For each player
+	for player_index in range(player_count):
+		# Get the selected character definition
+		var focused: CharacterButton = player_focused[player_index]
+		# Display the character name
+		player_name_labels[player_index].text = focused.get_character_name()
+		# Get the currenlt hovered character's texture
+		var texture: Texture2D = focused.get_character_portrait()
+		# If there is NOT a texture, use the MISSING texture
+		if texture == null:
+			player_portraits[player_index].texture = MISSING_TEXTURE
+		# Otherwise use the provided texture
+		else:
+			player_portraits[player_index].texture = texture
+		# Flip the random texture for player 1, so it's the right way around
+		if player_index == PLAYER_1:
+			if focused.is_random:
+				player_portraits[player_index].flip_h = false
+			else:
+				player_portraits[player_index].flip_h = true
+		
+
+func process_level_display() -> void:
+	# Display random if a random level was chosen
+	if session_info.is_random_level:
+		display_random_level()
+		return
+	# Display the level name
+	level_name.text = session_info.level_info.name
+
+func display_random_level() -> void:
+	level_name.text = "Random"
+
+func process_input() -> void:
+	# Loop through all players...
+	for player_index in range(player_count):
+		# Handle the player as "ready" if they have selected a character
+		if player_choices[player_index] != null:
+			handle_ready_player_input(player_index)
+	
+	# if ALL players have chosen a character...
+	if null not in player_choices:
+		ready_all.visible = true
+		# If any player presses confirm, start the round
+		for player_index in range(player_count):
+			if player_pressed(player_index, "confirm"):
+				start_game()
+		# Skip the rest of the function
+		return
+	
+	# If there ARE players that have NOT selected a character...
+	# Hide the "START?" graphic
+	ready_all.visible = false
+	# Loop through all players...
+	for player_index in range(player_count):
+		#if they have NOT selected a character, handle button selection
+		if player_choices[player_index] == null:
+			handle_player_selection(player_index)
+
+func handle_player_selection(player_index: int):
+	# If the players have pressed a direction, and that leads to a button,
+	# move the selection to that button
+	var player_move_to: Control = player_input_to_neighbor(player_index)
+	if player_move_to is CharacterButton:
+		player_focused[player_index] = player_move_to
+	# If the player presed "cancel", go back to the level select
+	if player_pressed(player_index, "cancel"):
+		go_back_to_level_select()
+	# If the player pressed "confirm"...
+	if player_pressed(player_index, "confirm"):
+		# "Choose" the current selection for that player
+		player_choices[player_index] = player_focused[player_index].get_character()
+
+func handle_ready_player_input(player_index: int):
+	# Cancel button selection if the cancel button is pressed
+	if player_pressed(player_index, "cancel"):
+		player_choices[player_index] = null
+
+func process_button_updating() -> void:
+	for button in buttons:
+		# If the button is focused by a player, set the
+		# corresponding "selected" index to true, otherwise false
+		for player_index in range(player_count):
+			button.selected[player_index] = button == player_focused[player_index]
 
 # Gets either the singleplayer or multiplayer header, depending on mode
 func get_level_header() -> MainLevelHeader:
 	if session_info.is_multiplayer: return HEADER_MULTIPLAYER.instantiate()
 	else: return HEADER_SINGLEPLAYER.instantiate()
 
-func start_game():
-	session_info.characters = []
-	for index in range(PLAYER_COUNT):
-		if index > 0 and not is_multiplayer: break
-		session_info.characters.append(dials[current_dial_selection[index]].character_scene)
-	
-	var header: MainLevelHeader = get_level_header()
-	get_tree().root.add_child(header)
-	header.setup(session_info)
-	queue_free()
-
-func go_back_to_level_select():
-	var level_select: LevelSelect = LEVEL_SELECT.instantiate()
-	get_tree().root.add_child(level_select)
-	level_select.is_multiplayer = is_multiplayer
-	queue_free()
-
-func setup(_session_info: SessionInfo) -> void:
-	session_info = _session_info
-	is_multiplayer = session_info.is_multiplayer
-	setup_for_player_count(PLAYER_COUNT)
-
-func _process(_delta: float) -> void:
-	ready_button_process()
-	player_select_process()
-	name_label_process()
-	player_tester_process()
-	start_game_process()
-
-func name_label_process():
-	var dial_p1: CharacterSelectDialButton = dials.get(current_dial_selection[0])
-	
-	name_player_1.text = dial_p1.character_name if dial_p1 != null else ""
-	
-	if not is_multiplayer: return
-	
-	var dial_p2: CharacterSelectDialButton = dials.get(current_dial_selection[1])
-	name_player_2.text = dial_p2.character_name if dial_p2 != null else ""
-
-func player_select_process():
-	player_selection(0)
-	if is_multiplayer:
-		player_selection(1)
-
-func start_game_process():
-	var is_all_ready: bool = not false in ready_players
-	ready_all.visible = is_all_ready
-	if is_all_ready and was_all_ready_last_frame and (player_just_pressed("confirm", 0) or player_just_pressed("confirm", 1)):
-		start_game()
-	was_all_ready_last_frame = is_all_ready
-
-func setup_for_player_count(player_count: int):
-	if not is_multiplayer: player_count = 1
-	ready_players.resize(player_count)
-	current_dial_selection.resize(player_count)
-	for index in range(current_dial_selection.size()):
-		current_dial_selection[index] = DIAL.TOP
-	for dial_button in dials.values():
-		dial_button.selected_by.resize(player_count)
-
-func player_ui_input(player_index: int) -> Vector2:
-	match player_index:
-		0: return Input.get_vector("p1_left", "p1_right", "p1_up", "p1_down")
-		1: return Input.get_vector("p2_left", "p2_right", "p2_up", "p2_down")
-	assert(false, "Invalid player index used in player_ui_input. Index Entered: " + str(player_index))
-	return Vector2.ZERO
-
-func move_destination(player_index: int, left: DIAL, right: DIAL, up: DIAL, down: DIAL):
-	if player_just_pressed("left", player_index):
-		current_dial_selection[player_index] = left
-	if player_just_pressed("right", player_index):
-		current_dial_selection[player_index] = right
-	if player_just_pressed("up", player_index):
-		current_dial_selection[player_index] = up
-	if player_just_pressed("down", player_index):
-		current_dial_selection[player_index] = down
-
-func player_selection(player_index: int):
-	
-	if ready_players[player_index] == true:
-		if player_just_pressed("cancel", player_index):
-			ready_players[player_index] = false
-		return
-	
-	if player_just_pressed("cancel", player_index):
-		go_back_to_level_select()
-	
-	if current_dial_selection[player_index] != DIAL.NONE and player_just_pressed("confirm", player_index):
-		ready_players[player_index] = true
-	
-	# Current is the currently selected dial, TOP, BOTTOM, BOTTOM_LEFT, etc, etc.
-	# move_destination is definited by, left, right, up, down
-	# So each match tells where each direction leads
-	# So for NONE, pressing left->TOP_LEFT, right->TOP_RIGHT, up->TOP, down->BOTTOM
-	match current_dial_selection[player_index]:
-		#DIAL.NONE: move_destination(player_index, DIAL.TOP_LEFT, DIAL.TOP_RIGHT, DIAL.TOP, DIAL.BOTTOM)
-		DIAL.TOP: move_destination(player_index, DIAL.TOP_LEFT, DIAL.TOP_RIGHT, DIAL.TOP, DIAL.BOTTOM)
-		DIAL.BOTTOM: move_destination(player_index, DIAL.BOTTOM_RIGHT, DIAL.BOTTOM_LEFT, DIAL.TOP, DIAL.BOTTOM)
-		DIAL.TOP_LEFT: move_destination(player_index, DIAL.BOTTOM_LEFT, DIAL.TOP, DIAL.TOP, DIAL.BOTTOM_LEFT)
-		DIAL.TOP_RIGHT: move_destination(player_index, DIAL.TOP, DIAL.BOTTOM_RIGHT, DIAL.TOP, DIAL.BOTTOM_RIGHT)
-		DIAL.BOTTOM_LEFT: move_destination(player_index, DIAL.BOTTOM, DIAL.TOP_LEFT, DIAL.TOP_LEFT, DIAL.BOTTOM)
-		DIAL.BOTTOM_RIGHT: move_destination(player_index, DIAL.TOP_RIGHT, DIAL.BOTTOM, DIAL.TOP_RIGHT, DIAL.BOTTOM)
-	
-	for dial_button: CharacterSelectDialButton in dials.values():
-		dial_button.selected_by[player_index] = dial_button.dial_id == current_dial_selection[player_index]
-
-func ready_button_process():
-	ready_player_1.visible = ready_players[0] == true
-	if not is_multiplayer: return
-	ready_player_2.visible = ready_players[1] == true
-
-static func player_just_pressed(action_name: String, player_index: int):
-	
-	# Handle Special P1 Cases
-	if player_index == 0 and action_name in ["confirm", "cancel"]:
-		match action_name:
-			"confirm": return Input.is_action_just_pressed("ui_accept")
-			"cancel": return Input.is_action_just_pressed("ui_cancel")
-	
-	return Input.is_action_just_pressed("p" + str(player_index + 1) + "_" + action_name)
-
-func player_tester_process():
-	if ready_players[0]:
-		if dials[current_dial_selection[0]].character_scene == null:
-			ready_players[0] = false
-		else:
-			character_tester_player_1.start(dials[current_dial_selection[0]].character_scene, 0)
-	else:
-		character_tester_player_1.stop()
-	
-	if is_multiplayer and ready_players[1]:
-		if dials[current_dial_selection[1]].character_scene == null:
-			ready_players[1] = false
-		else:
-			character_tester_player_2.start(dials[current_dial_selection[1]].character_scene, 1)
-	else:
-		character_tester_player_2.stop()
+# Searches for the first child of the provided node which is also in the provided group
+func get_child_in_group(parent: Node, group: StringName) -> Node:
+	for node in parent.get_tree().get_nodes_in_group(group):
+		if parent.is_ancestor_of(node):
+			return node
+	return null

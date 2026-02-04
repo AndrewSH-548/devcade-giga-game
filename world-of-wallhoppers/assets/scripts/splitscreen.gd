@@ -29,7 +29,7 @@ func setup(session_info: SessionInfo):
 	
 	for character in session_info.characters:
 		assert(character != null, "The Level Header was loaded with a null Character!\nThis likely means a Character Select Dial was setup incorrectly, or a non-setup Character was chosen!")
-		var player: Player = character.instantiate()
+		var player: Player = character.scene.instantiate()
 		
 		players.append(player)
 		parent_node.add_child(player)
