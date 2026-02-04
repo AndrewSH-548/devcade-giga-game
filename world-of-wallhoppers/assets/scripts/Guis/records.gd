@@ -17,6 +17,8 @@ func _process(_delta: float) -> void:
 		next_tab();
 	elif(Input.is_action_just_pressed("p1_left") || Input.is_action_just_pressed("p2_left")):
 		prev_tab();
+	if(Input.is_action_just_pressed("ui_cancel") || Input.is_action_just_pressed("p2_cancel")):
+		load_start_screen()
 
 func next_tab() -> void: ## go to next tab, wraps to start when currently at the last tab
 	if(tab_container.current_tab == tab_container.get_tab_count() - 1):
