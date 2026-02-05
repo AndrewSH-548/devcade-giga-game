@@ -2,8 +2,8 @@ extends Control
 class_name MenuStartScreen
 
 const LEVEL_SELECT = preload("res://scenes/gui/level_select.tscn")
-const TUTORIAL = preload("res://scenes/levels/tutorial.tscn")
 const RECORDS = preload("res://scenes/gui/records/records.tscn")
+const TUTORIAL_MENU = preload("res://scenes/gui/tutorial/tutorial_menu.tscn")
 
 @export var mutiplayer_button: Button
 @export var singleplayer_button: Button
@@ -45,7 +45,7 @@ func load_records() -> void:
 	unload_and_switch(records)
 
 func load_tutorial():
-	var tutorial: Node2D = TUTORIAL.instantiate()
+	var tutorial: Control = TUTORIAL_MENU.instantiate()
 	unload_and_switch(tutorial)
 
 func unload_and_switch(new_root: Node):
