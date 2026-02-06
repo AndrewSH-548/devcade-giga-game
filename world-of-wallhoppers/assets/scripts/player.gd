@@ -203,7 +203,7 @@ func do_hitstun(body: Node2D) -> void:
 		disable_walk_input = true;
 		velocity = direction * 200.0
 		velocity.y *= 1.35
-		if(self.isFacingRight):
+		if(self.is_facing_right):
 			velocity.x = -200.0
 		else:
 			velocity.x = 200.0

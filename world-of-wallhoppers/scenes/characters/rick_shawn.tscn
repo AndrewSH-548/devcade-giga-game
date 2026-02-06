@@ -459,6 +459,7 @@ animations = [{
 [node name="PlayerRickShawn" type="CharacterBody2D"]
 position = Vector2(0, 2.3841858e-07)
 collision_layer = 4
+collision_mask = 65
 script = ExtResource("1_cxbc4")
 magnet = ExtResource("2_ilnro")
 walk_speed = 360
@@ -484,6 +485,8 @@ sprite_frames = SubResource("SpriteFrames_eose0")
 animation = &"wall-cling"
 
 [node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
 
 [node name="HitboxShape" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(1.5, 1.9999988)
