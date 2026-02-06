@@ -47,8 +47,8 @@ func update_flipped() -> void:
 	var left_wall: bool = is_touching_left_wall()
 	var right_wall: bool = is_touching_right_wall()
 	if (left_wall or right_wall) and not is_on_floor():
-		if left_wall: isFacingRight = false
-		if right_wall: isFacingRight = true
+		if left_wall: is_facing_right = false
+		if right_wall: is_facing_right = true
 	else:
 		super.update_flipped()
 
@@ -67,7 +67,7 @@ func animate_hip(direction: float) -> void:
 		sprite.animation = "run" if Input.is_action_pressed(run_modifier_action) else "walk"
 	else: sprite.animation = "idle"
 	
-	sprite.flip_h = !isFacingRight;
+	sprite.flip_h = !is_facing_right;
 
 func setup_keybinds(player_number: int) -> void:
 	var player_input: String = "p" + str(player_number) + "_"
