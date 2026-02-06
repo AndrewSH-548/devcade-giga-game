@@ -1,0 +1,74 @@
+[gd_scene load_steps=7 format=4 uid="uid://bugghy8rqpv48"]
+
+[ext_resource type="Script" uid="uid://58o86xfpbuxi" path="res://assets/scripts/tutorial/abilities/showcase_scoria.gd" id="1_h8wne"]
+[ext_resource type="PackedScene" uid="uid://bojyqwmqsf6xx" path="res://scenes/characters/scoria.tscn" id="2_ec3gw"]
+[ext_resource type="Texture2D" uid="uid://g81awsjnutmg" path="res://assets/terrain/ability_tutorial/ability_tutorial_tiles.png" id="3_27sqn"]
+[ext_resource type="PackedScene" uid="uid://cl7i05js3l62q" path="res://scenes/obstacles/spike.tscn" id="4_h8wne"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gxk8g"]
+texture = ExtResource("3_27sqn")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+
+[sub_resource type="TileSet" id="TileSet_osrio"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 1
+physics_layer_0/collision_mask = 0
+sources/0 = SubResource("TileSetAtlasSource_gxk8g")
+
+[node name="ShowcaseScoria" type="Node2D"]
+script = ExtResource("1_h8wne")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -10
+offset_left = -273.0
+offset_top = -144.0
+offset_right = 753.0
+offset_bottom = 446.0
+color = Color(0, 0, 0, 1)
+
+[node name="OutsideOfViewport" type="ReferenceRect" parent="."]
+custom_minimum_size = Vector2(524, 262)
+offset_right = 524.0
+offset_bottom = 262.0
+border_width = 2.0
+
+[node name="PlayerScoria" parent="." instance=ExtResource("2_ec3gw")]
+position = Vector2(35, 214)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAAAAgAAAAAAAAAAAABAAgAAAAAAAAAAAACAAgAAAAAAAAAAAADAAgAAAAAAAAAAAAEAAgAAAAAAAAAAAAFAAgAAAAAAAAAAAAGAAgAAAAAAAAAAAAHAAgAAAAAAAAAAAAIAAgAAAAAAAAAAAAJAAgAAAAAAAAAAAAKAAgAAAAAAAAAAAALAAgAAAAAAAAAAAAMAAgAAAAAAAAAAAANAAgAAAAAAAAAAAAOAAgAAAAAAAAAAAAPAAgAAAAAAAAAAAAFAP//AAAAAAAAAAAGAP//AAAAAAAAAAAHAP//AAAAAAAAAAAIAP//AAAAAAAAAAAJAP//AAAAAAAAAAAKAP//AAAAAAAAAAALAP//AAAAAAAAAAAMAP//AAAAAAAAAAANAP//AAAAAAAAAAAOAP//AAAAAAAAAAAPAP//AAAAAAAAAAAQAP//AAAAAAAAAAARAP//AAAAAAAAAAARAAAAAAAAAAAAAAARAAEAAAAAAAAAAAARAAIAAAAAAAAAAAARAAMAAAAAAAAAAAARAAQAAAAAAAAAAAARAAUAAAAAAAAAAAARAAYAAAAAAAAAAAARAAcAAAAAAAAAAAARAAgAAAAAAAAAAAAQAAgAAAAAAAAAAAD/////AAAAAAAAAAD//wAAAAAAAAAAAAD//wEAAAAAAAAAAAD//wIAAAAAAAAAAAD//wMAAAAAAAAAAAD//wQAAAAAAAAAAAD//wUAAAAAAAAAAAD//wYAAAAAAAAAAAD//wcAAAAAAAAAAAD//wgAAAAAAAAAAAAAAP//AAAAAAAAAAABAP//AAAAAAAAAAACAP//AAAAAAAAAAADAP//AAAAAAAAAAAEAP//AAAAAAAAAAAMAAMAAAAAAAAAAAALAAMAAAAAAAAAAAAKAAMAAAAAAAAAAAAJAAMAAAAAAAAAAAAIAAMAAAAAAAAAAAAGAAMAAAAAAAAAAAAHAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAAGAAQAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_osrio")
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Static-square1" parent="." instance=ExtResource("4_h8wne")]
+position = Vector2(40, 8)
+rotation = 1.5707964
+
+[node name="Static-square2" parent="." instance=ExtResource("4_h8wne")]
+position = Vector2(40, 25)
+rotation = 1.5707964
+
+[node name="Static-square3" parent="." instance=ExtResource("4_h8wne")]
+position = Vector2(40, 42)
+rotation = 1.5707964
+
+[node name="Static-square4" parent="." instance=ExtResource("4_h8wne")]
+position = Vector2(40, 59)
+rotation = 1.5707964
+
+[node name="Static-square5" parent="." instance=ExtResource("4_h8wne")]
+position = Vector2(40, 76)
+rotation = 1.5707964
+
+[node name="Static-square6" parent="." instance=ExtResource("4_h8wne")]
+position = Vector2(40, 93)
+rotation = 1.5707964
+
+[node name="Static-square7" parent="." instance=ExtResource("4_h8wne")]
+position = Vector2(40, 110)
+rotation = 1.5707964

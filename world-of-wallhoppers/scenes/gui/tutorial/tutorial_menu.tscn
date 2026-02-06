@@ -1,0 +1,94 @@
+[gd_scene load_steps=7 format=3 uid="uid://bx5mrl64o5bq7"]
+
+[ext_resource type="Shader" uid="uid://ddaqfuly3ptrg" path="res://assets/shaders/patterns/pattern_a.gdshader" id="1_86klj"]
+[ext_resource type="Script" uid="uid://cadv06g1fr16n" path="res://assets/scripts/Guis/tutorial/tutorial_menu.gd" id="1_qq6xh"]
+[ext_resource type="Texture2D" uid="uid://ctikpvc1wa7ag" path="res://assets/gui/background_a.png" id="2_qq6xh"]
+[ext_resource type="Texture2D" uid="uid://dbx47oqbrkl4n" path="res://assets/shaders/noise/Voronoi 12 - 256x256.png" id="3_b64bh"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qedgc"]
+shader = ExtResource("1_86klj")
+shader_parameter/tex = ExtResource("2_qq6xh")
+shader_parameter/color = Color(0.3762934, 0.022772536, 0.3842729, 1)
+shader_parameter/alpha = 1.0
+shader_parameter/scale = 17.19
+shader_parameter/speed = Vector2(1, 1)
+shader_parameter/snap_color = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gr38h"]
+shader = ExtResource("1_86klj")
+shader_parameter/tex = ExtResource("3_b64bh")
+shader_parameter/color = Color(0.9561948, 0.71507245, 0.95050555, 1)
+shader_parameter/alpha = 0.37
+shader_parameter/scale = 6.6899999999999995
+shader_parameter/speed = Vector2(-0.795, -0.645)
+shader_parameter/snap_color = true
+
+[node name="TutorialMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qq6xh")
+
+[node name="Background" type="Node2D" parent="."]
+z_index = -20
+scale = Vector2(2, 2)
+
+[node name="Back" type="ColorRect" parent="Background"]
+material = SubResource("ShaderMaterial_qedgc")
+offset_left = -247.0
+offset_top = -28.5
+offset_right = 834.5
+offset_bottom = 1053.0
+
+[node name="Back2" type="ColorRect" parent="Background"]
+material = SubResource("ShaderMaterial_gr38h")
+offset_left = -281.5
+offset_top = -49.0
+offset_right = 859.0
+offset_bottom = 1091.5
+
+[node name="Back" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -540.0
+offset_right = 540.0
+offset_bottom = 96.0
+grow_horizontal = 2
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 64
+text = "Back"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="ButtonBasics" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 256)
+layout_mode = 2
+theme_override_font_sizes/font_size = 128
+text = "Basics"
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+
+[node name="ButtonAbilities" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 256)
+layout_mode = 2
+theme_override_font_sizes/font_size = 128
+text = "Abilities"
+
+[connection signal="pressed" from="Back" to="." method="load_start_screen"]
+[connection signal="pressed" from="VBoxContainer/ButtonBasics" to="." method="load_basics"]
+[connection signal="pressed" from="VBoxContainer/ButtonAbilities" to="." method="load_abilities"]

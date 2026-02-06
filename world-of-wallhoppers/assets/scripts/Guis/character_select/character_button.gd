@@ -15,6 +15,8 @@ const RANDOM_PORTRAIT = preload("res://assets/gui/character_select/random_portra
 const SIZE: int = 72
 
 var is_random: bool = false
+var portrait_texture: TextureRect
+
 
 func setup(definition: CharacterDefinition) -> void:
 	character_definition = definition
@@ -25,6 +27,7 @@ func _ready() -> void:
 	select_color.material = select_color.material.duplicate()
 	var texture: TextureRect = TextureRect.new()
 	add_child(texture)
+	portrait_texture = texture
 	
 	pivot_offset = size / 2
 	select_color.pivot_offset = pivot_offset

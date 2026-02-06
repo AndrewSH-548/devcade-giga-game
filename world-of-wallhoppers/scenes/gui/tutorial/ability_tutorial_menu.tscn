@@ -1,0 +1,179 @@
+[gd_scene load_steps=10 format=3 uid="uid://b5rqdch2xo725"]
+
+[ext_resource type="Shader" uid="uid://ddaqfuly3ptrg" path="res://assets/shaders/patterns/pattern_a.gdshader" id="1_0qdxf"]
+[ext_resource type="Script" uid="uid://dxov3fp08d7ef" path="res://assets/scripts/Guis/tutorial/ability_tutorial_menu.gd" id="1_04ov2"]
+[ext_resource type="Texture2D" uid="uid://ctikpvc1wa7ag" path="res://assets/gui/background_a.png" id="2_04ov2"]
+[ext_resource type="Texture2D" uid="uid://dbx47oqbrkl4n" path="res://assets/shaders/noise/Voronoi 12 - 256x256.png" id="3_kpg0u"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rid72"]
+shader = ExtResource("1_0qdxf")
+shader_parameter/tex = ExtResource("2_04ov2")
+shader_parameter/color = Color(0.3762934, 0.022772536, 0.3842729, 1)
+shader_parameter/alpha = 1.0
+shader_parameter/scale = 17.19
+shader_parameter/speed = Vector2(1, 1)
+shader_parameter/snap_color = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jbr2q"]
+shader = ExtResource("1_0qdxf")
+shader_parameter/tex = ExtResource("3_kpg0u")
+shader_parameter/color = Color(0.9561948, 0.71507245, 0.95050555, 1)
+shader_parameter/alpha = 0.37
+shader_parameter/scale = 6.6899999999999995
+shader_parameter/speed = Vector2(-0.795, -0.645)
+shader_parameter/snap_color = true
+
+[sub_resource type="Gradient" id="Gradient_jfsbr"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_0qdxf"]
+gradient = SubResource("Gradient_jfsbr")
+width = 1
+
+[sub_resource type="LabelSettings" id="LabelSettings_0qdxf"]
+font_size = 96
+
+[node name="AbilityTutorialMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_04ov2")
+
+[node name="Background" type="Node2D" parent="."]
+z_index = -20
+scale = Vector2(2, 2)
+
+[node name="Back" type="ColorRect" parent="Background"]
+material = SubResource("ShaderMaterial_rid72")
+offset_left = -247.0
+offset_top = -28.5
+offset_right = 834.5
+offset_bottom = 1053.0
+
+[node name="Back2" type="ColorRect" parent="Background"]
+material = SubResource("ShaderMaterial_jbr2q")
+offset_left = -281.5
+offset_top = -49.0
+offset_right = 859.0
+offset_bottom = 1091.5
+
+[node name="MainVertical" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Back" type="Button" parent="MainVertical"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 64
+text = "Back"
+
+[node name="HSeparator" type="HSeparator" parent="MainVertical"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainVertical"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ContainerCharacters" type="PanelContainer" parent="MainVertical/VBoxContainer"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(0, 544)
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="MainVertical/VBoxContainer/ContainerCharacters"]
+self_modulate = Color(1, 1, 1, 0.5058824)
+z_index = -1
+position = Vector2(88.64863, -2.5)
+scale = Vector2(992.702, 532.634)
+skew = 0.13962626
+texture = SubResource("GradientTexture1D_0qdxf")
+
+[node name="CenterContainer" type="MarginContainer" parent="MainVertical/VBoxContainer/ContainerCharacters"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_right = 8
+
+[node name="CharacterFlow" type="FlowContainer" parent="MainVertical/VBoxContainer/ContainerCharacters/CenterContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="CharacterName" type="Label" parent="MainVertical/VBoxContainer"]
+layout_mode = 2
+text = "Name"
+label_settings = SubResource("LabelSettings_0qdxf")
+horizontal_alignment = 1
+
+[node name="DescriptionMargin" type="MarginContainer" parent="MainVertical/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="PanelContainer" type="PanelContainer" parent="MainVertical/VBoxContainer/DescriptionMargin"]
+layout_mode = 2
+
+[node name="TextMargin" type="MarginContainer" parent="MainVertical/VBoxContainer/DescriptionMargin/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="AbilityDescription" type="RichTextLabel" parent="MainVertical/VBoxContainer/DescriptionMargin/PanelContainer/TextMargin"]
+custom_minimum_size = Vector2(0, 512)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 60
+bbcode_enabled = true
+text = "While on a wall, hold [color=#1E90FF]BLUE[/color] to wall climb. While climbing, Hip can move along the wall by holding [color=#FFA500]UP[/color] or [color=#FFA500]DOWN[/color]."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ShowcaseMargin" type="MarginContainer" parent="MainVertical/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="ShowcaseContainer" type="PanelContainer" parent="MainVertical/VBoxContainer/ShowcaseMargin"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="MainVertical/VBoxContainer/ShowcaseMargin/ShowcaseContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="ViewContainer" type="SubViewportContainer" parent="MainVertical/VBoxContainer/ShowcaseMargin/ShowcaseContainer/MarginContainer"]
+layout_mode = 2
+stretch = true
+stretch_shrink = 2
+
+[node name="ShowcaseViewport" type="SubViewport" parent="MainVertical/VBoxContainer/ShowcaseMargin/ShowcaseContainer/MarginContainer/ViewContainer"]
+handle_input_locally = false
+size = Vector2i(524, 260)
+render_target_update_mode = 4
+
+[node name="ControlLabel" type="RichTextLabel" parent="MainVertical/VBoxContainer/ShowcaseMargin/ShowcaseContainer/MarginContainer"]
+modulate = Color(1, 1, 1, 0.50980395)
+custom_minimum_size = Vector2(0, 128)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_font_sizes/normal_font_size = 64
+bbcode_enabled = true
+text = "Press X to Y"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="MainVertical/Back" to="." method="go_to_tutorial_menu"]
