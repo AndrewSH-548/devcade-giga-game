@@ -91,3 +91,4 @@ text = "Abilities"
 
 [connection signal="pressed" from="Back" to="." method="load_start_screen"]
 [connection signal="pressed" from="VBoxContainer/ButtonBasics" to="." method="load_basics"]
+[connection signal="pressed" from="VBoxContainer/ButtonAbilities" to="." method="load_abilities"]

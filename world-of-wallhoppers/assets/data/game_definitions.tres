@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="GameDefinition" load_steps=25 format=3 uid="uid://cn1341ksalk55"]
+[gd_resource type="Resource" script_class="GameDefinition" load_steps=28 format=3 uid="uid://cn1341ksalk55"]
 
 [ext_resource type="Script" uid="uid://c1c364hhlfwr5" path="res://assets/scripts/data/character_definition.gd" id="1_tsxfc"]
 [ext_resource type="Texture2D" uid="uid://2utjtrsth1yk" path="res://assets/gui/portrait_hip.png" id="2_ciu7n"]
@@ -11,10 +11,13 @@
 [ext_resource type="Texture2D" uid="uid://d36lgodtre2iy" path="res://assets/gui/portrait_reign.png" id="4_m022u"]
 [ext_resource type="PackedScene" uid="uid://bnajm44iu8kfe" path="res://scenes/levels/volcano.tscn" id="4_ylx47"]
 [ext_resource type="PackedScene" uid="uid://c70tcpci8tum8" path="res://scenes/levels/reef.tscn" id="5_5semu"]
+[ext_resource type="PackedScene" uid="uid://c6xxgrn7ac473" path="res://scenes/gui/tutorial/ability_showcases/showcase_hip.tscn" id="5_733ne"]
 [ext_resource type="Texture2D" uid="uid://bfe80tkm43i8u" path="res://assets/sprites/characters/reign/right.png" id="5_oq5yk"]
 [ext_resource type="PackedScene" uid="uid://dtu1k6tt7cxej" path="res://scenes/characters/hip.tscn" id="6_5semu"]
 [ext_resource type="Texture2D" uid="uid://cju8ny82qs3oy" path="res://assets/gui/portrait_scoria.png" id="6_lgy02"]
 [ext_resource type="Texture2D" uid="uid://bsvpbsp4u6vv0" path="res://assets/sprites/characters/scoria/scoria.png" id="8_733ne"]
+[ext_resource type="PackedScene" uid="uid://bpnjqscfujnci" path="res://scenes/gui/tutorial/ability_showcases/showcase_reign.tscn" id="9_tmhm5"]
+[ext_resource type="PackedScene" uid="uid://bugghy8rqpv48" path="res://scenes/gui/tutorial/ability_showcases/showcase_scoria.tscn" id="13_nr2l4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lgy02"]
 atlas = ExtResource("2_m022u")
@@ -26,6 +29,8 @@ scene = ExtResource("6_5semu")
 name = "Hip"
 button_texture = SubResource("AtlasTexture_lgy02")
 portrait_texture = ExtResource("2_ciu7n")
+tutorial_ability_description = "While on a wall, hold [color=#1E90FF]BLUE[/color] to wall climb. While climbing, Hip can move along the wall by holding [color=#FFA500]UP[/color] or [color=#FFA500]DOWN[/color]."
+tutorial_ability_showcase = ExtResource("5_733ne")
 metadata/_custom_type_script = "uid://c1c364hhlfwr5"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tmhm5"]
@@ -38,6 +43,8 @@ scene = ExtResource("3_m7u6u")
 name = "Reign"
 button_texture = SubResource("AtlasTexture_tmhm5")
 portrait_texture = ExtResource("4_m022u")
+tutorial_ability_description = "By holding [color=#1E90FF]BLUE[/color], Reign can precisely hover through the air, using [color=#FFA500]LEFT[/color] and [color=#FFA500]RIGHT[/color]"
+tutorial_ability_showcase = ExtResource("9_tmhm5")
 metadata/_custom_type_script = "uid://c1c364hhlfwr5"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nr2l4"]
@@ -50,6 +57,8 @@ scene = ExtResource("4_5edyq")
 name = "Scoria"
 button_texture = SubResource("AtlasTexture_nr2l4")
 portrait_texture = ExtResource("6_lgy02")
+tutorial_ability_description = "Pressing [color=#1E90FF]BLUE[/color] makes Scoria roll. Each bounce causes her to heat up, and rolling into a wall at full [color=orange]HEAT[/color] boosts her upwards. Pressing [color=orange]DOWN[/color] while rolling makes her quickly slam downward."
+tutorial_ability_showcase = ExtResource("13_nr2l4")
 metadata/_custom_type_script = "uid://c1c364hhlfwr5"
 
 [sub_resource type="Resource" id="Resource_bigc5"]

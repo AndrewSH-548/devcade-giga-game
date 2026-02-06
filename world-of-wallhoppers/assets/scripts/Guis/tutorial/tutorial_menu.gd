@@ -1,6 +1,7 @@
 extends Control
 
 const BASICS = "res://scenes/levels/tutorial.tscn"
+const ABILITIES = "res://scenes/gui/tutorial/ability_tutorial_menu.tscn"
 @onready var button_basics: Button = $VBoxContainer/ButtonBasics
 
 func _ready():
@@ -12,4 +13,8 @@ func load_start_screen() -> void:
 
 func load_basics():
 	get_tree().change_scene_to_file(BASICS)
+	queue_free()
+
+func load_abilities() -> void:
+	get_tree().change_scene_to_file(ABILITIES)
 	queue_free()
