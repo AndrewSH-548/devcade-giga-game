@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://bvf4hf2fqgsm2"]
+
+[ext_resource type="Script" uid="uid://bfgyled4hsm81" path="res://assets/scripts/characters/magnet.gd" id="1_fke5u"]
+[ext_resource type="Texture2D" uid="uid://flc6x8anvjcu" path="res://assets/sprites/characters/rick_shawn/rope.png" id="1_qccie"]
+[ext_resource type="Texture2D" uid="uid://br06qyb8lyyp6" path="res://assets/sprites/characters/rick_shawn/magnet.png" id="2_fke5u"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_80pyk"]
+size = Vector2(22, 25)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_fke5u"]
+a = Vector2(-0.5, -12)
+b = Vector2(-0.5, 13)
+
+[node name="Magnet" type="StaticBody2D"]
+collision_layer = 128
+script = ExtResource("1_fke5u")
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PackedVector2Array(0, -2.3841858e-07, 42, 0)
+width = 3.0
+texture = ExtResource("1_qccie")
+texture_mode = 1
+joint_mode = 2
+sharp_limit = 3.0
+round_precision = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(50, -1)
+texture = ExtResource("2_fke5u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(50, -0.50000024)
+shape = SubResource("RectangleShape2D_80pyk")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 161
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(61.5, -1)
+shape = SubResource("SegmentShape2D_fke5u")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_wall_collision"]

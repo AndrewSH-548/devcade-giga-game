@@ -1,6 +1,6 @@
 [gd_scene load_steps=21 format=3 uid="uid://b6avcmnww3c4"]
 
-[ext_resource type="Script" uid="uid://cy7mdi3aakdjy" path="res://assets/scripts/characters/rick_shawn.gd" id="1_cxbc4"]
+[ext_resource type="Script" uid="uid://comdfl1u76mxc" path="res://assets/scripts/characters/rick_shawn.gd" id="1_cxbc4"]
 [ext_resource type="PackedScene" uid="uid://bvf4hf2fqgsm2" path="res://scenes/characters/magnet.tscn" id="2_ilnro"]
 [ext_resource type="Texture2D" uid="uid://cotc4m53mxg85" path="res://assets/sprites/characters/rick_shawn/rick_shawn.png" id="3_5phyr"]
 
@@ -481,8 +481,7 @@ shape = SubResource("RectangleShape2D_dwkx8")
 texture_filter = 1
 position = Vector2(0, -2.3841858e-07)
 sprite_frames = SubResource("SpriteFrames_eose0")
-animation = &"hang"
-frame_progress = 0.6687798
+animation = &"wall-cling"
 
 [node name="Hitbox" type="Area2D" parent="."]
 
