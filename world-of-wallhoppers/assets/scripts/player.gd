@@ -27,7 +27,7 @@ var acceleration: float = 0
 var hitstun: bool = false
 
 var sprite: AnimatedSprite2D
-var isFacingRight: bool = true
+var is_facing_right: bool = true
 
 var disable_decceleration: bool = false
 var deccel_disable_timer: Timer = Timer.new()
@@ -233,7 +233,7 @@ func get_horizontal_movement() -> float:
 func update_flipped() -> void:
 	if Input.is_action_pressed(move_right_action) and Input.is_action_pressed(move_left_action):
 		return
-	if Input.is_action_pressed(move_left_action) and isFacingRight:
-		isFacingRight = false
-	elif Input.is_action_pressed(move_right_action) and not isFacingRight:
-		isFacingRight = true
+	if Input.is_action_pressed(move_left_action) and is_facing_right:
+		is_facing_right = false
+	elif Input.is_action_pressed(move_right_action) and not is_facing_right:
+		is_facing_right = true

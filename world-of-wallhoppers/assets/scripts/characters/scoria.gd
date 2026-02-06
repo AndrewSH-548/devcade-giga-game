@@ -182,7 +182,7 @@ func do_spark():
 	spark_animation.play()
 
 func process_dash():
-	var facing: int = 1 if isFacingRight else -1
+	var facing: int = 1 if is_facing_right else -1
 	velocity.y = 0
 	velocity.x = dash_speed * facing
 	
@@ -204,7 +204,7 @@ func process_flight(delta: float):
 		flight_timer_end()
 
 func process_roll(delta: float):
-	var facing: int = 1 if isFacingRight else -1
+	var facing: int = 1 if is_facing_right else -1
 	velocity.x = facing * roll_speed
 	velocity.y += roll_gravity * delta
 	
@@ -226,7 +226,7 @@ func process_slam(_delta: float):
 		do_roll()
 
 func animated_scoria():
-	sprite.flip_h = !isFacingRight
+	sprite.flip_h = !is_facing_right
 	
 	if move_state == MoveState.SLAM:
 		animations.scale.x = 0.7
@@ -242,14 +242,14 @@ func animated_scoria():
 				animations.animation = "Roll"
 			MoveState.NORMAL:
 				if is_on_floor():
-					if ((is_touching_right_wall() and isFacingRight) or (is_touching_left_wall() and not isFacingRight)) and get_horizontal_movement() != 0.0:
+					if ((is_touching_right_wall() and is_facing_right) or (is_touching_left_wall() and not is_facing_right)) and get_horizontal_movement() != 0.0:
 						animations.animation = "Against Wall"
 					elif get_horizontal_movement() == 0.0:
 						animations.animation = "Idle"
 					else:
 						animations.animation = "Walk"
 				else:
-					if (is_touching_right_wall() and isFacingRight) or (is_touching_left_wall() and not isFacingRight):
+					if (is_touching_right_wall() and is_facing_right) or (is_touching_left_wall() and not is_facing_right):
 						animations.animation = "On Wall"
 					elif velocity.y <= 0:
 						animations.animation = "Jump"
