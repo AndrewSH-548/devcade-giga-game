@@ -7,7 +7,7 @@ func _ready() -> void:
 
 func do_actions() -> void:
 	player_scoria.position = Vector2(35.0, 214)
-	player_scoria.isFacingRight = true
+	player_scoria.is_facing_right = true
 	timer(0.5).connect(func():
 		press("run"))
 	timer(2.0).connect(func():

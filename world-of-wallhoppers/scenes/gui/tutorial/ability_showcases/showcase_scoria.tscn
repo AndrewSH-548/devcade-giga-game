@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=4 uid="uid://bugghy8rqpv48"]
 
-[ext_resource type="Script" uid="uid://58o86xfpbuxi" path="res://scenes/gui/tutorial/ability_showcases/showcase_scoria.gd" id="1_h8wne"]
+[ext_resource type="Script" uid="uid://58o86xfpbuxi" path="res://assets/scripts/tutorial/abilities/showcase_scoria.gd" id="1_h8wne"]
 [ext_resource type="PackedScene" uid="uid://bojyqwmqsf6xx" path="res://scenes/characters/scoria.tscn" id="2_ec3gw"]
 [ext_resource type="Texture2D" uid="uid://g81awsjnutmg" path="res://assets/terrain/ability_tutorial/ability_tutorial_tiles.png" id="3_27sqn"]
 [ext_resource type="PackedScene" uid="uid://cl7i05js3l62q" path="res://scenes/obstacles/spike.tscn" id="4_h8wne"]

@@ -1,8 +1,8 @@
 [gd_scene load_steps=10 format=3 uid="uid://bojyqwmqsf6xx"]
 
 [ext_resource type="Script" uid="uid://dkjbdby517ry4" path="res://assets/scripts/characters/scoria.gd" id="1_sssk5"]
-[ext_resource type="Texture2D" uid="uid://m5t03mjigocy" path="res://assets/sprites/scoria/spark.png" id="2_7qr4j"]
-[ext_resource type="SpriteFrames" uid="uid://dyusrrvvi0kwy" path="res://assets/sprites/scoria/scoria_editor_frames.tres" id="3_7qr4j"]
+[ext_resource type="Texture2D" uid="uid://m5t03mjigocy" path="res://assets/sprites/characters/scoria/spark.png" id="2_7qr4j"]
+[ext_resource type="SpriteFrames" uid="uid://dyusrrvvi0kwy" path="res://assets/sprites/characters/scoria/scoria_editor_frames.tres" id="3_7qr4j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_on6cs"]
 size = Vector2(29.75, 66.125)
@@ -38,7 +38,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gf061"]
 size = Vector2(29.75, 66.125)
 
-[node name="Scoria" type="CharacterBody2D"]
+[node name="PlayerScoria" type="CharacterBody2D"]
 collision_layer = 4
 collision_mask = 65
 platform_on_leave = 1
@@ -54,6 +54,7 @@ wall_pushoff_strength = 200
 fall_speed = 550
 gravity = 900
 weight = 13
+metadata/_custom_type_script = "uid://dkjbdby517ry4"
 
 [node name="NormalCollision" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, 8.9375)

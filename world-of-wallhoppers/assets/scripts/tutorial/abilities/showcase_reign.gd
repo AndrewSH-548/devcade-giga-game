@@ -8,7 +8,7 @@ func _ready() -> void:
 func do_actions() -> void:
 	player_reign.position = Vector2(69, 118)
 	timer(0.5).connect(func():
-		player_reign.isFacingRight = true
+		player_reign.is_facing_right = true
 		press("jump"))
 	timer(1.0).connect(func():
 		hold("run")) 
