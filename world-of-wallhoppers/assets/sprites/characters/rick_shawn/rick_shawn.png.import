@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bau6tj4o6m33h"
-path="res://.godot/imported/rick_shawn.png-781e0712effc3be5a5671375c47701c5.ctex"
+uid="uid://cotc4m53mxg85"
+path="res://.godot/imported/rick_shawn.png-457d77a9539f1f0438d85e4503554197.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/rick_shawn/rick_shawn.png"
-dest_files=["res://.godot/imported/rick_shawn.png-781e0712effc3be5a5671375c47701c5.ctex"]
+source_file="res://assets/sprites/characters/rick_shawn/rick_shawn.png"
+dest_files=["res://.godot/imported/rick_shawn.png-457d77a9539f1f0438d85e4503554197.ctex"]
 
 [params]
 
