@@ -928,7 +928,7 @@ position = Vector2(0, 796)
 position = Vector2(0, 1031)
 
 [node name="ScrollStopTop" type="Marker2D" parent="."]
-position = Vector2(-16, -6027)
+position = Vector2(-16, -5575)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 position = Vector2(-513, -697)
