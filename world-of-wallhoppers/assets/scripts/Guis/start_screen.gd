@@ -32,8 +32,6 @@ func quit() -> void:
 func _ready() -> void:
 	if last_selected >= 0 and last_selected < buttons.size():
 		buttons[last_selected].grab_focus()
-	# Prevents (some) crashes from weirdness with SceneSwitcher!
-	SceneSwitcher.last_scene = null
 
 func load_level_select(is_multiplayer: bool):
 	var level_select: Control = LEVEL_SELECT.instantiate()

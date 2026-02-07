@@ -7,6 +7,7 @@ extends Control
 const RECORDS_LEVEL_LEADERBOARD = preload("res://scenes/gui/records/RecordsLevelLeaderboard.tscn")
 
 func _ready() -> void:
+	assert(not Definitions.levels.is_empty(), "No Levels found in Definitions! Is assets/data/game_definitions.tres corrupted, deleted or changed?")
 	for level in Definitions.levels:
 		var leaderboard: RecordsLevelLeaderboard = RECORDS_LEVEL_LEADERBOARD.instantiate()
 		tab_container.add_child(leaderboard)
