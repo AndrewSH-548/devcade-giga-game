@@ -39,6 +39,11 @@ var on_wall_last_frame: bool = false
 
 var hitstun_max_fall_speed_modifier: float = 80.0
 
+var foot_offset: Vector2
+var foot_global_position: Vector2:
+	get(): return global_position + foot_offset
+	set(new): global_position = new - foot_offset
+
 const JUMP_BUFFER_TIME: float = 0.1
 const COYOTE_TIME: float = 0.07
 const WALL_JUMP_COYOTE_TIME: float = 0.1

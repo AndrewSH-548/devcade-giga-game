@@ -83,7 +83,7 @@ metadata/_custom_type_script = "uid://c1c364hhlfwr5"
 script = ExtResource("2_sgbyo")
 scene = ExtResource("3_sgbyo")
 name = "Jungle"
-border_color = Color(0.43529412, 0.23921569, 0, 1)
+border_color = Color(0.19607843, 0.1764706, 0.05882353, 1)
 metadata/_custom_type_script = "uid://72arh6p6vdd"
 
 [sub_resource type="Resource" id="Resource_00dtc"]
