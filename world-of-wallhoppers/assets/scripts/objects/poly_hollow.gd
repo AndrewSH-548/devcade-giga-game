@@ -7,7 +7,7 @@ const SPIKEY_POLY = preload("res://scenes/objects/spikey-poly/spikey-poly.tscn")
 @export var spawning: bool = false
 @export var poly_direction: SpikeyPoly.Direction = SpikeyPoly.Direction.RIGHT
 
-var spawn_frequency: float = 2.5
+var spawn_frequency: float = 3.0
 var timer: Timer = Timer.new()
 
 func _ready() -> void:

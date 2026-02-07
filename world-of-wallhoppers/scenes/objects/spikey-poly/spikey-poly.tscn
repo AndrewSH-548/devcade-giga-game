@@ -34,7 +34,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jhjkm"]
-size = Vector2(26, 26)
+size = Vector2(18, 20)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_p0hcf"]
 radius = 12.0
@@ -58,7 +58,7 @@ launch_mode = 1
 direction_offset_angle = -90.0
 
 [node name="Collision" type="CollisionShape2D" parent="HitArea"]
-position = Vector2(0, 3)
+position = Vector2(0, 6)
 shape = SubResource("RectangleShape2D_jhjkm")
 debug_color = Color(0.9698636, 0, 0.46169943, 0.41960785)
 

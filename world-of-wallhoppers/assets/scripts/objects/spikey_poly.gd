@@ -22,7 +22,7 @@ var direction_number: int:
 	get():
 		if direction == Direction.RIGHT: return 1
 		return -1
-var speed: float = 64.0
+var speed: float = 80.0
 var rotate_speed: float = 12.0
 var state: int = MOVING
 
