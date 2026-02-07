@@ -42,7 +42,7 @@ func get_child_in_group(parent: Node, group: StringName) -> Node:
 
 func _process(delta: float) -> void:
 	shading.visible = not is_hovered() and not get_viewport().gui_get_focus_owner() == self
-	if not is_hovered() and not get_viewport().gui_get_focus_owner() == self:
+	if not is_hovered() and not get_viewport().gui_get_focus_owner() == self and thumbnail_marker != null:
 		level.global_position = -thumbnail_marker.global_position
 		return
 	if backgrounds_manager != null:

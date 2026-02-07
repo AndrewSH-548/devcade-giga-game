@@ -52,8 +52,6 @@ func load_level(level_info: LevelDefinition, random: bool = false):
 	# Give the Character Select the SessionInfo, then add it to the tree
 	get_tree().root.add_child(character_select)
 	character_select.setup(session_info)
-	# Set the level manager's current_level
-	LevelManager.switch_level(level_info.name);
 	# Delete Level Select Scene (self)
 	queue_free()
 
@@ -137,6 +135,7 @@ func _ready() -> void:
 
 # Makes the level thumbnails and connects their varaious functions
 func setup():
+	assert(not Definitions.levels.is_empty(), "No Levels found in Definitions! Is assets/data/game_definitions.tres corrupted, deleted or changed?")
 	var current_page: Page = Page.new(back_button)
 	pages.append(current_page)
 	
