@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://x8jwn1lvobhp"]
+[gd_scene load_steps=28 format=4 uid="uid://x8jwn1lvobhp"]
 
 [ext_resource type="PackedScene" uid="uid://dhjkvej1d1nic" path="res://scenes/editor/tumbnail_marker.tscn" id="1_32bmu"]
 [ext_resource type="Script" uid="uid://s7cnbl0ouo3x" path="res://assets/scripts/gameplay/level.gd" id="1_qxh53"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://b3cfiayfmu1qd" path="res://assets/sprites/rain/rain.png" id="14_4sij2"]
 [ext_resource type="Texture2D" uid="uid://c6h7cciu5xdsr" path="res://assets/terrain/swamp/swamp_deco.png" id="16_4ta37"]
 [ext_resource type="PackedScene" uid="uid://dq0ugk3kfkwtc" path="res://scenes/objects/hollow/hollow.tscn" id="17_f1kd2"]
+[ext_resource type="PackedScene" uid="uid://cxbblq6w0kbrc" path="res://scenes/objects/spikey-poly/spikey-poly.tscn" id="17_jvlhb"]
 [ext_resource type="PackedScene" uid="uid://8ga8imvsjkx4" path="res://scenes/objects/dragonfly/dragonfly.tscn" id="17_q6rig"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_leifp"]
@@ -1123,5 +1124,8 @@ scale = Vector2(-1, 1)
 connected_to = NodePath("../Hollow")
 direction = 0
 
-[node name="Dragonfly" parent="." instance=ExtResource("17_q6rig")]
+[node name="SpikeyPoly" parent="Objects" instance=ExtResource("17_jvlhb")]
+position = Vector2(-38, -361)
+
+[node name="Dragonfly" parent="Objects" instance=ExtResource("17_q6rig")]
 position = Vector2(-129, -596)
