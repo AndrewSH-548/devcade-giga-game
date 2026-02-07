@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cxbblq6w0kbrc"]
+[gd_scene load_steps=10 format=3 uid="uid://cxbblq6w0kbrc"]
 
 [ext_resource type="Texture2D" uid="uid://b0w5vapmws5fj" path="res://assets/sprites/spikey-poly/spikey-poly.png" id="1_jhjkm"]
 [ext_resource type="Script" uid="uid://b5k5kdgubf6y1" path="res://assets/scripts/objects/spikey_poly.gd" id="1_p0hcf"]
@@ -36,6 +36,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jhjkm"]
 size = Vector2(26, 26)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_p0hcf"]
+radius = 12.0
+
 [node name="SpikeyPoly" type="Node2D"]
 script = ExtResource("1_p0hcf")
 
@@ -44,6 +47,7 @@ position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_nx305")
 autoplay = "default"
 frame_progress = 0.3275775
+flip_h = true
 
 [node name="HitArea" type="Area2D" parent="."]
 position = Vector2(0, -16)
@@ -59,9 +63,21 @@ shape = SubResource("RectangleShape2D_jhjkm")
 debug_color = Color(0.9698636, 0, 0.46169943, 0.41960785)
 
 [node name="RayFront" type="RayCast2D" parent="."]
-position = Vector2(-13, -4)
+position = Vector2(13, -4)
 target_position = Vector2(0, 7)
 
 [node name="RayBack" type="RayCast2D" parent="."]
 position = Vector2(0, -4)
 target_position = Vector2(0, 7)
+
+[node name="RayWall" type="RayCast2D" parent="."]
+position = Vector2(0, -13)
+target_position = Vector2(14, 0)
+
+[node name="DetectableArea" type="Area2D" parent="."]
+collision_layer = 256
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectableArea"]
+position = Vector2(0, -13)
+shape = SubResource("CircleShape2D_p0hcf")

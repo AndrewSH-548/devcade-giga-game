@@ -1,0 +1,88 @@
+[gd_scene load_steps=9 format=3 uid="uid://du0e60u1ti6us"]
+
+[ext_resource type="Texture2D" uid="uid://djwai0iyarlfq" path="res://assets/sprites/poly_hollow/Front.png" id="1_cr4sj"]
+[ext_resource type="Script" uid="uid://c6gg4frqe51rt" path="res://assets/scripts/objects/poly_hollow.gd" id="1_u4ixh"]
+[ext_resource type="Texture2D" uid="uid://4htwm1tdtsgg" path="res://assets/sprites/poly_hollow/Back.png" id="2_eyfcp"]
+[ext_resource type="Shader" uid="uid://dhbqogjn55wbb" path="res://assets/shaders/quick_gradient.gdshader" id="3_eyfcp"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u4ixh"]
+shader = ExtResource("3_eyfcp")
+shader_parameter/modulate = Color(0, 0, 0, 1)
+shader_parameter/stepped = true
+shader_parameter/step_count = 5
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eyfcp"]
+size = Vector2(63.987854, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u4ixh"]
+size = Vector2(6, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6yhtm"]
+size = Vector2(18, 32)
+
+[node name="PolyHollow" type="Node2D"]
+script = ExtResource("1_u4ixh")
+
+[node name="Gradient" type="ColorRect" parent="."]
+z_index = 1
+material = SubResource("ShaderMaterial_u4ixh")
+offset_left = 16.043665
+offset_top = 32.012714
+offset_right = 32.08733
+offset_bottom = 64.02543
+rotation = -3.1415927
+
+[node name="Front" type="Sprite2D" parent="."]
+z_index = 1
+texture = ExtResource("1_cr4sj")
+centered = false
+
+[node name="Back" type="Sprite2D" parent="."]
+z_index = -1
+texture = ExtResource("2_eyfcp")
+centered = false
+
+[node name="Collision" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collision"]
+position = Vector2(31.993155, -2.1571786)
+shape = SubResource("RectangleShape2D_eyfcp")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Collision"]
+position = Vector2(32, 34)
+shape = SubResource("RectangleShape2D_eyfcp")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = 1
+offset_left = 32.0
+offset_right = 64.0
+offset_bottom = 32.0
+color = Color(0.19607843, 0.050980393, 0.050980393, 1)
+
+[node name="Deleter" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 256
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Deleter"]
+z_index = 2
+position = Vector2(61, 16)
+shape = SubResource("RectangleShape2D_u4ixh")
+debug_color = Color(0.94007564, 1.3284087e-05, 0.6187654, 0.41960785)
+
+[node name="SpawnLocation" type="Marker2D" parent="."]
+position = Vector2(38, 32)
+
+[node name="ALTSpawnLocation" type="Marker2D" parent="."]
+position = Vector2(38, 0)
+
+[node name="PlayerOnly" type="StaticBody2D" parent="."]
+collision_layer = 64
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerOnly"]
+z_index = 1
+position = Vector2(9, 16)
+shape = SubResource("RectangleShape2D_6yhtm")
+debug_color = Color(0.87, 0.34800002, 0, 0.12941177)
+
+[connection signal="area_entered" from="Deleter" to="." method="on_poly_entered"]

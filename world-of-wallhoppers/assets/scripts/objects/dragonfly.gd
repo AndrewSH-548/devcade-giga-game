@@ -6,7 +6,7 @@ extends CharacterBody2D
 var towards_desination: bool = true
 @onready var sprite: AnimatedSprite2D = $Sprite
 
-var speed: float = 64.0
+var speed: float = 128.0
 var start_global: Vector2
 var end_global: Vector2
 
@@ -44,6 +44,7 @@ func _physics_process(delta: float) -> void:
 func _draw() -> void:
 	if not Engine.is_editor_hint():
 		return
+	draw_line(desination - Vector2(30, 0), desination + Vector2(30, 0), Color.DEEP_SKY_BLUE, 2)
 	draw_line(Vector2.ZERO, desination, Color.RED, 1)
 	if initial_progress <= 1.0:
 		draw_line(Vector2.ZERO, desination * initial_progress, Color.GREEN, 2)

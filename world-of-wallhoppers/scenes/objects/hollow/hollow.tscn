@@ -24,7 +24,7 @@ script = ExtResource("1_xo6mw")
 z_index = -1
 texture = ExtResource("1_4yeo0")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="Gradient" type="ColorRect" parent="."]
 z_index = 1
 material = SubResource("ShaderMaterial_xo6mw")
 offset_left = -24.0
