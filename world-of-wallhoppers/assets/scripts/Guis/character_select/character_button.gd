@@ -38,6 +38,7 @@ func _ready() -> void:
 	elif character_definition == null or character_definition.button_texture != null:
 		texture.texture = character_definition.button_texture
 	else:
+		push_error("No texture found for character button: \"" + character_definition.name + "\", defaulting to missing texture")
 		texture.texture = MISSING_TEXTURE
 	# Setup the button's texture
 	texture.custom_minimum_size = Vector2(SIZE, SIZE)

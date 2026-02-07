@@ -21,6 +21,7 @@ var last_button: CharacterButton = null
 var is_controlling_showcase: bool = false
 
 func _ready() -> void:
+	assert(not Definitions.characters.is_empty(), "No characters found in Definitions! Is assets/data/game_definitions.tres corrupted, deleted or changed?")
 	# Loop through all the DEFINITIONS of all the characters...
 	for character in Definitions.characters:
 		# Add a button for each character

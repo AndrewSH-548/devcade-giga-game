@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=4 uid="uid://c70tcpci8tum8"]
+[gd_scene load_steps=61 format=4 uid="uid://c70tcpci8tum8"]
 
 [ext_resource type="Script" uid="uid://s7cnbl0ouo3x" path="res://assets/scripts/gameplay/level.gd" id="1_68ikf"]
 [ext_resource type="Shader" uid="uid://c8oh1ksd7urfj" path="res://scenes/levels/testing_coral.gdshader" id="1_e6kjs"]
@@ -15,7 +15,6 @@
 [ext_resource type="Texture2D" uid="uid://b1nghnxv0hwsp" path="res://assets/terrain/reef/Layer 3.png" id="9_6ntwv"]
 [ext_resource type="Texture2D" uid="uid://c8entdwfl7grh" path="res://assets/terrain/reef/Layer 7.png" id="9_j8awl"]
 [ext_resource type="Texture2D" uid="uid://bngsxsrbqa202" path="res://assets/shaders/textures/fish.png" id="9_ni50x"]
-[ext_resource type="Script" uid="uid://cc0hfx5laehuv" path="res://assets/scripts/visuals/flock.gd" id="9_oam1e"]
 [ext_resource type="Texture2D" uid="uid://blg1w5rsfbrpj" path="res://assets/terrain/reef/CoralTube2.png" id="9_qwnwj"]
 [ext_resource type="Shader" uid="uid://ckodcxapjdx13" path="res://assets/shaders/fish_flock.gdshader" id="10_p168k"]
 [ext_resource type="Texture2D" uid="uid://ch240dkcnqw86" path="res://assets/terrain/reef/Layer 5.png" id="10_pi4hs"]
@@ -1050,7 +1049,6 @@ fixed_fps = 60
 visibility_rect = Rect2(-100, -100, 1000, 200)
 local_coords = true
 process_material = SubResource("ShaderMaterial_un518")
-script = ExtResource("9_oam1e")
 
 [node name="FishFlock2" type="GPUParticles2D" parent="BackgroundsManager/Below/CoralTubesLarge"]
 position = Vector2(-295, 429)
@@ -1065,7 +1063,6 @@ fixed_fps = 60
 visibility_rect = Rect2(-100, -100, 1000, 200)
 local_coords = true
 process_material = SubResource("ShaderMaterial_un518")
-script = ExtResource("9_oam1e")
 
 [node name="FishFlock3" type="GPUParticles2D" parent="BackgroundsManager/Below/CoralTubesLarge"]
 position = Vector2(-310, -589)
@@ -1080,7 +1077,6 @@ fixed_fps = 60
 visibility_rect = Rect2(-100, -100, 1000, 200)
 local_coords = true
 process_material = SubResource("ShaderMaterial_un518")
-script = ExtResource("9_oam1e")
 
 [node name="FishFlock4" type="GPUParticles2D" parent="BackgroundsManager/Below/CoralTubesLarge"]
 position = Vector2(333, -75)
@@ -1095,7 +1091,6 @@ fixed_fps = 60
 visibility_rect = Rect2(-100, -100, 1000, 200)
 local_coords = true
 process_material = SubResource("ShaderMaterial_un518")
-script = ExtResource("9_oam1e")
 
 [node name="Sprite2D2" type="Sprite2D" parent="BackgroundsManager/Below/CoralTubesLarge"]
 position = Vector2(12, 625)
@@ -1197,7 +1192,6 @@ fixed_fps = 60
 visibility_rect = Rect2(-100, -100, 1000, 200)
 local_coords = true
 process_material = SubResource("ShaderMaterial_un518")
-script = ExtResource("9_oam1e")
 
 [node name="FishFlock2" type="GPUParticles2D" parent="BackgroundsManager/Below/FarDune"]
 position = Vector2(-295, 429)
@@ -1212,7 +1206,6 @@ fixed_fps = 60
 visibility_rect = Rect2(-100, -100, 1000, 200)
 local_coords = true
 process_material = SubResource("ShaderMaterial_un518")
-script = ExtResource("9_oam1e")
 
 [node name="FishFlock3" type="GPUParticles2D" parent="BackgroundsManager/Below/FarDune"]
 position = Vector2(-310, -589)
@@ -1227,7 +1220,6 @@ fixed_fps = 60
 visibility_rect = Rect2(-100, -100, 1000, 200)
 local_coords = true
 process_material = SubResource("ShaderMaterial_un518")
-script = ExtResource("9_oam1e")
 
 [node name="FishFlock4" type="GPUParticles2D" parent="BackgroundsManager/Below/FarDune"]
 position = Vector2(333, -75)
@@ -1242,7 +1234,6 @@ fixed_fps = 60
 visibility_rect = Rect2(-100, -100, 1000, 200)
 local_coords = true
 process_material = SubResource("ShaderMaterial_un518")
-script = ExtResource("9_oam1e")
 
 [node name="SHADE2" type="Parallax2D" parent="BackgroundsManager/Below"]
 scroll_scale = Vector2(0.4, 0.4)
@@ -1303,7 +1294,6 @@ fixed_fps = 60
 visibility_rect = Rect2(-100, -100, 1000, 200)
 local_coords = true
 process_material = SubResource("ShaderMaterial_un518")
-script = ExtResource("9_oam1e")
 
 [node name="FishFlock2" type="GPUParticles2D" parent="BackgroundsManager/Below/MidDune"]
 position = Vector2(459, 778)
@@ -1317,7 +1307,6 @@ fixed_fps = 60
 visibility_rect = Rect2(-100, -100, 1000, 200)
 local_coords = true
 process_material = SubResource("ShaderMaterial_un518")
-script = ExtResource("9_oam1e")
 
 [node name="Sprite2D2" type="Sprite2D" parent="BackgroundsManager/Below/MidDune"]
 position = Vector2(437, 700)
@@ -1356,7 +1345,6 @@ fixed_fps = 60
 visibility_rect = Rect2(-100, -100, 1000, 200)
 local_coords = true
 process_material = SubResource("ShaderMaterial_un518")
-script = ExtResource("9_oam1e")
 
 [node name="FishFlock4" type="GPUParticles2D" parent="BackgroundsManager/Below/NearDune"]
 position = Vector2(421.00003, -26)
@@ -1370,7 +1358,6 @@ fixed_fps = 60
 visibility_rect = Rect2(-100, -100, 1000, 200)
 local_coords = true
 process_material = SubResource("ShaderMaterial_un518")
-script = ExtResource("9_oam1e")
 
 [node name="FishFlock" type="GPUParticles2D" parent="BackgroundsManager/Below/NearDune"]
 position = Vector2(-497, 437.00018)
@@ -1385,7 +1372,6 @@ fixed_fps = 60
 visibility_rect = Rect2(-100, -100, 1000, 200)
 local_coords = true
 process_material = SubResource("ShaderMaterial_un518")
-script = ExtResource("9_oam1e")
 
 [node name="FishFlock2" type="GPUParticles2D" parent="BackgroundsManager/Below/NearDune"]
 position = Vector2(593, -405.99994)
@@ -1400,7 +1386,6 @@ fixed_fps = 60
 visibility_rect = Rect2(-100, -100, 1000, 200)
 local_coords = true
 process_material = SubResource("ShaderMaterial_un518")
-script = ExtResource("9_oam1e")
 
 [node name="Sprite2D2" type="Sprite2D" parent="BackgroundsManager/Below/NearDune"]
 position = Vector2(-572, -258)

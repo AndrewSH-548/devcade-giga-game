@@ -50,6 +50,7 @@ const PLAYER_2: int = 1
 var session_info: SessionInfo
 
 func _ready() -> void:
+	assert(not Definitions.characters.is_empty(), "No characters found in Definitions! Is assets/data/game_definitions.tres corrupted, deleted or changed?")
 	# Loop through all the DEFINITIONS of all the characters...
 	for character in Definitions.characters:
 		# Add a button for each character
@@ -196,6 +197,8 @@ func process_portraits() -> void:
 		var texture: Texture2D = focused.get_character_portrait()
 		# If there is NOT a texture, use the MISSING texture
 		if texture == null:
+			if player_portraits[player_index].texture != MISSING_TEXTURE:
+				push_error("No texture found for portrait: \"" + focused.get_character_name() + "\", defaulting to missing texture")
 			player_portraits[player_index].texture = MISSING_TEXTURE
 		# Otherwise use the provided texture
 		else:
