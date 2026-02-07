@@ -58,3 +58,9 @@ show_behind_parent = true
 position = Vector2(0, 3)
 shape = SubResource("RectangleShape2D_cd5um")
 one_way_collision = true
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+show_behind_parent = true
+position = Vector2(0, 9)
+shape = SubResource("RectangleShape2D_cd5um")
+one_way_collision = true
