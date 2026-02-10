@@ -14,6 +14,8 @@ class_name PlayerScoria
 @onready var animations: AnimatedSprite2D = $Animations
 @onready var spark_animation: AnimatedSprite2D = $Spark
 
+@onready var foot_position_marker: Marker2D = $FootPositionMarker
+
 const SPRITE_SCORIA = preload("uid://bsvpbsp4u6vv0")
 const SPRITE_SIZE: Vector2i = Vector2i(84, 84)
 
@@ -65,6 +67,7 @@ enum MoveState {
 }
 
 func _ready() -> void:
+	foot_offset = foot_position_marker.global_position - global_position
 	for index in range(5):
 		sprite_frames.append(make_frames(index))
 	animations.sprite_frames = sprite_frames[0]

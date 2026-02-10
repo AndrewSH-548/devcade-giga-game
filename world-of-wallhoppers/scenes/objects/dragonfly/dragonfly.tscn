@@ -1,7 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://cfmhx4mt631ki"]
+[gd_scene load_steps=9 format=3 uid="uid://8ga8imvsjkx4"]
 
-[ext_resource type="Texture2D" path="res://assets/sprites/dragonfly/dragonfly.png" id="1_7166q"]
-[ext_resource type="Script" path="res://assets/scripts/objects/dragonfly.gd" id="1_cd5um"]
+[ext_resource type="Texture2D" uid="uid://bgpagom240rwt" path="res://assets/sprites/dragonfly/dragonfly.png" id="1_7166q"]
+[ext_resource type="Script" uid="uid://b3b0of2es61dc" path="res://assets/scripts/objects/dragonfly.gd" id="1_cd5um"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7166q"]
 atlas = ExtResource("1_7166q")

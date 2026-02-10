@@ -1,7 +1,7 @@
 [gd_scene load_steps=22 format=3 uid="uid://dtu1k6tt7cxej"]
 
 [ext_resource type="Script" uid="uid://5j8ae3g7esmp" path="res://assets/scripts/characters/hip.gd" id="1_s6udp"]
-[ext_resource type="Texture2D" uid="uid://cbpfskf2jthji" path="res://assets/sprites/hip.png" id="2_0eql2"]
+[ext_resource type="Texture2D" uid="uid://cbpfskf2jthji" path="res://assets/sprites/characters/hip.png" id="2_0eql2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6ci1u"]
 size = Vector2(56, 56)
@@ -208,3 +208,6 @@ collision_mask = 8
 
 [node name="HitboxShape" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource("RectangleShape2D_6ci1u")
+
+[node name="FootPositionMarker" type="Marker2D" parent="."]
+position = Vector2(0, 28)

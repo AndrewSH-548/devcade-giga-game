@@ -9,6 +9,12 @@ var magnet_ref: StaticBody2D;
 var rope_distance: float;
 var hanging_position: Vector2;
 
+@onready var foot_position_marker: Marker2D = $FootPositionMarker
+
+func _ready() -> void:
+	foot_offset = foot_position_marker.global_position - global_position
+	super._ready()
+
 func _physics_process(delta: float) -> void:
 	hanging_position = global_position + Vector2(28 * (1 if is_facing_right else -1), -50) 
 	var header = get_tree().get_first_node_in_group("splitscreen")

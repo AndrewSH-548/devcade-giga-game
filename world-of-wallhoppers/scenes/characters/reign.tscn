@@ -1,8 +1,8 @@
 [gd_scene load_steps=83 format=3 uid="uid://c42ynqlk3h4wp"]
 
 [ext_resource type="Script" uid="uid://b4cra7t5rbaxf" path="res://assets/scripts/characters/reign.gd" id="1_jrwk1"]
-[ext_resource type="Texture2D" uid="uid://bfe80tkm43i8u" path="res://assets/sprites/reign/right.png" id="2_jrwk1"]
-[ext_resource type="Texture2D" uid="uid://bjbwv8sjejjyy" path="res://assets/sprites/reign/left.png" id="3_hw104"]
+[ext_resource type="Texture2D" uid="uid://bfe80tkm43i8u" path="res://assets/sprites/characters/reign/right.png" id="2_jrwk1"]
+[ext_resource type="Texture2D" uid="uid://bjbwv8sjejjyy" path="res://assets/sprites/characters/reign/left.png" id="3_hw104"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6ci1u"]
 size = Vector2(70, 84)
@@ -671,3 +671,6 @@ collision_mask = 8
 [node name="HitboxShape" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(0, 7.1525574e-07)
 shape = SubResource("RectangleShape2D_6ci1u")
+
+[node name="FootPositionMarker" type="Marker2D" parent="."]
+position = Vector2(0, 42)
