@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://3dsey0o0pes7" path="res://assets/terrain/tutorial.png" id="2_d1e65"]
 [ext_resource type="PackedScene" uid="uid://dtu1k6tt7cxej" path="res://scenes/characters/hip.tscn" id="3_vkcr4"]
 [ext_resource type="PackedScene" uid="uid://cwt4047hace0o" path="res://scenes/objects/bomb/bomb.tscn" id="5_wl87c"]
-[ext_resource type="PackedScene" uid="uid://du0e60u1ti6us" path="res://scenes/objects/poly_hollow/poly_hollow.tscn" id="6_rfvmp"]
+[ext_resource type="PackedScene" uid="uid://mhgumrx0davs" path="res://scenes/objects/conveyor_belt.tscn" id="6_rfvmp"]
 [ext_resource type="Texture2D" uid="uid://bb5ri38gqtcsx" path="res://assets/terrain/tutorial_background.png" id="20_bqlqy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ub0e1"]
@@ -377,11 +377,18 @@ texture = ExtResource("20_bqlqy")
 [node name="Bomb" parent="." instance=ExtResource("5_wl87c")]
 position = Vector2(119, -541)
 
-[node name="PolyHollow" parent="." instance=ExtResource("6_rfvmp")]
-position = Vector2(-32, -320)
-rotation = 3.1415927
-spawning = true
+[node name="ConveyorBelt" parent="." instance=ExtResource("6_rfvmp")]
+position = Vector2(-66, -174)
 
-[node name="PolyHollow2" parent="." instance=ExtResource("6_rfvmp")]
-position = Vector2(-160, -416)
-rotation = 6.2831855
+[node name="ConveyorBelt2" parent="." instance=ExtResource("6_rfvmp")]
+position = Vector2(87, -174)
+rotation = 1.5707964
+scale = Vector2(-1, -1)
+
+[node name="ConveyorBelt3" parent="." instance=ExtResource("6_rfvmp")]
+position = Vector2(79, -454)
+scale = Vector2(-1, -1)
+
+[node name="ConveyorBelt4" parent="." instance=ExtResource("6_rfvmp")]
+position = Vector2(-89, -454)
+rotation = 1.5707964

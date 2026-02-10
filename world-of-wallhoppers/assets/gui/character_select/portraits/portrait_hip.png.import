@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cju8ny82qs3oy"
-path="res://.godot/imported/portrait_scoria.png-d022b569e0bf800f9bbf6a68e6b156f6.ctex"
+uid="uid://2utjtrsth1yk"
+path="res://.godot/imported/portrait_hip.png-b694b3a9b2967b99d6f89e28738660ef.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/gui/portrait_scoria.png"
-dest_files=["res://.godot/imported/portrait_scoria.png-d022b569e0bf800f9bbf6a68e6b156f6.ctex"]
+source_file="res://assets/gui/character_select/portraits/portrait_hip.png"
+dest_files=["res://.godot/imported/portrait_hip.png-b694b3a9b2967b99d6f89e28738660ef.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d36lgodtre2iy"
-path="res://.godot/imported/portrait_reign.png-3155ea0ad1cb283627e8d46b5e336a41.ctex"
+uid="uid://d03p2ed2vvsdi"
+path="res://.godot/imported/conveyor_2.png-2e1ed3021ee13bd7687a8f7092e1bddf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/gui/portrait_reign.png"
-dest_files=["res://.godot/imported/portrait_reign.png-3155ea0ad1cb283627e8d46b5e336a41.ctex"]
+source_file="res://assets/sprites/stage_hazards/conveyor_2.png"
+dest_files=["res://.godot/imported/conveyor_2.png-2e1ed3021ee13bd7687a8f7092e1bddf.ctex"]
 
 [params]
 

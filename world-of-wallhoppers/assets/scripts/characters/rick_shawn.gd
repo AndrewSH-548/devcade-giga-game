@@ -45,7 +45,10 @@ func animate_rick(direction: float) -> void:
 	if hitstun:
 		sprite.animation = "hurt"
 	elif is_touching_wall() and not is_on_floor():
-		sprite.animation = "wall-cling"
+		if is_throwing or is_hanging:
+			sprite.animation = "wall-cling-no-magnet"
+		else:
+			sprite.animation = "wall-cling"
 	elif is_throwing:
 		sprite.animation = "throw"
 	elif is_hanging:
@@ -55,7 +58,10 @@ func animate_rick(direction: float) -> void:
 	elif get_position_state() == STATE_IN_AIR:
 		sprite.animation = "fall"
 	elif is_touching_wall() && direction != 0:
-		sprite.animation = "wall-push"
+		if is_throwing or is_hanging:
+			sprite.animation = "wall-push-no-magnet"
+		else:
+			sprite.animation = "wall-push"
 	elif direction != 0:
 		sprite.animation = "run" if Input.is_action_pressed(run_modifier_action) else "walk"
 	else: sprite.animation = "idle"
