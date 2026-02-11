@@ -10,10 +10,11 @@ var facing: int:
 	get(): return 1 if is_facing_right else -1
 
 var origin: Vector2
+var origin_is_rick: bool
 var rick: PlayerRickShawn;
 var rope_offset: Vector2 = Vector2.ZERO
 
-var magnet_speed: float = 5
+var magnet_speed: float = 1024
 var rope_distance_from_rick: float = 10
 var ropes_for_hollows: Array[Line2D] = []
 var closest_rope: Line2D
@@ -25,6 +26,7 @@ func _ready() -> void:
 	rick = get_node("../PlayerRickShawn");
 	origin = rick.magnet_launch_position.global_position
 	closest_rope = rope
+	origin_is_rick = true
 	
 	# Move appropriate objects left if the magnet is thrown left.
 	if (!is_facing_right):
@@ -35,14 +37,21 @@ func _ready() -> void:
 	velocity.x = magnet_speed * facing
 	rope_offset.x = rope_distance_from_rick * facing
 
-func _process(_delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	# Drawing the rope each frame. Stretches between rick's hand and the magnet's back.
 	match rick.state:
 		rick.THROWING:
 			rope.clear_points()
-			rope.add_point(origin - rope.global_position)
+			if origin_is_rick:
+				rope.add_point(rick.magnet_launch_position.global_position - rope.global_position)
+			else:
+				rope.add_point(origin - rope.global_position)
 			rope.add_point(sprite.position - rope_offset)
-			self.position += velocity
+			
+			if not ropes_for_hollows.is_empty():
+				ropes_for_hollows[0].set_point_position(0, rick.magnet_launch_position.global_position - closest_rope.global_position)
+			
+			self.position += velocity * delta
 		rick.PULLING:
 			closest_rope.set_point_position(0, rick.magnet_launch_position.global_position - closest_rope.global_position)
 
@@ -67,6 +76,7 @@ func went_throw_hollow(old_position: Vector2) -> void:
 	
 	closest_rope = pre_hollow_line
 	
+	origin_is_rick = false
 	origin = global_position
 
 func rick_passed_through_hollow(_entered: Hollow, _exited: Hollow) -> void:

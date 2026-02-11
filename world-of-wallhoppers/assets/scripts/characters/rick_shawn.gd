@@ -46,8 +46,12 @@ func _physics_process(delta: float) -> void:
 			process_wallcheck(delta)
 			process_walljump(delta)
 			process_walkrun(delta, direction)
-			process_magnet_throw(delta)
+			if get_position_state() != STATE_HITSTUN:
+				process_magnet_throw(delta)
 			update_flipped()
+			move_and_slide()
+		THROWING:
+			process_gravity(delta)
 			move_and_slide()
 		PULLING:
 			process_pulling(delta)
