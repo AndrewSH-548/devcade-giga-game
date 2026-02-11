@@ -28,6 +28,8 @@ var hitstun: bool = false
 
 var sprite: AnimatedSprite2D
 var is_facing_right: bool = true
+var facing: int:
+	get(): return 1 if is_facing_right else -1
 
 var disable_decceleration: bool = false
 var deccel_disable_timer: Timer = Timer.new()
