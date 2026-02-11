@@ -75,7 +75,7 @@ scene = ExtResource("13_f6tr2")
 name = "Rick Shawn"
 button_texture = SubResource("AtlasTexture_trrfy")
 portrait_texture = ExtResource("15_b1vmq")
-tutorial_ability_description = "By pressing [color=#1E90FF]BLUE[/color] in the air, Rick Shawn can throw a powerful magnet which allows him to swing on terrain. Use [color=#FFA500]LEFT[/color] and [color=#FFA500]RIGHT[/color] to adjust the swing midair"
+tutorial_ability_description = "By pressing [color=#1E90FF]BLUE[/color], Rick Shawn can throw a powerful magnet which pulls him towards terrain. While being pulled, he can exit early by jumping with [color=red]RED[/color]"
 tutorial_ability_showcase = ExtResource("17_b1vmq")
 metadata/_custom_type_script = "uid://c1c364hhlfwr5"
 

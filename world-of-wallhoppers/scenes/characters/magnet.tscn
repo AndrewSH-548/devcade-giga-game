@@ -11,8 +11,8 @@ size = Vector2(22, 25)
 a = Vector2(-0.5, -12)
 b = Vector2(-0.5, 13)
 
-[node name="Magnet" type="StaticBody2D"]
-collision_layer = 128
+[node name="Magnet" type="CharacterBody2D"]
+collision_layer = 512
 script = ExtResource("1_fke5u")
 
 [node name="Line2D" type="Line2D" parent="."]
