@@ -41,6 +41,8 @@ var on_wall_last_frame: bool = false
 
 var hitstun_max_fall_speed_modifier: float = 80.0
 
+var halt_physics: bool = false
+
 var foot_offset: Vector2
 var foot_global_position: Vector2:
 	get(): return global_position + foot_offset
@@ -106,9 +108,9 @@ func process_gravity(delta: float):
 	# Add the gravity.
 	if get_position_state() in [STATE_ON_WALL, STATE_IN_AIR, STATE_HITSTUN]:
 		velocity.y += gravity * delta
-		velocity.y = clamp(velocity.y, -INF, fall_speed);
+		velocity.y = min(velocity.y, fall_speed);
 	if hitstun:
-		velocity.y = clampf(velocity.y, -INF, hitstun_max_fall_speed_modifier)
+		velocity.y = min(velocity.y, hitstun_max_fall_speed_modifier)
 
 func process_jump(_delta: float):
 	

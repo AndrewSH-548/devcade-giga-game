@@ -26,7 +26,7 @@ func on_body_entered(body: Node2D) -> void:
 	if body is Player:
 		if body is PlayerScoria:
 			if body.move_state == PlayerScoria.MoveState.ROLL:
-				body.isFacingRight = facing == 0
+				body.is_facing_right = facing == 0
 				body.spark_progress += body.rebound_spark_amount
 				body.spark_animation.play()
 		body.velocity.y = -720
