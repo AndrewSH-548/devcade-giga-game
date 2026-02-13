@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://cdc75l7j5xgdi"]
 
 [ext_resource type="Script" uid="uid://cxdhilqf3osco" path="res://assets/scripts/objects/elastishroom.gd" id="1_kek5c"]
-[ext_resource type="Texture2D" uid="uid://b6nfaao8r4ekm" path="res://assets/sprites/elastishroom/elastishroom.png" id="1_q3s24"]
+[ext_resource type="Texture2D" uid="uid://b6nfaao8r4ekm" path="res://assets/sprites/stage_hazards/reef/elastishroom.png" id="1_q3s24"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kek5c"]
 atlas = ExtResource("1_q3s24")

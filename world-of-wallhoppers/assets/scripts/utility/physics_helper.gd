@@ -7,7 +7,7 @@ extends Node
 ## If using from foot position, instead of getting the center of the player to a certain height,
 ## an offset is used to make sure the player's foot position gets to a height,
 ## This is useful for insuring characters of different sizes can reach the same platform, for example
-static func force_to_launch_to_height(player: Player, height: float, from_foot_position: bool) -> float:
+static func force_to_launch_to_height(player: Player, height: float, from_foot_position: bool = true) -> float:
 	if height < 0:
 		return 0
 	if from_foot_position:

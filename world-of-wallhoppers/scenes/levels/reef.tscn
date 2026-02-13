@@ -819,7 +819,7 @@ shader_parameter/amplitude = Vector2(1, 1)
 
 [node name="Reef" type="Node2D"]
 script = ExtResource("1_68ikf")
-metadata/_edit_horizontal_guides_ = [-8258.0, -10618.0]
+metadata/_edit_horizontal_guides_ = [-8258.0, -10618.0, -265.0]
 
 [node name="LevelBoundariesDrawer" type="Marker2D" parent="."]
 z_index = 100
