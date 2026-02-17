@@ -5,7 +5,7 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kukqi"]
 shader = ExtResource("2_loim0")
-shader_parameter/amount = 3.0
+shader_parameter/amount = 3.0000001425
 
 [node name="PauseMenu" type="Control"]
 layout_mode = 3

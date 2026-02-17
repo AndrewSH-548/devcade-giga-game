@@ -592,7 +592,7 @@ font_size = 96
 outline_size = 32
 outline_color = Color(0, 0, 0, 1)
 
-[node name="Tutorial" type="Node2D"]
+[node name="Tutorial" type="Node2D" groups=["splitscreen"]]
 script = ExtResource("1_u4f7j")
 progress_color = SubResource("Gradient_4a02d")
 
@@ -940,8 +940,10 @@ texture = ExtResource("20_cyy7t")
 
 [node name="PauseMenu" parent="." instance=ExtResource("21_1x4hw")]
 visible = false
-offset_top = -434.0
-offset_bottom = -434.0
+offset_left = -644.0
+offset_top = -1312.0
+offset_right = 645.0
+offset_bottom = 573.0
 
 [connection signal="timeout" from="TutorialWalk/ChangeTimer" to="TutorialWalk" method="change"]
 [connection signal="timeout" from="TutorialJump/JumpTimer" to="TutorialJump" method="jump"]
