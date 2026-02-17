@@ -1,7 +1,6 @@
 extends Node2D
 class_name MainLevelHeader
 
-@onready var pause_menu = $PauseMenu;
 var paused: bool = false;
 var current_session_info: SessionInfo
 
@@ -29,19 +28,3 @@ func place_level(level: Node2D, parent_node: Node):
 		camera_2.scroll_bounds_top = top_level_bounds
 		camera_2.scroll_bounds_bottom = bottom_level_bounds
 		camera_2.setup()
-
-func set_pause(is_paused: bool):
-	paused = is_paused
-	if paused:
-		pause_menu.show(); 
-		$PauseMenu/CenterContainer/VBoxContainer/Resume.grab_focus(); 
-		Engine.time_scale = 0;
-	else:
-		pause_menu.hide();
-		Engine.time_scale = 1;
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("pause"):
-		# Toggle pause menu
-		set_pause(not paused)

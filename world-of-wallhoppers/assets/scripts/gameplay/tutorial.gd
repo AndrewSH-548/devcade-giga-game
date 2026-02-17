@@ -31,6 +31,7 @@ var tutorial_index: int = 0
 var finished_tutorial: bool = false
 var exit_fill_speed: float = 0.5
 var exit_fill: float = 0.0
+var paused: bool = false;
 
 func _ready() -> void:
 	player.setup_keybinds(1)
