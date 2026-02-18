@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=4 uid="uid://bdnher4a7qii8"]
+[gd_scene load_steps=52 format=4 uid="uid://bdnher4a7qii8"]
 
 [ext_resource type="Texture2D" uid="uid://3dsey0o0pes7" path="res://assets/terrain/tutorial.png" id="1_rnyxf"]
 [ext_resource type="Script" uid="uid://c5oi1mi3kkc6r" path="res://assets/scripts/gameplay/tutorial.gd" id="1_u4f7j"]
@@ -20,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://ca4vonyt4tili" path="res://assets/sprites/tutorial/tutorial_player_pointer.png" id="16_uy53l"]
 [ext_resource type="Script" uid="uid://7te7bt52jftc" path="res://assets/scripts/tutorial/tutorial_player_pointer.gd" id="17_l8ohl"]
 [ext_resource type="Texture2D" uid="uid://bb5ri38gqtcsx" path="res://assets/terrain/tutorial_background.png" id="20_cyy7t"]
+[ext_resource type="PackedScene" uid="uid://dnpilee0jidao" path="res://scenes/gui/pause_menu.tscn" id="21_1x4hw"]
 
 [sub_resource type="Gradient" id="Gradient_4a02d"]
 interpolation_color_space = 2
@@ -591,7 +592,7 @@ font_size = 96
 outline_size = 32
 outline_color = Color(0, 0, 0, 1)
 
-[node name="Tutorial" type="Node2D"]
+[node name="Tutorial" type="Node2D" groups=["splitscreen"]]
 script = ExtResource("1_u4f7j")
 progress_color = SubResource("Gradient_4a02d")
 
@@ -936,6 +937,13 @@ modulate = Color(0.32420284, 0.32420272, 0.32420272, 1)
 z_index = -17
 position = Vector2(0, -448)
 texture = ExtResource("20_cyy7t")
+
+[node name="PauseMenu" parent="." instance=ExtResource("21_1x4hw")]
+visible = false
+offset_left = -644.0
+offset_top = -1312.0
+offset_right = 645.0
+offset_bottom = 573.0
 
 [connection signal="timeout" from="TutorialWalk/ChangeTimer" to="TutorialWalk" method="change"]
 [connection signal="timeout" from="TutorialJump/JumpTimer" to="TutorialJump" method="jump"]
