@@ -37,7 +37,7 @@ func setup(session_info: SessionInfo) -> void:
 
 func _on_singleplayer_timer_timeout() -> void:
 	TimeManager.do_time_trial_time_tick(0.1);
-	singleplayer_timer_label.text = str(TimeManager.current_time_trial_time);
+	singleplayer_timer_label.text = "Time: " + str(TimeManager.current_time_trial_time);
 
 func header_scene() -> String:
 	return HEADER_SINGLEPLAYER_PATH
