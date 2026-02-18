@@ -32,7 +32,7 @@ func _ready() -> void:
 		winner_multiplayer.text = winner_label.text
 		winner_label.visible = false
 	else:
-		winner_label.text = "Congradulations!"
+		winner_label.text = "Congratulations!"
 		winner_multiplayer.visible = false
 	
 	get_tree().get_first_node_in_group("LevelHeader").queue_free()
@@ -54,7 +54,7 @@ func _ready() -> void:
 		name_input_panel.focus_behavior_recursive = Control.FOCUS_BEHAVIOR_DISABLED
 		
 		results.alignment = BoxContainer.ALIGNMENT_CENTER
-		results_other.position.y += 625
+		results_other.position.y -= 625
 		
 		top_spacer.hide()
 		results.show()
@@ -62,6 +62,7 @@ func _ready() -> void:
 		name_input_panel.hide()
 		leaderboard_title.hide()
 		leaderboard.hide()
+		placement_title.hide()
 		
 		level_select_button.grab_focus()
 	
