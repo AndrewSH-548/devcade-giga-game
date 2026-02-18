@@ -20,22 +20,30 @@ class SingleRecord:
 		return time < other.time
 	func slower_than(other: SingleRecord) -> bool:
 		return time > other.time
+	func equals(other: SingleRecord) -> bool:
+		return (
+			player == other.player and 
+			character == other.character and 
+			time == other.time
+		)
 
-func add_record(player: StringName, character: StringName, time: float):
+static func make_record(player: StringName, character: StringName, time: float) -> LevelLeaderboard.SingleRecord:
 	var record: SingleRecord = SingleRecord.new()
 	
 	record.player = player
 	record.character = character
 	record.time = time
 	
+	return record
+
+func add_record(record: LevelLeaderboard.SingleRecord) -> void:
 	var index: int = -1
 	for r in records:
 		index += 1
-		if r.player == player and r.character == character:
-			if r.time > time:
+		if r.player == record.player and r.character == record.character:
+			if r.time > record.time:
 				records[index] = record
 			return
-	
 	records.append(record)
 
 func update_all() -> void:
@@ -62,6 +70,25 @@ func string_best_records(max_amount: int = 3) -> String:
 func string_record(record: SingleRecord):
 	var time: String = str(record.time).pad_decimals(1)
 	return (record.player + ': ' + record.character).rpad(20 - time.length()) + time
+
+func get_placement_best(record: SingleRecord) -> int:
+	var placement: int = 0
+	for other_record in best_records:
+		placement += 1
+		if record.equals(other_record):
+			return placement
+	assert(false, "Could not find record in best records. Did you mean to use get_placement() instead?")
+	return 0
+
+func get_placement_best_from_time(time: float) -> int:
+	var placement: int = 0
+	for other_record in best_records:
+		placement += 1
+		if time < other_record.time:
+			return placement
+	if placement == 0:
+		placement = 1
+	return placement
 
 func calculate_only_best():
 	best_records = []

@@ -4,22 +4,17 @@
 [ext_resource type="Script" uid="uid://crcgkcps1kjso" path="res://assets/scripts/Guis/records/single_record_display.gd" id="1_q2ree"]
 [ext_resource type="FontFile" uid="uid://cp02w5mdy0pdm" path="res://assets/fonts/BelanidiSerif-Regular.otf" id="2_q2ree"]
 [ext_resource type="FontFile" uid="uid://dqb2dmcm5fa81" path="res://assets/fonts/Better VCR 9.0.1.ttf" id="3_j3mgp"]
+[ext_resource type="Texture2D" uid="uid://cbpfskf2jthji" path="res://assets/sprites/characters/hip.png" id="4_j3mgp"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_qcp0s"]
 font = ExtResource("2_q2ree")
 font_size = 72
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_j44tj"]
+atlas = ExtResource("4_j3mgp")
+region = Rect2(8, 2, 40, 40)
+
 [sub_resource type="LabelSettings" id="LabelSettings_3vslu"]
-font = ExtResource("3_j3mgp")
-font_size = 40
-
-[sub_resource type="StyleBoxLine" id="StyleBoxLine_r38tj"]
-color = Color(1, 1, 1, 0.4627451)
-grow_begin = -128.0
-grow_end = -128.0
-thickness = 2
-
-[sub_resource type="LabelSettings" id="LabelSettings_pfy3u"]
 font = ExtResource("3_j3mgp")
 font_size = 40
 
@@ -29,8 +24,18 @@ font_size = 48
 
 [node name="Record" type="Panel"]
 custom_minimum_size = Vector2(0, 128)
-offset_right = 1081.0
-offset_bottom = 128.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -540.5
+offset_top = -64.0
+offset_right = 540.5
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("1_o55hc")
 script = ExtResource("1_q2ree")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
@@ -51,10 +56,16 @@ label_settings = SubResource("LabelSettings_qcp0s")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Character" type="TextureRect" parent="HBoxContainer"]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+texture = SubResource("AtlasTexture_j44tj")
+stretch_mode = 4
+
 [node name="NamePanel" type="Panel" parent="HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_stretch_ratio = 3.0
+size_flags_stretch_ratio = 2.43
 theme_override_styles/panel = ExtResource("1_o55hc")
 
 [node name="NameVBox" type="VBoxContainer" parent="HBoxContainer/NamePanel"]
@@ -71,17 +82,6 @@ layout_mode = 2
 size_flags_vertical = 1
 text = "Cool Player Guy"
 label_settings = SubResource("LabelSettings_3vslu")
-horizontal_alignment = 1
-
-[node name="Separator" type="HSeparator" parent="HBoxContainer/NamePanel/NameVBox"]
-layout_mode = 2
-theme_override_styles/separator = SubResource("StyleBoxLine_r38tj")
-
-[node name="Character" type="Label" parent="HBoxContainer/NamePanel/NameVBox"]
-layout_mode = 2
-size_flags_vertical = 1
-text = "Scoria"
-label_settings = SubResource("LabelSettings_pfy3u")
 horizontal_alignment = 1
 
 [node name="TimePanel" type="Panel" parent="HBoxContainer"]

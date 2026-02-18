@@ -1,10 +1,11 @@
 extends Control
 class_name WinScene
 
-@onready var time_label: Label = $Results/TimeLabel
+@onready var placement_title: Label = $Results/PlacementTitle
 @onready var leaderboard_title: Label = $Results/LeaderboardTitle
 @onready var leaderboard: VBoxContainer = $Results/BoardMargin/Leaderboard
 @onready var results: VBoxContainer = $Results
+@onready var results_other: Control = $ResultsOther
 
 @onready var name_input: Button = $"Results/Name Input"
 @onready var player_name_label: Label = $EnterRecord/NameInputContainer/Panel/PlayerNameLabel
@@ -14,13 +15,18 @@ class_name WinScene
 @onready var winner_label: Label = $EnterRecord/Winner
 @onready var winner_multiplayer: Label = $Results/WinnerMultiplayer
 
-@onready var level_select_button: Button = $"Results/Level Select"
+@onready var level_select_button: Button = $"ResultsOther/Level Select"
+@onready var quit_button: Button = $ResultsOther/Quit
+
+@onready var placement: Control = $Results/Placement
+@onready var top_spacer: HSeparator = $Results/TopSpacer
 
 var session_info: SessionInfo
 var player_name = "";
 
 func _ready() -> void:
 	session_info = SessionInfo.pass_along
+	
 	if session_info.is_multiplayer:
 		winner_label.text = "Player " + str(session_info.winner) + " Won!"
 		winner_multiplayer.text = winner_label.text
@@ -28,31 +34,46 @@ func _ready() -> void:
 	else:
 		winner_label.text = "Congradulations!"
 		winner_multiplayer.visible = false
+	
 	get_tree().get_first_node_in_group("LevelHeader").queue_free()
+	
 	if not session_info.is_multiplayer:
+		
 		results.focus_behavior_recursive = Control.FOCUS_BEHAVIOR_DISABLED
 		name_input_panel.focus_behavior_recursive = Control.FOCUS_BEHAVIOR_INHERITED
-		results.visible = false
-		name_input_panel.visible = true
+		
+		results.hide()
+		results_other.hide()
+		name_input_panel.show()
+		placement.hide()
+		
 		d_key.grab_focus()
-		name_input_panel.show();
+		name_input_panel.show()
 	else:
 		results.focus_behavior_recursive = Control.FOCUS_BEHAVIOR_INHERITED
 		name_input_panel.focus_behavior_recursive = Control.FOCUS_BEHAVIOR_DISABLED
-		results.visible = true
-		name_input_panel.visible = false
-		time_label.visible = false
-		leaderboard_title.visible = false
-		leaderboard.visible = false
+		
+		results.alignment = BoxContainer.ALIGNMENT_CENTER
+		results_other.position.y += 625
+		
+		top_spacer.hide()
+		results.show()
+		results_other.show()
+		name_input_panel.hide()
+		leaderboard_title.hide()
+		leaderboard.hide()
+		
 		level_select_button.grab_focus()
-	time_label.text = "Completion Time: " + str(TimeManager.get_time_trial_time())
+	
 	leaderboard_title.text = "Leaderboard"
 	player_name = ""
 
-func save_time_to_leaderboard() -> void:
-	time_label.text = "Completion Time: " + str(TimeManager.current_time_trial_time)
-	TimeManager.save_current_time(player_name, session_info)
+func save_time_to_leaderboard() -> LevelLeaderboard.SingleRecord:
+	if player_name == "":
+		return null
+	var record: LevelLeaderboard.SingleRecord = TimeManager.save_and_get_current_record(player_name, session_info)
 	TimeManager.reset_timer()
+	return record
 
 func display_current_leaderboard() -> void:
 	var current_leaderboard: LevelLeaderboard = TimeManager.leaderboards[session_info.level_info.name]
@@ -61,12 +82,12 @@ func display_current_leaderboard() -> void:
 	for record: LevelLeaderboard.SingleRecord in current_leaderboard.best_records:
 		# Break if the count is more than 3
 		count += 1
-		if(count > 3):
+		if(count > 5):
 			break
 		# Display the record
 		var display: SingleRecordDispay = LevelLeaderboard.SINGLE_RECORD_DISPLAY.instantiate()
 		leaderboard.add_child(display)
-		display.setup(record)
+		display.setup(record, count)
 
 func _physics_process(_delta: float) -> void:
 	player_name_label.text = player_name if player_name != "" else "Enter Name..."
@@ -86,15 +107,39 @@ func _on_name_input_pressed() -> void:
 	name_input_panel.show();
 
 func _on_submit_button_pressed() -> void:
+	
 	name_input.text = player_name
-	name_input_panel.hide();
+	name_input_panel.hide()
+	
 	results.focus_behavior_recursive = Control.FOCUS_BEHAVIOR_INHERITED
 	name_input_panel.focus_behavior_recursive = Control.FOCUS_BEHAVIOR_DISABLED
-	results.visible = true
-	name_input_panel.visible = false
+	
+	results.show()
+	results_other.show()
+	placement.show()
+	name_input_panel.hide()
+	
 	level_select_button.grab_focus()
-	save_time_to_leaderboard() # submit leaderboard on name_input_pressed
+	
+	var current_time: float = TimeManager.current_time_trial_time
+	var saved_record: LevelLeaderboard.SingleRecord = save_time_to_leaderboard()
 	display_current_leaderboard()
+	
+	var record: SingleRecordDispay = LevelLeaderboard.SINGLE_RECORD_DISPLAY.instantiate()
+	var level_leaderboard: LevelLeaderboard = TimeManager.leaderboards[session_info.level_info.name]
+	var placement_number: int = 0
+	
+	if saved_record == null:
+		saved_record = LevelLeaderboard.SingleRecord.new()
+		saved_record.player = "You"
+		saved_record.character = session_info.characters[0].name
+		saved_record.time = current_time
+		placement_number = level_leaderboard.get_placement_best_from_time(current_time)
+	else:
+		placement_number = level_leaderboard.get_placement_best(saved_record)
+	
+	placement.add_child(record)
+	record.setup(saved_record, placement_number)
 
 func _on_a_pressed() -> void:
 	player_name += "A";
