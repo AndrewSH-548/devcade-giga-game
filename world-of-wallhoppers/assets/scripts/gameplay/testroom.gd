@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var player:Player = $PlayerHip
+@export var player: Player
 
 func _ready() -> void:
 	player.setup_keybinds(1);

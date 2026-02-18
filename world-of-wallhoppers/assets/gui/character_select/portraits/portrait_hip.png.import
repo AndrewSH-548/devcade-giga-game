@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d36lgodtre2iy"
-path="res://.godot/imported/portrait_reign.png-3155ea0ad1cb283627e8d46b5e336a41.ctex"
+uid="uid://2utjtrsth1yk"
+path="res://.godot/imported/portrait_hip.png-b694b3a9b2967b99d6f89e28738660ef.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/gui/portrait_reign.png"
-dest_files=["res://.godot/imported/portrait_reign.png-3155ea0ad1cb283627e8d46b5e336a41.ctex"]
+source_file="res://assets/gui/character_select/portraits/portrait_hip.png"
+dest_files=["res://.godot/imported/portrait_hip.png-b694b3a9b2967b99d6f89e28738660ef.ctex"]
 
 [params]
 

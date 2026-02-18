@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cju8ny82qs3oy"
-path="res://.godot/imported/portrait_scoria.png-d022b569e0bf800f9bbf6a68e6b156f6.ctex"
+uid="uid://ckdscj120qikp"
+path="res://.godot/imported/portrait-rick-shawn.png-ff7a70104833f89e6ade7bd6be2af536.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/gui/portrait_scoria.png"
-dest_files=["res://.godot/imported/portrait_scoria.png-d022b569e0bf800f9bbf6a68e6b156f6.ctex"]
+source_file="res://assets/gui/character_select/portraits/portrait-rick-shawn.png"
+dest_files=["res://.godot/imported/portrait-rick-shawn.png-ff7a70104833f89e6ade7bd6be2af536.ctex"]
 
 [params]
 

@@ -1,0 +1,35 @@
+[gd_scene load_steps=7 format=3 uid="uid://qwrpemvgqpeu"]
+
+[ext_resource type="Script" uid="uid://bpk8uc2ixro6t" path="res://assets/scripts/objects/bubble.gd" id="1_nm3e4"]
+[ext_resource type="Shader" uid="uid://c6le1jabrh4n8" path="res://assets/shaders/bubble_effects.gdshader" id="1_odphv"]
+[ext_resource type="Texture2D" uid="uid://caueemcc8ihag" path="res://assets/sprites/bubble/bubble.png" id="1_sx6t3"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nm3e4"]
+shader = ExtResource("1_odphv")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nm3e4"]
+size = Vector2(90, 90)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_odphv"]
+radius = 45.01111
+
+[node name="Bubble" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 17
+script = ExtResource("1_nm3e4")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+z_index = 1
+material = SubResource("ShaderMaterial_nm3e4")
+texture = ExtResource("1_sx6t3")
+
+[node name="CollisionShape" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_nm3e4")
+
+[node name="Trigger" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="TriggerShape" type="CollisionShape2D" parent="Trigger"]
+shape = SubResource("CircleShape2D_odphv")
+debug_color = Color(0.54209214, 0.40684804, 1, 0.41960785)

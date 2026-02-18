@@ -26,10 +26,10 @@ func on_body_entered(body: Node2D) -> void:
 	if body is Player:
 		if body is PlayerScoria:
 			if body.move_state == PlayerScoria.MoveState.ROLL:
-				body.isFacingRight = facing == 0
+				body.is_facing_right = facing == 0
 				body.spark_progress += body.rebound_spark_amount
 				body.spark_animation.play()
-		body.velocity.y = -720
+		body.velocity.y = Phys.force_to_launch_to_height(body, 250)
 		body.velocity.x = 500 * get_facing_sign()
 		body.move_and_collide(Vector2(0, -4))
 		body.disable_walk_input_timed(0.1)

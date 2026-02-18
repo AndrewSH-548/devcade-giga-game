@@ -1,7 +1,7 @@
 extends Node
 
 # I've added a version number, so old versions of the save data won't be used.
-const save_path = "user://leaderboards_ver_001.save"; ## The path to the file the leaderboards data will be saved to
+const save_path = "user://leaderboards_ver_002.save"; ## The path to the file the leaderboards data will be saved to
 
 var leaderboards: Dictionary[StringName, LevelLeaderboard] = {}
 

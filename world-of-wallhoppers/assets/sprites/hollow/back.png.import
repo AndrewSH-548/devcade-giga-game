@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://2utjtrsth1yk"
-path="res://.godot/imported/portrait_hip.png-d01f38009bc9a45c3e35e5cf1d7cb2c5.ctex"
+uid="uid://o83uurko0lr1"
+path="res://.godot/imported/back.png-9ab5f38cbbe0492ad9a7c416d4fe421b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/gui/portrait_hip.png"
-dest_files=["res://.godot/imported/portrait_hip.png-d01f38009bc9a45c3e35e5cf1d7cb2c5.ctex"]
+source_file="res://assets/sprites/hollow/back.png"
+dest_files=["res://.godot/imported/back.png-9ab5f38cbbe0492ad9a7c416d4fe421b.ctex"]
 
 [params]
 

@@ -5,10 +5,17 @@ var crouch_action: String = " "
 var is_wall_climbing: bool = false
 
 @export var climb_speed: float
+@onready var foot_position_marker: Marker2D = $FootPositionMarker
+
+func _ready() -> void:
+	foot_offset = foot_position_marker.global_position - global_position
+	super._ready()
 
 func _physics_process(delta: float) -> void:
 	var header = get_tree().get_first_node_in_group("LevelHeader")
 	if header != null and header.paused:
+		return
+	if halt_physics:
 		return
 	
 	# Set is_wall_climbing to true if Wallsliding and the run button is pressed

@@ -103,6 +103,9 @@ one_shot = true
 [node name="ReDash" type="Timer" parent="Timers"]
 one_shot = true
 
+[node name="FootPositionMarker" type="Marker2D" parent="."]
+position = Vector2(0, 42)
+
 [connection signal="timeout" from="Timers/Dash" to="." method="dash_timer_end"]
 [connection signal="timeout" from="Timers/Rebound" to="." method="rebound_timer_end"]
 [connection signal="timeout" from="Timers/Flight" to="." method="flight_timer_end"]

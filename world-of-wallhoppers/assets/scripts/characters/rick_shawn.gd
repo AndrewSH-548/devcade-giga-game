@@ -2,48 +2,110 @@ extends Player
 class_name PlayerRickShawn
 
 @export var magnet: PackedScene;
+@export var pull_speed: float = 1024.0
+@export var boost_upward_strength: float = 256.0
 
-var is_throwing: bool = false;
-var is_hanging: bool = false;
-var magnet_ref: StaticBody2D;
-var rope_distance: float;
-var hanging_position: Vector2;
+@onready var facing_flipper: Node2D = $Flipper
+@onready var foot_position_marker: Marker2D = $FootPositionMarker
+@onready var magnet_launch_position: Marker2D = $Flipper/MagnetLaunchPosition
+
+enum {
+	PLATFORMING,
+	THROWING,
+	PULLING,
+}
+
+var magnet_ref: CharacterBody2D
+var rope_distance: float
+var hanging_position: Vector2
+var state: int = PLATFORMING
+
+func _ready() -> void:
+	foot_offset = foot_position_marker.global_position - global_position
+	super._ready()
 
 func _physics_process(delta: float) -> void:
 	hanging_position = global_position + Vector2(28 * (1 if is_facing_right else -1), -50) 
 	var header = get_tree().get_first_node_in_group("LevelHeader")
 	if header != null and header.paused:
 		return
+	if halt_physics:
+		if state == THROWING or state == PULLING:
+			enter_platform_state()
+		return
+	
+	# Flip the flipper based on the player's facing direction
+	# This is used to position the throw point for the magnet correctly
+	if is_facing_right:
+		facing_flipper.scale.x = 1.0
+	else:
+		facing_flipper.scale.x = -1.0
 	
 	var direction := get_horizontal_movement()
 	
-	# Hanging state is entirely separate from standard movement code, so none of it is processed.
-	if (is_hanging): process_hanging(delta, direction);
-	else:
-		process_gravity(delta)
-		process_jump(delta)
-		process_wallcheck(delta)
-		process_walljump(delta)
-		process_walkrun(delta, direction)
-		process_magnet_throw(delta)
-		update_flipped()
+	match state:
+		PLATFORMING:
+			process_gravity(delta)
+			process_jump(delta)
+			process_wallcheck(delta)
+			process_walljump(delta)
+			process_walkrun(delta, direction)
+			if get_position_state() != STATE_HITSTUN:
+				process_magnet_throw(delta)
+			update_flipped()
+			move_and_slide()
+		THROWING:
+			process_gravity(delta)
+			move_and_slide()
+		PULLING:
+			process_pulling(delta)
+			var collision: KinematicCollision2D = move_and_collide(velocity * delta)
+			# If Rick collided with a wall, or he was hit...
+			if collision != null or get_position_state() == STATE_HITSTUN or Input.is_action_just_pressed(jump_action):
+				enter_platform_state()
 	
-	# Letting go of the input or landing deletes the magnet. 
-	if (magnet_ref != null and (Input.is_action_just_released(run_modifier_action) or is_on_floor())):
-		delete_magnet();
 	animate_rick(direction)
 
-	move_and_slide()
-	
+# Upon input, the magnet is spawned and thrown in the current direction of Rick. Requires being airborne.
+# A reference variable allows the magnet to be modified without having to search for it.
+func process_magnet_throw(_delta: float) -> void: 
+	if Input.is_action_just_pressed(run_modifier_action) and not is_touching_wall():
+		enter_throw_state()
+
+func enter_throw_state() -> void:
+	state = THROWING
+	var magnet_object: CharacterBody2D = magnet.instantiate()
+	magnet_object.global_position = magnet_launch_position.global_position
+	magnet_object.is_facing_right = is_facing_right
+	magnet_ref = magnet_object
+	add_sibling(magnet_object)
+
+func enter_pull_state() -> void:
+	state = PULLING
+
+func enter_platform_state() -> void:
+	if magnet_ref != null:
+		magnet_ref.queue_free()
+		magnet_ref = null
+	state = PLATFORMING
+	if Input.is_action_just_pressed(jump_action):
+		velocity.y = -boost_upward_strength
+
+func process_pulling(_delta: float) -> void:
+	velocity.y = 0
+	velocity.x = facing * pull_speed
+
+func on_passed_through_hollow(entered: Hollow, exited: Hollow) -> void:
+	if magnet_ref != null:
+		magnet_ref.rick_passed_through_hollow(entered, exited)
+
 func animate_rick(direction: float) -> void:
 	if hitstun:
 		sprite.animation = "hurt"
 	elif is_touching_wall() and not is_on_floor():
 		sprite.animation = "wall-cling"
-	elif is_throwing:
+	elif state == THROWING:
 		sprite.animation = "throw"
-	elif is_hanging:
-		sprite.animation = "hang"
 	elif velocity.y < 0:
 		sprite.animation = "jump"
 	elif get_position_state() == STATE_IN_AIR:
@@ -55,46 +117,6 @@ func animate_rick(direction: float) -> void:
 	else: sprite.animation = "idle"
 	
 	sprite.flip_h = !is_facing_right;
-
-# Upon input, the magnet is spawned and thrown in the current direction of Rick. Requires being airborne.
-# A reference variable allows the magnet to be modified without having to search for it.
-func process_magnet_throw(_delta: float) -> void: 
-	if (not is_throwing and Input.is_action_just_pressed(run_modifier_action) and not is_on_floor() and not is_touching_wall()):
-		is_throwing = true;
-		var magnet_object: StaticBody2D = magnet.instantiate();
-		magnet_object.global_position = global_position;
-		magnet_object.is_facing_right = is_facing_right;
-		magnet_ref = magnet_object;
-		add_sibling(magnet_object)
-
-func process_hanging(delta: float, direction: float) -> void:
-	# Function-specific gravity statement
-	velocity.y += gravity * delta;
-	
-	var to_magnet: Vector2 = magnet_ref.global_position - global_position;
-	var current_distance: float = to_magnet.length();
-	
-	# Allow the player to move while hanging.
-	if (direction != 0):
-		var swing_force: float = direction * delta * 600;
-		velocity.x += swing_force;
-	
-	# Tension ensures the player hangs off the magnet at the distance it starts with.
-	if (current_distance > rope_distance):
-		var overflow_distance: float = current_distance - rope_distance;
-		var tension: Vector2 = to_magnet.normalized() * overflow_distance * 400;
-		velocity += tension * delta;
-	
-	# Walljumping deletes the magnet.
-	if (Input.is_action_just_pressed(jump_action) && is_on_wall()):
-		do_walljump();
-		delete_magnet();
-
-func delete_magnet() -> void:
-	magnet_ref.queue_free(); 
-	magnet_ref = null;
-	is_throwing = false;
-	is_hanging = false;
 
 func setup_keybinds(player_number: int) -> void:
 	var player_input: String = "p" + str(player_number) + "_"
