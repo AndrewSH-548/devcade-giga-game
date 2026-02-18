@@ -16,13 +16,19 @@ var thumbnail_mode: bool = false
 var player_1_backgrounds: Array[Parallax2D]
 var player_2_backgrounds: Array[Parallax2D]
 
+var level_header: LevelHeaderBase
+
 ## This node should be setup with all parallax layers as direct children.
 
 func _ready() -> void:
 	add_to_group("BackgroundsManager")
-	player_1_camera = get_tree().get_first_node_in_group("Player1Camera")
-	player_2_camera = get_tree().get_first_node_in_group("Player2Camera")
-		
+	level_header = get_tree().get_first_node_in_group("LevelHeader")
+	
+	if level_header != null:
+		player_1_camera = level_header.camera_player_1
+		if level_header.current_session_info.is_multiplayer:
+			player_2_camera = level_header.camera_player_2
+	
 	for background in get_children():
 		setup_background(background)
 	for extra in extra_background_holders:

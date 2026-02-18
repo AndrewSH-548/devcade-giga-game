@@ -14,16 +14,10 @@ var visibility_state_p1: int = BELOW
 var visibility_state_p2: int = BELOW
 
 func _ready() -> void:
-	
-	add_to_group("BackgroundsManager")
-	player_1_camera = get_tree().get_first_node_in_group("Player1Camera")
-	player_2_camera = get_tree().get_first_node_in_group("Player2Camera")
-	
 	for background in below_backgrounds:
 		background.set_meta(&"VisibleType", &"BELOW")
 	for background in above_backgrounds:
 		background.set_meta(&"VisibleType", &"ABOVE")
-	
 	super._ready()
 
 func _process(delta: float) -> void:

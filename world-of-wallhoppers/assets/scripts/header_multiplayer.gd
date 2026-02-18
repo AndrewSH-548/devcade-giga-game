@@ -1,28 +1,25 @@
-extends MainLevelHeader
+class_name LevelHeaderMultiplayer
+extends LevelHeaderBase
 
-var viewportP1
-var viewportP2
-var staticCamera
-var cameraP1
-var cameraP2
-var levelScene
+const HEADER_MULTIPLAYER_PATH: String = "res://scenes/header_multiplayer.tscn"
 
-# Called when the node enters the scene tree for the first time.
+@onready var viewport_player_1: SubViewport = $HBoxContainer/ViewportContainerP1/SubViewport
+@onready var viewport_player_2: SubViewport = $HBoxContainer/ViewportContainerP2/SubViewport
+
+@onready var camera_player_1: PlayerCamera = $HBoxContainer/ViewportContainerP1/SubViewport/CameraP1
+@onready var camera_player_2: PlayerCamera = $HBoxContainer/ViewportContainerP2/SubViewport/CameraP2
+
 func _ready() -> void:
-	viewportP1 = $HBoxContainer/ViewportContainerP1/SubViewport
-	viewportP2 = $HBoxContainer/ViewportContainerP2/SubViewport
-	
-	viewportP2.world_2d = viewportP1.world_2d
-	
+	viewport_player_2.world_2d = viewport_player_1.world_2d
 	Engine.time_scale = 1
-	pass # Replace with function body.
 
 func setup(session_info: SessionInfo):
+	pause_menu.level_header = self
+	pause_menu.button_restart.show()
 	current_session_info = session_info
-	var parent_node: Node = $HBoxContainer/ViewportContainerP1/SubViewport
 	
 	var level: Node2D = session_info.level_info.scene.instantiate()
-	place_level(level, parent_node)
+	place_level(level, viewport_player_1)
 	level = level as Level
 	
 	var players: Array[Node2D]
@@ -32,7 +29,7 @@ func setup(session_info: SessionInfo):
 		var player: Player = character.scene.instantiate()
 		
 		players.append(player)
-		parent_node.add_child(player)
+		viewport_player_1.add_child(player)
 		
 		var player_number: int = players.size()
 		
@@ -44,5 +41,8 @@ func setup(session_info: SessionInfo):
 	players[0].global_position = level.player_spawn_1.global_position
 	players[1].global_position = level.player_spawn_2.global_position
 	
-	get_tree().get_first_node_in_group("Player1Camera").target = players[0]
-	get_tree().get_first_node_in_group("Player2Camera").target = players[1]
+	camera_player_1.target = players[0]
+	camera_player_2.target = players[1]
+
+func header_scene() -> String:
+	return HEADER_MULTIPLAYER_PATH

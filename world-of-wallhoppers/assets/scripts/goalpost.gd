@@ -14,7 +14,7 @@ func _on_goal_1_body_entered(body: Node2D) -> void:
 		end_game(2)
 
 func end_game(player_number: int) -> void:
-	var level_header: MainLevelHeader = get_tree().get_first_node_in_group("LevelHeader") as MainLevelHeader
+	var level_header: LevelHeaderBase = get_tree().get_first_node_in_group("LevelHeader") as LevelHeaderBase
 	var session_info: SessionInfo = level_header.current_session_info
 	SessionInfo.pass_along = session_info
 	session_info.winner = player_number

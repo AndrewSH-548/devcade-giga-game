@@ -33,8 +33,6 @@ project/assembly_name="House of Wallhoppers"
 
 [global_group]
 
-Player1Camera=""
-Player2Camera=""
 player1="The Player 1"
 player2="The Player 2"
 ThumbnailMarker=""

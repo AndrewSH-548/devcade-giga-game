@@ -168,7 +168,7 @@ func start_game():
 		session_info.characters.append(player_choices[player_index])
 	
 	# Get either the singleplayer or multiplayer header...
-	var header: MainLevelHeader = get_level_header()
+	var header: LevelHeaderBase = get_level_header()
 	# Load it
 	get_tree().root.add_child(header)
 	# Pass the level header the session info
@@ -275,7 +275,7 @@ func process_button_updating() -> void:
 			button.selected[player_index] = button == player_focused[player_index]
 
 # Gets either the singleplayer or multiplayer header, depending on mode
-func get_level_header() -> MainLevelHeader:
+func get_level_header() -> LevelHeaderBase:
 	if session_info.is_multiplayer: return HEADER_MULTIPLAYER.instantiate()
 	else: return HEADER_SINGLEPLAYER.instantiate()
 

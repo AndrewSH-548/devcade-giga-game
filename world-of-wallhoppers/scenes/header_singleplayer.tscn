@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://d3p48lwnrft2t" path="res://assets/scripts/camera.gd" id="2_5f7m3"]
 [ext_resource type="PackedScene" uid="uid://dnpilee0jidao" path="res://scenes/gui/pause_menu.tscn" id="4_i2xlj"]
 
-[node name="Node2D" type="Node2D" groups=["splitscreen"]]
+[node name="Node2D" type="Node2D" groups=["LevelHeader"]]
 script = ExtResource("1_bp0l3")
 
 [node name="SingleplayerTimerLabel" type="Label" parent="."]
@@ -31,7 +31,7 @@ handle_input_locally = false
 size = Vector2i(540, 1920)
 render_target_update_mode = 4
 
-[node name="Camera2D" type="Camera2D" parent="ViewportContainerP1/SubViewport" groups=["Player1Camera"]]
+[node name="Camera2D" type="Camera2D" parent="ViewportContainerP1/SubViewport"]
 offset = Vector2(136, 0)
 position_smoothing_enabled = true
 script = ExtResource("2_5f7m3")
