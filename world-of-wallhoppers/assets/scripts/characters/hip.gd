@@ -7,7 +7,7 @@ var is_wall_climbing: bool = false
 @export var climb_speed: float
 
 func _physics_process(delta: float) -> void:
-	var header = get_tree().get_first_node_in_group("splitscreen")
+	var header = get_tree().get_first_node_in_group("LevelHeader")
 	if header != null and header.paused:
 		return
 	

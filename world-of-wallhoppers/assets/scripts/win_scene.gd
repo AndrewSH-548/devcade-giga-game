@@ -28,7 +28,7 @@ func _ready() -> void:
 	else:
 		winner_label.text = "Congradulations!"
 		winner_multiplayer.visible = false
-	get_tree().get_first_node_in_group("splitscreen").queue_free()
+	get_tree().get_first_node_in_group("LevelHeader").queue_free()
 	if not session_info.is_multiplayer:
 		results.focus_behavior_recursive = Control.FOCUS_BEHAVIOR_DISABLED
 		name_input_panel.focus_behavior_recursive = Control.FOCUS_BEHAVIOR_INHERITED

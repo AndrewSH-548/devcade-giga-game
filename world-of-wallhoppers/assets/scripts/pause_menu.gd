@@ -23,8 +23,8 @@ func _on_resume_pressed() -> void:
 
 func _on_quit_pressed() -> void:
 	Engine.time_scale = 1
-	var splitscreen_node = get_parent().get_tree().get_first_node_in_group("splitscreen");
-	if (splitscreen_node != null):
-		splitscreen_node.queue_free();
+	var level_header = get_parent().get_tree().get_first_node_in_group("LevelHeader");
+	if (level_header != null):
+		level_header.queue_free();
 	get_tree().change_scene_to_file("res://scenes/start_screen.tscn")
 	

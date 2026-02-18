@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://ch4mextx4xjgt"]
 
-[ext_resource type="Script" uid="uid://c0egamewutafp" path="res://assets/scripts/splitscreen.gd" id="1_lcxr0"]
+[ext_resource type="Script" uid="uid://c0egamewutafp" path="res://assets/scripts/header_multiplayer.gd" id="1_lcxr0"]
 [ext_resource type="Script" uid="uid://d3p48lwnrft2t" path="res://assets/scripts/camera.gd" id="4_c2woe"]
 [ext_resource type="PackedScene" uid="uid://dnpilee0jidao" path="res://scenes/gui/pause_menu.tscn" id="5_ylv1f"]
 

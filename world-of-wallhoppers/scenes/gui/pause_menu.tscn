@@ -42,6 +42,12 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 64
 text = "Resume"
 
+[node name="Restart" type="Button" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(640, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Restart"
+
 [node name="Quit" type="Button" parent="CenterContainer/VBoxContainer"]
 custom_minimum_size = Vector2(640, 0)
 layout_mode = 2
