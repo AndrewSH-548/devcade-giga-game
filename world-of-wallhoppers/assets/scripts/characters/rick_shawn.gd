@@ -29,6 +29,10 @@ func _physics_process(delta: float) -> void:
 	var header = get_tree().get_first_node_in_group("splitscreen")
 	if header != null and header.paused:
 		return
+	if halt_physics:
+		if state == THROWING or state == PULLING:
+			enter_platform_state()
+		return
 	
 	# Flip the flipper based on the player's facing direction
 	# This is used to position the throw point for the magnet correctly

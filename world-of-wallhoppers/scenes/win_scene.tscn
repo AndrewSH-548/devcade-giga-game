@@ -54,7 +54,7 @@ grow_vertical = 2
 [node name="WinnerMultiplayer" type="Label" parent="Results"]
 custom_minimum_size = Vector2(1100, 400)
 layout_mode = 2
-text = "Congradulations!"
+text = "Congratulations!"
 label_settings = SubResource("LabelSettings_ecqtd")
 horizontal_alignment = 1
 vertical_alignment = 1

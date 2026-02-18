@@ -41,6 +41,8 @@ var on_wall_last_frame: bool = false
 
 var hitstun_max_fall_speed_modifier: float = 80.0
 
+var halt_physics: bool = false
+
 var foot_offset: Vector2
 var foot_global_position: Vector2:
 	get(): return global_position + foot_offset
@@ -106,9 +108,9 @@ func process_gravity(delta: float):
 	# Add the gravity.
 	if get_position_state() in [STATE_ON_WALL, STATE_IN_AIR, STATE_HITSTUN]:
 		velocity.y += gravity * delta
-		velocity.y = clamp(velocity.y, -INF, fall_speed);
+		velocity.y = min(velocity.y, fall_speed);
 	if hitstun:
-		velocity.y = clampf(velocity.y, -INF, hitstun_max_fall_speed_modifier)
+		velocity.y = min(velocity.y, hitstun_max_fall_speed_modifier)
 
 func process_jump(_delta: float):
 	
@@ -172,7 +174,15 @@ func process_walkrun(_delta: float, direction: float) -> void:
 				if abs(velocity.x) < air_speed:
 					velocity.x += direction * air_accel
 				else:
-					velocity.x = move_toward(velocity.x, direction*air_speed, air_accel)
+					var target_speed: float = direction * air_speed
+					if disable_decceleration:
+						# Skip air decceration if decceleration is disabled
+						if direction == 0.0:
+							return
+						# Don't lower air speed if decceleration is disabled and direction is the same as the direction of velocity
+						if sign(target_speed) == sign(velocity.x) and abs(velocity.x) > abs(target_speed):
+							return
+					velocity.x = move_toward(velocity.x, target_speed, air_accel)
 
 func process_wallcheck(_delta: float) -> void:
 	

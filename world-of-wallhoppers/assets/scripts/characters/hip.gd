@@ -15,6 +15,8 @@ func _physics_process(delta: float) -> void:
 	var header = get_tree().get_first_node_in_group("splitscreen")
 	if header != null and header.paused:
 		return
+	if halt_physics:
+		return
 	
 	# Set is_wall_climbing to true if Wallsliding and the run button is pressed
 	is_wall_climbing = Input.is_action_pressed(run_modifier_action) and get_position_state() == STATE_ON_WALL
