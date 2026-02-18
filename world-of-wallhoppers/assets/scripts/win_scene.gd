@@ -3,7 +3,7 @@ class_name WinScene
 
 @onready var time_label: Label = $Results/TimeLabel
 @onready var leaderboard_title: Label = $Results/LeaderboardTitle
-@onready var leaderboard: Label = $Results/Leaderboard
+@onready var leaderboard: VBoxContainer = $Results/BoardMargin/Leaderboard
 @onready var results: VBoxContainer = $Results
 
 @onready var name_input: Button = $"Results/Name Input"
@@ -45,17 +45,28 @@ func _ready() -> void:
 		leaderboard_title.visible = false
 		leaderboard.visible = false
 		level_select_button.grab_focus()
-	time_label.text = "Completion Time: " + str(TimeManager.get_time_trial_time());
-	leaderboard_title.text = "Leaderboard";
-	leaderboard.text = "";
+	time_label.text = "Completion Time: " + str(TimeManager.get_time_trial_time())
+	leaderboard_title.text = "Leaderboard"
 	player_name = ""
 
 func save_time_to_leaderboard() -> void:
-	time_label.text = "Completion Time: " + str(TimeManager.current_time_trial_time);
+	time_label.text = "Completion Time: " + str(TimeManager.current_time_trial_time)
 	TimeManager.save_current_time(player_name, session_info)
 	TimeManager.reset_timer()
+
+func display_current_leaderboard() -> void:
 	var current_leaderboard: LevelLeaderboard = TimeManager.leaderboards[session_info.level_info.name]
-	leaderboard.text = current_leaderboard.string_best_records()
+	# Setup the first 3 records
+	var count: int = 0
+	for record: LevelLeaderboard.SingleRecord in current_leaderboard.best_records:
+		# Break if the count is more than 3
+		count += 1
+		if(count > 3):
+			break
+		# Display the record
+		var display: SingleRecordDispay = LevelLeaderboard.SINGLE_RECORD_DISPLAY.instantiate()
+		leaderboard.add_child(display)
+		display.setup(record)
 
 func _physics_process(_delta: float) -> void:
 	player_name_label.text = player_name if player_name != "" else "Enter Name..."
@@ -82,7 +93,8 @@ func _on_submit_button_pressed() -> void:
 	results.visible = true
 	name_input_panel.visible = false
 	level_select_button.grab_focus()
-	save_time_to_leaderboard(); # submit leaderboard on name_input_pressed
+	save_time_to_leaderboard() # submit leaderboard on name_input_pressed
+	display_current_leaderboard()
 
 func _on_a_pressed() -> void:
 	player_name += "A";

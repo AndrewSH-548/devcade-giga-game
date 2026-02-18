@@ -6,6 +6,8 @@ class_name LevelLeaderboard
 @export var records: Array[SingleRecord] = []
 @export var best_records: Array[SingleRecord] = []
 
+const SINGLE_RECORD_DISPLAY = preload("uid://dm8xvhnd7y5yw")
+
 func _init(level_name: StringName) -> void:
 	level = level_name
 
@@ -59,7 +61,7 @@ func string_best_records(max_amount: int = 3) -> String:
 ## Returns a string representation of a "SingleRecord" object
 func string_record(record: SingleRecord):
 	var time: String = str(record.time).pad_decimals(1)
-	return (record.player + ': ' + record.character).rpad(30 - time.length()) + time
+	return (record.player + ': ' + record.character).rpad(20 - time.length()) + time
 
 func calculate_only_best():
 	best_records = []
