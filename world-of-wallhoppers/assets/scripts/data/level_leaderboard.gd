@@ -77,7 +77,7 @@ func get_placement_best(record: SingleRecord) -> int:
 		placement += 1
 		if record.equals(other_record):
 			return placement
-	assert(false, "Could not find record in best records. Did you mean to use get_placement() instead?")
+	assert(false, "Could not find record in best records")
 	return 0
 
 func get_placement_best_from_time(time: float) -> int:

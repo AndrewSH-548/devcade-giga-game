@@ -28,7 +28,7 @@ func save_and_get_current_record(player_name: String, session_info: SessionInfo)
 	var character: StringName = session_info.characters[0].name
 	assert(level in leaderboards.keys())
 	var leaderboard: LevelLeaderboard = leaderboards.get(level)
-	var record: LevelLeaderboard.SingleRecord = leaderboard.make_record(player_name, character, current_time_trial_time)
+	var record: LevelLeaderboard.SingleRecord = LevelLeaderboard.make_record(player_name, character, current_time_trial_time)
 	leaderboard.add_record(record)
 	leaderboard.update_all()
 	save_leaderboards_to_disk()
