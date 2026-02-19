@@ -19,6 +19,7 @@ class SetupResult:
 		_level = level
 
 func common_setup(session_info: SessionInfo, main_viewport: SubViewport) -> SetupResult:
+	assert(session_info != null, "SessionInfo cannot be null. Make sure that the SessionInfo object is being passed correctly to the LevelHeader!")
 	# Reset time scale, in case it was slowed down when entering
 	Engine.time_scale = 1
 	
@@ -55,7 +56,7 @@ func common_setup_players(session_info: SessionInfo, main_viewport: SubViewport,
 			push_error("More than 1 character was loaded in singleplayer! Other players have been skipped, but this error should not be ignored!")
 			break
 		
-		assert(character != null, "The Level Header was loaded with a null Character!\nThis likely means a Character Select Dial was setup incorrectly, or a non-setup Character was chosen!")
+		assert(character != null, "The Level Header was loaded with a null Character!\nThis likely means game_definitions.tres was setup incorrectly or game_definitions.tres is corrupted / messed up (which can sometimes happens with git merging)")
 		var player: Player = character.scene.instantiate()
 		
 		players.append(player)
@@ -78,7 +79,6 @@ func common_setup_players(session_info: SessionInfo, main_viewport: SubViewport,
 
 func place_level(level: Level, parent_node: Node):
 	assert(level is Level, "Level must be a \"Level\" node! Make sure the top node of the level has the \"Level\" Script!")
-	assert(current_session_info != null, "SessionInfo is null! place_level() must be called from setup() in the Level Header!")
 	
 	# Add the level to the level parent
 	parent_node.add_child(level)
