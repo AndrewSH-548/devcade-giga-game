@@ -822,7 +822,7 @@ script = ExtResource("1_68ikf")
 metadata/_edit_horizontal_guides_ = [-8258.0, -10618.0, -265.0]
 
 [node name="LevelCenter" type="Marker2D" parent="."]
-position = Vector2(576, 1248)
+position = Vector2(592, 1248)
 
 [node name="LevelBoundariesDrawer" type="Marker2D" parent="."]
 z_index = 100
@@ -836,7 +836,7 @@ position = Vector2(416, 1331)
 position = Vector2(388, -767)
 
 [node name="PlayerSpawn1" type="Marker2D" parent="."]
-position = Vector2(592, 1704)
+position = Vector2(681, -8938)
 
 [node name="PlayerSpawn2" type="Marker2D" parent="."]
 position = Vector2(589, 1703)
@@ -1418,25 +1418,26 @@ offset_bottom = -8252.0
 [node name="AboveSky" type="Parallax2D" parent="BackgroundsManager/Above"]
 scale = Vector2(2, 1)
 scroll_scale = Vector2(0, 0)
-scroll_offset = Vector2(7120, 8083)
+scroll_offset = Vector2(-131, -1878)
 repeat_size = Vector2(260, 1920)
 
 [node name="Sprite2D" type="Sprite2D" parent="BackgroundsManager/Above/AboveSky"]
-position = Vector2(1084, 14553)
+position = Vector2(1084, 14310)
 texture = ExtResource("44_6hyix")
 
 [node name="Sprite2D2" type="Sprite2D" parent="BackgroundsManager/Above/AboveSky"]
-position = Vector2(1084, 14480)
+position = Vector2(1084, 12422)
+scale = Vector2(1, 2.873958)
 texture = ExtResource("44_6hyix")
 
 [node name="Sprite2D3" type="Sprite2D" parent="BackgroundsManager/Above/AboveSky"]
-position = Vector2(1084, 14374)
+position = Vector2(1084, 14131)
 texture = ExtResource("44_6hyix")
 
 [node name="AboveSky2" type="Parallax2D" parent="BackgroundsManager/Above"]
 scale = Vector2(2, 1)
 scroll_scale = Vector2(0, 0)
-scroll_offset = Vector2(2046, 0)
+scroll_offset = Vector2(2075, -361)
 
 [node name="Sprite2D" type="Sprite2D" parent="BackgroundsManager/Above/AboveSky2"]
 visible = false
@@ -1444,67 +1445,85 @@ position = Vector2(-40, 12706)
 scale = Vector2(0.5, 1)
 
 [node name="Sprite2D2" type="Sprite2D" parent="BackgroundsManager/Above/AboveSky2"]
-position = Vector2(7.5, 12428)
+position = Vector2(-108.5, 11394)
 scale = Vector2(0.5, 1)
 texture = ExtResource("46_qd2yw")
 
 [node name="Sprite2D3" type="Sprite2D" parent="BackgroundsManager/Above/AboveSky2"]
 modulate = Color(0.9172942, 0.8833932, 0.8498029, 1)
-position = Vector2(7.5, 12290)
+position = Vector2(-108.5, 11256)
 scale = Vector2(0.5, 1)
 texture = ExtResource("46_qd2yw")
 
 [node name="Sprite2D4" type="Sprite2D" parent="BackgroundsManager/Above/AboveSky2"]
 modulate = Color(0.9246198, 0.8558391, 0.79848176, 1)
-position = Vector2(7.5, 12134)
+position = Vector2(-108.5, 11100)
 scale = Vector2(0.5, 1)
+texture = ExtResource("46_qd2yw")
+
+[node name="Sprite2D5" type="Sprite2D" parent="BackgroundsManager/Above/AboveSky2"]
+position = Vector2(158.4, 11394)
+scale = Vector2(-0.52, 1)
+texture = ExtResource("46_qd2yw")
+
+[node name="Sprite2D6" type="Sprite2D" parent="BackgroundsManager/Above/AboveSky2"]
+modulate = Color(0.9172942, 0.8833932, 0.8498029, 1)
+position = Vector2(158.4, 11256)
+scale = Vector2(-0.52, 1)
+texture = ExtResource("46_qd2yw")
+
+[node name="Sprite2D7" type="Sprite2D" parent="BackgroundsManager/Above/AboveSky2"]
+modulate = Color(0.9246198, 0.8558391, 0.79848176, 1)
+position = Vector2(158.4, 11100)
+scale = Vector2(-0.52, 1)
 texture = ExtResource("46_qd2yw")
 
 [node name="AboveCity3" type="Parallax2D" parent="BackgroundsManager/Above"]
 scroll_scale = Vector2(0.15, 0.15)
-scroll_offset = Vector2(2084, 7622)
+scroll_offset = Vector2(2113, 7261)
 
 [node name="ColorRect" type="ColorRect" parent="BackgroundsManager/Above/AboveCity3"]
-visible = false
-offset_left = -287.0
-offset_top = -380.0
-offset_right = 448.0
-offset_bottom = 317.0
+offset_left = -352.0
+offset_top = 129.0
+offset_right = 383.0
+offset_bottom = 1794.0
 color = Color(0.56078434, 0.42352942, 0.3882353, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="BackgroundsManager/Above/AboveCity3"]
-position = Vector2(-20, -686)
+position = Vector2(-15.500004, -760)
+scale = Vector2(1.1907408, 1.0770833)
 texture = SubResource("AtlasTexture_qd2yw")
 
 [node name="AboveCity2" type="Parallax2D" parent="BackgroundsManager/Above"]
 scroll_scale = Vector2(0.2, 0.2)
-scroll_offset = Vector2(2046, 7968)
+scroll_offset = Vector2(2075, 7607)
 
 [node name="ColorRect" type="ColorRect" parent="BackgroundsManager/Above/AboveCity2"]
-offset_left = -287.0
+offset_left = -335.0
 offset_top = -380.0
 offset_right = 448.0
 offset_bottom = 317.0
 color = Color(0.7372549, 0.6509804, 0.5921569, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="BackgroundsManager/Above/AboveCity2"]
-position = Vector2(12, -1324)
+position = Vector2(30.999989, -1324)
+scale = Vector2(1.2111111, 1)
 texture = SubResource("AtlasTexture_3cngt")
 
 [node name="AboveCity" type="Parallax2D" parent="BackgroundsManager/Above"]
-visible = false
 scroll_scale = Vector2(0.25, 0.25)
-scroll_offset = Vector2(2046, 7712)
+scroll_offset = Vector2(2046, 7572)
 
 [node name="ColorRect" type="ColorRect" parent="BackgroundsManager/Above/AboveCity"]
 offset_left = -287.0
 offset_top = -380.0
 offset_right = 448.0
-offset_bottom = 317.0
+offset_bottom = 1919.0
 color = Color(0.7764706, 0.72156864, 0.6392157, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="BackgroundsManager/Above/AboveCity"]
-position = Vector2(12, -1324)
+position = Vector2(35.999985, -1324)
+scale = Vector2(1.2962965, 1)
 texture = SubResource("AtlasTexture_6iw0u")
 
 [node name="ColorRect2" type="ColorRect" parent="BackgroundsManager/Above/AboveCity"]
@@ -1515,20 +1534,19 @@ offset_bottom = 1717.0
 color = Color(0.07058824, 0.18431373, 0.32941177, 0.32156864)
 
 [node name="AboveDune" type="Parallax2D" parent="BackgroundsManager/Above"]
-visible = false
 scroll_scale = Vector2(0.3, 0.3)
-scroll_offset = Vector2(2046, 7254)
+scroll_offset = Vector2(2075, 6893)
 
 [node name="Sprite2D" type="Sprite2D" parent="BackgroundsManager/Above/AboveDune"]
-position = Vector2(12, -1324)
+position = Vector2(13.499975, -1324)
+scale = Vector2(1.2277777, 1)
 texture = ExtResource("43_11pdi")
 
 [node name="ColorRect" type="ColorRect" parent="BackgroundsManager/Above/AboveDune"]
-visible = false
 offset_left = -346.0
 offset_top = -418.0
 offset_right = 389.0
-offset_bottom = 279.0
+offset_bottom = 1395.0
 color = Color(0.9254902, 0.7372549, 0.43529412, 1)
 
 [node name="ColorRect2" type="ColorRect" parent="BackgroundsManager"]
