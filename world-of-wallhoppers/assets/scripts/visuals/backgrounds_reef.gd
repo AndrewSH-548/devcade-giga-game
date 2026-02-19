@@ -21,7 +21,8 @@ func _ready() -> void:
 	super._ready()
 
 func _process(delta: float) -> void:
-	if thumbnail_mode: return
+	if level_header == null:
+		return
 	update_states()
 	update_visibilities()
 	super._process(delta)

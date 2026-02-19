@@ -115,7 +115,6 @@ func setup_level_preview() -> void:
 	# Get the backgrounds manager
 	var backgrounds_manager = get_child_in_group(level, "BackgroundsManager")
 	if backgrounds_manager != null:
-		backgrounds_manager.thumbnail_mode = true
 		backgrounds_manager.process_mode = Node.PROCESS_MODE_ALWAYS
 
 # Imports the "random_level_visuals.tscn" scene instead of an actual level

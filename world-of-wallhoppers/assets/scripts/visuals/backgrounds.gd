@@ -10,7 +10,6 @@ const SCROLL_SCALE_GLOBAL: float = 0.5
 
 var player_1_camera: Camera2D
 var player_2_camera: Camera2D
-var thumbnail_mode: bool = false
 
 # Used to differentiate the backgrounds
 var player_1_backgrounds: Array[Parallax2D]
@@ -59,7 +58,7 @@ func manual_set_camera_position(camera_position: Vector2):
 		background.screen_offset.y = camera_position.y
 
 func _process(_delta: float) -> void:
-	if thumbnail_mode or level_header == null: return
+	if level_header == null: return
 	for background in player_1_backgrounds:
 		if background.scroll_scale.y == 0.0:
 			background.screen_offset.y = player_1_camera.get_screen_center_position().y

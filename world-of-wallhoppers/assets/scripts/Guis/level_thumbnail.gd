@@ -25,7 +25,6 @@ func setup(level_info: LevelDefinition):
 	# Get the backgrounds manager
 	backgrounds_manager = get_child_in_group(level, "BackgroundsManager")
 	if backgrounds_manager != null:
-		backgrounds_manager.thumbnail_mode = true
 		backgrounds_manager.process_mode = Node.PROCESS_MODE_ALWAYS
 	# Get the thumbnail marker, and if there is none return
 	thumbnail_marker = get_child_in_group(level, "ThumbnailMarker")
