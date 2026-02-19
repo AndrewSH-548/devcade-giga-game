@@ -35,6 +35,10 @@ func setup(session_info: SessionInfo) -> void:
 	
 	character.global_position = level.player_spawn_1.global_position
 
+func restart() -> void:
+	singleplayer_timer.stop()
+	super.restart()
+
 func _on_singleplayer_timer_timeout() -> void:
 	TimeManager.do_time_trial_time_tick(0.1);
 	singleplayer_timer_label.text = "Time: " + str(TimeManager.current_time_trial_time);
