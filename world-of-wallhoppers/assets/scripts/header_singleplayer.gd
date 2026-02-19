@@ -10,30 +10,21 @@ const HEADER_SINGLEPLAYER_PATH: String = "res://scenes/header_singleplayer.tscn"
 @onready var camera_player_1: PlayerCamera = $ViewportContainerP1/SubViewport/Camera2D
 
 func setup(session_info: SessionInfo) -> void:
-	pause_menu.level_header = self
-	pause_menu.button_restart.show()
-	TimeManager.current_time_trial_time = 0; # reset the singleplayer timer
+	# Perform common setup
+	var viewport: Node = $ViewportContainerP1/SubViewport
+	var result: LevelHeaderBase.SetupResult = common_setup(session_info, viewport)
+	# Get the first (and only) player in the result
+	var player: Player = result.players[0]
 	
-	current_session_info = session_info
-	var parent_node: Node = $ViewportContainerP1/SubViewport
+	# Reset time trial timer
+	TimeManager.reset_timer()
 	
-	var level: Node2D = session_info.level_info.scene.instantiate()
-	place_level(level, parent_node)
-	level = level as Level
+	# Setup camera targets
+	camera_player_1.target = player
 	
-	assert(session_info.characters[0] != null, "The Level Header was loaded with a null Character!\nThis likely means a Character Select Dial was setup incorrectly!")
-	
-	var character: Player = session_info.characters[0].scene.instantiate()
-	parent_node.add_child(character)
-	character.add_to_group("player1")
-	character.setup_keybinds(1)
-	
-	camera_player_1.target = character
-	
+	# Set border colors
 	$BorderLeft.color = session_info.level_info.border_color
 	$BorderRight.color = session_info.level_info.border_color
-	
-	character.global_position = level.player_spawn_1.global_position
 
 func restart() -> void:
 	singleplayer_timer.stop()

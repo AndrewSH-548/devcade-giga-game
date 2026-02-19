@@ -10,6 +10,72 @@ var current_session_info: SessionInfo
 @abstract func header_scene() -> String
 @abstract func setup(session_info: SessionInfo) -> void
 
+# Used to return all needed information form the common setup function
+class SetupResult:
+	var players: Array[Player]
+	var level: Level
+	func _init(_players: Array[Player], _level: Level) -> void:
+		players = _players
+		_level = level
+
+func common_setup(session_info: SessionInfo, main_viewport: SubViewport) -> SetupResult:
+	# Reset time scale, in case it was slowed down when entering
+	Engine.time_scale = 1
+	
+	# Store the current session info
+	current_session_info = session_info
+	# Setup the pause menu
+	pause_menu.level_header = self
+	# Hide the restart button in multiplayer
+	pause_menu.button_restart.visible = not session_info.is_multiplayer
+	
+	# Setup and get the level
+	var level: Level = common_setup_level(session_info, main_viewport)
+	
+	# Setup and get the players
+	var players: Array[Player] = common_setup_players(session_info, main_viewport, level)
+	
+	# Create and return a SetupResult with the needed information
+	return SetupResult.new(players, level)
+
+func common_setup_level(session_info: SessionInfo, main_viewport: SubViewport) -> Level:
+	var level: Node2D = session_info.level_info.scene.instantiate()
+	place_level(level, main_viewport)
+	return level
+
+func common_setup_players(session_info: SessionInfo, main_viewport: SubViewport, level: Level) -> Array[Player]:
+	var players: Array[Player]
+	
+	for character in session_info.characters:
+		
+		# Break if in singleplayer and a second character would be set up
+		# Also prints an error message, as this should never happen, but
+		# is not a fatal error
+		if not session_info.is_multiplayer and players.size() + 1 >= 2:
+			push_error("More than 1 character was loaded in singleplayer! Other players have been skipped, but this error should not be ignored!")
+			break
+		
+		assert(character != null, "The Level Header was loaded with a null Character!\nThis likely means a Character Select Dial was setup incorrectly, or a non-setup Character was chosen!")
+		var player: Player = character.scene.instantiate()
+		
+		players.append(player)
+		main_viewport.add_child(player)
+		
+		var player_number: int = players.size()
+		
+		player.add_to_group("player" + str(player_number))
+		player.setup_keybinds(player_number)
+		
+		assert(player_number <= 2, "There currently cannot be more than 2 players, but the players array is larger than 2!\nIf this has changed, please remove this assert() statement!")
+		
+		# Set the player's position to the correct player spawn
+		match player_number:
+			1: player.global_position = level.player_spawn_1.global_position
+			2: player.global_position = level.player_spawn_2.global_position
+	
+	# Return the players
+	return players
+
 func place_level(level: Node2D, parent_node: Node):
 	assert(level is Level, "Level must be a \"Level\" node! Make sure the top node of the level has the \"Level\" Script!")
 	assert(current_session_info != null, "SessionInfo is null! place_level() must be called from setup() in the Level Header!")
