@@ -26,7 +26,6 @@ func _ready() -> void:
 ## parameter [b]player_number[/b]: the player number that hit/entered a goal area
 func end_game(player_number: int) -> void:
 	game_finish.emit(player_number)
-	print("player_number " + str(player_number) + " won");
 	# TODO: add implientation code so that the game ends and reports nessisary data in the future
 	get_tree().change_scene_to_file("res://scenes/win_scene.tscn"); 
 

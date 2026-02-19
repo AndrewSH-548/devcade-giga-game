@@ -52,6 +52,5 @@ func unload_and_switch(new_root: Node):
 		if buttons[i] == get_viewport().gui_get_focus_owner():
 			index = i
 	last_selected = index
-	print(last_selected)
 	get_tree().root.add_child(new_root)
 	queue_free()
