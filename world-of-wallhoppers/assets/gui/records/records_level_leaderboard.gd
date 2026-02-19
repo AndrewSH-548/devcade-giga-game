@@ -14,6 +14,9 @@ func setup(level: LevelDefinition):
 	
 	for record in board.best_records:
 		count += 1
+		if count > 1000:
+			# No more than 1000 scores can be shown
+			break
 		var display: SingleRecordDispay = LevelLeaderboard.SINGLE_RECORD_DISPLAY.instantiate()
 		records.add_child(display)
 		
