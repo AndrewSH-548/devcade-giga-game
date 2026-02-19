@@ -11,8 +11,11 @@ size = Vector2(32, 32)
 size = Vector2(24, 16)
 
 [node name="FallenRock" type="CharacterBody2D"]
+z_index = -2
 collision_layer = 160
+collision_priority = 0.5
 velocity = Vector2(0, 256)
+safe_margin = 2.0
 script = ExtResource("1_u4yol")
 
 [node name="TextureRect" type="NinePatchRect" parent="."]
