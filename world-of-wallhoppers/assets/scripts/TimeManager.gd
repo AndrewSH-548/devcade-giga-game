@@ -46,7 +46,6 @@ func load_leaderboards_from_disk(): ## load all leaderboards from "res://save_da
 		var file = FileAccess.open(save_path, FileAccess.READ)
 		# Set leaderboards from save data
 		var possible_leaderboards = file.get_var()
-		print("POSSIBLE: ", possible_leaderboards)
 		if possible_leaderboards == null:
 			possible_leaderboards = {}
 		packed_leaderboards = possible_leaderboards
