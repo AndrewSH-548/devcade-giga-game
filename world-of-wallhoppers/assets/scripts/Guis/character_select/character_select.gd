@@ -109,7 +109,9 @@ func setup_level_preview() -> void:
 	var level: Level = session_info.level_info.scene.instantiate()
 	level.process_mode = Node.PROCESS_MODE_DISABLED
 	level_preview_viewport.add_child(level)
-	level.global_position = Vector2(240, 297.0)
+	var camera: Camera2D = Camera2D.new()
+	level_preview_viewport.add_child(camera)
+	camera.global_position.x = level.level_center.global_position.x
 	# Get the backgrounds manager
 	var backgrounds_manager = get_child_in_group(level, "BackgroundsManager")
 	if backgrounds_manager != null:

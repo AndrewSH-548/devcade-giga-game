@@ -76,33 +76,33 @@ func common_setup_players(session_info: SessionInfo, main_viewport: SubViewport,
 	# Return the players
 	return players
 
-func place_level(level: Node2D, parent_node: Node):
+func place_level(level: Level, parent_node: Node):
 	assert(level is Level, "Level must be a \"Level\" node! Make sure the top node of the level has the \"Level\" Script!")
 	assert(current_session_info != null, "SessionInfo is null! place_level() must be called from setup() in the Level Header!")
-	level = level as Level
-	level.global_position = Vector2(132.0, 297.0)
+	
+	# Add the level to the level parent
 	parent_node.add_child(level)
 	
-	var camera_1: PlayerCamera = null
-	var camera_2: PlayerCamera = null
-	
+	# Get all the cameras in the level
+	var cameras: Array[Camera2D] = []
 	if not current_session_info.is_multiplayer:
-		camera_1 = $ViewportContainerP1/SubViewport/Camera2D
+		cameras = [ $ViewportContainerP1/SubViewport/Camera2D ]
 	else:
-		camera_1 = $HBoxContainer/ViewportContainerP1/SubViewport/CameraP1
-		camera_2 = $HBoxContainer/ViewportContainerP2/SubViewport/CameraP2
+		cameras = [
+			$HBoxContainer/ViewportContainerP1/SubViewport/CameraP1,
+			$HBoxContainer/ViewportContainerP2/SubViewport/CameraP2,
+		]
 	
+	# Get the top and bottom bounds of the level
 	var top_level_bounds: float = level.get_node("ScrollStopTop").global_position.y
 	var bottom_level_bounds: float = level.get_node("ScrollStopBottom").global_position.y
 	
-	camera_1.scroll_bounds_top = top_level_bounds
-	camera_1.scroll_bounds_bottom = bottom_level_bounds
-	camera_1.setup()
-	
-	if camera_2 != null:
-		camera_2.scroll_bounds_top = top_level_bounds
-		camera_2.scroll_bounds_bottom = bottom_level_bounds
-		camera_2.setup()
+	# Setup all cameras with the correct settings
+	for camera in cameras:
+		camera.global_position.x = level.level_center.global_position.x
+		camera.scroll_bounds_top = top_level_bounds
+		camera.scroll_bounds_bottom = bottom_level_bounds
+		camera.setup()
 
 func restart() -> void:
 	var parent: Node = get_parent()
