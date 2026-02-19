@@ -78,11 +78,14 @@ grow_vertical = 2
 alignment = 1
 
 [node name="Player" type="Label" parent="HBoxContainer/NamePanel/NameVBox"]
+custom_minimum_size = Vector2(0, 104)
 layout_mode = 2
-size_flags_vertical = 1
-text = "Cool Player Guy"
+size_flags_vertical = 6
+text = "Cool Player Guy Person #121331 the 5rd Ruler of Atlatisia the Sea Empire"
 label_settings = SubResource("LabelSettings_3vslu")
 horizontal_alignment = 1
+autowrap_mode = 3
+text_overrun_behavior = 5
 
 [node name="TimePanel" type="Panel" parent="HBoxContainer"]
 layout_mode = 2

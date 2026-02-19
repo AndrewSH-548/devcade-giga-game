@@ -4,7 +4,7 @@ extends Control
 @onready var back: Button = $VBoxContainer/TopContainer/Back
 @onready var scroll_bar: ScrollContainer = $VBoxContainer/VScrollBar
 
-const RECORDS_LEVEL_LEADERBOARD = preload("res://scenes/gui/records/RecordsLevelLeaderboard.tscn")
+const RECORDS_LEVEL_LEADERBOARD = preload("res://scenes/gui/records/records_level_leaderboard.tscn")
 
 func _ready() -> void:
 	assert(not Definitions.levels.is_empty(), "No Levels found in Definitions! Is assets/data/game_definitions.tres corrupted, deleted or changed?")
@@ -16,9 +16,9 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	if(Input.is_action_just_pressed("p1_right") || Input.is_action_just_pressed("p2_right")):
-		next_tab();
+		next_tab()
 	elif(Input.is_action_just_pressed("p1_left") || Input.is_action_just_pressed("p2_left")):
-		prev_tab();
+		prev_tab()
 	if(Input.is_action_just_pressed("ui_cancel") || Input.is_action_just_pressed("p2_cancel")):
 		load_start_screen()
 

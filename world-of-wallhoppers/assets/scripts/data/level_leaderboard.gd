@@ -6,7 +6,7 @@ class_name LevelLeaderboard
 @export var records: Array[SingleRecord] = []
 @export var best_records: Array[SingleRecord] = []
 
-const SINGLE_RECORD_DISPLAY = preload("uid://dm8xvhnd7y5yw")
+const SINGLE_RECORD_DISPLAY = preload("res://scenes/gui/records/single_record.tscn")
 
 func _init(level_name: StringName) -> void:
 	level = level_name

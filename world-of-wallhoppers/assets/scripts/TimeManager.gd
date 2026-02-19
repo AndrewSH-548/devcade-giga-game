@@ -58,7 +58,9 @@ func load_leaderboards_from_disk(): ## load all leaderboards from "res://save_da
 		if packed_leaderboards.get(level.name) == null:
 			packed_leaderboards[level.name] = { "level": level.name, "records": []}
 	for level_leaderboard in packed_leaderboards.values():
-		leaderboards[level_leaderboard["level"]] = LevelLeaderboard.from_packed(level_leaderboard)
+		var leaderboard: LevelLeaderboard = LevelLeaderboard.from_packed(level_leaderboard)
+		leaderboards[level_leaderboard["level"]] = leaderboard
+		leaderboard.update_all()
 
 func clear_all_data(): ## clear leaderboard data from "res://save_data/leaderboards.save"
 	pass
