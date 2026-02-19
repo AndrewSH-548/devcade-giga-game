@@ -1,8 +1,8 @@
 [gd_scene load_steps=29 format=4 uid="uid://x8jwn1lvobhp"]
 
-[ext_resource type="PackedScene" uid="uid://dhjkvej1d1nic" path="res://scenes/editor/tumbnail_marker.tscn" id="1_32bmu"]
+[ext_resource type="PackedScene" uid="uid://dhjkvej1d1nic" path="res://scenes/editor/thumbnail_marker.tscn" id="1_32bmu"]
 [ext_resource type="Script" uid="uid://s7cnbl0ouo3x" path="res://assets/scripts/gameplay/level.gd" id="1_qxh53"]
-[ext_resource type="PackedScene" uid="uid://dw2fas0otmqd1" path="res://scenes/editor/tumbnail_destination.tscn" id="2_wlvd4"]
+[ext_resource type="PackedScene" uid="uid://dw2fas0otmqd1" path="res://scenes/editor/thumbnail_destination.tscn" id="2_wlvd4"]
 [ext_resource type="Texture2D" uid="uid://bixals20gxij8" path="res://assets/terrain/jungle.png" id="3_kvv85"]
 [ext_resource type="Texture2D" uid="uid://bsdat36v00g25" path="res://assets/terrain/swamp/swamp_tree_tiles.png" id="5_d7cwp"]
 [ext_resource type="Texture2D" uid="uid://cgc6cyf0f10u5" path="res://assets/terrain/swamp/thorns.png" id="6_f1kd2"]

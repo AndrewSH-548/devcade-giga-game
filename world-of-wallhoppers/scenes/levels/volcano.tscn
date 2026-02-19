@@ -1,8 +1,8 @@
 [gd_scene load_steps=35 format=4 uid="uid://bnajm44iu8kfe"]
 
 [ext_resource type="Script" uid="uid://s7cnbl0ouo3x" path="res://assets/scripts/gameplay/level.gd" id="1_gtp7y"]
-[ext_resource type="PackedScene" uid="uid://dhjkvej1d1nic" path="res://scenes/editor/tumbnail_marker.tscn" id="1_v6ges"]
-[ext_resource type="PackedScene" uid="uid://dw2fas0otmqd1" path="res://scenes/editor/tumbnail_destination.tscn" id="2_gtp7y"]
+[ext_resource type="PackedScene" uid="uid://dhjkvej1d1nic" path="res://scenes/editor/thumbnail_marker.tscn" id="1_v6ges"]
+[ext_resource type="PackedScene" uid="uid://dw2fas0otmqd1" path="res://scenes/editor/thumbnail_destination.tscn" id="2_gtp7y"]
 [ext_resource type="Texture2D" uid="uid://ulefhw2axopx" path="res://assets/terrain/volcano.png" id="3_nwbnw"]
 [ext_resource type="PackedScene" uid="uid://bpos0rprc0elm" path="res://scenes/goalpost.tscn" id="4_u4yvl"]
 [ext_resource type="Script" uid="uid://iembhyk5nlq" path="res://assets/scripts/visuals/backgrounds.gd" id="7_e4ep7"]

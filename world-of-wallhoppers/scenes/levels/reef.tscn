@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://s7cnbl0ouo3x" path="res://assets/scripts/gameplay/level.gd" id="1_68ikf"]
 [ext_resource type="Shader" uid="uid://c8oh1ksd7urfj" path="res://scenes/levels/testing_coral.gdshader" id="1_e6kjs"]
-[ext_resource type="PackedScene" uid="uid://dhjkvej1d1nic" path="res://scenes/editor/tumbnail_marker.tscn" id="1_ho7ke"]
-[ext_resource type="PackedScene" uid="uid://dw2fas0otmqd1" path="res://scenes/editor/tumbnail_destination.tscn" id="2_68ikf"]
+[ext_resource type="PackedScene" uid="uid://dhjkvej1d1nic" path="res://scenes/editor/thumbnail_marker.tscn" id="1_ho7ke"]
+[ext_resource type="PackedScene" uid="uid://dw2fas0otmqd1" path="res://scenes/editor/thumbnail_destination.tscn" id="2_68ikf"]
 [ext_resource type="Script" uid="uid://dr0wyqfd3aina" path="res://assets/scripts/editor/level_boundaries_drawer.gd" id="2_520pj"]
 [ext_resource type="Texture2D" uid="uid://jg8y14rd0nyq" path="res://assets/shaders/noise/Marble 11 - 256x256.png" id="2_v15yl"]
 [ext_resource type="Texture2D" uid="uid://ce8re0jo7sqlx" path="res://assets/terrain/coral_testing.png" id="3_ho7ke"]
