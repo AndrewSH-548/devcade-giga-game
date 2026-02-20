@@ -109,11 +109,12 @@ func setup_level_preview() -> void:
 	var level: Level = session_info.level_info.scene.instantiate()
 	level.process_mode = Node.PROCESS_MODE_DISABLED
 	level_preview_viewport.add_child(level)
-	level.global_position = Vector2(240, 297.0)
+	var camera: Camera2D = Camera2D.new()
+	level_preview_viewport.add_child(camera)
+	camera.global_position.x = level.level_center.global_position.x
 	# Get the backgrounds manager
 	var backgrounds_manager = get_child_in_group(level, "BackgroundsManager")
 	if backgrounds_manager != null:
-		backgrounds_manager.thumbnail_mode = true
 		backgrounds_manager.process_mode = Node.PROCESS_MODE_ALWAYS
 
 # Imports the "random_level_visuals.tscn" scene instead of an actual level
@@ -168,7 +169,7 @@ func start_game():
 		session_info.characters.append(player_choices[player_index])
 	
 	# Get either the singleplayer or multiplayer header...
-	var header: MainLevelHeader = get_level_header()
+	var header: LevelHeaderBase = get_level_header()
 	# Load it
 	get_tree().root.add_child(header)
 	# Pass the level header the session info
@@ -275,7 +276,7 @@ func process_button_updating() -> void:
 			button.selected[player_index] = button == player_focused[player_index]
 
 # Gets either the singleplayer or multiplayer header, depending on mode
-func get_level_header() -> MainLevelHeader:
+func get_level_header() -> LevelHeaderBase:
 	if session_info.is_multiplayer: return HEADER_MULTIPLAYER.instantiate()
 	else: return HEADER_SINGLEPLAYER.instantiate()
 

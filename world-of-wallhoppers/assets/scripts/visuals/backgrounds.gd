@@ -10,19 +10,24 @@ const SCROLL_SCALE_GLOBAL: float = 0.5
 
 var player_1_camera: Camera2D
 var player_2_camera: Camera2D
-var thumbnail_mode: bool = false
 
 # Used to differentiate the backgrounds
 var player_1_backgrounds: Array[Parallax2D]
 var player_2_backgrounds: Array[Parallax2D]
 
+var level_header: LevelHeaderBase
+
 ## This node should be setup with all parallax layers as direct children.
 
 func _ready() -> void:
 	add_to_group("BackgroundsManager")
-	player_1_camera = get_tree().get_first_node_in_group("Player1Camera")
-	player_2_camera = get_tree().get_first_node_in_group("Player2Camera")
-		
+	level_header = get_tree().get_first_node_in_group("LevelHeader")
+	
+	if level_header != null:
+		player_1_camera = level_header.camera_player_1
+		if level_header.current_session_info.is_multiplayer:
+			player_2_camera = level_header.camera_player_2
+	
 	for background in get_children():
 		setup_background(background)
 	for extra in extra_background_holders:
@@ -53,7 +58,7 @@ func manual_set_camera_position(camera_position: Vector2):
 		background.screen_offset.y = camera_position.y
 
 func _process(_delta: float) -> void:
-	if thumbnail_mode: return
+	if level_header == null: return
 	for background in player_1_backgrounds:
 		if background.scroll_scale.y == 0.0:
 			background.screen_offset.y = player_1_camera.get_screen_center_position().y

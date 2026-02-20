@@ -1,19 +1,55 @@
-[gd_scene load_steps=6 format=3 uid="uid://3fa66vjha0pm"]
+[gd_scene load_steps=16 format=3 uid="uid://3fa66vjha0pm"]
 
 [ext_resource type="Script" uid="uid://csymixlonsaw3" path="res://assets/scripts/win_scene.gd" id="1_p78a6"]
+[ext_resource type="FontFile" uid="uid://dqb2dmcm5fa81" path="res://assets/fonts/Better VCR 9.0.1.ttf" id="2_aw8vk"]
+[ext_resource type="Shader" uid="uid://ddaqfuly3ptrg" path="res://assets/shaders/patterns/pattern_a.gdshader" id="2_b6ng8"]
+[ext_resource type="Texture2D" uid="uid://ctikpvc1wa7ag" path="res://assets/gui/background_a.png" id="3_1a68o"]
+[ext_resource type="Texture2D" uid="uid://dbx47oqbrkl4n" path="res://assets/shaders/noise/Voronoi 12 - 256x256.png" id="4_qcp0s"]
+[ext_resource type="StyleBox" uid="uid://bhcdtbytb0l3q" path="res://assets/themes/styles/panel_black.tres" id="6_1a68o"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3vslu"]
+shader = ExtResource("2_b6ng8")
+shader_parameter/tex = ExtResource("3_1a68o")
+shader_parameter/color = Color(0.3762934, 0.022772536, 0.3842729, 1)
+shader_parameter/alpha = 1.0
+shader_parameter/scale = 17.19
+shader_parameter/speed = Vector2(1, 1)
+shader_parameter/snap_color = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r38tj"]
+shader = ExtResource("2_b6ng8")
+shader_parameter/tex = ExtResource("4_qcp0s")
+shader_parameter/color = Color(0.9561948, 0.71507245, 0.95050555, 1)
+shader_parameter/alpha = 0.37
+shader_parameter/scale = 6.6899999999999995
+shader_parameter/speed = Vector2(-0.795, -0.645)
+shader_parameter/snap_color = true
 
 [sub_resource type="LabelSettings" id="LabelSettings_ecqtd"]
-font_size = 128
+font = ExtResource("2_aw8vk")
+font_size = 88
 stacked_outline_count = 1
-stacked_outline_0/size = 64
+stacked_outline_0/size = 32
+
+[sub_resource type="Gradient" id="Gradient_bp0l3"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ecqtd"]
+gradient = SubResource("Gradient_bp0l3")
+
+[sub_resource type="LabelSettings" id="LabelSettings_1a68o"]
+font = ExtResource("2_aw8vk")
+font_size = 48
 
 [sub_resource type="LabelSettings" id="LabelSettings_p78a6"]
-font_size = 80
+font = ExtResource("2_aw8vk")
+font_size = 64
 
 [sub_resource type="LabelSettings" id="LabelSettings_aw8vk"]
-font_size = 96
+font = ExtResource("2_aw8vk")
+font_size = 72
 stacked_outline_count = 1
-stacked_outline_0/size = 64
+stacked_outline_0/size = 32
 
 [sub_resource type="Theme" id="Theme_p78a6"]
 Button/font_sizes/font_size = 100
@@ -28,31 +64,47 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_p78a6")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="Background" type="Node2D" parent="."]
+z_index = -20
+scale = Vector2(2, 2)
+
+[node name="Back" type="ColorRect" parent="Background"]
+material = SubResource("ShaderMaterial_3vslu")
+offset_left = -247.0
+offset_top = -28.5
+offset_right = 834.5
+offset_bottom = 1053.0
+
+[node name="Back2" type="ColorRect" parent="Background"]
+material = SubResource("ShaderMaterial_r38tj")
+offset_left = -281.5
+offset_top = -49.0
+offset_right = 859.0
+offset_bottom = 1091.5
+
+[node name="Darken" type="ColorRect" parent="Background"]
+visible = false
+offset_left = -296.5
+offset_top = -125.5
+offset_right = 969.5
+offset_bottom = 1105.0
+color = Color(0, 0, 0, 0.17254902)
+
+[node name="Results" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.261113, 0.261113, 0.261113, 1)
 
-[node name="Results" type="VBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -449.0
-offset_top = -649.5
-offset_right = 449.0
-offset_bottom = 649.5
-grow_horizontal = 2
-grow_vertical = 2
+[node name="TopSpacer" type="HSeparator" parent="Results"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(0, 128)
+layout_mode = 2
 
 [node name="WinnerMultiplayer" type="Label" parent="Results"]
-custom_minimum_size = Vector2(1100, 400)
+custom_minimum_size = Vector2(800, 100)
 layout_mode = 2
 text = "Congratulations!"
 label_settings = SubResource("LabelSettings_ecqtd")
@@ -60,15 +112,39 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="TimeLabel" type="Label" parent="Results"]
-custom_minimum_size = Vector2(0, 120)
+[node name="Back" type="Sprite2D" parent="Results/WinnerMultiplayer"]
+self_modulate = Color(0, 0, 0, 1)
+show_behind_parent = true
+position = Vector2(564.9202, 25)
+scale = Vector2(4.432732, 63.688423)
+skew = 0.4258603
+texture = SubResource("GradientTexture1D_ecqtd")
+
+[node name="PlacementTitle" type="Label" parent="Results"]
+custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
-size_flags_vertical = 3
 theme_override_font_sizes/font_size = 60
-text = "Completion Time: 43.1"
-label_settings = SubResource("LabelSettings_p78a6")
+text = "Your Placement:"
+label_settings = SubResource("LabelSettings_1a68o")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Back" type="Sprite2D" parent="Results/PlacementTitle"]
+self_modulate = Color(0, 0, 0, 1)
+show_behind_parent = true
+position = Vector2(564.92035, 0)
+scale = Vector2(4.432732, 63.688423)
+skew = 0.4258603
+texture = SubResource("GradientTexture1D_ecqtd")
+
+[node name="Placement" type="Control" parent="Results"]
+custom_minimum_size = Vector2(0, 160)
+layout_mode = 2
+
+[node name="PlaceSeperator" type="HSeparator" parent="Results"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(0, 128)
+layout_mode = 2
 
 [node name="Label" type="Label" parent="Results"]
 visible = false
@@ -81,34 +157,37 @@ label_settings = SubResource("LabelSettings_p78a6")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Level Select" type="Button" parent="Results"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 100
-text = "Level Select"
-
-[node name="Quit" type="Button" parent="Results"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 100
-text = "Main Menu"
-
 [node name="LeaderboardTitle" type="Label" parent="Results"]
-custom_minimum_size = Vector2(0, 240)
 layout_mode = 2
-size_flags_vertical = 3
 theme_override_font_sizes/font_size = 45
 text = "Leaderboard"
 label_settings = SubResource("LabelSettings_p78a6")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Leaderboard" type="Label" parent="Results"]
+[node name="Back" type="Sprite2D" parent="Results/LeaderboardTitle"]
+self_modulate = Color(0, 0, 0, 1)
+show_behind_parent = true
+position = Vector2(561, -7)
+scale = Vector2(4.432732, 97.72879)
+skew = 0.4258603
+texture = SubResource("GradientTexture1D_ecqtd")
+
+[node name="HSeparator3" type="HSeparator" parent="Results"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+
+[node name="BoardMargin" type="MarginContainer" parent="Results"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_right = 8
+
+[node name="Leaderboard" type="VBoxContainer" parent="Results/BoardMargin"]
 custom_minimum_size = Vector2(0, 240)
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_font_sizes/font_size = 45
-label_settings = SubResource("LabelSettings_p78a6")
-horizontal_alignment = 1
-vertical_alignment = 1
+theme_override_constants/separation = 16
 
 [node name="Name Input" type="Button" parent="Results"]
 visible = false
@@ -118,11 +197,12 @@ theme_override_font_sizes/font_size = 100
 text = "Name: ______"
 
 [node name="EnterRecord" type="Panel" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 851.0
+offset_top = 911.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -169,6 +249,7 @@ grow_vertical = 2
 [node name="Panel" type="Panel" parent="EnterRecord/NameInputContainer"]
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
+theme_override_styles/panel = ExtResource("6_1a68o")
 
 [node name="PlayerNameLabel" type="Label" parent="EnterRecord/NameInputContainer/Panel"]
 custom_minimum_size = Vector2(0, 240)
@@ -188,19 +269,24 @@ vertical_alignment = 1
 
 [node name="GridContainer" type="GridContainer" parent="EnterRecord/NameInputContainer"]
 layout_mode = 2
-size_flags_vertical = 3
 columns = 7
 
 [node name="A" type="Button" parent="EnterRecord/NameInputContainer/GridContainer"]
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 theme = SubResource("Theme_p78a6")
+theme_override_fonts/font = ExtResource("2_aw8vk")
+theme_override_font_sizes/font_size = 96
+theme_override_styles/normal = ExtResource("6_1a68o")
 text = "A"
 
 [node name="B" type="Button" parent="EnterRecord/NameInputContainer/GridContainer"]
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 theme = SubResource("Theme_p78a6")
+theme_override_fonts/font = ExtResource("2_aw8vk")
+theme_override_font_sizes/font_size = 96
+theme_override_styles/normal = ExtResource("6_1a68o")
 text = "B
 "
 
@@ -208,137 +294,206 @@ text = "B
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 theme = SubResource("Theme_p78a6")
+theme_override_fonts/font = ExtResource("2_aw8vk")
+theme_override_font_sizes/font_size = 96
+theme_override_styles/normal = ExtResource("6_1a68o")
 text = "C"
 
 [node name="D" type="Button" parent="EnterRecord/NameInputContainer/GridContainer"]
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 theme = SubResource("Theme_p78a6")
+theme_override_fonts/font = ExtResource("2_aw8vk")
+theme_override_font_sizes/font_size = 96
+theme_override_styles/normal = ExtResource("6_1a68o")
 text = "D"
 
 [node name="E" type="Button" parent="EnterRecord/NameInputContainer/GridContainer"]
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 theme = SubResource("Theme_p78a6")
+theme_override_fonts/font = ExtResource("2_aw8vk")
+theme_override_font_sizes/font_size = 96
+theme_override_styles/normal = ExtResource("6_1a68o")
 text = "E"
 
 [node name="F" type="Button" parent="EnterRecord/NameInputContainer/GridContainer"]
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 theme = SubResource("Theme_p78a6")
+theme_override_fonts/font = ExtResource("2_aw8vk")
+theme_override_font_sizes/font_size = 96
+theme_override_styles/normal = ExtResource("6_1a68o")
 text = "F"
 
 [node name="G" type="Button" parent="EnterRecord/NameInputContainer/GridContainer"]
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 theme = SubResource("Theme_p78a6")
+theme_override_fonts/font = ExtResource("2_aw8vk")
+theme_override_font_sizes/font_size = 96
+theme_override_styles/normal = ExtResource("6_1a68o")
 text = "G"
 
 [node name="H" type="Button" parent="EnterRecord/NameInputContainer/GridContainer"]
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 theme = SubResource("Theme_p78a6")
+theme_override_fonts/font = ExtResource("2_aw8vk")
+theme_override_font_sizes/font_size = 96
+theme_override_styles/normal = ExtResource("6_1a68o")
 text = "H"
 
 [node name="I" type="Button" parent="EnterRecord/NameInputContainer/GridContainer"]
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 theme = SubResource("Theme_p78a6")
+theme_override_fonts/font = ExtResource("2_aw8vk")
+theme_override_font_sizes/font_size = 96
+theme_override_styles/normal = ExtResource("6_1a68o")
 text = "I"
 
 [node name="J" type="Button" parent="EnterRecord/NameInputContainer/GridContainer"]
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 theme = SubResource("Theme_p78a6")
+theme_override_fonts/font = ExtResource("2_aw8vk")
+theme_override_font_sizes/font_size = 96
+theme_override_styles/normal = ExtResource("6_1a68o")
 text = "J"
 
 [node name="K" type="Button" parent="EnterRecord/NameInputContainer/GridContainer"]
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 theme = SubResource("Theme_p78a6")
+theme_override_fonts/font = ExtResource("2_aw8vk")
+theme_override_font_sizes/font_size = 96
+theme_override_styles/normal = ExtResource("6_1a68o")
 text = "K"
 
 [node name="L" type="Button" parent="EnterRecord/NameInputContainer/GridContainer"]
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 theme = SubResource("Theme_p78a6")
+theme_override_fonts/font = ExtResource("2_aw8vk")
+theme_override_font_sizes/font_size = 96
+theme_override_styles/normal = ExtResource("6_1a68o")
 text = "L"
 
 [node name="M" type="Button" parent="EnterRecord/NameInputContainer/GridContainer"]
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 theme = SubResource("Theme_p78a6")
+theme_override_fonts/font = ExtResource("2_aw8vk")
+theme_override_font_sizes/font_size = 96
+theme_override_styles/normal = ExtResource("6_1a68o")
 text = "M"
 
 [node name="N" type="Button" parent="EnterRecord/NameInputContainer/GridContainer"]
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 theme = SubResource("Theme_p78a6")
+theme_override_fonts/font = ExtResource("2_aw8vk")
+theme_override_font_sizes/font_size = 96
+theme_override_styles/normal = ExtResource("6_1a68o")
 text = "N"
 
 [node name="O" type="Button" parent="EnterRecord/NameInputContainer/GridContainer"]
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 theme = SubResource("Theme_p78a6")
+theme_override_fonts/font = ExtResource("2_aw8vk")
+theme_override_font_sizes/font_size = 96
+theme_override_styles/normal = ExtResource("6_1a68o")
 text = "O"
 
 [node name="P" type="Button" parent="EnterRecord/NameInputContainer/GridContainer"]
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 theme = SubResource("Theme_p78a6")
+theme_override_fonts/font = ExtResource("2_aw8vk")
+theme_override_font_sizes/font_size = 96
+theme_override_styles/normal = ExtResource("6_1a68o")
 text = "P"
 
 [node name="Q" type="Button" parent="EnterRecord/NameInputContainer/GridContainer"]
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 theme = SubResource("Theme_p78a6")
+theme_override_fonts/font = ExtResource("2_aw8vk")
+theme_override_font_sizes/font_size = 96
+theme_override_styles/normal = ExtResource("6_1a68o")
 text = "Q"
 
 [node name="R" type="Button" parent="EnterRecord/NameInputContainer/GridContainer"]
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 theme = SubResource("Theme_p78a6")
+theme_override_fonts/font = ExtResource("2_aw8vk")
+theme_override_font_sizes/font_size = 96
+theme_override_styles/normal = ExtResource("6_1a68o")
 text = "R"
 
 [node name="S" type="Button" parent="EnterRecord/NameInputContainer/GridContainer"]
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 theme = SubResource("Theme_p78a6")
+theme_override_fonts/font = ExtResource("2_aw8vk")
+theme_override_font_sizes/font_size = 96
+theme_override_styles/normal = ExtResource("6_1a68o")
 text = "S"
 
 [node name="T" type="Button" parent="EnterRecord/NameInputContainer/GridContainer"]
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 theme = SubResource("Theme_p78a6")
+theme_override_fonts/font = ExtResource("2_aw8vk")
+theme_override_font_sizes/font_size = 96
+theme_override_styles/normal = ExtResource("6_1a68o")
 text = "T"
 
 [node name="U" type="Button" parent="EnterRecord/NameInputContainer/GridContainer"]
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 theme = SubResource("Theme_p78a6")
+theme_override_fonts/font = ExtResource("2_aw8vk")
+theme_override_font_sizes/font_size = 96
+theme_override_styles/normal = ExtResource("6_1a68o")
 text = "U"
 
 [node name="Buffer1" type="Button" parent="EnterRecord/NameInputContainer/GridContainer"]
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 theme = SubResource("Theme_p78a6")
+theme_override_fonts/font = ExtResource("2_aw8vk")
+theme_override_font_sizes/font_size = 96
+theme_override_styles/normal = ExtResource("6_1a68o")
 
 [node name="V" type="Button" parent="EnterRecord/NameInputContainer/GridContainer"]
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 theme = SubResource("Theme_p78a6")
+theme_override_fonts/font = ExtResource("2_aw8vk")
+theme_override_font_sizes/font_size = 96
+theme_override_styles/normal = ExtResource("6_1a68o")
 text = "V"
 
 [node name="W" type="Button" parent="EnterRecord/NameInputContainer/GridContainer"]
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 theme = SubResource("Theme_p78a6")
+theme_override_fonts/font = ExtResource("2_aw8vk")
+theme_override_font_sizes/font_size = 96
+theme_override_styles/normal = ExtResource("6_1a68o")
 text = "W"
 
 [node name="X" type="Button" parent="EnterRecord/NameInputContainer/GridContainer"]
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 theme = SubResource("Theme_p78a6")
+theme_override_fonts/font = ExtResource("2_aw8vk")
+theme_override_font_sizes/font_size = 96
+theme_override_styles/normal = ExtResource("6_1a68o")
 text = "X
 "
 
@@ -346,18 +501,27 @@ text = "X
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 theme = SubResource("Theme_p78a6")
+theme_override_fonts/font = ExtResource("2_aw8vk")
+theme_override_font_sizes/font_size = 96
+theme_override_styles/normal = ExtResource("6_1a68o")
 text = "Y"
 
 [node name="Z" type="Button" parent="EnterRecord/NameInputContainer/GridContainer"]
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 theme = SubResource("Theme_p78a6")
+theme_override_fonts/font = ExtResource("2_aw8vk")
+theme_override_font_sizes/font_size = 96
+theme_override_styles/normal = ExtResource("6_1a68o")
 text = "Z"
 
 [node name="Buffer2" type="Button" parent="EnterRecord/NameInputContainer/GridContainer"]
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 theme = SubResource("Theme_p78a6")
+theme_override_fonts/font = ExtResource("2_aw8vk")
+theme_override_font_sizes/font_size = 96
+theme_override_styles/normal = ExtResource("6_1a68o")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="EnterRecord/NameInputContainer"]
 layout_mode = 2
@@ -365,22 +529,56 @@ layout_mode = 2
 [node name="DeleteButton" type="Button" parent="EnterRecord/NameInputContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 80
+theme_override_fonts/font = ExtResource("2_aw8vk")
+theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = ExtResource("6_1a68o")
 text = "Delete"
 
 [node name="ClearButton" type="Button" parent="EnterRecord/NameInputContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 80
+theme_override_fonts/font = ExtResource("2_aw8vk")
+theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = ExtResource("6_1a68o")
 text = "Clear"
 
 [node name="SubmitButton" type="Button" parent="EnterRecord/NameInputContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 100
+theme_override_fonts/font = ExtResource("2_aw8vk")
+theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = ExtResource("6_1a68o")
 text = "Enter"
 
-[connection signal="pressed" from="Results/Level Select" to="." method="_on_level_select_pressed"]
-[connection signal="pressed" from="Results/Quit" to="." method="_on_quit_pressed"]
+[node name="ResultsOther" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Level Select" type="Button" parent="ResultsOther"]
+custom_minimum_size = Vector2(0, 128)
+layout_mode = 0
+offset_top = 1585.0
+offset_right = 1080.0
+offset_bottom = 1713.0
+theme_override_fonts/font = ExtResource("2_aw8vk")
+theme_override_font_sizes/font_size = 72
+theme_override_styles/normal = ExtResource("6_1a68o")
+text = "Level Select"
+
+[node name="Quit" type="Button" parent="ResultsOther"]
+custom_minimum_size = Vector2(0, 128)
+layout_mode = 0
+offset_top = 1717.0
+offset_right = 1080.0
+offset_bottom = 1845.0
+theme_override_fonts/font = ExtResource("2_aw8vk")
+theme_override_font_sizes/font_size = 72
+theme_override_styles/normal = ExtResource("6_1a68o")
+text = "Main Menu"
+
 [connection signal="pressed" from="Results/Name Input" to="." method="_on_name_input_pressed"]
 [connection signal="pressed" from="EnterRecord/NameInputContainer/GridContainer/A" to="." method="_on_a_pressed"]
 [connection signal="pressed" from="EnterRecord/NameInputContainer/GridContainer/B" to="." method="_on_b_pressed"]
@@ -411,3 +609,5 @@ text = "Enter"
 [connection signal="pressed" from="EnterRecord/NameInputContainer/HBoxContainer/DeleteButton" to="." method="_on_delete_button_pressed"]
 [connection signal="pressed" from="EnterRecord/NameInputContainer/HBoxContainer/ClearButton" to="." method="_on_clear_button_pressed"]
 [connection signal="pressed" from="EnterRecord/NameInputContainer/SubmitButton" to="." method="_on_submit_button_pressed"]
+[connection signal="pressed" from="ResultsOther/Level Select" to="." method="_on_level_select_pressed"]
+[connection signal="pressed" from="ResultsOther/Quit" to="." method="_on_quit_pressed"]

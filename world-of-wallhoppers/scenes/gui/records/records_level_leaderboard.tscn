@@ -1,0 +1,63 @@
+[gd_scene load_steps=7 format=3 uid="uid://c075c64fkat0p"]
+
+[ext_resource type="Script" uid="uid://dfbm3fxvq0g8x" path="res://assets/gui/records/records_level_leaderboard.gd" id="1_8mjtm"]
+[ext_resource type="FontFile" uid="uid://dqb2dmcm5fa81" path="res://assets/fonts/Better VCR 9.0.1.ttf" id="2_on1qt"]
+
+[sub_resource type="Gradient" id="Gradient_bp0l3"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_on1qt"]
+gradient = SubResource("Gradient_bp0l3")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_on1qt"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ivgqf"]
+bg_color = Color(1, 1, 1, 1)
+
+[node name="RecordsLevelLeaderboard" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_8mjtm")
+
+[node name="Vertical" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="Vertical"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_on1qt")
+theme_override_font_sizes/font_size = 60
+text = "<--    Volcano    -->"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Back" type="Sprite2D" parent="Vertical/Title"]
+self_modulate = Color(0, 0, 0, 1)
+show_behind_parent = true
+position = Vector2(563.73486, 58)
+scale = Vector2(4.432732, 85.64994)
+skew = 0.4258603
+texture = SubResource("GradientTexture1D_on1qt")
+
+[node name="Scroll" type="ScrollContainer" parent="Vertical"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_on1qt")
+theme_override_styles/focus = SubResource("StyleBoxFlat_ivgqf")
+
+[node name="Records" type="VBoxContainer" parent="Vertical/Scroll"]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3

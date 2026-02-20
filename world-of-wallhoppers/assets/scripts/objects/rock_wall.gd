@@ -29,7 +29,6 @@ func spawn_rock() -> void:
 	var rock: FallenRock = FALLEN_ROCK.instantiate()
 	add_child(rock)
 	rock.z_index -= 1
-	print("SPAWN")
 	rock.physics_interpolation_mode = Node.PHYSICS_INTERPOLATION_MODE_OFF
 	rock.global_position = global_position
 	rock.global_rotation = 0
@@ -43,5 +42,4 @@ func ensure_valid_size(current_size: Vector2i) -> Vector2i:
 
 func on_possible_rock_entry(body: Node2D) -> void:
 	if body is FallenRock:
-		print("DESTROY")
 		body.queue_free()

@@ -53,7 +53,6 @@ func _ready() -> void:
 	location = Locations.find_key(location_export).to_lower();
 	turret_type = TurretType.find_key(turret_type_export).to_lower();
 	
-	print(location);
 	rotation_circle.hide();
 	laser_ball.hide();
 	laser_beam.hide();

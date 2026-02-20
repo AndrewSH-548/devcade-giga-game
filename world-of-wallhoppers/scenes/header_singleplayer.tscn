@@ -1,23 +1,43 @@
-[gd_scene load_steps=4 format=3 uid="uid://c3bkjibfhfofl"]
+[gd_scene load_steps=8 format=3 uid="uid://c3bkjibfhfofl"]
 
-[ext_resource type="Script" uid="uid://ctflvn8gie88l" path="res://assets/scripts/singlescreen.gd" id="1_bp0l3"]
+[ext_resource type="Script" uid="uid://ctflvn8gie88l" path="res://assets/scripts/header_singleplayer.gd" id="1_bp0l3"]
 [ext_resource type="Script" uid="uid://d3p48lwnrft2t" path="res://assets/scripts/camera.gd" id="2_5f7m3"]
+[ext_resource type="FontFile" uid="uid://dqb2dmcm5fa81" path="res://assets/fonts/Better VCR 9.0.1.ttf" id="2_bp0l3"]
 [ext_resource type="PackedScene" uid="uid://dnpilee0jidao" path="res://scenes/gui/pause_menu.tscn" id="4_i2xlj"]
 
-[node name="Node2D" type="Node2D" groups=["splitscreen"]]
+[sub_resource type="LabelSettings" id="LabelSettings_5f7m3"]
+font = ExtResource("2_bp0l3")
+font_size = 48
+outline_size = 32
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Gradient" id="Gradient_bp0l3"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_5f7m3"]
+gradient = SubResource("Gradient_bp0l3")
+
+[node name="Node2D" type="Node2D" groups=["LevelHeader"]]
 script = ExtResource("1_bp0l3")
 
 [node name="SingleplayerTimerLabel" type="Label" parent="."]
 z_index = 1
-offset_left = 399.0
-offset_top = 435.0
-offset_right = 684.0
-offset_bottom = 615.0
+offset_left = 17.0
+offset_top = 6.0
+offset_right = 549.0
+offset_bottom = 186.0
 theme_override_font_sizes/font_size = 80
-text = "000"
-horizontal_alignment = 1
-vertical_alignment = 1
+text = "Time: 0.00"
+label_settings = SubResource("LabelSettings_5f7m3")
 autowrap_mode = 1
+
+[node name="Timer" type="Sprite2D" parent="SingleplayerTimerLabel"]
+self_modulate = Color(0, 0, 0, 1)
+show_behind_parent = true
+position = Vector2(180.86089, 12.999998)
+scale = Vector2(1.6137674, 32.942284)
+skew = 0.4258603
+texture = SubResource("GradientTexture1D_5f7m3")
 
 [node name="ViewportContainerP1" type="SubViewportContainer" parent="."]
 offset_left = 270.0
@@ -31,8 +51,7 @@ handle_input_locally = false
 size = Vector2i(540, 1920)
 render_target_update_mode = 4
 
-[node name="Camera2D" type="Camera2D" parent="ViewportContainerP1/SubViewport" groups=["Player1Camera"]]
-offset = Vector2(136, 0)
+[node name="Camera2D" type="Camera2D" parent="ViewportContainerP1/SubViewport"]
 position_smoothing_enabled = true
 script = ExtResource("2_5f7m3")
 
@@ -51,6 +70,7 @@ color = Color(0, 0, 0, 1)
 
 [node name="PauseMenu" parent="." instance=ExtResource("4_i2xlj")]
 visible = false
+z_index = 1
 custom_minimum_size = Vector2(1080, 1920)
 anchors_preset = 0
 anchor_right = 0.0

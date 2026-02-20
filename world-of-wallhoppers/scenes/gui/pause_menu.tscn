@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dnpilee0jidao"]
+[gd_scene load_steps=5 format=3 uid="uid://dnpilee0jidao"]
 
 [ext_resource type="Script" uid="uid://cljrg4rf04yjk" path="res://assets/scripts/pause_menu.gd" id="1_1eo1i"]
 [ext_resource type="Shader" uid="uid://b7nhx3gxibhef" path="res://assets/shaders/pause_menu.gdshader" id="2_loim0"]
+[ext_resource type="FontFile" uid="uid://dqb2dmcm5fa81" path="res://assets/fonts/Better VCR 9.0.1.ttf" id="3_loim0"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kukqi"]
 shader = ExtResource("2_loim0")
@@ -37,16 +38,26 @@ grow_vertical = 2
 layout_mode = 2
 
 [node name="Resume" type="Button" parent="CenterContainer/VBoxContainer"]
-custom_minimum_size = Vector2(640, 0)
+custom_minimum_size = Vector2(640, 96)
 layout_mode = 2
-theme_override_font_sizes/font_size = 64
+theme_override_fonts/font = ExtResource("3_loim0")
+theme_override_font_sizes/font_size = 56
 text = "Resume"
 
-[node name="Quit" type="Button" parent="CenterContainer/VBoxContainer"]
-custom_minimum_size = Vector2(640, 0)
+[node name="Restart" type="Button" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(640, 96)
 layout_mode = 2
-theme_override_font_sizes/font_size = 64
+theme_override_fonts/font = ExtResource("3_loim0")
+theme_override_font_sizes/font_size = 56
+text = "Restart"
+
+[node name="Quit" type="Button" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(640, 96)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_loim0")
+theme_override_font_sizes/font_size = 56
 text = "Main Menu"
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Restart" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

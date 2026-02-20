@@ -1,10 +1,10 @@
 [gd_scene load_steps=4 format=3 uid="uid://ch4mextx4xjgt"]
 
-[ext_resource type="Script" uid="uid://c0egamewutafp" path="res://assets/scripts/splitscreen.gd" id="1_lcxr0"]
+[ext_resource type="Script" uid="uid://c0egamewutafp" path="res://assets/scripts/header_multiplayer.gd" id="1_lcxr0"]
 [ext_resource type="Script" uid="uid://d3p48lwnrft2t" path="res://assets/scripts/camera.gd" id="4_c2woe"]
 [ext_resource type="PackedScene" uid="uid://dnpilee0jidao" path="res://scenes/gui/pause_menu.tscn" id="5_ylv1f"]
 
-[node name="Node2D2" type="Node2D" groups=["splitscreen"]]
+[node name="Node2D2" type="Node2D" groups=["LevelHeader"]]
 script = ExtResource("1_lcxr0")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
@@ -28,8 +28,7 @@ canvas_cull_mask = 4294967287
 size = Vector2i(538, 1920)
 render_target_update_mode = 4
 
-[node name="Camera2D" type="Camera2D" parent="HBoxContainer/ViewportContainerP1/SubViewport" groups=["Player1Camera"]]
-offset = Vector2(135, 0)
+[node name="CameraP1" type="Camera2D" parent="HBoxContainer/ViewportContainerP1/SubViewport"]
 script = ExtResource("4_c2woe")
 
 [node name="ViewportContainerP2" type="SubViewportContainer" parent="HBoxContainer"]
@@ -43,8 +42,7 @@ canvas_cull_mask = 4294967291
 size = Vector2i(538, 1920)
 render_target_update_mode = 4
 
-[node name="Camera2D" type="Camera2D" parent="HBoxContainer/ViewportContainerP2/SubViewport" groups=["Player2Camera"]]
-offset = Vector2(135, 0)
+[node name="CameraP2" type="Camera2D" parent="HBoxContainer/ViewportContainerP2/SubViewport"]
 script = ExtResource("4_c2woe")
 
 [node name="PauseMenu" parent="." instance=ExtResource("5_ylv1f")]

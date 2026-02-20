@@ -26,7 +26,7 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	hanging_position = global_position + Vector2(28 * (1 if is_facing_right else -1), -50) 
-	var header = get_tree().get_first_node_in_group("splitscreen")
+	var header = get_tree().get_first_node_in_group("LevelHeader")
 	if header != null and header.paused:
 		return
 	if halt_physics:

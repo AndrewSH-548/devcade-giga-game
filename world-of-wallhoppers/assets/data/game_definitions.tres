@@ -1,26 +1,26 @@
 [gd_resource type="Resource" script_class="GameDefinition" load_steps=34 format=3 uid="uid://cn1341ksalk55"]
 
 [ext_resource type="Script" uid="uid://c1c364hhlfwr5" path="res://assets/scripts/data/character_definition.gd" id="1_tsxfc"]
-[ext_resource type="Texture2D" uid="uid://2utjtrsth1yk" path="res://assets/gui/character_select/portraits/portrait_hip.png" id="2_ciu7n"]
 [ext_resource type="Texture2D" uid="uid://cbpfskf2jthji" path="res://assets/sprites/characters/hip.png" id="2_m022u"]
 [ext_resource type="Script" uid="uid://72arh6p6vdd" path="res://assets/scripts/data/level_definition.gd" id="2_sgbyo"]
+[ext_resource type="Texture2D" uid="uid://ciopa5mfn4l4a" path="res://assets/gui/character_select/portraits/portrait_hip.png" id="3_b1vmq"]
 [ext_resource type="Script" uid="uid://ck53kg0d2q07n" path="res://assets/scripts/data/game_definitions.gd" id="3_bigc5"]
 [ext_resource type="PackedScene" uid="uid://c42ynqlk3h4wp" path="res://scenes/characters/reign.tscn" id="3_m7u6u"]
 [ext_resource type="PackedScene" uid="uid://x8jwn1lvobhp" path="res://scenes/levels/jungle.tscn" id="3_sgbyo"]
 [ext_resource type="PackedScene" uid="uid://bojyqwmqsf6xx" path="res://scenes/characters/scoria.tscn" id="4_5edyq"]
-[ext_resource type="Texture2D" uid="uid://d36lgodtre2iy" path="res://assets/gui/character_select/portraits/portrait_reign.png" id="4_m022u"]
 [ext_resource type="PackedScene" uid="uid://bnajm44iu8kfe" path="res://scenes/levels/volcano.tscn" id="4_ylx47"]
 [ext_resource type="PackedScene" uid="uid://c70tcpci8tum8" path="res://scenes/levels/reef.tscn" id="5_5semu"]
 [ext_resource type="PackedScene" uid="uid://c6xxgrn7ac473" path="res://scenes/gui/tutorial/ability_showcases/showcase_hip.tscn" id="5_733ne"]
 [ext_resource type="Texture2D" uid="uid://bfe80tkm43i8u" path="res://assets/sprites/characters/reign/right.png" id="5_oq5yk"]
 [ext_resource type="PackedScene" uid="uid://dtu1k6tt7cxej" path="res://scenes/characters/hip.tscn" id="6_5semu"]
-[ext_resource type="Texture2D" uid="uid://cju8ny82qs3oy" path="res://assets/gui/character_select/portraits/portrait_scoria.png" id="6_lgy02"]
+[ext_resource type="Texture2D" uid="uid://da10mhfp35so3" path="res://assets/gui/character_select/portraits/portrait_reign.png" id="7_md415"]
 [ext_resource type="Texture2D" uid="uid://bsvpbsp4u6vv0" path="res://assets/sprites/characters/scoria/scoria.png" id="8_733ne"]
 [ext_resource type="PackedScene" uid="uid://bpnjqscfujnci" path="res://scenes/gui/tutorial/ability_showcases/showcase_reign.tscn" id="9_tmhm5"]
+[ext_resource type="Texture2D" uid="uid://c1wsg5aa4jgls" path="res://assets/gui/character_select/portraits/portrait_scoria.png" id="11_0co3f"]
 [ext_resource type="Texture2D" uid="uid://cotc4m53mxg85" path="res://assets/sprites/characters/rick_shawn/rick_shawn.png" id="11_nr2l4"]
 [ext_resource type="PackedScene" uid="uid://b6avcmnww3c4" path="res://scenes/characters/rick_shawn.tscn" id="13_f6tr2"]
 [ext_resource type="PackedScene" uid="uid://bugghy8rqpv48" path="res://scenes/gui/tutorial/ability_showcases/showcase_scoria.tscn" id="13_nr2l4"]
-[ext_resource type="Texture2D" uid="uid://ckdscj120qikp" path="res://assets/gui/character_select/portraits/portrait-rick-shawn.png" id="15_b1vmq"]
+[ext_resource type="Texture2D" uid="uid://cvgaagh8lybwg" path="res://assets/gui/character_select/portraits/portrait-rick-shawn.png" id="15_b1vmq"]
 [ext_resource type="PackedScene" uid="uid://c885c77c1yt5r" path="res://scenes/gui/tutorial/ability_showcases/showcase_rick_shawn.tscn" id="17_b1vmq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lgy02"]
@@ -32,7 +32,7 @@ script = ExtResource("1_tsxfc")
 scene = ExtResource("6_5semu")
 name = "Hip"
 button_texture = SubResource("AtlasTexture_lgy02")
-portrait_texture = ExtResource("2_ciu7n")
+portrait_texture = ExtResource("3_b1vmq")
 tutorial_ability_description = "While on a wall, hold [color=#1E90FF]BLUE[/color] to wall climb. While climbing, Hip can move along the wall by holding [color=#FFA500]UP[/color] or [color=#FFA500]DOWN[/color]."
 tutorial_ability_showcase = ExtResource("5_733ne")
 metadata/_custom_type_script = "uid://c1c364hhlfwr5"
@@ -46,7 +46,7 @@ script = ExtResource("1_tsxfc")
 scene = ExtResource("3_m7u6u")
 name = "Reign"
 button_texture = SubResource("AtlasTexture_tmhm5")
-portrait_texture = ExtResource("4_m022u")
+portrait_texture = ExtResource("7_md415")
 tutorial_ability_description = "By holding [color=#1E90FF]BLUE[/color], Reign can precisely hover through the air, using [color=#FFA500]LEFT[/color] and [color=#FFA500]RIGHT[/color]"
 tutorial_ability_showcase = ExtResource("9_tmhm5")
 metadata/_custom_type_script = "uid://c1c364hhlfwr5"
@@ -60,7 +60,7 @@ script = ExtResource("1_tsxfc")
 scene = ExtResource("4_5edyq")
 name = "Scoria"
 button_texture = SubResource("AtlasTexture_nr2l4")
-portrait_texture = ExtResource("6_lgy02")
+portrait_texture = ExtResource("11_0co3f")
 tutorial_ability_description = "Pressing [color=#1E90FF]BLUE[/color] makes Scoria roll. Each bounce causes her to heat up, and rolling into a wall at full [color=orange]HEAT[/color] boosts her upwards. Pressing [color=orange]DOWN[/color] while rolling makes her quickly slam downward."
 tutorial_ability_showcase = ExtResource("13_nr2l4")
 metadata/_custom_type_script = "uid://c1c364hhlfwr5"

@@ -23,13 +23,16 @@ func pack_leaderboards() -> Dictionary:
 		packed_leaderboards[leaderboard.level] = leaderboard.pack()
 	return packed_leaderboards
 
-func save_current_time(player_name: String, session_info: SessionInfo):
+func save_and_get_current_record(player_name: String, session_info: SessionInfo) -> LevelLeaderboard.SingleRecord:
 	var level: StringName = session_info.level_info.name
 	var character: StringName = session_info.characters[0].name
 	assert(level in leaderboards.keys())
 	var leaderboard: LevelLeaderboard = leaderboards.get(level)
-	leaderboard.add_record(player_name, character, current_time_trial_time)
+	var record: LevelLeaderboard.SingleRecord = LevelLeaderboard.make_record(player_name, character, current_time_trial_time)
+	leaderboard.add_record(record)
+	leaderboard.update_all()
 	save_leaderboards_to_disk()
+	return record
 
 func save_leaderboards_to_disk(): ## save all leaderboards to "res://save_data/leaderboards.save"
 	var file = FileAccess.open(save_path, FileAccess.WRITE)
@@ -43,7 +46,6 @@ func load_leaderboards_from_disk(): ## load all leaderboards from "res://save_da
 		var file = FileAccess.open(save_path, FileAccess.READ)
 		# Set leaderboards from save data
 		var possible_leaderboards = file.get_var()
-		print("POSSIBLE: ", possible_leaderboards)
 		if possible_leaderboards == null:
 			possible_leaderboards = {}
 		packed_leaderboards = possible_leaderboards
@@ -55,7 +57,9 @@ func load_leaderboards_from_disk(): ## load all leaderboards from "res://save_da
 		if packed_leaderboards.get(level.name) == null:
 			packed_leaderboards[level.name] = { "level": level.name, "records": []}
 	for level_leaderboard in packed_leaderboards.values():
-		leaderboards[level_leaderboard["level"]] = LevelLeaderboard.from_packed(level_leaderboard)
+		var leaderboard: LevelLeaderboard = LevelLeaderboard.from_packed(level_leaderboard)
+		leaderboards[level_leaderboard["level"]] = leaderboard
+		leaderboard.update_all()
 
 func clear_all_data(): ## clear leaderboard data from "res://save_data/leaderboards.save"
 	pass

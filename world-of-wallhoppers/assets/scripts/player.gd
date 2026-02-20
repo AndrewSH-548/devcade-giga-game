@@ -212,7 +212,6 @@ func do_hitstun(body: Node2D) -> void:
 	var direction: Vector2 = body.global_position.direction_to(global_position)
 	if body is Obstacle:
 		direction = body.get_direction(global_position)
-		print("OBSTACE: " + str(body.global_rotation_degrees))
 	if not hitstun:
 		hitstun = true
 		# Don't Collide with LAYER_NOT_HITSTUN

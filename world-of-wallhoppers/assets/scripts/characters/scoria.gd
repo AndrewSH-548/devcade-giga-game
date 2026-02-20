@@ -100,7 +100,7 @@ func make_atlas(coords: Vector2i) -> AtlasTexture:
 	return atlas
 
 func _physics_process(delta: float) -> void:
-	var header = get_tree().get_first_node_in_group("splitscreen")
+	var header = get_tree().get_first_node_in_group("LevelHeader")
 	if header != null and header.paused:
 		return
 	if halt_physics:
@@ -187,7 +187,6 @@ func do_spark():
 	spark_animation.play()
 
 func process_dash():
-	var facing: int = 1 if is_facing_right else -1
 	velocity.y = 0
 	velocity.x = dash_speed * facing
 	
@@ -209,7 +208,6 @@ func process_flight(delta: float):
 		flight_timer_end()
 
 func process_roll(delta: float):
-	var facing: int = 1 if is_facing_right else -1
 	velocity.x = facing * roll_speed
 	velocity.y += roll_gravity * delta
 	
