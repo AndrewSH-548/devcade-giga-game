@@ -14,7 +14,7 @@ var origin_is_rick: bool
 var rick: PlayerRickShawn;
 var rope_offset: Vector2 = Vector2.ZERO
 
-var magnet_speed: float = 1024
+var magnet_speed: float = 1500
 var rope_distance_from_rick: float = 10
 var ropes_for_hollows: Array[Line2D] = []
 var closest_rope: Line2D
