@@ -43,6 +43,8 @@ var hitstun_max_fall_speed_modifier: float = 80.0
 
 var halt_physics: bool = false
 
+var walk_speed_frame_modifier_directional: float = 1.0
+
 var foot_offset: Vector2
 var foot_global_position: Vector2:
 	get(): return global_position + foot_offset
@@ -154,6 +156,16 @@ func is_touching_right_wall() -> bool:
 	return test_move(transform, Vector2(2, 0))
 
 func process_walkrun(_delta: float, direction: float) -> void:
+	
+	var walk_modifier: float = walk_speed_frame_modifier_directional
+	walk_speed_frame_modifier_directional = 0.0
+	
+	if sign(direction) == sign(walk_modifier):
+		direction *= walk_modifier
+	if sign(direction) == -sign(walk_modifier):
+		if(walk_modifier != 0.0):
+			direction /= walk_modifier
+	
 	# Deccelerate if there is no input
 	if (direction == 0.0 or disable_walk_input or get_position_state() == STATE_HITSTUN) and not disable_decceleration:
 		velocity.x = move_toward(velocity.x, 0, deccel)
@@ -164,6 +176,9 @@ func process_walkrun(_delta: float, direction: float) -> void:
 			
 			# FLOOR WALK/RUN State
 			STATE_ON_FLOOR:
+				if direction == 0.0 and disable_decceleration:
+					walk_speed_frame_modifier_directional = 1.0
+					return
 				if Input.is_action_pressed(run_modifier_action):
 					velocity.x = direction * run_speed
 				else:
@@ -183,6 +198,7 @@ func process_walkrun(_delta: float, direction: float) -> void:
 						if sign(target_speed) == sign(velocity.x) and abs(velocity.x) > abs(target_speed):
 							return
 					velocity.x = move_toward(velocity.x, target_speed, air_accel)
+	walk_speed_frame_modifier_directional = 1.0
 
 func process_wallcheck(_delta: float) -> void:
 	

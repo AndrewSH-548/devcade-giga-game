@@ -1,44 +1,85 @@
-[gd_scene load_steps=6 format=3 uid="uid://mhgumrx0davs"]
+[gd_scene load_steps=9 format=3 uid="uid://mhgumrx0davs"]
 
 [ext_resource type="Script" uid="uid://bumkvrb1b4jhw" path="res://assets/scripts/objects/conveyor_belt.gd" id="1_gopo4"]
-[ext_resource type="Texture2D" uid="uid://dwr2j6nfaknl1" path="res://assets/sprites/stage_hazards/conveyor_1.png" id="2_7l0ha"]
-[ext_resource type="Texture2D" uid="uid://d03p2ed2vvsdi" path="res://assets/sprites/stage_hazards/conveyor_2.png" id="3_nwpj3"]
+[ext_resource type="Shader" uid="uid://bruhjepogvrwm" path="res://assets/shaders/scroll.gdshader" id="2_7l0ha"]
+[ext_resource type="Texture2D" uid="uid://7g18ktpe62e7" path="res://assets/sprites/stage_hazards/conveyor.png" id="2_gopo4"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_nwpj3"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_7l0ha")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_nwpj3")
-}],
-"loop": true,
-"name": &"default",
-"speed": 10.0
-}]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nwpj3"]
+shader = ExtResource("2_7l0ha")
+shader_parameter/modulate = Color(1, 1, 1, 1)
+shader_parameter/speed = Vector2(-8, 0)
+shader_parameter/offset = Vector2(0, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oiaom"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.2231029, 0.2231029, 0.22310284, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7l0ha"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_bottom = 12
+border_color = Color(0.12591082, 0.12591085, 0.12591079, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oiaom"]
-size = Vector2(128, 29)
+size = Vector2(128, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7l0ha"]
+size = Vector2(128, 26.923096)
 
 [node name="ConveyorBelt" type="Node2D"]
 script = ExtResource("1_gopo4")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_nwpj3")
-autoplay = "default"
-frame_progress = 0.7039309
+[node name="Sprite" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_nwpj3")
+offset_left = -64.0
+offset_top = -16.076904
+offset_right = 64.0
+offset_bottom = 15.923096
+texture = ExtResource("2_gopo4")
+expand_mode = 1
+stretch_mode = 1
 
-[node name="AnimatableBody2D" type="AnimatableBody2D" parent="AnimatedSprite2D"]
+[node name="Outline" type="Panel" parent="Sprite"]
+z_index = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_oiaom")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/AnimatableBody2D"]
-position = Vector2(0, 1.5)
+[node name="Side" type="Panel" parent="Sprite"]
+z_index = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(0, 16)
+theme_override_styles/panel = SubResource("StyleBoxFlat_7l0ha")
+
+[node name="Body" type="StaticBody2D" parent="."]
+position = Vector2(0, -4.0769043)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Body"]
+z_index = -1
+position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_oiaom")
 
-[node name="RayCast2D" type="RayCast2D" parent="AnimatedSprite2D/AnimatableBody2D"]
-position = Vector2(-62.31582, -15.923126)
-target_position = Vector2(126.31583, 4.5776367e-05)
-collision_mask = 4
+[node name="DirectionMarker" type="Marker2D" parent="."]
+position = Vector2(262.7368, -18)
 
-[node name="DirectionMarker" type="Marker2D" parent="AnimatedSprite2D"]
-position = Vector2(262.7368, -15.923096)
+[node name="PushArea" type="Area2D" parent="."]
+position = Vector2(0, -2.0769043)
+collision_layer = 0
+collision_mask = 1028
+
+[node name="PushShape" type="CollisionShape2D" parent="PushArea"]
+z_index = -1
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_7l0ha")
