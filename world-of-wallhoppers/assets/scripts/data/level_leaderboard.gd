@@ -71,6 +71,12 @@ func string_record(record: SingleRecord):
 	var time: String = str(record.time).pad_decimals(1)
 	return (record.player + ': ' + record.character).rpad(20 - time.length()) + time
 
+func is_in_best(record: SingleRecord) -> bool:
+	for other_record in best_records:
+		if record.equals(other_record):
+			return true
+	return false
+
 func get_placement_best(record: SingleRecord) -> int:
 	var placement: int = 0
 	for other_record in best_records:

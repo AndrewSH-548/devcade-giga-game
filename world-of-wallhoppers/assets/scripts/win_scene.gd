@@ -158,7 +158,10 @@ func _on_submit_button_pressed() -> void:
 		# Update the best score list
 		level_leaderboard.update_all()
 		# Get the placement of the current record in the lsit
-		placement_number = level_leaderboard.get_placement_best(saved_record)
+		if level_leaderboard.is_in_best(saved_record):
+			placement_number = level_leaderboard.get_placement_best(saved_record)
+		else:
+			placement_number = level_leaderboard.get_placement_best_from_time(current_time)
 	
 	# Add the record display and setup it
 	placement.add_child(record)
