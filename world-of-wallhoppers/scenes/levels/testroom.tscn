@@ -413,7 +413,7 @@ rotation = 1.5707964
 
 [node name="ConveyorBelt5" parent="." instance=ExtResource("6_rfvmp")]
 position = Vector2(240.00002, -224.00003)
-rotation = 4.7140894
+rotation = 4.712389
 
 [node name="ConveyorBelt2" parent="." instance=ExtResource("6_rfvmp")]
 position = Vector2(-16, -1072)
@@ -426,7 +426,7 @@ flipped = true
 
 [node name="ConveyorBelt7" parent="." instance=ExtResource("6_rfvmp")]
 position = Vector2(-16, -944)
-rotation = -1.5697442
+rotation = -1.5707964
 
 [node name="ConveyorBelt8" parent="." instance=ExtResource("6_rfvmp")]
 position = Vector2(16, -944)
@@ -435,7 +435,7 @@ flipped = true
 
 [node name="ConveyorBelt9" parent="." instance=ExtResource("6_rfvmp")]
 position = Vector2(208.00002, -736)
-rotation = 4.7140894
+rotation = 4.712389
 
 [node name="ConveyorBelt10" parent="." instance=ExtResource("6_rfvmp")]
 position = Vector2(-192, -688)

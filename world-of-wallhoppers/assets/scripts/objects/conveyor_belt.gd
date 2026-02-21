@@ -3,11 +3,12 @@ extends Node2D
 
 @export var flipped: bool = false
 @onready var push_area: Area2D = $PushArea
-@onready var side: Panel = $Sprite/Side
+@onready var side: Panel = $SpriteOld/Side
 @onready var push_shape: CollisionShape2D = $PushArea/PushShape
+@onready var sprite: AnimatedSprite2D = $Sprite
 
-var acceleration : float = 5200.0
-var max_speed: float = 512.0
+var acceleration: float = 5200
+var max_speed: Vector2 = Vector2(128.0, 512.0)
 var walk_modifier: float = 1.5
 
 func _ready() -> void:
@@ -18,7 +19,7 @@ func _physics_process(delta: float) -> void:
 		editor_update()
 		return
 	
-	var direction: Vector2 = Vector2.from_angle(snappedf(rotation, PI / 2.0))
+	var direction: Vector2 = Vector2.from_angle(snappedf(rotation, PI / 2.0)).snappedf(0.01)
 	
 	if direction == Vector2.ZERO:
 		return
@@ -30,7 +31,6 @@ func _physics_process(delta: float) -> void:
 	
 	for body in push_area.get_overlapping_bodies():
 		if body is CharacterBody2D:
-			print((direction * max_speed).length())
 			body.velocity = body.velocity.move_toward(direction * max_speed, acceleration * delta)
 			if body is Player:
 				(body as Player).disable_decceleration_timed(0.5)
@@ -41,6 +41,7 @@ func _physics_process(delta: float) -> void:
 
 func editor_update() -> void:
 	side.scale.y = 1.0 if not flipped else -1.0
+	sprite.flip_v = flipped
 	if flipped:
 		push_shape.position.y = 5
 	else:

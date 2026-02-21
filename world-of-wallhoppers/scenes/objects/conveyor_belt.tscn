@@ -1,8 +1,94 @@
-[gd_scene load_steps=9 format=3 uid="uid://mhgumrx0davs"]
+[gd_scene load_steps=22 format=3 uid="uid://mhgumrx0davs"]
 
 [ext_resource type="Script" uid="uid://bumkvrb1b4jhw" path="res://assets/scripts/objects/conveyor_belt.gd" id="1_gopo4"]
 [ext_resource type="Shader" uid="uid://bruhjepogvrwm" path="res://assets/shaders/scroll.gdshader" id="2_7l0ha"]
 [ext_resource type="Texture2D" uid="uid://7g18ktpe62e7" path="res://assets/sprites/stage_hazards/conveyor.png" id="2_gopo4"]
+[ext_resource type="Texture2D" uid="uid://2sxb6dsltnp2" path="res://assets/sprites/conveyor/conveyor.png" id="2_nwpj3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nwpj3"]
+atlas = ExtResource("2_nwpj3")
+region = Rect2(0, 0, 130, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oiaom"]
+atlas = ExtResource("2_nwpj3")
+region = Rect2(130, 0, 130, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ja1io"]
+atlas = ExtResource("2_nwpj3")
+region = Rect2(260, 0, 130, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2mvop"]
+atlas = ExtResource("2_nwpj3")
+region = Rect2(390, 0, 130, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8pfnb"]
+atlas = ExtResource("2_nwpj3")
+region = Rect2(520, 0, 130, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_34xo3"]
+atlas = ExtResource("2_nwpj3")
+region = Rect2(650, 0, 130, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hp0hf"]
+atlas = ExtResource("2_nwpj3")
+region = Rect2(780, 0, 130, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wxm2x"]
+atlas = ExtResource("2_nwpj3")
+region = Rect2(910, 0, 130, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3wjsv"]
+atlas = ExtResource("2_nwpj3")
+region = Rect2(1040, 0, 130, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5hc0g"]
+atlas = ExtResource("2_nwpj3")
+region = Rect2(1170, 0, 130, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vf2nw"]
+atlas = ExtResource("2_nwpj3")
+region = Rect2(1300, 0, 130, 34)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rxvo8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nwpj3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oiaom")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ja1io")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2mvop")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8pfnb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_34xo3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hp0hf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wxm2x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3wjsv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5hc0g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vf2nw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 120.0
+}]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nwpj3"]
 shader = ExtResource("2_7l0ha")
@@ -32,7 +118,13 @@ size = Vector2(128, 26.923096)
 [node name="ConveyorBelt" type="Node2D"]
 script = ExtResource("1_gopo4")
 
-[node name="Sprite" type="TextureRect" parent="."]
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_rxvo8")
+autoplay = "default"
+frame_progress = 0.4582134
+
+[node name="SpriteOld" type="TextureRect" parent="."]
+visible = false
 material = SubResource("ShaderMaterial_nwpj3")
 offset_left = -64.0
 offset_top = -16.076904
@@ -42,7 +134,7 @@ texture = ExtResource("2_gopo4")
 expand_mode = 1
 stretch_mode = 1
 
-[node name="Outline" type="Panel" parent="Sprite"]
+[node name="Outline" type="Panel" parent="SpriteOld"]
 z_index = 1
 layout_mode = 1
 anchors_preset = 15
@@ -52,7 +144,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_oiaom")
 
-[node name="Side" type="Panel" parent="Sprite"]
+[node name="Side" type="Panel" parent="SpriteOld"]
 z_index = 1
 layout_mode = 1
 anchors_preset = 15
