@@ -177,6 +177,7 @@ p2_cancel={
 2d_physics/layer_9="Spikey-Poly"
 2d_physics/layer_10="InteractsWithHollow"
 2d_physics/layer_11="AffectedByConveyor"
+2d_physics/layer_12="AllowMagnetAttach"
 
 [rendering]
 

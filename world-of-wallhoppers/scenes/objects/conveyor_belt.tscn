@@ -157,6 +157,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_7l0ha")
 
 [node name="Body" type="StaticBody2D" parent="."]
 position = Vector2(0, -4.0769043)
+collision_layer = 2049
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Body"]
