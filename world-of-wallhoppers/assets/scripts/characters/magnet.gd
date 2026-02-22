@@ -96,5 +96,5 @@ func _exit_tree() -> void:
 
 func _on_wall_collision(body: Node) -> void:
 	# This should only ever occur when hitting terrain
-	if (!body is TileMapLayer): return;
+	#if (!body is TileMapLayer): return;
 	rick.enter_pull_state()
