@@ -93,15 +93,6 @@ func make_timer(time: float) -> Timer:
 	add_child(timer)
 	return timer
 
-func get_modified_delta(true_delta: float) -> float:
-	return true_delta * physics_multiplier
-
-func move(true_delta: float, modified_delta: float) -> bool:
-	physics_multiplier = 1.0
-	velocity /= true_delta
-	velocity *= modified_delta
-	return move_and_slide()
-
 func disable_decceleration_timed(time: float) -> void:
 	disable_decceleration = true
 	deccel_disable_timer.start(time)
@@ -115,6 +106,12 @@ func get_position_state() -> int:
 	if is_on_floor(): return STATE_ON_FLOOR
 	if is_touching_wall(): return STATE_ON_WALL
 	return STATE_IN_AIR
+
+func move() -> void:
+	velocity *= physics_multiplier
+	move_and_slide()
+	velocity /= physics_multiplier
+	physics_multiplier = 1.0
 
 func process_gravity(delta: float):
 	# Add the gravity.
@@ -165,7 +162,7 @@ func is_touching_left_wall() -> bool:
 func is_touching_right_wall() -> bool:
 	return test_move(transform, Vector2(2, 0))
 
-func process_walkrun(_delta: float, direction: float) -> void:
+func process_walkrun(delta: float, direction: float) -> void:
 	
 	var walk_modifier: float = walk_speed_frame_modifier_directional
 	walk_speed_frame_modifier_directional = 1.0
@@ -179,7 +176,7 @@ func process_walkrun(_delta: float, direction: float) -> void:
 	
 	# Deccelerate if there is no input
 	if (direction == 0.0 or disable_walk_input or get_position_state() == STATE_HITSTUN) and not disable_decceleration:
-		velocity.x = move_toward(velocity.x, 0, deccel)
+		velocity.x = move_toward(velocity.x, 0, deccel * delta * 60)
 	# Other, run this if there IS input
 	elif not disable_walk_input:
 		# Do different things based on the state...
@@ -197,7 +194,7 @@ func process_walkrun(_delta: float, direction: float) -> void:
 			# AIR and WALL WALK/RUN State
 			STATE_IN_AIR, STATE_ON_WALL:
 				if abs(velocity.x) < air_speed:
-					velocity.x += direction * air_accel
+					velocity.x += direction * air_accel * delta * 60
 				else:
 					var target_speed: float = direction * air_speed
 					if disable_decceleration:
@@ -207,7 +204,7 @@ func process_walkrun(_delta: float, direction: float) -> void:
 						# Don't lower air speed if decceleration is disabled and direction is the same as the direction of velocity
 						if sign(target_speed) == sign(velocity.x) and abs(velocity.x) > abs(target_speed):
 							return
-					velocity.x = move_toward(velocity.x, target_speed, air_accel)
+					velocity.x = move_toward(velocity.x, target_speed, air_accel * delta * 60)
 
 func process_wallcheck(_delta: float) -> void:
 	
@@ -228,7 +225,7 @@ func process_walljump(_delta: float) -> void:
 		do_walljump()
 
 func do_walljump() -> void:
-	velocity.x = get_pushoff_wall_direction() * wall_pushoff_strength
+	velocity.x = get_pushoff_wall_direction() * wall_pushoff_strength 
 	velocity.y = -wall_jump_height
 	wall_jump_coyote_timer.stop()
 	wall_jump_buffer_timer.stop()

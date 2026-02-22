@@ -3,9 +3,7 @@ extends NinePatchRect
 
 @onready var slow_area: Area2D = $SlowArea
 @onready var slow_shape: CollisionShape2D = $SlowArea/SlowShape
-
-func _ready() -> void:
-	pass
+@onready var animation_timer: Timer = $AnimationTimer
 
 func update_sizes() -> void:
 	var rect: RectangleShape2D = slow_shape.shape
@@ -19,3 +17,7 @@ func _physics_process(_delta: float) -> void:
 			return
 		var player: Player = body as Player
 		player.physics_multiplier = 0.5
+
+func next_frame() -> void:
+	region_rect.position.x += region_rect.size.x
+	region_rect.position.x = fmod(region_rect.position.x, texture.get_width())

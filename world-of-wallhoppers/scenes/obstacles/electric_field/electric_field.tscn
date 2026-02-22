@@ -7,14 +7,15 @@
 size = Vector2(32, 32)
 
 [node name="ElectricField" type="NinePatchRect"]
+z_index = 1
 offset_right = 32.0
 offset_bottom = 32.0
 texture = ExtResource("1_qbne7")
-region_rect = Rect2(0, 0, 32, 32)
-patch_margin_left = 8
-patch_margin_top = 8
-patch_margin_right = 8
-patch_margin_bottom = 8
+region_rect = Rect2(0, 0, 68, 68)
+patch_margin_left = 18
+patch_margin_top = 18
+patch_margin_right = 18
+patch_margin_bottom = 18
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 script = ExtResource("2_lm6si")
@@ -26,3 +27,9 @@ collision_mask = 4
 [node name="SlowShape" type="CollisionShape2D" parent="SlowArea"]
 position = Vector2(16, 16)
 shape = SubResource("RectangleShape2D_qbne7")
+
+[node name="AnimationTimer" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
+[connection signal="timeout" from="AnimationTimer" to="." method="next_frame"]

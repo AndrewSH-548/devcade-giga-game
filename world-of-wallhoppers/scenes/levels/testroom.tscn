@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://cfmw64hyyqiyq"]
+[gd_scene load_steps=15 format=4 uid="uid://cfmw64hyyqiyq"]
 
 [ext_resource type="Script" uid="uid://c6py55hjaa53x" path="res://assets/scripts/gameplay/testroom.gd" id="1_ud52p"]
 [ext_resource type="Texture2D" uid="uid://3dsey0o0pes7" path="res://assets/terrain/tutorial.png" id="2_d1e65"]
@@ -8,6 +8,9 @@
 [ext_resource type="PackedScene" uid="uid://b6avcmnww3c4" path="res://scenes/characters/rick_shawn.tscn" id="7_s85sn"]
 [ext_resource type="PackedScene" uid="uid://dq0ugk3kfkwtc" path="res://scenes/objects/hollow/hollow.tscn" id="8_3uqb6"]
 [ext_resource type="PackedScene" uid="uid://bplcy6vin1ood" path="res://scenes/obstacles/turret/turret.tscn" id="9_c4jjg"]
+[ext_resource type="PackedScene" uid="uid://c6sol007mxiv2" path="res://scenes/obstacles/electric_field/electric_field.tscn" id="10_yyb87"]
+[ext_resource type="PackedScene" uid="uid://bojyqwmqsf6xx" path="res://scenes/characters/scoria.tscn" id="11_ajv6g"]
+[ext_resource type="PackedScene" uid="uid://c42ynqlk3h4wp" path="res://scenes/characters/reign.tscn" id="12_hqn21"]
 [ext_resource type="Texture2D" uid="uid://bb5ri38gqtcsx" path="res://assets/terrain/tutorial_background.png" id="20_bqlqy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ub0e1"]
@@ -359,8 +362,8 @@ sources/1 = SubResource("TileSetAtlasSource_ub0e1")
 
 [node name="Tutorial" type="Node2D" node_paths=PackedStringArray("player", "player_2")]
 script = ExtResource("1_ud52p")
-player = NodePath("PlayerRickShawn")
-player_2 = NodePath("PlayerHip")
+player = NodePath("PlayerScoria")
+player_2 = NodePath("PlayerReign")
 
 [node name="Camera" type="Camera2D" parent="."]
 position = Vector2(0, -416)
@@ -453,3 +456,15 @@ turret_rotation = 45.0
 
 [node name="ConveyorBelt12" parent="." instance=ExtResource("6_rfvmp")]
 position = Vector2(32, -176)
+
+[node name="ElectricField" parent="." instance=ExtResource("10_yyb87")]
+offset_left = 16.0
+offset_top = -1272.0
+offset_right = 280.0
+offset_bottom = -1008.0
+
+[node name="PlayerScoria" parent="." instance=ExtResource("11_ajv6g")]
+position = Vector2(-72, -200)
+
+[node name="PlayerReign" parent="." instance=ExtResource("12_hqn21")]
+position = Vector2(-160, -200)

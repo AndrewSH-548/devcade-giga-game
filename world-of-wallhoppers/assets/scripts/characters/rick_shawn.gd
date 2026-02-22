@@ -29,9 +29,6 @@ func _physics_process(delta: float) -> void:
 	var header = get_tree().get_first_node_in_group("LevelHeader")
 	if header != null and header.paused:
 		return
-	
-	var modified_delta: float = get_modified_delta(delta)
-	
 	if halt_physics:
 		if state == THROWING or state == PULLING:
 			enter_platform_state()
@@ -48,26 +45,26 @@ func _physics_process(delta: float) -> void:
 	
 	match state:
 		PLATFORMING:
-			process_gravity(modified_delta)
-			process_jump(modified_delta)
-			process_wallcheck(modified_delta)
-			process_walljump(modified_delta)
-			process_walkrun(modified_delta, direction)
+			process_gravity(delta)
+			process_jump(delta)
+			process_wallcheck(delta)
+			process_walljump(delta)
+			process_walkrun(delta, direction)
 			if get_position_state() != STATE_HITSTUN:
-				process_magnet_throw(modified_delta)
+				process_magnet_throw(delta)
 			update_flipped()
 		THROWING:
-			process_gravity(modified_delta)
+			process_gravity(delta)
 		PULLING:
-			process_pulling(modified_delta)
-			var collision: KinematicCollision2D = move_and_collide(velocity * modified_delta)
+			process_pulling(delta)
+			var collision: KinematicCollision2D = move_and_collide(velocity * delta)
 			# If Rick collided with a wall, or he was hit...
 			if collision != null or get_position_state() == STATE_HITSTUN or Input.is_action_just_pressed(jump_action):
 				enter_platform_state()
 	
 	animate_rick(direction)
 	if state in [PLATFORMING, THROWING]:
-		move(delta, modified_delta)
+		move()
 
 # Upon input, the magnet is spawned and thrown in the current direction of Rick. Requires being airborne.
 # A reference variable allows the magnet to be modified without having to search for it.

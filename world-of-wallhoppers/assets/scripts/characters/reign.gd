@@ -16,18 +16,16 @@ func _physics_process(delta: float) -> void:
 	if halt_physics:
 		return
 	
-	var modified_delta: float = get_modified_delta(delta)
-	
 	is_hovering = Input.is_action_pressed(run_modifier_action) and get_position_state() in [STATE_IN_AIR, STATE_ON_WALL];
 	
 	var direction := get_horizontal_movement()
 	
-	process_hover(modified_delta)
+	process_hover(delta)
 	update_flipped()
-	process_walkrun(modified_delta, direction)
+	process_walkrun(delta, direction)
 	animate_reign(direction)
 
-	move(delta, modified_delta)
+	move()
 
 func process_hover(delta: float) -> void: 
 	if Input.is_action_just_pressed(run_modifier_action) and get_position_state() in [STATE_IN_AIR, STATE_ON_WALL]:
