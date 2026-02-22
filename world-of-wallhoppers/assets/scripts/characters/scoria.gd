@@ -106,9 +106,11 @@ func _physics_process(delta: float) -> void:
 	if halt_physics:
 		return
 	
+	var modified_delta: float = get_modified_delta(delta)
+	
 	var direction: float = get_horizontal_movement()
 	
-	spark_progress = move_toward(spark_progress, 0.0, spark_drain_per_second * delta)
+	spark_progress = move_toward(spark_progress, 0.0, spark_drain_per_second * modified_delta)
 	
 	if move_state != MoveState.NORMAL:
 		if Input.is_action_just_pressed(dash_action):
@@ -121,11 +123,11 @@ func _physics_process(delta: float) -> void:
 	if get_position_state() != STATE_HITSTUN:
 		match move_state:
 			MoveState.NORMAL:
-				process_walkrun(delta, direction)
-				process_gravity(delta)
-				process_jump(delta)
-				process_wallcheck(delta)
-				process_walljump(delta)
+				process_walkrun(modified_delta, direction)
+				process_gravity(modified_delta)
+				process_jump(modified_delta)
+				process_wallcheck(modified_delta)
+				process_walljump(modified_delta)
 				if Input.is_action_just_pressed(roll_action):
 					do_roll()
 			# SCRAPPED DASH, WAS REPLACED BY ROLL
@@ -133,17 +135,17 @@ func _physics_process(delta: float) -> void:
 			#	process_dash()
 			MoveState.REBOUND:
 				process_rebound()
-				process_gravity(delta)
+				process_gravity(modified_delta)
 			MoveState.SLAM:
-				process_slam(delta)
+				process_slam(modified_delta)
 			MoveState.FLIGHT:
-				process_flight(delta)
+				process_flight(modified_delta)
 			MoveState.ROLL:
-				process_roll(delta)
+				process_roll(modified_delta)
 				if Input.is_action_just_pressed(down_action):
 					move_state = MoveState.SLAM
 	else:
-		process_gravity(delta)
+		process_gravity(modified_delta)
 		move_state = MoveState.NORMAL
 	
 	if move_state != MoveState.ROLL:
@@ -151,7 +153,7 @@ func _physics_process(delta: float) -> void:
 	animated_scoria()
 	
 	on_floor_last_frame = is_on_floor()
-	move_and_slide()
+	move(delta, modified_delta)
 
 func do_dash():
 	move_state = MoveState.DASH

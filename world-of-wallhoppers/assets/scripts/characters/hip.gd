@@ -18,23 +18,25 @@ func _physics_process(delta: float) -> void:
 	if halt_physics:
 		return
 	
+	var modified_delta: float = get_modified_delta(delta)
+	
 	# Set is_wall_climbing to true if Wallsliding and the run button is pressed
 	is_wall_climbing = Input.is_action_pressed(run_modifier_action) and get_position_state() == STATE_ON_WALL
 	
 	var direction: float = get_horizontal_movement()
 	
 	# Don't do gravity when wallclibing
-	if not is_wall_climbing: process_gravity(delta)
-	process_jump(delta)
+	if not is_wall_climbing: process_gravity(modified_delta)
+	process_jump(modified_delta)
 	
 	update_flipped()
 	
-	if not is_wall_climbing: process_walkrun(delta, direction)
-	process_walljump_hip(delta)
+	if not is_wall_climbing: process_walkrun(modified_delta, direction)
+	process_walljump_hip(modified_delta)
 	animate_hip(direction)
 	process_wallclimb()
 	
-	move_and_slide()
+	move(delta, modified_delta)
 
 func get_climb_input():
 	return Input.get_axis(jump_action, crouch_action)

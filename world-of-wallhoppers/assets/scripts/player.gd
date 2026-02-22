@@ -42,6 +42,7 @@ var on_wall_last_frame: bool = false
 var hitstun_max_fall_speed_modifier: float = 80.0
 
 var halt_physics: bool = false
+var physics_multiplier: float = 1.0
 
 var foot_offset: Vector2
 var foot_global_position: Vector2:
@@ -89,6 +90,15 @@ func make_timer(time: float) -> Timer:
 	timer.wait_time = time
 	add_child(timer)
 	return timer
+
+func get_modified_delta(true_delta: float) -> float:
+	return true_delta * physics_multiplier
+
+func move(true_delta: float, modified_delta: float) -> bool:
+	physics_multiplier = 1.0
+	velocity /= true_delta
+	velocity *= modified_delta
+	return move_and_slide()
 
 func disable_decceleration_timed(time: float) -> void:
 	disable_decceleration = true
