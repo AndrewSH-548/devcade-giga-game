@@ -199,8 +199,7 @@ shape = SubResource("RectangleShape2D_6ci1u")
 
 [node name="Animations" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_eose0")
-animation = &"idle"
-frame_progress = 0.7178589
+animation = &"wall-cling"
 
 [node name="Hitbox" type="Area2D" parent="."]
 collision_layer = 0
