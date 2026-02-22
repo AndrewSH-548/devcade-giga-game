@@ -836,10 +836,10 @@ position = Vector2(416, 1331)
 position = Vector2(388, -767)
 
 [node name="PlayerSpawn1" type="Marker2D" parent="."]
-position = Vector2(681, -8938)
+position = Vector2(592, 1704)
 
 [node name="PlayerSpawn2" type="Marker2D" parent="."]
-position = Vector2(589, 1703)
+position = Vector2(592, 1704)
 
 [node name="SwapPoint" type="Marker2D" parent="."]
 position = Vector2(589, -8252)
