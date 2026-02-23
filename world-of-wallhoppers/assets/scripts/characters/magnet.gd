@@ -20,6 +20,7 @@ var ropes_for_hollows: Array[Line2D] = []
 var closest_rope: Line2D
 
 const ROPE_TEXTURE = preload("uid://flc6x8anvjcu")
+const ALLOW_MAGNET_LAYER: int = 2048
 
 func _ready() -> void:
 	# Magnet is created as a sibling node, so relative pathing should always work.
@@ -96,5 +97,13 @@ func _exit_tree() -> void:
 
 func _on_wall_collision(body: Node) -> void:
 	# This should only ever occur when hitting terrain
-	if (!body is TileMapLayer): return;
+	if (!body is TileMapLayer):
+		# Reutrn instantly if the body is not a collision object
+		if body is not CollisionObject2D:
+			return
+		# Get the body as a collision object
+		var other: CollisionObject2D = body as CollisionObject2D
+		# Don't attach to objects that don't have the allow magnet collision layer set
+		if other.collision_layer & ALLOW_MAGNET_LAYER == 0:
+			return
 	rick.enter_pull_state()

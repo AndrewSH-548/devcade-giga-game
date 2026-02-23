@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://cotc4m53mxg85" path="res://assets/sprites/characters/rick_shawn/rick_shawn.png" id="3_5phyr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dwkx8"]
-size = Vector2(43, 100)
+size = Vector2(40, 96)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4i8s3"]
 atlas = ExtResource("3_5phyr")
@@ -231,21 +231,21 @@ gravity = 1100
 weight = 26
 
 [node name="HitboxShape" type="CollisionShape2D" parent="."]
-position = Vector2(1.5, 1.9999988)
+position = Vector2(0, -1.1920929e-06)
 shape = SubResource("RectangleShape2D_dwkx8")
 
 [node name="Animations" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 position = Vector2(0, -2.3841858e-07)
 sprite_frames = SubResource("SpriteFrames_eose0")
-animation = &"throw_start"
+animation = &"run"
 
 [node name="Hitbox" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 8
 
 [node name="HitboxShape" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(1.5, 1.9999988)
+position = Vector2(0, -1.1920929e-06)
 shape = SubResource("RectangleShape2D_dwkx8")
 
 [node name="FootPositionMarker" type="Marker2D" parent="."]
