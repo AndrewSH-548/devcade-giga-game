@@ -151,7 +151,7 @@ func _physics_process(delta: float) -> void:
 	animated_scoria()
 	
 	on_floor_last_frame = is_on_floor()
-	move_and_slide()
+	move()
 
 func do_dash():
 	move_state = MoveState.DASH

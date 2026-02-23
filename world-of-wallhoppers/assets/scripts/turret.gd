@@ -1,3 +1,4 @@
+@tool
 extends Node2D
 
 enum Locations {
@@ -50,6 +51,8 @@ var location = "";
 var turret_type = "";
 
 func _ready() -> void:
+	if Engine.is_editor_hint():
+		return
 	location = Locations.find_key(location_export).to_lower();
 	turret_type = TurretType.find_key(turret_type_export).to_lower();
 	
@@ -87,6 +90,9 @@ func _ready() -> void:
 	start_projectile_firing_cycle();
 
 func _process(_delta: float) -> void:
+	if Engine.is_editor_hint():
+		queue_redraw()
+		return
 	
 	match current_state:
 		State.COOLDOWN:
@@ -245,4 +251,14 @@ func set_aiming() -> void: ## if the turret is right clicked(button is masked to
 		change_state(State.AIMING);
 
 func _on_cooldown_timer_timeout() -> void: ## change to READY state once cooldown is finished.
+	if Engine.is_editor_hint():
+		return
 	change_state(State.READY);
+
+func _draw() -> void:
+	if not Engine.is_editor_hint():
+		return
+	var start_position: Vector2 = Vector2(0, -40)
+	var end_position: Vector2 = start_position + Vector2.from_angle(deg_to_rad(turret_rotation - 90)) * 64.0
+	draw_line(start_position, end_position, Color.RED, 2)
+	draw_circle(end_position, 8.0, Color.RED)

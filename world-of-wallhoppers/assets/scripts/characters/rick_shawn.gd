@@ -53,10 +53,8 @@ func _physics_process(delta: float) -> void:
 			if get_position_state() != STATE_HITSTUN:
 				process_magnet_throw(delta)
 			update_flipped()
-			move_and_slide()
 		THROWING:
 			process_gravity(delta)
-			move_and_slide()
 		PULLING:
 			process_pulling(delta)
 			var collision: KinematicCollision2D = move_and_collide(velocity * delta)
@@ -65,6 +63,8 @@ func _physics_process(delta: float) -> void:
 				enter_platform_state()
 	
 	animate_rick(direction)
+	if state in [PLATFORMING, THROWING]:
+		move()
 
 # Upon input, the magnet is spawned and thrown in the current direction of Rick. Requires being airborne.
 # A reference variable allows the magnet to be modified without having to search for it.

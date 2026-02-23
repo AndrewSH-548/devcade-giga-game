@@ -25,7 +25,7 @@ func _physics_process(delta: float) -> void:
 	process_walkrun(delta, direction)
 	animate_reign(direction)
 
-	move_and_slide()
+	move()
 
 func process_hover(delta: float) -> void: 
 	if Input.is_action_just_pressed(run_modifier_action) and get_position_state() in [STATE_IN_AIR, STATE_ON_WALL]:
