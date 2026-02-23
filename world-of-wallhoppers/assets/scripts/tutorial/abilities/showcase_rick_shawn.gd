@@ -26,7 +26,7 @@ func do_actions() -> void:
 		release("right")
 		hold("left")
 		press("jump"))
-	timer(4.0).connect(func():
+	timer(3.7).connect(func():
 		press("run"))
 	timer(4.3).connect(func():
 		press("jump"))

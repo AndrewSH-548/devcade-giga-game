@@ -217,16 +217,17 @@ collision_layer = 4
 collision_mask = 65
 script = ExtResource("1_cxbc4")
 magnet = ExtResource("2_ilnro")
+pull_speed = 680.0
 walk_speed = 420
 run_speed = 420
 deccel = 100
 air_speed = 240
 air_accel = 28
-jump_height = 320
-wall_jump_height = 400
+jump_height = 480
+wall_jump_height = 520
 wall_pushoff_strength = 360
 fall_speed = 1100
-gravity = 900
+gravity = 1100
 weight = 26
 
 [node name="HitboxShape" type="CollisionShape2D" parent="."]
