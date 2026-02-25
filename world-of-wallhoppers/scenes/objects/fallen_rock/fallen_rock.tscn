@@ -47,8 +47,6 @@ one_way_collision_margin = 22.5
 collision_layer = 8
 collision_mask = 0
 script = ExtResource("3_1pxft")
-launch_mode = 1
-direction_offset_angle = 90.0
 
 [node name="Collision" type="CollisionShape2D" parent="HitArea"]
 position = Vector2(0, 8)
