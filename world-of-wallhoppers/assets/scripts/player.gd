@@ -247,15 +247,21 @@ func do_walljump() -> void:
 # Override in subclasses to do stuff when hitstun is activated
 func on_enter_hitstun() -> void: return
 
-func do_hitstun(body: Obstacle) -> void:
+func do_hitstun(body: Node2D) -> void:
 	if is_invincible():
-		return
-	if body is not Obstacle:
 		return
 	if hitstun:
 		return
-	velocity = body.get_launch_velocity(self)
-	invincibility_timer.start(body.get_time_multiplier() * HITSTUN_TIME + INVINCIBILITY_TIME)
+	
+	var time_multiplier: float
+	
+	if body is not Obstacle:
+		velocity = Obstacle.get_launch_velocity_from_position(body.global_position, self)
+		time_multiplier = Obstacle.NORMAL_TIME
+	else:
+		velocity = body.get_launch_velocity(self)
+		time_multiplier = body.get_time_multiplier()
+	invincibility_timer.start(time_multiplier * HITSTUN_TIME + INVINCIBILITY_TIME)
 	hitstun = true
 	# Don't Collide with LAYER_NOT_HITSTUN (Depricated)
 	#collision_mask &= ~LAYER_NOT_HITSTUN
@@ -264,7 +270,7 @@ func do_hitstun(body: Obstacle) -> void:
 	# Create hitstun effect (time can be changed (currently 1 second))
 	# DO Collide with LAYER_NOT_HITSTUN
 	on_enter_hitstun()
-	await get_tree().create_timer(HITSTUN_TIME * body.get_time_multiplier()).timeout
+	await get_tree().create_timer(HITSTUN_TIME * time_multiplier).timeout
 	#collision_mask |= LAYER_NOT_HITSTUN
 	disable_walk_input = false
 	hitstun = false

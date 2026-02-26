@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://cvfjyumegdxd7"]
+
+[ext_resource type="Texture2D" uid="uid://hlkfdri2o0g" path="res://assets/sprites/bomb_hatch/bomb_hatch.png" id="1_ld354"]
+[ext_resource type="Script" uid="uid://bj1b132w8xr8x" path="res://assets/scripts/objects/bomb_hatch.gd" id="1_xgq6p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xgq6p"]
+size = Vector2(32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_te82u"]
+size = Vector2(32, 2)
+
+[node name="BombHatch" type="StaticBody2D"]
+z_index = 1
+collision_layer = 64
+collision_mask = 0
+script = ExtResource("1_xgq6p")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(16, 16)
+texture = ExtResource("1_ld354")
+
+[node name="Shape" type="CollisionShape2D" parent="."]
+position = Vector2(16, 16)
+shape = SubResource("RectangleShape2D_xgq6p")
+
+[node name="Spawn" type="Marker2D" parent="."]
+position = Vector2(16, 16)
+
+[node name="DestroyArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="DestroyShape" type="CollisionShape2D" parent="DestroyArea"]
+position = Vector2(16, 1)
+shape = SubResource("RectangleShape2D_te82u")
+debug_color = Color(0.9115285, 0.1356048, 0.6475239, 0.41960785)
+
+[node name="SpawnTimer" type="Timer" parent="."]
+process_callback = 0
+autostart = true

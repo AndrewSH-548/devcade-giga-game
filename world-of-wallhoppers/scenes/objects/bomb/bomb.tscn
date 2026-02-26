@@ -65,6 +65,7 @@ radius = 11.0
 radius = 13.0
 
 [node name="Bomb" type="RigidBody2D"]
+collision_layer = 8
 contact_monitor = true
 max_contacts_reported = 3
 script = ExtResource("1_s3m63")
