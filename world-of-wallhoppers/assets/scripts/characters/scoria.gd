@@ -144,6 +144,7 @@ func _physics_process(delta: float) -> void:
 					move_state = MoveState.SLAM
 	else:
 		process_gravity(delta)
+		process_walkrun(delta, direction)
 		move_state = MoveState.NORMAL
 	
 	if move_state != MoveState.ROLL:

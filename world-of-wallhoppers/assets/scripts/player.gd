@@ -173,11 +173,9 @@ func is_touching_right_wall() -> bool:
 	return test_move(transform, Vector2(2, 0))
 
 func process_walkrun(delta: float, direction: float) -> void:
-	
 	if get_position_state() == STATE_HITSTUN:
-		if is_on_floor():
+		if is_on_floor() and not disable_decceleration:
 			velocity.x = move_toward(velocity.x, 0, deccel * delta * 60)
-		
 		return
 	
 	var walk_modifier: float = walk_speed_frame_modifier_directional
@@ -262,6 +260,7 @@ func do_hitstun(body: Obstacle) -> void:
 	# Don't Collide with LAYER_NOT_HITSTUN (Depricated)
 	#collision_mask &= ~LAYER_NOT_HITSTUN
 	disable_walk_input = true
+	disable_decceleration_timed(0.1)
 	# Create hitstun effect (time can be changed (currently 1 second))
 	# DO Collide with LAYER_NOT_HITSTUN
 	on_enter_hitstun()
