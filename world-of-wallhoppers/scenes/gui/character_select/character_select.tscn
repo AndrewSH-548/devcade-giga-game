@@ -4,8 +4,8 @@
 [ext_resource type="Shader" uid="uid://ddaqfuly3ptrg" path="res://assets/shaders/patterns/pattern_a.gdshader" id="2_nk16p"]
 [ext_resource type="Texture2D" uid="uid://ctikpvc1wa7ag" path="res://assets/gui/background_a.png" id="3_ads0s"]
 [ext_resource type="Texture2D" uid="uid://dbx47oqbrkl4n" path="res://assets/shaders/noise/Voronoi 12 - 256x256.png" id="4_le0to"]
-[ext_resource type="Texture2D" uid="uid://2utjtrsth1yk" path="res://assets/gui/character_select/portraits/portrait_hip.png" id="6_o4o7f"]
-[ext_resource type="Texture2D" uid="uid://d36lgodtre2iy" path="res://assets/gui/character_select/portraits/portrait_reign.png" id="7_b51ev"]
+[ext_resource type="Texture2D" uid="uid://ciopa5mfn4l4a" path="res://assets/gui/character_select/portraits/portrait_hip.png" id="6_o4o7f"]
+[ext_resource type="Texture2D" uid="uid://da10mhfp35so3" path="res://assets/gui/character_select/portraits/portrait_reign.png" id="7_b51ev"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wjce1"]
 shader = ExtResource("2_nk16p")

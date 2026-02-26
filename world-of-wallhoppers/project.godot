@@ -31,6 +31,10 @@ window/stretch/mode="viewport"
 
 project/assembly_name="House of Wallhoppers"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/levelbar/plugin.cfg")
+
 [global_group]
 
 player1="The Player 1"

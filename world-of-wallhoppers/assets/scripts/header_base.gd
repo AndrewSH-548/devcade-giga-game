@@ -116,3 +116,8 @@ static func add_new_header(root: Node, header_packed_scene: PackedScene, session
 	TimeManager.reset_timer()
 	new_header.get_parent().move_child(new_header, 0)
 	new_header.setup(session_info)
+
+# Gets either the singleplayer or multiplayer header, depending on session info's mode
+static func get_level_header(session: SessionInfo) -> LevelHeaderBase:
+	if session.is_multiplayer: return load("res://scenes/header_multiplayer.tscn").instantiate()
+	else: return load("res://scenes/header_singleplayer.tscn").instantiate()

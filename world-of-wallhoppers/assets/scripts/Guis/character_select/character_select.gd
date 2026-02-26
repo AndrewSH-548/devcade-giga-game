@@ -23,8 +23,6 @@ class_name CharacterSelect
 const CHARACTERS_PER_FLOW_ROW: int = 6
 
 const CHARACTER_BUTTON = preload("res://scenes/gui/character_select/character_button.tscn")
-const HEADER_MULTIPLAYER = preload("res://scenes/header_multiplayer.tscn")
-const HEADER_SINGLEPLAYER = preload("res://scenes/header_singleplayer.tscn")
 const MISSING_TEXTURE = preload("res://assets/sprites/missing_texture.png")
 const RANDOM_LEVEL_VISUALS = preload("res://scenes/gui/character_select/random_level_visuals.tscn")
 @onready var LEVEL_SELECT = load("res://scenes/gui/level_select.tscn")
@@ -169,7 +167,7 @@ func start_game():
 		session_info.characters.append(player_choices[player_index])
 	
 	# Get either the singleplayer or multiplayer header...
-	var header: LevelHeaderBase = get_level_header()
+	var header: LevelHeaderBase = LevelHeaderBase.get_level_header(session_info)
 	# Load it
 	get_tree().root.add_child(header)
 	# Pass the level header the session info
@@ -274,11 +272,6 @@ func process_button_updating() -> void:
 		# corresponding "selected" index to true, otherwise false
 		for player_index in range(player_count):
 			button.selected[player_index] = button == player_focused[player_index]
-
-# Gets either the singleplayer or multiplayer header, depending on mode
-func get_level_header() -> LevelHeaderBase:
-	if session_info.is_multiplayer: return HEADER_MULTIPLAYER.instantiate()
-	else: return HEADER_SINGLEPLAYER.instantiate()
 
 # Searches for the first child of the provided node which is also in the provided group
 func get_child_in_group(parent: Node, group: StringName) -> Node:

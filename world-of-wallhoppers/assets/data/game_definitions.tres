@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="GameDefinition" load_steps=34 format=3 uid="uid://cn1341ksalk55"]
+[gd_resource type="Resource" script_class="GameDefinition" load_steps=36 format=3 uid="uid://cn1341ksalk55"]
 
 [ext_resource type="Script" uid="uid://c1c364hhlfwr5" path="res://assets/scripts/data/character_definition.gd" id="1_tsxfc"]
 [ext_resource type="Texture2D" uid="uid://cbpfskf2jthji" path="res://assets/sprites/characters/hip.png" id="2_m022u"]
@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://bugghy8rqpv48" path="res://scenes/gui/tutorial/ability_showcases/showcase_scoria.tscn" id="13_nr2l4"]
 [ext_resource type="Texture2D" uid="uid://cvgaagh8lybwg" path="res://assets/gui/character_select/portraits/portrait-rick-shawn.png" id="15_b1vmq"]
 [ext_resource type="PackedScene" uid="uid://c885c77c1yt5r" path="res://scenes/gui/tutorial/ability_showcases/showcase_rick_shawn.tscn" id="17_b1vmq"]
+[ext_resource type="PackedScene" uid="uid://bqcg6o0r5feof" path="res://scenes/levels/skyscraper.tscn" id="22_md415"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lgy02"]
 atlas = ExtResource("2_m022u")
@@ -100,8 +101,15 @@ name = "Reef"
 border_color = Color(0, 0.0627451, 0.33333334, 1)
 metadata/_custom_type_script = "uid://72arh6p6vdd"
 
+[sub_resource type="Resource" id="Resource_0co3f"]
+script = ExtResource("2_sgbyo")
+scene = ExtResource("22_md415")
+name = "Skyscraper"
+border_color = Color(0.42745098, 0.45882353, 0.5529412, 1)
+metadata/_custom_type_script = "uid://72arh6p6vdd"
+
 [resource]
 script = ExtResource("3_bigc5")
 characters = Array[ExtResource("1_tsxfc")]([SubResource("Resource_6hegu"), SubResource("Resource_ciu7n"), SubResource("Resource_m022u"), SubResource("Resource_b1vmq")])
-levels = Array[ExtResource("2_sgbyo")]([SubResource("Resource_bigc5"), SubResource("Resource_00dtc"), SubResource("Resource_m7u6u")])
+levels = Array[ExtResource("2_sgbyo")]([SubResource("Resource_bigc5"), SubResource("Resource_00dtc"), SubResource("Resource_m7u6u"), SubResource("Resource_0co3f")])
 metadata/_custom_type_script = "uid://ck53kg0d2q07n"
