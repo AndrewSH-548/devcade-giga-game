@@ -3,7 +3,7 @@
 [ext_resource type="Shader" uid="uid://dr1a7hb3mi8yr" path="res://assets/shaders/flowing_lava.gdshader" id="1_25p0a"]
 [ext_resource type="Texture2D" uid="uid://dnyyujledekcx" path="res://assets/terrain/volcano_lava.png" id="2_gq5in"]
 [ext_resource type="Script" uid="uid://da58jicamkne0" path="res://assets/scripts/objects/flowing_lava.gd" id="3_d4b8o"]
-[ext_resource type="Script" uid="uid://cphusaq70x4jg" path="res://assets/scripts/obstacles.gd" id="4_gq5in"]
+[ext_resource type="Script" uid="uid://cphusaq70x4jg" path="res://assets/scripts/obstacle.gd" id="4_gq5in"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fitjb"]
 resource_local_to_scene = true

@@ -172,6 +172,9 @@ func do_rebound(wall_direction: int):
 		velocity.y = -rebound_boost_strength
 		rebound_timer.start(rebound_time)
 
+func on_enter_hitstun() -> void:
+	move_state = MoveState.NORMAL
+
 func do_flight(away_direction: int):
 	flight_target_x = global_position.x + flight_offset_x * away_direction
 	velocity.y = -flight_speed

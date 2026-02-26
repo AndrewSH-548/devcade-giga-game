@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cy38qjmm1v82v" path="res://assets/scripts/objects/fallen_rock.gd" id="1_u4yol"]
 [ext_resource type="Texture2D" uid="uid://dgvf6467t4vi5" path="res://assets/terrain/volcano_fallen_platform.png" id="2_3vvti"]
-[ext_resource type="Script" uid="uid://cphusaq70x4jg" path="res://assets/scripts/obstacles.gd" id="3_1pxft"]
+[ext_resource type="Script" uid="uid://cphusaq70x4jg" path="res://assets/scripts/obstacle.gd" id="3_1pxft"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1pxft"]
 size = Vector2(32, 32)

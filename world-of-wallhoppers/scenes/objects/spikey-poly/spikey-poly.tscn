@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://b0w5vapmws5fj" path="res://assets/sprites/spikey-poly/spikey-poly.png" id="1_jhjkm"]
 [ext_resource type="Script" uid="uid://b5k5kdgubf6y1" path="res://assets/scripts/objects/spikey_poly.gd" id="1_p0hcf"]
-[ext_resource type="Script" uid="uid://cphusaq70x4jg" path="res://assets/scripts/obstacles.gd" id="2_p0hcf"]
+[ext_resource type="Script" uid="uid://cphusaq70x4jg" path="res://assets/scripts/obstacle.gd" id="2_p0hcf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k8hhq"]
 atlas = ExtResource("1_jhjkm")
@@ -54,6 +54,7 @@ position = Vector2(0, -16)
 collision_layer = 8
 collision_mask = 0
 script = ExtResource("2_p0hcf")
+config = 2
 
 [node name="Collision" type="CollisionShape2D" parent="HitArea"]
 position = Vector2(0, 6)

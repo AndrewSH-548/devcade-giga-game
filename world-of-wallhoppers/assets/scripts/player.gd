@@ -54,7 +54,7 @@ const COYOTE_TIME: float = 0.07
 const WALL_JUMP_COYOTE_TIME: float = 0.1
 const WALL_JUMP_BUFFER_TIME: float = 0.07
 const HITSTUN_TIME: float = 1.7
-const INVINCIBILITY_TIME: float = 2.3
+const INVINCIBILITY_TIME: float = 0.5
 
 const LAYER_NOT_HITSTUN: int = 128
 
@@ -62,7 +62,7 @@ const LAYER_NOT_HITSTUN: int = 128
 @onready var coyote_timer: Timer = make_timer(COYOTE_TIME)
 @onready var wall_jump_coyote_timer: Timer = make_timer(WALL_JUMP_COYOTE_TIME)
 @onready var wall_jump_buffer_timer: Timer = make_timer(WALL_JUMP_BUFFER_TIME)
-@onready var invincibility_timer: Timer = make_timer(INVINCIBILITY_TIME)
+@onready var invincibility_timer: Timer = make_timer(HITSTUN_TIME + INVINCIBILITY_TIME)
 
 var has_done_coyote: bool = true
 
@@ -246,6 +246,9 @@ func do_walljump() -> void:
 	wall_jump_coyote_timer.stop()
 	wall_jump_buffer_timer.stop()
 
+# Override in subclasses to do stuff when hitstun is activated
+func on_enter_hitstun() -> void: return
+
 func do_hitstun(body: Obstacle) -> void:
 	if is_invincible():
 		return
@@ -254,14 +257,15 @@ func do_hitstun(body: Obstacle) -> void:
 	if hitstun:
 		return
 	velocity = body.get_launch_velocity(self)
-	invincibility_timer.start()
+	invincibility_timer.start(body.get_time_multiplier() * HITSTUN_TIME + INVINCIBILITY_TIME)
 	hitstun = true
 	# Don't Collide with LAYER_NOT_HITSTUN (Depricated)
 	#collision_mask &= ~LAYER_NOT_HITSTUN
 	disable_walk_input = true
 	# Create hitstun effect (time can be changed (currently 1 second))
 	# DO Collide with LAYER_NOT_HITSTUN
-	await get_tree().create_timer(HITSTUN_TIME).timeout
+	on_enter_hitstun()
+	await get_tree().create_timer(HITSTUN_TIME * body.get_time_multiplier()).timeout
 	#collision_mask |= LAYER_NOT_HITSTUN
 	disable_walk_input = false
 	hitstun = false

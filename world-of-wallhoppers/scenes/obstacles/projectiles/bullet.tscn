@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://h33kbi24xce8"]
 
 [ext_resource type="Script" uid="uid://cgfwcug5yxepp" path="res://assets/scripts/bullet.gd" id="1_agjdo"]
-[ext_resource type="Texture2D" uid="uid://caynchsya2rop" path="res://assets/sprites/projectiles/Bullet.png" id="1_tcjtc"]
-[ext_resource type="Script" uid="uid://cphusaq70x4jg" path="res://assets/scripts/obstacles.gd" id="2_agjdo"]
+[ext_resource type="Texture2D" uid="uid://caynchsya2rop" path="res://assets/sprites/stage_hazards/skyscraper/projectiles/Bullet.png" id="1_tcjtc"]
+[ext_resource type="Script" uid="uid://cphusaq70x4jg" path="res://assets/scripts/obstacle.gd" id="2_agjdo"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tcjtc"]
 
@@ -24,8 +24,6 @@ texture = ExtResource("1_tcjtc")
 collision_layer = 8
 collision_mask = 0
 script = ExtResource("2_agjdo")
-launch_mode = 1
-direction_offset_angle = -90.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0.25, 0)

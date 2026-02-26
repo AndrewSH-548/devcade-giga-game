@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://7v7kqbki7fen"]
+
+[ext_resource type="Script" uid="uid://140j4u181m5c" path="res://assets/scripts/objects/dummy_spike.gd" id="1_0bu0y"]
+[ext_resource type="Texture2D" uid="uid://c38vwax13j50m" path="res://assets/sprites/dummy_spike/dummy_spike.png" id="2_03a7l"]
+[ext_resource type="FontFile" uid="uid://dqb2dmcm5fa81" path="res://assets/fonts/Better VCR 9.0.1.ttf" id="3_0bu0y"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_03a7l"]
+radius = 14.035668
+
+[sub_resource type="LabelSettings" id="LabelSettings_3f03k"]
+font = ExtResource("3_0bu0y")
+font_size = 12
+
+[node name="DummySpike" type="Area2D"]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("1_0bu0y")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_03a7l")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_03a7l")
+
+[node name="Type" type="Label" parent="."]
+offset_left = -118.0
+offset_top = -32.0
+offset_right = 118.0
+offset_bottom = -9.0
+text = "Normal"
+label_settings = SubResource("LabelSettings_3f03k")
+horizontal_alignment = 1
