@@ -113,7 +113,7 @@ border_color = Color(0.12591082, 0.12591085, 0.12591079, 1)
 size = Vector2(128, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7l0ha"]
-size = Vector2(128, 26.923096)
+size = Vector2(128, 36)
 
 [node name="ConveyorBelt" type="Node2D"]
 script = ExtResource("1_gopo4")
@@ -156,24 +156,17 @@ pivot_offset = Vector2(0, 16)
 theme_override_styles/panel = SubResource("StyleBoxFlat_7l0ha")
 
 [node name="Body" type="StaticBody2D" parent="."]
-position = Vector2(0, -4.0769043)
 collision_layer = 2049
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Body"]
-z_index = -1
-position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_oiaom")
-
-[node name="DirectionMarker" type="Marker2D" parent="."]
-position = Vector2(262.7368, -18)
+debug_color = Color(0.6364769, 0.5005643, 0.45853245, 0.41960785)
 
 [node name="PushArea" type="Area2D" parent="."]
-position = Vector2(0, -2.0769043)
 collision_layer = 0
-collision_mask = 1028
+collision_mask = 1036
 
 [node name="PushShape" type="CollisionShape2D" parent="PushArea"]
 z_index = -1
-position = Vector2(0, -2)
 shape = SubResource("RectangleShape2D_7l0ha")

@@ -67,7 +67,3 @@ func _physics_process(delta: float) -> void:
 func editor_update() -> void:
 	side.scale.y = 1.0 if not flipped else -1.0
 	sprite.flip_v = flipped
-	if flipped:
-		push_shape.position.y = 5
-	else:
-		push_shape.position.y = -2

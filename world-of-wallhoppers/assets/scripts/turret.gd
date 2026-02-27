@@ -259,6 +259,6 @@ func _draw() -> void:
 	if not Engine.is_editor_hint():
 		return
 	var start_position: Vector2 = Vector2(0, -40)
-	var end_position: Vector2 = start_position + Vector2.from_angle(deg_to_rad(turret_rotation - 90)) * 64.0
+	var end_position: Vector2 = start_position + Vector2.from_angle(deg_to_rad(turret_rotation - 90) - global_rotation) * 64.0
 	draw_line(start_position, end_position, Color.RED, 2)
 	draw_circle(end_position, 8.0, Color.RED)
