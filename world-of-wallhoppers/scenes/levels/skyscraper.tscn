@@ -601,23 +601,23 @@ rotation = 1.5707964
 
 [node name="ConveyorBelt17" parent="Objects" instance=ExtResource("5_4m0ap")]
 position = Vector2(16, -2976.0002)
-rotation = 1.5758569
+rotation = 1.5707964
 
 [node name="ConveyorBelt18" parent="Objects" instance=ExtResource("5_4m0ap")]
 position = Vector2(16, -3104)
-rotation = 1.5758569
+rotation = 1.5707964
 
 [node name="ConveyorBelt19" parent="Objects" instance=ExtResource("5_4m0ap")]
 position = Vector2(16, -3231.9998)
-rotation = 1.5758569
+rotation = 1.5707964
 
 [node name="ConveyorBelt20" parent="Objects" instance=ExtResource("5_4m0ap")]
 position = Vector2(16, -3360.0002)
-rotation = 1.5758569
+rotation = 1.5707964
 
 [node name="ConveyorBelt21" parent="Objects" instance=ExtResource("5_4m0ap")]
 position = Vector2(16.000002, -3488)
-rotation = 1.5758569
+rotation = 1.5707964
 
 [node name="SteamSpout8" parent="Objects" instance=ExtResource("8_q71j3")]
 position = Vector2(32, -3240)

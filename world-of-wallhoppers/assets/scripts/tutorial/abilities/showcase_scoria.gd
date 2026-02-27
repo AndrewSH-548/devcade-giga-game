@@ -9,6 +9,9 @@ func do_actions() -> void:
 	player_scoria.position = Vector2(35.0, 214)
 	player_scoria.is_facing_right = true
 	player_scoria.spark_progress = 0.0
+	player_scoria.move_state = player_scoria.MoveState.NORMAL
+	player_scoria.hitstun = false
+	player_scoria.invincibility_timer.stop()
 	timer(0.5).connect(func():
 		press("run"))
 	timer(2.0).connect(func():
