@@ -119,7 +119,7 @@ class Page:
 				if row == 0: thumbnail.focus_neighbor_top = back_button_node.get_path()
 				else: thumbnail.focus_neighbor_top = thumbnails.get(row - 1).get(col).get_path()
 				# Connect to the below thumbnail, if it exists, and if not at the bottom
-				if (row != thumbnails.size() - 1) and thumbnails.get(row + 1).get(col) != null:
+				if (row + 1 < thumbnails.size()) and col < thumbnails.get(row + 1).size():
 					thumbnail.focus_neighbor_bottom = thumbnails.get(row + 1).get(col).get_path()
 				# Connect to the right and left thumbnails, and wrap around the sides
 				thumbnail.focus_neighbor_left = thumbnails.get(row).get(wrapi(col - 1, 0, thumbnails.get(row).size())).get_path()
