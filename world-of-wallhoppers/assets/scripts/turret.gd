@@ -30,6 +30,7 @@ enum TurretType { ## BUG: The Laser mode is scuffed. It does not hit people back
 @onready var cooldown_timer: Timer = $CooldownTimer
 
 @onready var hurtbox: Obstacle = $TurretHead/LaserBeam/Area2D
+@onready var hurt_shape: CollisionShape2D = $TurretHead/LaserBeam/Area2D/HurtShape
 
 const BULLET = preload("res://scenes/obstacles/projectiles/bullet.tscn");
 
@@ -59,7 +60,7 @@ func _ready() -> void:
 	rotation_circle.hide();
 	laser_ball.hide();
 	laser_beam.hide();
-	hurtbox.monitorable = false;
+	hurt_shape.disabled = true
 	change_state(State.READY);
 	
 	match location.to_lower(): # rotates the turret based on the provided location
@@ -126,7 +127,7 @@ func fire_laser() -> void: ## fire laser script
 		laserTween.tween_property(laser_ball, "scale", Vector2(1, 1), 0.5);
 		await laserTween.finished; # charge finished
 		laserTween.kill();
-		hurtbox.monitorable = true;
+		hurt_shape.disabled = false
 		#SoundManager.laser_fire.play();
 		#camera_shake();
 		change_state(State.COOLDOWN);
@@ -134,7 +135,7 @@ func fire_laser() -> void: ## fire laser script
 		attack_duration_timer.start(attack_duration);
 		await attack_duration_timer.timeout;
 		hide_laser();
-		hurtbox.monitorable = false;
+		hurt_shape.disabled = true
 		firing = false;
 		cooldown_timer.start(cooldown_duration); # start cooldown timer
 
@@ -232,7 +233,7 @@ func fire_projectile_arc() -> void: ## fire a projectile in an arc
 func hide_laser() -> void: ## hide the laser
 	laser_ball.hide();
 	laser_beam.hide();
-	hurtbox.monitorable = false;
+	hurt_shape.disabled = true;
 
 func change_state(next_state) -> void: # changes the state
 	current_state = next_state;

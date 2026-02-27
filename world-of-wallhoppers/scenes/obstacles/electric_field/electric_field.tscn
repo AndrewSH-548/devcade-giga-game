@@ -3,8 +3,9 @@
 [ext_resource type="Texture2D" uid="uid://bptu76psacqkn" path="res://assets/sprites/electric_field/electric_field.png" id="1_qbne7"]
 [ext_resource type="Script" uid="uid://bfmsya0r3d1n8" path="res://assets/scripts/objects/electric_field.gd" id="2_lm6si"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qbne7"]
-size = Vector2(32, 32)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lm6si"]
+resource_local_to_scene = true
+size = Vector2(36, 36)
 
 [node name="ElectricField" type="NinePatchRect"]
 z_index = 1
@@ -21,12 +22,13 @@ axis_stretch_vertical = 1
 script = ExtResource("2_lm6si")
 
 [node name="SlowArea" type="Area2D" parent="."]
+position = Vector2(18, 18)
 collision_layer = 0
 collision_mask = 4
 
 [node name="SlowShape" type="CollisionShape2D" parent="SlowArea"]
-position = Vector2(16, 16)
-shape = SubResource("RectangleShape2D_qbne7")
+position = Vector2(18, 18)
+shape = SubResource("RectangleShape2D_lm6si")
 
 [node name="AnimationTimer" type="Timer" parent="."]
 wait_time = 0.1

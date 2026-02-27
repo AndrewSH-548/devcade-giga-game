@@ -46,6 +46,7 @@ debug_color = Color(0.75447863, 0.42275572, 0.47062343, 0.41960785)
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 modulate = Color(1, 1, 1, 0.6431373)
+z_index = -1
 position = Vector2(0, -7)
 amount = 64
 texture = ExtResource("2_pk6rt")

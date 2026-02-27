@@ -10,11 +10,11 @@
 size = Vector2(16.5, 16)
 
 [node name="Bullet" type="CharacterBody2D"]
+collision_layer = 0
 script = ExtResource("1_agjdo")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_tcjtc")
-disabled = true
 
 [node name="Bullet" type="Sprite2D" parent="."]
 scale = Vector2(1.875, 1.875)

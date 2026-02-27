@@ -12,6 +12,9 @@ func explode():
 func _on_player_collision(body: Node2D) -> void:
 	if (!body is Player): return;
 	explode()
+	freeze_physics.call_deferred()
+
+func freeze_physics() -> void:
 	freeze = true
-	gravity_scale = 0.0
 	linear_velocity = Vector2.ZERO
+	angular_velocity = 0.0

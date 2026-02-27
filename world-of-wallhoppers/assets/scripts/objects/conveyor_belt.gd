@@ -15,6 +15,7 @@ var climb_addition: float = 128.0
 
 func _ready() -> void:
 	editor_update()
+	rotation_degrees = snappedf(rotation_degrees, 90)
 
 func _physics_process(delta: float) -> void:
 	if Engine.is_editor_hint():
