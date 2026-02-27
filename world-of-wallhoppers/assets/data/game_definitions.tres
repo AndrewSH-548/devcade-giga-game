@@ -105,7 +105,7 @@ metadata/_custom_type_script = "uid://72arh6p6vdd"
 script = ExtResource("2_sgbyo")
 scene = ExtResource("22_md415")
 name = "Skyscraper"
-border_color = Color(0.42745098, 0.45882353, 0.5529412, 1)
+border_color = Color(0.44705883, 0.4509804, 0.45882353, 1)
 metadata/_custom_type_script = "uid://72arh6p6vdd"
 
 [resource]
