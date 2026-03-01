@@ -1,41 +1,50 @@
 extends Label
 
-const BETTER_VCR_9_0_1 = preload("res://assets/fonts/Better VCR 9.0.1.ttf")
-const PORTRAIT_HIP = preload("uid://ciopa5mfn4l4a")
+const DEBUG_PANEL = preload("res://assets/scripts/debugging/debug_panel.tscn")
+var panel: DebugPanel
 
-var input_shower: Label
+var last_focus: Control = null
+var unfocused: bool = true
+var header: LevelHeaderBase = null
+
+var values_freecam: bool:
+	get(): return panel != null and panel.tools.cam_check_button.is_pressed()
 
 func _ready() -> void:
+	set_anchors_preset(Control.PRESET_FULL_RECT)
+	custom_minimum_size = Vector2(600, 1000)
 	z_index = 100
-	label_settings = LabelSettings.new()
-	label_settings.outline_color = Color.BLACK
-	label_settings.outline_size = 48
-	
-	input_shower = Label.new()
-	add_child(input_shower)
-	input_shower.label_settings = label_settings.duplicate()
-	input_shower.label_settings.font_size = 64
-	input_shower.vertical_alignment = VERTICAL_ALIGNMENT_BOTTOM
-	input_shower.custom_minimum_size.x = 480
-	input_shower.custom_minimum_size.y = 320
-	
-	visible = false
+	panel = DEBUG_PANEL.instantiate()
+	add_child(panel)
+	await get_tree().physics_frame
+	last_focus = get_viewport().gui_get_focus_owner()
+	panel.close.pressed.connect(close)
+	panel.unfocus.pressed.connect(unfocus)
+	close()
 
 func _process(_delta: float) -> void:
-	if Input.is_action_pressed("p2_up") and Input.is_action_pressed("p1_down") and Input.is_action_pressed("ui_cancel"):
-		visible = true
+	if Input.is_action_pressed("p2_up") and Input.is_action_pressed("p1_down") and Input.is_action_pressed("p1_devcade_green"):
+		if unfocused:
+			open()
+		
 	elif Input.is_action_just_pressed("ui_cancel") and not (Input.is_action_pressed("p2_up") and Input.is_action_pressed("p1_down")):
-		visible = false
+		close()
 
-func _input(event: InputEvent) -> void:
-	
-	input_shower.text = event.as_text() + " | " + input_shower.text
-	input_shower.text = input_shower.text.substr(0, 100)
-	
-	if event.is_action_pressed("p2_crouch"):
-		var log_file: FileAccess = FileAccess.open("user://logs/godot.log", FileAccess.READ)
-		if log_file == null:
-			text = "Could not get logs"
-			return
-		text = log_file.get_as_text()
-		log_file.close()
+func open() -> void:
+	last_focus = get_viewport().gui_get_focus_owner()
+	visible = true
+	unfocused = false
+	panel.focus_this.call_deferred()
+
+func close() -> void:
+	if last_focus != null:
+		get_viewport().gui_release_focus()
+		last_focus.grab_focus.call_deferred()
+	visible = false
+	unfocused = true
+
+func unfocus() -> void:
+	get_viewport().gui_release_focus()
+	if last_focus != null:
+		last_focus.grab_focus.call_deferred()
+	unfocused = true

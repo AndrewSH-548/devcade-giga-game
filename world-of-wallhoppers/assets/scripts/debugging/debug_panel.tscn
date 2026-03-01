@@ -1,8 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://cp24iadfh4ic8"]
+[gd_scene load_steps=7 format=3 uid="uid://cp24iadfh4ic8"]
 
-[ext_resource type="StyleBox" uid="uid://bhcdtbytb0l3q" path="res://assets/themes/styles/panel_black.tres" id="1_qhf3h"]
+[ext_resource type="Script" uid="uid://jsx0bpqy0qip" path="res://assets/scripts/debugging/debug_window/debug_panel.gd" id="1_myu2c"]
 [ext_resource type="FontFile" uid="uid://dqb2dmcm5fa81" path="res://assets/fonts/Better VCR 9.0.1.ttf" id="2_myu2c"]
 [ext_resource type="Script" uid="uid://rx2itmvyxlem" path="res://assets/scripts/debugging/debug_window/debug_logs.gd" id="3_myu2c"]
+[ext_resource type="Script" uid="uid://cihhm8hupko8v" path="res://assets/scripts/debugging/debug_window/debug_tools.gd" id="4_k4uwq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qhf3h"]
+bg_color = Color(0.18359044, 0.18359047, 0.18359038, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_k4uwq"]
 font = ExtResource("2_myu2c")
@@ -14,7 +18,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = ExtResource("1_qhf3h")
+theme_override_styles/panel = SubResource("StyleBoxFlat_qhf3h")
+script = ExtResource("1_myu2c")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -40,6 +45,13 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("2_myu2c")
 theme_override_font_sizes/font_size = 48
 text = "X"
+
+[node name="Unfocus" type="Button" parent="VBoxContainer/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(72, 72)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_myu2c")
+theme_override_font_sizes/font_size = 32
+text = "Unfocus"
 
 [node name="Label" type="Label" parent="VBoxContainer/MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(0, 64)
@@ -81,21 +93,10 @@ theme_override_constants/margin_bottom = 16
 layout_mode = 2
 
 [node name="Refresh" type="Button" parent="VBoxContainer/TabContainer/Logs/LogVBox/LogButtonsMargin/LogButtonHBox"]
-custom_minimum_size = Vector2(64, 64)
+custom_minimum_size = Vector2(128, 64)
 layout_mode = 2
+theme_override_font_sizes/font_size = 32
 text = "Refresh
-"
-
-[node name="ScrollDown" type="Button" parent="VBoxContainer/TabContainer/Logs/LogVBox/LogButtonsMargin/LogButtonHBox"]
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-text = "Scroll Down
-"
-
-[node name="ScrollUp" type="Button" parent="VBoxContainer/TabContainer/Logs/LogVBox/LogButtonsMargin/LogButtonHBox"]
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-text = "Scroll Up
 "
 
 [node name="LogMargins" type="MarginContainer" parent="VBoxContainer/TabContainer/Logs/LogVBox"]
@@ -106,142 +107,13 @@ theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 
-[node name="LogScrolling" type="ScrollContainer" parent="VBoxContainer/TabContainer/Logs/LogVBox/LogMargins"]
-layout_mode = 2
-size_flags_vertical = 3
-horizontal_scroll_mode = 0
-
-[node name="LogText" type="RichTextLabel" parent="VBoxContainer/TabContainer/Logs/LogVBox/LogMargins/LogScrolling"]
+[node name="LogText" type="RichTextLabel" parent="VBoxContainer/TabContainer/Logs/LogVBox/LogMargins"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+focus_mode = 2
 bbcode_enabled = true
-text = "LOWpldwoadkl
-
-pdl[awlwadp[dawl
-p[wadpl
-dwlp
-adwl
-p[adwlp
-awdlp
-adwlp
-[dwap[l
-adwp[ldapladlpwapd[wlpwl[
-da
-pl[adw
-lpawd
-pl[wadp[
-ladw
-lp[wd
-lp[dwa
-plwdp
-l[awdp
-l[adw
-pl[wd
-pl[awd
-pl[adw
-lp[awd
-pl[adw
-p[la
-pl[d
-p[ld
-plawd
-lp[adwp
-ladw
-lp[daw
-pl[adw
-pl[adw
-pl[ad
-wp[l
-ap[lwd
-p[alwd
-p[lawd
-p[lwd
-p[lawd
-pl[daw
-pl[awd
-ladw
-lpwdalpawdlp
-dlwpa[
-alpwd
-[palwdlpd[
-aw
-l[pawdlapw[d[pladw
-pl[awd
-lp[awd
-lp[aw
-
-p[wadpl
-dwlp
-adwl
-p[adwlp
-awdlp
-adwlp
-[dwap[l
-adwp[ldapladlpwapd[wlpwl[
-da
-pl[adw
-lpawd
-pl[wadp[
-ladw
-lp[wd
-lp[dwa
-plwdp
-l[awdp
-l[adw
-pl[wd
-pl[awd
-pl[adw
-lp[awd
-pl[adw
-p[wadpl
-dwlp
-adwl
-p[adwlp
-awdlp
-adwlp
-[dwap[l
-adwp[ldapladlpwapd[wlpwl[
-da
-pl[adw
-lpawd
-pl[wadp[
-ladw
-lp[wd
-lp[dwa
-plwdp
-l[awdp
-l[adw
-pl[wd
-pl[awd
-pl[adw
-lp[awd
-pl[adw
-
-
-p[wadpl
-dwlp
-adwl
-p[adwlp
-awdlp
-adwlp
-[dwap[l
-adwp[ldapladlpwapd[wlpwl[
-da
-pl[adw
-lpawd
-pl[wadp[
-ladw
-lp[wd
-lp[dwa
-plwdp
-l[awdp
-l[adw
-pl[wd
-pl[awd
-pl[adw
-lp[awd
-pl[adw"
+text = "No Logs"
 
 [node name="Input" type="Control" parent="VBoxContainer/TabContainer"]
 visible = false
@@ -268,3 +140,25 @@ horizontal_scroll_mode = 0
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+
+[node name="Tools" type="Control" parent="VBoxContainer/TabContainer"]
+visible = false
+layout_mode = 2
+script = ExtResource("4_k4uwq")
+metadata/_tab_index = 2
+
+[node name="ToolsMargin" type="MarginContainer" parent="VBoxContainer/TabContainer/Tools"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ToolsVBox" type="VBoxContainer" parent="VBoxContainer/TabContainer/Tools/ToolsMargin"]
+layout_mode = 2
+
+[node name="CamCheckButton" type="CheckButton" parent="VBoxContainer/TabContainer/Tools/ToolsMargin/ToolsVBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Freecam"

@@ -21,6 +21,7 @@ func setup(session_info: SessionInfo) -> void:
 	
 	# Setup camera targets
 	camera_player_1.target = player
+	camera_player_1.setup()
 	
 	# Set border colors
 	$BorderLeft.color = session_info.level_info.border_color
@@ -36,3 +37,6 @@ func _on_singleplayer_timer_timeout() -> void:
 
 func header_scene() -> String:
 	return HEADER_SINGLEPLAYER_PATH
+
+func main_camera() -> PlayerCamera:
+	return camera_player_1

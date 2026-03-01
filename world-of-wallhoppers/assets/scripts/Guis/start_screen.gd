@@ -30,6 +30,9 @@ func quit() -> void:
 	get_tree().quit()
 
 func _ready() -> void:
+	grab_last_selected_focus()
+
+func grab_last_selected_focus() -> void:
 	if last_selected >= 0 and last_selected < buttons.size():
 		buttons[last_selected].grab_focus()
 

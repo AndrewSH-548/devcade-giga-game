@@ -9,6 +9,7 @@ var current_session_info: SessionInfo
 
 @abstract func header_scene() -> String
 @abstract func setup(session_info: SessionInfo) -> void
+@abstract func main_camera() -> PlayerCamera
 
 # Used to return all needed information form the common setup function
 class SetupResult:
@@ -99,10 +100,10 @@ func place_level(level: Level, parent_node: Node):
 	
 	# Setup all cameras with the correct settings
 	for camera in cameras:
+		camera.center = level.level_center.global_position.x
 		camera.global_position.x = level.level_center.global_position.x
 		camera.scroll_bounds_top = top_level_bounds
 		camera.scroll_bounds_bottom = bottom_level_bounds
-		camera.setup()
 
 func restart() -> void:
 	var parent: Node = get_parent()

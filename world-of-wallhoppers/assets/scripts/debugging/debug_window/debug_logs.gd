@@ -1,23 +1,14 @@
 extends Control
 
 @onready var refresh: Button = $LogVBox/LogButtonsMargin/LogButtonHBox/Refresh
-@onready var scroll_down: Button = $LogVBox/LogButtonsMargin/LogButtonHBox/ScrollDown
-@onready var scroll_up: Button = $LogVBox/LogButtonsMargin/LogButtonHBox/ScrollUp
 
-@onready var log_text: RichTextLabel = $LogVBox/LogMargins/LogScrolling/LogText
-@onready var log_scrolling: ScrollContainer = $LogVBox/LogMargins/LogScrolling
+@onready var log_text: RichTextLabel = $LogVBox/LogMargins/LogText
 
 var scroll_speed: float = 10.0
 
 func _ready() -> void:
-	#refresh_log()
 	refresh.pressed.connect(refresh_log)
-
-func _physics_process(_delta: float) -> void:
-	if scroll_down.button_pressed:
-		log_scrolling.scroll_vertical += 1
-	if scroll_up.button_pressed:
-		log_scrolling.scroll_vertical -= 1
+	refresh_log.call_deferred()
 
 func refresh_log() -> void:
 	var log_file: FileAccess = FileAccess.open("user://logs/godot.log", FileAccess.READ)
