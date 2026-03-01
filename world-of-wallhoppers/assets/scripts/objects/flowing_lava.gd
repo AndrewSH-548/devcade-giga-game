@@ -34,8 +34,6 @@ const LAYER_NONE: int = 0
 const LAYER_MOVE_OBJECT_ZONE: int = 32
 const LAYER_PLAYER_ONLY: int = 64
 
-@export var hit_type: Obstacle.HIT_MODE = Obstacle.HIT_MODE.UP_OR_DOWN
-
 func _ready() -> void:
 	if Engine.is_editor_hint(): return
 	stretch_mode = TextureRect.STRETCH_TILE
@@ -58,6 +56,8 @@ func _ready() -> void:
 	body.collision_mask = LAYER_NONE
 	body.collision_layer = LAYER_PLAYER_ONLY
 	
+	body.collision_priority = 100.0
+	
 	area.collision_layer = LAYER_NONE
 	area.collision_mask = LAYER_MOVE_OBJECT_ZONE
 	
@@ -78,8 +78,6 @@ func _ready() -> void:
 	
 	area.body_entered.connect(body_entered)
 	area.body_exited.connect(body_exited)
-	
-	hit_area.launch_mode = hit_type
 
 func set_shader_flow(flow: FLOW_DIRECTION):
 	match flow:

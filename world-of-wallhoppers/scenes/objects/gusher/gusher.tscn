@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://cykm64hhjrwks"]
 
-[ext_resource type="Texture2D" uid="uid://djr6rbotp54vs" path="res://assets/sprites/gusher/lava_gusher.png" id="1_412kj"]
+[ext_resource type="Texture2D" uid="uid://djr6rbotp54vs" path="res://assets/sprites/stage_hazards/volcano/lava_gusher.png" id="1_412kj"]
 [ext_resource type="Script" uid="uid://b626rmf22d6cs" path="res://scenes/objects/gusher/gusher.gd" id="2_m4hj3"]
-[ext_resource type="Script" uid="uid://cphusaq70x4jg" path="res://assets/scripts/obstacles.gd" id="3_m4hj3"]
+[ext_resource type="Script" uid="uid://cphusaq70x4jg" path="res://assets/scripts/obstacle.gd" id="3_m4hj3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m4hj3"]
 size = Vector2(50, 192)
@@ -15,9 +15,9 @@ atlas = ExtResource("1_412kj")
 region = Rect2(0, 2, 0, 64)
 
 [node name="Gusher" type="Node2D"]
+position = Vector2(1, 5)
 script = ExtResource("2_m4hj3")
 full_size = Vector2i(2, 6)
-hit_type = null
 
 [node name="FrameTimer" type="Timer" parent="."]
 wait_time = 0.2
@@ -27,8 +27,6 @@ autostart = true
 collision_layer = 8
 collision_mask = 0
 script = ExtResource("3_m4hj3")
-launch_mode = 1
-direction_offset_angle = -90.0
 
 [node name="Collision" type="CollisionShape2D" parent="HitArea"]
 position = Vector2(32, 96)
@@ -39,8 +37,6 @@ debug_color = Color(0.9698636, 0, 0.46169943, 0.41960785)
 collision_layer = 0
 collision_mask = 32
 script = ExtResource("3_m4hj3")
-launch_mode = 1
-direction_offset_angle = -90.0
 
 [node name="Collision" type="CollisionShape2D" parent="BouyancyArea"]
 position = Vector2(32, 96)

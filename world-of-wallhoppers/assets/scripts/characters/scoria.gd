@@ -144,6 +144,7 @@ func _physics_process(delta: float) -> void:
 					move_state = MoveState.SLAM
 	else:
 		process_gravity(delta)
+		process_walkrun(delta, direction)
 		move_state = MoveState.NORMAL
 	
 	if move_state != MoveState.ROLL:
@@ -171,6 +172,9 @@ func do_rebound(wall_direction: int):
 		velocity.x = rebound_pushoff_strength * wall_direction
 		velocity.y = -rebound_boost_strength
 		rebound_timer.start(rebound_time)
+
+func on_enter_hitstun() -> void:
+	move_state = MoveState.NORMAL
 
 func do_flight(away_direction: int):
 	flight_target_x = global_position.x + flight_offset_x * away_direction

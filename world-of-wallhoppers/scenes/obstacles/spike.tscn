@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://cl7i05js3l62q"]
 
-[ext_resource type="Texture2D" uid="uid://3ekv2i16hkw0" path="res://assets/sprites/16-bit-spike-Sheet.png" id="1_ljd5v"]
-[ext_resource type="Script" uid="uid://cphusaq70x4jg" path="res://assets/scripts/obstacles.gd" id="2_n7p44"]
+[ext_resource type="Texture2D" uid="uid://3ekv2i16hkw0" path="res://assets/sprites/stage_hazards/16-bit-spike-Sheet.png" id="1_ljd5v"]
+[ext_resource type="Script" uid="uid://cphusaq70x4jg" path="res://assets/scripts/obstacle.gd" id="2_n7p44"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qcw7f"]
 atlas = ExtResource("1_ljd5v")

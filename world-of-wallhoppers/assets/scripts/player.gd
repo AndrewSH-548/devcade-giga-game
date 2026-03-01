@@ -39,8 +39,6 @@ var walk_input_disable_timer: Timer= Timer.new()
 
 var on_wall_last_frame: bool = false
 
-var hitstun_max_fall_speed_modifier: float = 80.0
-
 var halt_physics: bool = false
 var physics_multiplier: float = 1.0
 
@@ -55,6 +53,8 @@ const JUMP_BUFFER_TIME: float = 0.1
 const COYOTE_TIME: float = 0.07
 const WALL_JUMP_COYOTE_TIME: float = 0.1
 const WALL_JUMP_BUFFER_TIME: float = 0.07
+const HITSTUN_TIME: float = 1.7
+const INVINCIBILITY_TIME: float = 0.5
 
 const LAYER_NOT_HITSTUN: int = 128
 
@@ -62,6 +62,8 @@ const LAYER_NOT_HITSTUN: int = 128
 @onready var coyote_timer: Timer = make_timer(COYOTE_TIME)
 @onready var wall_jump_coyote_timer: Timer = make_timer(WALL_JUMP_COYOTE_TIME)
 @onready var wall_jump_buffer_timer: Timer = make_timer(WALL_JUMP_BUFFER_TIME)
+@onready var invincibility_timer: Timer = make_timer(HITSTUN_TIME + INVINCIBILITY_TIME)
+
 var has_done_coyote: bool = true
 
 enum {
@@ -107,19 +109,27 @@ func get_position_state() -> int:
 	if is_touching_wall(): return STATE_ON_WALL
 	return STATE_IN_AIR
 
+func is_invincible() -> bool:
+	return not invincibility_timer.is_stopped()
+
 func move() -> void:
 	velocity *= physics_multiplier
 	move_and_slide()
 	velocity /= physics_multiplier
 	physics_multiplier = 1.0
 
+func _process(_delta: float) -> void:
+	if is_invincible():
+		var time: float = Time.get_ticks_msec() / 1000.0
+		modulate.a = 0.8 if int(time * 20.0) % 2 == 0 else 0.5
+	else:
+		modulate.a = 1.0
+
 func process_gravity(delta: float):
 	# Add the gravity.
 	if get_position_state() in [STATE_ON_WALL, STATE_IN_AIR, STATE_HITSTUN]:
 		velocity.y += gravity * delta
-		velocity.y = min(velocity.y, fall_speed);
-	if hitstun:
-		velocity.y = min(velocity.y, hitstun_max_fall_speed_modifier)
+		velocity.y = min(velocity.y, fall_speed)
 
 func process_jump(_delta: float):
 	
@@ -163,6 +173,10 @@ func is_touching_right_wall() -> bool:
 	return test_move(transform, Vector2(2, 0))
 
 func process_walkrun(delta: float, direction: float) -> void:
+	if get_position_state() == STATE_HITSTUN:
+		if is_on_floor() and not disable_decceleration:
+			velocity.x = move_toward(velocity.x, 0, deccel * delta * 60)
+		return
 	
 	var walk_modifier: float = walk_speed_frame_modifier_directional
 	walk_speed_frame_modifier_directional = 1.0
@@ -230,28 +244,30 @@ func do_walljump() -> void:
 	wall_jump_coyote_timer.stop()
 	wall_jump_buffer_timer.stop()
 
-func do_hitstun(body: Node2D) -> void:
-	var direction: Vector2 = body.global_position.direction_to(global_position)
-	if body is Obstacle:
-		direction = body.get_direction(global_position)
-	if not hitstun:
-		hitstun = true
-		# Don't Collide with LAYER_NOT_HITSTUN
-		collision_mask &= ~LAYER_NOT_HITSTUN
-		disable_walk_input = true;
-		velocity = direction * 200.0
-		velocity.y *= 1.35
-		if(self.is_facing_right):
-			velocity.x = -200.0
-		else:
-			velocity.x = 200.0
-		velocity.x *= 1.35
-		# Create hitstun effect (time can be changed (currently 1 second))
-		# DO Collide with LAYER_NOT_HITSTUN
-		await get_tree().create_timer(0.6).timeout
-		collision_mask |= LAYER_NOT_HITSTUN
-		disable_walk_input = false;
-		hitstun = false
+# Override in subclasses to do stuff when hitstun is activated
+func on_enter_hitstun() -> void: return
+
+func do_hitstun(body: Obstacle) -> void:
+	if is_invincible():
+		return
+	if body is not Obstacle:
+		return
+	if hitstun:
+		return
+	velocity = body.get_launch_velocity(self)
+	invincibility_timer.start(body.get_time_multiplier() * HITSTUN_TIME + INVINCIBILITY_TIME)
+	hitstun = true
+	# Don't Collide with LAYER_NOT_HITSTUN (Depricated)
+	#collision_mask &= ~LAYER_NOT_HITSTUN
+	disable_walk_input = true
+	disable_decceleration_timed(0.1)
+	# Create hitstun effect (time can be changed (currently 1 second))
+	# DO Collide with LAYER_NOT_HITSTUN
+	on_enter_hitstun()
+	await get_tree().create_timer(HITSTUN_TIME * body.get_time_multiplier()).timeout
+	#collision_mask |= LAYER_NOT_HITSTUN
+	disable_walk_input = false
+	hitstun = false
 
 func get_pushoff_wall_direction() -> float:
 	# The Wall Normal is a Vector2 which points away from the wall

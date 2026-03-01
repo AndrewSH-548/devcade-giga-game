@@ -1,8 +1,8 @@
 [gd_scene load_steps=10 format=3 uid="uid://40v37q8uw0gt"]
 
 [ext_resource type="Script" uid="uid://b8eyq3cjx15vb" path="res://assets/scripts/objects/pufflip.gd" id="1_omwum"]
-[ext_resource type="Texture2D" uid="uid://b3qr8i6y54878" path="res://assets/sprites/pufflip/pufflip.png" id="1_tqlc6"]
-[ext_resource type="Script" uid="uid://cphusaq70x4jg" path="res://assets/scripts/obstacles.gd" id="3_vjo6s"]
+[ext_resource type="Texture2D" uid="uid://b3qr8i6y54878" path="res://assets/sprites/stage_hazards/reef/pufflip.png" id="1_tqlc6"]
+[ext_resource type="Script" uid="uid://cphusaq70x4jg" path="res://assets/scripts/obstacle.gd" id="3_vjo6s"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_omwum"]
 atlas = ExtResource("1_tqlc6")
