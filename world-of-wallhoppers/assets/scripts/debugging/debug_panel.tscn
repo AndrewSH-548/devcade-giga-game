@@ -1,0 +1,270 @@
+[gd_scene load_steps=5 format=3 uid="uid://cp24iadfh4ic8"]
+
+[ext_resource type="StyleBox" uid="uid://bhcdtbytb0l3q" path="res://assets/themes/styles/panel_black.tres" id="1_qhf3h"]
+[ext_resource type="FontFile" uid="uid://dqb2dmcm5fa81" path="res://assets/fonts/Better VCR 9.0.1.ttf" id="2_myu2c"]
+[ext_resource type="Script" uid="uid://rx2itmvyxlem" path="res://assets/scripts/debugging/debug_window/debug_logs.gd" id="3_myu2c"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_k4uwq"]
+font = ExtResource("2_myu2c")
+font_size = 32
+
+[node name="DebugPanel" type="Panel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("1_qhf3h")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Close" type="Button" parent="VBoxContainer/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(72, 72)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_myu2c")
+theme_override_font_sizes/font_size = 48
+text = "X"
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Debug"
+label_settings = SubResource("LabelSettings_k4uwq")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TabContainer" type="TabContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("2_myu2c")
+theme_override_font_sizes/font_size = 32
+current_tab = 0
+
+[node name="Logs" type="Control" parent="VBoxContainer/TabContainer"]
+layout_mode = 2
+script = ExtResource("3_myu2c")
+metadata/_tab_index = 0
+
+[node name="LogVBox" type="VBoxContainer" parent="VBoxContainer/TabContainer/Logs"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LogButtonsMargin" type="MarginContainer" parent="VBoxContainer/TabContainer/Logs/LogVBox"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="LogButtonHBox" type="HBoxContainer" parent="VBoxContainer/TabContainer/Logs/LogVBox/LogButtonsMargin"]
+layout_mode = 2
+
+[node name="Refresh" type="Button" parent="VBoxContainer/TabContainer/Logs/LogVBox/LogButtonsMargin/LogButtonHBox"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+text = "Refresh
+"
+
+[node name="ScrollDown" type="Button" parent="VBoxContainer/TabContainer/Logs/LogVBox/LogButtonsMargin/LogButtonHBox"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+text = "Scroll Down
+"
+
+[node name="ScrollUp" type="Button" parent="VBoxContainer/TabContainer/Logs/LogVBox/LogButtonsMargin/LogButtonHBox"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+text = "Scroll Up
+"
+
+[node name="LogMargins" type="MarginContainer" parent="VBoxContainer/TabContainer/Logs/LogVBox"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="LogScrolling" type="ScrollContainer" parent="VBoxContainer/TabContainer/Logs/LogVBox/LogMargins"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="LogText" type="RichTextLabel" parent="VBoxContainer/TabContainer/Logs/LogVBox/LogMargins/LogScrolling"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+bbcode_enabled = true
+text = "LOWpldwoadkl
+
+pdl[awlwadp[dawl
+p[wadpl
+dwlp
+adwl
+p[adwlp
+awdlp
+adwlp
+[dwap[l
+adwp[ldapladlpwapd[wlpwl[
+da
+pl[adw
+lpawd
+pl[wadp[
+ladw
+lp[wd
+lp[dwa
+plwdp
+l[awdp
+l[adw
+pl[wd
+pl[awd
+pl[adw
+lp[awd
+pl[adw
+p[la
+pl[d
+p[ld
+plawd
+lp[adwp
+ladw
+lp[daw
+pl[adw
+pl[adw
+pl[ad
+wp[l
+ap[lwd
+p[alwd
+p[lawd
+p[lwd
+p[lawd
+pl[daw
+pl[awd
+ladw
+lpwdalpawdlp
+dlwpa[
+alpwd
+[palwdlpd[
+aw
+l[pawdlapw[d[pladw
+pl[awd
+lp[awd
+lp[aw
+
+p[wadpl
+dwlp
+adwl
+p[adwlp
+awdlp
+adwlp
+[dwap[l
+adwp[ldapladlpwapd[wlpwl[
+da
+pl[adw
+lpawd
+pl[wadp[
+ladw
+lp[wd
+lp[dwa
+plwdp
+l[awdp
+l[adw
+pl[wd
+pl[awd
+pl[adw
+lp[awd
+pl[adw
+p[wadpl
+dwlp
+adwl
+p[adwlp
+awdlp
+adwlp
+[dwap[l
+adwp[ldapladlpwapd[wlpwl[
+da
+pl[adw
+lpawd
+pl[wadp[
+ladw
+lp[wd
+lp[dwa
+plwdp
+l[awdp
+l[adw
+pl[wd
+pl[awd
+pl[adw
+lp[awd
+pl[adw
+
+
+p[wadpl
+dwlp
+adwl
+p[adwlp
+awdlp
+adwlp
+[dwap[l
+adwp[ldapladlpwapd[wlpwl[
+da
+pl[adw
+lpawd
+pl[wadp[
+ladw
+lp[wd
+lp[dwa
+plwdp
+l[awdp
+l[adw
+pl[wd
+pl[awd
+pl[adw
+lp[awd
+pl[adw"
+
+[node name="Input" type="Control" parent="VBoxContainer/TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/TabContainer/Input"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/TabContainer/Input/MarginContainer"]
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/TabContainer/Input/MarginContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
