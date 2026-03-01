@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 TimeManager="*res://assets/scripts/TimeManager.gd"
 StartHandler="*res://assets/scripts/data/start_handler.gd"
+Debug="*res://assets/scripts/utility/debug.gd"
 
 [display]
 
