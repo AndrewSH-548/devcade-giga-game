@@ -14,10 +14,11 @@ func _physics_process(_delta: float) -> void:
 	queue_redraw()
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("p1_crouch"):
+	if event.is_action_pressed("p2_crouch"):
 		var log_file: FileAccess = FileAccess.open("user://logs/godot.log", FileAccess.READ)
 		if log_file == null:
 			text = "Could not get logs"
 			return
 		text = log_file.get_as_text()
 		log_file.close()
+	visible = event.is_action("p2_up")
