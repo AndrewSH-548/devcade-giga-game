@@ -247,7 +247,7 @@ func do_walljump() -> void:
 # Override in subclasses to do stuff when hitstun is activated
 func on_enter_hitstun() -> void: return
 
-func do_hitstun(body: Obstacle) -> void:
+func do_hitstun(body: Node) -> void:
 	if is_invincible():
 		return
 	if body is not Obstacle:
