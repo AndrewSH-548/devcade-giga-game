@@ -13,6 +13,7 @@ func setup(session_info: SessionInfo) -> void:
 	# Perform common setup
 	var viewport: Node = $ViewportContainerP1/SubViewport
 	var result: LevelHeaderBase.SetupResult = common_setup(session_info, viewport)
+	
 	# Get the first (and only) player in the result
 	var player: Player = result.players[0]
 	

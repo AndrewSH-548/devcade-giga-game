@@ -1280,7 +1280,7 @@ offset_right = 389.0
 offset_bottom = 2414.0
 color = Color(0.07058824, 0.18431373, 0.32941177, 1)
 
-[node name="FishFlock" type="GPUParticles2D" parent="BackgroundsManager/Below/MidDune"]
+[node name="FishFlock" type="GPUParticles2D" parent="BackgroundsManager/Below/MidDune" groups=["GPUDetail"]]
 position = Vector2(-383, 1373)
 rotation = 0.08910932
 amount = 100
@@ -1293,7 +1293,7 @@ visibility_rect = Rect2(-100, -100, 1000, 200)
 local_coords = true
 process_material = SubResource("ShaderMaterial_un518")
 
-[node name="FishFlock2" type="GPUParticles2D" parent="BackgroundsManager/Below/MidDune"]
+[node name="FishFlock2" type="GPUParticles2D" parent="BackgroundsManager/Below/MidDune" groups=["GPUDetail"]]
 position = Vector2(459, 778)
 rotation = 3.0585227
 amount = 100
@@ -1331,7 +1331,7 @@ offset_right = 386.0
 offset_bottom = 2559.0
 color = Color(0, 0.0627451, 0.33333334, 1)
 
-[node name="FishFlock3" type="GPUParticles2D" parent="BackgroundsManager/Below/NearDune"]
+[node name="FishFlock3" type="GPUParticles2D" parent="BackgroundsManager/Below/NearDune" groups=["GPUDetail"]]
 position = Vector2(-412, 176.00012)
 rotation = 0.37541747
 amount = 100
@@ -1344,7 +1344,7 @@ visibility_rect = Rect2(-100, -100, 1000, 200)
 local_coords = true
 process_material = SubResource("ShaderMaterial_un518")
 
-[node name="FishFlock4" type="GPUParticles2D" parent="BackgroundsManager/Below/NearDune"]
+[node name="FishFlock4" type="GPUParticles2D" parent="BackgroundsManager/Below/NearDune" groups=["GPUDetail"]]
 position = Vector2(421.00003, -26)
 rotation = 3.8057926
 amount = 100
@@ -1357,7 +1357,7 @@ visibility_rect = Rect2(-100, -100, 1000, 200)
 local_coords = true
 process_material = SubResource("ShaderMaterial_un518")
 
-[node name="FishFlock" type="GPUParticles2D" parent="BackgroundsManager/Below/NearDune"]
+[node name="FishFlock" type="GPUParticles2D" parent="BackgroundsManager/Below/NearDune" groups=["GPUDetail"]]
 position = Vector2(-497, 437.00018)
 rotation = 0.08910932
 scale = Vector2(1.5, 1.5)
@@ -1371,7 +1371,7 @@ visibility_rect = Rect2(-100, -100, 1000, 200)
 local_coords = true
 process_material = SubResource("ShaderMaterial_un518")
 
-[node name="FishFlock2" type="GPUParticles2D" parent="BackgroundsManager/Below/NearDune"]
+[node name="FishFlock2" type="GPUParticles2D" parent="BackgroundsManager/Below/NearDune" groups=["GPUDetail"]]
 position = Vector2(593, -405.99994)
 rotation = -2.8797934
 scale = Vector2(1.5, 1.5)

@@ -9,6 +9,8 @@ var header: LevelHeaderBase = null
 
 var values_freecam: bool:
 	get(): return panel != null and panel.tools.cam_check_button.is_pressed()
+var values_disable_gpu: bool:
+	get(): return panel != null and panel.tools.disable_gpu.is_pressed()
 
 func _ready() -> void:
 	set_anchors_preset(Control.PRESET_FULL_RECT)

@@ -1069,7 +1069,7 @@ use_parent_material = true
 position = Vector2(0, -283)
 texture = ExtResource("11_q68x1")
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="Backgrounds/Trees2"]
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Backgrounds/Trees2" groups=["GPUDetail"]]
 modulate = Color(0.169035, 0.250367, 0.0975577, 1)
 position = Vector2(7, -446)
 amount = 120
@@ -1137,7 +1137,7 @@ wobble_speed = 0.2
 position = Vector2(0, -1914)
 wobble_speed = 0.2
 
-[node name="Rain1" type="Parallax2D" parent="Backgrounds"]
+[node name="Rain1" type="Parallax2D" parent="Backgrounds" groups=["GPUDetail"]]
 scroll_scale = Vector2(0.001, 0.001)
 
 [node name="Rain" type="GPUParticles2D" parent="Backgrounds/Rain1"]
