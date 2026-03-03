@@ -1034,7 +1034,7 @@ scroll_offset = Vector2(3298, -1840)
 repeat_size = Vector2(0, 2048)
 repeat_times = 20
 
-[node name="FishFlock" type="GPUParticles2D" parent="BackgroundsManager/Below/CoralTubesLarge"]
+[node name="FishFlock" type="GPUParticles2D" parent="BackgroundsManager/Below/CoralTubesLarge" groups=["GPUDetail"]]
 position = Vector2(-310, 944)
 rotation = 0.08910931
 scale = Vector2(0.5, 0.5)
@@ -1048,7 +1048,7 @@ visibility_rect = Rect2(-100, -100, 1000, 200)
 local_coords = true
 process_material = SubResource("ShaderMaterial_un518")
 
-[node name="FishFlock2" type="GPUParticles2D" parent="BackgroundsManager/Below/CoralTubesLarge"]
+[node name="FishFlock2" type="GPUParticles2D" parent="BackgroundsManager/Below/CoralTubesLarge" groups=["GPUDetail"]]
 position = Vector2(-295, 429)
 rotation = 0.54677516
 scale = Vector2(0.5, 0.5)
@@ -1062,7 +1062,7 @@ visibility_rect = Rect2(-100, -100, 1000, 200)
 local_coords = true
 process_material = SubResource("ShaderMaterial_un518")
 
-[node name="FishFlock3" type="GPUParticles2D" parent="BackgroundsManager/Below/CoralTubesLarge"]
+[node name="FishFlock3" type="GPUParticles2D" parent="BackgroundsManager/Below/CoralTubesLarge" groups=["GPUDetail"]]
 position = Vector2(-310, -589)
 rotation = -0.28359002
 scale = Vector2(0.5, 0.5)
@@ -1076,7 +1076,7 @@ visibility_rect = Rect2(-100, -100, 1000, 200)
 local_coords = true
 process_material = SubResource("ShaderMaterial_un518")
 
-[node name="FishFlock4" type="GPUParticles2D" parent="BackgroundsManager/Below/CoralTubesLarge"]
+[node name="FishFlock4" type="GPUParticles2D" parent="BackgroundsManager/Below/CoralTubesLarge" groups=["GPUDetail"]]
 position = Vector2(333, -75)
 rotation = -2.7220411
 scale = Vector2(0.5, 0.5)
@@ -1177,7 +1177,7 @@ color = Color(0.21176471, 0.37254903, 0.40392157, 1)
 position = Vector2(12, 563)
 texture = ExtResource("10_pi4hs")
 
-[node name="FishFlock" type="GPUParticles2D" parent="BackgroundsManager/Below/FarDune"]
+[node name="FishFlock" type="GPUParticles2D" parent="BackgroundsManager/Below/FarDune" groups=["GPUDetail"]]
 position = Vector2(-310, 944)
 rotation = 0.08910932
 scale = Vector2(0.5, 0.5)
@@ -1191,7 +1191,7 @@ visibility_rect = Rect2(-100, -100, 1000, 200)
 local_coords = true
 process_material = SubResource("ShaderMaterial_un518")
 
-[node name="FishFlock2" type="GPUParticles2D" parent="BackgroundsManager/Below/FarDune"]
+[node name="FishFlock2" type="GPUParticles2D" parent="BackgroundsManager/Below/FarDune" groups=["GPUDetail"]]
 position = Vector2(-295, 429)
 rotation = 0.54677516
 scale = Vector2(0.5, 0.5)
@@ -1205,7 +1205,7 @@ visibility_rect = Rect2(-100, -100, 1000, 200)
 local_coords = true
 process_material = SubResource("ShaderMaterial_un518")
 
-[node name="FishFlock3" type="GPUParticles2D" parent="BackgroundsManager/Below/FarDune"]
+[node name="FishFlock3" type="GPUParticles2D" parent="BackgroundsManager/Below/FarDune" groups=["GPUDetail"]]
 position = Vector2(-310, -589)
 rotation = -0.28359002
 scale = Vector2(0.5, 0.5)
@@ -1219,7 +1219,7 @@ visibility_rect = Rect2(-100, -100, 1000, 200)
 local_coords = true
 process_material = SubResource("ShaderMaterial_un518")
 
-[node name="FishFlock4" type="GPUParticles2D" parent="BackgroundsManager/Below/FarDune"]
+[node name="FishFlock4" type="GPUParticles2D" parent="BackgroundsManager/Below/FarDune" groups=["GPUDetail"]]
 position = Vector2(333, -75)
 rotation = -2.7220411
 scale = Vector2(0.5, 0.5)
