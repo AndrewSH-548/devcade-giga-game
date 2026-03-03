@@ -1,6 +1,7 @@
 extends Player
 class_name PlayerHip
 
+var up_action: String = " "
 var crouch_action: String = " "
 var is_wall_climbing: bool = false
 
@@ -40,7 +41,7 @@ func _physics_process(delta: float) -> void:
 	move()
 
 func get_climb_input():
-	return Input.get_axis(jump_action, crouch_action)
+	return Input.get_axis(up_action, crouch_action)
 
 func process_wallclimb():
 	if not is_wall_climbing:
@@ -103,6 +104,7 @@ func animate_hip(direction: float) -> void:
 func setup_keybinds(player_number: int) -> void:
 	var player_input: String = "p" + str(player_number) + "_"
 	jump_action = player_input + "jump"
+	up_action = player_input + "up"
 	crouch_action = player_input + "crouch"
 	move_left_action = player_input + "left"
 	run_modifier_action = player_input + "run"
