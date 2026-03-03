@@ -37,13 +37,13 @@ func generate_missing_members() -> void:
 	if get_node_or_null("PlayerSpawn2") == null: _editor_add_child(Marker2D.new(), "PlayerSpawn2")
 	if get_node_or_null("ScrollStopBottom") == null: _editor_add_child(Marker2D.new(), "ScrollStopBottom")
 	if get_node_or_null("ScrollStopTop") == null: _editor_add_child(Marker2D.new(), "ScrollStopTop")
-	EditorInterface.mark_scene_as_unsaved()
+	# EditorInterface.mark_scene_as_unsaved()
 
 # Generate markers needed for level thumbnails
 func generate_thumbnail_markers() -> void:
 	_editor_add_child(THUMBNAIL_MARKER.instantiate(), "ThumbnailMarker")
 	_editor_add_child(THUMBNAIL_DESTINATION.instantiate(), "ThumbnailDestination")
-	EditorInterface.mark_scene_as_unsaved()
+	# EditorInterface.mark_scene_as_unsaved()
 
 # Update warnings when any node postion or name changes in the children
 func setup_editor() -> void:
