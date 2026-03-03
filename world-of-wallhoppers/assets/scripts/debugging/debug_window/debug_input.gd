@@ -5,14 +5,17 @@ extends Control
 
 var inputs: Array[String] = []
 
+func _ready() -> void:
+	inputs.resize(18)
+	inputs.fill(" ")
+
 func _process(_delta: float) -> void:
 	
 	inputs_display.text = ""
 	
 	for input in inputs:
 		inputs_display.text += input + "\n"
-	
-	inputs = []
 
 func _input(event: InputEvent) -> void:
-	inputs.append(event.as_text())
+	inputs.push_front(event.as_text())
+	inputs.resize(18)
