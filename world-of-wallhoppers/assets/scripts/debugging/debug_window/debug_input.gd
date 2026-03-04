@@ -17,5 +17,8 @@ func _process(_delta: float) -> void:
 		inputs_display.text += input + "\n"
 
 func _input(event: InputEvent) -> void:
-	inputs.push_front(event.as_text())
+	inputs.push_front(event.as_text() + ": " + _input_press_type(event))
 	inputs.resize(18)
+
+func _input_press_type(event: InputEvent) -> String:
+	return "Pressed" if event.is_pressed() else "Released"
