@@ -13,6 +13,7 @@ func setup(session_info: SessionInfo) -> void:
 	# Perform common setup
 	var viewport: Node = $ViewportContainerP1/SubViewport
 	var result: LevelHeaderBase.SetupResult = common_setup(session_info, viewport)
+	
 	# Get the first (and only) player in the result
 	var player: Player = result.players[0]
 	
@@ -21,6 +22,7 @@ func setup(session_info: SessionInfo) -> void:
 	
 	# Setup camera targets
 	camera_player_1.target = player
+	camera_player_1.setup()
 	
 	# Set border colors
 	$BorderLeft.color = session_info.level_info.border_color
@@ -36,3 +38,6 @@ func _on_singleplayer_timer_timeout() -> void:
 
 func header_scene() -> String:
 	return HEADER_SINGLEPLAYER_PATH
+
+func main_camera() -> PlayerCamera:
+	return camera_player_1

@@ -236,7 +236,12 @@ theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 4
 
+[node name="ColorRect" type="ColorRect" parent="MainVertical/Container/HorizontalPlayers/Player1/PanelP1/MarginContainer"]
+layout_mode = 2
+color = Color(1, 0.45882353, 0.62352943, 0.36078432)
+
 [node name="Player1Portrait" type="TextureRect" parent="MainVertical/Container/HorizontalPlayers/Player1/PanelP1/MarginContainer"]
+z_index = 1
 layout_mode = 2
 size_flags_horizontal = 4
 texture = ExtResource("6_o4o7f")
@@ -279,7 +284,12 @@ theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 4
 
+[node name="ColorRect" type="ColorRect" parent="MainVertical/Container/HorizontalPlayers/Player2/PanelP2/MarginContainer"]
+layout_mode = 2
+color = Color(0.1764706, 0.78431374, 0.64705884, 0.45882353)
+
 [node name="Player2Portrait" type="TextureRect" parent="MainVertical/Container/HorizontalPlayers/Player2/PanelP2/MarginContainer"]
+z_index = 1
 layout_mode = 2
 texture = ExtResource("7_b51ev")
 stretch_mode = 2

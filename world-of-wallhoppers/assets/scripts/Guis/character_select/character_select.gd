@@ -168,6 +168,8 @@ func start_game():
 	
 	# Get either the singleplayer or multiplayer header...
 	var header: LevelHeaderBase = LevelHeaderBase.get_level_header(session_info)
+	# Add header to Debug
+	Debug.header = header
 	# Load it
 	get_tree().root.add_child(header)
 	# Pass the level header the session info

@@ -60,11 +60,15 @@ func manual_set_camera_position(camera_position: Vector2):
 func _process(_delta: float) -> void:
 	if level_header == null: return
 	for background in player_1_backgrounds:
+		if background == null:
+			continue
 		if background.scroll_scale.y == 0.0:
 			background.screen_offset.y = player_1_camera.get_screen_center_position().y
 		else:
 			background.screen_offset.y = player_1_camera.get_screen_center_position().y * SCROLL_SCALE_GLOBAL * scroll_scale_local
 	for background in player_2_backgrounds:
+		if background == null:
+			continue
 		if background.scroll_scale.y == 0.0:
 			background.screen_offset.y = player_2_camera.get_screen_center_position().y
 		else:

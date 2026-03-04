@@ -23,9 +23,23 @@ func _ready() -> void:
 	
 	level_center = $LevelCenter
 	
+	# Remove GPU Detail if needed
+	if Settings.low_detail_mode:
+		remove_gpu_details(self)
+	
 	assert(level_center != null, "Level does not have a \"Level Center\" Marker2D node as a direct child! This is required for every level")
 	assert(player_spawn_1 != null, "Level could not find Player 1's Spawn!\nMake sure there is a Node2D named \"PlayerSpawn1\" which is a direct child of the level!")
 	assert(player_spawn_1 != null, "Level could not find Player 2's Spawn!\nMake sure there is a Node2D named \"PlayerSpawn2\" which is a direct child of the level!")
+
+func remove_gpu_details(parent: Node) -> void:
+	for child in parent.get_children():
+		# Delete Children in GPUDetail
+		if child.is_in_group(&"GPUDetail"):
+			child.queue_free()
+			continue
+		
+		# Call Recursive
+		remove_gpu_details(child)
 
 # All code in this region pertains only to the editor tools
 #region Editor Only
@@ -37,13 +51,13 @@ func generate_missing_members() -> void:
 	if get_node_or_null("PlayerSpawn2") == null: _editor_add_child(Marker2D.new(), "PlayerSpawn2")
 	if get_node_or_null("ScrollStopBottom") == null: _editor_add_child(Marker2D.new(), "ScrollStopBottom")
 	if get_node_or_null("ScrollStopTop") == null: _editor_add_child(Marker2D.new(), "ScrollStopTop")
-	EditorInterface.mark_scene_as_unsaved()
+	# EditorInterface.mark_scene_as_unsaved()
 
 # Generate markers needed for level thumbnails
 func generate_thumbnail_markers() -> void:
 	_editor_add_child(THUMBNAIL_MARKER.instantiate(), "ThumbnailMarker")
 	_editor_add_child(THUMBNAIL_DESTINATION.instantiate(), "ThumbnailDestination")
-	EditorInterface.mark_scene_as_unsaved()
+	# EditorInterface.mark_scene_as_unsaved()
 
 # Update warnings when any node postion or name changes in the children
 func setup_editor() -> void:

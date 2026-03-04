@@ -51,6 +51,7 @@
 shader = ExtResource("2_2banv")
 shader_parameter/modulate = Color(1, 1, 1, 1)
 shader_parameter/speed = Vector2(0.2, 0)
+shader_parameter/offset = Vector2(0, 0)
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_q3skl"]
 viewport_path = NodePath("VBoxContainer/SubViewportContainer/SubViewport/Island/MonolithRenderer/SubViewport")

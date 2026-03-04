@@ -1,0 +1,252 @@
+[gd_scene load_steps=12 format=3 uid="uid://cp24iadfh4ic8"]
+
+[ext_resource type="Script" uid="uid://jsx0bpqy0qip" path="res://assets/scripts/debugging/debug_window/debug_panel.gd" id="1_myu2c"]
+[ext_resource type="FontFile" uid="uid://dqb2dmcm5fa81" path="res://assets/fonts/Better VCR 9.0.1.ttf" id="2_myu2c"]
+[ext_resource type="Script" uid="uid://rx2itmvyxlem" path="res://assets/scripts/debugging/debug_window/debug_logs.gd" id="3_myu2c"]
+[ext_resource type="Script" uid="uid://d1f804ie52wrg" path="res://assets/scripts/debugging/debug_window/debug_input.gd" id="4_0v4h3"]
+[ext_resource type="Script" uid="uid://cihhm8hupko8v" path="res://assets/scripts/debugging/debug_window/debug_tools.gd" id="4_k4uwq"]
+[ext_resource type="Script" uid="uid://b0mwbfityq7bq" path="res://assets/scripts/debugging/debug_window/debug_performance.gd" id="5_non7u"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qhf3h"]
+bg_color = Color(0.18359044, 0.18359047, 0.18359038, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_k4uwq"]
+font = ExtResource("2_myu2c")
+font_size = 32
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0v4h3"]
+bg_color = Color(0.446777, 0.44677705, 0.44677693, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_gsh66"]
+font = ExtResource("2_myu2c")
+font_size = 48
+
+[sub_resource type="LabelSettings" id="LabelSettings_non7u"]
+font = ExtResource("2_myu2c")
+font_size = 32
+
+[node name="DebugPanel" type="Panel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_qhf3h")
+script = ExtResource("1_myu2c")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Close" type="Button" parent="VBoxContainer/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(72, 72)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_myu2c")
+theme_override_font_sizes/font_size = 48
+text = "X"
+
+[node name="Unfocus" type="Button" parent="VBoxContainer/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(72, 72)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_myu2c")
+theme_override_font_sizes/font_size = 32
+text = "Unfocus"
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Debug"
+label_settings = SubResource("LabelSettings_k4uwq")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TabContainer" type="TabContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("2_myu2c")
+theme_override_font_sizes/font_size = 16
+current_tab = 2
+
+[node name="Logs" type="Control" parent="VBoxContainer/TabContainer"]
+visible = false
+layout_mode = 2
+script = ExtResource("3_myu2c")
+metadata/_tab_index = 0
+
+[node name="LogVBox" type="VBoxContainer" parent="VBoxContainer/TabContainer/Logs"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LogButtonsMargin" type="MarginContainer" parent="VBoxContainer/TabContainer/Logs/LogVBox"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="LogButtonHBox" type="HBoxContainer" parent="VBoxContainer/TabContainer/Logs/LogVBox/LogButtonsMargin"]
+layout_mode = 2
+
+[node name="Refresh" type="Button" parent="VBoxContainer/TabContainer/Logs/LogVBox/LogButtonsMargin/LogButtonHBox"]
+custom_minimum_size = Vector2(128, 64)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Refresh
+"
+
+[node name="LogMargins" type="MarginContainer" parent="VBoxContainer/TabContainer/Logs/LogVBox"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="LogText" type="RichTextLabel" parent="VBoxContainer/TabContainer/Logs/LogVBox/LogMargins"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+focus_mode = 2
+bbcode_enabled = true
+text = "No Logs"
+
+[node name="Input" type="Control" parent="VBoxContainer/TabContainer"]
+visible = false
+layout_mode = 2
+script = ExtResource("4_0v4h3")
+metadata/_tab_index = 1
+
+[node name="InputMargin" type="MarginContainer" parent="VBoxContainer/TabContainer/Input"]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="InputsDisplay" type="Label" parent="VBoxContainer/TabContainer/Input/InputMargin"]
+custom_minimum_size = Vector2(320, 320)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("2_myu2c")
+theme_override_font_sizes/font_size = 32
+text = "
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+"
+autowrap_mode = 3
+
+[node name="Tools" type="Control" parent="VBoxContainer/TabContainer"]
+layout_mode = 2
+script = ExtResource("4_k4uwq")
+metadata/_tab_index = 2
+
+[node name="ToolsMargin" type="MarginContainer" parent="VBoxContainer/TabContainer/Tools"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ToolsVBox" type="VBoxContainer" parent="VBoxContainer/TabContainer/Tools/ToolsMargin"]
+layout_mode = 2
+
+[node name="CamCheckButton" type="CheckButton" parent="VBoxContainer/TabContainer/Tools/ToolsMargin/ToolsVBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Freecam"
+
+[node name="Performance" type="Control" parent="VBoxContainer/TabContainer"]
+visible = false
+layout_mode = 2
+script = ExtResource("5_non7u")
+metadata/_tab_index = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/TabContainer/Performance"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/TabContainer/Performance/MarginContainer"]
+layout_mode = 2
+
+[node name="GPUControlBox" type="HBoxContainer" parent="VBoxContainer/TabContainer/Performance/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="GPUToggle" type="Button" parent="VBoxContainer/TabContainer/Performance/MarginContainer/VBoxContainer/GPUControlBox"]
+custom_minimum_size = Vector2(0, 72)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_myu2c")
+theme_override_font_sizes/font_size = 32
+text = "GPU Detail:"
+
+[node name="GPUState" type="Label" parent="VBoxContainer/TabContainer/Performance/MarginContainer/VBoxContainer/GPUControlBox"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 1
+theme_override_styles/normal = SubResource("StyleBoxFlat_0v4h3")
+text = "ON"
+label_settings = SubResource("LabelSettings_gsh66")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FPS" type="Label" parent="VBoxContainer/TabContainer/Performance/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Frames Per Second: 204.20"
+label_settings = SubResource("LabelSettings_non7u")
+
+[node name="TPS" type="Label" parent="VBoxContainer/TabContainer/Performance/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Tick Per Second: 60.0"
+label_settings = SubResource("LabelSettings_non7u")
