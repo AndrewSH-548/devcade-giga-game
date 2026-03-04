@@ -16,7 +16,7 @@ bool is_color(vec3 color, vec3 other_color, float tolerance) {
 	);
 }
 
-vec3 get_swapped_color(vec3 color) {
+vec3 get_swapped_color(vec3 color, float tolerance) {
 
 	ivec2 source_colors_size = textureSize(source_colors, SAMPLE_LOD);
 	ivec2 colors_size = textureSize(colors, SAMPLE_LOD);
@@ -27,12 +27,11 @@ vec3 get_swapped_color(vec3 color) {
 		vec3 current_source = texture(source_colors,
 			vec2(float(xs), float(ys)) / vec2(source_colors_size)).rgb;
 
-		if (current_source == color) {
+		if (is_color(current_source, color, tolerance)) {
 			return texture(colors,
 				vec2(float(xs), float(ys)) / vec2(source_colors_size)).rgb;
 		}
 	}
-
 	return ERROR_COLOR;
 }
 
@@ -47,7 +46,10 @@ void fragment() {
 	} else if (source_colors_size != colors_size) {
 		color = ERROR_COLOR;
 	} else {
-		color = get_swapped_color(color);
+		color = get_swapped_color(color, 0.02);
+		if (color == ERROR_COLOR) {
+			color = get_swapped_color(COLOR.rgb, 0.2);
+		}
 	}
 
 	COLOR.rgb = color;
