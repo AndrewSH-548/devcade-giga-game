@@ -610,7 +610,7 @@ use_parent_material = true
 texture = ExtResource("9_0lymu")
 offset = Vector2(0, 660)
 
-[node name="Smoke2" type="Parallax2D" parent="Backgrounds"]
+[node name="Smoke2" type="Parallax2D" parent="Backgrounds" groups=["GPUDetail"]]
 visibility_layer = 4
 scroll_scale = Vector2(0.2, 0.2)
 repeat_size = Vector2(270, 960)
@@ -638,7 +638,7 @@ use_parent_material = true
 position = Vector2(0, -0.5)
 texture = ExtResource("11_ji8u0")
 
-[node name="Smoke" type="Parallax2D" parent="Backgrounds"]
+[node name="Smoke" type="Parallax2D" parent="Backgrounds" groups=["GPUDetail"]]
 visibility_layer = 4
 scroll_scale = Vector2(0.8, 0.8)
 repeat_size = Vector2(270, 960)
