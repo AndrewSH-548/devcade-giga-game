@@ -1,4 +1,5 @@
 extends Resource
 class_name PalletSwap
 
-@export var color_mapping: Dictionary[Color, Color]
+@export var source: Texture2D
+@export var alternate: Texture2D

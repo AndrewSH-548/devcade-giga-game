@@ -40,6 +40,9 @@ func _physics_process(delta: float) -> void:
 	
 	move()
 
+func get_defined_name() -> StringName:
+	return &"Hip"
+
 func get_climb_input():
 	return Input.get_axis(up_action, crouch_action)
 

@@ -57,6 +57,7 @@ const HITSTUN_TIME: float = 1.7
 const INVINCIBILITY_TIME: float = 0.5
 
 const LAYER_NOT_HITSTUN: int = 128
+const PALLET_SWAPPER = preload("res://assets/shaders/characters/pallet_swapper.gdshader")
 
 @onready var jump_buffer_timer: Timer = make_timer(JUMP_BUFFER_TIME)
 @onready var coyote_timer: Timer = make_timer(COYOTE_TIME)
@@ -74,19 +75,42 @@ enum {
 }
 
 @abstract func setup_keybinds(player_number: int) -> void
+@abstract func get_defined_name() -> StringName
 
 func _ready() -> void:
+	setup_timers()
+	setup_pallets()
+	setup_sprite()
+	setup_collision()
+
+func setup_sprite() -> void:
+	sprite = $Animations
+	sprite.play();
+
+func setup_collision() -> void:
+	hitbox.area_entered.connect(func(body): do_hitstun(body))
+	# Collide with LAYER_NOT_HITSTUN
+	collision_mask |= LAYER_NOT_HITSTUN
+
+func setup_timers() -> void:
 	deccel_disable_timer.one_shot = true
 	walk_input_disable_timer.one_shot = true
 	add_child(deccel_disable_timer)
 	add_child(walk_input_disable_timer)
 	deccel_disable_timer.timeout.connect(func(): disable_decceleration = false)
 	walk_input_disable_timer.timeout.connect(func(): disable_walk_input = false)
-	sprite = $Animations
-	sprite.play();
-	hitbox.area_entered.connect(func(body): do_hitstun(body))
-	# Collide with LAYER_NOT_HITSTUN
-	collision_mask |= LAYER_NOT_HITSTUN
+
+func setup_pallets() -> void:
+	var mat: ShaderMaterial = ShaderMaterial.new()
+	material = mat
+	mat.shader = PALLET_SWAPPER
+	assert(Definitions.get_character(get_defined_name()).pallets != null, "Character must be assigned Pallets!")
+	mat.set_shader_parameter("source_colors",
+		Definitions.get_character(get_defined_name()).pallets.source
+	)
+	mat.set_shader_parameter("colors",
+		Definitions.get_character(get_defined_name()).pallets.alternate
+	)
 
 func make_timer(time: float) -> Timer:
 	var timer: Timer = Timer.new()
