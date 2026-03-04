@@ -172,6 +172,9 @@ func is_touching_left_wall() -> bool:
 func is_touching_right_wall() -> bool:
 	return test_move(transform, Vector2(2, 0))
 
+func set_pallet(use_alternate: bool):
+	(material as ShaderMaterial).set_shader_parameter("use_alt", use_alternate)
+
 func process_walkrun(delta: float, direction: float) -> void:
 	if get_position_state() == STATE_HITSTUN:
 		if is_on_floor() and not disable_decceleration:

@@ -5,6 +5,7 @@ extends Resource
 @export var name: String
 @export var button_texture: Texture2D
 @export var portrait_texture: Texture2D
+@export var alternate_pallete: PalletSwap
 @export_group("Tutorial", "tutorial_")
 @export_multiline var tutorial_ability_description: String
 @export var tutorial_ability_showcase: PackedScene

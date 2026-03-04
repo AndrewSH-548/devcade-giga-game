@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="GameDefinition" load_steps=34 format=3 uid="uid://cn1341ksalk55"]
+[gd_resource type="Resource" script_class="GameDefinition" load_steps=36 format=3 uid="uid://cn1341ksalk55"]
 
 [ext_resource type="Script" uid="uid://c1c364hhlfwr5" path="res://assets/scripts/data/character_definition.gd" id="1_tsxfc"]
-[ext_resource type="Texture2D" uid="uid://cbpfskf2jthji" path="res://assets/sprites/characters/hip.png" id="2_m022u"]
+[ext_resource type="Texture2D" uid="uid://cbpfskf2jthji" path="res://assets/sprites/characters/hip/hip.png" id="2_m022u"]
+[ext_resource type="Script" uid="uid://chdmym4ucxjn0" path="res://assets/scripts/visuals/pallet_swap.gd" id="2_md415"]
 [ext_resource type="Script" uid="uid://72arh6p6vdd" path="res://assets/scripts/data/level_definition.gd" id="2_sgbyo"]
 [ext_resource type="Texture2D" uid="uid://ciopa5mfn4l4a" path="res://assets/gui/character_select/portraits/portrait_hip.png" id="3_b1vmq"]
 [ext_resource type="Script" uid="uid://ck53kg0d2q07n" path="res://assets/scripts/data/game_definitions.gd" id="3_bigc5"]
@@ -23,6 +24,13 @@
 [ext_resource type="Texture2D" uid="uid://cvgaagh8lybwg" path="res://assets/gui/character_select/portraits/portrait-rick-shawn.png" id="15_b1vmq"]
 [ext_resource type="PackedScene" uid="uid://c885c77c1yt5r" path="res://scenes/gui/tutorial/ability_showcases/showcase_rick_shawn.tscn" id="17_b1vmq"]
 
+[sub_resource type="Resource" id="Resource_0co3f"]
+script = ExtResource("2_md415")
+color_mapping = Dictionary[Color, Color]({
+Color(0, 0, 0, 1): Color(0, 0, 0, 1)
+})
+metadata/_custom_type_script = "uid://chdmym4ucxjn0"
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_lgy02"]
 atlas = ExtResource("2_m022u")
 region = Rect2(8, 0, 40, 40)
@@ -33,6 +41,7 @@ scene = ExtResource("6_5semu")
 name = "Hip"
 button_texture = SubResource("AtlasTexture_lgy02")
 portrait_texture = ExtResource("3_b1vmq")
+alternate_pallete = SubResource("Resource_0co3f")
 tutorial_ability_description = "While on a wall, hold [color=#1E90FF]BLUE[/color] to wall climb. While climbing, Hip can move along the wall by holding [color=#FFA500]UP[/color] or [color=#FFA500]DOWN[/color]."
 tutorial_ability_showcase = ExtResource("5_733ne")
 metadata/_custom_type_script = "uid://c1c364hhlfwr5"

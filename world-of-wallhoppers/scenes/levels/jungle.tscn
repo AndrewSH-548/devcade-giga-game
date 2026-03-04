@@ -9,7 +9,7 @@
 [ext_resource type="Script" uid="uid://iembhyk5nlq" path="res://assets/scripts/visuals/backgrounds.gd" id="7_fs3dc"]
 [ext_resource type="Texture2D" uid="uid://cnfoa1y2m0f56" path="res://assets/terrain/background_jungle_vegitation.png" id="8_0rqq2"]
 [ext_resource type="PackedScene" uid="uid://di3x7knkxawd3" path="res://scenes/visuals/light_beam.tscn" id="9_1pmj7"]
-[ext_resource type="Shader" uid="uid://vih4h60r5tp7" path="res://assets/shaders/wobble_warp.gdshader" id="10_r3fo1"]
+[ext_resource type="Shader" uid="uid://vih4h60r5tp7" path="res://assets/shaders/generic/wobble_warp.gdshader" id="10_r3fo1"]
 [ext_resource type="Texture2D" uid="uid://bnh82e2uan82h" path="res://assets/terrain/background_jungle_trees.png" id="11_q68x1"]
 [ext_resource type="Texture2D" uid="uid://dgkqxhds83xeo" path="res://assets/terrain/particle_jungle_leaf.png" id="12_r5syr"]
 [ext_resource type="PackedScene" uid="uid://bpos0rprc0elm" path="res://scenes/goalpost.tscn" id="12_wlvd4"]

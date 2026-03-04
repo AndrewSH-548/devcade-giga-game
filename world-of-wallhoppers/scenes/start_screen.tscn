@@ -1,39 +1,39 @@
 [gd_scene load_steps=90 format=3 uid="uid://b2wwcwwsq0ao7"]
 
 [ext_resource type="Script" uid="uid://cue05xubnlc2c" path="res://assets/scripts/Guis/start_screen.gd" id="1_kxo13"]
-[ext_resource type="Shader" uid="uid://bruhjepogvrwm" path="res://assets/shaders/scroll.gdshader" id="2_2banv"]
+[ext_resource type="Shader" uid="uid://bruhjepogvrwm" path="res://assets/shaders/generic/scroll.gdshader" id="2_2banv"]
 [ext_resource type="Theme" uid="uid://c6hja04x4l2oq" path="res://assets/themes/start_screen_ancient_button.tres" id="2_5pab1"]
 [ext_resource type="Texture2D" uid="uid://clnnrqyj3wydv" path="res://assets/gui/island_diorama/island_base.png" id="2_ecdxc"]
 [ext_resource type="Script" uid="uid://cwf5ea3i4otev" path="res://assets/scripts/visuals/island_diorama.gd" id="3_bdg0b"]
-[ext_resource type="Shader" uid="uid://0x4jvlcv8440" path="res://assets/shaders/start_menu_button_decoration_pulse.gdshader" id="3_ka6nf"]
+[ext_resource type="Shader" uid="uid://0x4jvlcv8440" path="res://assets/shaders/gui/start_menu_button_decoration_pulse.gdshader" id="3_ka6nf"]
 [ext_resource type="Texture2D" uid="uid://bbama5rxog76d" path="res://assets/gui/main_menu_parts.png" id="3_r2jwc"]
 [ext_resource type="Texture2D" uid="uid://b58ull54tv542" path="res://assets/gui/island_diorama/clouds_1.png" id="3_ytx0m"]
 [ext_resource type="Script" uid="uid://dq8rxk71tt67n" path="res://assets/scripts/Guis/start_menu/start_menu_button.gd" id="4_o30b1"]
 [ext_resource type="Texture2D" uid="uid://tg8dgfq72yoi" path="res://assets/gui/island_diorama/water_edge.png" id="4_ytx0m"]
-[ext_resource type="Shader" uid="uid://dd0gpsgd5uxvw" path="res://assets/shaders/start_menu_button_decoration.gdshader" id="5_o30b1"]
+[ext_resource type="Shader" uid="uid://dd0gpsgd5uxvw" path="res://assets/shaders/gui/start_menu_button_decoration.gdshader" id="5_o30b1"]
 [ext_resource type="Texture2D" uid="uid://bkxv31wd3iwhe" path="res://assets/gui/island_diorama/mountain_1.png" id="5_xfy2r"]
 [ext_resource type="Texture2D" uid="uid://dqdnbd0gal1gs" path="res://assets/gui/island_diorama/dune_1.png" id="6_xfy2r"]
 [ext_resource type="Texture2D" uid="uid://ov8pfmy15ysj" path="res://assets/gui/island_diorama/monolith_texture.png" id="7_0e3oe"]
 [ext_resource type="Script" uid="uid://163a1e1rl2du" path="res://assets/scripts/Guis/start_menu/start_menu_wobble_visual.gd" id="7_ka6nf"]
-[ext_resource type="Shader" uid="uid://fj3f5762qt7p" path="res://assets/shaders/outlined_no_bottom.gdshader" id="7_kbp7x"]
+[ext_resource type="Shader" uid="uid://fj3f5762qt7p" path="res://assets/shaders/generic/outlined_no_bottom.gdshader" id="7_kbp7x"]
 [ext_resource type="Texture2D" uid="uid://bpmpiepa0wjqw" path="res://assets/gui/island_diorama/mountain_bloir_1.png" id="7_lt4el"]
 [ext_resource type="Script" uid="uid://e011a8thkqgk" path="res://assets/scripts/visuals/start_screen_jungle_cog.gd" id="7_o30b1"]
 [ext_resource type="Texture2D" uid="uid://el3bgmcl5wg8" path="res://assets/gui/island_diorama/vines_1.png" id="7_q3skl"]
 [ext_resource type="Texture2D" uid="uid://hbil865jufsx" path="res://assets/gui/island_diorama/mountain_bloir_2.png" id="8_phykr"]
-[ext_resource type="Shader" uid="uid://cce8k77l1hi1q" path="res://assets/shaders/start_menu_button_decoration_warp.gdshader" id="9_ws7p0"]
+[ext_resource type="Shader" uid="uid://cce8k77l1hi1q" path="res://assets/shaders/gui/start_menu_button_decoration_warp.gdshader" id="9_ws7p0"]
 [ext_resource type="Texture2D" uid="uid://1a8pq6hm08bd" path="res://assets/gui/island_diorama/island_skyship.png" id="12_3opy0"]
 [ext_resource type="Texture2D" uid="uid://dt82g4tluvrqd" path="res://assets/gui/island_diorama/island_castle_1.png" id="13_53rsf"]
 [ext_resource type="Texture2D" uid="uid://dgl0i4nev7kp0" path="res://assets/gui/island_diorama/island_sky_city.png" id="14_qlcmr"]
 [ext_resource type="Texture2D" uid="uid://cjak0f5ye0pt8" path="res://assets/gui/island_diorama/island_deep_tree_1.png" id="15_0y2qr"]
 [ext_resource type="Script" uid="uid://brg07hgm2ncfm" path="res://assets/scripts/Guis/start_menu/start_menu_button_particles.gd" id="15_a7uje"]
 [ext_resource type="Texture2D" uid="uid://7ynip8y66nsi" path="res://assets/gui/island_diorama/island_tree2.png" id="15_r6qw7"]
-[ext_resource type="Shader" uid="uid://c6twqcbqfltg4" path="res://assets/shaders/start_menu_button_decoration_sine_warp.gdshader" id="16_37qom"]
+[ext_resource type="Shader" uid="uid://c6twqcbqfltg4" path="res://assets/shaders/gui/start_menu_button_decoration_sine_warp.gdshader" id="16_37qom"]
 [ext_resource type="Texture2D" uid="uid://by6kkwqc7sach" path="res://assets/gui/island_diorama/island_tree1.png" id="16_r6qw7"]
 [ext_resource type="Texture2D" uid="uid://crnd5da7ahot4" path="res://assets/gui/menu_fish.png" id="17_37qom"]
 [ext_resource type="Texture2D" uid="uid://ceayqi10dtxsp" path="res://assets/gui/island_diorama/island_deep_root_1.png" id="18_bjnkw"]
 [ext_resource type="Texture2D" uid="uid://cyavfe82xilqj" path="res://assets/gui/circle.png" id="19_8c457"]
 [ext_resource type="Texture2D" uid="uid://brc5csq5daq1s" path="res://assets/gui/island_diorama/island_ruins_1.png" id="19_v6sgr"]
-[ext_resource type="Shader" uid="uid://d358nr55isdje" path="res://assets/shaders/volcano_smoke.gdshader" id="20_0nsjh"]
+[ext_resource type="Shader" uid="uid://d358nr55isdje" path="res://assets/shaders/level_decoration/volcano_smoke.gdshader" id="20_0nsjh"]
 [ext_resource type="Texture2D" uid="uid://dux61t0lvsuo4" path="res://assets/gui/island_diorama/island_ruins_2.png" id="21_8ijck"]
 [ext_resource type="Texture2D" uid="uid://bq870pmfxoaio" path="res://assets/gui/circle_bordered.png" id="21_ce0he"]
 [ext_resource type="Texture2D" uid="uid://ba718hcets3i6" path="res://assets/gui/island_diorama/island_ash_1.png" id="22_1jj22"]
@@ -376,7 +376,7 @@ stretch_shrink = 4
 transparent_bg = true
 handle_input_locally = false
 canvas_item_default_texture_filter = 0
-size = Vector2i(270, 261)
+size = Vector2i(2, 2)
 size_2d_override = Vector2i(360, 348)
 render_target_update_mode = 4
 

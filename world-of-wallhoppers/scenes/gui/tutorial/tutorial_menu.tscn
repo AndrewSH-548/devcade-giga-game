@@ -3,7 +3,7 @@
 [ext_resource type="Shader" uid="uid://ddaqfuly3ptrg" path="res://assets/shaders/patterns/pattern_a.gdshader" id="1_86klj"]
 [ext_resource type="Script" uid="uid://cadv06g1fr16n" path="res://assets/scripts/Guis/tutorial/tutorial_menu.gd" id="1_qq6xh"]
 [ext_resource type="Texture2D" uid="uid://ctikpvc1wa7ag" path="res://assets/gui/background_a.png" id="2_qq6xh"]
-[ext_resource type="Texture2D" uid="uid://dbx47oqbrkl4n" path="res://assets/shaders/noise/Voronoi 12 - 256x256.png" id="3_b64bh"]
+[ext_resource type="Texture2D" uid="uid://dbx47oqbrkl4n" path="res://assets/shaders/shader_assets/noise/Voronoi 12 - 256x256.png" id="3_b64bh"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qedgc"]
 shader = ExtResource("1_86klj")

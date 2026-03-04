@@ -18,6 +18,7 @@ colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
 gradient = SubResource("Gradient_bp0l3")
 
 [node name="Node2D" type="Node2D" groups=["LevelHeader"]]
+texture_filter = 1
 script = ExtResource("1_bp0l3")
 
 [node name="SingleplayerTimerLabel" type="Label" parent="."]

@@ -1,8 +1,18 @@
-[gd_scene load_steps=83 format=3 uid="uid://c42ynqlk3h4wp"]
+[gd_scene load_steps=87 format=3 uid="uid://c42ynqlk3h4wp"]
 
 [ext_resource type="Script" uid="uid://b4cra7t5rbaxf" path="res://assets/scripts/characters/reign.gd" id="1_jrwk1"]
+[ext_resource type="Shader" uid="uid://2w46pkcu8mpn" path="res://assets/shaders/characters/pallet_swapper.gdshader" id="2_3djwt"]
 [ext_resource type="Texture2D" uid="uid://bfe80tkm43i8u" path="res://assets/sprites/characters/reign/right.png" id="2_jrwk1"]
+[ext_resource type="Texture2D" uid="uid://iumc72upr5sv" path="res://assets/sprites/characters/reign/pallet_alt_reign.png" id="3_8sv8v"]
 [ext_resource type="Texture2D" uid="uid://bjbwv8sjejjyy" path="res://assets/sprites/characters/reign/left.png" id="3_hw104"]
+[ext_resource type="Texture2D" uid="uid://cus5ctxetidxg" path="res://assets/sprites/characters/reign/pallet_reign.png" id="4_abomt"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tlx7r"]
+resource_local_to_scene = true
+shader = ExtResource("2_3djwt")
+shader_parameter/use_alt = false
+shader_parameter/source_colors = ExtResource("4_abomt")
+shader_parameter/colors = ExtResource("3_8sv8v")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6ci1u"]
 size = Vector2(70, 84)
@@ -636,6 +646,7 @@ animations = [{
 }]
 
 [node name="PlayerReign" type="CharacterBody2D"]
+material = SubResource("ShaderMaterial_tlx7r")
 position = Vector2(0, 2.3841858e-07)
 collision_layer = 4
 collision_mask = 65
@@ -654,12 +665,14 @@ gravity = 900
 weight = 26
 
 [node name="Collision" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, -2.3841858e-07)
 scale = Vector2(0.9999999, 0.9999999)
 shape = SubResource("RectangleShape2D_6ci1u")
 
 [node name="Animations" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
+use_parent_material = true
 position = Vector2(0, -4.7683716e-07)
 sprite_frames = SubResource("SpriteFrames_eose0")
 animation = &"wall-push-left"
@@ -669,6 +682,7 @@ collision_layer = 0
 collision_mask = 8
 
 [node name="HitboxShape" type="CollisionShape2D" parent="Hitbox"]
+visible = false
 position = Vector2(0, 7.1525574e-07)
 shape = SubResource("RectangleShape2D_6ci1u")
 

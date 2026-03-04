@@ -1,8 +1,18 @@
-[gd_scene load_steps=10 format=3 uid="uid://bojyqwmqsf6xx"]
+[gd_scene load_steps=14 format=3 uid="uid://bojyqwmqsf6xx"]
 
+[ext_resource type="Shader" uid="uid://2w46pkcu8mpn" path="res://assets/shaders/characters/pallet_swapper.gdshader" id="1_rxgtq"]
 [ext_resource type="Script" uid="uid://dkjbdby517ry4" path="res://assets/scripts/characters/scoria.gd" id="1_sssk5"]
 [ext_resource type="Texture2D" uid="uid://m5t03mjigocy" path="res://assets/sprites/characters/scoria/spark.png" id="2_7qr4j"]
+[ext_resource type="Texture2D" uid="uid://dydh3u6lg4ip4" path="res://assets/sprites/characters/scoria/pallet_alt_scoria.png" id="2_g2fet"]
 [ext_resource type="SpriteFrames" uid="uid://dyusrrvvi0kwy" path="res://assets/sprites/characters/scoria/scoria_editor_frames.tres" id="3_7qr4j"]
+[ext_resource type="Texture2D" uid="uid://bgnxttvrbwqim" path="res://assets/sprites/characters/scoria/pallet_scoria.png" id="3_d70qg"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vyvb6"]
+resource_local_to_scene = true
+shader = ExtResource("1_rxgtq")
+shader_parameter/use_alt = false
+shader_parameter/source_colors = ExtResource("3_d70qg")
+shader_parameter/colors = ExtResource("2_g2fet")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_on6cs"]
 size = Vector2(29.75, 66.125)
@@ -39,6 +49,8 @@ animations = [{
 size = Vector2(29.75, 66.125)
 
 [node name="PlayerScoria" type="CharacterBody2D"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_vyvb6")
 collision_layer = 4
 collision_mask = 65
 platform_on_leave = 1
@@ -67,6 +79,7 @@ disabled = true
 debug_color = Color(0.757918, 2.88785e-05, 0.555706, 0.42)
 
 [node name="Spark" type="AnimatedSprite2D" parent="."]
+use_parent_material = true
 sprite_frames = SubResource("SpriteFrames_vyvb6")
 animation = &"Spark"
 frame = 2
@@ -74,6 +87,7 @@ frame_progress = 1.0
 
 [node name="Animations" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
+use_parent_material = true
 sprite_frames = ExtResource("3_7qr4j")
 animation = &"Fall"
 autoplay = "Idle"
