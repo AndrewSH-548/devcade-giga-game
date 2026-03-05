@@ -363,7 +363,7 @@ sources/1 = SubResource("TileSetAtlasSource_ub0e1")
 
 [node name="Tutorial" type="Node2D" node_paths=PackedStringArray("player_1s")]
 script = ExtResource("1_ud52p")
-player_1s = [NodePath("PlayerScoria3"), NodePath("PlayerScoria2"), NodePath("PlayerScoria4")]
+player_1s = [NodePath("PlayerReign")]
 
 [node name="Camera" type="Camera2D" parent="."]
 position = Vector2(0, -416)
@@ -379,7 +379,7 @@ tile_map_data = PackedByteArray("AADv/wkAAQABAAEAAADv/wgAAQABAAEAAADv/wcAAQABAAE
 tile_set = SubResource("TileSet_1r3rq")
 
 [node name="PlayerHip" parent="." instance=ExtResource("3_vkcr4")]
-position = Vector2(-136, -192)
+position = Vector2(-107, -188)
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
 modulate = Color(0.32420284, 0.32420272, 0.32420272, 1)
@@ -392,7 +392,7 @@ position = Vector2(112, -504)
 collision_layer = 1025
 
 [node name="PlayerRickShawn" parent="." instance=ExtResource("7_s85sn")]
-position = Vector2(-208, -216)
+position = Vector2(-219, -215)
 
 [node name="Hollow" parent="." node_paths=PackedStringArray("connected_to") instance=ExtResource("8_3uqb6")]
 position = Vector2(-264, -240)
@@ -465,7 +465,7 @@ offset_right = 280.0
 offset_bottom = -1008.0
 
 [node name="PlayerScoria" parent="." instance=ExtResource("11_ajv6g")]
-position = Vector2(-72, -200)
+position = Vector2(-57, -200)
 
 [node name="PlayerReign" parent="." instance=ExtResource("12_hqn21")]
 position = Vector2(-160, -200)

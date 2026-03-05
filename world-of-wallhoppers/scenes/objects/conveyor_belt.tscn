@@ -1,7 +1,7 @@
 [gd_scene load_steps=22 format=3 uid="uid://mhgumrx0davs"]
 
 [ext_resource type="Script" uid="uid://bumkvrb1b4jhw" path="res://assets/scripts/objects/conveyor_belt.gd" id="1_gopo4"]
-[ext_resource type="Shader" uid="uid://bruhjepogvrwm" path="res://assets/shaders/scroll.gdshader" id="2_7l0ha"]
+[ext_resource type="Shader" uid="uid://bruhjepogvrwm" path="res://assets/shaders/generic/scroll.gdshader" id="2_7l0ha"]
 [ext_resource type="Texture2D" uid="uid://7g18ktpe62e7" path="res://assets/sprites/stage_hazards/conveyor.png" id="2_gopo4"]
 [ext_resource type="Texture2D" uid="uid://2sxb6dsltnp2" path="res://assets/sprites/conveyor/conveyor.png" id="2_nwpj3"]
 

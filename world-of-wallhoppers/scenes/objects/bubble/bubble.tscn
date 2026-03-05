@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://qwrpemvgqpeu"]
 
 [ext_resource type="Script" uid="uid://bpk8uc2ixro6t" path="res://assets/scripts/objects/bubble.gd" id="1_nm3e4"]
-[ext_resource type="Shader" uid="uid://c6le1jabrh4n8" path="res://assets/shaders/bubble_effects.gdshader" id="1_odphv"]
+[ext_resource type="Shader" uid="uid://c6le1jabrh4n8" path="res://assets/shaders/level_objects/bubble_effects.gdshader" id="1_odphv"]
 [ext_resource type="Texture2D" uid="uid://caueemcc8ihag" path="res://assets/sprites/bubble/bubble.png" id="1_sx6t3"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nm3e4"]

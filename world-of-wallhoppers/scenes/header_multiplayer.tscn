@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dnpilee0jidao" path="res://scenes/gui/pause_menu.tscn" id="5_ylv1f"]
 
 [node name="Node2D2" type="Node2D" groups=["LevelHeader"]]
+texture_filter = 1
 script = ExtResource("1_lcxr0")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]

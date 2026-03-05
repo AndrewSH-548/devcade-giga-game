@@ -75,6 +75,10 @@ func common_setup_players(session_info: SessionInfo, main_viewport: SubViewport,
 			1: player.global_position = level.player_spawn_1.global_position
 			2: player.global_position = level.player_spawn_2.global_position
 	
+	if session_info.is_multiplayer:
+		if session_info.characters[0].name == session_info.characters[1].name:
+			players[1].set_pallet(true)
+	
 	# Return the players
 	return players
 

@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://djwai0iyarlfq" path="res://assets/sprites/poly_hollow/Front.png" id="1_cr4sj"]
 [ext_resource type="Script" uid="uid://c6gg4frqe51rt" path="res://assets/scripts/objects/poly_hollow.gd" id="1_u4ixh"]
 [ext_resource type="Texture2D" uid="uid://4htwm1tdtsgg" path="res://assets/sprites/poly_hollow/Back.png" id="2_eyfcp"]
-[ext_resource type="Shader" uid="uid://dhbqogjn55wbb" path="res://assets/shaders/quick_gradient.gdshader" id="3_eyfcp"]
+[ext_resource type="Shader" uid="uid://dhbqogjn55wbb" path="res://assets/shaders/generic/quick_gradient.gdshader" id="3_eyfcp"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_u4ixh"]
 shader = ExtResource("3_eyfcp")

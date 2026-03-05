@@ -236,6 +236,7 @@ shape = SubResource("RectangleShape2D_dwkx8")
 
 [node name="Animations" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
+use_parent_material = true
 position = Vector2(0, -2.3841858e-07)
 sprite_frames = SubResource("SpriteFrames_eose0")
 animation = &"run"

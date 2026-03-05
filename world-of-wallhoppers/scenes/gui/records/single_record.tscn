@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://crcgkcps1kjso" path="res://assets/scripts/Guis/records/single_record_display.gd" id="1_q2ree"]
 [ext_resource type="FontFile" uid="uid://cp02w5mdy0pdm" path="res://assets/fonts/BelanidiSerif-Regular.otf" id="2_q2ree"]
 [ext_resource type="FontFile" uid="uid://dqb2dmcm5fa81" path="res://assets/fonts/Better VCR 9.0.1.ttf" id="3_j3mgp"]
-[ext_resource type="Texture2D" uid="uid://cbpfskf2jthji" path="res://assets/sprites/characters/hip.png" id="4_j3mgp"]
+[ext_resource type="Texture2D" uid="uid://cbpfskf2jthji" path="res://assets/sprites/characters/hip/hip.png" id="4_j3mgp"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_qcp0s"]
 font = ExtResource("2_q2ree")

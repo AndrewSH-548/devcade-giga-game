@@ -27,6 +27,9 @@ func _physics_process(delta: float) -> void:
 
 	move()
 
+func get_defined_name() -> StringName:
+	return &"Reign"
+
 func process_hover(delta: float) -> void: 
 	if Input.is_action_just_pressed(run_modifier_action) and get_position_state() in [STATE_IN_AIR, STATE_ON_WALL]:
 		velocity.y = 0;
