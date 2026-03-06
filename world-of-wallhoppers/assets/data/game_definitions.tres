@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="GameDefinition" load_steps=47 format=3 uid="uid://cn1341ksalk55"]
+[gd_resource type="Resource" script_class="GameDefinition" load_steps=49 format=3 uid="uid://cn1341ksalk55"]
 
 [ext_resource type="Script" uid="uid://c1c364hhlfwr5" path="res://assets/scripts/data/character_definition.gd" id="1_tsxfc"]
 [ext_resource type="Texture2D" uid="uid://cbpfskf2jthji" path="res://assets/sprites/characters/hip/hip.png" id="2_02bef"]

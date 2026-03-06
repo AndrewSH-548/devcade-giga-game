@@ -24,10 +24,9 @@ script = ExtResource("2_lm6si")
 [node name="SlowArea" type="Area2D" parent="."]
 position = Vector2(18, 18)
 collision_layer = 0
-collision_mask = 4
+collision_mask = 516
 
 [node name="SlowShape" type="CollisionShape2D" parent="SlowArea"]
-position = Vector2(18, 18)
 shape = SubResource("RectangleShape2D_lm6si")
 
 [node name="AnimationTimer" type="Timer" parent="."]

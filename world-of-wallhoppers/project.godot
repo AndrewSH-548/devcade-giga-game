@@ -187,7 +187,7 @@ p1_devcade_green={
 2d_physics/layer_7="PlayerOnly"
 2d_physics/layer_8="SolidNotHitstun"
 2d_physics/layer_9="Spikey-Poly"
-2d_physics/layer_10="InteractsWithHollow"
+2d_physics/layer_10="InteractsWithSpecial"
 2d_physics/layer_11="AffectedByConveyor"
 2d_physics/layer_12="AllowMagnetAttach"
 

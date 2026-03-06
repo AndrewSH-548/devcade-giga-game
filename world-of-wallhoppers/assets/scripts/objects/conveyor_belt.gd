@@ -49,8 +49,8 @@ func _physics_process(delta: float) -> void:
 			if body is Player:
 				# Cast to player (For better coding and debugging)
 				var player: Player = body as Player
-				# Disable player decceleration for 0.5 seconds
-				player.disable_decceleration_timed(0.5)
+				# Disable player decceleration for 0.50 seconds
+				player.disable_decceleration_timed(0.05)
 				# Set the player's walk modifier
 				player.walk_speed_frame_modifier_directional = true_walk_modifier
 				# Hand Hip specifics

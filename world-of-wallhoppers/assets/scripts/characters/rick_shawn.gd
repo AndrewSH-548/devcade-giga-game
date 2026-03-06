@@ -61,7 +61,7 @@ func _physics_process(delta: float) -> void:
 			process_gravity(delta)
 		PULLING:
 			process_pulling(delta)
-			var collision: KinematicCollision2D = move_and_collide(velocity * delta)
+			var collision: KinematicCollision2D = move_colliding(velocity * delta)
 			# If Rick collided with a wall, or he was hit...
 			if collision != null or get_position_state() == STATE_HITSTUN or Input.is_action_just_pressed(jump_action):
 				enter_platform_state()

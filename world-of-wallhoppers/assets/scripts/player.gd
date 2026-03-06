@@ -142,6 +142,12 @@ func move() -> void:
 	velocity /= physics_multiplier
 	physics_multiplier = 1.0
 
+func move_colliding(motion: Vector2, test_only: bool = false, safe_margin: float = 0.08, recovery_as_collision: bool = false) -> KinematicCollision2D:
+	var collision: KinematicCollision2D = move_and_collide(motion * physics_multiplier, test_only, safe_margin, recovery_as_collision)
+	if not test_only:
+		physics_multiplier = 1.0
+	return collision
+
 func _process(_delta: float) -> void:
 	if is_invincible():
 		var time: float = Time.get_ticks_msec() / 1000.0
