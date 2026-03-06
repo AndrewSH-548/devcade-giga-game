@@ -159,6 +159,20 @@ func _process(_delta: float) -> void:
 	process_level_display()
 	process_input()
 	process_portraits()
+	process_pallet_swap()
+
+func process_pallet_swap() -> void:
+	if not session_info.is_multiplayer:
+		return
+	if player_focused[0].character_definition == null or player_focused[1].character_definition == null:
+		return
+	var character: CharacterDefinition = player_focused[1].character_definition
+	if player_focused[0].character_definition.name == character.name:
+		player_2_portrait.material.set_shader_parameter("source_colors", character.pallets.source)
+		player_2_portrait.material.set_shader_parameter("colors", character.pallets.alternate)
+		player_2_portrait.material.set_shader_parameter("use_alt", true)
+	else:
+		player_2_portrait.material.set_shader_parameter("use_alt", false)
 
 func start_game():
 	# Make new characters array

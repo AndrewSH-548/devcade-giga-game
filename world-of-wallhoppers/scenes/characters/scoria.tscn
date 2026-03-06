@@ -39,6 +39,7 @@ animations = [{
 size = Vector2(29.75, 66.125)
 
 [node name="PlayerScoria" type="CharacterBody2D"]
+texture_filter = 1
 collision_layer = 4
 collision_mask = 65
 platform_on_leave = 1
@@ -67,6 +68,7 @@ disabled = true
 debug_color = Color(0.757918, 2.88785e-05, 0.555706, 0.42)
 
 [node name="Spark" type="AnimatedSprite2D" parent="."]
+use_parent_material = true
 sprite_frames = SubResource("SpriteFrames_vyvb6")
 animation = &"Spark"
 frame = 2
@@ -74,6 +76,7 @@ frame_progress = 1.0
 
 [node name="Animations" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
+use_parent_material = true
 sprite_frames = ExtResource("3_7qr4j")
 animation = &"Fall"
 autoplay = "Idle"

@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://cvyviwdrjdy25"]
 
-[ext_resource type="Shader" uid="uid://bruhjepogvrwm" path="res://assets/shaders/scroll.gdshader" id="1_2livj"]
+[ext_resource type="Shader" uid="uid://bruhjepogvrwm" path="res://assets/shaders/generic/scroll.gdshader" id="1_2livj"]
 [ext_resource type="Shader" uid="uid://bna1g6rjssn1g" path="res://scenes/gui/character_select/pattern_b.gdshader" id="1_pabsa"]
 [ext_resource type="Texture2D" uid="uid://crhyfukflaq84" path="res://assets/gui/character_select/question_mark.png" id="2_25qo0"]
-[ext_resource type="Texture2D" uid="uid://jg8y14rd0nyq" path="res://assets/shaders/noise/Marble 11 - 256x256.png" id="2_pabsa"]
+[ext_resource type="Texture2D" uid="uid://jg8y14rd0nyq" path="res://assets/shaders/shader_assets/noise/Marble 11 - 256x256.png" id="2_pabsa"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_p7r8o"]
 shader = ExtResource("1_pabsa")

@@ -4,7 +4,7 @@
 [ext_resource type="FontFile" uid="uid://dqb2dmcm5fa81" path="res://assets/fonts/Better VCR 9.0.1.ttf" id="2_aw8vk"]
 [ext_resource type="Shader" uid="uid://ddaqfuly3ptrg" path="res://assets/shaders/patterns/pattern_a.gdshader" id="2_b6ng8"]
 [ext_resource type="Texture2D" uid="uid://ctikpvc1wa7ag" path="res://assets/gui/background_a.png" id="3_1a68o"]
-[ext_resource type="Texture2D" uid="uid://dbx47oqbrkl4n" path="res://assets/shaders/noise/Voronoi 12 - 256x256.png" id="4_qcp0s"]
+[ext_resource type="Texture2D" uid="uid://dbx47oqbrkl4n" path="res://assets/shaders/shader_assets/noise/Voronoi 12 - 256x256.png" id="4_qcp0s"]
 [ext_resource type="StyleBox" uid="uid://bhcdtbytb0l3q" path="res://assets/themes/styles/panel_black.tres" id="6_1a68o"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3vslu"]

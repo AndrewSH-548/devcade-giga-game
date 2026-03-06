@@ -73,6 +73,9 @@ func _ready() -> void:
 	animations.sprite_frames = sprite_frames[0]
 	super._ready()
 
+func get_defined_name() -> StringName:
+	return &"Scoria"
+
 func make_frames(index: int) -> SpriteFrames:
 	var frames: SpriteFrames = SpriteFrames.new()
 	make_animation(frames, "Idle", index, [0])

@@ -24,6 +24,9 @@ func _ready() -> void:
 	foot_offset = foot_position_marker.global_position - global_position
 	super._ready()
 
+func get_defined_name() -> StringName:
+	return &"Rick Shawn"
+
 func _physics_process(delta: float) -> void:
 	hanging_position = global_position + Vector2(28 * (1 if is_facing_right else -1), -50) 
 	var header = get_tree().get_first_node_in_group("LevelHeader")
