@@ -28,10 +28,13 @@ func _ready() -> void:
 	# Setup force end timer
 	force_end_timer = Timer.new()
 	force_end_timer.one_shot = true
-	force_end_timer.start(10.0)
-	force_end_timer.timeout.connect(rick.enter_pull_state)
+	add_child(force_end_timer)
 	# Magnet is created as a sibling node, so relative pathing should always work.
 	rick = get_node("../PlayerRickShawn");
+	# Finish setting up timer
+	force_end_timer.timeout.connect(rick.enter_platform_state)
+	force_end_timer.start(10.0)
+
 	origin = rick.magnet_launch_position.global_position
 	closest_rope = rope
 	origin_is_rick = true
