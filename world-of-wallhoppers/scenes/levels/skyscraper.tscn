@@ -318,6 +318,22 @@ region_rect = Rect2(224, 0, 144, 144)
 script = ExtResource("9_40dds")
 rotation_velocity = 2.0
 
+[node name="Gear6" type="Sprite2D" parent="Decor"]
+position = Vector2(472, -873)
+texture = ExtResource("8_bqc26")
+region_enabled = true
+region_rect = Rect2(0, 176, 208, 208)
+script = ExtResource("9_40dds")
+rotation_velocity = -1.077
+
+[node name="Gear7" type="Sprite2D" parent="Decor"]
+position = Vector2(367, -237)
+texture = ExtResource("8_bqc26")
+region_enabled = true
+region_rect = Rect2(224, 0, 144, 144)
+script = ExtResource("9_40dds")
+rotation_velocity = -2.0
+
 [node name="Belt" type="Line2D" parent="Decor"]
 position = Vector2(158, 112)
 points = PackedVector2Array(238, -286, 0, 0)
@@ -327,6 +343,18 @@ default_color = Color(0.2, 0.22352941, 0.25490198, 1)
 [node name="Belt2" type="Line2D" parent="Decor"]
 position = Vector2(203, 163)
 points = PackedVector2Array(293, -245, 0, 0)
+width = 8.0
+default_color = Color(0.2, 0.22352941, 0.25490198, 1)
+
+[node name="Belt3" type="Line2D" parent="Decor"]
+position = Vector2(306, -259)
+points = PackedVector2Array(67, -628, 0, 0)
+width = 8.0
+default_color = Color(0.2, 0.22352941, 0.25490198, 1)
+
+[node name="Belt4" type="Line2D" parent="Decor"]
+position = Vector2(434, -226)
+points = PackedVector2Array(105, -625, 0, 0)
 width = 8.0
 default_color = Color(0.2, 0.22352941, 0.25490198, 1)
 
