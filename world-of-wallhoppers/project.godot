@@ -46,6 +46,7 @@ ThumbnailDestination=""
 BackgroundsManager=""
 LevelHeader=""
 GPUDetail=""
+LowDetail="This is turned visible if it's a child of a Level.gd and low_detail_mode setting is true"
 
 [input]
 

@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://vvnxcc54440p"]
+[gd_scene load_steps=15 format=3 uid="uid://vvnxcc54440p"]
 
 [ext_resource type="Script" uid="uid://cphusaq70x4jg" path="res://assets/scripts/obstacle.gd" id="1_8j8up"]
 [ext_resource type="Texture2D" uid="uid://bghk78ix6tjbg" path="res://assets/sprites/steam_spout/steam.png" id="2_pk6rt"]
 [ext_resource type="Texture2D" uid="uid://0ammtpv5be86" path="res://assets/sprites/steam_spout/steam_spout.png" id="3_pk6rt"]
+[ext_resource type="Texture2D" uid="uid://cige4jugmpiyu" path="res://assets/sprites/steam_spout/steam_no_gpu.png" id="4_50alm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_50alm"]
 size = Vector2(20, 76)
@@ -30,6 +31,35 @@ initial_velocity_max = 242.68999
 scale_curve = SubResource("CurveTexture_bmrt7")
 alpha_curve = SubResource("CurveTexture_pk6rt")
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_bmrt7"]
+atlas = ExtResource("4_50alm")
+region = Rect2(0, 0, 32, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wr3sr"]
+atlas = ExtResource("4_50alm")
+region = Rect2(32, 0, 32, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dukys"]
+atlas = ExtResource("4_50alm")
+region = Rect2(64, 0, 32, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dagf4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bmrt7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wr3sr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dukys")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
 [node name="SteamSpout" type="Node2D"]
 
 [node name="Obstacle" type="Area2D" parent="."]
@@ -44,7 +74,7 @@ position = Vector2(0, -54)
 shape = SubResource("RectangleShape2D_50alm")
 debug_color = Color(0.75447863, 0.42275572, 0.47062343, 0.41960785)
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." groups=["GPUDetail"]]
 modulate = Color(1, 1, 1, 0.6431373)
 z_index = -1
 position = Vector2(0, -7)
@@ -55,3 +85,10 @@ process_material = SubResource("ParticleProcessMaterial_bmrt7")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -8)
 texture = ExtResource("3_pk6rt")
+
+[node name="LowDetailSteam" type="AnimatedSprite2D" parent="." groups=["LowDetail"]]
+visible = false
+position = Vector2(0, -64)
+sprite_frames = SubResource("SpriteFrames_dagf4")
+autoplay = "default"
+frame_progress = 0.38676983
