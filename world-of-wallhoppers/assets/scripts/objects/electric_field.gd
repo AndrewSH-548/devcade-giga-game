@@ -1,3 +1,4 @@
+@tool
 class_name ElectricField
 extends NinePatchRect
 
@@ -8,15 +9,16 @@ extends NinePatchRect
 func update_sizes() -> void:
 	var rect: RectangleShape2D = slow_shape.shape
 	rect.size = size
-	slow_shape.position = rect.size / 2.0
+	slow_shape.position = Vector2.ZERO
+	slow_area.position = size / 2.0
 
 func _physics_process(_delta: float) -> void:
 	update_sizes()
+	if Engine.is_editor_hint():
+		return
 	for body in slow_area.get_overlapping_bodies():
-		if body is not Player:
-			return
-		var player: Player = body as Player
-		player.physics_multiplier = 0.5
+		if body is Player or body is MagnetRickShawn:
+			body.physics_multiplier = 0.5
 
 func next_frame() -> void:
 	region_rect.position.x += region_rect.size.x

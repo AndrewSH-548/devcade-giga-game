@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="GameDefinition" load_steps=47 format=3 uid="uid://cn1341ksalk55"]
+[gd_resource type="Resource" script_class="GameDefinition" load_steps=49 format=3 uid="uid://cn1341ksalk55"]
 
 [ext_resource type="Script" uid="uid://c1c364hhlfwr5" path="res://assets/scripts/data/character_definition.gd" id="1_tsxfc"]
 [ext_resource type="Texture2D" uid="uid://cbpfskf2jthji" path="res://assets/sprites/characters/hip/hip.png" id="2_02bef"]
@@ -29,6 +29,7 @@
 [ext_resource type="Texture2D" uid="uid://dydh3u6lg4ip4" path="res://assets/sprites/characters/scoria/pallet_alt_scoria.png" id="16_k2woc"]
 [ext_resource type="Texture2D" uid="uid://bgnxttvrbwqim" path="res://assets/sprites/characters/scoria/pallet_scoria.png" id="17_85ap2"]
 [ext_resource type="PackedScene" uid="uid://c885c77c1yt5r" path="res://scenes/gui/tutorial/ability_showcases/showcase_rick_shawn.tscn" id="17_b1vmq"]
+[ext_resource type="PackedScene" uid="uid://bqcg6o0r5feof" path="res://scenes/levels/skyscraper.tscn" id="22_md415"]
 [ext_resource type="Texture2D" uid="uid://2k51eh0fyr4h" path="res://assets/sprites/characters/rick_shawn/pallet_alt_rick_shawn.png" id="22_v3wa8"]
 [ext_resource type="Texture2D" uid="uid://vkoqrspnm28k" path="res://assets/sprites/characters/rick_shawn/pallet_rick_shawn.png" id="23_a31yy"]
 
@@ -137,8 +138,15 @@ name = "Reef"
 border_color = Color(0, 0.0627451, 0.33333334, 1)
 metadata/_custom_type_script = "uid://72arh6p6vdd"
 
+[sub_resource type="Resource" id="Resource_0co3f"]
+script = ExtResource("2_sgbyo")
+scene = ExtResource("22_md415")
+name = "Skyscraper"
+border_color = Color(0.44705883, 0.4509804, 0.45882353, 1)
+metadata/_custom_type_script = "uid://72arh6p6vdd"
+
 [resource]
 script = ExtResource("3_bigc5")
 characters = Array[ExtResource("1_tsxfc")]([SubResource("Resource_6hegu"), SubResource("Resource_ciu7n"), SubResource("Resource_m022u"), SubResource("Resource_b1vmq")])
-levels = Array[ExtResource("2_sgbyo")]([SubResource("Resource_bigc5"), SubResource("Resource_00dtc"), SubResource("Resource_m7u6u")])
+levels = Array[ExtResource("2_sgbyo")]([SubResource("Resource_bigc5"), SubResource("Resource_00dtc"), SubResource("Resource_m7u6u"), SubResource("Resource_0co3f")])
 metadata/_custom_type_script = "uid://ck53kg0d2q07n"

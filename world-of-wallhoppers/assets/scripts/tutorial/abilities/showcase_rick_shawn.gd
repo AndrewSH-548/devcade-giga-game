@@ -8,6 +8,9 @@ func _ready() -> void:
 func do_actions() -> void:
 	player_rick_shawn.position = Vector2(88, 172)
 	player_rick_shawn.is_facing_right = true
+	player_rick_shawn.enter_platform_state()
+	player_rick_shawn.hitstun = false
+	player_rick_shawn.invincibility_timer.stop()
 	timer(0.5).connect(func():
 		hold("right")
 		press("jump"))

@@ -1,11 +1,11 @@
-extends RefCounted
+extends Resource
 class_name SessionInfo
 
 # Used to pass the SessionInfo to the win scene
 static var pass_along: SessionInfo = null
 
-var is_multiplayer: bool
-var is_random_level: bool = false
-var level_info: LevelDefinition
-var characters: Array[CharacterDefinition]
-var winner: int = -1
+@export var is_multiplayer: bool
+@export var is_random_level: bool = false
+@export var level_info: LevelDefinition
+@export var characters: Array[CharacterDefinition]
+@export var winner: int = -1

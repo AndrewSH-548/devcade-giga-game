@@ -142,6 +142,12 @@ func move() -> void:
 	velocity /= physics_multiplier
 	physics_multiplier = 1.0
 
+func move_colliding(motion: Vector2, test_only: bool = false, safe_margin: float = 0.08, recovery_as_collision: bool = false) -> KinematicCollision2D:
+	var collision: KinematicCollision2D = move_and_collide(motion * physics_multiplier, test_only, safe_margin, recovery_as_collision)
+	if not test_only:
+		physics_multiplier = 1.0
+	return collision
+
 func _process(_delta: float) -> void:
 	if is_invincible():
 		var time: float = Time.get_ticks_msec() / 1000.0
@@ -277,12 +283,18 @@ func on_enter_hitstun() -> void: return
 func do_hitstun(body: Node) -> void:
 	if is_invincible():
 		return
-	if body is not Obstacle:
-		return
 	if hitstun:
 		return
-	velocity = body.get_launch_velocity(self)
-	invincibility_timer.start(body.get_time_multiplier() * HITSTUN_TIME + INVINCIBILITY_TIME)
+	
+	var time_multiplier: float
+	
+	if body is not Obstacle:
+		velocity = Obstacle.get_launch_velocity_from_position(body.global_position, self)
+		time_multiplier = Obstacle.NORMAL_TIME
+	else:
+		velocity = body.get_launch_velocity(self)
+		time_multiplier = body.get_time_multiplier()
+	invincibility_timer.start(time_multiplier * HITSTUN_TIME + INVINCIBILITY_TIME)
 	hitstun = true
 	# Don't Collide with LAYER_NOT_HITSTUN (Depricated)
 	#collision_mask &= ~LAYER_NOT_HITSTUN
@@ -291,7 +303,7 @@ func do_hitstun(body: Node) -> void:
 	# Create hitstun effect (time can be changed (currently 1 second))
 	# DO Collide with LAYER_NOT_HITSTUN
 	on_enter_hitstun()
-	await get_tree().create_timer(HITSTUN_TIME * body.get_time_multiplier()).timeout
+	await get_tree().create_timer(HITSTUN_TIME * time_multiplier).timeout
 	#collision_mask |= LAYER_NOT_HITSTUN
 	disable_walk_input = false
 	hitstun = false

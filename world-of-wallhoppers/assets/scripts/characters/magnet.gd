@@ -18,13 +18,23 @@ var magnet_speed: float = 1200
 var rope_distance_from_rick: float = 10
 var ropes_for_hollows: Array[Line2D] = []
 var closest_rope: Line2D
+var physics_multiplier: float = 1.0
+var force_end_timer: Timer
 
 const ROPE_TEXTURE = preload("uid://flc6x8anvjcu")
 const ALLOW_MAGNET_LAYER: int = 2048
 
 func _ready() -> void:
+	# Setup force end timer
+	force_end_timer = Timer.new()
+	force_end_timer.one_shot = true
+	add_child(force_end_timer)
 	# Magnet is created as a sibling node, so relative pathing should always work.
 	rick = get_node("../PlayerRickShawn");
+	# Finish setting up timer
+	force_end_timer.timeout.connect(rick.enter_platform_state)
+	force_end_timer.start(10.0)
+
 	origin = rick.magnet_launch_position.global_position
 	closest_rope = rope
 	origin_is_rick = true
@@ -52,7 +62,8 @@ func _physics_process(delta: float) -> void:
 			if not ropes_for_hollows.is_empty():
 				ropes_for_hollows[0].set_point_position(0, rick.magnet_launch_position.global_position - closest_rope.global_position)
 			
-			self.position += velocity * delta
+			self.position += velocity * delta * physics_multiplier
+			physics_multiplier = 1.0
 		rick.PULLING:
 			closest_rope.set_point_position(0, rick.magnet_launch_position.global_position - closest_rope.global_position)
 

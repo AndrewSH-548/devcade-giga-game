@@ -15,6 +15,7 @@ var climb_addition: float = 128.0
 
 func _ready() -> void:
 	editor_update()
+	rotation_degrees = snappedf(rotation_degrees, 90)
 
 func _physics_process(delta: float) -> void:
 	if Engine.is_editor_hint():
@@ -48,8 +49,8 @@ func _physics_process(delta: float) -> void:
 			if body is Player:
 				# Cast to player (For better coding and debugging)
 				var player: Player = body as Player
-				# Disable player decceleration for 0.5 seconds
-				player.disable_decceleration_timed(0.5)
+				# Disable player decceleration for 0.50 seconds
+				player.disable_decceleration_timed(0.05)
 				# Set the player's walk modifier
 				player.walk_speed_frame_modifier_directional = true_walk_modifier
 				# Hand Hip specifics
@@ -67,7 +68,3 @@ func _physics_process(delta: float) -> void:
 func editor_update() -> void:
 	side.scale.y = 1.0 if not flipped else -1.0
 	sprite.flip_v = flipped
-	if flipped:
-		push_shape.position.y = 5
-	else:
-		push_shape.position.y = -2

@@ -14,6 +14,8 @@ func setup() -> void:
 	global_position.y = target.global_position.y
 	clamp_to_level()
 	reset_smoothing()
+	await get_tree().create_timer(0.2).timeout
+	position_smoothing_enabled = true
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

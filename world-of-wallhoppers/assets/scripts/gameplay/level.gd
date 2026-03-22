@@ -37,6 +37,9 @@ func remove_gpu_details(parent: Node) -> void:
 		if child.is_in_group(&"GPUDetail"):
 			child.queue_free()
 			continue
+		if child.is_in_group(&"LowDetail"):
+			child.visible = true
+			continue
 		
 		# Call Recursive
 		remove_gpu_details(child)

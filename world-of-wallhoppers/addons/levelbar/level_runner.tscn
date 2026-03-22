@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://d2yfvea8uojc"]
+
+[ext_resource type="Script" uid="uid://cre3gb76nm6qe" path="res://addons/levelbar/level_runner.gd" id="1_bxxr4"]
+
+[node name="LevelRunner" type="Node"]
+script = ExtResource("1_bxxr4")
