@@ -9,6 +9,7 @@ func set_pause(is_paused: bool):
 	main.paused = is_paused
 	if main.paused:
 		show()
+		Debug.unfocused = true
 		get_node('CenterContainer/VBoxContainer/Resume').grab_focus();
 		Engine.time_scale = 0
 	else:
