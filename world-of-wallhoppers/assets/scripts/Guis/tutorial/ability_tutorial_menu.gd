@@ -10,7 +10,7 @@ const CHARACTER_BUTTON = preload("res://scenes/gui/character_select/character_bu
 @onready var back_button: Button = $MainVertical/Back
 
 const CONTROL_START: String = "Press [color=red]RED[/color] to Control"
-const CONTROL_STOP: String = "Press [color=#FFA500]PAUSE[/color] to Stop"
+const CONTROL_STOP: String = "Press [color=#FFFFFF]WHITE[/color] to Stop"
 
 var buttons: Array[CharacterButton] = []
 var last_highlight: CharacterDefinition = null
