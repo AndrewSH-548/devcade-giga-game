@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bntq1durn715c"
-path="res://.godot/imported/LaserCooldown-export.png-af0e846bb8cb91314cfa2f3ef4ac4654.ctex"
+uid="uid://ogdk3eltusfo"
+path="res://.godot/imported/bomb_hatch-export.png-4701070476c946880ca8216c3dadbb94.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/stage_hazards/skyscraper/turret/LaserCooldown-export.png"
-dest_files=["res://.godot/imported/LaserCooldown-export.png-af0e846bb8cb91314cfa2f3ef4ac4654.ctex"]
+source_file="res://assets/sprites/bomb_hatch/bomb_hatch-export.png"
+dest_files=["res://.godot/imported/bomb_hatch-export.png-4701070476c946880ca8216c3dadbb94.ctex"]
 
 [params]
 

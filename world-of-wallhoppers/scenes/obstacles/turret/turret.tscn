@@ -53,6 +53,11 @@ sprite_frames = SubResource("SpriteFrames_xcw7g")
 animation = &"ready"
 offset = Vector2(0, -7)
 
+[node name="HeadFade" type="Sprite2D" parent="TurretHead"]
+modulate = Color(1, 1, 1, 0)
+texture = ExtResource("3_5ih44")
+offset = Vector2(0, -7)
+
 [node name="LaserBeam" type="Sprite2D" parent="TurretHead"]
 visible = false
 position = Vector2(0, -766)

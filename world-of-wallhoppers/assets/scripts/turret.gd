@@ -24,6 +24,7 @@ enum TurretType { ## BUG: The Laser mode is scuffed. It does not hit people back
 @onready var turret: AnimatedSprite2D = $TurretHead
 @onready var laser_beam: Sprite2D = $TurretHead/LaserBeam
 @onready var laser_ball: Sprite2D = $TurretHead/LaserBall
+@onready var head_fade: Sprite2D = $TurretHead/HeadFade
 
 @onready var rotation_circle: Sprite2D = $RotationCircle
 @onready var attack_duration_timer: Timer = $AttackDurationTimer
@@ -94,6 +95,11 @@ func _process(_delta: float) -> void:
 	if Engine.is_editor_hint():
 		queue_redraw()
 		return
+	
+	if turret_type_export == TurretType.STRAIGHT:
+		head_fade.modulate.a = 1.0 - cooldown_timer.time_left / cooldown_timer.wait_time
+		if cooldown_timer.is_stopped():
+			head_fade.modulate.a = 0.0
 	
 	match current_state:
 		State.COOLDOWN:
