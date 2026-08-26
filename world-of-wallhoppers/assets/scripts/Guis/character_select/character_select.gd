@@ -218,6 +218,10 @@ func process_portraits() -> void:
 		# Otherwise use the provided texture
 		else:
 			player_portraits[player_index].texture = texture
+			if player_choices[player_index] != null:
+				player_portraits[player_index].modulate = Color("#FFF", 1);
+			else:
+				player_portraits[player_index].modulate = Color("#FFF", 0.6)
 		# Flip the random texture for player 1, so it's the right way around
 		if player_index == PLAYER_1:
 			if focused.is_random:
