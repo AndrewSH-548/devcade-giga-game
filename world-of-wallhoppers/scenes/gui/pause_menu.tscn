@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dnpilee0jidao"]
+[gd_scene format=3 uid="uid://dnpilee0jidao"]
 
 [ext_resource type="Script" uid="uid://cljrg4rf04yjk" path="res://assets/scripts/pause_menu.gd" id="1_1eo1i"]
 [ext_resource type="Shader" uid="uid://b7nhx3gxibhef" path="res://assets/shaders/gui/pause_menu.gdshader" id="2_loim0"]
@@ -8,7 +8,7 @@
 shader = ExtResource("2_loim0")
 shader_parameter/amount = 3.0000001425
 
-[node name="PauseMenu" type="Control"]
+[node name="PauseMenu" type="Control" unique_id=208641045]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -17,7 +17,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_1eo1i")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=829856832]
 material = SubResource("ShaderMaterial_kukqi")
 layout_mode = 1
 anchors_preset = 15
@@ -26,7 +26,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1731572372]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -34,24 +34,24 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=1403754650]
 layout_mode = 2
 
-[node name="Resume" type="Button" parent="CenterContainer/VBoxContainer"]
+[node name="Resume" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1690119088]
 custom_minimum_size = Vector2(640, 96)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_loim0")
 theme_override_font_sizes/font_size = 56
 text = "Resume"
 
-[node name="Restart" type="Button" parent="CenterContainer/VBoxContainer"]
+[node name="Restart" type="Button" parent="CenterContainer/VBoxContainer" unique_id=148294869]
 custom_minimum_size = Vector2(640, 96)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_loim0")
 theme_override_font_sizes/font_size = 56
 text = "Restart"
 
-[node name="Quit" type="Button" parent="CenterContainer/VBoxContainer"]
+[node name="Quit" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1406963585]
 custom_minimum_size = Vector2(640, 96)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_loim0")
