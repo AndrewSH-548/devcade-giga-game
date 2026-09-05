@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=15 format=3 uid="uid://dyusrrvvi0kwy"]
+[gd_resource type="SpriteFrames" format=3 uid="uid://dyusrrvvi0kwy"]
 
 [ext_resource type="Texture2D" uid="uid://bsvpbsp4u6vv0" path="res://assets/sprites/characters/scoria/scoria.png" id="1_hc7uu"]
 
@@ -60,12 +60,12 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_hc7uu")
 }],
-"loop": true,
+"loop": 1,
 "name": &"AgainstWall",
 "speed": 5.0
 }, {
 "frames": [],
-"loop": true,
+"loop": 1,
 "name": &"Bounce",
 "speed": 5.0
 }, {
@@ -73,7 +73,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_o3kf2")
 }],
-"loop": true,
+"loop": 1,
 "name": &"Fall",
 "speed": 5.0
 }, {
@@ -81,7 +81,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_rqdqe")
 }],
-"loop": true,
+"loop": 1,
 "name": &"Hitstun",
 "speed": 5.0
 }, {
@@ -89,7 +89,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_dyfgj")
 }],
-"loop": true,
+"loop": 1,
 "name": &"Idle",
 "speed": 5.0
 }, {
@@ -97,7 +97,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_jlhln")
 }],
-"loop": true,
+"loop": 1,
 "name": &"Jump",
 "speed": 5.0
 }, {
@@ -105,7 +105,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_3176y")
 }],
-"loop": true,
+"loop": 1,
 "name": &"OnWall",
 "speed": 5.0
 }, {
@@ -119,7 +119,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_fiv8h")
 }],
-"loop": true,
+"loop": 1,
 "name": &"Roll",
 "speed": 12.0
 }, {
@@ -136,7 +136,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_gihc3")
 }],
-"loop": true,
+"loop": 1,
 "name": &"Walk",
 "speed": 8.0
 }]

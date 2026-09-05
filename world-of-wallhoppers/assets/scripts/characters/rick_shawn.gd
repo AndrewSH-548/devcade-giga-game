@@ -43,7 +43,7 @@ func _physics_process(delta: float) -> void:
 		facing_flipper.scale.x = 1.0
 	else:
 		facing_flipper.scale.x = -1.0
-	
+	# Change
 	var direction := get_horizontal_movement()
 	
 	match state:
