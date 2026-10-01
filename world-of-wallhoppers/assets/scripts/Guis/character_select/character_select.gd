@@ -242,12 +242,6 @@ func display_random_level() -> void:
 	level_name.text = "Random"
 
 func process_input() -> void:
-	# Loop through all players...
-	for player_index in range(player_count):
-		# Handle the player as "ready" if they have selected a character
-		if player_choices[player_index] != null:
-			handle_ready_player_input(player_index)
-	
 	# if ALL players have chosen a character...
 	if null not in player_choices:
 		ready_all.visible = true
@@ -255,17 +249,21 @@ func process_input() -> void:
 		for player_index in range(player_count):
 			if player_pressed(player_index, "confirm"):
 				start_game()
-		# Skip the rest of the function
-		return
+	else:
+		# If there ARE players that have NOT selected a character...
+		# Hide the "START?" graphic
+		ready_all.visible = false
+		# Loop through all players...
+		for player_index in range(player_count):
+			#if they have NOT selected a character, handle button selection
+			if player_choices[player_index] == null:
+				handle_player_selection(player_index)
 	
-	# If there ARE players that have NOT selected a character...
-	# Hide the "START?" graphic
-	ready_all.visible = false
 	# Loop through all players...
 	for player_index in range(player_count):
-		#if they have NOT selected a character, handle button selection
-		if player_choices[player_index] == null:
-			handle_player_selection(player_index)
+		# Handle the player as "ready" if they have selected a character
+		if player_choices[player_index] != null:
+			handle_ready_player_input(player_index)
 
 func handle_player_selection(player_index: int):
 	# If the players have pressed a direction, and that leads to a button,
