@@ -54,6 +54,12 @@ To create a branch in Github Desktop, you can navigate to the "Branch" tab, and 
 
 [![New Branch Example](documentation/readme-images/branch-example.png)]
 
-When you are ready to add your changes to the main branch, and you have no uncommitted changes, and you've pushed your changes, you'll be able to see a "Create Pull Request" 
+#### Creating Pull Requests
+
+When you are ready to add your changes to the main branch, and you have no uncommitted changes, and you've pushed your changes, you'll be able to see a "Preview Pull Request" button on the main page. Pressing this will bring up a preview of all the changes in the branch, and pressing the blue "Create Pull Request" button. Pressing this will open up the Github repository in your web browser.
 
 ![Pull Request Button Example](documentation/readme-images/pull-request.png)
+
+You'll then see the "Open Pull Request" page for your current branch. Here is where you'll add the title and description of your pull request. Make sure to describe what changes you've made, so that other contributors know what to look for. When you are done writing those up, you can press the green "Create Pull Request" button to make the request!
+
+![Create Pull Request Example](documentation/readme-images/make-request.png)
