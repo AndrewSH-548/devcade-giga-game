@@ -1,11 +1,18 @@
 extends Node
 class_name Definitions
+## Allows access to all "Definitions" setup in the "game_definitions.tres" file
 
+## Readonly definitions for every playable character in the game
 static var characters: Array[CharacterDefinition]
+## Readonly definitions for every level in the game
 static var levels: Array[LevelDefinition]
 
-const DEFINITIONS = preload("res://assets/data/game_definitions.tres")
+## Holds the "Game Definition" object containing readonly information about all the characters
+## and levels
+const DEFINITIONS: GameDefinition = preload("res://assets/data/game_definitions.tres")
 
+## Called on startup, loads all character definitions and level definitions
+## from the game_definitions.tres file, into the "characters" and "levels" variables
 static func load_definitions() -> void:
 	var defs: GameDefinition = DEFINITIONS
 	characters = defs.characters as Array[CharacterDefinition]

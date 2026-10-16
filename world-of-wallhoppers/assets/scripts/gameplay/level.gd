@@ -2,7 +2,9 @@
 extends Node2D
 class_name Level
 
+## Automatically generates the Level Center, Player Spawn 1 and 2, and Scroll stop top and bottom nodes
 @export_tool_button("Generate Missing Markers") var gen_missing = generate_missing_members
+## Automatically generates the Thumbnail Markers for the level
 @export_tool_button("Generate Thumbnail Markers") var gen_thumbnail = generate_thumbnail_markers
 
 @onready var player_spawn_1: Marker2D
@@ -10,8 +12,10 @@ class_name Level
 
 @onready var level_center: Marker2D
 
-const THUMBNAIL_DESTINATION = preload("res://scenes/editor/thumbnail_destination.tscn")
+## Marks the starting point of the scrolling preview seen in the level select screen
 const THUMBNAIL_MARKER = preload("res://scenes/editor/thumbnail_marker.tscn")
+## Marks the ending point of the scrolling preview seen in the level select screen
+const THUMBNAIL_DESTINATION = preload("res://scenes/editor/thumbnail_destination.tscn")
 
 func _ready() -> void:
 	if Engine.is_editor_hint():
