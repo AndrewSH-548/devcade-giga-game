@@ -17,7 +17,7 @@ In the window that pops up, click the "URL" tab, and paste the URL for the Gigag
 
 ![URL Example](documentation/readme-images/url-example.png)
 
-Then click "Clone", and the project will be downloaded onto your computer. Move onto the [Downloading Godot](#downloading-godot) section below if you don't have Godot 4.7 installed, otherwise you should read the [Contributing Changes](documenation/contributing-changes.md) page, as it goes over the specific way to contribute changes to the Gigagame repository 
+Then click "Clone", and the project will be downloaded onto your computer. Move onto the [Downloading Godot](#downloading-godot) section below if you don't have Godot 4.7 installed, otherwise you should read the [Contributing Changes](documentation/contributing-changes.md) page, as it goes over the specific way to contribute changes to the Gigagame repository 
 
 ### Downloading Godot
 If you want to contribute to the project, you'll need to download Godot. Currently, the project uses Godot 4.7
@@ -30,11 +30,11 @@ Next, click the "Godot Engine" download button.
 IMPORTANTLY, do not download the ".NET" version, as that uses C# alongside GDScript, which Gigagame is not built for.
 After downloading Godot, it will just be an executable in a .zip file, which you can place wherever you wish.
 
-This is all you need to download Godot! Importantly, if you haven't checked it out yet, you should read the [Contributing Changes](documenation/contributing-changes.md) page, as it goes over the specific way to contribute changes to the Gigagame repository. If you need help getting the project downloaded and git setup, check out the [Downloading the Project](#downloading-the-project) section.
+This is all you need to download Godot! Importantly, if you haven't checked it out yet, you should read the [Contributing Changes](documentation/contributing-changes.md) page, as it goes over the specific way to contribute changes to the Gigagame repository. If you need help getting the project downloaded and git setup, check out the [Downloading the Project](#downloading-the-project) section.
 
 ### Documentation
 
-Check out these for more info on contributing to Gigagame! Reading the [Contributing Changes](documenation/contributing-changes.md) is recommended!
+Check out these for more info on contributing to Gigagame! Reading the [Contributing Changes](documentation/contributing-changes.md) is recommended!
 
-- [Contributing Changes](documenation/contributing/contributing-changes.md)
+- [Contributing Changes](documentation/contributing/contributing-changes.md)
 - ETC
