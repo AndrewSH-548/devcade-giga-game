@@ -28,7 +28,7 @@ For any parallax backgrounds, you must use a node inheriting the custom Backgrou
 
 <div align="center">
     <img src="images/skyscraper-structure.png" alt="Skyscraper Structure Example" width="300" height="auto">
-    <br><sup><i>Layout of the Skyscraper Level<i></sup>
+    <br><sup><i>Layout of the Skyscraper Level</i></sup>
 </div>
 
 ## Level Content
@@ -59,5 +59,5 @@ Now, click the Level Definition you just made, and it should expand showing the 
 
 <div align="center">
     <img src="images/jungle-level-definition.png" alt="Jungle Level Definition Example" width="300" height="auto">
-    <br><sup><i>Level Definition for "Jungle"<i></sup>
+    <br><sup><i>Level Definition for "Jungle"</i></sup>
 </div>
