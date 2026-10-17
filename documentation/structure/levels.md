@@ -44,13 +44,6 @@ Currently the levels each use TileMapLayers to construct their solid foundation,
 
 Once the scene has been created, adding a level to the game is very simple. In Godot, double click the "game_definitions.tres" file, which can be found at assets/data/game_definitions.tres. In the inspector, you'll see two arrays: "Characters" and "Levels". Ignore Characters, and click on Levels to expand it if it is not already expanded. Click on "Add Element", and in the empty element that appears, then click the dropdown arrow, and finally click "LevelDefinition"
 
-<style>
-    .center {
-        display: block;
-        margin: auto;
-    }
-</style>
-
 <img src="images/def-step-1.png" alt="Definition Step 1" width="300" height="auto" class="center"><br>
 <img src="images/def-step-2.png" alt="Definition Step 2" width="300" height="auto" class="center"><br>
 <img src="images/def-step-3.png" alt="Definition Step 3" width="300" height="auto" class="center">
