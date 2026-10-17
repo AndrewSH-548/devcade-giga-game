@@ -37,4 +37,4 @@ This is all you need to download Godot! Importantly, if you haven't checked it o
 Check out these for more info on contributing to Gigagame! Reading the [Contributing Changes](documentation/contributing-changes.md) is recommended!
 
 - [Contributing Changes](documentation/contributing/contributing-changes.md)
-- ETC
+- [Creating Levels](documentation/structure/levels.md)
