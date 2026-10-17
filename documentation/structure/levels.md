@@ -1,7 +1,4 @@
 # Levels
-
-Levels are all defined by their .tscn Scene file, as well as their information in the game_definitions.tres file
-
 ## Structure of a Level Scene
 
 Each level scene's root node inherits from the Level class, and needs some specific children to function properly. The names of these children must be exactly as shown below (except for the Thumbnail Markers, which are identified by their classes):
