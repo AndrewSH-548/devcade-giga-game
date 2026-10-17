@@ -26,8 +26,10 @@ For any parallax backgrounds, you must use a node inheriting the custom Backgrou
 
 <br>
 
-![Skyscraper Structure Example](images/skyscraper-structure.png)
-<br><sup>*Layout of the Skyscraper Level*</sup>
+<div align="center">
+    <img src="images/skyscraper-structure.png" alt="Skyscraper Structure Example" width="300" height="auto">
+    <br><sup><i>Layout of the Skyscraper Level<i></sup>
+</div>
 
 ## Level Content
 
@@ -44,14 +46,18 @@ Currently the levels each use TileMapLayers to construct their solid foundation,
 
 Once the scene has been created, adding a level to the game is very simple. In Godot, double click the "game_definitions.tres" file, which can be found at assets/data/game_definitions.tres. In the inspector, you'll see two arrays: "Characters" and "Levels". Ignore Characters, and click on Levels to expand it if it is not already expanded. Click on "Add Element", and in the empty element that appears, then click the dropdown arrow, and finally click "LevelDefinition"
 
-<img src="images/def-step-1.png" alt="Definition Step 1" width="300" height="auto" class="center"><br>
-<img src="images/def-step-2.png" alt="Definition Step 2" width="300" height="auto" class="center"><br>
-<img src="images/def-step-3.png" alt="Definition Step 3" width="300" height="auto" class="center">
+<div align="center">
+    <img src="images/def-step-1.png" alt="Definition Step 1" width="300" height="auto" class="center"><br>
+    <img src="images/def-step-2.png" alt="Definition Step 2" width="300" height="auto" class="center"><br>
+    <img src="images/def-step-3.png" alt="Definition Step 3" width="300" height="auto" class="center">
+</div>
 
 Now, click the Level Definition you just made, and it should expand showing the three needed fields:
 - **Scene**: This is a reference to the scene file of the level. You can either select it through the dropdown, or drag-and-drop it from the filesystem view
 - **Name**: The in-game name of the Level
 - **Border Color**: In singleplayer, the out-of-bounds is a solid border, and the color of that border is determined here, per-level. Generally this should be a color from the palette of the tileset used for the ground of the level, but it should just generally look nice, and fit the theming of the level
 
-![Jungle Level Definition Example](images/jungle-level-definition.png)
-<br><sup>*Level Definition for "Jungle"*</sup>
+<div align="center">
+    <img src="images/jungle-level-definition.png" alt="Jungle Level Definition Example" width="300" height="auto">
+    <br><sup><i>Level Definition for "Jungle"<i></sup>
+</div>
