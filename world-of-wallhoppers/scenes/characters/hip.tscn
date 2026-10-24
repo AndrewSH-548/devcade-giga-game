@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dtu1k6tt7cxej"]
+[gd_scene format=3 uid="uid://dtu1k6tt7cxej"]
 
 [ext_resource type="Script" uid="uid://5j8ae3g7esmp" path="res://assets/scripts/characters/hip.gd" id="1_s6udp"]
 [ext_resource type="Texture2D" uid="uid://cbpfskf2jthji" path="res://assets/sprites/characters/hip/hip.png" id="2_0eql2"]
@@ -80,7 +80,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_s6udp")
 }],
-"loop": true,
+"loop": 1,
 "name": &"fall",
 "speed": 5.0
 }, {
@@ -91,7 +91,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_kc8fo")
 }],
-"loop": true,
+"loop": 1,
 "name": &"hurt",
 "speed": 8.0
 }, {
@@ -99,7 +99,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_egjgn")
 }],
-"loop": true,
+"loop": 1,
 "name": &"idle",
 "speed": 5.0
 }, {
@@ -107,7 +107,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_cb26u")
 }],
-"loop": true,
+"loop": 1,
 "name": &"jump",
 "speed": 5.0
 }, {
@@ -124,7 +124,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_hsc87")
 }],
-"loop": true,
+"loop": 1,
 "name": &"run",
 "speed": 5.0
 }, {
@@ -141,7 +141,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_577ss")
 }],
-"loop": true,
+"loop": 1,
 "name": &"walk",
 "speed": 6.0
 }, {
@@ -152,7 +152,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_wr6io")
 }],
-"loop": true,
+"loop": 1,
 "name": &"wall-climb",
 "speed": 5.0
 }, {
@@ -160,7 +160,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_41l36")
 }],
-"loop": true,
+"loop": 1,
 "name": &"wall-cling",
 "speed": 5.0
 }, {
@@ -171,12 +171,12 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_l75a4")
 }],
-"loop": true,
+"loop": 1,
 "name": &"wall-push",
 "speed": 5.0
 }]
 
-[node name="PlayerHip" type="CharacterBody2D"]
+[node name="PlayerHip" type="CharacterBody2D" unique_id=1670234276]
 collision_layer = 4
 collision_mask = 65
 platform_on_leave = 1
@@ -194,21 +194,21 @@ fall_speed = 1800
 gravity = 1100
 weight = 20
 
-[node name="Collision" type="CollisionShape2D" parent="."]
+[node name="Collision" type="CollisionShape2D" parent="." unique_id=1895342396]
 shape = SubResource("RectangleShape2D_6ci1u")
 
-[node name="Animations" type="AnimatedSprite2D" parent="."]
+[node name="Animations" type="AnimatedSprite2D" parent="." unique_id=1236780908]
 texture_filter = 1
 use_parent_material = true
 sprite_frames = SubResource("SpriteFrames_eose0")
 animation = &"run"
 
-[node name="Hitbox" type="Area2D" parent="."]
+[node name="Hitbox" type="Area2D" parent="." unique_id=1062310513]
 collision_layer = 0
 collision_mask = 8
 
-[node name="HitboxShape" type="CollisionShape2D" parent="Hitbox"]
+[node name="HitboxShape" type="CollisionShape2D" parent="Hitbox" unique_id=1854781760]
 shape = SubResource("RectangleShape2D_6ci1u")
 
-[node name="FootPositionMarker" type="Marker2D" parent="."]
+[node name="FootPositionMarker" type="Marker2D" parent="." unique_id=537954172]
 position = Vector2(0, 28)

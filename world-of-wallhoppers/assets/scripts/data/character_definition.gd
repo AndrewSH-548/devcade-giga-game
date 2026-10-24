@@ -10,6 +10,8 @@ extends Resource
 @export var button_texture: Texture2D
 ## The texture used for the character's portrait when selected on the character select screen
 @export var portrait_texture: Texture2D
+## The script associated with this character, which inherits the Player class
+@export var character_script: Script
 ## The pallets used for the character in multiplayer
 @export var pallets: PalletSwap
 @export_group("Tutorial", "tutorial_")

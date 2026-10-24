@@ -17,11 +17,12 @@ class_name Player
 
 @onready var hitbox: Area2D = $Hitbox
 
-var jump_action: String = " "
-var move_left_action: String = " "
-var move_right_action: String = " "
-var run_modifier_action: String = " "
-var down_action: String = " "
+var jump_action: String
+var move_left_action: String
+var move_right_action: String
+var run_modifier_action: String
+var down_action: String
+var up_action: String
 
 var acceleration: float = 0
 var hitstun: bool = false
@@ -74,9 +75,6 @@ enum {
 	STATE_HITSTUN,
 }
 
-@abstract func setup_keybinds(player_number: int) -> void
-@abstract func get_defined_name() -> StringName
-
 func _ready() -> void:
 	setup_timers()
 	setup_pallets()
@@ -104,12 +102,18 @@ func setup_pallets() -> void:
 	var mat: ShaderMaterial = ShaderMaterial.new()
 	material = mat
 	mat.shader = PALLET_SWAPPER
-	assert(Definitions.get_character(get_defined_name()).pallets != null, "Character must be assigned Pallets!")
+	var character_definiton: CharacterDefinition = Definitions.characters[
+		Definitions.characters.find_custom(
+		func(character: CharacterDefinition):
+			return character.character_script.get_global_name() == get_script().get_global_name()
+			)
+	]
+	assert(character_definiton != null, "Character must be assigned Pallets!")
 	mat.set_shader_parameter("source_colors",
-		Definitions.get_character(get_defined_name()).pallets.source
+		character_definiton.pallets.source
 	)
 	mat.set_shader_parameter("colors",
-		Definitions.get_character(get_defined_name()).pallets.alternate
+		character_definiton.pallets.alternate
 	)
 
 func make_timer(time: float) -> Timer:
@@ -330,3 +334,18 @@ func update_flipped() -> void:
 		is_facing_right = false
 	elif Input.is_action_pressed(move_right_action) and not is_facing_right:
 		is_facing_right = true
+
+func get_player_prefix(player_number: int) -> String:
+	return "p" + str(player_number) + "_"
+
+func setup_basic_keybinds(player_number: int) -> void:
+	var player_input: String = get_player_prefix(player_number)
+	jump_action = player_input + "jump"
+	move_left_action = player_input + "left"
+	run_modifier_action = player_input + "run"
+	move_right_action = player_input + "right"
+	down_action = player_input + "down"
+	up_action = player_input + "up"
+
+func setup_keybinds(player_number: int) -> void:
+	setup_basic_keybinds(player_number)

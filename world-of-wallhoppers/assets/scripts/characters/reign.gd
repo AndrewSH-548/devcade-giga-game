@@ -60,11 +60,3 @@ func animate_reign(direction: float) -> void:
 			sprite.animation = "run" if is_facing_right else "run-left" 
 		else: sprite.animation = "walk" if is_facing_right else "walk-left";
 	else: sprite.animation = "idle" if is_facing_right else "idle-left";
-	
-
-func setup_keybinds(player_number: int) -> void:
-	var player_input: String = "p" + str(player_number) + "_"
-	jump_action = player_input + "jump"
-	move_left_action = player_input + "left"
-	run_modifier_action = player_input + "run"
-	move_right_action = player_input + "right"

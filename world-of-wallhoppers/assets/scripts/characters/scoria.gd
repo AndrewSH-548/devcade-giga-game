@@ -21,9 +21,6 @@ const SPRITE_SIZE: Vector2i = Vector2i(84, 84)
 
 var sprite_frames: Array[SpriteFrames]
 
-var dash_action: StringName
-var roll_action: StringName
-
 var dash_speed: float = 512.0
 var dash_time: float = 0.13
 var dash_buffer_time: float = 0.2
@@ -114,7 +111,7 @@ func _physics_process(delta: float) -> void:
 	spark_progress = move_toward(spark_progress, 0.0, spark_drain_per_second * delta)
 	
 	if move_state != MoveState.NORMAL:
-		if Input.is_action_just_pressed(dash_action):
+		if Input.is_action_just_pressed(run_modifier_action):
 			dash_buffer_timer.start(dash_buffer_time)
 	
 	roll_collision.disabled = move_state != MoveState.ROLL
@@ -129,7 +126,7 @@ func _physics_process(delta: float) -> void:
 				process_jump(delta)
 				process_wallcheck(delta)
 				process_walljump(delta)
-				if Input.is_action_just_pressed(roll_action):
+				if Input.is_action_just_pressed(run_modifier_action):
 					do_roll()
 			# SCRAPPED DASH, WAS REPLACED BY ROLL
 			#MoveState.DASH:
@@ -278,16 +275,6 @@ func animated_scoria():
 		animations.sprite_frames = sprite_frames[1]
 	else:
 		animations.sprite_frames = sprite_frames[0]
-
-func setup_keybinds(player_number: int) -> void:
-	var player_input: String = "p" + str(player_number) + "_"
-	jump_action = player_input + "jump"
-	move_left_action = player_input + "left"
-	run_modifier_action = player_input + "run"
-	move_right_action = player_input + "right"
-	dash_action = player_input + "run"
-	roll_action = player_input + "run"
-	down_action = player_input + "crouch"
 
 func test_wall_direction(distance: float):
 	return test_move(transform, Vector2(distance, 0))
