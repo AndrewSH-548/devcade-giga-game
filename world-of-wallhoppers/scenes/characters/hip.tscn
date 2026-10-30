@@ -203,11 +203,11 @@ use_parent_material = true
 sprite_frames = SubResource("SpriteFrames_eose0")
 animation = &"run"
 
-[node name="Area2D" type="Area2D" parent="." unique_id=1676825532]
+[node name="Hitbox" type="Area2D" parent="." unique_id=1676825532]
 collision_layer = 0
 collision_mask = 8
 
-[node name="HitboxShape" type="CollisionShape2D" parent="Area2D" unique_id=852506568]
+[node name="HitboxShape" type="CollisionShape2D" parent="Hitbox" unique_id=852506568]
 shape = SubResource("RectangleShape2D_6ci1u")
 
 [node name="FootPositionMarker" type="Marker2D" parent="." unique_id=1774308400]

@@ -14,10 +14,7 @@ func _ready() -> void:
 	super._ready()
 
 func _physics_process(delta: float) -> void:
-	var header = get_tree().get_first_node_in_group("LevelHeader")
-	if header != null and header.paused:
-		return
-	if halt_physics:
+	if should_skip_physics():
 		return
 	
 	# Set is_wall_climbing to true if Wallsliding and the run button is pressed

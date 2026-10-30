@@ -29,13 +29,10 @@ func get_defined_name() -> StringName:
 
 func _physics_process(delta: float) -> void:
 	hanging_position = global_position + Vector2(28 * (1 if is_facing_right else -1), -50) 
-	var header = get_tree().get_first_node_in_group("LevelHeader")
-	if header != null and header.paused:
+	if should_skip_physics():
 		return
-	if halt_physics:
-		if state == THROWING or state == PULLING:
+	if halt_physics and state in [THROWING, PULLING]:
 			enter_platform_state()
-		return
 	
 	# Flip the flipper based on the player's facing direction
 	# This is used to position the throw point for the magnet correctly

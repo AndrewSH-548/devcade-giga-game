@@ -209,7 +209,15 @@ func is_touching_right_wall() -> bool:
 func set_pallet(use_alternate: bool):
 	(material as ShaderMaterial).set_shader_parameter("use_alt", use_alternate)
 
-func process_walkrun(delta: float, direction: float) -> void:
+func should_skip_physics() -> bool:
+	var header = get_tree().get_first_node_in_group("LevelHeader")
+	if header != null and header.paused:
+		return true
+	if halt_physics:
+		return true
+	return false
+
+func process_walkrun(delta: float, direction: float, extra_walk_speed_modifier: float = 1.0) -> void:
 	if get_position_state() == STATE_HITSTUN:
 		if is_on_floor() and not disable_decceleration:
 			velocity.x = move_toward(velocity.x, 0, deccel * delta * 60)
@@ -238,14 +246,14 @@ func process_walkrun(delta: float, direction: float) -> void:
 				if direction == 0.0 and disable_decceleration:
 					return
 				if Input.is_action_pressed(run_modifier_action):
-					velocity.x = direction * run_speed
+					velocity.x = direction * run_speed * extra_walk_speed_modifier
 				else:
-					velocity.x = direction * walk_speed
+					velocity.x = direction * walk_speed * extra_walk_speed_modifier
 				
 			# AIR and WALL WALK/RUN State
 			STATE_IN_AIR, STATE_ON_WALL:
 				if abs(velocity.x) < air_speed:
-					velocity.x += direction * air_accel * delta * 60
+					velocity.x += direction * air_accel * delta * 60 * extra_walk_speed_modifier
 				else:
 					var target_speed: float = direction * air_speed
 					if disable_decceleration:
@@ -255,7 +263,7 @@ func process_walkrun(delta: float, direction: float) -> void:
 						# Don't lower air speed if decceleration is disabled and direction is the same as the direction of velocity
 						if sign(target_speed) == sign(velocity.x) and abs(velocity.x) > abs(target_speed):
 							return
-					velocity.x = move_toward(velocity.x, target_speed, air_accel * delta * 60)
+					velocity.x = move_toward(velocity.x, target_speed * extra_walk_speed_modifier, air_accel * delta * 60)
 
 func process_wallcheck(_delta: float) -> void:
 	

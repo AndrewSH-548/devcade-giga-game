@@ -100,10 +100,7 @@ func make_atlas(coords: Vector2i) -> AtlasTexture:
 	return atlas
 
 func _physics_process(delta: float) -> void:
-	var header = get_tree().get_first_node_in_group("LevelHeader")
-	if header != null and header.paused:
-		return
-	if halt_physics:
+	if should_skip_physics():
 		return
 	
 	var direction: float = get_horizontal_movement()
