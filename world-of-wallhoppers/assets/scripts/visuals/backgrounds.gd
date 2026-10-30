@@ -1,3 +1,4 @@
+class_name Backgrounds
 extends Node2D
 
 const PLAYER_1_VISIBILITY: int = 4 # Visibility Layer 3

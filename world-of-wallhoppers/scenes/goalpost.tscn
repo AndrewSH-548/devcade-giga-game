@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://bpos0rprc0elm"]
+[gd_scene format=3 uid="uid://bpos0rprc0elm"]
 
 [ext_resource type="Script" uid="uid://dkmbos3kyl0t6" path="res://assets/scripts/goalpost.gd" id="1_bhbof"]
 [ext_resource type="Texture2D" uid="uid://cvvvobm1cpgpn" path="res://assets/sprites/goalpost.png" id="2_jxhj0"]
@@ -6,19 +6,19 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ksp5y"]
 size = Vector2(54, 65.5)
 
-[node name="Goalpost" type="Node2D"]
+[node name="Goalpost" type="Node2D" unique_id=1785982253]
 script = ExtResource("1_bhbof")
 
-[node name="Goal1" type="Area2D" parent="."]
+[node name="Goal1" type="Area2D" parent="." unique_id=568397110]
 collision_layer = 7
 collision_mask = 7
 input_pickable = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Goal1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Goal1" unique_id=846659871]
 position = Vector2(0, -26.25)
 shape = SubResource("RectangleShape2D_ksp5y")
 
-[node name="Icon" type="Sprite2D" parent="."]
+[node name="Icon" type="Sprite2D" parent="." unique_id=117307531]
 position = Vector2(1, -26)
 texture = ExtResource("2_jxhj0")
 

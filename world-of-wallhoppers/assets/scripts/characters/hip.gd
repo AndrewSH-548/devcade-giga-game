@@ -1,8 +1,6 @@
 extends Player
 class_name PlayerHip
 
-var up_action: String = " "
-var crouch_action: String = " "
 var is_wall_climbing: bool = false
 
 @export var climb_speed: float
@@ -44,7 +42,7 @@ func get_defined_name() -> StringName:
 	return &"Hip"
 
 func get_climb_input():
-	return Input.get_axis(up_action, crouch_action)
+	return Input.get_axis(up_action, down_action)
 
 func process_wallclimb():
 	if not is_wall_climbing:
@@ -103,12 +101,3 @@ func animate_hip(direction: float) -> void:
 	else: sprite.animation = "idle"
 	
 	sprite.flip_h = !is_facing_right;
-
-func setup_keybinds(player_number: int) -> void:
-	var player_input: String = "p" + str(player_number) + "_"
-	jump_action = player_input + "jump"
-	up_action = player_input + "up"
-	crouch_action = player_input + "crouch"
-	move_left_action = player_input + "left"
-	run_modifier_action = player_input + "run"
-	move_right_action = player_input + "right"

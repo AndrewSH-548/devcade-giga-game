@@ -120,11 +120,4 @@ func animate_rick(direction: float) -> void:
 		sprite.animation = "run" if Input.is_action_pressed(run_modifier_action) else "walk"
 	else: sprite.animation = "idle"
 	
-	sprite.flip_h = !is_facing_right;
-
-func setup_keybinds(player_number: int) -> void:
-	var player_input: String = "p" + str(player_number) + "_"
-	jump_action = player_input + "jump"
-	move_left_action = player_input + "left"
-	run_modifier_action = player_input + "run"
-	move_right_action = player_input + "right"
+	sprite.flip_h = !is_facing_right
