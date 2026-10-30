@@ -1,7 +1,7 @@
 extends Player
 
 const PHASE_TIME: float = 2.0
-const PHASE_COOLDOWN: float = 5.0
+const PHASE_COOLDOWN: float = 4.0
 const PHASE_MOVEMENT_MODIFIER: float = 1.3
 const PHASE_JUMP_MODIFIER: float = 1.1
 
@@ -12,6 +12,7 @@ const PHASE_JUMP_MODIFIER: float = 1.1
 func _ready() -> void:
 	phase_timer.timeout.connect(end_phase)
 	phase_cooldown.timeout.connect(end_cooldown)
+	super._ready()
 
 func _physics_process(delta: float) -> void:
 	if should_skip_physics():
