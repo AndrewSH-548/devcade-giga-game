@@ -1,11 +1,11 @@
-[gd_scene load_steps=83 format=3 uid="uid://c42ynqlk3h4wp"]
+[gd_scene format=3 uid="uid://c42ynqlk3h4wp"]
 
 [ext_resource type="Script" uid="uid://b4cra7t5rbaxf" path="res://assets/scripts/characters/reign.gd" id="1_jrwk1"]
 [ext_resource type="Texture2D" uid="uid://bfe80tkm43i8u" path="res://assets/sprites/characters/reign/right.png" id="2_jrwk1"]
 [ext_resource type="Texture2D" uid="uid://bjbwv8sjejjyy" path="res://assets/sprites/characters/reign/left.png" id="3_hw104"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6ci1u"]
-size = Vector2(70, 84)
+size = Vector2(32, 84)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hw104"]
 atlas = ExtResource("2_jrwk1")
@@ -327,7 +327,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_eciwc")
 }],
-"loop": true,
+"loop": 1,
 "name": &"fall",
 "speed": 10.0
 }, {
@@ -341,7 +341,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_m62ai")
 }],
-"loop": true,
+"loop": 1,
 "name": &"fall-left",
 "speed": 10.0
 }, {
@@ -355,7 +355,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_abomt")
 }],
-"loop": true,
+"loop": 1,
 "name": &"hurt",
 "speed": 10.0
 }, {
@@ -369,7 +369,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_mvj3g")
 }],
-"loop": true,
+"loop": 1,
 "name": &"hurt-left",
 "speed": 10.0
 }, {
@@ -383,7 +383,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_xj4nn")
 }],
-"loop": true,
+"loop": 1,
 "name": &"idle",
 "speed": 10.0
 }, {
@@ -397,7 +397,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_76kr2")
 }],
-"loop": true,
+"loop": 1,
 "name": &"idle-left",
 "speed": 10.0
 }, {
@@ -426,7 +426,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_o6430")
 }],
-"loop": true,
+"loop": 1,
 "name": &"jump",
 "speed": 10.0
 }, {
@@ -455,7 +455,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ak831")
 }],
-"loop": true,
+"loop": 1,
 "name": &"jump-left",
 "speed": 10.0
 }, {
@@ -481,7 +481,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_gyvxk")
 }],
-"loop": true,
+"loop": 1,
 "name": &"run",
 "speed": 10.0
 }, {
@@ -507,7 +507,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_dmyqv")
 }],
-"loop": true,
+"loop": 1,
 "name": &"run-left",
 "speed": 5.0
 }, {
@@ -536,7 +536,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ueap4")
 }],
-"loop": true,
+"loop": 1,
 "name": &"walk",
 "speed": 10.0
 }, {
@@ -565,7 +565,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_thjtd")
 }],
-"loop": true,
+"loop": 1,
 "name": &"walk-left",
 "speed": 10.0
 }, {
@@ -579,7 +579,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_3q5lx")
 }],
-"loop": true,
+"loop": 1,
 "name": &"wall-cling",
 "speed": 10.0
 }, {
@@ -593,7 +593,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ql0bf")
 }],
-"loop": true,
+"loop": 1,
 "name": &"wall-cling-left",
 "speed": 10.0
 }, {
@@ -616,7 +616,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_5g7qk")
 }],
-"loop": true,
+"loop": 1,
 "name": &"wall-push",
 "speed": 10.0
 }, {
@@ -630,12 +630,12 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_uol05")
 }],
-"loop": true,
+"loop": 1,
 "name": &"wall-push-left",
 "speed": 10.0
 }]
 
-[node name="PlayerReign" type="CharacterBody2D"]
+[node name="PlayerReign" type="CharacterBody2D" unique_id=1066578582]
 position = Vector2(0, 2.3841858e-07)
 collision_layer = 4
 collision_mask = 65
@@ -653,27 +653,26 @@ fall_speed = 1100
 gravity = 900
 weight = 26
 
-[node name="Collision" type="CollisionShape2D" parent="."]
-visible = false
+[node name="Collision" type="CollisionShape2D" parent="." unique_id=185396249]
 position = Vector2(0, -2.3841858e-07)
 scale = Vector2(0.9999999, 0.9999999)
 shape = SubResource("RectangleShape2D_6ci1u")
 
-[node name="Animations" type="AnimatedSprite2D" parent="."]
+[node name="Animations" type="AnimatedSprite2D" parent="." unique_id=419770874]
 texture_filter = 1
 use_parent_material = true
 position = Vector2(0, -4.7683716e-07)
 sprite_frames = SubResource("SpriteFrames_eose0")
-animation = &"wall-push-left"
+animation = &"wall-push"
 
-[node name="Hitbox" type="Area2D" parent="."]
+[node name="Hitbox" type="Area2D" parent="." unique_id=931876442]
 collision_layer = 0
 collision_mask = 8
 
-[node name="HitboxShape" type="CollisionShape2D" parent="Hitbox"]
+[node name="HitboxShape" type="CollisionShape2D" parent="Hitbox" unique_id=314297414]
 visible = false
 position = Vector2(0, 7.1525574e-07)
 shape = SubResource("RectangleShape2D_6ci1u")
 
-[node name="FootPositionMarker" type="Marker2D" parent="."]
+[node name="FootPositionMarker" type="Marker2D" parent="." unique_id=1470738018]
 position = Vector2(0, 42)

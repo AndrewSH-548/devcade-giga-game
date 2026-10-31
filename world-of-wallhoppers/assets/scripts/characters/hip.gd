@@ -1,6 +1,8 @@
 extends Player
 class_name PlayerHip
 
+const WALL_ANIMATION_FIX_OFFSET: float = -14.0
+
 var is_wall_climbing: bool = false
 
 @export var climb_speed: float
@@ -96,5 +98,10 @@ func animate_hip(direction: float) -> void:
 	elif direction != 0:
 		sprite.animation = "run" if Input.is_action_pressed(run_modifier_action) else "walk"
 	else: sprite.animation = "idle"
+	
+	if sprite.animation.begins_with("wall"):
+		sprite.offset.x = WALL_ANIMATION_FIX_OFFSET * facing
+	else:
+		sprite.offset.x = 0.0
 	
 	sprite.flip_h = !is_facing_right;

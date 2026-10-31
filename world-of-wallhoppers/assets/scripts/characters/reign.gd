@@ -1,6 +1,8 @@
 extends Player
 class_name PlayerReign
 
+const WALL_ANIMATION_FIX_OFFSET: float = -19.0
+
 var is_hovering: bool = false;
 
 @onready var foot_position_marker: Marker2D = $FootPositionMarker
@@ -57,3 +59,8 @@ func animate_reign(direction: float) -> void:
 			sprite.animation = "run" if is_facing_right else "run-left" 
 		else: sprite.animation = "walk" if is_facing_right else "walk-left";
 	else: sprite.animation = "idle" if is_facing_right else "idle-left";
+	
+	if sprite.animation.begins_with("wall"):
+		sprite.offset.x = WALL_ANIMATION_FIX_OFFSET * facing
+	else:
+		sprite.offset.x = 0.0

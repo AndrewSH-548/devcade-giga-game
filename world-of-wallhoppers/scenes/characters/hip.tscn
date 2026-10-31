@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cbpfskf2jthji" path="res://assets/sprites/characters/hip/hip.png" id="2_0eql2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6ci1u"]
-size = Vector2(56, 56)
+size = Vector2(28, 56)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s6udp"]
 atlas = ExtResource("2_0eql2")
@@ -201,7 +201,7 @@ shape = SubResource("RectangleShape2D_6ci1u")
 texture_filter = 1
 use_parent_material = true
 sprite_frames = SubResource("SpriteFrames_eose0")
-animation = &"run"
+animation = &"wall-cling"
 
 [node name="Hitbox" type="Area2D" parent="." unique_id=1676825532]
 collision_layer = 0

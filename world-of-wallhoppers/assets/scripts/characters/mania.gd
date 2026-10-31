@@ -1,9 +1,9 @@
 extends Player
 
 const PHASE_TIME: float = 2.0
-const PHASE_COOLDOWN: float = 4.0
-const PHASE_MOVEMENT_MODIFIER: float = 1.3
-const PHASE_JUMP_MODIFIER: float = 1.1
+const PHASE_COOLDOWN: float = 5.0
+const PHASE_MOVEMENT_MODIFIER: float = 1.5
+const PHASE_JUMP_MODIFIER: float = 1.5
 
 @onready var animations: AnimatedSprite2D = $Animations
 @onready var phase_timer: Timer = make_timer(PHASE_TIME)
