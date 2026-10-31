@@ -1,19 +1,29 @@
 shader_type canvas_item;
 
-uniform sampler2D noise;
+uniform bool active;
 
 void fragment()
 {
-	vec2 uv = UV;
-	ivec2 pixel_coords = ivec2(UV / TEXTURE_PIXEL_SIZE);
-	int number = int(float(pixel_coords.y) * 0.25);
+	if (active){
 	
-	if (number % 3 == 0) {
-		uv.x += sin(UV.y / TEXTURE_PIXEL_SIZE.y + TIME * 4.0) * TEXTURE_PIXEL_SIZE.y * float(number % 2);
+	vec2 uv = UV;
+	vec4 source = texture(TEXTURE, UV);
+	uv.x += sin(uv.y / TEXTURE_PIXEL_SIZE.y / 2.0 + TIME) * TEXTURE_PIXEL_SIZE.x
+	 + sin(uv.y / TEXTURE_PIXEL_SIZE.y / 8.0 + TIME * 8.0) * TEXTURE_PIXEL_SIZE.x * 0.4;
+	
+	COLOR = texture(TEXTURE, uv);
+	
+	if (COLOR.a == 0.0) {
+		float pixel_x = uv.x * TEXTURE_PIXEL_SIZE.x;
+		
+		vec4 sample_right = texture(TEXTURE, uv + vec2(0.0, 0.0) + sin(TIME * 16.0) * 0.1 * vec2(1.0, 0.0));
+		if (sample_right.r == 1.0 && sample_right.a != 0.0) {
+			sample_right.a = 0.5;
+			COLOR = sample_right;
+		}
 	}
 	
-	COLOR.rg = uv;
-	COLOR.a = 1.0;
-	COLOR.b = 0.0;
-	COLOR = texture(TEXTURE, uv) - float(number % 3) * 0.2;
+	COLOR.rgb *= 0.7;
+	COLOR.rgb += vec3(0.35);
+	}
 }

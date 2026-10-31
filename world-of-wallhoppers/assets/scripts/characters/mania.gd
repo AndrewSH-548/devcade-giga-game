@@ -62,21 +62,18 @@ func is_phase_cooldown() -> bool:
 	return not phase_cooldown.is_stopped()
 
 func process_phase() -> void:
+	(animations.material as ShaderMaterial).set_shader_parameter("active", is_phasing())
 	if Input.is_action_just_pressed(run_modifier_action) and can_phase():
 		start_phase()
 
 func start_phase() -> void:
 	phase_timer.start()
-	modulate = Color.AQUA
-	modulate.a = 0.6
 
 func end_phase() -> void:
 	phase_cooldown.start()
-	modulate = Color.RED
-	modulate.a = 1.0
 
 func end_cooldown() -> void:
-	modulate = Color.WHITE
+	pass
 
 func get_jump_modifier() -> float:
 	return PHASE_JUMP_MODIFIER if is_phasing() else 1.0
