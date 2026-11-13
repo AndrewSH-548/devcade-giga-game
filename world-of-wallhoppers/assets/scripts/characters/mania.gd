@@ -8,6 +8,7 @@ const PHASE_JUMP_MODIFIER: float = 1.5
 @onready var animations: AnimatedSprite2D = $Animations
 @onready var phase_timer: Timer = make_timer(PHASE_TIME)
 @onready var phase_cooldown: Timer = make_timer(PHASE_COOLDOWN)
+@onready var wisps: GPUParticles2D = $Wisps
 
 func _ready() -> void:
 	phase_timer.timeout.connect(end_phase)
@@ -61,8 +62,17 @@ func is_phasing() -> bool:
 func is_phase_cooldown() -> bool:
 	return not phase_cooldown.is_stopped()
 
+func get_phase_state_number() -> int:
+	if is_phasing():
+		return 1
+	if is_phase_cooldown():
+		return 2
+	return 0
+
 func process_phase() -> void:
-	(animations.material as ShaderMaterial).set_shader_parameter("active", is_phasing())
+	(animations.material as ShaderMaterial).set_shader_parameter("modulate", modulate);
+	(animations.material as ShaderMaterial).set_shader_parameter("state", get_phase_state_number())
+	wisps.emitting = not is_phasing() and not is_phase_cooldown()
 	if Input.is_action_just_pressed(run_modifier_action) and can_phase():
 		start_phase()
 

@@ -3,13 +3,15 @@
 [ext_resource type="Script" uid="uid://beh3hf0wgrpye" path="res://assets/scripts/characters/mania.gd" id="1_03s40"]
 [ext_resource type="Texture2D" uid="uid://b3p2y7x8exfnu" path="res://assets/sprites/characters/mania/mania_placeholder.png" id="2_03s40"]
 [ext_resource type="Shader" uid="uid://bxvq4g8yvxp62" path="res://assets/shaders/characters/mania_invincibility.gdshader" id="2_8av2h"]
+[ext_resource type="Texture2D" uid="uid://l83u7g2mp8oh" path="res://assets/sprites/characters/mania/wisps.png" id="4_8av2h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7xlm3"]
 size = Vector2(32, 104)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8lxng"]
 shader = ExtResource("2_8av2h")
-shader_parameter/active = false
+shader_parameter/state = 2
+shader_parameter/modulate = Color(1, 1, 1, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8av2h"]
 atlas = ExtResource("2_03s40")
@@ -28,6 +30,65 @@ animations = [{
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5msrf"]
 size = Vector2(32, 104)
+
+[sub_resource type="Shader" id="Shader_8av2h"]
+code = "// NOTE: Shader automatically converted from Godot Engine 4.7.2.stable's CanvasItemMaterial.
+
+shader_type canvas_item;
+render_mode blend_mix;
+uniform int particles_anim_h_frames;
+uniform int particles_anim_v_frames;
+uniform bool particles_anim_loop;
+
+void vertex() {
+	float h_frames = float(particles_anim_h_frames);
+	float v_frames = float(particles_anim_v_frames);
+	VERTEX.xy /= vec2(h_frames, v_frames);
+	float particle_total_frames = float(particles_anim_h_frames * particles_anim_v_frames);
+	float particle_frame = floor(INSTANCE_CUSTOM.z * float(particle_total_frames));
+	if (!particles_anim_loop) {
+		particle_frame = clamp(particle_frame, 0.0, particle_total_frames - 1.0);
+	} else {
+		particle_frame = mod(particle_frame, particle_total_frames);
+	}	UV /= vec2(h_frames, v_frames);
+	UV += vec2(mod(particle_frame, h_frames) / h_frames, floor((particle_frame + 0.5) / h_frames) / v_frames);
+}
+
+const vec2[4] DIRECTIONS = { vec2(1.0, 0.0), vec2(-1.0, 0.0), vec2(0.0, 1.0), vec2(0.0, -1.0) };
+
+void fragment() {
+	if (COLOR.a != 0.0) {
+		COLOR = vec4(0.0, 0.0, 0.0, 1.0);
+	}
+	else {
+		for (int i = 0; i < 4; i++) {
+			vec2 direction = DIRECTIONS[i];
+			if (texture(TEXTURE, UV + TEXTURE_PIXEL_SIZE * direction).a != 0.0) {
+				COLOR = vec4(1.0); 
+				break;
+			}
+		}
+	}
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5msrf"]
+shader = SubResource("Shader_8av2h")
+shader_parameter/particles_anim_h_frames = 8
+shader_parameter/particles_anim_v_frames = 1
+shader_parameter/particles_anim_loop = false
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5ysvq"]
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(0, -32, 0)
+emission_shape = 3
+emission_box_extents = Vector3(16, 32, 1)
+direction = Vector3(0, -1, 0)
+spread = 0.0
+initial_velocity_min = 32.0
+initial_velocity_max = 32.0
+gravity = Vector3(0, 0, 0)
+anim_speed_min = 1.0
+anim_speed_max = 1.0
 
 [node name="PlayerMania" type="CharacterBody2D" unique_id=1314230018]
 collision_layer = 4
@@ -67,3 +128,9 @@ shape = SubResource("RectangleShape2D_5msrf")
 
 [node name="FootPositionMarker" type="Marker2D" parent="." unique_id=41997358]
 position = Vector2(0, 28)
+
+[node name="Wisps" type="GPUParticles2D" parent="." unique_id=1106935896]
+z_index = -1
+material = SubResource("ShaderMaterial_5msrf")
+texture = ExtResource("4_8av2h")
+process_material = SubResource("ParticleProcessMaterial_5ysvq")

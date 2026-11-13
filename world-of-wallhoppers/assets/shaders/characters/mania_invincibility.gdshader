@@ -1,10 +1,11 @@
 shader_type canvas_item;
 
-uniform bool active;
+uniform int state;
+uniform vec4 modulate: source_color = vec4(1.0);
 
 void fragment()
 {
-	if (active){
+	if (false){
 	
 	vec2 uv = UV;
 	vec4 source = texture(TEXTURE, UV);
@@ -23,7 +24,20 @@ void fragment()
 		}
 	}
 	
-	COLOR.rgb *= 0.7;
-	COLOR.rgb += vec3(0.35);
 	}
+	else if (state == 1) {
+		if (COLOR.a == 0.0) {
+			vec4 addition1 = texture(TEXTURE, UV + vec2(sin(TIME * 3.0 + UV.y * 32.0) * TEXTURE_PIXEL_SIZE.x * 3.0, 0.0));
+			vec4 addition2 = texture(TEXTURE, UV + vec2(sin(TIME * 8.0 + UV.y * 32.0) * TEXTURE_PIXEL_SIZE.x * 16.0, 0.0));
+			COLOR += addition1;
+			addition2.a *= 0.4;
+			COLOR += addition2;
+		}
+		if (COLOR.r != 1.0) {
+			COLOR.a *= 0.3;
+		} else {
+			COLOR.a *= 0.6;
+		}
+	}
+	COLOR *= modulate;
 }
