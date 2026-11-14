@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://ceid8e0ufanjy"]
 
 [ext_resource type="Script" uid="uid://beh3hf0wgrpye" path="res://assets/scripts/characters/mania.gd" id="1_03s40"]
-[ext_resource type="Texture2D" uid="uid://b3p2y7x8exfnu" path="res://assets/sprites/characters/mania/mania_placeholder.png" id="2_03s40"]
 [ext_resource type="Shader" uid="uid://bxvq4g8yvxp62" path="res://assets/shaders/characters/mania_invincibility.gdshader" id="2_8av2h"]
+[ext_resource type="Texture2D" uid="uid://bp6twbq3j5l1e" path="res://assets/sprites/characters/mania/mania.png" id="3_5msrf"]
 [ext_resource type="Texture2D" uid="uid://l83u7g2mp8oh" path="res://assets/sprites/characters/mania/wisps.png" id="4_8av2h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7xlm3"]
@@ -14,18 +14,121 @@ shader_parameter/state = 2
 shader_parameter/modulate = Color(1, 1, 1, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8av2h"]
-atlas = ExtResource("2_03s40")
+atlas = ExtResource("3_5msrf")
+region = Rect2(672, 0, 96, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5msrf"]
+atlas = ExtResource("3_5msrf")
+region = Rect2(768, 0, 96, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v81k1"]
+atlas = ExtResource("3_5msrf")
+region = Rect2(864, 0, 96, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jf5gs"]
+atlas = ExtResource("3_5msrf")
+region = Rect2(960, 0, 96, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0sgl2"]
+atlas = ExtResource("3_5msrf")
+region = Rect2(1056, 0, 96, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bydim"]
+atlas = ExtResource("3_5msrf")
+region = Rect2(1152, 0, 96, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_llsdi"]
+atlas = ExtResource("3_5msrf")
+region = Rect2(1248, 0, 96, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3r3rp"]
+atlas = ExtResource("3_5msrf")
+region = Rect2(1344, 0, 96, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bx6ny"]
+atlas = ExtResource("3_5msrf")
 region = Rect2(0, 0, 96, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ts0fq"]
+atlas = ExtResource("3_5msrf")
+region = Rect2(96, 0, 96, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i6kfu"]
+atlas = ExtResource("3_5msrf")
+region = Rect2(192, 0, 96, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1534a"]
+atlas = ExtResource("3_5msrf")
+region = Rect2(288, 0, 96, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ou5m"]
+atlas = ExtResource("3_5msrf")
+region = Rect2(384, 0, 96, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bcfwd"]
+atlas = ExtResource("3_5msrf")
+region = Rect2(480, 0, 96, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_78egq"]
+atlas = ExtResource("3_5msrf")
+region = Rect2(576, 0, 96, 128)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_t7tuk"]
 animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_8av2h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5msrf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v81k1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jf5gs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0sgl2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bydim")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_llsdi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3r3rp")
 }],
 "loop": 1,
-"name": &"default",
+"name": &"idle",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bx6ny")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ts0fq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i6kfu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1534a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ou5m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bcfwd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_78egq")
+}],
+"loop": 1,
+"name": &"walk",
+"speed": 8.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5msrf"]
@@ -116,6 +219,9 @@ shape = SubResource("RectangleShape2D_7xlm3")
 texture_filter = 1
 material = SubResource("ShaderMaterial_8lxng")
 sprite_frames = SubResource("SpriteFrames_t7tuk")
+animation = &"walk"
+autoplay = "idle"
+frame_progress = 0.023920048
 
 [node name="Hitbox" type="Area2D" parent="." unique_id=1687708069]
 collision_layer = 0

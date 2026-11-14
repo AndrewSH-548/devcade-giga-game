@@ -29,6 +29,7 @@ func _physics_process(delta: float) -> void:
 	process_phase()
 	
 	update_flipped()
+	animate_mania(direction)
 	
 	move()
 	
@@ -90,3 +91,9 @@ func get_jump_modifier() -> float:
 
 func get_movement_modifier() -> float:
 	return PHASE_MOVEMENT_MODIFIER if is_phasing() else 1.0
+
+func animate_mania(direction: float) -> void:
+	if (direction == 0):
+		animations.animation = "idle"
+	else:
+		animations.animation = "walk"
